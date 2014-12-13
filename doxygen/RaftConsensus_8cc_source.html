@@ -1281,9 +1281,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01199"></a>01199     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a5ea8454fb7f5ad18a4752c37563db650" title="The earliest time at which RequestVote messages should be processed.">withholdVotesUntil</a> &gt; <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a3a7e539b69064c77401cc0e3928f96b7">Clock::now</a>()) {
 <a name="l01200"></a>01200         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Rejecting RequestVote for term %lu from server %lu, since &quot;</span>
 <a name="l01201"></a>01201                <span class="stringliteral">&quot;this server (which is in term %lu) recently heard from a &quot;</span>
-<a name="l01202"></a>01202                <span class="stringliteral">&quot;leader. Should server %lu be shut down?&quot;</span>,
+<a name="l01202"></a>01202                <span class="stringliteral">&quot;leader (%lu). Should server %lu be shut down?&quot;</span>,
 <a name="l01203"></a>01203                request.term(), request.server_id(), <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac77ce12e038db59e7e3a5543ffcb4e7c" title="The latest term this server has seen.">currentTerm</a>,
-<a name="l01204"></a>01204                request.server_id());
+<a name="l01204"></a>01204                request.server_id(), <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aaedf269f50f0727f072b8c399cb71f7e" title="The server ID of the leader for this term.">leaderId</a>);
 <a name="l01205"></a>01205         response.set_term(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac77ce12e038db59e7e3a5543ffcb4e7c" title="The latest term this server has seen.">currentTerm</a>);
 <a name="l01206"></a>01206         response.set_granted(<span class="keyword">false</span>);
 <a name="l01207"></a>01207         <span class="keywordflow">return</span>;
