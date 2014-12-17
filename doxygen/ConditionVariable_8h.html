@@ -84,16 +84,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;cstdatomic&gt;</code><br/>
-<code>#include &lt;condition_variable&gt;</code><br/>
 <code>#include &lt;functional&gt;</code><br/>
+<code>#include &lt;pthread.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="Mutex_8h_source.html">Core/Mutex.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="Time_8h_source.html">Core/Time.h</a>&quot;</code><br/>
 </div>
 <p><a href="ConditionVariable_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">LogCabin::Core::ConditionVariable</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A wrapper around std::condition_variable that is useful for testing purposes and works around a bug in libstdc++.  <a href="classLogCabin_1_1Core_1_1ConditionVariable.html#details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Similar to std::condition_variable but with improvements for testing, support for monotonic clocks, and less buggy.  <a href="classLogCabin_1_1Core_1_1ConditionVariable.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>

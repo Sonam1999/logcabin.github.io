@@ -161,7 +161,7 @@ Private Member Functions</h2></td></tr>
 <p>The client should inherit from this and implement the <a class="el" href="classLogCabin_1_1Event_1_1File.html#a65772259f49bd8f7b757d8d12cb5921f" title="This method is overridden by a subclass and invoked when a file event occurs.">handleFileEvent()</a> method for when the file becomes readable or writable.</p>
 <p><a class="el" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a> objects can be created from any thread, but they will always fire on the thread running the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>. </p>
 
-<p>Definition at line <a class="el" href="File_8h_source.html#l00033">33</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
+<p>Definition at line <a class="el" href="File_8h_source.html#l00036">36</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a7563195f04344ae8684f44b029daeffa"></a><!-- doxytag: member="LogCabin::Event::File::File" ref="a7563195f04344ae8684f44b029daeffa" args="(Event::Loop &amp;eventLoop, int fd, int events)" -->
 <div class="memitem">
@@ -355,7 +355,7 @@ Private Member Functions</h2></td></tr>
 
 <p><a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> that will manage this file. </p>
 
-<p>Definition at line <a class="el" href="File_8h_source.html#l00100">100</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
+<p>Definition at line <a class="el" href="File_8h_source.html#l00103">103</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
 
 </div>
 </div>
@@ -372,7 +372,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Protects <a class="el" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a> from concurrent access between <a class="el" href="classLogCabin_1_1Event_1_1File.html#aab3c1cafdf43034823597e537fdefa1b" title="Remove the file descriptor from being monitored by this object.">release()</a>, which modifies <a class="el" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a>, and <a class="el" href="classLogCabin_1_1Event_1_1File.html#a54c241c86227cec338469e1c4f3caf54" title="Specify the events of interest for this file handler.">setEvents()</a>, which uses it. </p>
 
-<p>Definition at line <a class="el" href="File_8h_source.html#l00106">106</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
+<p>Definition at line <a class="el" href="File_8h_source.html#l00109">109</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
 
 </div>
 </div>
@@ -389,7 +389,7 @@ Private Member Functions</h2></td></tr>
 
 <p>The file descriptor to monitor. </p>
 
-<p>Definition at line <a class="el" href="File_8h_source.html#l00111">111</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
+<p>Definition at line <a class="el" href="File_8h_source.html#l00114">114</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
 
 </div>
 </div>

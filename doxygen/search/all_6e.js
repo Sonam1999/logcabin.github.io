@@ -21,7 +21,7 @@ var searchData=
   ['notificationcount',['notificationCount',['../classLogCabin_1_1Core_1_1ConditionVariable.html#af207028ba7fd73430cb97c2082149591',1,'LogCabin::Core::ConditionVariable']]],
   ['notify_5fall',['notify_all',['../classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7',1,'LogCabin::Core::ConditionVariable']]],
   ['notify_5fone',['notify_one',['../classLogCabin_1_1Core_1_1ConditionVariable.html#a471143032b14a414b20d5ed4ca43b500',1,'LogCabin::Core::ConditionVariable']]],
-  ['now',['now',['../structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a3a7e539b69064c77401cc0e3928f96b7',1,'LogCabin::Core::Time::MockableClock']]],
+  ['now',['now',['../structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html#a101a2a44aa077e88dfaae5893e5e8b3e',1,'LogCabin::Core::Time::CSystemClock::now()'],['../structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#a37088be2a103ee1296e7714b5c4b6d46',1,'LogCabin::Core::Time::CSteadyClock::now()'],['../structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b',1,'LogCabin::Core::Time::MockableClock::now()']]],
   ['nulltimer',['NullTimer',['../classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.html',1,'LogCabin::Event::anonymous_namespace{Loop.cc}']]],
   ['nulltimer',['NullTimer',['../classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.html#a5a03562c575a16e022ac75d3e9978f89',1,'LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer']]],
   ['numactivelocks',['numActiveLocks',['../classLogCabin_1_1Event_1_1Loop.html#a3b58f00b8556865348344462306452ea',1,'LogCabin::Event::Loop']]],

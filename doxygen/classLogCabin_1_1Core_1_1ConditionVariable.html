@@ -108,7 +108,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="LogCabin::Core::ConditionVariable" -->
-<p>A wrapper around std::condition_variable that is useful for testing purposes and works around a bug in libstdc++.  
+<p>Similar to std::condition_variable but with improvements for testing, support for monotonic clocks, and less buggy.  
  <a href="classLogCabin_1_1Core_1_1ConditionVariable.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>&gt;</code></p>
@@ -118,10 +118,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a8cb1bb35303063a77c6b0d26084b3fe6">ConditionVariable</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aa29ea285e871304cc71ed3d72a336813">~ConditionVariable</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a471143032b14a414b20d5ed4ca43b500">notify_one</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">wait</a> (std::unique_lock&lt; std::mutex &gt; &amp;lockGuard)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ac98fdf167cf54e33c3cc7f7148ac3ebf">wait</a> (std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;lockGuard)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ae6b4ac4d192b0efe25cfd5d7dd9a5558">wait_until</a> (std::unique_lock&lt; std::mutex &gt; &amp;lockGuard, const <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Core::Time::SteadyClock::time_point</a> &amp;abs_time)</td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename Clock , typename Duration &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a76d432cd46c313a3e41e7be8e4e9838e">wait_until</a> (std::unique_lock&lt; std::mutex &gt; &amp;lockGuard, const std::chrono::time_point&lt; Clock, Duration &gt; &amp;abs_time)</td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename Clock , typename Duration &gt; </td></tr>
@@ -134,17 +136,23 @@ Public Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">In the last call to wait_until, the timeout that the caller provided.  <a href="#a17f0e22cbcda874e6e8db66d3b09c9f7"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a82cefe719cdb331c0a6fb0a2d62abc29">cv</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying condition variable.  <a href="#a82cefe719cdb331c0a6fb0a2d62abc29"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">pthread_cond_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a663128ec2dfa8ec1206b511a93d1ee01">cv</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Underlying condition variable.  <a href="#a663128ec2dfa8ec1206b511a93d1ee01"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::function&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408">callback</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will be called with the lock released during every invocation of wait/wait_until.  <a href="#a6fe50be51dae5cbc76ce1b3a81dc4408"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>A wrapper around std::condition_variable that is useful for testing purposes and works around a bug in libstdc++. </p>
-<p>You can set a callback to be called when the condition variable is waited on; instead of waiting, this callback will be called. This callback can, for example, change some shared state so that the calling thread's condition is satisfied. It also counts how many times the condition variable has been notified.</p>
-<p>The interface to this class is the same as std::condition_variable. This class also goes through some trouble so that it can be used with std::unique_lock&lt;Mutex&gt;, since normal condition variables may only be used with std::unique_lock&lt;std::mutex&gt;. </p>
+<div class="textblock"><p>Similar to std::condition_variable but with improvements for testing, support for monotonic clocks, and less buggy. </p>
+<p>For testing, you can set a callback to be called when the condition variable is waited on; instead of waiting, this callback will be called. This callback can, for example, change some shared state so that the calling thread's condition is satisfied. It also counts how many times the condition variable has been notified.</p>
+<p>The interface to this class is a subset of std::condition_variable:</p>
+<ul>
+<li>wait_for isn't exposed since it doesn't make much sense to me in light of spurious interrupts.</li>
+<li>wait_until returns void instead of cv_status since it's almost always clearer to check whether timeout has elapsed explicitly. Also, gcc 4.4 doesn't have cv_status and uses bool instead.</li>
+</ul>
+<p>This class also goes through some trouble so that it can be used with std::unique_lock&lt;Core::Mutex&gt;, since normal condition variables may only be used with std::unique_lock&lt;std::mutex&gt;.</p>
+<p>All waiting on this class is done using a monotonic clock internally, so it will not be affected by time jumps from, e.g., NTP. This implies that, if you're actually waiting for a specific system time to come around, you might end up with surprising behavior. If you're wondering why, Linux/POSIX condition variables use a single clock for all waiters, whereas C++11 uses an impossible-to-implement interface where different waiters can use different clocks. </p>
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00047">47</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00064">64</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8cb1bb35303063a77c6b0d26084b3fe6"></a><!-- doxytag: member="LogCabin::Core::ConditionVariable::ConditionVariable" ref="a8cb1bb35303063a77c6b0d26084b3fe6" args="()" -->
 <div class="memitem">
@@ -154,13 +162,31 @@ Private Attributes</h2></td></tr>
           <td class="memname"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a8cb1bb35303063a77c6b0d26084b3fe6">LogCabin::Core::ConditionVariable::ConditionVariable</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00049">49</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8cc_source.html#l00025">25</a> of file <a class="el" href="ConditionVariable_8cc_source.html">ConditionVariable.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa29ea285e871304cc71ed3d72a336813"></a><!-- doxytag: member="LogCabin::Core::ConditionVariable::~ConditionVariable" ref="aa29ea285e871304cc71ed3d72a336813" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aa29ea285e871304cc71ed3d72a336813">LogCabin::Core::ConditionVariable::~ConditionVariable</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="ConditionVariable_8cc_source.html#l00050">50</a> of file <a class="el" href="ConditionVariable_8cc_source.html">ConditionVariable.cc</a>.</p>
 
 </div>
 </div>
@@ -173,13 +199,13 @@ Private Attributes</h2></td></tr>
           <td class="memname">void <a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a471143032b14a414b20d5ed4ca43b500">LogCabin::Core::ConditionVariable::notify_one</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00058">58</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8cc_source.html#l00058">58</a> of file <a class="el" href="ConditionVariable_8cc_source.html">ConditionVariable.cc</a>.</p>
 
 </div>
 </div>
@@ -191,13 +217,13 @@ Private Attributes</h2></td></tr>
           <td class="memname">void <a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">LogCabin::Core::ConditionVariable::notify_all</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00064">64</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8cc_source.html#l00067">67</a> of file <a class="el" href="ConditionVariable_8cc_source.html">ConditionVariable.cc</a>.</p>
 
 </div>
 </div>
@@ -210,13 +236,13 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">std::unique_lock&lt; std::mutex &gt; &amp;&#160;</td>
           <td class="paramname"><em>lockGuard</em></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00070">70</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8cc_source.html#l00076">76</a> of file <a class="el" href="ConditionVariable_8cc_source.html">ConditionVariable.cc</a>.</p>
 
 </div>
 </div>
@@ -229,13 +255,42 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>lockGuard</em></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00081">81</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8cc_source.html#l00091">91</a> of file <a class="el" href="ConditionVariable_8cc_source.html">ConditionVariable.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae6b4ac4d192b0efe25cfd5d7dd9a5558"></a><!-- doxytag: member="LogCabin::Core::ConditionVariable::wait_until" ref="ae6b4ac4d192b0efe25cfd5d7dd9a5558" args="(std::unique_lock&lt; std::mutex &gt; &amp;lockGuard, const Core::Time::SteadyClock::time_point &amp;abs_time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ae6b4ac4d192b0efe25cfd5d7dd9a5558">LogCabin::Core::ConditionVariable::wait_until</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::unique_lock&lt; std::mutex &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lockGuard</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Core::Time::SteadyClock::time_point</a> &amp;&#160;</td>
+          <td class="paramname"><em>abs_time</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="ConditionVariable_8cc_source.html#l00109">109</a> of file <a class="el" href="ConditionVariable_8cc_source.html">ConditionVariable.cc</a>.</p>
 
 </div>
 </div>
@@ -246,7 +301,7 @@ Private Attributes</h2></td></tr>
 template&lt;typename Clock , typename Duration &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a76d432cd46c313a3e41e7be8e4e9838e">LogCabin::Core::ConditionVariable::wait_until</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ae6b4ac4d192b0efe25cfd5d7dd9a5558">LogCabin::Core::ConditionVariable::wait_until</a> </td>
           <td>(</td>
           <td class="paramtype">std::unique_lock&lt; std::mutex &gt; &amp;&#160;</td>
           <td class="paramname"><em>lockGuard</em>, </td>
@@ -266,7 +321,7 @@ template&lt;typename Clock , typename Duration &gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00106">106</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00081">81</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>
@@ -277,7 +332,7 @@ template&lt;typename Clock , typename Duration &gt; </div>
 template&lt;typename Clock , typename Duration &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a76d432cd46c313a3e41e7be8e4e9838e">LogCabin::Core::ConditionVariable::wait_until</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ae6b4ac4d192b0efe25cfd5d7dd9a5558">LogCabin::Core::ConditionVariable::wait_until</a> </td>
           <td>(</td>
           <td class="paramtype">std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>lockGuard</em>, </td>
@@ -297,17 +352,17 @@ template&lt;typename Clock , typename Duration &gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00129">129</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00101">101</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a82cefe719cdb331c0a6fb0a2d62abc29"></a><!-- doxytag: member="LogCabin::Core::ConditionVariable::cv" ref="a82cefe719cdb331c0a6fb0a2d62abc29" args="" -->
+<a class="anchor" id="a663128ec2dfa8ec1206b511a93d1ee01"></a><!-- doxytag: member="LogCabin::Core::ConditionVariable::cv" ref="a663128ec2dfa8ec1206b511a93d1ee01" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::condition_variable <a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a82cefe719cdb331c0a6fb0a2d62abc29">LogCabin::Core::ConditionVariable::cv</a><code> [private]</code></td>
+          <td class="memname">pthread_cond_t <a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a663128ec2dfa8ec1206b511a93d1ee01">LogCabin::Core::ConditionVariable::cv</a><code> [private]</code></td>
         </tr>
       </table>
 </div>
@@ -315,7 +370,7 @@ template&lt;typename Clock , typename Duration &gt; </div>
 
 <p>Underlying condition variable. </p>
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00148">148</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00120">120</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>
@@ -333,7 +388,7 @@ template&lt;typename Clock , typename Duration &gt; </div>
 <p>This function will be called with the lock released during every invocation of wait/wait_until. </p>
 <p>No wait will actually occur; this is only used for unit testing. </p>
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00154">154</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00126">126</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>
@@ -350,7 +405,7 @@ template&lt;typename Clock , typename Duration &gt; </div>
 
 <p>The number of times this condition variable has been notified. </p>
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00159">159</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00131">131</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>
@@ -368,12 +423,13 @@ template&lt;typename Clock , typename Duration &gt; </div>
 <p>In the last call to wait_until, the timeout that the caller provided. </p>
 <p>This is used in some unit tests to check that timeouts are set correctly. It is stored as the number of milliseconds after the clock's epoch. (Since we don't know the Clock in advance, we can't store a time_point here.) </p>
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00167">167</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00139">139</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>Core/<a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a></li>
+<li>Core/<a class="el" href="ConditionVariable_8cc_source.html">ConditionVariable.cc</a></li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->

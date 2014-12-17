@@ -149,7 +149,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00067"></a>00067 <span class="keywordtype">void</span>
 <a name="l00068"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aabf4f26a4217c17414024de3117645fa">00068</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aabf4f26a4217c17414024de3117645fa" title="Finish initializing this object.">Globals::init</a>(uint64_t serverId)
 <a name="l00069"></a>00069 {
-<a name="l00070"></a>00070     <span class="keywordflow">if</span> (!<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#adce61294fa90091a1009333e51af2640">Core::Time::SteadyClock::is_steady</a>) {
+<a name="l00070"></a>00070     <span class="keywordflow">if</span> (!<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#ab4f4cd42e83e3568af0feffc206851e1">Core::Time::SteadyClock::is_steady</a>) {
 <a name="l00071"></a>00071         <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Available C++11 clock is not monotonic/steady, so any &quot;</span>
 <a name="l00072"></a>00072                 <span class="stringliteral">&quot;changes to the system clock (such as from NTP) may affect &quot;</span>
 <a name="l00073"></a>00073                 <span class="stringliteral">&quot;timeouts and availability. See &quot;</span>

@@ -81,178 +81,150 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="ConditionVariable_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* Copyright (c) 2012-2014 Stanford University</span>
-<a name="l00002"></a>00002 <span class="comment"> *</span>
-<a name="l00003"></a>00003 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
-<a name="l00004"></a>00004 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
-<a name="l00005"></a>00005 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
-<a name="l00006"></a>00006 <span class="comment"> *</span>
-<a name="l00007"></a>00007 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
-<a name="l00008"></a>00008 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
-<a name="l00009"></a>00009 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
-<a name="l00010"></a>00010 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
-<a name="l00011"></a>00011 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
-<a name="l00012"></a>00012 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
-<a name="l00013"></a>00013 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
-<a name="l00014"></a>00014 <span class="comment"> */</span>
-<a name="l00015"></a>00015 
-<a name="l00016"></a>00016 <span class="preprocessor">#if __GNUC__ &gt;= 4 &amp;&amp; __GNUC_MINOR__ &gt;= 5</span>
-<a name="l00017"></a>00017 <span class="preprocessor"></span><span class="preprocessor">#include &lt;atomic&gt;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#else</span>
-<a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#include &lt;cstdatomic&gt;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#endif</span>
-<a name="l00021"></a>00021 <span class="preprocessor"></span><span class="preprocessor">#include &lt;condition_variable&gt;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;functional&gt;</span>
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="Mutex_8h.html">Core/Mutex.h</a>&quot;</span>
+<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2014 Diego Ongaro</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
+<a name="l00005"></a>00005 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
+<a name="l00006"></a>00006 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
+<a name="l00007"></a>00007 <span class="comment"> *</span>
+<a name="l00008"></a>00008 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
+<a name="l00009"></a>00009 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
+<a name="l00010"></a>00010 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
+<a name="l00011"></a>00011 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
+<a name="l00012"></a>00012 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
+<a name="l00013"></a>00013 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
+<a name="l00014"></a>00014 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
+<a name="l00015"></a>00015 <span class="comment"> */</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#if __GNUC__ &gt;= 4 &amp;&amp; __GNUC_MINOR__ &gt;= 5</span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span><span class="preprocessor">#include &lt;atomic&gt;</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#else</span>
+<a name="l00020"></a>00020 <span class="preprocessor"></span><span class="preprocessor">#include &lt;cstdatomic&gt;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#endif</span>
+<a name="l00022"></a>00022 <span class="preprocessor"></span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;functional&gt;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;pthread.h&gt;</span>
 <a name="l00025"></a>00025 
-<a name="l00026"></a>00026 <span class="preprocessor">#ifndef LOGCABIN_CORE_CONDITIONVARIABLE_H</span>
-<a name="l00027"></a>00027 <span class="preprocessor"></span><span class="preprocessor">#define LOGCABIN_CORE_CONDITIONVARIABLE_H</span>
-<a name="l00028"></a>00028 <span class="preprocessor"></span>
-<a name="l00029"></a>00029 <span class="keyword">namespace </span>LogCabin {
-<a name="l00030"></a>00030 <span class="keyword">namespace </span>Core {
-<a name="l00031"></a>00031 <span class="comment"></span>
-<a name="l00032"></a>00032 <span class="comment">/**</span>
-<a name="l00033"></a>00033 <span class="comment"> * A wrapper around std::condition_variable that is useful for testing</span>
-<a name="l00034"></a>00034 <span class="comment"> * purposes and works around a bug in libstdc++.</span>
-<a name="l00035"></a>00035 <span class="comment"> *</span>
-<a name="l00036"></a>00036 <span class="comment"> * You can set a callback to be called when the condition variable is</span>
-<a name="l00037"></a>00037 <span class="comment"> * waited on; instead of waiting, this callback will be called. This callback</span>
-<a name="l00038"></a>00038 <span class="comment"> * can, for example, change some shared state so that the calling thread&#39;s</span>
-<a name="l00039"></a>00039 <span class="comment"> * condition is satisfied. It also counts how many times the condition variable</span>
-<a name="l00040"></a>00040 <span class="comment"> * has been notified.</span>
-<a name="l00041"></a>00041 <span class="comment"> *</span>
-<a name="l00042"></a>00042 <span class="comment"> * The interface to this class is the same as std::condition_variable.</span>
-<a name="l00043"></a>00043 <span class="comment"> * This class also goes through some trouble so that it can be used with</span>
-<a name="l00044"></a>00044 <span class="comment"> * std::unique_lock&lt;Mutex&gt;, since normal condition variables may only be used</span>
-<a name="l00045"></a>00045 <span class="comment"> * with std::unique_lock&lt;std::mutex&gt;.</span>
-<a name="l00046"></a>00046 <span class="comment"> */</span>
-<a name="l00047"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html">00047</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html" title="A wrapper around std::condition_variable that is useful for testing purposes and works around a bug i...">ConditionVariable</a> {
-<a name="l00048"></a>00048   <span class="keyword">public</span>:
-<a name="l00049"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a8cb1bb35303063a77c6b0d26084b3fe6">00049</a>     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a8cb1bb35303063a77c6b0d26084b3fe6">ConditionVariable</a>()
-<a name="l00050"></a>00050         : <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a82cefe719cdb331c0a6fb0a2d62abc29" title="Underlying condition variable.">cv</a>()
-<a name="l00051"></a>00051         , <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408" title="This function will be called with the lock released during every invocation of wait/wait_until.">callback</a>()
-<a name="l00052"></a>00052         , <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#af207028ba7fd73430cb97c2082149591" title="The number of times this condition variable has been notified.">notificationCount</a>(0)
-<a name="l00053"></a>00053         , <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a17f0e22cbcda874e6e8db66d3b09c9f7" title="In the last call to wait_until, the timeout that the caller provided.">lastWaitUntilTimeSinceEpoch</a>()
-<a name="l00054"></a>00054     {
-<a name="l00055"></a>00055     }
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057     <span class="keywordtype">void</span>
-<a name="l00058"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a471143032b14a414b20d5ed4ca43b500">00058</a>     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a471143032b14a414b20d5ed4ca43b500">notify_one</a>() {
-<a name="l00059"></a>00059         ++<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#af207028ba7fd73430cb97c2082149591" title="The number of times this condition variable has been notified.">notificationCount</a>;
-<a name="l00060"></a>00060         <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a82cefe719cdb331c0a6fb0a2d62abc29" title="Underlying condition variable.">cv</a>.notify_one();
-<a name="l00061"></a>00061     }
-<a name="l00062"></a>00062 
-<a name="l00063"></a>00063     <span class="keywordtype">void</span>
-<a name="l00064"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">00064</a>     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>() {
-<a name="l00065"></a>00065         ++<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#af207028ba7fd73430cb97c2082149591" title="The number of times this condition variable has been notified.">notificationCount</a>;
-<a name="l00066"></a>00066         <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a82cefe719cdb331c0a6fb0a2d62abc29" title="Underlying condition variable.">cv</a>.notify_all();
-<a name="l00067"></a>00067     }
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069     <span class="keywordtype">void</span>
-<a name="l00070"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">00070</a>     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">wait</a>(std::unique_lock&lt;std::mutex&gt;&amp; lockGuard) {
-<a name="l00071"></a>00071         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408" title="This function will be called with the lock released during every invocation of wait/wait_until.">callback</a>) {
-<a name="l00072"></a>00072             lockGuard.unlock();
-<a name="l00073"></a>00073             <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408" title="This function will be called with the lock released during every invocation of wait/wait_until.">callback</a>();
-<a name="l00074"></a>00074             lockGuard.lock();
-<a name="l00075"></a>00075         } <span class="keywordflow">else</span> {
-<a name="l00076"></a>00076             <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a82cefe719cdb331c0a6fb0a2d62abc29" title="Underlying condition variable.">cv</a>.wait(lockGuard);
-<a name="l00077"></a>00077         }
-<a name="l00078"></a>00078     }
-<a name="l00079"></a>00079 
+<a name="l00026"></a>00026 <span class="preprocessor">#include &quot;<a class="code" href="Mutex_8h.html">Core/Mutex.h</a>&quot;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &quot;<a class="code" href="Time_8h.html">Core/Time.h</a>&quot;</span>
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 <span class="preprocessor">#ifndef LOGCABIN_CORE_CONDITIONVARIABLE_H</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define LOGCABIN_CORE_CONDITIONVARIABLE_H</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span>
+<a name="l00032"></a>00032 <span class="keyword">namespace </span>LogCabin {
+<a name="l00033"></a>00033 <span class="keyword">namespace </span>Core {
+<a name="l00034"></a>00034 <span class="comment"></span>
+<a name="l00035"></a>00035 <span class="comment">/**</span>
+<a name="l00036"></a>00036 <span class="comment"> * Similar to std::condition_variable but with improvements for testing,</span>
+<a name="l00037"></a>00037 <span class="comment"> * support for monotonic clocks, and less buggy.</span>
+<a name="l00038"></a>00038 <span class="comment"> *</span>
+<a name="l00039"></a>00039 <span class="comment"> * For testing, you can set a callback to be called when the condition variable</span>
+<a name="l00040"></a>00040 <span class="comment"> * is waited on; instead of waiting, this callback will be called. This</span>
+<a name="l00041"></a>00041 <span class="comment"> * callback can, for example, change some shared state so that the calling</span>
+<a name="l00042"></a>00042 <span class="comment"> * thread&#39;s condition is satisfied. It also counts how many times the condition</span>
+<a name="l00043"></a>00043 <span class="comment"> * variable has been notified.</span>
+<a name="l00044"></a>00044 <span class="comment"> *</span>
+<a name="l00045"></a>00045 <span class="comment"> * The interface to this class is a subset of std::condition_variable:</span>
+<a name="l00046"></a>00046 <span class="comment"> * - wait_for isn&#39;t exposed since it doesn&#39;t make much sense to me in light</span>
+<a name="l00047"></a>00047 <span class="comment"> *   of spurious interrupts.</span>
+<a name="l00048"></a>00048 <span class="comment"> * - wait_until returns void instead of cv_status since it&#39;s almost always</span>
+<a name="l00049"></a>00049 <span class="comment"> *   clearer to check whether timeout has elapsed explicitly. Also, gcc 4.4</span>
+<a name="l00050"></a>00050 <span class="comment"> *   doesn&#39;t have cv_status and uses bool instead.</span>
+<a name="l00051"></a>00051 <span class="comment"> *</span>
+<a name="l00052"></a>00052 <span class="comment"> * This class also goes through some trouble so that it can be used with</span>
+<a name="l00053"></a>00053 <span class="comment"> * std::unique_lock&lt;Core::Mutex&gt;, since normal condition variables may only be</span>
+<a name="l00054"></a>00054 <span class="comment"> * used with std::unique_lock&lt;std::mutex&gt;.</span>
+<a name="l00055"></a>00055 <span class="comment"> *</span>
+<a name="l00056"></a>00056 <span class="comment"> * All waiting on this class is done using a monotonic clock internally, so it</span>
+<a name="l00057"></a>00057 <span class="comment"> * will not be affected by time jumps from, e.g., NTP. This implies that, if</span>
+<a name="l00058"></a>00058 <span class="comment"> * you&#39;re actually waiting for a specific system time to come around, you might</span>
+<a name="l00059"></a>00059 <span class="comment"> * end up with surprising behavior. If you&#39;re wondering why, Linux/POSIX</span>
+<a name="l00060"></a>00060 <span class="comment"> * condition variables use a single clock for all waiters, whereas C++11 uses</span>
+<a name="l00061"></a>00061 <span class="comment"> * an impossible-to-implement interface where different waiters can use</span>
+<a name="l00062"></a>00062 <span class="comment"> * different clocks.</span>
+<a name="l00063"></a>00063 <span class="comment"> */</span>
+<a name="l00064"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html">00064</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html" title="Similar to std::condition_variable but with improvements for testing, support for monotonic clocks...">ConditionVariable</a> {
+<a name="l00065"></a>00065   <span class="keyword">public</span>:
+<a name="l00066"></a>00066     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a8cb1bb35303063a77c6b0d26084b3fe6">ConditionVariable</a>();
+<a name="l00067"></a>00067     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aa29ea285e871304cc71ed3d72a336813">~ConditionVariable</a>();
+<a name="l00068"></a>00068     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a471143032b14a414b20d5ed4ca43b500">notify_one</a>();
+<a name="l00069"></a>00069     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>();
+<a name="l00070"></a>00070     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">wait</a>(std::unique_lock&lt;std::mutex&gt;&amp; lockGuard);
+<a name="l00071"></a>00071     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">wait</a>(std::unique_lock&lt;Core::Mutex&gt;&amp; lockGuard);
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073     <span class="comment">// std::mutex and SteadyClock</span>
+<a name="l00074"></a>00074     <span class="keywordtype">void</span>
+<a name="l00075"></a>00075     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ae6b4ac4d192b0efe25cfd5d7dd9a5558">wait_until</a>(std::unique_lock&lt;std::mutex&gt;&amp; lockGuard,
+<a name="l00076"></a>00076                <span class="keyword">const</span> <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Core::Time::SteadyClock::time_point</a>&amp; abs_time);
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078     <span class="comment">// std::mutex and any clock: calls std::mutex and SteadyClock variant</span>
+<a name="l00079"></a>00079     <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Clock, <span class="keyword">typename</span> Duration&gt;
 <a name="l00080"></a>00080     <span class="keywordtype">void</span>
-<a name="l00081"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ac98fdf167cf54e33c3cc7f7148ac3ebf">00081</a>     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ac98fdf167cf54e33c3cc7f7148ac3ebf">wait</a>(std::unique_lock&lt;Core::Mutex&gt;&amp; lockGuard) {
-<a name="l00082"></a>00082         <a class="code" href="classLogCabin_1_1Core_1_1Mutex.html" title="A wrapper around std::mutex that is useful for testing purposes.">Core::Mutex</a>&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>(*lockGuard.mutex());
-<a name="l00083"></a>00083         <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>.callback)
-<a name="l00084"></a>00084             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>.callback();
-<a name="l00085"></a>00085         assert(lockGuard);
-<a name="l00086"></a>00086         std::unique_lock&lt;std::mutex&gt; stdLockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>.m,
-<a name="l00087"></a>00087                                                   std::adopt_lock_t());
-<a name="l00088"></a>00088         lockGuard.release();
-<a name="l00089"></a>00089         <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">wait</a>(stdLockGuard);
-<a name="l00090"></a>00090         assert(stdLockGuard);
-<a name="l00091"></a>00091         lockGuard = std::unique_lock&lt;Core::Mutex&gt;(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>, std::adopt_lock_t());
-<a name="l00092"></a>00092         stdLockGuard.release();
-<a name="l00093"></a>00093         <span class="keywordflow">if</span> (mutex.callback)
-<a name="l00094"></a>00094             mutex.callback();
-<a name="l00095"></a>00095     }
-<a name="l00096"></a>00096 
+<a name="l00081"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a76d432cd46c313a3e41e7be8e4e9838e">00081</a>     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ae6b4ac4d192b0efe25cfd5d7dd9a5558">wait_until</a>(std::unique_lock&lt;std::mutex&gt;&amp; lockGuard,
+<a name="l00082"></a>00082                <span class="keyword">const</span> std::chrono::time_point&lt;Clock, Duration&gt;&amp; abs_time) {
+<a name="l00083"></a>00083         std::chrono::time_point&lt;Clock, Duration&gt; now = Clock::now();
+<a name="l00084"></a>00084         std::chrono::time_point&lt;Clock, Duration&gt; wake = abs_time;
+<a name="l00085"></a>00085         <span class="comment">// Clamp to wake to [now, now + hour] to avoid overflow.</span>
+<a name="l00086"></a>00086         <span class="comment">// See related http://gcc.gnu.org/bugzilla/show_bug.cgi?id=58931</span>
+<a name="l00087"></a>00087         <span class="keywordflow">if</span> (abs_time &lt; now)
+<a name="l00088"></a>00088             wake = now - std::chrono::hours(1);
+<a name="l00089"></a>00089         <span class="keywordflow">else</span> <span class="keywordflow">if</span> (abs_time &gt; now + std::chrono::hours(1))
+<a name="l00090"></a>00090             wake = now + std::chrono::hours(1);
+<a name="l00091"></a>00091         <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Core::Time::SteadyClock::time_point</a> steadyNow =
+<a name="l00092"></a>00092             <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Core::Time::SteadyClock::now</a>();
+<a name="l00093"></a>00093         <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Core::Time::SteadyClock::time_point</a> steadyWake =
+<a name="l00094"></a>00094             steadyNow + (wake - now);
+<a name="l00095"></a>00095         <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ae6b4ac4d192b0efe25cfd5d7dd9a5558">wait_until</a>(lockGuard, steadyWake);
+<a name="l00096"></a>00096     }
 <a name="l00097"></a>00097 
-<a name="l00098"></a>00098     <span class="comment">// wait_for isn&#39;t exposed since it doesn&#39;t make much sense to me in light</span>
-<a name="l00099"></a>00099     <span class="comment">// of spurious interrupts.</span>
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101     <span class="comment">// Returns void instead of cv_status since it&#39;s almost always clearer to</span>
-<a name="l00102"></a>00102     <span class="comment">// check whether timeout has elapsed explicitly. Also, gcc 4.4 doesn&#39;t have</span>
-<a name="l00103"></a>00103     <span class="comment">// cv_status and uses bool instead.</span>
-<a name="l00104"></a>00104     <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Clock, <span class="keyword">typename</span> Duration&gt;
-<a name="l00105"></a>00105     <span class="keywordtype">void</span>
-<a name="l00106"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a76d432cd46c313a3e41e7be8e4e9838e">00106</a>     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a76d432cd46c313a3e41e7be8e4e9838e">wait_until</a>(std::unique_lock&lt;std::mutex&gt;&amp; lockGuard,
-<a name="l00107"></a>00107                <span class="keyword">const</span> std::chrono::time_point&lt;Clock, Duration&gt;&amp; abs_time) {
-<a name="l00108"></a>00108         <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a17f0e22cbcda874e6e8db66d3b09c9f7" title="In the last call to wait_until, the timeout that the caller provided.">lastWaitUntilTimeSinceEpoch</a> =
-<a name="l00109"></a>00109             std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(
-<a name="l00110"></a>00110                                             abs_time.time_since_epoch());
-<a name="l00111"></a>00111         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408" title="This function will be called with the lock released during every invocation of wait/wait_until.">callback</a>) {
-<a name="l00112"></a>00112             lockGuard.unlock();
-<a name="l00113"></a>00113             <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408" title="This function will be called with the lock released during every invocation of wait/wait_until.">callback</a>();
-<a name="l00114"></a>00114             lockGuard.lock();
-<a name="l00115"></a>00115         } <span class="keywordflow">else</span> {
-<a name="l00116"></a>00116             <span class="comment">// Work-around for bug in libstdc++: wait for no more than an hour</span>
-<a name="l00117"></a>00117             <span class="comment">// to avoid overflow. See</span>
-<a name="l00118"></a>00118             <span class="comment">// http://gcc.gnu.org/bugzilla/show_bug.cgi?id=58931</span>
-<a name="l00119"></a>00119             std::chrono::time_point&lt;Clock, Duration&gt; now = Clock::now();
-<a name="l00120"></a>00120             <span class="keywordflow">if</span> (abs_time &lt; now + std::chrono::hours(1))
-<a name="l00121"></a>00121                 <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a82cefe719cdb331c0a6fb0a2d62abc29" title="Underlying condition variable.">cv</a>.wait_until(lockGuard, abs_time);
-<a name="l00122"></a>00122             <span class="keywordflow">else</span>
-<a name="l00123"></a>00123                 <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a82cefe719cdb331c0a6fb0a2d62abc29" title="Underlying condition variable.">cv</a>.wait_until(lockGuard, now + std::chrono::hours(1));
-<a name="l00124"></a>00124         }
-<a name="l00125"></a>00125     }
-<a name="l00126"></a>00126 
-<a name="l00127"></a>00127     <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Clock, <span class="keyword">typename</span> Duration&gt;
-<a name="l00128"></a>00128     <span class="keywordtype">void</span>
-<a name="l00129"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6dff81367b6f53bc4143eb668f14a3b5">00129</a>     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a76d432cd46c313a3e41e7be8e4e9838e">wait_until</a>(std::unique_lock&lt;Core::Mutex&gt;&amp; lockGuard,
-<a name="l00130"></a>00130                <span class="keyword">const</span> std::chrono::time_point&lt;Clock, Duration&gt;&amp; abs_time) {
-<a name="l00131"></a>00131         <a class="code" href="classLogCabin_1_1Core_1_1Mutex.html" title="A wrapper around std::mutex that is useful for testing purposes.">Core::Mutex</a>&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>(*lockGuard.mutex());
-<a name="l00132"></a>00132         <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>.callback)
-<a name="l00133"></a>00133             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>.callback();
-<a name="l00134"></a>00134         assert(lockGuard);
-<a name="l00135"></a>00135         std::unique_lock&lt;std::mutex&gt; stdLockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>.m,
-<a name="l00136"></a>00136                                                   std::adopt_lock_t());
-<a name="l00137"></a>00137         lockGuard.release();
-<a name="l00138"></a>00138         <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a76d432cd46c313a3e41e7be8e4e9838e">wait_until</a>(stdLockGuard, abs_time);
-<a name="l00139"></a>00139         assert(stdLockGuard);
-<a name="l00140"></a>00140         lockGuard = std::unique_lock&lt;Core::Mutex&gt;(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>, std::adopt_lock_t());
-<a name="l00141"></a>00141         stdLockGuard.release();
-<a name="l00142"></a>00142         <span class="keywordflow">if</span> (mutex.callback)
-<a name="l00143"></a>00143             mutex.callback();
-<a name="l00144"></a>00144     }
-<a name="l00145"></a>00145 
-<a name="l00146"></a>00146   <span class="keyword">private</span>:<span class="comment"></span>
-<a name="l00147"></a>00147 <span class="comment">    /// Underlying condition variable.</span>
-<a name="l00148"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a82cefe719cdb331c0a6fb0a2d62abc29">00148</a> <span class="comment"></span>    std::condition_variable <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a82cefe719cdb331c0a6fb0a2d62abc29" title="Underlying condition variable.">cv</a>; <span class="comment">// NOLINT</span><span class="comment"></span>
-<a name="l00149"></a>00149 <span class="comment">    /**</span>
-<a name="l00150"></a>00150 <span class="comment">     * This function will be called with the lock released during every</span>
-<a name="l00151"></a>00151 <span class="comment">     * invocation of wait/wait_until. No wait will actually occur; this is only</span>
-<a name="l00152"></a>00152 <span class="comment">     * used for unit testing.</span>
-<a name="l00153"></a>00153 <span class="comment">     */</span>
-<a name="l00154"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408">00154</a>     std::function&lt;void()&gt; <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408" title="This function will be called with the lock released during every invocation of wait/wait_until.">callback</a>;
-<a name="l00155"></a>00155   <span class="keyword">public</span>:<span class="comment"></span>
-<a name="l00156"></a>00156 <span class="comment">    /**</span>
-<a name="l00157"></a>00157 <span class="comment">     * The number of times this condition variable has been notified.</span>
-<a name="l00158"></a>00158 <span class="comment">     */</span>
-<a name="l00159"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#af207028ba7fd73430cb97c2082149591">00159</a>     std::atomic&lt;uint64_t&gt; <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#af207028ba7fd73430cb97c2082149591" title="The number of times this condition variable has been notified.">notificationCount</a>;<span class="comment"></span>
-<a name="l00160"></a>00160 <span class="comment">    /**</span>
-<a name="l00161"></a>00161 <span class="comment">     * In the last call to wait_until, the timeout that the caller provided.</span>
-<a name="l00162"></a>00162 <span class="comment">     * This is used in some unit tests to check that timeouts are set</span>
-<a name="l00163"></a>00163 <span class="comment">     * correctly. It is stored as the number of milliseconds after the</span>
-<a name="l00164"></a>00164 <span class="comment">     * clock&#39;s epoch. (Since we don&#39;t know the Clock in advance, we can&#39;t store</span>
-<a name="l00165"></a>00165 <span class="comment">     * a time_point here.)</span>
-<a name="l00166"></a>00166 <span class="comment">     */</span>
-<a name="l00167"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a17f0e22cbcda874e6e8db66d3b09c9f7">00167</a>     std::chrono::milliseconds <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a17f0e22cbcda874e6e8db66d3b09c9f7" title="In the last call to wait_until, the timeout that the caller provided.">lastWaitUntilTimeSinceEpoch</a>;
-<a name="l00168"></a>00168 };
-<a name="l00169"></a>00169 
-<a name="l00170"></a>00170 } <span class="comment">// namespace LogCabin::Core</span>
-<a name="l00171"></a>00171 } <span class="comment">// namespace LogCabin</span>
-<a name="l00172"></a>00172 
-<a name="l00173"></a>00173 <span class="preprocessor">#endif // LOGCABIN_CORE_CONDITIONVARIABLE_H</span>
+<a name="l00098"></a>00098     <span class="comment">// Core::Mutex and any clock: calls std::mutex and any clock variant</span>
+<a name="l00099"></a>00099     <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Clock, <span class="keyword">typename</span> Duration&gt;
+<a name="l00100"></a>00100     <span class="keywordtype">void</span>
+<a name="l00101"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6dff81367b6f53bc4143eb668f14a3b5">00101</a>     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ae6b4ac4d192b0efe25cfd5d7dd9a5558">wait_until</a>(std::unique_lock&lt;Core::Mutex&gt;&amp; lockGuard,
+<a name="l00102"></a>00102                <span class="keyword">const</span> std::chrono::time_point&lt;Clock, Duration&gt;&amp; abs_time) {
+<a name="l00103"></a>00103         <a class="code" href="classLogCabin_1_1Core_1_1Mutex.html" title="A wrapper around std::mutex that is useful for testing purposes.">Core::Mutex</a>&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>(*lockGuard.mutex());
+<a name="l00104"></a>00104         <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>.callback)
+<a name="l00105"></a>00105             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>.callback();
+<a name="l00106"></a>00106         assert(lockGuard);
+<a name="l00107"></a>00107         std::unique_lock&lt;std::mutex&gt; stdLockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>.m,
+<a name="l00108"></a>00108                                                   std::adopt_lock_t());
+<a name="l00109"></a>00109         lockGuard.release();
+<a name="l00110"></a>00110         <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ae6b4ac4d192b0efe25cfd5d7dd9a5558">wait_until</a>(stdLockGuard, abs_time);
+<a name="l00111"></a>00111         assert(stdLockGuard);
+<a name="l00112"></a>00112         lockGuard = std::unique_lock&lt;Core::Mutex&gt;(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>, std::adopt_lock_t());
+<a name="l00113"></a>00113         stdLockGuard.release();
+<a name="l00114"></a>00114         <span class="keywordflow">if</span> (mutex.callback)
+<a name="l00115"></a>00115             mutex.callback();
+<a name="l00116"></a>00116     }
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118   <span class="keyword">private</span>:<span class="comment"></span>
+<a name="l00119"></a>00119 <span class="comment">    /// Underlying condition variable.</span>
+<a name="l00120"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a663128ec2dfa8ec1206b511a93d1ee01">00120</a> <span class="comment"></span>    pthread_cond_t <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a663128ec2dfa8ec1206b511a93d1ee01" title="Underlying condition variable.">cv</a>;<span class="comment"></span>
+<a name="l00121"></a>00121 <span class="comment">    /**</span>
+<a name="l00122"></a>00122 <span class="comment">     * This function will be called with the lock released during every</span>
+<a name="l00123"></a>00123 <span class="comment">     * invocation of wait/wait_until. No wait will actually occur; this is only</span>
+<a name="l00124"></a>00124 <span class="comment">     * used for unit testing.</span>
+<a name="l00125"></a>00125 <span class="comment">     */</span>
+<a name="l00126"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408">00126</a>     std::function&lt;void()&gt; <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408" title="This function will be called with the lock released during every invocation of wait/wait_until.">callback</a>;
+<a name="l00127"></a>00127   <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00128"></a>00128 <span class="comment">    /**</span>
+<a name="l00129"></a>00129 <span class="comment">     * The number of times this condition variable has been notified.</span>
+<a name="l00130"></a>00130 <span class="comment">     */</span>
+<a name="l00131"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#af207028ba7fd73430cb97c2082149591">00131</a>     std::atomic&lt;uint64_t&gt; <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#af207028ba7fd73430cb97c2082149591" title="The number of times this condition variable has been notified.">notificationCount</a>;<span class="comment"></span>
+<a name="l00132"></a>00132 <span class="comment">    /**</span>
+<a name="l00133"></a>00133 <span class="comment">     * In the last call to wait_until, the timeout that the caller provided.</span>
+<a name="l00134"></a>00134 <span class="comment">     * This is used in some unit tests to check that timeouts are set</span>
+<a name="l00135"></a>00135 <span class="comment">     * correctly. It is stored as the number of milliseconds after the</span>
+<a name="l00136"></a>00136 <span class="comment">     * clock&#39;s epoch. (Since we don&#39;t know the Clock in advance, we can&#39;t store</span>
+<a name="l00137"></a>00137 <span class="comment">     * a time_point here.)</span>
+<a name="l00138"></a>00138 <span class="comment">     */</span>
+<a name="l00139"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a17f0e22cbcda874e6e8db66d3b09c9f7">00139</a>     std::chrono::milliseconds <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a17f0e22cbcda874e6e8db66d3b09c9f7" title="In the last call to wait_until, the timeout that the caller provided.">lastWaitUntilTimeSinceEpoch</a>;
+<a name="l00140"></a>00140 };
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142 } <span class="comment">// namespace LogCabin::Core</span>
+<a name="l00143"></a>00143 } <span class="comment">// namespace LogCabin</span>
+<a name="l00144"></a>00144 
+<a name="l00145"></a>00145 <span class="preprocessor">#endif // LOGCABIN_CORE_CONDITIONVARIABLE_H</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

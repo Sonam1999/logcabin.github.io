@@ -186,7 +186,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00104"></a>00104 <span class="comment">     * Notifies workers that there are available RPCs to process or #exit has</span>
 <a name="l00105"></a>00105 <span class="comment">     * been set. To wait on this, one needs to hold #mutex.</span>
 <a name="l00106"></a>00106 <span class="comment">     */</span>
-<a name="l00107"></a><a class="code" href="classLogCabin_1_1RPC_1_1ThreadDispatchService.html#af0eccd88bfa4568f8707daa02962d2b0">00107</a>     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html" title="A wrapper around std::condition_variable that is useful for testing purposes and works around a bug i...">Core::ConditionVariable</a> <a class="code" href="classLogCabin_1_1RPC_1_1ThreadDispatchService.html#af0eccd88bfa4568f8707daa02962d2b0" title="Notifies workers that there are available RPCs to process or exit has been set.">conditionVariable</a>;
+<a name="l00107"></a><a class="code" href="classLogCabin_1_1RPC_1_1ThreadDispatchService.html#af0eccd88bfa4568f8707daa02962d2b0">00107</a>     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html" title="Similar to std::condition_variable but with improvements for testing, support for monotonic clocks...">Core::ConditionVariable</a> <a class="code" href="classLogCabin_1_1RPC_1_1ThreadDispatchService.html#af0eccd88bfa4568f8707daa02962d2b0" title="Notifies workers that there are available RPCs to process or exit has been set.">conditionVariable</a>;
 <a name="l00108"></a>00108 <span class="comment"></span>
 <a name="l00109"></a>00109 <span class="comment">    /**</span>
 <a name="l00110"></a>00110 <span class="comment">     * A flag to tell workers that they should exit.</span>

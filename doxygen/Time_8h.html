@@ -80,20 +80,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Core/Time.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;chrono&gt;</code><br/>
 <code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;time.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="StringUtil_8h_source.html">Core/StringUtil.h</a>&quot;</code><br/>
 </div>
 <p><a href="Time_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock&lt; BaseClock &gt;</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html">LogCabin::Core::Time::CSystemClock</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wall clock in nanosecond granularity.  <a href="structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html">LogCabin::Core::Time::CSteadyClock</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Monotonic clock in nanosecond granularity.  <a href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock&lt; _BaseClock &gt;</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the current time.  <a href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -108,16 +114,24 @@ Typedefs</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The best available clock on this system for uses where a steady, monotonic clock is desired.  <a href="#a4798c7e2244561626e4ce819710e7e56"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef MockableClock<br class="typebreak"/>
 &lt; std::chrono::system_clock &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a9edb96154f308f4284060230766da1f1">LogCabin::Core::Time::SystemClock</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A clock that reads wall time.  <a href="#a9edb96154f308f4284060230766da1f1"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A clock that reads wall time and is affected by NTP adjustments.  <a href="#a9edb96154f308f4284060230766da1f1"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd.html#a2f17f68b3cc64ca156986f759844ca3f">std::operator&lt;&lt;</a> (std::ostream &amp;os, const std::chrono::milliseconds &amp;duration)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints std::milliseconds values in a way that is useful for unit tests.  <a href="#a2f17f68b3cc64ca156986f759844ca3f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd.html#a5bb512678a03f7cb0cc956f89f343f6f">std::operator&lt;&lt;</a> (std::ostream &amp;os, const std::chrono::nanoseconds &amp;duration)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints std::nanoseconds values in a way that is useful for unit tests.  <a href="#a5bb512678a03f7cb0cc956f89f343f6f"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename Clock , typename Duration &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacestd.html#a9e70a62467ffd894631a20bdc7d4cc61">std::operator&lt;&lt;</a> (std::ostream &amp;os, const std::chrono::time_point&lt; Clock, Duration &gt; &amp;timePoint)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints std::time_point values in a way that is useful for unit tests.  <a href="#a9e70a62467ffd894631a20bdc7d4cc61"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static __inline uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#acbf6cb1c6aa5d0d47f50a3bfac8418a2">LogCabin::Core::Time::rdtsc</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the CPU's cycle counter.  <a href="#acbf6cb1c6aa5d0d47f50a3bfac8418a2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ad01ddba8606f77d0826bbd2264c591e4">LogCabin::Core::Time::getTimeNanos</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the time since the Unix epoch in nanoseconds.  <a href="#ad01ddba8606f77d0826bbd2264c591e4"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the system time since the Unix epoch in nanoseconds.  <a href="#ad01ddba8606f77d0826bbd2264c591e4"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const clockid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a2db038efcae56cca1ff9c9e0989b5f78">LogCabin::Core::Time::STEADY_CLOCK_ID</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The clock used by <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html" title="Monotonic clock in nanosecond granularity.">CSteadyClock</a>.  <a href="#a2db038efcae56cca1ff9c9e0989b5f78"></a><br/></td></tr>
 </table>
 </div><!-- contents -->
 <!-- window showing the filter options -->

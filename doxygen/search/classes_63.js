@@ -20,5 +20,7 @@ var searchData=
   ['configurationresult',['ConfigurationResult',['../structLogCabin_1_1Client_1_1ConfigurationResult.html',1,'LogCabin::Client']]],
   ['consensus',['Consensus',['../classLogCabin_1_1Server_1_1Consensus.html',1,'LogCabin::Server']]],
   ['consensussnapshot',['ConsensusSnapshot',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Invariants_1_1ConsensusSnapshot.html',1,'LogCabin::Server::RaftConsensusInternal::Invariants']]],
-  ['conversionerror',['ConversionError',['../structLogCabin_1_1Core_1_1Config_1_1ConversionError.html',1,'LogCabin::Core::Config']]]
+  ['conversionerror',['ConversionError',['../structLogCabin_1_1Core_1_1Config_1_1ConversionError.html',1,'LogCabin::Core::Config']]],
+  ['csteadyclock',['CSteadyClock',['../structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html',1,'LogCabin::Core::Time']]],
+  ['csystemclock',['CSystemClock',['../structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html',1,'LogCabin::Core::Time']]]
 ];
