@@ -172,7 +172,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00062">62</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00063">63</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -193,7 +193,7 @@ Private Attributes</h2></td></tr>
 <p>Destructor. </p>
 <p>If the file hasn't been explicitly saved or discarded, prints a warning and leaves the file around for manual inspection. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00080">80</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00081">81</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -215,7 +215,7 @@ Private Attributes</h2></td></tr>
 <p>Throw away the file. </p>
 <p>If you call this after the file has been closed, it will PANIC. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00087">87</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00088">88</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -237,7 +237,7 @@ Private Attributes</h2></td></tr>
 <p>Leave the file open for additional writes. If you call this after the file has been closed, it will PANIC.</p>
 <p>This is useful when forking child processes to write to the file. The correct procedure for that is: 0. write stuff 1. call <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a5acdfa8012bd95341a898946e624bc2b" title="Flush changes just down to the operating system&#39;s buffer cache.">flushToOS()</a> 2. fork 3. child process: write stuff 4. child process: call <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a5acdfa8012bd95341a898946e624bc2b" title="Flush changes just down to the operating system&#39;s buffer cache.">flushToOS()</a> 5. child process: call _exit() 6. parent process: write stuff 7. parent process: call <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#acd9deb7c50b661b287003896961c7138" title="Flush changes all the way down to the disk and close the file.">save()</a> </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00098">98</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00099">99</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -259,7 +259,7 @@ Private Attributes</h2></td></tr>
 <p>If you call this after the file has been closed, it will PANIC. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Size in bytes of the file </dd></dl>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00112">112</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00113">113</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -279,7 +279,7 @@ Private Attributes</h2></td></tr>
 
 <p>Returns the output stream to write into. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00129">129</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00130">130</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>

@@ -127,6 +127,9 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ad01ddba8606f77d0826bbd2264c591e4">getTimeNanos</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the system time since the Unix epoch in nanoseconds.  <a href="#ad01ddba8606f77d0826bbd2264c591e4"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename Clock , typename Duration &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">struct timespec&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ab1f0bfec14cc5ca8578cf2ce2f2092d6">makeTimeSpec</a> (const std::chrono::time_point&lt; Clock, Duration &gt; &amp;when)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a C++11 time point into a POSIX timespec.  <a href="#ab1f0bfec14cc5ca8578cf2ce2f2092d6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static __inline uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#acbf6cb1c6aa5d0d47f50a3bfac8418a2">rdtsc</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the CPU's cycle counter.  <a href="#acbf6cb1c6aa5d0d47f50a3bfac8418a2"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
@@ -148,7 +151,7 @@ Variables</h2></td></tr>
 
 <p>The best available clock on this system for uses where a steady, monotonic clock is desired. </p>
 
-<p>Definition at line <a class="el" href="Time_8h_source.html#l00182">182</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
+<p>Definition at line <a class="el" href="Time_8h_source.html#l00202">202</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
 
 </div>
 </div>
@@ -165,7 +168,7 @@ Variables</h2></td></tr>
 
 <p>A clock that reads wall time and is affected by NTP adjustments. </p>
 
-<p>Definition at line <a class="el" href="Time_8h_source.html#l00193">193</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
+<p>Definition at line <a class="el" href="Time_8h_source.html#l00213">213</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
 
 </div>
 </div>
@@ -190,6 +193,36 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ab1f0bfec14cc5ca8578cf2ce2f2092d6"></a><!-- doxytag: member="LogCabin::Core::Time::makeTimeSpec" ref="ab1f0bfec14cc5ca8578cf2ce2f2092d6" args="(const std::chrono::time_point&lt; Clock, Duration &gt; &amp;when)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Clock , typename Duration &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">struct timespec <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ab1f0bfec14cc5ca8578cf2ce2f2092d6">LogCabin::Core::Time::makeTimeSpec</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::chrono::time_point&lt; Clock, Duration &gt; &amp;&#160;</td>
+          <td class="paramname"><em>when</em></td><td>)</td>
+          <td><code> [read]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Convert a C++11 time point into a POSIX timespec. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">when</td><td><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html">Time</a> point to convert. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html">Time</a> in seconds and nanoseconds relative to the Clock's epoch. </dd></dl>
+
+<p>Definition at line <a class="el" href="Time_8h_source.html#l00081">81</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="acbf6cb1c6aa5d0d47f50a3bfac8418a2"></a><!-- doxytag: member="LogCabin::Core::Time::rdtsc" ref="acbf6cb1c6aa5d0d47f50a3bfac8418a2" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -207,7 +240,7 @@ Variables</h2></td></tr>
 <p>Read the CPU's cycle counter. </p>
 <p>This is useful for benchmarking. </p>
 
-<p>Definition at line <a class="el" href="Time_8h_source.html#l00202">202</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
+<p>Definition at line <a class="el" href="Time_8h_source.html#l00222">222</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
 
 </div>
 </div>
@@ -226,7 +259,7 @@ Variables</h2></td></tr>
 <p>The clock used by <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html" title="Monotonic clock in nanosecond granularity.">CSteadyClock</a>. </p>
 <p>For now (2014), we can't use CLOCK_MONOTONIC_RAW in condition variables since glibc doesn't support that, so stick with CLOCK_MONOTONIC. This rate of this clock may change due to NTP adjustments, but at least it won't jump. </p>
 
-<p>Definition at line <a class="el" href="Time_8h_source.html#l00105">105</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
+<p>Definition at line <a class="el" href="Time_8h_source.html#l00125">125</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
 
 </div>
 </div>

@@ -4,6 +4,7 @@ var searchData=
   ['anonymous_5fnamespace_7bchecksum_2ecc_7d',['anonymous_namespace{Checksum.cc}',['../namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html',1,'LogCabin::Core::Checksum']]],
   ['anonymous_5fnamespace_7bclient_2ecc_7d',['anonymous_namespace{Client.cc}',['../namespaceLogCabin_1_1Client_1_1anonymous__namespace_02Client_8cc_03.html',1,'LogCabin::Client']]],
   ['anonymous_5fnamespace_7bclientimpl_2ecc_7d',['anonymous_namespace{ClientImpl.cc}',['../namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html',1,'LogCabin::Client']]],
+  ['anonymous_5fnamespace_7bclientsession_2ecc_7d',['anonymous_namespace{ClientSession.cc}',['../namespaceLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03.html',1,'LogCabin::RPC']]],
   ['anonymous_5fnamespace_7bconfig_2ecc_7d',['anonymous_namespace{Config.cc}',['../namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html',1,'LogCabin::Core']]],
   ['anonymous_5fnamespace_7bloop_2ecc_7d',['anonymous_namespace{Loop.cc}',['../namespaceLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03.html',1,'LogCabin::Event']]],
   ['anonymous_5fnamespace_7bmessagesocket_2ecc_7d',['anonymous_namespace{MessageSocket.cc}',['../namespaceLogCabin_1_1RPC_1_1anonymous__namespace_02MessageSocket_8cc_03.html',1,'LogCabin::RPC']]],

@@ -139,13 +139,13 @@ LogCabin::RPC::ClientSession::Response:: { ... } &#160;</td><td class="memItemRi
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#a5d82c7200ecdec619426a7237b617a7a">hasWaiter</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, a thread is blocked waiting on <a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#ad0cc04b964092736ee0836b301c07c28" title="OpaqueClientRPC objects wait on this condition variable inside of wait().">ready</a>, and this object may not be deleted.  <a href="#a5d82c7200ecdec619426a7237b617a7a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#ad0cc04b964092736ee0836b301c07c28">ready</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> objects wait on this condition variable inside of <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#aa90be7c527ea0b554c587132bd88cfb8" title="Called by the RPC to wait for its response (blocking).">wait()</a>.  <a href="#ad0cc04b964092736ee0836b301c07c28"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> objects wait on this condition variable inside of <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a32698f882cba01e88b1273b2ad9eb73e" title="Called by the RPC to wait for its response (blocking).">wait()</a>.  <a href="#ad0cc04b964092736ee0836b301c07c28"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This contains an expected response for a <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> object. </p>
 <p>This is created when the <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> is created; it is deleted when the <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> object is either canceled or updated with a response/error. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00143">143</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00155">155</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 </div><hr/><h2>Member Enumeration Documentation</h2>
 <a class="anchor" id="ad4e328454d5f235437be155a834dc845"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::Response::@7" ref="ad4e328454d5f235437be155a834dc845" args="" -->
 <div class="memitem">
@@ -173,7 +173,7 @@ LogCabin::RPC::ClientSession::Response:: { ... } &#160;</td><td class="memItemRi
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00151">151</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00163">163</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -194,7 +194,7 @@ LogCabin::RPC::ClientSession::Response:: { ... } &#160;</td><td class="memItemRi
 
 <p>Constructor. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00134">134</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00173">173</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
@@ -228,7 +228,7 @@ LogCabin::RPC::ClientSession::Response:: { ... } &#160;</td><td class="memItemRi
 <p>The contents of the response. </p>
 <p>This is valid when <a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#a2af56448a86a5708d84b377584b82a04" title="Current state of the RPC.">status</a> is HAS_REPLY. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00169">169</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00181">181</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -245,7 +245,7 @@ LogCabin::RPC::ClientSession::Response:: { ... } &#160;</td><td class="memItemRi
 
 <p>If true, a thread is blocked waiting on <a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#ad0cc04b964092736ee0836b301c07c28" title="OpaqueClientRPC objects wait on this condition variable inside of wait().">ready</a>, and this object may not be deleted. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00174">174</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00186">186</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -260,10 +260,10 @@ LogCabin::RPC::ClientSession::Response:: { ... } &#160;</td><td class="memItemRi
 </div>
 <div class="memdoc">
 
-<p><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> objects wait on this condition variable inside of <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#aa90be7c527ea0b554c587132bd88cfb8" title="Called by the RPC to wait for its response (blocking).">wait()</a>. </p>
+<p><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> objects wait on this condition variable inside of <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a32698f882cba01e88b1273b2ad9eb73e" title="Called by the RPC to wait for its response (blocking).">wait()</a>. </p>
 <p>It is notified when a new response arrives, the session is disconnected, or the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> is canceled. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00180">180</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00192">192</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>

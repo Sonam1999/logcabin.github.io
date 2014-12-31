@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: LogCabin::RPC::ClientSession::Timer Class Reference</title>
+<title>LogCabin: LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier Struct Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -94,79 +94,75 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
       <li class="navelem"><a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>      </li>
-      <li class="navelem"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a>      </li>
-      <li class="navelem"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html">Timer</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03.html">anonymous_namespace{ClientSession.cc}</a>      </li>
+      <li class="navelem"><a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html">TimerNotifier</a>      </li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a>  </div>
+<a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<div class="title">LogCabin::RPC::ClientSession::Timer Class Reference</div>  </div>
+<div class="title">LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="LogCabin::RPC::ClientSession::Timer" --><!-- doxytag: inherits="LogCabin::Event::Timer" -->
-<p>This is used to time out RPCs and sessions when the server is no longer responding.  
- <a href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html#details">More...</a></p>
+<!-- doxytag: class="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier" --><!-- doxytag: inherits="LogCabin::Event::Timer" -->
+<p>Exits an event loop when a timer event occurs.  
+ <a href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html#details">More...</a></p>
 <div class="dynheader">
-Inheritance diagram for LogCabin::RPC::ClientSession::Timer:</div>
+Inheritance diagram for LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.png" usemap="#LogCabin::RPC::ClientSession::Timer_map" alt=""/>
-  <map id="LogCabin::RPC::ClientSession::Timer_map" name="LogCabin::RPC::ClientSession::Timer_map">
-<area href="classLogCabin_1_1Event_1_1Timer.html" title="A Timer is called by the Event::Loop when time has elapsed." alt="LogCabin::Event::Timer" shape="rect" coords="0,56,216,80"/>
-<area href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable." alt="LogCabin::Event::File" shape="rect" coords="0,0,216,24"/>
+  <img src="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.png" usemap="#LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier_map" alt=""/>
+  <map id="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier_map" name="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier_map">
+<area href="classLogCabin_1_1Event_1_1Timer.html" title="A Timer is called by the Event::Loop when time has elapsed." alt="LogCabin::Event::Timer" shape="rect" coords="0,56,418,80"/>
+<area href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable." alt="LogCabin::Event::File" shape="rect" coords="0,0,418,24"/>
 </map>
  </div></div>
 
-<p><a href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer-members.html">List of all members.</a></p>
+<p><a href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html#a7906597606d45374dd6a0b25a344ba1c">Timer</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html#a82d0605c93c2de793821564c21cfcd11">session</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html#afaf7d8c96d972f022e3e0e59b6989913">handleTimerEvent</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when the timer expires.  <a href="#afaf7d8c96d972f022e3e0e59b6989913"></a><br/></td></tr>
-<tr><td colspan="2"><h2><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html#a82d0605c93c2de793821564c21cfcd11">session</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html#a246e30cda43a99cb960f962d9b2f148a">TimerNotifier</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42">eventLoop</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html#a0a04a8edca9a34a2310ad472fbdf687d">handleTimerEvent</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when the timer expires.  <a href="#a0a04a8edca9a34a2310ad472fbdf687d"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>This is used to time out RPCs and sessions when the server is no longer responding. </p>
-<p>After a timeout period, the client will send a ping to the server. If no response is received within another timeout period, the session is closed. </p>
+<div class="textblock"><p>Exits an event loop when a timer event occurs. </p>
+<p>Helper for <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> constructor. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00201">201</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00075">75</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a7906597606d45374dd6a0b25a344ba1c"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::Timer::Timer" ref="a7906597606d45374dd6a0b25a344ba1c" args="(ClientSession &amp;session)" -->
+<a class="anchor" id="a246e30cda43a99cb960f962d9b2f148a"></a><!-- doxytag: member="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier::TimerNotifier" ref="a246e30cda43a99cb960f962d9b2f148a" args="(Event::Loop &amp;eventLoop)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html#a7906597606d45374dd6a0b25a344ba1c">LogCabin::RPC::ClientSession::Timer::Timer</a> </td>
+          <td class="memname">LogCabin::RPC::anonymous_namespace{ClientSession.cc}::<a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html#a246e30cda43a99cb960f962d9b2f148a">TimerNotifier::TimerNotifier</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a> &amp;&#160;</td>
-          <td class="paramname"><em>session</em></td><td>)</td>
-          <td><code> [explicit]</code></td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td>
+          <td class="paramname"><em>eventLoop</em></td><td>)</td>
+          <td><code> [inline, explicit]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00183">183</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00076">76</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="afaf7d8c96d972f022e3e0e59b6989913"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::Timer::handleTimerEvent" ref="afaf7d8c96d972f022e3e0e59b6989913" args="()" -->
+<a class="anchor" id="a0a04a8edca9a34a2310ad472fbdf687d"></a><!-- doxytag: member="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier::handleTimerEvent" ref="a0a04a8edca9a34a2310ad472fbdf687d" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html#afaf7d8c96d972f022e3e0e59b6989913">LogCabin::RPC::ClientSession::Timer::handleTimerEvent</a> </td>
+          <td class="memname">void LogCabin::RPC::anonymous_namespace{ClientSession.cc}::<a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html#a0a04a8edca9a34a2310ad472fbdf687d">TimerNotifier::handleTimerEvent</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td><code> [virtual]</code></td>
+          <td><code> [inline, virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -177,28 +173,11 @@ Public Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a61bc4b06ada2b649ba543586a499e484">LogCabin::Event::Timer</a>.</p>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00190">190</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00079">79</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
-<hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a82d0605c93c2de793821564c21cfcd11"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::Timer::session" ref="a82d0605c93c2de793821564c21cfcd11" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a>&amp; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html#a82d0605c93c2de793821564c21cfcd11">LogCabin::RPC::ClientSession::Timer::session</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00205">205</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>RPC/<a class="el" href="ClientSession_8h_source.html">ClientSession.h</a></li>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>RPC/<a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a></li>
 </ul>
 </div><!-- contents -->

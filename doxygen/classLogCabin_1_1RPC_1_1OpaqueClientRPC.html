@@ -100,7 +100,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
@@ -118,10 +117,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><a href="classLogCabin_1_1RPC_1_1OpaqueClientRPC-members.html">List of all members.</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1OpaqueClientRPC_1_1Error.html">Error</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This may be thrown by <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#ac85e2877e4644b9a3e9af83ff6e66bf7" title="Destructively return the RPC&#39;s response.">extractReply</a>.  <a href="structLogCabin_1_1RPC_1_1OpaqueClientRPC_1_1Error.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a573067fc8bb72213a4d3ba30c17a047c">Status</a> { <br/>
@@ -135,6 +130,10 @@ Public Types</h2></td></tr>
 <br/>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">State of the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>.  <a href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a573067fc8bb72213a4d3ba30c17a047c">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a4798c7e2244561626e4ce819710e7e56">Core::Time::SteadyClock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a795bb195ef309c8a321494b0ff8a6dc3">Clock</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock used for timeouts.  <a href="#a795bb195ef309c8a321494b0ff8a6dc3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Clock::time_point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a2a65799a92f88f78c2cf63adfa50627f">TimePoint</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for absolute time values used for timeouts.  <a href="#a2a65799a92f88f78c2cf63adfa50627f"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a229b270a8aef009c99e9bfd7c9070fbd">OpaqueClientRPC</a> ()</td></tr>
@@ -147,16 +146,14 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment.  <a href="#aad5694babe92ffac77d66998335a8d08"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#af552e2fdcb63a108ef2ad6ceef5629b4">cancel</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Abort the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>.  <a href="#af552e2fdcb63a108ef2ad6ceef5629b4"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#ac85e2877e4644b9a3e9af83ff6e66bf7">extractReply</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructively return the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>'s response.  <a href="#ac85e2877e4644b9a3e9af83ff6e66bf7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#ae582457d237dfa5f835b84bcaef61c39">getErrorMessage</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If an error has occurred, return a message describing that error.  <a href="#ae582457d237dfa5f835b84bcaef61c39"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a573067fc8bb72213a4d3ba30c17a047c">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a35a3f47dcbdec15d44fcb18a916e014f">getStatus</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a573067fc8bb72213a4d3ba30c17a047c" title="State of the RPC.">Status</a>.  <a href="#a35a3f47dcbdec15d44fcb18a916e014f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a6deceb0428f71f5a61ed6fb53a6d9ba5">peekReply</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Look at the reply buffer.  <a href="#a6deceb0428f71f5a61ed6fb53a6d9ba5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a4e219ba62799dc617cb705e7da82eeb6">waitForReply</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Block until the reply is ready or an error has occurred.  <a href="#a4e219ba62799dc617cb705e7da82eeb6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a0e87185098bbce2562558be649fca43f">waitForReply</a> (<a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a2a65799a92f88f78c2cf63adfa50627f">TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Block until the reply is ready, an error has occurred, or the given timeout elapses.  <a href="#a0e87185098bbce2562558be649fca43f"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a03b014c343c2011dc957ee60a573525e">update</a> ()</td></tr>
@@ -185,8 +182,43 @@ Friends</h2></td></tr>
 <div class="textblock"><p>This class represents an asynchronous remote procedure call. </p>
 <p>A <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> returns an instance when an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> is initiated; this can be used to wait for and retrieve the reply. </p>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00038">38</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
-</div><hr/><h2>Member Enumeration Documentation</h2>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00039">39</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
+</div><hr/><h2>Member Typedef Documentation</h2>
+<a class="anchor" id="a795bb195ef309c8a321494b0ff8a6dc3"></a><!-- doxytag: member="LogCabin::RPC::OpaqueClientRPC::Clock" ref="a795bb195ef309c8a321494b0ff8a6dc3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a4798c7e2244561626e4ce819710e7e56">Core::Time::SteadyClock</a> <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a795bb195ef309c8a321494b0ff8a6dc3">LogCabin::RPC::OpaqueClientRPC::Clock</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Clock used for timeouts. </p>
+
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00042">42</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2a65799a92f88f78c2cf63adfa50627f"></a><!-- doxytag: member="LogCabin::RPC::OpaqueClientRPC::TimePoint" ref="a2a65799a92f88f78c2cf63adfa50627f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Clock::time_point</a> <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a2a65799a92f88f78c2cf63adfa50627f">LogCabin::RPC::OpaqueClientRPC::TimePoint</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Type for absolute time values used for timeouts. </p>
+
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00044">44</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Member Enumeration Documentation</h2>
 <a class="anchor" id="a573067fc8bb72213a4d3ba30c17a047c"></a><!-- doxytag: member="LogCabin::RPC::OpaqueClientRPC::Status" ref="a573067fc8bb72213a4d3ba30c17a047c" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -216,7 +248,7 @@ Friends</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00051">51</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00049">49</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
 
 </div>
 </div>
@@ -343,35 +375,6 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac85e2877e4644b9a3e9af83ff6e66bf7"></a><!-- doxytag: member="LogCabin::RPC::OpaqueClientRPC::extractReply" ref="ac85e2877e4644b9a3e9af83ff6e66bf7" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a> <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#ac85e2877e4644b9a3e9af83ff6e66bf7">LogCabin::RPC::OpaqueClientRPC::extractReply</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Destructively return the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>'s response. </p>
-<p>This will wait for the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> response to arrive (if it hasn't already) and throw an exception if there were any problems. If the reply is received successfully, this will return the reply, leaving the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> with an empty reply buffer.</p>
-<p>This may be used from worker threads only, because <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> objects rely on the event loop servicing their <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> in order to make progress.</p>
-<dl class="return"><dt><b>Returns:</b></dt><dd>The reply, leaving the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> with an empty reply buffer.</dd></dl>
-<dl class="exception"><dt><b>Exceptions:</b></dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="structLogCabin_1_1RPC_1_1OpaqueClientRPC_1_1Error.html" title="This may be thrown by extractReply.">Error</a></td><td>There was an error executing the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. See <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#ae582457d237dfa5f835b84bcaef61c39" title="If an error has occurred, return a message describing that error.">getErrorMessage()</a>. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8cc_source.html#l00076">76</a> of file <a class="el" href="OpaqueClientRPC_8cc_source.html">OpaqueClientRPC.cc</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="ae582457d237dfa5f835b84bcaef61c39"></a><!-- doxytag: member="LogCabin::RPC::OpaqueClientRPC::getErrorMessage" ref="ae582457d237dfa5f835b84bcaef61c39" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -390,7 +393,7 @@ Friends</h2></td></tr>
 <p>All errors indicate that it is unknown whether or not the server executed the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. Unless the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> was canceled with <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#af552e2fdcb63a108ef2ad6ceef5629b4" title="Abort the RPC.">cancel()</a>, the <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> has been disconnected and is no longer useful for initiating new RPCs.</p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>If an error has occurred, a message describing that error. Otherwise, an empty string. </dd></dl>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8cc_source.html#l00086">86</a> of file <a class="el" href="OpaqueClientRPC_8cc_source.html">OpaqueClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8cc_source.html#l00076">76</a> of file <a class="el" href="OpaqueClientRPC_8cc_source.html">OpaqueClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -410,7 +413,7 @@ Friends</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a573067fc8bb72213a4d3ba30c17a047c" title="State of the RPC.">Status</a>. </p>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8cc_source.html#l00094">94</a> of file <a class="el" href="OpaqueClientRPC_8cc_source.html">OpaqueClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8cc_source.html#l00084">84</a> of file <a class="el" href="OpaqueClientRPC_8cc_source.html">OpaqueClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -431,28 +434,35 @@ Friends</h2></td></tr>
 <p>Look at the reply buffer. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>If the reply is already available and there were no errors, returns a pointer to the reply buffer inside this <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> object. Otherwise, returns NULL. </dd></dl>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8cc_source.html#l00102">102</a> of file <a class="el" href="OpaqueClientRPC_8cc_source.html">OpaqueClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8cc_source.html#l00092">92</a> of file <a class="el" href="OpaqueClientRPC_8cc_source.html">OpaqueClientRPC.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a4e219ba62799dc617cb705e7da82eeb6"></a><!-- doxytag: member="LogCabin::RPC::OpaqueClientRPC::waitForReply" ref="a4e219ba62799dc617cb705e7da82eeb6" args="()" -->
+<a class="anchor" id="a0e87185098bbce2562558be649fca43f"></a><!-- doxytag: member="LogCabin::RPC::OpaqueClientRPC::waitForReply" ref="a0e87185098bbce2562558be649fca43f" args="(TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a4e219ba62799dc617cb705e7da82eeb6">LogCabin::RPC::OpaqueClientRPC::waitForReply</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a0e87185098bbce2562558be649fca43f">LogCabin::RPC::OpaqueClientRPC::waitForReply</a> </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a2a65799a92f88f78c2cf63adfa50627f">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Block until the reply is ready or an error has occurred. </p>
-<p>This may be used from worker threads only, because <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> objects rely on the event loop servicing their <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> in order to make progress. </p>
+<p>Block until the reply is ready, an error has occurred, or the given timeout elapses. </p>
+<p>This may be used from worker threads only, because <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> objects rely on the event loop servicing their <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> in order to make progress.</p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeout</td><td>After this time has elapsed, stop waiting and return. The <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>'s results will probably not be available yet in this case (status will be NOT_READY). </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8cc_source.html#l00113">113</a> of file <a class="el" href="OpaqueClientRPC_8cc_source.html">OpaqueClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8cc_source.html#l00103">103</a> of file <a class="el" href="OpaqueClientRPC_8cc_source.html">OpaqueClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -473,7 +483,7 @@ Friends</h2></td></tr>
 <p>Update the fields of this object if the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> has not completed. </p>
 <p>Must be called with the lock held. </p>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8cc_source.html#l00134">134</a> of file <a class="el" href="OpaqueClientRPC_8cc_source.html">OpaqueClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8cc_source.html#l00124">124</a> of file <a class="el" href="OpaqueClientRPC_8cc_source.html">OpaqueClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -506,7 +516,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00200">200</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00183">183</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
 
 </div>
 </div>
@@ -524,7 +534,7 @@ Friends</h2></td></tr>
 
 <p>Protects all the members of this class. </p>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00166">166</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00150">150</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
 
 </div>
 </div>
@@ -542,7 +552,7 @@ Friends</h2></td></tr>
 <p>The session on which this <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> is executing. </p>
 <p>The session itself will reset this field once the reply has been received to eagerly drop its own reference count. </p>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00173">173</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00157">157</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
 
 </div>
 </div>
@@ -559,7 +569,7 @@ Friends</h2></td></tr>
 
 <p>A token given to the session to look up new information about the progress of this <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>'s reply. </p>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00179">179</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00163">163</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
 
 </div>
 </div>
@@ -576,7 +586,7 @@ Friends</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a573067fc8bb72213a4d3ba30c17a047c" title="State of the RPC.">Status</a>. </p>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00184">184</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00168">168</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
 
 </div>
 </div>
@@ -592,9 +602,9 @@ Friends</h2></td></tr>
 <div class="memdoc">
 
 <p>The payload of a successful reply, once available. </p>
-<p>This becomes valid when <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#acaa61e33f2ff621c4973cca566883f35" title="See Status.">status</a> is OK. Then, <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#ac85e2877e4644b9a3e9af83ff6e66bf7" title="Destructively return the RPC&#39;s response.">extractReply()</a> may later reset this buffer. </p>
+<p>This becomes valid when <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#acaa61e33f2ff621c4973cca566883f35" title="See Status.">status</a> is OK. </p>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00191">191</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00174">174</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
 
 </div>
 </div>
@@ -611,7 +621,7 @@ Friends</h2></td></tr>
 
 <p>If an error occurred in the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> then this holds the error message; otherwise, this is the empty string. </p>
 
-<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00197">197</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueClientRPC_8h_source.html#l00180">180</a> of file <a class="el" href="OpaqueClientRPC_8h_source.html">OpaqueClientRPC.h</a>.</p>
 
 </div>
 </div>

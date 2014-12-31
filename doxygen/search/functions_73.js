@@ -2,6 +2,7 @@ var searchData=
 [
   ['save',['save',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#acd9deb7c50b661b287003896961c7138',1,'LogCabin::Storage::SnapshotFile::Writer']]],
   ['schedule',['schedule',['../classLogCabin_1_1Event_1_1Timer.html#a69fef683c8212f3e83840d4cfb96065e',1,'LogCabin::Event::Timer']]],
+  ['scheduleabsolute',['scheduleAbsolute',['../classLogCabin_1_1Event_1_1Timer.html#a3df17755d7222f95e61fa2645c74490f',1,'LogCabin::Event::Timer']]],
   ['scheduleheartbeat',['scheduleHeartbeat',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a33c58fbb1b5f1b39cfd9cd941ab2b153',1,'LogCabin::Server::RaftConsensusInternal::Server::scheduleHeartbeat()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a3ce146d3470eac69cfc9baf9ca378df8',1,'LogCabin::Server::RaftConsensusInternal::LocalServer::scheduleHeartbeat()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a8cf12a4c6290d1ea99c3e4074fced205',1,'LogCabin::Server::RaftConsensusInternal::Peer::scheduleHeartbeat()']]],
   ['sendmessage',['sendMessage',['../classLogCabin_1_1RPC_1_1MessageSocket.html#a9e9ae98de80887bb0171ccfe8968c85d',1,'LogCabin::RPC::MessageSocket']]],
   ['sendreply',['sendReply',['../classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a4e3fa8ab515370f7cc2830c65e62d8aa',1,'LogCabin::RPC::OpaqueServerRPC']]],

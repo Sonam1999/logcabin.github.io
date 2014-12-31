@@ -125,10 +125,16 @@ Public Types</h2></td></tr>
 <br/>
 &#160;&#160;<a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a84d6b56092fd63176bc098a714953144">RPC_FAILED</a>, 
 <br/>
-&#160;&#160;<a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a48a78577b16fe1d628e0b66e5afb7909">RPC_CANCELED</a>
+&#160;&#160;<a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a48a78577b16fe1d628e0b66e5afb7909">RPC_CANCELED</a>, 
+<br/>
+&#160;&#160;<a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3aa7111d3791fe1764a9d55ad9907a47f0">TIMEOUT</a>
 <br/>
  }</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The return type of <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a0b9a29e6a936301d73c4864ad4e1414c" title="Wait for a reply to the RPC or an error.">waitForReply()</a>.  <a href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The return type of <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a5824f288f6066eae256f67b267943cd1" title="Wait for a reply to the RPC or an error.">waitForReply()</a>.  <a href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a795bb195ef309c8a321494b0ff8a6dc3">OpaqueClientRPC::Clock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a249b2d79fd75b0b4cfa4501bc77d501e">Clock</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock used for timeouts.  <a href="#a249b2d79fd75b0b4cfa4501bc77d501e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a2a65799a92f88f78c2cf63adfa50627f">OpaqueClientRPC::TimePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a557327699a32d8a36f69bc063e67d47b">TimePoint</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for absolute time values used for timeouts.  <a href="#a557327699a32d8a36f69bc063e67d47b"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#ad26729e09894bf68034723d5bcb469be">ClientRPC</a> (std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">RPC::ClientSession</a> &gt; session, uint16_t service, uint8_t serviceSpecificErrorVersion, uint16_t opCode, const google::protobuf::Message &amp;request)</td></tr>
@@ -145,8 +151,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Abort the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>.  <a href="#a70a114004ad27fac8bbc41dda1a27e1c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a692623fa366a7e5180350a6f16b9c077">isReady</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicate whether a response or error has been received for the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>.  <a href="#a692623fa366a7e5180350a6f16b9c077"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a0b9a29e6a936301d73c4864ad4e1414c">waitForReply</a> (google::protobuf::Message *response, google::protobuf::Message *serviceSpecificError)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for a reply to the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> or an error.  <a href="#a0b9a29e6a936301d73c4864ad4e1414c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a5824f288f6066eae256f67b267943cd1">waitForReply</a> (google::protobuf::Message *response, google::protobuf::Message *serviceSpecificError, <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a557327699a32d8a36f69bc063e67d47b">TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for a reply to the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> or an error.  <a href="#a5824f288f6066eae256f67b267943cd1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#ac05c315769570fb5c612cc96a292aba2">getErrorMessage</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> failure occurred, return a message describing that error.  <a href="#ac05c315769570fb5c612cc96a292aba2"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
@@ -163,7 +169,42 @@ Private Attributes</h2></td></tr>
 <p>TODO(ongaro): This abstraction should ideally contain protocol version negotiation for the higher layer. To do so, we'd want to be able to associate a small amount of state with the session. </p>
 
 <p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00042">42</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
-</div><hr/><h2>Member Enumeration Documentation</h2>
+</div><hr/><h2>Member Typedef Documentation</h2>
+<a class="anchor" id="a249b2d79fd75b0b4cfa4501bc77d501e"></a><!-- doxytag: member="LogCabin::RPC::ClientRPC::Clock" ref="a249b2d79fd75b0b4cfa4501bc77d501e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a795bb195ef309c8a321494b0ff8a6dc3">OpaqueClientRPC::Clock</a> <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a249b2d79fd75b0b4cfa4501bc77d501e">LogCabin::RPC::ClientRPC::Clock</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Clock used for timeouts. </p>
+
+<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00045">45</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a557327699a32d8a36f69bc063e67d47b"></a><!-- doxytag: member="LogCabin::RPC::ClientRPC::TimePoint" ref="a557327699a32d8a36f69bc063e67d47b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a2a65799a92f88f78c2cf63adfa50627f">OpaqueClientRPC::TimePoint</a> <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a557327699a32d8a36f69bc063e67d47b">LogCabin::RPC::ClientRPC::TimePoint</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Type for absolute time values used for timeouts. </p>
+
+<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00047">47</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Member Enumeration Documentation</h2>
 <a class="anchor" id="a7732b104e0010f946c5420ec05ec65a3"></a><!-- doxytag: member="LogCabin::RPC::ClientRPC::Status" ref="a7732b104e0010f946c5420ec05ec65a3" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -175,7 +216,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>The return type of <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a0b9a29e6a936301d73c4864ad4e1414c" title="Wait for a reply to the RPC or an error.">waitForReply()</a>. </p>
+<p>The return type of <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a5824f288f6066eae256f67b267943cd1" title="Wait for a reply to the RPC or an error.">waitForReply()</a>. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="a7732b104e0010f946c5420ec05ec65a3aa75a1c2c1f59810aaf71f23a0adcffb6"></a><!-- doxytag: member="OK" ref="a7732b104e0010f946c5420ec05ec65a3aa75a1c2c1f59810aaf71f23a0adcffb6" args="" -->OK</em>&nbsp;</td><td>
 <p>The service returned a normal response. </p>
@@ -193,11 +234,15 @@ Private Attributes</h2></td></tr>
 <p>The <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> was aborted using <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a70a114004ad27fac8bbc41dda1a27e1c" title="Abort the RPC.">cancel()</a>. </p>
 <p>It is unknown whether the server executed or will execute the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. </p>
 </td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7732b104e0010f946c5420ec05ec65a3aa7111d3791fe1764a9d55ad9907a47f0"></a><!-- doxytag: member="TIMEOUT" ref="a7732b104e0010f946c5420ec05ec65a3aa7111d3791fe1764a9d55ad9907a47f0" args="" -->TIMEOUT</em>&nbsp;</td><td>
+<p>The <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> did not complete before the given timeout elapsed. </p>
+<p>It is unknown whether or not the server executed the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> (yet). </p>
+</td></tr>
 </table>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00107">107</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00111">111</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
 
 </div>
 </div>
@@ -404,12 +449,12 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a0b9a29e6a936301d73c4864ad4e1414c"></a><!-- doxytag: member="LogCabin::RPC::ClientRPC::waitForReply" ref="a0b9a29e6a936301d73c4864ad4e1414c" args="(google::protobuf::Message *response, google::protobuf::Message *serviceSpecificError)" -->
+<a class="anchor" id="a5824f288f6066eae256f67b267943cd1"></a><!-- doxytag: member="LogCabin::RPC::ClientRPC::waitForReply" ref="a5824f288f6066eae256f67b267943cd1" args="(google::protobuf::Message *response, google::protobuf::Message *serviceSpecificError, TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3">ClientRPC::Status</a> <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a0b9a29e6a936301d73c4864ad4e1414c">LogCabin::RPC::ClientRPC::waitForReply</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3">ClientRPC::Status</a> <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a5824f288f6066eae256f67b267943cd1">LogCabin::RPC::ClientRPC::waitForReply</a> </td>
           <td>(</td>
           <td class="paramtype">google::protobuf::Message *&#160;</td>
           <td class="paramname"><em>response</em>, </td>
@@ -418,7 +463,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">google::protobuf::Message *&#160;</td>
-          <td class="paramname"><em>serviceSpecificError</em>&#160;</td>
+          <td class="paramname"><em>serviceSpecificError</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a557327699a32d8a36f69bc063e67d47b">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -435,6 +486,7 @@ Private Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">response</td><td>If not NULL, this will be filled in if this method returns OK. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">serviceSpecificError</td><td>If not NULL, this will be filled in if this method returns SERVICE_SPECIFIC_ERROR. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>After this time has elapsed, stop waiting and return TIMEOUT. In this case, response and serviceSpecificError will be left unmodified. </td></tr>
   </table>
   </dd>
 </dl>
@@ -462,7 +514,7 @@ Private Attributes</h2></td></tr>
 <p>All errors indicate that it is unknown whether or not the server executed the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. Unless the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> was canceled with <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a70a114004ad27fac8bbc41dda1a27e1c" title="Abort the RPC.">cancel()</a>, the <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> has been disconnected and is no longer useful for initiating new RPCs.</p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>If an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> failure has occurred, a message describing that error. Otherwise, an empty string. </dd></dl>
 
-<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00180">180</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00189">189</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -495,7 +547,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00163">163</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00177">177</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
 
 </div>
 </div>

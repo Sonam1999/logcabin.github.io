@@ -5,6 +5,7 @@ var searchData=
   ['threadinterruptedexception',['ThreadInterruptedException',['../classLogCabin_1_1Server_1_1ThreadInterruptedException.html',1,'LogCabin::Server']]],
   ['timer',['Timer',['../classLogCabin_1_1Event_1_1Timer.html',1,'LogCabin::Event']]],
   ['timer',['Timer',['../classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html',1,'LogCabin::RPC::ClientSession']]],
+  ['timernotifier',['TimerNotifier',['../structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html',1,'LogCabin::RPC::anonymous_namespace{ClientSession.cc}']]],
   ['tree',['Tree',['../classLogCabin_1_1Client_1_1Tree.html',1,'LogCabin::Client']]],
   ['tree',['Tree',['../classLogCabin_1_1Tree_1_1Tree.html',1,'LogCabin::Tree']]],
   ['treedetails',['TreeDetails',['../classLogCabin_1_1Client_1_1TreeDetails.html',1,'LogCabin::Client']]],

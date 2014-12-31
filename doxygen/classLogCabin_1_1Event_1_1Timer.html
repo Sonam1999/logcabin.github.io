@@ -117,9 +117,10 @@ Inheritance diagram for LogCabin::Event::Timer:</div>
  <div class="center">
   <img src="classLogCabin_1_1Event_1_1Timer.png" usemap="#LogCabin::Event::Timer_map" alt=""/>
   <map id="LogCabin::Event::Timer_map" name="LogCabin::Event::Timer_map">
-<area href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable." alt="LogCabin::Event::File" shape="rect" coords="184,0,542,24"/>
-<area href="classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.html" alt="LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer" shape="rect" coords="0,112,358,136"/>
-<area href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html" title="This is used to time out RPCs and sessions when the server is no longer responding." alt="LogCabin::RPC::ClientSession::Timer" shape="rect" coords="368,112,726,136"/>
+<area href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable." alt="LogCabin::Event::File" shape="rect" coords="428,0,846,24"/>
+<area href="classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.html" alt="LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer" shape="rect" coords="0,112,418,136"/>
+<area href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html" title="Exits an event loop when a timer event occurs." alt="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier" shape="rect" coords="428,112,846,136"/>
+<area href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html" title="This is used to time out RPCs and sessions when the server is no longer responding." alt="LogCabin::RPC::ClientSession::Timer" shape="rect" coords="856,112,1274,136"/>
 </map>
  </div></div>
 
@@ -137,6 +138,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when the timer expires.  <a href="#a61bc4b06ada2b649ba543586a499e484"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a69fef683c8212f3e83840d4cfb96065e">schedule</a> (uint64_t nanoseconds)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the timer.  <a href="#a69fef683c8212f3e83840d4cfb96065e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a3df17755d7222f95e61fa2645c74490f">scheduleAbsolute</a> (<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Core::Time::SteadyClock::time_point</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the timer for an absolute point in time.  <a href="#a3df17755d7222f95e61fa2645c74490f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Timer.html#aaa60ccb04533e48aad6f517b89f134b6">deschedule</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop the timer from calling <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a61bc4b06ada2b649ba543586a499e484" title="This method is overridden by a subclass and invoked when the timer expires.">handleTimerEvent()</a>.  <a href="#aaa60ccb04533e48aad6f517b89f134b6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a7336e1b520a7b370999b766835157ed8">isScheduled</a> () const </td></tr>
@@ -151,7 +154,7 @@ Private Member Functions</h2></td></tr>
 <p>The client should inherit from this and implement the trigger method for when the timer expires.</p>
 <p>Timers can be added and scheduled from any thread, but they will always fire on the thread running the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>. </p>
 
-<p>Definition at line <a class="el" href="Timer_8h_source.html#l00035">35</a> of file <a class="el" href="Timer_8h_source.html">Timer.h</a>.</p>
+<p>Definition at line <a class="el" href="Timer_8h_source.html#l00036">36</a> of file <a class="el" href="Timer_8h_source.html">Timer.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aaf43df487896a6d9dad57c8dd6d622c1"></a><!-- doxytag: member="LogCabin::Event::Timer::Timer" ref="aaf43df487896a6d9dad57c8dd6d622c1" args="(Event::Loop &amp;eventLoop)" -->
 <div class="memitem">
@@ -260,7 +263,7 @@ Private Member Functions</h2></td></tr>
 <p>This method is overridden by a subclass and invoked when the timer expires. </p>
 <p>This method will be invoked by the main event loop on whatever thread is running the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>. </p>
 
-<p>Implemented in <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html#afaf7d8c96d972f022e3e0e59b6989913">LogCabin::RPC::ClientSession::Timer</a>, and <a class="el" href="classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.html#acf85d697d44898a16fd1bd0a9041327c">LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html#afaf7d8c96d972f022e3e0e59b6989913">LogCabin::RPC::ClientSession::Timer</a>, <a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html#a0a04a8edca9a34a2310ad472fbdf687d">LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier</a>, and <a class="el" href="classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.html#acf85d697d44898a16fd1bd0a9041327c">LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer</a>.</p>
 
 </div>
 </div>
@@ -291,6 +294,34 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a3df17755d7222f95e61fa2645c74490f"></a><!-- doxytag: member="LogCabin::Event::Timer::scheduleAbsolute" ref="a3df17755d7222f95e61fa2645c74490f" args="(Core::Time::SteadyClock::time_point timeout)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a3df17755d7222f95e61fa2645c74490f">LogCabin::Event::Timer::scheduleAbsolute</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Core::Time::SteadyClock::time_point</a>&#160;</td>
+          <td class="paramname"><em>timeout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Start the timer for an absolute point in time. </p>
+<p>If the timeout is in the past, the timer will trigger immediately once the event loop runs. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeout</td><td>The timer will trigger once this timeout has past. If the timer was already scheduled, the old time is forgotten. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="Timer_8cc_source.html#l00080">80</a> of file <a class="el" href="Timer_8cc_source.html">Timer.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="aaa60ccb04533e48aad6f517b89f134b6"></a><!-- doxytag: member="LogCabin::Event::Timer::deschedule" ref="aaa60ccb04533e48aad6f517b89f134b6" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -313,7 +344,7 @@ Private Member Functions</h2></td></tr>
 <li>If this method is called from the event loop thread and <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a61bc4b06ada2b649ba543586a499e484" title="This method is overridden by a subclass and invoked when the timer expires.">handleTimerEvent()</a> is currently being fired, then <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#aaa60ccb04533e48aad6f517b89f134b6" title="Stop the timer from calling handleTimerEvent().">deschedule()</a> can't wait and returns immediately. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="Timer_8cc_source.html#l00080">80</a> of file <a class="el" href="Timer_8cc_source.html">Timer.cc</a>.</p>
+<p>Definition at line <a class="el" href="Timer_8cc_source.html#l00107">107</a> of file <a class="el" href="Timer_8cc_source.html">Timer.cc</a>.</p>
 
 </div>
 </div>
@@ -332,10 +363,10 @@ Private Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Returns true if the timer has been scheduled and has not yet fired. </p>
-<p>This is prone to races; it's primarily useful for unit tests. </p>
+<dl class="warning"><dt><b>Warning:</b></dt><dd>This is prone to races; it's primarily useful for unit tests. It also improperly returns false after <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a3df17755d7222f95e61fa2645c74490f" title="Start the timer for an absolute point in time.">scheduleAbsolute()</a> is called with a time that has expired. TODO(ongaro): remove entirely or add additional state to this class to make this work correctly? </dd></dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if the timer has been scheduled and will eventually call <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a61bc4b06ada2b649ba543586a499e484" title="This method is overridden by a subclass and invoked when the timer expires.">handleTimerEvent()</a>. False if the timer is currently running <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a61bc4b06ada2b649ba543586a499e484" title="This method is overridden by a subclass and invoked when the timer expires.">handleTimerEvent()</a> or if it is not scheduled to call <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a61bc4b06ada2b649ba543586a499e484" title="This method is overridden by a subclass and invoked when the timer expires.">handleTimerEvent()</a> in the future. </dd></dl>
 
-<p>Definition at line <a class="el" href="Timer_8cc_source.html#l00090">90</a> of file <a class="el" href="Timer_8cc_source.html">Timer.cc</a>.</p>
+<p>Definition at line <a class="el" href="Timer_8cc_source.html#l00117">117</a> of file <a class="el" href="Timer_8cc_source.html">Timer.cc</a>.</p>
 
 </div>
 </div>

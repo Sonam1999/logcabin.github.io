@@ -170,120 +170,131 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00088"></a>00088 }
 <a name="l00089"></a>00089 
 <a name="l00090"></a>00090 <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3" title="The return type of waitForReply().">ClientRPC::Status</a>
-<a name="l00091"></a><a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a0b9a29e6a936301d73c4864ad4e1414c">00091</a> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a0b9a29e6a936301d73c4864ad4e1414c" title="Wait for a reply to the RPC or an error.">ClientRPC::waitForReply</a>(google::protobuf::Message* response,
-<a name="l00092"></a>00092                         google::protobuf::Message* serviceSpecificError)
-<a name="l00093"></a>00093 {
-<a name="l00094"></a>00094     <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a4e219ba62799dc617cb705e7da82eeb6" title="Block until the reply is ready or an error has occurred.">waitForReply</a>();
-<a name="l00095"></a>00095     <span class="keywordflow">switch</span> (<a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a35a3f47dcbdec15d44fcb18a916e014f" title="See Status.">getStatus</a>()) {
-<a name="l00096"></a>00096         <span class="keywordflow">case</span> OpaqueClientRPC::Status::NOT_READY:
-<a name="l00097"></a>00097             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Waited for RPC but not ready&quot;</span>);
-<a name="l00098"></a>00098         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">OpaqueClientRPC::Status::OK</a>:
-<a name="l00099"></a>00099             <span class="keywordflow">break</span>;
-<a name="l00100"></a>00100         <span class="keywordflow">case</span> <a class="code" href="Debug_8h.html#a78e40dfd87f516e322340d249027aea1" title="Log an ERROR message.">OpaqueClientRPC::Status::ERROR</a>:
-<a name="l00101"></a>00101             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a84d6b56092fd63176bc098a714953144" title="The server could not be contacted or did not reply.">Status::RPC_FAILED</a>;
-<a name="l00102"></a>00102         <span class="keywordflow">case</span> OpaqueClientRPC::Status::CANCELED:
-<a name="l00103"></a>00103             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a48a78577b16fe1d628e0b66e5afb7909" title="The RPC was aborted using cancel().">Status::RPC_CANCELED</a>;
-<a name="l00104"></a>00104     }
-<a name="l00105"></a>00105     <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp; responseBuffer = *<a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a6deceb0428f71f5a61ed6fb53a6d9ba5" title="Look at the reply buffer.">peekReply</a>();
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107     <span class="comment">// Extract the response&#39;s status field.</span>
-<a name="l00108"></a>00108     <span class="keywordflow">if</span> (responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#af8656055846d619fe552af3ad99b5807" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(ResponseHeaderPrefix)) {
-<a name="l00109"></a>00109         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The response from the server was too short to be valid. &quot;</span>
-<a name="l00110"></a>00110               <span class="stringliteral">&quot;This probably indicates network or memory corruption.&quot;</span>);
-<a name="l00111"></a>00111     }
-<a name="l00112"></a>00112     ResponseHeaderPrefix responseHeaderPrefix =
-<a name="l00113"></a>00113         *<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>ResponseHeaderPrefix*<span class="keyword">&gt;</span>(responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#addf2330add67835b4d9c056b7238c8d8" title="Return a pointer to the first byte of data.">getData</a>());
-<a name="l00114"></a>00114     responseHeaderPrefix.fromBigEndian();
-<a name="l00115"></a>00115     <span class="keywordflow">if</span> (responseHeaderPrefix.status == <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a1a4c8d3c1c98c547b9caa581e7de0246" title="The server did not like the version number provided in the request header.">ProtocolStatus::INVALID_VERSION</a>) {
-<a name="l00116"></a>00116         <span class="comment">// The server doesn&#39;t understand this version of the header</span>
-<a name="l00117"></a>00117         <span class="comment">// protocol. Since this library only runs version 1 of the</span>
-<a name="l00118"></a>00118         <span class="comment">// protocol, this shouldn&#39;t happen if servers continue supporting</span>
-<a name="l00119"></a>00119         <span class="comment">// version 1.</span>
-<a name="l00120"></a>00120         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;This client is too old to talk to the server. &quot;</span>
-<a name="l00121"></a>00121               <span class="stringliteral">&quot;You&#39;ll need to update your client library.&quot;</span>);
-<a name="l00122"></a>00122     }
-<a name="l00123"></a>00123 
-<a name="l00124"></a>00124     <span class="keywordflow">if</span> (responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#af8656055846d619fe552af3ad99b5807" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(ResponseHeaderVersion1)) {
-<a name="l00125"></a>00125         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The response from the server was too short to be valid. &quot;</span>
-<a name="l00126"></a>00126               <span class="stringliteral">&quot;This probably indicates network or memory corruption.&quot;</span>);
-<a name="l00127"></a>00127     }
-<a name="l00128"></a>00128     ResponseHeaderVersion1 responseHeader =
-<a name="l00129"></a>00129         *<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>ResponseHeaderVersion1*<span class="keyword">&gt;</span>(responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#addf2330add67835b4d9c056b7238c8d8" title="Return a pointer to the first byte of data.">getData</a>());
-<a name="l00130"></a>00130     responseHeader.fromBigEndian();
-<a name="l00131"></a>00131 
-<a name="l00132"></a>00132     <span class="keywordflow">switch</span> (responseHeader.prefix.status) {
-<a name="l00133"></a>00133 
-<a name="l00134"></a>00134         <span class="comment">// The RPC succeeded. Parse the response into a protocol buffer.</span>
-<a name="l00135"></a>00135         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">ProtocolStatus::OK</a>:
-<a name="l00136"></a>00136             <span class="keywordflow">if</span> (response != NULL &amp;&amp;
-<a name="l00137"></a>00137                 !<a class="code" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf.html#adcd57e6a58689b5543c09f4229fa9f49" title="Parse a protocol buffer message out of an RPC::Buffer.">RPC::ProtoBuf::parse</a>(responseBuffer, *response,
-<a name="l00138"></a>00138                                       <span class="keyword">sizeof</span>(responseHeader))) {
-<a name="l00139"></a>00139                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not parse the protocol buffer out of the server &quot;</span>
-<a name="l00140"></a>00140                       <span class="stringliteral">&quot;response&quot;</span>);
-<a name="l00141"></a>00141             }
-<a name="l00142"></a>00142             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3aa75a1c2c1f59810aaf71f23a0adcffb6" title="The service returned a normal response.">Status::OK</a>;
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144         <span class="comment">// The RPC failed in a service-specific way. Parse the response into a</span>
-<a name="l00145"></a>00145         <span class="comment">// protocol buffer.</span>
-<a name="l00146"></a>00146         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a3808388a3c1e6c97bdb3dd5e5ecee8f3" title="An error specific to the particular service.">ProtocolStatus::SERVICE_SPECIFIC_ERROR</a>:
-<a name="l00147"></a>00147             <span class="keywordflow">if</span> (serviceSpecificError != NULL &amp;&amp;
-<a name="l00148"></a>00148                 !<a class="code" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf.html#adcd57e6a58689b5543c09f4229fa9f49" title="Parse a protocol buffer message out of an RPC::Buffer.">RPC::ProtoBuf::parse</a>(responseBuffer, *serviceSpecificError,
-<a name="l00149"></a>00149                                       <span class="keyword">sizeof</span>(responseHeader))) {
-<a name="l00150"></a>00150                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not parse the protocol buffer out of the &quot;</span>
-<a name="l00151"></a>00151                       <span class="stringliteral">&quot;service-specific error details&quot;</span>);
-<a name="l00152"></a>00152             }
-<a name="l00153"></a>00153             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3ab129a4d2539b2521e3ac558c80dde7d6" title="The service threw an error (but at the transport level, the RPC succeeded).">Status::SERVICE_SPECIFIC_ERROR</a>;
-<a name="l00154"></a>00154 
-<a name="l00155"></a>00155         <span class="comment">// The server does not have the requested service.</span>
-<a name="l00156"></a>00156         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a57b3feada853764683c0dda7595cbac5" title="The server does not have the requested service.">ProtocolStatus::INVALID_SERVICE</a>:
-<a name="l00157"></a>00157             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The server is not running the requested service.&quot;</span>);
-<a name="l00158"></a>00158 
-<a name="l00159"></a>00159         <span class="comment">// The server disliked our request. This shouldn&#39;t happen because</span>
-<a name="l00160"></a>00160         <span class="comment">// the higher layers of software were supposed to negotiate an RPC</span>
-<a name="l00161"></a>00161         <span class="comment">// protocol version.</span>
-<a name="l00162"></a>00162         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694aff3e9fbb7614ab1714ea489e399f19ea" title="The server did not like the RPC request.">ProtocolStatus::INVALID_REQUEST</a>:
-<a name="l00163"></a>00163             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The server found the request to be invalid. This &quot;</span>
-<a name="l00164"></a>00164                   <span class="stringliteral">&quot;indicates a bug in the client or server in negotiating &quot;</span>
-<a name="l00165"></a>00165                   <span class="stringliteral">&quot;which RPCs the client may legally send to the server.&quot;</span>);
-<a name="l00166"></a>00166 
-<a name="l00167"></a>00167         <span class="keywordflow">default</span>:
-<a name="l00168"></a>00168             <span class="comment">// The server shouldn&#39;t reply back with status codes we don&#39;t</span>
-<a name="l00169"></a>00169             <span class="comment">// understand. That&#39;s why we gave it a version number in the</span>
-<a name="l00170"></a>00170             <span class="comment">// request header.</span>
-<a name="l00171"></a>00171             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Unknown status %u returned from server after sending it &quot;</span>
-<a name="l00172"></a>00172                   <span class="stringliteral">&quot;protocol version 1 in the request header. This probably &quot;</span>
-<a name="l00173"></a>00173                   <span class="stringliteral">&quot;indicates a bug in the server.&quot;</span>,
-<a name="l00174"></a>00174                   uint32_t(responseHeader.prefix.status));
-<a name="l00175"></a>00175     }
-<a name="l00176"></a>00176 
-<a name="l00177"></a>00177 }
-<a name="l00178"></a>00178 
-<a name="l00179"></a>00179 std::string
-<a name="l00180"></a><a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#ac05c315769570fb5c612cc96a292aba2">00180</a> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#ac05c315769570fb5c612cc96a292aba2" title="If an RPC failure occurred, return a message describing that error.">ClientRPC::getErrorMessage</a>()<span class="keyword"> const</span>
-<a name="l00181"></a>00181 <span class="keyword"></span>{
-<a name="l00182"></a>00182     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#ae582457d237dfa5f835b84bcaef61c39" title="If an error has occurred, return a message describing that error.">getErrorMessage</a>();
-<a name="l00183"></a>00183 }
-<a name="l00184"></a>00184 
-<a name="l00185"></a>00185 ::std::ostream&amp;
-<a name="l00186"></a><a class="code" href="namespaceLogCabin_1_1RPC.html#a7a6fcacd0839f64cc09b65ab2fa5a5d1">00186</a> <a class="code" href="namespaceLogCabin_1_1RPC.html#a7a6fcacd0839f64cc09b65ab2fa5a5d1" title="Output a ClientRPC::Status to a stream.">operator&lt;&lt;</a>(::std::ostream&amp; os, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3" title="The return type of waitForReply().">ClientRPC::Status</a> status)
-<a name="l00187"></a>00187 {
-<a name="l00188"></a>00188     <span class="keyword">typedef</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3" title="The return type of waitForReply().">ClientRPC::Status</a> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4" title="Status codes returned by Tree operations.">Status</a>;
-<a name="l00189"></a>00189     <span class="keywordflow">switch</span> (status) {
-<a name="l00190"></a>00190         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">Status::OK</a>:
-<a name="l00191"></a>00191             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;OK&quot;</span>;
-<a name="l00192"></a>00192         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a3808388a3c1e6c97bdb3dd5e5ecee8f3" title="An error specific to the particular service.">Status::SERVICE_SPECIFIC_ERROR</a>:
-<a name="l00193"></a>00193             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;SERVICE_SPECIFIC_ERROR&quot;</span>;
-<a name="l00194"></a>00194         <span class="keywordflow">case</span> Status::RPC_FAILED:
-<a name="l00195"></a>00195             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;RPC_FAILED&quot;</span>;
-<a name="l00196"></a>00196         <span class="keywordflow">case</span> Status::RPC_CANCELED:
-<a name="l00197"></a>00197             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;RPC_CANCELED&quot;</span>;
-<a name="l00198"></a>00198         <span class="keywordflow">default</span>:
-<a name="l00199"></a>00199             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;(INVALID VALUE)&quot;</span>;
-<a name="l00200"></a>00200     }
-<a name="l00201"></a>00201 }
-<a name="l00202"></a>00202 
-<a name="l00203"></a>00203 } <span class="comment">// namespace LogCabin::RPC</span>
-<a name="l00204"></a>00204 } <span class="comment">// namespace LogCabin</span>
+<a name="l00091"></a><a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a5824f288f6066eae256f67b267943cd1">00091</a> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a5824f288f6066eae256f67b267943cd1" title="Wait for a reply to the RPC or an error.">ClientRPC::waitForReply</a>(google::protobuf::Message* response,
+<a name="l00092"></a>00092                         google::protobuf::Message* serviceSpecificError,
+<a name="l00093"></a>00093                         <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a557327699a32d8a36f69bc063e67d47b" title="Type for absolute time values used for timeouts.">TimePoint</a> timeout)
+<a name="l00094"></a>00094 {
+<a name="l00095"></a>00095     <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a0e87185098bbce2562558be649fca43f" title="Block until the reply is ready, an error has occurred, or the given timeout elapses.">waitForReply</a>(timeout);
+<a name="l00096"></a>00096     <span class="keywordflow">switch</span> (<a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a35a3f47dcbdec15d44fcb18a916e014f" title="See Status.">getStatus</a>()) {
+<a name="l00097"></a>00097         <span class="keywordflow">case</span> OpaqueClientRPC::Status::NOT_READY:
+<a name="l00098"></a>00098             <span class="keywordflow">if</span> (<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Clock::now</a>() &gt; timeout) {
+<a name="l00099"></a>00099                 <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3aa7111d3791fe1764a9d55ad9907a47f0" title="The RPC did not complete before the given timeout elapsed.">Status::TIMEOUT</a>;
+<a name="l00100"></a>00100             } <span class="keywordflow">else</span> {
+<a name="l00101"></a>00101                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Waited for RPC but not ready and &quot;</span>
+<a name="l00102"></a>00102                       <span class="stringliteral">&quot;timeout hasn&#39;t elapsed (timeout=%s, now=%s)&quot;</span>,
+<a name="l00103"></a>00103                       <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0" title="Return a string returned from the given object&#39;s stream operator.">Core::StringUtil::toString</a>(timeout).c_str(),
+<a name="l00104"></a>00104                       <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0" title="Return a string returned from the given object&#39;s stream operator.">Core::StringUtil::toString</a>(<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Clock::now</a>()).c_str());
+<a name="l00105"></a>00105             }
+<a name="l00106"></a>00106         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">OpaqueClientRPC::Status::OK</a>:
+<a name="l00107"></a>00107             <span class="keywordflow">break</span>;
+<a name="l00108"></a>00108         <span class="keywordflow">case</span> <a class="code" href="Debug_8h.html#a78e40dfd87f516e322340d249027aea1" title="Log an ERROR message.">OpaqueClientRPC::Status::ERROR</a>:
+<a name="l00109"></a>00109             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a84d6b56092fd63176bc098a714953144" title="The server could not be contacted or did not reply.">Status::RPC_FAILED</a>;
+<a name="l00110"></a>00110         <span class="keywordflow">case</span> OpaqueClientRPC::Status::CANCELED:
+<a name="l00111"></a>00111             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a48a78577b16fe1d628e0b66e5afb7909" title="The RPC was aborted using cancel().">Status::RPC_CANCELED</a>;
+<a name="l00112"></a>00112     }
+<a name="l00113"></a>00113     <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp; responseBuffer = *<a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a6deceb0428f71f5a61ed6fb53a6d9ba5" title="Look at the reply buffer.">peekReply</a>();
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115     <span class="comment">// Extract the response&#39;s status field.</span>
+<a name="l00116"></a>00116     <span class="keywordflow">if</span> (responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#af8656055846d619fe552af3ad99b5807" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(ResponseHeaderPrefix)) {
+<a name="l00117"></a>00117         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The response from the server was too short to be valid &quot;</span>
+<a name="l00118"></a>00118               <span class="stringliteral">&quot;(%u bytes). This probably indicates network or memory &quot;</span>
+<a name="l00119"></a>00119               <span class="stringliteral">&quot;corruption.&quot;</span>, responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#af8656055846d619fe552af3ad99b5807" title="Return the number of bytes that make up the data.">getLength</a>());
+<a name="l00120"></a>00120     }
+<a name="l00121"></a>00121     ResponseHeaderPrefix responseHeaderPrefix =
+<a name="l00122"></a>00122         *<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>ResponseHeaderPrefix*<span class="keyword">&gt;</span>(responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#addf2330add67835b4d9c056b7238c8d8" title="Return a pointer to the first byte of data.">getData</a>());
+<a name="l00123"></a>00123     responseHeaderPrefix.fromBigEndian();
+<a name="l00124"></a>00124     <span class="keywordflow">if</span> (responseHeaderPrefix.status == <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a1a4c8d3c1c98c547b9caa581e7de0246" title="The server did not like the version number provided in the request header.">ProtocolStatus::INVALID_VERSION</a>) {
+<a name="l00125"></a>00125         <span class="comment">// The server doesn&#39;t understand this version of the header</span>
+<a name="l00126"></a>00126         <span class="comment">// protocol. Since this library only runs version 1 of the</span>
+<a name="l00127"></a>00127         <span class="comment">// protocol, this shouldn&#39;t happen if servers continue supporting</span>
+<a name="l00128"></a>00128         <span class="comment">// version 1.</span>
+<a name="l00129"></a>00129         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;This client is too old to talk to the server. &quot;</span>
+<a name="l00130"></a>00130               <span class="stringliteral">&quot;You&#39;ll need to update your client library.&quot;</span>);
+<a name="l00131"></a>00131     }
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133     <span class="keywordflow">if</span> (responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#af8656055846d619fe552af3ad99b5807" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(ResponseHeaderVersion1)) {
+<a name="l00134"></a>00134         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The response from the server was too short to be valid. &quot;</span>
+<a name="l00135"></a>00135               <span class="stringliteral">&quot;This probably indicates network or memory corruption.&quot;</span>);
+<a name="l00136"></a>00136     }
+<a name="l00137"></a>00137     ResponseHeaderVersion1 responseHeader =
+<a name="l00138"></a>00138         *<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>ResponseHeaderVersion1*<span class="keyword">&gt;</span>(responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#addf2330add67835b4d9c056b7238c8d8" title="Return a pointer to the first byte of data.">getData</a>());
+<a name="l00139"></a>00139     responseHeader.fromBigEndian();
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141     <span class="keywordflow">switch</span> (responseHeader.prefix.status) {
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143         <span class="comment">// The RPC succeeded. Parse the response into a protocol buffer.</span>
+<a name="l00144"></a>00144         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">ProtocolStatus::OK</a>:
+<a name="l00145"></a>00145             <span class="keywordflow">if</span> (response != NULL &amp;&amp;
+<a name="l00146"></a>00146                 !<a class="code" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf.html#adcd57e6a58689b5543c09f4229fa9f49" title="Parse a protocol buffer message out of an RPC::Buffer.">RPC::ProtoBuf::parse</a>(responseBuffer, *response,
+<a name="l00147"></a>00147                                       <span class="keyword">sizeof</span>(responseHeader))) {
+<a name="l00148"></a>00148                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not parse the protocol buffer out of the server &quot;</span>
+<a name="l00149"></a>00149                       <span class="stringliteral">&quot;response&quot;</span>);
+<a name="l00150"></a>00150             }
+<a name="l00151"></a>00151             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3aa75a1c2c1f59810aaf71f23a0adcffb6" title="The service returned a normal response.">Status::OK</a>;
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153         <span class="comment">// The RPC failed in a service-specific way. Parse the response into a</span>
+<a name="l00154"></a>00154         <span class="comment">// protocol buffer.</span>
+<a name="l00155"></a>00155         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a3808388a3c1e6c97bdb3dd5e5ecee8f3" title="An error specific to the particular service.">ProtocolStatus::SERVICE_SPECIFIC_ERROR</a>:
+<a name="l00156"></a>00156             <span class="keywordflow">if</span> (serviceSpecificError != NULL &amp;&amp;
+<a name="l00157"></a>00157                 !<a class="code" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf.html#adcd57e6a58689b5543c09f4229fa9f49" title="Parse a protocol buffer message out of an RPC::Buffer.">RPC::ProtoBuf::parse</a>(responseBuffer, *serviceSpecificError,
+<a name="l00158"></a>00158                                       <span class="keyword">sizeof</span>(responseHeader))) {
+<a name="l00159"></a>00159                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not parse the protocol buffer out of the &quot;</span>
+<a name="l00160"></a>00160                       <span class="stringliteral">&quot;service-specific error details&quot;</span>);
+<a name="l00161"></a>00161             }
+<a name="l00162"></a>00162             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3ab129a4d2539b2521e3ac558c80dde7d6" title="The service threw an error (but at the transport level, the RPC succeeded).">Status::SERVICE_SPECIFIC_ERROR</a>;
+<a name="l00163"></a>00163 
+<a name="l00164"></a>00164         <span class="comment">// The server does not have the requested service.</span>
+<a name="l00165"></a>00165         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a57b3feada853764683c0dda7595cbac5" title="The server does not have the requested service.">ProtocolStatus::INVALID_SERVICE</a>:
+<a name="l00166"></a>00166             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The server is not running the requested service.&quot;</span>);
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168         <span class="comment">// The server disliked our request. This shouldn&#39;t happen because</span>
+<a name="l00169"></a>00169         <span class="comment">// the higher layers of software were supposed to negotiate an RPC</span>
+<a name="l00170"></a>00170         <span class="comment">// protocol version.</span>
+<a name="l00171"></a>00171         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694aff3e9fbb7614ab1714ea489e399f19ea" title="The server did not like the RPC request.">ProtocolStatus::INVALID_REQUEST</a>:
+<a name="l00172"></a>00172             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The server found the request to be invalid. This &quot;</span>
+<a name="l00173"></a>00173                   <span class="stringliteral">&quot;indicates a bug in the client or server in negotiating &quot;</span>
+<a name="l00174"></a>00174                   <span class="stringliteral">&quot;which RPCs the client may legally send to the server.&quot;</span>);
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176         <span class="keywordflow">default</span>:
+<a name="l00177"></a>00177             <span class="comment">// The server shouldn&#39;t reply back with status codes we don&#39;t</span>
+<a name="l00178"></a>00178             <span class="comment">// understand. That&#39;s why we gave it a version number in the</span>
+<a name="l00179"></a>00179             <span class="comment">// request header.</span>
+<a name="l00180"></a>00180             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Unknown status %u returned from server after sending it &quot;</span>
+<a name="l00181"></a>00181                   <span class="stringliteral">&quot;protocol version 1 in the request header. This probably &quot;</span>
+<a name="l00182"></a>00182                   <span class="stringliteral">&quot;indicates a bug in the server.&quot;</span>,
+<a name="l00183"></a>00183                   uint32_t(responseHeader.prefix.status));
+<a name="l00184"></a>00184     }
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186 }
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188 std::string
+<a name="l00189"></a><a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#ac05c315769570fb5c612cc96a292aba2">00189</a> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#ac05c315769570fb5c612cc96a292aba2" title="If an RPC failure occurred, return a message describing that error.">ClientRPC::getErrorMessage</a>()<span class="keyword"> const</span>
+<a name="l00190"></a>00190 <span class="keyword"></span>{
+<a name="l00191"></a>00191     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#ae582457d237dfa5f835b84bcaef61c39" title="If an error has occurred, return a message describing that error.">getErrorMessage</a>();
+<a name="l00192"></a>00192 }
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194 ::std::ostream&amp;
+<a name="l00195"></a><a class="code" href="namespaceLogCabin_1_1RPC.html#a7a6fcacd0839f64cc09b65ab2fa5a5d1">00195</a> <a class="code" href="namespaceLogCabin_1_1RPC.html#a7a6fcacd0839f64cc09b65ab2fa5a5d1" title="Output a ClientRPC::Status to a stream.">operator&lt;&lt;</a>(::std::ostream&amp; os, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3" title="The return type of waitForReply().">ClientRPC::Status</a> status)
+<a name="l00196"></a>00196 {
+<a name="l00197"></a>00197     <span class="keyword">typedef</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3" title="The return type of waitForReply().">ClientRPC::Status</a> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4" title="Status codes returned by Tree operations.">Status</a>;
+<a name="l00198"></a>00198     <span class="keywordflow">switch</span> (status) {
+<a name="l00199"></a>00199         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">Status::OK</a>:
+<a name="l00200"></a>00200             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;OK&quot;</span>;
+<a name="l00201"></a>00201         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a3808388a3c1e6c97bdb3dd5e5ecee8f3" title="An error specific to the particular service.">Status::SERVICE_SPECIFIC_ERROR</a>:
+<a name="l00202"></a>00202             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;SERVICE_SPECIFIC_ERROR&quot;</span>;
+<a name="l00203"></a>00203         <span class="keywordflow">case</span> Status::RPC_FAILED:
+<a name="l00204"></a>00204             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;RPC_FAILED&quot;</span>;
+<a name="l00205"></a>00205         <span class="keywordflow">case</span> Status::RPC_CANCELED:
+<a name="l00206"></a>00206             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;RPC_CANCELED&quot;</span>;
+<a name="l00207"></a>00207         <span class="keywordflow">case</span> Status::TIMEOUT:
+<a name="l00208"></a>00208             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;TIMEOUT&quot;</span>;
+<a name="l00209"></a>00209         <span class="keywordflow">default</span>:
+<a name="l00210"></a>00210             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;(INVALID VALUE)&quot;</span>;
+<a name="l00211"></a>00211     }
+<a name="l00212"></a>00212 }
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214 } <span class="comment">// namespace LogCabin::RPC</span>
+<a name="l00215"></a>00215 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
