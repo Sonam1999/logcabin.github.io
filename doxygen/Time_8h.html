@@ -103,10 +103,10 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the current time.  <a href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd.html">std</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core.html">LogCabin::Core</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html">LogCabin::Core::Time</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd.html">std</a></td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef MockableClock<br class="typebreak"/>
@@ -117,13 +117,6 @@ Typedefs</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A clock that reads wall time and is affected by NTP adjustments.  <a href="#a9edb96154f308f4284060230766da1f1"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd.html#a2f17f68b3cc64ca156986f759844ca3f">std::operator&lt;&lt;</a> (std::ostream &amp;os, const std::chrono::milliseconds &amp;duration)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints std::milliseconds values in a way that is useful for unit tests.  <a href="#a2f17f68b3cc64ca156986f759844ca3f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd.html#a5bb512678a03f7cb0cc956f89f343f6f">std::operator&lt;&lt;</a> (std::ostream &amp;os, const std::chrono::nanoseconds &amp;duration)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints std::nanoseconds values in a way that is useful for unit tests.  <a href="#a5bb512678a03f7cb0cc956f89f343f6f"></a><br/></td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename Clock , typename Duration &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacestd.html#a9e70a62467ffd894631a20bdc7d4cc61">std::operator&lt;&lt;</a> (std::ostream &amp;os, const std::chrono::time_point&lt; Clock, Duration &gt; &amp;timePoint)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints std::time_point values in a way that is useful for unit tests.  <a href="#a9e70a62467ffd894631a20bdc7d4cc61"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename Clock , typename Duration &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">struct timespec&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ab1f0bfec14cc5ca8578cf2ce2f2092d6">LogCabin::Core::Time::makeTimeSpec</a> (const std::chrono::time_point&lt; Clock, Duration &gt; &amp;when)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a C++11 time point into a POSIX timespec.  <a href="#ab1f0bfec14cc5ca8578cf2ce2f2092d6"></a><br/></td></tr>
@@ -131,6 +124,13 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the CPU's cycle counter.  <a href="#acbf6cb1c6aa5d0d47f50a3bfac8418a2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ad01ddba8606f77d0826bbd2264c591e4">LogCabin::Core::Time::getTimeNanos</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the system time since the Unix epoch in nanoseconds.  <a href="#ad01ddba8606f77d0826bbd2264c591e4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd.html#a2f17f68b3cc64ca156986f759844ca3f">std::operator&lt;&lt;</a> (std::ostream &amp;os, const std::chrono::milliseconds &amp;duration)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints std::milliseconds values in a way that is useful for unit tests.  <a href="#a2f17f68b3cc64ca156986f759844ca3f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd.html#a5bb512678a03f7cb0cc956f89f343f6f">std::operator&lt;&lt;</a> (std::ostream &amp;os, const std::chrono::nanoseconds &amp;duration)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints std::nanoseconds values in a way that is useful for unit tests.  <a href="#a5bb512678a03f7cb0cc956f89f343f6f"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename Clock , typename Duration &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacestd.html#a9e70a62467ffd894631a20bdc7d4cc61">std::operator&lt;&lt;</a> (std::ostream &amp;os, const std::chrono::time_point&lt; Clock, Duration &gt; &amp;timePoint)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints std::time_point values in a way that is useful for unit tests.  <a href="#a9e70a62467ffd894631a20bdc7d4cc61"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const clockid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a2db038efcae56cca1ff9c9e0989b5f78">LogCabin::Core::Time::STEADY_CLOCK_ID</a></td></tr>
