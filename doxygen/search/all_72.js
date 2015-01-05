@@ -37,7 +37,7 @@ var searchData=
   ['receivesocket',['ReceiveSocket',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ae177af141ed186c6a2357183721ee51f',1,'LogCabin::RPC::MessageSocket::ReceiveSocket::ReceiveSocket()'],['../classLogCabin_1_1RPC_1_1MessageSocket.html#a39c126c94d65df0a306e7ce4c15d1cf7',1,'LogCabin::RPC::MessageSocket::receiveSocket()']]],
   ['receivesocket',['ReceiveSocket',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html',1,'LogCabin::RPC::MessageSocket']]],
   ['reconfigure_2ecc',['Reconfigure.cc',['../Reconfigure_8cc.html',1,'']]],
-  ['refresh',['refresh',['../classLogCabin_1_1RPC_1_1Address.html#a8c7f2d076a39312f6d12a90c17344cd2',1,'LogCabin::RPC::Address']]],
+  ['refresh',['refresh',['../classLogCabin_1_1RPC_1_1Address.html#a862df7c77ff8748a64dfde7696df9b76',1,'LogCabin::RPC::Address']]],
   ['registerservice',['registerService',['../classLogCabin_1_1RPC_1_1Server.html#a8ccc769575306c6efa6489326327179f',1,'LogCabin::RPC::Server']]],
   ['reject',['reject',['../classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb',1,'LogCabin::RPC::ServerRPC']]],
   ['rejectinvalidrequest',['rejectInvalidRequest',['../classLogCabin_1_1RPC_1_1ServerRPC.html#ab67aadc48e385864c66e82d3e0aa8d25',1,'LogCabin::RPC::ServerRPC::rejectInvalidRequest()'],['../classLogCabin_1_1RPC_1_1ServiceMock.html#a49ae31033f2aea9c6070d843da85d22a',1,'LogCabin::RPC::ServiceMock::rejectInvalidRequest()']]],

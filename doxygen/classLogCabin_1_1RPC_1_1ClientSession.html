@@ -130,10 +130,10 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is used to time out RPCs and sessions when the server is no longer responding.  <a href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a4798c7e2244561626e4ce819710e7e56">Core::Time::SteadyClock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a43f87a68e33cee8a2aeda216fd014693">Clock</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock used for timeouts.  <a href="#a43f87a68e33cee8a2aeda216fd014693"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Clock::time_point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a4d5c2466dbd609fd73de61a5d76ad696">TimePoint</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for absolute time values used for timeouts.  <a href="#a4d5c2466dbd609fd73de61a5d76ad696"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classLogCabin_1_1RPC_1_1Address.html#aa69c2ab7510d510c776d3a76b008dc7b">Address::Clock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ad4b83d5f28373cf3e7627ff56cfe813c">Clock</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock used for timeouts.  <a href="#ad4b83d5f28373cf3e7627ff56cfe813c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classLogCabin_1_1RPC_1_1Address.html#a131ccf5dd045d375978a1adb7d27ed0c">Address::TimePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ae699938d467520e3dc9672bffd5e5e8f">TimePoint</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for absolute time values used for timeouts.  <a href="#ae699938d467520e3dc9672bffd5e5e8f"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a3b427e7eb0f850fd78284a657d354a80">~ClientSession</a> ()</td></tr>
@@ -147,17 +147,17 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static std::shared_ptr<br class="typebreak"/>
-&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a43aad9871250e6efc1adef014a0012f2">makeSession</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a11b5031d1bcbf4fb6d04d053661ce56d">eventLoop</a>, const <a class="el" href="classLogCabin_1_1RPC_1_1Address.html">Address</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#acf97ad99f351ca09b0eb405eb4acdd49">address</a>, uint32_t maxMessageLength, <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a4d5c2466dbd609fd73de61a5d76ad696">TimePoint</a> timeout)</td></tr>
+&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a43aad9871250e6efc1adef014a0012f2">makeSession</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a11b5031d1bcbf4fb6d04d053661ce56d">eventLoop</a>, const <a class="el" href="classLogCabin_1_1RPC_1_1Address.html">Address</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#acf97ad99f351ca09b0eb405eb4acdd49">address</a>, uint32_t maxMessageLength, <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ae699938d467520e3dc9672bffd5e5e8f">TimePoint</a> timeout)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a new <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> object.  <a href="#a43aad9871250e6efc1adef014a0012f2"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ace112569f046f7addfd7ceb2605d5925">ClientSession</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a11b5031d1bcbf4fb6d04d053661ce56d">eventLoop</a>, const <a class="el" href="classLogCabin_1_1RPC_1_1Address.html">Address</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#acf97ad99f351ca09b0eb405eb4acdd49">address</a>, uint32_t maxMessageLength, <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a4d5c2466dbd609fd73de61a5d76ad696">TimePoint</a> timeout)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ace112569f046f7addfd7ceb2605d5925">ClientSession</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a11b5031d1bcbf4fb6d04d053661ce56d">eventLoop</a>, const <a class="el" href="classLogCabin_1_1RPC_1_1Address.html">Address</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#acf97ad99f351ca09b0eb405eb4acdd49">address</a>, uint32_t maxMessageLength, <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ae699938d467520e3dc9672bffd5e5e8f">TimePoint</a> timeout)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This constructor is private because the class must be allocated in a particular way.  <a href="#ace112569f046f7addfd7ceb2605d5925"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a020484e958e01112a4d065dd8da35ac3">cancel</a> (<a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html">OpaqueClientRPC</a> &amp;rpc)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> when it is no longer interested in its response.  <a href="#a020484e958e01112a4d065dd8da35ac3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a464dbb3925165c6bc8bf94bd4a8a39be">update</a> (<a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html">OpaqueClientRPC</a> &amp;rpc)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> when it wants to be learn of its response (non-blocking).  <a href="#a464dbb3925165c6bc8bf94bd4a8a39be"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a32698f882cba01e88b1273b2ad9eb73e">wait</a> (const <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html">OpaqueClientRPC</a> &amp;rpc, <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a4d5c2466dbd609fd73de61a5d76ad696">TimePoint</a> timeout)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a32698f882cba01e88b1273b2ad9eb73e">wait</a> (const <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html">OpaqueClientRPC</a> &amp;rpc, <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ae699938d467520e3dc9672bffd5e5e8f">TimePoint</a> timeout)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> to wait for its response (blocking).  <a href="#a32698f882cba01e88b1273b2ad9eb73e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a1ce920a82a31bfa2b91c5f9c63bce430">ClientSession</a> (const <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a> &amp;)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a572d96b189695293ccb51706c325f3e8">operator=</a> (const <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a> &amp;)</td></tr>
@@ -204,12 +204,12 @@ Friends</h2></td></tr>
 
 <p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00046">46</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
-<a class="anchor" id="a43f87a68e33cee8a2aeda216fd014693"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::Clock" ref="a43f87a68e33cee8a2aeda216fd014693" args="" -->
+<a class="anchor" id="ad4b83d5f28373cf3e7627ff56cfe813c"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::Clock" ref="ad4b83d5f28373cf3e7627ff56cfe813c" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a4798c7e2244561626e4ce819710e7e56">Core::Time::SteadyClock</a> <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a43f87a68e33cee8a2aeda216fd014693">LogCabin::RPC::ClientSession::Clock</a></td>
+          <td class="memname">typedef <a class="el" href="classLogCabin_1_1RPC_1_1Address.html#aa69c2ab7510d510c776d3a76b008dc7b">Address::Clock</a> <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ad4b83d5f28373cf3e7627ff56cfe813c">LogCabin::RPC::ClientSession::Clock</a></td>
         </tr>
       </table>
 </div>
@@ -221,12 +221,12 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4d5c2466dbd609fd73de61a5d76ad696"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::TimePoint" ref="a4d5c2466dbd609fd73de61a5d76ad696" args="" -->
+<a class="anchor" id="ae699938d467520e3dc9672bffd5e5e8f"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::TimePoint" ref="ae699938d467520e3dc9672bffd5e5e8f" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Clock::time_point</a> <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a4d5c2466dbd609fd73de61a5d76ad696">LogCabin::RPC::ClientSession::TimePoint</a></td>
+          <td class="memname">typedef <a class="el" href="classLogCabin_1_1RPC_1_1Address.html#a131ccf5dd045d375978a1adb7d27ed0c">Address::TimePoint</a> <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ae699938d467520e3dc9672bffd5e5e8f">LogCabin::RPC::ClientSession::TimePoint</a></td>
         </tr>
       </table>
 </div>
@@ -264,7 +264,7 @@ Friends</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a4d5c2466dbd609fd73de61a5d76ad696">TimePoint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ae699938d467520e3dc9672bffd5e5e8f">TimePoint</a>&#160;</td>
           <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>
@@ -346,7 +346,7 @@ Friends</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a4d5c2466dbd609fd73de61a5d76ad696">TimePoint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ae699938d467520e3dc9672bffd5e5e8f">TimePoint</a>&#160;</td>
           <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>
@@ -506,7 +506,7 @@ Friends</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a4d5c2466dbd609fd73de61a5d76ad696">TimePoint</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ae699938d467520e3dc9672bffd5e5e8f">TimePoint</a>&#160;</td>
           <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>
