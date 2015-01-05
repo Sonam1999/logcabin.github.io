@@ -129,8 +129,8 @@ Classes</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#aaae2b3de8c5f660f7af0c165c6efcecd">TreeLeaderRPC</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a621445df101d7349a3cac84121e67d28">call</a> (<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7">OpCode</a> opCode, const google::protobuf::Message &amp;request, google::protobuf::Message &amp;response)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> on the cluster leader.  <a href="#a621445df101d7349a3cac84121e67d28"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a4e198d3c4731b503c43b804817f53e0e">call</a> (<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7">OpCode</a> opCode, const google::protobuf::Message &amp;request, google::protobuf::Message &amp;response, <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ab8c09d1a16236b8b75f575c9d2681c78">TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> on the cluster leader.  <a href="#a4e198d3c4731b503c43b804817f53e0e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr<br class="typebreak"/>
 &lt; <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html">LeaderRPCBase::Call</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a6801e924e6e1f17a4f9a333f7fd88acb">makeCall</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a new <a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC_1_1Call.html">Call</a> object.  <a href="#a6801e924e6e1f17a4f9a333f7fd88acb"></a><br/></td></tr>
@@ -165,12 +165,12 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a621445df101d7349a3cac84121e67d28"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC::call" ref="a621445df101d7349a3cac84121e67d28" args="(OpCode opCode, const google::protobuf::Message &amp;request, google::protobuf::Message &amp;response)" -->
+<a class="anchor" id="a4e198d3c4731b503c43b804817f53e0e"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC::call" ref="a4e198d3c4731b503c43b804817f53e0e" args="(OpCode opCode, const google::protobuf::Message &amp;request, google::protobuf::Message &amp;response, TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::<a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a621445df101d7349a3cac84121e67d28">TreeLeaderRPC::call</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33">Status</a> LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::<a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a4e198d3c4731b503c43b804817f53e0e">TreeLeaderRPC::call</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7">OpCode</a>&#160;</td>
           <td class="paramname"><em>opCode</em>, </td>
@@ -185,7 +185,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">google::protobuf::Message &amp;&#160;</td>
-          <td class="paramname"><em>response</em>&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ab8c09d1a16236b8b75f575c9d2681c78">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -202,12 +208,13 @@ Public Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">opCode</td><td><a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> operation code. The caller must guarantee that this is a valid opCode. (If the server rejects it, this will PANIC.) </td></tr>
     <tr><td class="paramdir"></td><td class="paramname">request</td><td>The parameters for the operation. The caller must guarantee that this is a well-formed request. (If the server rejects it, this will PANIC.) </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">timeout</td><td>After this time has elapsed, stop waiting and return TIMEOUT. In this case, response will be left unmodified. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">response</td><td>The response to the operation will be filled in here. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a3eddd989c0bdf72fc16898a3bf28fb8e">LogCabin::Client::LeaderRPCBase</a>.</p>
+<p>Implements <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#affe219f260f2dba9f73f2db4fa16d0c4">LogCabin::Client::LeaderRPCBase</a>.</p>
 
 <p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00040">40</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
 
@@ -231,7 +238,7 @@ Public Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ac8317451a34eefd8e2938586dc57e5a7">LogCabin::Client::LeaderRPCBase</a>.</p>
 
-<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00093">93</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00098">98</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -249,7 +256,7 @@ Public Attributes</h2></td></tr>
 
 <p>prevents concurrent access to 'tree' </p>
 
-<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00097">97</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00102">102</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -264,7 +271,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00098">98</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00103">103</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
 
 </div>
 </div>

@@ -143,8 +143,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Expect the next request operation to have type opCode, and return it the given response.  <a href="#ab2ead9f6fa29130123b727b656b5f177"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a0c34f0db12549f399e8693e7e246e59c">MessagePtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#aeacd39bf1791b2dea3b177c1963e4e10">popRequest</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Pop the first request from the queue.  <a href="#aeacd39bf1791b2dea3b177c1963e4e10"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a58ca1543b607a1803754ecbc0089eb66">call</a> (<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7">OpCode</a> opCode, const google::protobuf::Message &amp;request, google::protobuf::Message &amp;response)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Mocks out an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> call.  <a href="#a58ca1543b607a1803754ecbc0089eb66"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#aa734b3c0b473677aecbf28cc782a117e">call</a> (<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7">OpCode</a> opCode, const google::protobuf::Message &amp;request, google::protobuf::Message &amp;response, <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ab8c09d1a16236b8b75f575c9d2681c78">TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Mocks out an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> call.  <a href="#aa734b3c0b473677aecbf28cc782a117e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr<br class="typebreak"/>
 &lt; <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html">LeaderRPCBase::Call</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a15a50669f480cdd4761657213558987f">makeCall</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ac8317451a34eefd8e2938586dc57e5a7" title="Return a new Call object.">LeaderRPCBase::makeCall</a>.  <a href="#a15a50669f480cdd4761657213558987f"></a><br/></td></tr>
@@ -152,7 +152,7 @@ Public Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::deque&lt; std::pair&lt; <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7">OpCode</a>, <br class="typebreak"/>
 <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a0c34f0db12549f399e8693e7e246e59c">MessagePtr</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a76e9e55b1f9a3ee70a9c84117eadbb97">requestLog</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A queue of requests that have come in from <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a58ca1543b607a1803754ecbc0089eb66" title="Mocks out an RPC call.">call()</a>.  <a href="#a76e9e55b1f9a3ee70a9c84117eadbb97"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A queue of requests that have come in from <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#aa734b3c0b473677aecbf28cc782a117e" title="Mocks out an RPC call.">call()</a>.  <a href="#a76e9e55b1f9a3ee70a9c84117eadbb97"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::queue&lt; std::pair&lt; <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7">OpCode</a>, <br class="typebreak"/>
 <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a0c34f0db12549f399e8693e7e246e59c">MessagePtr</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a4dce9b2a27addcd84775d9ec9c341ff7">responseQueue</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A queue of responses that have been primed from <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#ab2ead9f6fa29130123b727b656b5f177" title="Expect the next request operation to have type opCode, and return it the given response.">expect()</a>.  <a href="#a4dce9b2a27addcd84775d9ec9c341ff7"></a><br/></td></tr>
@@ -270,12 +270,12 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a58ca1543b607a1803754ecbc0089eb66"></a><!-- doxytag: member="LogCabin::Client::LeaderRPCMock::call" ref="a58ca1543b607a1803754ecbc0089eb66" args="(OpCode opCode, const google::protobuf::Message &amp;request, google::protobuf::Message &amp;response)" -->
+<a class="anchor" id="aa734b3c0b473677aecbf28cc782a117e"></a><!-- doxytag: member="LogCabin::Client::LeaderRPCMock::call" ref="aa734b3c0b473677aecbf28cc782a117e" args="(OpCode opCode, const google::protobuf::Message &amp;request, google::protobuf::Message &amp;response, TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a58ca1543b607a1803754ecbc0089eb66">LogCabin::Client::LeaderRPCMock::call</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33">LeaderRPCMock::Status</a> <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#aa734b3c0b473677aecbf28cc782a117e">LogCabin::Client::LeaderRPCMock::call</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7">OpCode</a>&#160;</td>
           <td class="paramname"><em>opCode</em>, </td>
@@ -290,7 +290,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">google::protobuf::Message &amp;&#160;</td>
-          <td class="paramname"><em>response</em>&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ab8c09d1a16236b8b75f575c9d2681c78">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -304,7 +310,7 @@ Private Attributes</h2></td></tr>
 <p>Mocks out an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> call. </p>
 <p>You should have called expect prior to this to prime a response. The request will be logged so you can pop it. </p>
 
-<p>Implements <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a3eddd989c0bdf72fc16898a3bf28fb8e">LogCabin::Client::LeaderRPCBase</a>.</p>
+<p>Implements <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#affe219f260f2dba9f73f2db4fa16d0c4">LogCabin::Client::LeaderRPCBase</a>.</p>
 
 <p>Definition at line <a class="el" href="LeaderRPCMock_8cc_source.html#l00054">54</a> of file <a class="el" href="LeaderRPCMock_8cc_source.html">LeaderRPCMock.cc</a>.</p>
 
@@ -328,7 +334,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ac8317451a34eefd8e2938586dc57e5a7">LogCabin::Client::LeaderRPCBase</a>.</p>
 
-<p>Definition at line <a class="el" href="LeaderRPCMock_8cc_source.html#l00104">104</a> of file <a class="el" href="LeaderRPCMock_8cc_source.html">LeaderRPCMock.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPCMock_8cc_source.html#l00112">112</a> of file <a class="el" href="LeaderRPCMock_8cc_source.html">LeaderRPCMock.cc</a>.</p>
 
 </div>
 </div>
@@ -344,9 +350,9 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>A queue of requests that have come in from <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a58ca1543b607a1803754ecbc0089eb66" title="Mocks out an RPC call.">call()</a>. </p>
+<p>A queue of requests that have come in from <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#aa734b3c0b473677aecbf28cc782a117e" title="Mocks out an RPC call.">call()</a>. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPCMock_8h_source.html#l00080">80</a> of file <a class="el" href="LeaderRPCMock_8h_source.html">LeaderRPCMock.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPCMock_8h_source.html#l00084">84</a> of file <a class="el" href="LeaderRPCMock_8h_source.html">LeaderRPCMock.h</a>.</p>
 
 </div>
 </div>
@@ -363,7 +369,7 @@ Private Attributes</h2></td></tr>
 
 <p>A queue of responses that have been primed from <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#ab2ead9f6fa29130123b727b656b5f177" title="Expect the next request operation to have type opCode, and return it the given response.">expect()</a>. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPCMock_8h_source.html#l00084">84</a> of file <a class="el" href="LeaderRPCMock_8h_source.html">LeaderRPCMock.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPCMock_8h_source.html#l00088">88</a> of file <a class="el" href="LeaderRPCMock_8h_source.html">LeaderRPCMock.h</a>.</p>
 
 </div>
 </div>

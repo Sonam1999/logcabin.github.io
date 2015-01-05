@@ -102,7 +102,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle">
@@ -110,7 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper" -->
-<p>This class helps with providing exactly-once semantics for RPCs.  
+<p>This class helps with providing exactly-once semantics for read-write RPCs.  
  <a href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>&gt;</code></p>
@@ -125,22 +124,16 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#ad36f3448a815fcf55e0295aeefa36b5a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a6b221d098f9def0ca7f35b2022544ce9">exit</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare to shut down (join with thread).  <a href="#a6b221d098f9def0ca7f35b2022544ce9"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">Protocol::Client::ExactlyOnceRPCInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ab333d7a5c678edd8c3265d6d3a4caf5e">getRPCInfo</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this before sending an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>.  <a href="#ab333d7a5c678edd8c3265d6d3a4caf5e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Protocol::Client::ExactlyOnceRPCInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#aa693f873f6e691557dad654a51bd1a52">getRPCInfo</a> (<a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this before sending an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>.  <a href="#aa693f873f6e691557dad654a51bd1a52"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a1a440dca3e1b2606e4e94a40e4e30211">doneWithRPC</a> (const Protocol::Client::ExactlyOnceRPCInfo &amp;)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this after receiving an RPCs response.  <a href="#a1a440dca3e1b2606e4e94a40e4e30211"></a><br/></td></tr>
-<tr><td colspan="2"><h2><a name="pri-types"></a>
-Private Types</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a4798c7e2244561626e4ce819710e7e56">Core::Time::SteadyClock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#aa9e41d5f89384f224fcc8f6403ded784">Clock</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock type used for keep-alive timer.  <a href="#aa9e41d5f89384f224fcc8f6403ded784"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Clock::time_point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ac9995038e8ab44b37bb295dd7780eab2">TimePoint</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">TimePoint type used for keep-alive timer.  <a href="#ac9995038e8ab44b37bb295dd7780eab2"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">Protocol::Client::ExactlyOnceRPCInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ac2d6fc46f922499a3e62ce70c78f04e6">getRPCInfo</a> (std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;lockGuard)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal version of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ab333d7a5c678edd8c3265d6d3a4caf5e" title="Call this before sending an RPC.">getRPCInfo()</a> to avoid deadlock with self.  <a href="#ac2d6fc46f922499a3e62ce70c78f04e6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Protocol::Client::ExactlyOnceRPCInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a27d031351b825651272b84f9cbc6325a">getRPCInfo</a> (std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;lockGuard, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceLogCabin_1_1Client_1_1Internal.html">Internal</a> version of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#aa693f873f6e691557dad654a51bd1a52" title="Call this before sending an RPC.">getRPCInfo()</a> to avoid deadlock with self.  <a href="#a27d031351b825651272b84f9cbc6325a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a37aad562f8e0b663e8ee45d9b81554e4">doneWithRPC</a> (const Protocol::Client::ExactlyOnceRPCInfo &amp;, std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;lockGuard)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal version of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a1a440dca3e1b2606e4e94a40e4e30211" title="Call this after receiving an RPCs response.">doneWithRPC()</a> to avoid deadlock with self.  <a href="#a37aad562f8e0b663e8ee45d9b81554e4"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceLogCabin_1_1Client_1_1Internal.html">Internal</a> version of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a1a440dca3e1b2606e4e94a40e4e30211" title="Call this after receiving an RPCs response.">doneWithRPC()</a> to avoid deadlock with self.  <a href="#a37aad562f8e0b663e8ee45d9b81554e4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ab243c21fac88261b47a927af8beeb020">keepAliveThreadMain</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function for keep-alive thread.  <a href="#ab243c21fac88261b47a927af8beeb020"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#af9a34b8019e9416cc1cf0b133ba9aa88">ExactlyOnceRPCHelper</a> (const <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html">ExactlyOnceRPCHelper</a> &amp;)</td></tr>
@@ -161,7 +154,7 @@ Private Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">keepAliveThread blocks on this.  <a href="#a5f31c974e4700a6fe743e45fe23b6320"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a325257de9678f891002bad62f39cea40">exiting</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to keepAliveThread that it should shut down.  <a href="#a325257de9678f891002bad62f39cea40"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ac9995038e8ab44b37bb295dd7780eab2">TimePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#adfb2719978aefcf420057c37d221b1bf">lastKeepAliveStart</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#adfb2719978aefcf420057c37d221b1bf">lastKeepAliveStart</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Time just before the last keep-alive or read-write request to the cluster was made.  <a href="#adfb2719978aefcf420057c37d221b1bf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a9c6d52b44a1dc805081c602347a0e422">keepAliveIntervalMs</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">How often session keep-alive requests are sent during periods of inactivity, in milliseconds.  <a href="#a9c6d52b44a1dc805081c602347a0e422"></a><br/></td></tr>
@@ -172,47 +165,12 @@ Private Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ab243c21fac88261b47a927af8beeb020" title="Main function for keep-alive thread.">keepAliveThreadMain()</a>.  <a href="#a28858c45dfad2f9abbad0db36170049d"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>This class helps with providing exactly-once semantics for RPCs. </p>
+<div class="textblock"><p>This class helps with providing exactly-once semantics for read-write RPCs. </p>
 <p>For example, it assigns sequence numbers to RPCs, which servers then use to prevent duplicate processing of duplicate requests.</p>
 <p>This class is implemented in a monitor style. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00154">154</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
-</div><hr/><h2>Member Typedef Documentation</h2>
-<a class="anchor" id="aa9e41d5f89384f224fcc8f6403ded784"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::Clock" ref="aa9e41d5f89384f224fcc8f6403ded784" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a4798c7e2244561626e4ce819710e7e56">Core::Time::SteadyClock</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#aa9e41d5f89384f224fcc8f6403ded784">LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::Clock</a><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Clock type used for keep-alive timer. </p>
-
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00200">200</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac9995038e8ab44b37bb295dd7780eab2"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::TimePoint" ref="ac9995038e8ab44b37bb295dd7780eab2" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Clock::time_point</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ac9995038e8ab44b37bb295dd7780eab2">LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::TimePoint</a><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>TimePoint type used for keep-alive timer. </p>
-
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00204">204</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
-
-</div>
-</div>
-<hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00165">165</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a369717ef5eb0b062fed7197d7bbe59f4"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::ExactlyOnceRPCHelper" ref="a369717ef5eb0b062fed7197d7bbe59f4" args="(ClientImpl *client)" -->
 <div class="memitem">
 <div class="memproto">
@@ -236,7 +194,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00099">99</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00151">151</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -256,7 +214,7 @@ Private Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00115">115</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00167">167</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -294,18 +252,19 @@ Private Attributes</h2></td></tr>
 
 <p>Prepare to shut down (join with thread). </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00120">120</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00172">172</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ab333d7a5c678edd8c3265d6d3a4caf5e"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::getRPCInfo" ref="ab333d7a5c678edd8c3265d6d3a4caf5e" args="()" -->
+<a class="anchor" id="aa693f873f6e691557dad654a51bd1a52"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::getRPCInfo" ref="aa693f873f6e691557dad654a51bd1a52" args="(TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Protocol::Client::ExactlyOnceRPCInfo <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ab333d7a5c678edd8c3265d6d3a4caf5e">LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::getRPCInfo</a> </td>
+          <td class="memname">Protocol::Client::ExactlyOnceRPCInfo <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#aa693f873f6e691557dad654a51bd1a52">LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::getRPCInfo</a> </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -313,8 +272,15 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Call this before sending an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeout</td><td>If this timeout elapses before a session can be opened with the cluster, this method will return early and the returned information will have a client_id set to 0, which is not a valid ID. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Info to be used with read-write RPCs, or if the timeout elapsed, a client_id set to 0. </dd></dl>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00134">134</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00186">186</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -335,28 +301,38 @@ Private Attributes</h2></td></tr>
 
 <p>Call this after receiving an RPCs response. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00141">141</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00193">193</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ac2d6fc46f922499a3e62ce70c78f04e6"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::getRPCInfo" ref="ac2d6fc46f922499a3e62ce70c78f04e6" args="(std::unique_lock&lt; Core::Mutex &gt; &amp;lockGuard)" -->
+<a class="anchor" id="a27d031351b825651272b84f9cbc6325a"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::getRPCInfo" ref="a27d031351b825651272b84f9cbc6325a" args="(std::unique_lock&lt; Core::Mutex &gt; &amp;lockGuard, TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Protocol::Client::ExactlyOnceRPCInfo <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ab333d7a5c678edd8c3265d6d3a4caf5e">LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::getRPCInfo</a> </td>
+          <td class="memname">Protocol::Client::ExactlyOnceRPCInfo <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#aa693f873f6e691557dad654a51bd1a52">LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::getRPCInfo</a> </td>
           <td>(</td>
           <td class="paramtype">std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>lockGuard</em></td><td>)</td>
-          <td><code> [private]</code></td>
+          <td class="paramname"><em>lockGuard</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Internal version of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ab333d7a5c678edd8c3265d6d3a4caf5e" title="Call this before sending an RPC.">getRPCInfo()</a> to avoid deadlock with self. </p>
+<p><a class="el" href="namespaceLogCabin_1_1Client_1_1Internal.html">Internal</a> version of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#aa693f873f6e691557dad654a51bd1a52" title="Call this before sending an RPC.">getRPCInfo()</a> to avoid deadlock with self. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00149">149</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00201">201</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -385,9 +361,9 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Internal version of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a1a440dca3e1b2606e4e94a40e4e30211" title="Call this after receiving an RPCs response.">doneWithRPC()</a> to avoid deadlock with self. </p>
+<p><a class="el" href="namespaceLogCabin_1_1Client_1_1Internal.html">Internal</a> version of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a1a440dca3e1b2606e4e94a40e4e30211" title="Call this after receiving an RPCs response.">doneWithRPC()</a> to avoid deadlock with self. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00182">182</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00244">244</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -408,7 +384,7 @@ Private Attributes</h2></td></tr>
 <p>Main function for keep-alive thread. </p>
 <p>Periodically makes requests to the cluster to keep the client's session active. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00190">190</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00252">252</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -444,7 +420,7 @@ Private Attributes</h2></td></tr>
 <p>Used to open a session with the cluster. </p>
 <p>const and non-NULL except for unit tests. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00210">210</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00221">221</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -461,7 +437,7 @@ Private Attributes</h2></td></tr>
 
 <p>Protects all the members of this class. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00214">214</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00225">225</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -478,7 +454,7 @@ Private Attributes</h2></td></tr>
 
 <p>The numbers of the RPCs for which this client is still awaiting a response. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00219">219</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00230">230</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -495,7 +471,7 @@ Private Attributes</h2></td></tr>
 
 <p>The client's session ID as returned by the open session <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>, or 0 if one has not yet been assigned. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00224">224</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00235">235</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -512,7 +488,7 @@ Private Attributes</h2></td></tr>
 
 <p>The number to assign to the next <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00228">228</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00239">239</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -530,7 +506,7 @@ Private Attributes</h2></td></tr>
 <p>keepAliveThread blocks on this. </p>
 <p>Notified when lastKeepAliveStart, keepAliveIntervalMs, or exiting changes. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00233">233</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00244">244</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -547,7 +523,7 @@ Private Attributes</h2></td></tr>
 
 <p>Flag to keepAliveThread that it should shut down. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00237">237</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00248">248</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -556,7 +532,7 @@ Private Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ac9995038e8ab44b37bb295dd7780eab2">TimePoint</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#adfb2719978aefcf420057c37d221b1bf">LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::lastKeepAliveStart</a><code> [private]</code></td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#adfb2719978aefcf420057c37d221b1bf">LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::lastKeepAliveStart</a><code> [private]</code></td>
         </tr>
       </table>
 </div>
@@ -565,7 +541,7 @@ Private Attributes</h2></td></tr>
 <p>Time just before the last keep-alive or read-write request to the cluster was made. </p>
 <p>The next keep-alive request will be invoked keepAliveIntervalMs after this, if no intervening requests are made. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00243">243</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00254">254</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -582,7 +558,7 @@ Private Attributes</h2></td></tr>
 
 <p>How often session keep-alive requests are sent during periods of inactivity, in milliseconds. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00248">248</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00259">259</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -600,7 +576,7 @@ Private Attributes</h2></td></tr>
 <p>If set, this is an ongoing keep-alive <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. </p>
 <p>This call is canceled to interrupt <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a28858c45dfad2f9abbad0db36170049d" title="Runs keepAliveThreadMain().">keepAliveThread</a> when exiting. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00254">254</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00265">265</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -616,9 +592,9 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Runs <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ab243c21fac88261b47a927af8beeb020" title="Main function for keep-alive thread.">keepAliveThreadMain()</a>. </p>
-<p>Since this thread would be unexpected/wasteful for clients that only issue read-only requests (or no requests at all), it is spawned lazy, if/when the client opens its session with the cluster (upon its first read-write request). </p>
+<p>Since this thread would be unexpected/wasteful for clients that only issue read-only requests (or no requests at all), it is spawned lazily, if/when the client opens its session with the cluster (upon its first read-write request). </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00263">263</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00274">274</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>

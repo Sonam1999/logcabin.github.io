@@ -109,6 +109,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1Internal.html">Internal</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02Client_8cc_03.html">anonymous_namespace{Client.cc}</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html">anonymous_namespace{ClientImpl.cc}</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03.html">anonymous_namespace{MockClientImpl.cc}</a></td></tr>
@@ -140,6 +141,8 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See Status::TYPE_ERROR.  <a href="classLogCabin_1_1Client_1_1TypeException.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ConditionNotMetException.html">ConditionNotMetException</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See Status::CONDITION_NOT_MET.  <a href="classLogCabin_1_1Client_1_1ConditionNotMetException.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1TimeoutException.html">TimeoutException</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See Status::TIMEOUT.  <a href="classLogCabin_1_1Client_1_1TimeoutException.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Tree.html">Tree</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides access to the hierarchical key-value store.  <a href="classLogCabin_1_1Client_1_1Tree.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html">Cluster</a></td></tr>
@@ -163,7 +166,9 @@ Enumerations</h2></td></tr>
 <br/>
 &#160;&#160;<a class="el" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a0681e66f4dc5bcf1c7d2f488503381d4">TYPE_ERROR</a>, 
 <br/>
-&#160;&#160;<a class="el" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a07e572a852ad124fb3127c2ce5986b16">CONDITION_NOT_MET</a>
+&#160;&#160;<a class="el" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a07e572a852ad124fb3127c2ce5986b16">CONDITION_NOT_MET</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4ab990fd14d55b44d8753e7aa00a8575bf">TIMEOUT</a>
 <br/>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Status codes returned by Tree operations.  <a href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4">More...</a><br/></td></tr>
@@ -171,6 +176,8 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client.html#a405d553d46faba0ed198bb3f6af8b84d">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4">Status</a> status)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a status code to a stream.  <a href="#a405d553d46faba0ed198bb3f6af8b84d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client.html#ab4cb79471da2b0112eb0572282e6d3b9">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33">LeaderRPCBase::Status</a> &amp;status)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client.html#a5e98f2acf3bcbf749e56dea8d051f32b">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html#aa6bbf2a3f67e825c4f82dd282bf39939">LeaderRPCBase::Call::Status</a> &amp;status)</td></tr>
 </table>
 <hr/><h2>Typedef Documentation</h2>
 <a class="anchor" id="a70decfcb5306a1841ca4a929bb7e54f1"></a><!-- doxytag: member="LogCabin::Client::Condition" ref="a70decfcb5306a1841ca4a929bb7e54f1" args="" -->
@@ -238,6 +245,10 @@ Functions</h2></td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a4326ade2a152c568b8a7b7daafadf9b4a07e572a852ad124fb3127c2ce5986b16"></a><!-- doxytag: member="CONDITION_NOT_MET" ref="a4326ade2a152c568b8a7b7daafadf9b4a07e572a852ad124fb3127c2ce5986b16" args="" -->CONDITION_NOT_MET</em>&nbsp;</td><td>
 <p>A predicate which was previously set on operations with <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">Tree::setCondition()</a> was not satisfied. </p>
 </td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a4326ade2a152c568b8a7b7daafadf9b4ab990fd14d55b44d8753e7aa00a8575bf"></a><!-- doxytag: member="TIMEOUT" ref="a4326ade2a152c568b8a7b7daafadf9b4ab990fd14d55b44d8753e7aa00a8575bf" args="" -->TIMEOUT</em>&nbsp;</td><td>
+<p>A timeout specified by <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#ac0f658f32b73a9daba01889040180ca7" title="Abort each future operation if it may not have completed within the specified period of time...">Tree::setTimeout()</a> elapsed while waiting for an operation to complete. </p>
+<p>It is not known whether the operation has or will complete, only that a positive acknowledgment was not received before the timeout elapsed. </p>
+</td></tr>
 </table>
 </dd>
 </dl>
@@ -274,7 +285,65 @@ Functions</h2></td></tr>
 
 <p>Print a status code to a stream. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00060">60</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00083">83</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab4cb79471da2b0112eb0572282e6d3b9"></a><!-- doxytag: member="LogCabin::Client::operator&lt;&lt;" ref="ab4cb79471da2b0112eb0572282e6d3b9" args="(std::ostream &amp;os, const LeaderRPCBase::Status &amp;status)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; LogCabin::Client::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const LeaderRPCBase::Status &amp;&#160;</td>
+          <td class="paramname"><em>status</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00032">32</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5e98f2acf3bcbf749e56dea8d051f32b"></a><!-- doxytag: member="LogCabin::Client::operator&lt;&lt;" ref="a5e98f2acf3bcbf749e56dea8d051f32b" args="(std::ostream &amp;os, const LeaderRPCBase::Call::Status &amp;status)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; LogCabin::Client::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const LeaderRPCBase::Call::Status &amp;&#160;</td>
+          <td class="paramname"><em>status</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00046">46</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>

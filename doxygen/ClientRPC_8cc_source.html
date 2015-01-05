@@ -286,7 +286,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00204"></a>00204             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;RPC_FAILED&quot;</span>;
 <a name="l00205"></a>00205         <span class="keywordflow">case</span> Status::RPC_CANCELED:
 <a name="l00206"></a>00206             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;RPC_CANCELED&quot;</span>;
-<a name="l00207"></a>00207         <span class="keywordflow">case</span> Status::TIMEOUT:
+<a name="l00207"></a>00207         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4ab990fd14d55b44d8753e7aa00a8575bf" title="A timeout specified by Tree::setTimeout() elapsed while waiting for an operation to complete...">Status::TIMEOUT</a>:
 <a name="l00208"></a>00208             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;TIMEOUT&quot;</span>;
 <a name="l00209"></a>00209         <span class="keywordflow">default</span>:
 <a name="l00210"></a>00210             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;(INVALID VALUE)&quot;</span>;

@@ -101,6 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
@@ -128,7 +129,13 @@ Inheritance diagram for LogCabin::Client::ClientImpl:</div>
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html">ExactlyOnceRPCHelper</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class helps with providing exactly-once semantics for RPCs.  <a href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class helps with providing exactly-once semantics for read-write RPCs.  <a href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#details">More...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a13f095dbe84b8f0d7eea2d8445949c9c">LeaderRPC::Clock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#acfc92898523189c32416263008a9b2b1">Clock</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock used for timeouts.  <a href="#acfc92898523189c32416263008a9b2b1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ab8c09d1a16236b8b75f575c9d2681c78">LeaderRPC::TimePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for absolute time values used for timeouts.  <a href="#a07e5418da33e7c54493e5ad0a535501c"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#ab5d5368dcadf4ff03a5ef42ab7e42ab6">ClientImpl</a> ()</td></tr>
@@ -144,18 +151,18 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html">ConfigurationResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a9d4819988fefe68440964646903f3e8f">setConfiguration</a> (uint64_t oldId, const <a class="el" href="namespaceLogCabin_1_1Client.html#a63581e43a22ec4472d57c7b920d1d520">Configuration</a> &amp;newConfiguration)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#af9b729f3b6b133214030af7288fbe11d">canonicalize</a> (const std::string &amp;path, const std::string &amp;workingDirectory, std::string &amp;canonical)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the canonicalized path name resulting from accessing path relative to workingDirectory.  <a href="#af9b729f3b6b133214030af7288fbe11d"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#ad68ab46874dc7cb25d8bd16bcbd619cf">makeDirectory</a> (const std::string &amp;path, const std::string &amp;workingDirectory, const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;condition)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a2bd59073257f11c2f458bd05d7aa9cc3" title="Make sure a directory exists at the given path.">Tree::makeDirectory</a>.  <a href="#ad68ab46874dc7cb25d8bd16bcbd619cf"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a5f40bb8b10dbbcba5c6692ac61518996">listDirectory</a> (const std::string &amp;path, const std::string &amp;workingDirectory, const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;condition, std::vector&lt; std::string &gt; &amp;children)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>.  <a href="#a5f40bb8b10dbbcba5c6692ac61518996"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#aad27957cdbe4ed74129dea7e49663dbd">removeDirectory</a> (const std::string &amp;path, const std::string &amp;workingDirectory, const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;condition)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#adab277ed481a6c60219ba14816235566" title="Make sure a directory does not exist.">Tree::removeDirectory</a>.  <a href="#aad27957cdbe4ed74129dea7e49663dbd"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#ad9273cb52c9843f58de68f24bd52dd8f">write</a> (const std::string &amp;path, const std::string &amp;workingDirectory, const std::string &amp;contents, const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;condition)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a200592adcfe3460c336d4ae31078d456" title="Set the value of a file.">Tree::write</a>.  <a href="#ad9273cb52c9843f58de68f24bd52dd8f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#adbe6d7719615b7c98882f753ab7c5904">read</a> (const std::string &amp;path, const std::string &amp;workingDirectory, const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;condition, std::string &amp;contents)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a74c016d6333e5548edd2873baff605c4" title="Get the value of a file.">Tree::read</a>.  <a href="#adbe6d7719615b7c98882f753ab7c5904"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a26830427df87c698a1eb45677249f689">removeFile</a> (const std::string &amp;path, const std::string &amp;workingDirectory, const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;condition)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a7dd317fe97e655550b9029453f028d4b" title="Make sure a file does not exist.">Tree::removeFile</a>.  <a href="#a26830427df87c698a1eb45677249f689"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a9fda786871ae56faf724a5212d040dd1">makeDirectory</a> (const std::string &amp;path, const std::string &amp;workingDirectory, const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;condition, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a2bd59073257f11c2f458bd05d7aa9cc3" title="Make sure a directory exists at the given path.">Tree::makeDirectory</a>.  <a href="#a9fda786871ae56faf724a5212d040dd1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a4e0fb9888cdb7f80db2d32d133aded28">listDirectory</a> (const std::string &amp;path, const std::string &amp;workingDirectory, const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;condition, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout, std::vector&lt; std::string &gt; &amp;children)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>.  <a href="#a4e0fb9888cdb7f80db2d32d133aded28"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#aa7bf0afd6cc2ad8ce102f7eac1b10c7e">removeDirectory</a> (const std::string &amp;path, const std::string &amp;workingDirectory, const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;condition, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#adab277ed481a6c60219ba14816235566" title="Make sure a directory does not exist.">Tree::removeDirectory</a>.  <a href="#aa7bf0afd6cc2ad8ce102f7eac1b10c7e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#aa2222f025571118071352ed27b9236f2">write</a> (const std::string &amp;path, const std::string &amp;workingDirectory, const std::string &amp;contents, const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;condition, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a200592adcfe3460c336d4ae31078d456" title="Set the value of a file.">Tree::write</a>.  <a href="#aa2222f025571118071352ed27b9236f2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#aa0b631a06bfda7c2a3ebbb2de7e99042">read</a> (const std::string &amp;path, const std::string &amp;workingDirectory, const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;condition, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout, std::string &amp;contents)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a74c016d6333e5548edd2873baff605c4" title="Get the value of a file.">Tree::read</a>.  <a href="#aa0b631a06bfda7c2a3ebbb2de7e99042"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a60c10fa03ba231bc52df48450fd0f03b">removeFile</a> (const std::string &amp;path, const std::string &amp;workingDirectory, const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;condition, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a7dd317fe97e655550b9029453f028d4b" title="Make sure a file does not exist.">Tree::removeFile</a>.  <a href="#a60c10fa03ba231bc52df48450fd0f03b"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#ad11a48bf53e0b42f9e66e26f483b862e">negotiateRPCVersion</a> ()</td></tr>
@@ -178,7 +185,42 @@ Protected Attributes</h2></td></tr>
 <p>This is wrapped by <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html" title="A handle to the LogCabin cluster.">Client::Cluster</a> and Client::Log for usability. </p>
 
 <p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00046">46</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
-</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+</div><hr/><h2>Member Typedef Documentation</h2>
+<a class="anchor" id="acfc92898523189c32416263008a9b2b1"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::Clock" ref="acfc92898523189c32416263008a9b2b1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a13f095dbe84b8f0d7eea2d8445949c9c">LeaderRPC::Clock</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#acfc92898523189c32416263008a9b2b1">LogCabin::Client::ClientImpl::Clock</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Clock used for timeouts. </p>
+
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00049">49</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a07e5418da33e7c54493e5ad0a535501c"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::TimePoint" ref="a07e5418da33e7c54493e5ad0a535501c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ab8c09d1a16236b8b75f575c9d2681c78">LeaderRPC::TimePoint</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">LogCabin::Client::ClientImpl::TimePoint</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Type for absolute time values used for timeouts. </p>
+
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00051">51</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ab5d5368dcadf4ff03a5ef42ab7e42ab6"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ClientImpl" ref="ab5d5368dcadf4ff03a5ef42ab7e42ab6" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -195,7 +237,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Constructor. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00238">238</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00308">308</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -215,7 +257,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00246">246</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00316">316</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -261,7 +303,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00252">252</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00322">322</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -283,7 +325,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#a685fb69c2b2100ea59a8c1c799b770b5">LogCabin::Client::MockClientImpl</a>.</p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00259">259</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00329">329</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -303,7 +345,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#a2ed44b7867fe705730755dbd1cbe0623">LogCabin::Client::MockClientImpl</a>.</p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00269">269</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00339">339</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -334,7 +376,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#aca24605490be047d90c2822d5c9aa973">LogCabin::Client::MockClientImpl</a>.</p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00284">284</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00356">356</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -376,53 +418,16 @@ Protected Attributes</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00320">320</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00394">394</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ad68ab46874dc7cb25d8bd16bcbd619cf"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::makeDirectory" ref="ad68ab46874dc7cb25d8bd16bcbd619cf" args="(const std::string &amp;path, const std::string &amp;workingDirectory, const Condition &amp;condition)" -->
+<a class="anchor" id="a9fda786871ae56faf724a5212d040dd1"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::makeDirectory" ref="a9fda786871ae56faf724a5212d040dd1" args="(const std::string &amp;path, const std::string &amp;workingDirectory, const Condition &amp;condition, TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#ad68ab46874dc7cb25d8bd16bcbd619cf">LogCabin::Client::ClientImpl::makeDirectory</a> </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>workingDirectory</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;&#160;</td>
-          <td class="paramname"><em>condition</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a2bd59073257f11c2f458bd05d7aa9cc3" title="Make sure a directory exists at the given path.">Tree::makeDirectory</a>. </p>
-
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00376">376</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5f40bb8b10dbbcba5c6692ac61518996"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::listDirectory" ref="a5f40bb8b10dbbcba5c6692ac61518996" args="(const std::string &amp;path, const std::string &amp;workingDirectory, const Condition &amp;condition, std::vector&lt; std::string &gt; &amp;children)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a5f40bb8b10dbbcba5c6692ac61518996">LogCabin::Client::ClientImpl::listDirectory</a> </td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a9fda786871ae56faf724a5212d040dd1">LogCabin::Client::ClientImpl::makeDirectory</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>path</em>, </td>
@@ -442,8 +447,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
-          <td class="paramname"><em>children</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -454,18 +459,18 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>. </p>
+<p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a2bd59073257f11c2f458bd05d7aa9cc3" title="Make sure a directory exists at the given path.">Tree::makeDirectory</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00397">397</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00450">450</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aad27957cdbe4ed74129dea7e49663dbd"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::removeDirectory" ref="aad27957cdbe4ed74129dea7e49663dbd" args="(const std::string &amp;path, const std::string &amp;workingDirectory, const Condition &amp;condition)" -->
+<a class="anchor" id="a4e0fb9888cdb7f80db2d32d133aded28"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::listDirectory" ref="a4e0fb9888cdb7f80db2d32d133aded28" args="(const std::string &amp;path, const std::string &amp;workingDirectory, const Condition &amp;condition, TimePoint timeout, std::vector&lt; std::string &gt; &amp;children)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#aad27957cdbe4ed74129dea7e49663dbd">LogCabin::Client::ClientImpl::removeDirectory</a> </td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a4e0fb9888cdb7f80db2d32d133aded28">LogCabin::Client::ClientImpl::listDirectory</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>path</em>, </td>
@@ -480,7 +485,62 @@ Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;&#160;</td>
-          <td class="paramname"><em>condition</em>&#160;</td>
+          <td class="paramname"><em>condition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>children</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>. </p>
+
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00474">474</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa7bf0afd6cc2ad8ce102f7eac1b10c7e"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::removeDirectory" ref="aa7bf0afd6cc2ad8ce102f7eac1b10c7e" args="(const std::string &amp;path, const std::string &amp;workingDirectory, const Condition &amp;condition, TimePoint timeout)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#aa7bf0afd6cc2ad8ce102f7eac1b10c7e">LogCabin::Client::ClientImpl::removeDirectory</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>workingDirectory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;&#160;</td>
+          <td class="paramname"><em>condition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -493,16 +553,16 @@ Protected Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#adab277ed481a6c60219ba14816235566" title="Make sure a directory does not exist.">Tree::removeDirectory</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00421">421</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00500">500</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ad9273cb52c9843f58de68f24bd52dd8f"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::write" ref="ad9273cb52c9843f58de68f24bd52dd8f" args="(const std::string &amp;path, const std::string &amp;workingDirectory, const std::string &amp;contents, const Condition &amp;condition)" -->
+<a class="anchor" id="aa2222f025571118071352ed27b9236f2"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::write" ref="aa2222f025571118071352ed27b9236f2" args="(const std::string &amp;path, const std::string &amp;workingDirectory, const std::string &amp;contents, const Condition &amp;condition, TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#ad9273cb52c9843f58de68f24bd52dd8f">LogCabin::Client::ClientImpl::write</a> </td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#aa2222f025571118071352ed27b9236f2">LogCabin::Client::ClientImpl::write</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>path</em>, </td>
@@ -523,7 +583,13 @@ Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;&#160;</td>
-          <td class="paramname"><em>condition</em>&#160;</td>
+          <td class="paramname"><em>condition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -536,16 +602,16 @@ Protected Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a200592adcfe3460c336d4ae31078d456" title="Set the value of a file.">Tree::write</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00442">442</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00524">524</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="adbe6d7719615b7c98882f753ab7c5904"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::read" ref="adbe6d7719615b7c98882f753ab7c5904" args="(const std::string &amp;path, const std::string &amp;workingDirectory, const Condition &amp;condition, std::string &amp;contents)" -->
+<a class="anchor" id="aa0b631a06bfda7c2a3ebbb2de7e99042"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::read" ref="aa0b631a06bfda7c2a3ebbb2de7e99042" args="(const std::string &amp;path, const std::string &amp;workingDirectory, const Condition &amp;condition, TimePoint timeout, std::string &amp;contents)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#adbe6d7719615b7c98882f753ab7c5904">LogCabin::Client::ClientImpl::read</a> </td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#aa0b631a06bfda7c2a3ebbb2de7e99042">LogCabin::Client::ClientImpl::read</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>path</em>, </td>
@@ -565,6 +631,12 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">std::string &amp;&#160;</td>
           <td class="paramname"><em>contents</em>&#160;</td>
         </tr>
@@ -579,16 +651,16 @@ Protected Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a74c016d6333e5548edd2873baff605c4" title="Get the value of a file.">Tree::read</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00465">465</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00550">550</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a26830427df87c698a1eb45677249f689"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::removeFile" ref="a26830427df87c698a1eb45677249f689" args="(const std::string &amp;path, const std::string &amp;workingDirectory, const Condition &amp;condition)" -->
+<a class="anchor" id="a60c10fa03ba231bc52df48450fd0f03b"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::removeFile" ref="a60c10fa03ba231bc52df48450fd0f03b" args="(const std::string &amp;path, const std::string &amp;workingDirectory, const Condition &amp;condition, TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a26830427df87c698a1eb45677249f689">LogCabin::Client::ClientImpl::removeFile</a> </td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a60c10fa03ba231bc52df48450fd0f03b">LogCabin::Client::ClientImpl::removeFile</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>path</em>, </td>
@@ -603,7 +675,13 @@ Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a> &amp;&#160;</td>
-          <td class="paramname"><em>condition</em>&#160;</td>
+          <td class="paramname"><em>condition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -616,7 +694,7 @@ Protected Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a7dd317fe97e655550b9029453f028d4b" title="Make sure a file does not exist.">Tree::removeFile</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00487">487</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00574">574</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -637,7 +715,7 @@ Protected Attributes</h2></td></tr>
 <p>Asks the cluster leader for the range of supported <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> protocol versions, and select the best one. </p>
 <p>This is used to make sure the client and server are speaking the same version of the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> protocol. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00508">508</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00598">598</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -672,7 +750,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Describes the hosts in the cluster. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00134">134</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00145">145</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -689,7 +767,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Used to send RPCs to the leader of the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00139">139</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00150">150</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -707,7 +785,7 @@ Protected Attributes</h2></td></tr>
 <p>The version of the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> protocol to use when speaking to the cluster leader. </p>
 <p>(This is the result of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#ad11a48bf53e0b42f9e66e26f483b862e" title="Asks the cluster leader for the range of supported RPC protocol versions, and select the best one...">negotiateRPCVersion()</a>.) </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00145">145</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00156">156</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>

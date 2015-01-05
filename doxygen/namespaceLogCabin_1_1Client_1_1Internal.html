@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: Client/LeaderRPC.h File Reference</title>
+<title>LogCabin: LogCabin::Client::Internal Namespace Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -47,9 +47,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -70,47 +70,67 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
+      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Client.html">Client</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Client_1_1Internal.html">Internal</a>      </li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Client/LeaderRPC.h File Reference</div>  </div>
+<div class="title">LogCabin::Client::Internal Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;cinttypes&gt;</code><br/>
-<code>#include &lt;deque&gt;</code><br/>
-<code>#include &lt;memory&gt;</code><br/>
-<code>#include &lt;mutex&gt;</code><br/>
-<code>#include &lt;thread&gt;</code><br/>
-<code>#include &quot;build/Protocol/Client.pb.h&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Loop_8h_source.html">Event/Loop.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Address_8h_source.html">RPC/Address.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="ClientRPC_8h_source.html">RPC/ClientRPC.h</a>&quot;</code><br/>
-</div>
-<p><a href="LeaderRPC_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html">LogCabin::Client::LeaderRPCBase</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is used to send RPCs from clients to the leader of the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster.  <a href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html">LogCabin::Client::LeaderRPCBase::Call</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">An asynchronous version of <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#affe219f260f2dba9f73f2db4fa16d0c4" title="Execute an RPC on the cluster leader.">call()</a>.  <a href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html">LogCabin::Client::LeaderRPC</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the implementation of <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html" title="This class is used to send RPCs from clients to the leader of the LogCabin cluster.">LeaderRPCBase</a> that uses the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> system.  <a href="classLogCabin_1_1Client_1_1LeaderRPC.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC_1_1Call.html">LogCabin::Client::LeaderRPC::Call</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html" title="An asynchronous version of call().">LeaderRPCBase::Call</a>.  <a href="classLogCabin_1_1Client_1_1LeaderRPC_1_1Call.html#details">More...</a><br/></td></tr>
-<tr><td colspan="2"><h2><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1RPC.html">LogCabin::RPC</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client.html">LogCabin::Client</a></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">ClientImpl::TimePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1Internal.html#a38158417b149708ba57013d66a85d09d">absTimeout</a> (uint64_t relTimeoutNanos)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the absolute time when the calling operation should timeout.  <a href="#a38158417b149708ba57013d66a85d09d"></a><br/></td></tr>
 </table>
+<hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a38158417b149708ba57013d66a85d09d"></a><!-- doxytag: member="LogCabin::Client::Internal::absTimeout" ref="a38158417b149708ba57013d66a85d09d" args="(uint64_t relTimeoutNanos)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">ClientImpl::TimePoint</a> <a class="el" href="namespaceLogCabin_1_1Client_1_1Internal.html#a38158417b149708ba57013d66a85d09d">LogCabin::Client::Internal::absTimeout</a> </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>relTimeoutNanos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the absolute time when the calling operation should timeout. </p>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00032">32</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

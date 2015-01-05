@@ -123,11 +123,13 @@ Public Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The current working directory for the <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> (an absolute path).  <a href="#ad000536c2d055c9bae956f8630d85191"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1TreeDetails.html#abe249655911da5e267f6c3090e1c8163">condition</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If set, specifies a predicate that must hold for operations to take effect.  <a href="#abe249655911da5e267f6c3090e1c8163"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1TreeDetails.html#ab3a8fa2abff062ca8c307fffe108e7b7">timeoutNanos</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If nonzero, a relative timeout in nanoseconds for all <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> operations.  <a href="#ab3a8fa2abff062ca8c307fffe108e7b7"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Implementation-specific members of <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Client::Tree</a>. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00122">122</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00153">153</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8c30a09a6e0bd8cef2888af89935a0ea"></a><!-- doxytag: member="LogCabin::Client::TreeDetails::TreeDetails" ref="a8c30a09a6e0bd8cef2888af89935a0ea" args="(std::shared_ptr&lt; ClientImpl &gt; clientImpl, const std::string &amp;workingDirectory)" -->
 <div class="memitem">
@@ -154,7 +156,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00124">124</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00155">155</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -172,7 +174,7 @@ Public Attributes</h2></td></tr>
 
 <p><a class="el" href="namespaceLogCabin_1_1Client.html">Client</a> implementation. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00134">134</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00166">166</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -189,7 +191,7 @@ Public Attributes</h2></td></tr>
 
 <p>The current working directory for the <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> (an absolute path). </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00138">138</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00170">170</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -206,7 +208,24 @@ Public Attributes</h2></td></tr>
 
 <p>If set, specifies a predicate that must hold for operations to take effect. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00143">143</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00175">175</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab3a8fa2abff062ca8c307fffe108e7b7"></a><!-- doxytag: member="LogCabin::Client::TreeDetails::timeoutNanos" ref="ab3a8fa2abff062ca8c307fffe108e7b7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Client_1_1TreeDetails.html#ab3a8fa2abff062ca8c307fffe108e7b7">LogCabin::Client::TreeDetails::timeoutNanos</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>If nonzero, a relative timeout in nanoseconds for all <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> operations. </p>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00179">179</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>

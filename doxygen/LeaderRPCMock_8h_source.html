@@ -137,39 +137,43 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00055"></a>00055 <span class="comment">     * You should have called expect prior to this to prime a response.</span>
 <a name="l00056"></a>00056 <span class="comment">     * The request will be logged so you can pop it.</span>
 <a name="l00057"></a>00057 <span class="comment">     */</span>
-<a name="l00058"></a>00058     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a58ca1543b607a1803754ecbc0089eb66" title="Mocks out an RPC call.">call</a>(<a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7" title="RPC operation code.">OpCode</a> opCode,
-<a name="l00059"></a>00059               <span class="keyword">const</span> google::protobuf::Message&amp; request,
-<a name="l00060"></a>00060               google::protobuf::Message&amp; response);
-<a name="l00061"></a>00061 <span class="comment"></span>
-<a name="l00062"></a>00062 <span class="comment">    /// See LeaderRPCBase::makeCall.</span>
-<a name="l00063"></a>00063 <span class="comment"></span>    std::unique_ptr&lt;LeaderRPCBase::Call&gt; <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a15a50669f480cdd4761657213558987f" title="See LeaderRPCBase::makeCall.">makeCall</a>();
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065   <span class="keyword">private</span>:<span class="comment"></span>
-<a name="l00066"></a>00066 <span class="comment">    /// See LeaderRPCBase::Call.</span>
-<a name="l00067"></a><a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html">00067</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html" title="An asynchronous version of call().">Call</a> : <span class="keyword">public</span> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html" title="This class is used to send RPCs from clients to the leader of the LogCabin cluster.">LeaderRPCBase</a>::<a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html" title="An asynchronous version of call().">Call</a> {
-<a name="l00068"></a>00068       <span class="keyword">public</span>:
-<a name="l00069"></a>00069         <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html#aeeb0b55fc92b4e9f087ea69750733e79" title="Constructor.">Call</a>(<a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html" title="This class is used in unit testing to interpose when clients send RPCs to the leader of the LogCabin ...">LeaderRPCMock</a>&amp; <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a4a021a1a5a77070614e3f96f71723c0b">leaderRPC</a>);
-<a name="l00070"></a>00070         <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a550711b5f3d20cd527fa13fa4fb433eb" title="Invoke the RPC.">start</a>(<a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7" title="RPC operation code.">OpCode</a> opCode, <span class="keyword">const</span> google::protobuf::Message&amp; request);
-<a name="l00071"></a>00071         <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#af825391137892d52b8fd5a9d8dfe018b" title="Cancel the RPC.">cancel</a>();
-<a name="l00072"></a>00072         <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#aaa76d5e76458ac4fbb068d17f53585bc" title="Wait for the RPC to complete.">wait</a>(google::protobuf::Message&amp; response);
-<a name="l00073"></a><a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a4a021a1a5a77070614e3f96f71723c0b">00073</a>         <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html" title="This class is used in unit testing to interpose when clients send RPCs to the leader of the LogCabin ...">LeaderRPCMock</a>&amp; <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a4a021a1a5a77070614e3f96f71723c0b">leaderRPC</a>;
-<a name="l00074"></a><a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a551db6e7f1698f81e24161875b16c003">00074</a>         <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a551db6e7f1698f81e24161875b16c003">canceled</a>;
-<a name="l00075"></a>00075     };
-<a name="l00076"></a>00076 <span class="comment"></span>
-<a name="l00077"></a>00077 <span class="comment">    /**</span>
-<a name="l00078"></a>00078 <span class="comment">     * A queue of requests that have come in from call().</span>
-<a name="l00079"></a>00079 <span class="comment">     */</span>
-<a name="l00080"></a><a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a76e9e55b1f9a3ee70a9c84117eadbb97">00080</a>     std::deque&lt;std::pair&lt;OpCode, MessagePtr&gt;&gt; <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a76e9e55b1f9a3ee70a9c84117eadbb97" title="A queue of requests that have come in from call().">requestLog</a>;<span class="comment"></span>
+<a name="l00058"></a>00058     <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33" title="Return type for LeaderRPCBase::call().">Status</a> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#aa734b3c0b473677aecbf28cc782a117e" title="Mocks out an RPC call.">call</a>(<a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7" title="RPC operation code.">OpCode</a> opCode,
+<a name="l00059"></a>00059                 <span class="keyword">const</span> google::protobuf::Message&amp; request,
+<a name="l00060"></a>00060                 google::protobuf::Message&amp; response,
+<a name="l00061"></a>00061                 <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ab8c09d1a16236b8b75f575c9d2681c78" title="Type for absolute time values used for timeouts.">TimePoint</a> timeout);
+<a name="l00062"></a>00062 <span class="comment"></span>
+<a name="l00063"></a>00063 <span class="comment">    /// See LeaderRPCBase::makeCall.</span>
+<a name="l00064"></a>00064 <span class="comment"></span>    std::unique_ptr&lt;LeaderRPCBase::Call&gt; <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a15a50669f480cdd4761657213558987f" title="See LeaderRPCBase::makeCall.">makeCall</a>();
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066   <span class="keyword">private</span>:<span class="comment"></span>
+<a name="l00067"></a>00067 <span class="comment">    /// See LeaderRPCBase::Call.</span>
+<a name="l00068"></a><a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html">00068</a> <span class="comment"></span>    <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html" title="An asynchronous version of call().">Call</a> : <span class="keyword">public</span> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html" title="This class is used to send RPCs from clients to the leader of the LogCabin cluster.">LeaderRPCBase</a>::<a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html" title="An asynchronous version of call().">Call</a> {
+<a name="l00069"></a>00069       <span class="keyword">public</span>:
+<a name="l00070"></a>00070         <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html#aeeb0b55fc92b4e9f087ea69750733e79" title="Constructor.">Call</a>(<a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html" title="This class is used in unit testing to interpose when clients send RPCs to the leader of the LogCabin ...">LeaderRPCMock</a>&amp; <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a4a021a1a5a77070614e3f96f71723c0b">leaderRPC</a>);
+<a name="l00071"></a>00071         <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#abe0f1006622f9001c394626334e5fbba" title="Invoke the RPC.">start</a>(<a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7" title="RPC operation code.">OpCode</a> opCode,
+<a name="l00072"></a>00072                    <span class="keyword">const</span> google::protobuf::Message&amp; request,
+<a name="l00073"></a>00073                    <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ab8c09d1a16236b8b75f575c9d2681c78" title="Type for absolute time values used for timeouts.">TimePoint</a> timeout);
+<a name="l00074"></a>00074         <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#af825391137892d52b8fd5a9d8dfe018b" title="Cancel the RPC.">cancel</a>();
+<a name="l00075"></a>00075         <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html#aa6bbf2a3f67e825c4f82dd282bf39939" title="Return type for LeaderRPCBase::Call::wait().">Status</a> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a9311e9fe790d7ab77cd57e45237fb652" title="Wait for the RPC to complete.">wait</a>(google::protobuf::Message&amp; response,
+<a name="l00076"></a>00076                     <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ab8c09d1a16236b8b75f575c9d2681c78" title="Type for absolute time values used for timeouts.">TimePoint</a> timeout);
+<a name="l00077"></a><a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a4a021a1a5a77070614e3f96f71723c0b">00077</a>         <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html" title="This class is used in unit testing to interpose when clients send RPCs to the leader of the LogCabin ...">LeaderRPCMock</a>&amp; <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a4a021a1a5a77070614e3f96f71723c0b">leaderRPC</a>;
+<a name="l00078"></a><a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a551db6e7f1698f81e24161875b16c003">00078</a>         <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a551db6e7f1698f81e24161875b16c003">canceled</a>;
+<a name="l00079"></a>00079     };
+<a name="l00080"></a>00080 <span class="comment"></span>
 <a name="l00081"></a>00081 <span class="comment">    /**</span>
-<a name="l00082"></a>00082 <span class="comment">     * A queue of responses that have been primed from expect().</span>
+<a name="l00082"></a>00082 <span class="comment">     * A queue of requests that have come in from call().</span>
 <a name="l00083"></a>00083 <span class="comment">     */</span>
-<a name="l00084"></a><a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a4dce9b2a27addcd84775d9ec9c341ff7">00084</a>     std::queue&lt;std::pair&lt;OpCode, MessagePtr&gt;&gt; <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a4dce9b2a27addcd84775d9ec9c341ff7" title="A queue of responses that have been primed from expect().">responseQueue</a>;
-<a name="l00085"></a>00085 };
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087 } <span class="comment">// namespace Client</span>
-<a name="l00088"></a>00088 } <span class="comment">// namespace LogCabin</span>
-<a name="l00089"></a>00089 
-<a name="l00090"></a>00090 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_CLIENT_LEADERRPC_H */</span>
+<a name="l00084"></a><a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a76e9e55b1f9a3ee70a9c84117eadbb97">00084</a>     std::deque&lt;std::pair&lt;OpCode, MessagePtr&gt;&gt; <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a76e9e55b1f9a3ee70a9c84117eadbb97" title="A queue of requests that have come in from call().">requestLog</a>;<span class="comment"></span>
+<a name="l00085"></a>00085 <span class="comment">    /**</span>
+<a name="l00086"></a>00086 <span class="comment">     * A queue of responses that have been primed from expect().</span>
+<a name="l00087"></a>00087 <span class="comment">     */</span>
+<a name="l00088"></a><a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a4dce9b2a27addcd84775d9ec9c341ff7">00088</a>     std::queue&lt;std::pair&lt;OpCode, MessagePtr&gt;&gt; <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#a4dce9b2a27addcd84775d9ec9c341ff7" title="A queue of responses that have been primed from expect().">responseQueue</a>;
+<a name="l00089"></a>00089 };
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 } <span class="comment">// namespace Client</span>
+<a name="l00092"></a>00092 } <span class="comment">// namespace LogCabin</span>
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_CLIENT_LEADERRPC_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

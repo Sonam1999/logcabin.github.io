@@ -341,7 +341,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00259"></a>00259             <span class="keywordflow">return</span> <span class="keyword">true</span>;
 <a name="l00260"></a>00260         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a3808388a3c1e6c97bdb3dd5e5ecee8f3" title="An error specific to the particular service.">RPCStatus::SERVICE_SPECIFIC_ERROR</a>:
 <a name="l00261"></a>00261             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;unexpected service-specific error&quot;</span>);
-<a name="l00262"></a>00262         <span class="keywordflow">case</span> RPCStatus::TIMEOUT:
+<a name="l00262"></a>00262         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4ab990fd14d55b44d8753e7aa00a8575bf" title="A timeout specified by Tree::setTimeout() elapsed while waiting for an operation to complete...">RPCStatus::TIMEOUT</a>:
 <a name="l00263"></a>00263             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;unexpected RPC timeout&quot;</span>);
 <a name="l00264"></a>00264         <span class="keywordflow">case</span> RPCStatus::RPC_FAILED:
 <a name="l00265"></a>00265             ++<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#af384128771f7e60f485b837114f56788" title="Counts RPC failures to issue fewer warnings.">rpcFailuresSinceLastWarning</a>;
