@@ -101,8 +101,6 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Monotonic clock in nanosecond granularity.  <a href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock&lt; _BaseClock &gt;</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the current time.  <a href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html">LogCabin::Core::Time::SteadyTimeConverter</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to convert one or more <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> values into values of the SystemClock.  <a href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
@@ -124,8 +122,8 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a C++11 time point into a POSIX timespec.  <a href="#ab1f0bfec14cc5ca8578cf2ce2f2092d6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static __inline uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#acbf6cb1c6aa5d0d47f50a3bfac8418a2">LogCabin::Core::Time::rdtsc</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the CPU's cycle counter.  <a href="#acbf6cb1c6aa5d0d47f50a3bfac8418a2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a0770208b7d69cde83a7d092be8e5c931">LogCabin::Core::Time::getTimeNanos</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the system time since the Unix epoch in nanoseconds.  <a href="#a0770208b7d69cde83a7d092be8e5c931"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ad01ddba8606f77d0826bbd2264c591e4">LogCabin::Core::Time::getTimeNanos</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the system time since the Unix epoch in nanoseconds.  <a href="#ad01ddba8606f77d0826bbd2264c591e4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd.html#a2f17f68b3cc64ca156986f759844ca3f">std::operator&lt;&lt;</a> (std::ostream &amp;os, const std::chrono::milliseconds &amp;duration)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints std::milliseconds values in a way that is useful for unit tests.  <a href="#a2f17f68b3cc64ca156986f759844ca3f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd.html#a5bb512678a03f7cb0cc956f89f343f6f">std::operator&lt;&lt;</a> (std::ostream &amp;os, const std::chrono::nanoseconds &amp;duration)</td></tr>

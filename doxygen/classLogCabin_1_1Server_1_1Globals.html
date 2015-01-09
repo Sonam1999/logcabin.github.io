@@ -137,8 +137,6 @@ Public Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Global configuration options.  <a href="#a0716780cdbc776d14d8e63f9b6cdce41"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Globals.html#aa79e668d84e1c96ce5d39d1ae3b35200">eventLoop</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The event loop that runs the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> system.  <a href="#aa79e668d84e1c96ce5d39d1ae3b35200"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html">Server::ServerStats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Globals.html#a7dc92bf35a9d8d455210e5c497f8a714">serverStats</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics and information about the server's current state.  <a href="#a7dc92bf35a9d8d455210e5c497f8a714"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::shared_ptr<br class="typebreak"/>
 &lt; Server::RaftConsensus &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2">raft</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogCabin_1_1Server_1_1Consensus.html" title="This is the interface to the consensus module used by state machines.">Consensus</a> module.  <a href="#aa8c8b22b5152dbbb894d34ac040f17b2"></a><br/></td></tr>
@@ -168,7 +166,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>Holds the <a class="el" href="namespaceLogCabin.html">LogCabin</a> daemon's top-level objects. </p>
 <p>The purpose of <a class="el" href="Benchmark_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a> is to create and run a <a class="el" href="classLogCabin_1_1Server_1_1Globals.html" title="Holds the LogCabin daemon&#39;s top-level objects.">Globals</a> object. Other classes may refer to this object if they need access to other top-level objects. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00051">51</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00049">49</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ada14aa5c23214f0208a24ee74ae8997b"></a><!-- doxytag: member="LogCabin::Server::Globals::Globals" ref="ada14aa5c23214f0208a24ee74ae8997b" args="()" -->
 <div class="memitem">
@@ -206,7 +204,7 @@ Private Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00061">61</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00060">60</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
 
 </div>
 </div>
@@ -246,7 +244,7 @@ Private Attributes</h2></td></tr>
 <p>Finish initializing this object. </p>
 <p>This should be called after <a class="el" href="classLogCabin_1_1Server_1_1Globals.html#a0716780cdbc776d14d8e63f9b6cdce41" title="Global configuration options.">config</a> has been filled in. </p>
 
-<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00069">69</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00068">68</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
 
 </div>
 </div>
@@ -266,7 +264,7 @@ Private Attributes</h2></td></tr>
 
 <p>Run the event loop until SIGINT, SIGTERM, or someone calls <a class="el" href="classLogCabin_1_1Event_1_1Loop.html#adce1d647680489aeae87a0a6dfc0b1a9" title="Exit the main event loop, if one is running.">Event::Loop::exit()</a>. </p>
 
-<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00147">147</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00135">135</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
 
 </div>
 </div>
@@ -301,7 +299,7 @@ Private Attributes</h2></td></tr>
 
 <p>Global configuration options. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00085">85</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00083">83</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -318,25 +316,7 @@ Private Attributes</h2></td></tr>
 
 <p>The event loop that runs the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> system. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00090">90</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7dc92bf35a9d8d455210e5c497f8a714"></a><!-- doxytag: member="LogCabin::Server::Globals::serverStats" ref="a7dc92bf35a9d8d455210e5c497f8a714" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html">Server::ServerStats</a> <a class="el" href="classLogCabin_1_1Server_1_1Globals.html#a7dc92bf35a9d8d455210e5c497f8a714">LogCabin::Server::Globals::serverStats</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Statistics and information about the server's current state. </p>
-<p>Useful for diagnostics. </p>
-
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00096">96</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00088">88</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -353,7 +333,7 @@ Private Attributes</h2></td></tr>
 
 <p>Exits the event loop upon receiving SIGINT (keyboard interrupt). </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00102">102</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00094">94</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -370,7 +350,7 @@ Private Attributes</h2></td></tr>
 
 <p>Exits the event loop upon receiving SIGTERM (kill). </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00107">107</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00099">99</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -387,7 +367,7 @@ Private Attributes</h2></td></tr>
 
 <p><a class="el" href="classLogCabin_1_1Server_1_1Consensus.html" title="This is the interface to the consensus module used by state machines.">Consensus</a> module. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00114">114</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00106">106</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -404,7 +384,7 @@ Private Attributes</h2></td></tr>
 
 <p>State machine used to process client requests. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00119">119</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00111">111</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -421,7 +401,7 @@ Private Attributes</h2></td></tr>
 
 <p>Service used to communicate between servers. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00126">126</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00118">118</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -438,7 +418,7 @@ Private Attributes</h2></td></tr>
 
 <p>The application-facing facing <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> service. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00131">131</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00123">123</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -455,7 +435,7 @@ Private Attributes</h2></td></tr>
 
 <p>Listens for inbound RPCs and passes them off to the services. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00136">136</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00128">128</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>

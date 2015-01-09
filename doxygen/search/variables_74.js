@@ -11,7 +11,6 @@ var searchData=
   ['timeout',['timeout',['../classanonymous__namespace_02Benchmark_8cc_03_1_1OptionParser.html#a461be40e01befd71d495dae909cf8b03',1,'anonymous_namespace{Benchmark.cc}::OptionParser']]],
   ['timeoutnanos',['timeoutNanos',['../classLogCabin_1_1Client_1_1TreeDetails.html#ab3a8fa2abff062ca8c307fffe108e7b7',1,'LogCabin::Client::TreeDetails']]],
   ['timer',['timer',['../classLogCabin_1_1RPC_1_1ClientSession.html#a9cc8af6b05cde66b0af5bb8da5ceade8',1,'LogCabin::RPC::ClientSession']]],
-  ['timerhandler',['timerHandler',['../classLogCabin_1_1Server_1_1ServerStats.html#a28cf8045a12787e6efe425c222b6999b',1,'LogCabin::Server::ServerStats']]],
   ['timerthread',['timerThread',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ade96f5eaf2a06e4d5ef8bafb089b524b',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['totalwrites',['totalWrites',['../classanonymous__namespace_02Benchmark_8cc_03_1_1OptionParser.html#a185c523a680d2ab4acaf952a57fe46e1',1,'anonymous_namespace{Benchmark.cc}::OptionParser']]],
   ['tree',['tree',['../classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a9979a17d7e4f5ca99d74eb7b733cf10e',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC::tree()'],['../classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981',1,'LogCabin::Server::StateMachine::tree()']]],

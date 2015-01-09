@@ -1,7 +1,6 @@
 var searchData=
 [
   ['election_5ftimeout_5fms',['ELECTION_TIMEOUT_MS',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad72f4957c67523b22066e78353027123',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
-  ['enabled',['enabled',['../classLogCabin_1_1Server_1_1ServerStats.html#a08ff2aca9ac8527f976e576f7487b4e6',1,'LogCabin::Server::ServerStats']]],
   ['entries',['entries',['../classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278',1,'LogCabin::Storage::MemoryLog']]],
   ['entriesapplied',['entriesApplied',['../classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5',1,'LogCabin::Server::StateMachine']]],
   ['entryid',['entryId',['../structLogCabin_1_1Server_1_1Consensus_1_1Entry.html#a8cf5acad66cd7a5b7d1b986c1e1d25f1',1,'LogCabin::Server::Consensus::Entry']]],

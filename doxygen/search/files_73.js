@@ -4,8 +4,6 @@ var searchData=
   ['server_2eh',['Server.h',['../Server_8h.html',1,'']]],
   ['serverrpc_2ecc',['ServerRPC.cc',['../ServerRPC_8cc.html',1,'']]],
   ['serverrpc_2eh',['ServerRPC.h',['../ServerRPC_8h.html',1,'']]],
-  ['serverstats_2ecc',['ServerStats.cc',['../ServerStats_8cc.html',1,'']]],
-  ['serverstats_2eh',['ServerStats.h',['../ServerStats_8h.html',1,'']]],
   ['service_2eh',['Service.h',['../Service_8h.html',1,'']]],
   ['servicemock_2ecc',['ServiceMock.cc',['../ServiceMock_8cc.html',1,'']]],
   ['servicemock_2eh',['ServiceMock.h',['../ServiceMock_8h.html',1,'']]],
