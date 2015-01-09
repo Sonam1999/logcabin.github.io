@@ -115,6 +115,8 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Monotonic clock in nanosecond granularity.  <a href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">MockableClock</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the current time.  <a href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html">SteadyTimeConverter</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to convert one or more <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> values into values of the SystemClock.  <a href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">MockableClock</a><br class="typebreak"/>
@@ -125,8 +127,8 @@ Typedefs</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A clock that reads wall time and is affected by NTP adjustments.  <a href="#a9edb96154f308f4284060230766da1f1"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ad01ddba8606f77d0826bbd2264c591e4">getTimeNanos</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the system time since the Unix epoch in nanoseconds.  <a href="#ad01ddba8606f77d0826bbd2264c591e4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a0770208b7d69cde83a7d092be8e5c931">getTimeNanos</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the system time since the Unix epoch in nanoseconds.  <a href="#a0770208b7d69cde83a7d092be8e5c931"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename Clock , typename Duration &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">struct timespec&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ab1f0bfec14cc5ca8578cf2ce2f2092d6">makeTimeSpec</a> (const std::chrono::time_point&lt; Clock, Duration &gt; &amp;when)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a C++11 time point into a POSIX timespec.  <a href="#ab1f0bfec14cc5ca8578cf2ce2f2092d6"></a><br/></td></tr>
@@ -173,12 +175,12 @@ Variables</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="ad01ddba8606f77d0826bbd2264c591e4"></a><!-- doxytag: member="LogCabin::Core::Time::getTimeNanos" ref="ad01ddba8606f77d0826bbd2264c591e4" args="()" -->
+<a class="anchor" id="a0770208b7d69cde83a7d092be8e5c931"></a><!-- doxytag: member="LogCabin::Core::Time::getTimeNanos" ref="a0770208b7d69cde83a7d092be8e5c931" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ad01ddba8606f77d0826bbd2264c591e4">LogCabin::Core::Time::getTimeNanos</a> </td>
+          <td class="memname">int64_t <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a0770208b7d69cde83a7d092be8e5c931">LogCabin::Core::Time::getTimeNanos</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

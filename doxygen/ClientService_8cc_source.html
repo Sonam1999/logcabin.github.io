@@ -242,7 +242,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00160"></a>00160 {
 <a name="l00161"></a>00161     <a class="code" href="ClientService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(OpenSession);
 <a name="l00162"></a>00162     <a class="code" href="namespaceLogCabin_1_1Server.html#ae8f9b22b20ae588668273a52eef301dc">Command</a> command;
-<a name="l00163"></a>00163     command.set_nanoseconds_since_epoch(<a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#ad01ddba8606f77d0826bbd2264c591e4" title="Return the system time since the Unix epoch in nanoseconds.">Core::Time::getTimeNanos</a>());
+<a name="l00163"></a>00163     command.set_nanoseconds_since_epoch(<a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a0770208b7d69cde83a7d092be8e5c931" title="Return the system time since the Unix epoch in nanoseconds.">Core::Time::getTimeNanos</a>());
 <a name="l00164"></a>00164     *command.mutable_open_session() = request;
 <a name="l00165"></a>00165     std::pair&lt;Result, uint64_t&gt; result = <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#ac9bce618f9cee058e948ff3a790d4264">submit</a>(rpc, command);
 <a name="l00166"></a>00166     <span class="keywordflow">if</span> (result.first != Result::SUCCESS)
@@ -325,7 +325,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00243"></a>00243 {
 <a name="l00244"></a>00244     <a class="code" href="ClientService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(ReadWriteTree);
 <a name="l00245"></a>00245     <a class="code" href="namespaceLogCabin_1_1Server.html#ae8f9b22b20ae588668273a52eef301dc">Command</a> command;
-<a name="l00246"></a>00246     command.set_nanoseconds_since_epoch(<a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#ad01ddba8606f77d0826bbd2264c591e4" title="Return the system time since the Unix epoch in nanoseconds.">Core::Time::getTimeNanos</a>());
+<a name="l00246"></a>00246     command.set_nanoseconds_since_epoch(<a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a0770208b7d69cde83a7d092be8e5c931" title="Return the system time since the Unix epoch in nanoseconds.">Core::Time::getTimeNanos</a>());
 <a name="l00247"></a>00247     *command.mutable_tree() = request;
 <a name="l00248"></a>00248     std::pair&lt;Result, uint64_t&gt; result = <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#ac9bce618f9cee058e948ff3a790d4264">submit</a>(rpc, command);
 <a name="l00249"></a>00249     <span class="keywordflow">if</span> (result.first != Result::SUCCESS)
