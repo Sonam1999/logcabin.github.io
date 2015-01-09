@@ -115,66 +115,79 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00033"></a>00033         : argc(argc)
 <a name="l00034"></a>00034         , argv(argv)
 <a name="l00035"></a>00035         , cluster(<span class="stringliteral">&quot;logcabin:61023&quot;</span>)
-<a name="l00036"></a>00036     {
-<a name="l00037"></a>00037         <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
-<a name="l00038"></a>00038             <span class="keyword">static</span> <span class="keyword">struct </span>option longOptions[] = {
-<a name="l00039"></a>00039                {<span class="stringliteral">&quot;cluster&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;c&#39;</span>},
-<a name="l00040"></a>00040                {<span class="stringliteral">&quot;help&quot;</span>,  no_argument, NULL, <span class="charliteral">&#39;h&#39;</span>},
-<a name="l00041"></a>00041                {0, 0, 0, 0}
-<a name="l00042"></a>00042             };
-<a name="l00043"></a>00043             <span class="keywordtype">int</span> c = getopt_long(argc, argv, <span class="stringliteral">&quot;c:h&quot;</span>, longOptions, NULL);
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045             <span class="comment">// Detect the end of the options.</span>
-<a name="l00046"></a>00046             <span class="keywordflow">if</span> (c == -1)
-<a name="l00047"></a>00047                 <span class="keywordflow">break</span>;
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049             <span class="keywordflow">switch</span> (c) {
-<a name="l00050"></a>00050                 <span class="keywordflow">case</span> <span class="charliteral">&#39;c&#39;</span>:
-<a name="l00051"></a>00051                     cluster = optarg;
-<a name="l00052"></a>00052                     <span class="keywordflow">break</span>;
-<a name="l00053"></a>00053                 <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>:
-<a name="l00054"></a>00054                     usage();
-<a name="l00055"></a>00055                     exit(0);
-<a name="l00056"></a>00056                 <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span>:
-<a name="l00057"></a>00057                 <span class="keywordflow">default</span>:
-<a name="l00058"></a>00058                     <span class="comment">// getopt_long already printed an error message.</span>
-<a name="l00059"></a>00059                     usage();
-<a name="l00060"></a>00060                     exit(1);
-<a name="l00061"></a>00061             }
-<a name="l00062"></a>00062         }
-<a name="l00063"></a>00063     }
-<a name="l00064"></a>00064 
-<a name="l00065"></a><a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a4d5896810a50f1268fc3a3997dc0ceb1">00065</a>     <span class="keywordtype">void</span> <a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a4d5896810a50f1268fc3a3997dc0ceb1">usage</a>() {
-<a name="l00066"></a>00066         std::cout &lt;&lt; <span class="stringliteral">&quot;Usage: &quot;</span> &lt;&lt; argv[0] &lt;&lt; <span class="stringliteral">&quot; [options] &lt;servers&gt;&quot;</span>
-<a name="l00067"></a>00067                   &lt;&lt; std::endl;
-<a name="l00068"></a>00068         std::cout &lt;&lt; <span class="stringliteral">&quot;Options: &quot;</span> &lt;&lt; std::endl;
-<a name="l00069"></a>00069         std::cout &lt;&lt; <span class="stringliteral">&quot;  -c, --cluster &lt;address&gt; &quot;</span>
-<a name="l00070"></a>00070                   &lt;&lt; <span class="stringliteral">&quot;The network address of the LogCabin cluster &quot;</span>
-<a name="l00071"></a>00071                   &lt;&lt; <span class="stringliteral">&quot;(default: logcabin:61023)&quot;</span> &lt;&lt; std::endl;
-<a name="l00072"></a>00072         std::cout &lt;&lt; <span class="stringliteral">&quot;  -h, --help              &quot;</span>
-<a name="l00073"></a>00073                   &lt;&lt; <span class="stringliteral">&quot;Print this usage information&quot;</span> &lt;&lt; std::endl;
-<a name="l00074"></a>00074     }
-<a name="l00075"></a>00075 
-<a name="l00076"></a><a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#acce3b73b1ac1a5d68dd2812fe4223370">00076</a>     <span class="keywordtype">int</span>&amp; <a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#acce3b73b1ac1a5d68dd2812fe4223370">argc</a>;
-<a name="l00077"></a><a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a117534f83bf0d9625a351d583f1d3be1">00077</a>     <span class="keywordtype">char</span>**&amp; <a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a117534f83bf0d9625a351d583f1d3be1">argv</a>;
-<a name="l00078"></a><a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a0d3d9d9344e9b8b300b4867387f81d66">00078</a>     std::string <a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a0d3d9d9344e9b8b300b4867387f81d66">cluster</a>;
-<a name="l00079"></a>00079 };
-<a name="l00080"></a>00080 
-<a name="l00081"></a>00081 } <span class="comment">// anonymous namespace</span>
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083 <span class="keywordtype">int</span>
-<a name="l00084"></a><a class="code" href="HelloWorld_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">00084</a> <a class="code" href="Benchmark_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
-<a name="l00085"></a>00085 {
-<a name="l00086"></a>00086     OptionParser options(argc, argv);
-<a name="l00087"></a>00087     Cluster cluster(options.cluster);
-<a name="l00088"></a>00088     Tree tree = cluster.getTree();
-<a name="l00089"></a>00089     tree.makeDirectoryEx(<span class="stringliteral">&quot;/etc&quot;</span>);
-<a name="l00090"></a>00090     tree.writeEx(<span class="stringliteral">&quot;/etc/passwd&quot;</span>, <span class="stringliteral">&quot;ha&quot;</span>);
-<a name="l00091"></a>00091     std::string contents = tree.readEx(<span class="stringliteral">&quot;/etc/passwd&quot;</span>);
-<a name="l00092"></a>00092     assert(contents == <span class="stringliteral">&quot;ha&quot;</span>);
-<a name="l00093"></a>00093     tree.removeDirectoryEx(<span class="stringliteral">&quot;/etc&quot;</span>);
-<a name="l00094"></a>00094     <span class="keywordflow">return</span> 0;
-<a name="l00095"></a>00095 }
+<a name="l00036"></a>00036         , timeout(0)
+<a name="l00037"></a>00037     {
+<a name="l00038"></a>00038         <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
+<a name="l00039"></a>00039             <span class="keyword">static</span> <span class="keyword">struct </span>option longOptions[] = {
+<a name="l00040"></a>00040                {<span class="stringliteral">&quot;cluster&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;c&#39;</span>},
+<a name="l00041"></a>00041                {<span class="stringliteral">&quot;timeout&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;t&#39;</span>},
+<a name="l00042"></a>00042                {<span class="stringliteral">&quot;help&quot;</span>,  no_argument, NULL, <span class="charliteral">&#39;h&#39;</span>},
+<a name="l00043"></a>00043                {0, 0, 0, 0}
+<a name="l00044"></a>00044             };
+<a name="l00045"></a>00045             <span class="keywordtype">int</span> c = getopt_long(argc, argv, <span class="stringliteral">&quot;c:t:h&quot;</span>, longOptions, NULL);
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047             <span class="comment">// Detect the end of the options.</span>
+<a name="l00048"></a>00048             <span class="keywordflow">if</span> (c == -1)
+<a name="l00049"></a>00049                 <span class="keywordflow">break</span>;
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051             <span class="keywordflow">switch</span> (c) {
+<a name="l00052"></a>00052                 <span class="keywordflow">case</span> <span class="charliteral">&#39;c&#39;</span>:
+<a name="l00053"></a>00053                     cluster = optarg;
+<a name="l00054"></a>00054                     <span class="keywordflow">break</span>;
+<a name="l00055"></a>00055                 <span class="keywordflow">case</span> <span class="charliteral">&#39;t&#39;</span>:
+<a name="l00056"></a>00056                 {
+<a name="l00057"></a>00057                     <span class="keywordtype">char</span>* end;
+<a name="l00058"></a>00058                     timeout = strtoull(optarg, &amp;end, 10);
+<a name="l00059"></a>00059                     <span class="keywordflow">break</span>;
+<a name="l00060"></a>00060                 }
+<a name="l00061"></a>00061                 <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>:
+<a name="l00062"></a>00062                     usage();
+<a name="l00063"></a>00063                     exit(0);
+<a name="l00064"></a>00064                 <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span>:
+<a name="l00065"></a>00065                 <span class="keywordflow">default</span>:
+<a name="l00066"></a>00066                     <span class="comment">// getopt_long already printed an error message.</span>
+<a name="l00067"></a>00067                     usage();
+<a name="l00068"></a>00068                     exit(1);
+<a name="l00069"></a>00069             }
+<a name="l00070"></a>00070         }
+<a name="l00071"></a>00071     }
+<a name="l00072"></a>00072 
+<a name="l00073"></a><a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a4d5896810a50f1268fc3a3997dc0ceb1">00073</a>     <span class="keywordtype">void</span> <a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a4d5896810a50f1268fc3a3997dc0ceb1">usage</a>() {
+<a name="l00074"></a>00074         std::cout &lt;&lt; <span class="stringliteral">&quot;Usage: &quot;</span> &lt;&lt; argv[0] &lt;&lt; <span class="stringliteral">&quot; [options] &lt;servers&gt;&quot;</span>
+<a name="l00075"></a>00075                   &lt;&lt; std::endl;
+<a name="l00076"></a>00076         std::cout &lt;&lt; <span class="stringliteral">&quot;Options: &quot;</span> &lt;&lt; std::endl;
+<a name="l00077"></a>00077         std::cout &lt;&lt; <span class="stringliteral">&quot;  -c, --cluster &lt;address&gt; &quot;</span>
+<a name="l00078"></a>00078                   &lt;&lt; <span class="stringliteral">&quot;The network address of the LogCabin cluster &quot;</span>
+<a name="l00079"></a>00079                   &lt;&lt; <span class="stringliteral">&quot;(default: logcabin:61023)&quot;</span> &lt;&lt; std::endl;
+<a name="l00080"></a>00080         std::cout &lt;&lt; <span class="stringliteral">&quot;  -t, --timeout           &quot;</span>
+<a name="l00081"></a>00081                   &lt;&lt; <span class="stringliteral">&quot;Set timeout in seconds (default: 0, wait forever)&quot;</span>
+<a name="l00082"></a>00082                   &lt;&lt; std::endl;
+<a name="l00083"></a>00083         std::cout &lt;&lt; <span class="stringliteral">&quot;  -h, --help              &quot;</span>
+<a name="l00084"></a>00084                   &lt;&lt; <span class="stringliteral">&quot;Print this usage information&quot;</span> &lt;&lt; std::endl;
+<a name="l00085"></a>00085     }
+<a name="l00086"></a>00086 
+<a name="l00087"></a><a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#acce3b73b1ac1a5d68dd2812fe4223370">00087</a>     <span class="keywordtype">int</span>&amp; <a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#acce3b73b1ac1a5d68dd2812fe4223370">argc</a>;
+<a name="l00088"></a><a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a117534f83bf0d9625a351d583f1d3be1">00088</a>     <span class="keywordtype">char</span>**&amp; <a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a117534f83bf0d9625a351d583f1d3be1">argv</a>;
+<a name="l00089"></a><a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a0d3d9d9344e9b8b300b4867387f81d66">00089</a>     std::string <a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a0d3d9d9344e9b8b300b4867387f81d66">cluster</a>;
+<a name="l00090"></a><a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a97107a15ea737a1ed6c5b09a50319cf6">00090</a>     uint64_t <a class="code" href="classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a97107a15ea737a1ed6c5b09a50319cf6">timeout</a>;
+<a name="l00091"></a>00091 };
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093 } <span class="comment">// anonymous namespace</span>
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 <span class="keywordtype">int</span>
+<a name="l00096"></a><a class="code" href="HelloWorld_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">00096</a> <a class="code" href="Benchmark_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
+<a name="l00097"></a>00097 {
+<a name="l00098"></a>00098     OptionParser options(argc, argv);
+<a name="l00099"></a>00099     Cluster cluster(options.cluster);
+<a name="l00100"></a>00100     Tree tree = cluster.getTree();
+<a name="l00101"></a>00101     tree.setTimeout(options.timeout * 1000000000);
+<a name="l00102"></a>00102     tree.makeDirectoryEx(<span class="stringliteral">&quot;/etc&quot;</span>);
+<a name="l00103"></a>00103     tree.writeEx(<span class="stringliteral">&quot;/etc/passwd&quot;</span>, <span class="stringliteral">&quot;ha&quot;</span>);
+<a name="l00104"></a>00104     std::string contents = tree.readEx(<span class="stringliteral">&quot;/etc/passwd&quot;</span>);
+<a name="l00105"></a>00105     assert(contents == <span class="stringliteral">&quot;ha&quot;</span>);
+<a name="l00106"></a>00106     tree.removeDirectoryEx(<span class="stringliteral">&quot;/etc&quot;</span>);
+<a name="l00107"></a>00107     <span class="keywordflow">return</span> 0;
+<a name="l00108"></a>00108 }
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
