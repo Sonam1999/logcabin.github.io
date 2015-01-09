@@ -143,6 +143,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual <br class="typebreak"/>
 SnapshotStats::SnapshotStats&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Consensus.html#afa01aac8067e845fef1a92d1384a4f03">getSnapshotStats</a> () const =0</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return statistics that may be useful in deciding when to snapshot.  <a href="#afa01aac8067e845fef1a92d1384a4f03"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Consensus.html#a7d68e201f9a0f6c5a6b02f10b2aa0487">updateServerStats</a> (Protocol::ServerStats &amp;) const =0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add information about the consensus state to the given structure.  <a href="#a7d68e201f9a0f6c5a6b02f10b2aa0487"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr<br class="typebreak"/>
 &lt; <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html">Storage::SnapshotFile::Writer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Consensus.html#a791c4e3a12014586483b847be4d097bb">beginSnapshot</a> (uint64_t lastIncludedIndex)=0</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Start taking a snapshot.  <a href="#a791c4e3a12014586483b847be4d097bb"></a><br/></td></tr>
@@ -159,7 +161,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>This is the interface to the consensus module used by state machines. </p>
 <p>Currently, the only implementation is RaftConsensus. </p>
 
-<p>Definition at line <a class="el" href="Consensus_8h_source.html#l00051">51</a> of file <a class="el" href="Consensus_8h_source.html">Consensus.h</a>.</p>
+<p>Definition at line <a class="el" href="Consensus_8h_source.html#l00053">53</a> of file <a class="el" href="Consensus_8h_source.html">Consensus.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a5e714a322f1621b8ee2827c7b9df0b6b"></a><!-- doxytag: member="LogCabin::Server::Consensus::Consensus" ref="a5e714a322f1621b8ee2827c7b9df0b6b" args="()" -->
 <div class="memitem">
@@ -290,6 +292,27 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a7d68e201f9a0f6c5a6b02f10b2aa0487"></a><!-- doxytag: member="LogCabin::Server::Consensus::updateServerStats" ref="a7d68e201f9a0f6c5a6b02f10b2aa0487" args="(Protocol::ServerStats &amp;) const =0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="classLogCabin_1_1Server_1_1Consensus.html#a7d68e201f9a0f6c5a6b02f10b2aa0487">LogCabin::Server::Consensus::updateServerStats</a> </td>
+          <td>(</td>
+          <td class="paramtype">Protocol::ServerStats &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Add information about the consensus state to the given structure. </p>
+
+<p>Implemented in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aac7043f460cb13235437cd159e0b0ce0">LogCabin::Server::RaftConsensusInternal::RaftConsensus</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a791c4e3a12014586483b847be4d097bb"></a><!-- doxytag: member="LogCabin::Server::Consensus::beginSnapshot" ref="a791c4e3a12014586483b847be4d097bb" args="(uint64_t lastIncludedIndex)=0" -->
 <div class="memitem">
 <div class="memproto">
@@ -373,7 +396,7 @@ Public Attributes</h2></td></tr>
 <p>This server's unique ID. </p>
 <p>Not available until <a class="el" href="classLogCabin_1_1Server_1_1Consensus.html#a52b1fdb655af3ef6abb23a8be190fc52" title="Initialize. Must be called before any other method.">init()</a> is called. </p>
 
-<p>Definition at line <a class="el" href="Consensus_8h_source.html#l00179">179</a> of file <a class="el" href="Consensus_8h_source.html">Consensus.h</a>.</p>
+<p>Definition at line <a class="el" href="Consensus_8h_source.html#l00186">186</a> of file <a class="el" href="Consensus_8h_source.html">Consensus.h</a>.</p>
 
 </div>
 </div>
@@ -391,7 +414,7 @@ Public Attributes</h2></td></tr>
 <p>The address that this server is listening on. </p>
 <p>Not available until <a class="el" href="classLogCabin_1_1Server_1_1Consensus.html#a52b1fdb655af3ef6abb23a8be190fc52" title="Initialize. Must be called before any other method.">init()</a> is called. </p>
 
-<p>Definition at line <a class="el" href="Consensus_8h_source.html#l00185">185</a> of file <a class="el" href="Consensus_8h_source.html">Consensus.h</a>.</p>
+<p>Definition at line <a class="el" href="Consensus_8h_source.html#l00192">192</a> of file <a class="el" href="Consensus_8h_source.html">Consensus.h</a>.</p>
 
 </div>
 </div>

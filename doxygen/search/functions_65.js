@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['enable',['enable',['../classLogCabin_1_1Server_1_1ServerStats.html#a4fe7e36f3b166e01dbc0937ed92d898f',1,'LogCabin::Server::ServerStats']]],
   ['endswith',['endsWith',['../namespaceLogCabin_1_1Core_1_1StringUtil.html#ad6f1abf416c522d7518acff147a50bf7',1,'LogCabin::Core::StringUtil']]],
   ['entry',['Entry',['../structLogCabin_1_1Server_1_1Consensus_1_1Entry.html#afc5b65015c9573577f8f2a08d367306d',1,'LogCabin::Server::Consensus::Entry::Entry()'],['../structLogCabin_1_1Server_1_1Consensus_1_1Entry.html#af847de71df1c94088a06669af126a3ff',1,'LogCabin::Server::Consensus::Entry::Entry(Entry &amp;&amp;other)'],['../structLogCabin_1_1Server_1_1Consensus_1_1Entry.html#a2a328720f110d2a799e6ac45b35af4b0',1,'LogCabin::Server::Consensus::Entry::Entry(const Entry &amp;)']]],
   ['exactlyoncerpchelper',['ExactlyOnceRPCHelper',['../classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a369717ef5eb0b062fed7197d7bbe59f4',1,'LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::ExactlyOnceRPCHelper(ClientImpl *client)'],['../classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#af9a34b8019e9416cc1cf0b133ba9aa88',1,'LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::ExactlyOnceRPCHelper(const ExactlyOnceRPCHelper &amp;)']]],

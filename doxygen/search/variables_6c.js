@@ -26,6 +26,7 @@ var searchData=
   ['lengthfileprefix',['lengthFilePrefix',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a136afb482ee2a2fa4d93983d2edb50fd',1,'LogCabin::Core::Debug::Internal']]],
   ['listener',['listener',['../classLogCabin_1_1RPC_1_1OpaqueServer.html#a7af714c3605d8d1079e9c9a69128b88e',1,'LogCabin::RPC::OpaqueServer']]],
   ['localserver',['localServer',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#ab4ddea6874ae1a4c7a6fe22fc752d6af',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
+  ['lockguard',['lockGuard',['../classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a4e8ec46fc587cfce8409fe62522860a8',1,'LogCabin::Server::ServerStats::Lock']]],
   ['lockowner',['lockOwner',['../classLogCabin_1_1Event_1_1Loop.html#a2257b824bb17445bbe22854f4a9cc3be',1,'LogCabin::Event::Loop']]],
   ['log',['log',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['logleveltostring',['logLevelToString',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86',1,'LogCabin::Core::Debug::Internal']]],
