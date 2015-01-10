@@ -16,8 +16,8 @@ var searchData=
   ['descriptions',['descriptions',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#a1b0e9174e1e054fdb2f6ec398575900b',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],
   ['dir',['dir',['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#ab890d1502e17b40cf3f8877a06df703f',1,'LogCabin::Storage::SimpleFileLog']]],
   ['directories',['directories',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a280d1d212295450b804935d32b5692af',1,'LogCabin::Tree::Internal::Directory']]],
-  ['directory',['Directory',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html',1,'LogCabin::Tree::Internal']]],
   ['directory',['Directory',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a4eb07d7b9f07af7f3095c5afc39d43b3',1,'LogCabin::Tree::Internal::Directory']]],
+  ['directory',['Directory',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html',1,'LogCabin::Tree::Internal']]],
   ['discard',['discard',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#adff750be580dd1545f6232792220f2c5',1,'LogCabin::Storage::SnapshotFile::Writer']]],
   ['discardunneededentries',['discardUnneededEntries',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac1a7962c0e417508be477e49e9506acb',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['disconnect',['disconnect',['../classLogCabin_1_1RPC_1_1MessageSocket.html#af6f6db4ae752670c8c758b40b39a74ab',1,'LogCabin::RPC::MessageSocket']]],
@@ -28,6 +28,8 @@ var searchData=
   ['dumpsnapshot',['dumpSnapshot',['../classLogCabin_1_1Tree_1_1Internal_1_1File.html#a570a458c8c224af0bb75b1ae0e5c0b12',1,'LogCabin::Tree::Internal::File::dumpSnapshot()'],['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a8da664c00436dd00144d0d1c9d59425b',1,'LogCabin::Tree::Internal::Directory::dumpSnapshot()'],['../classLogCabin_1_1Tree_1_1Tree.html#aa49940755a23219782972a1065a6a0e4',1,'LogCabin::Tree::Tree::dumpSnapshot()']]],
   ['dumpstring',['dumpString',['../namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34',1,'LogCabin::Core::ProtoBuf']]],
   ['dumptostream',['dumpToStream',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a671550310e27d14b8253800119a8ed72',1,'LogCabin::Server::RaftConsensusInternal::Server::dumpToStream()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#aeae52f0bcdd34d29f22a67bf194a2438',1,'LogCabin::Server::RaftConsensusInternal::LocalServer::dumpToStream()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad76e79f05ed4e34288bf168ed931a6cd',1,'LogCabin::Server::RaftConsensusInternal::Peer::dumpToStream()']]],
+  ['dumptree',['dumpTree',['../namespaceanonymous__namespace_02DumpTree_8cc_03.html#a64cde78638aa6c39bfd1fffc5c5a8f21',1,'anonymous_namespace{DumpTree.cc}']]],
+  ['dumptree_2ecc',['DumpTree.cc',['../DumpTree_8cc.html',1,'']]],
   ['dup',['dup',['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#ad72281f16e5a119a9664a2d971ca0595',1,'LogCabin::Storage::FilesystemUtil']]],
   ['duporpanic',['dupOrPanic',['../namespaceLogCabin_1_1RPC_1_1anonymous__namespace_02MessageSocket_8cc_03.html#a9a5457303bb951e9649ae12f334628ea',1,'LogCabin::RPC::anonymous_namespace{MessageSocket.cc}']]],
   ['duration',['duration',['../structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html#a56f462bb16d4ea4ab26f0293091f2905',1,'LogCabin::Core::Time::CSystemClock::duration()'],['../structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#af07ad6d3b62f58073f706e5abfe76e6b',1,'LogCabin::Core::Time::CSteadyClock::duration()'],['../structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a47b51df2c5844d317d1fb74b4723e4f4',1,'LogCabin::Core::Time::MockableClock::duration()']]]
