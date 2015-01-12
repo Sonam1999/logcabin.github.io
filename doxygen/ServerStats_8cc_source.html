@@ -115,106 +115,109 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00033"></a>00033     , signalHandler()
 <a name="l00034"></a>00034     , timerHandler()
 <a name="l00035"></a>00035 {
-<a name="l00036"></a>00036 }
-<a name="l00037"></a>00037 
-<a name="l00038"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#ac7e9dcabf4d80db703a688785c7dc6b0">00038</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#ac7e9dcabf4d80db703a688785c7dc6b0" title="Destructor.">ServerStats::~ServerStats</a>()
-<a name="l00039"></a>00039 {
-<a name="l00040"></a>00040 }
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 <span class="keywordtype">void</span>
-<a name="l00043"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a4fe7e36f3b166e01dbc0937ed92d898f">00043</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a4fe7e36f3b166e01dbc0937ed92d898f" title="Called after Globals are initialized to finish setting up this class.">ServerStats::enable</a>()
-<a name="l00044"></a>00044 {
-<a name="l00045"></a>00045     <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html" title="Provides read/write access to stats, protected against concurrent access.">Lock</a> lock(*<span class="keyword">this</span>);
-<a name="l00046"></a>00046     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a08ff2aca9ac8527f976e576f7487b4e6" title="If true, enabled() has already been called, and other modules should be queried for stats during getC...">enabled</a>) {
-<a name="l00047"></a>00047         <span class="comment">// defer construction so that TimerHandler can access config,</span>
-<a name="l00048"></a>00048         <span class="comment">// and that raft, etc are constructed</span>
-<a name="l00049"></a>00049         <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a488f25c9fbf172c4ad52eb46c27c0aa3" title="See SignalHandler.">signalHandler</a>.reset(<span class="keyword">new</span> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html" title="Dumps stats to the debug log (NOTICE level) on SIGUSR1 signal.">SignalHandler</a>(<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a8b0e6aebf49f1e883b8abd82bf9f78f2" title="Server-wide objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa79e668d84e1c96ce5d39d1ae3b35200" title="The event loop that runs the RPC system.">eventLoop</a>, *<span class="keyword">this</span>));
-<a name="l00050"></a>00050         <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a28cf8045a12787e6efe425c222b6999b" title="See TimerHandler.">timerHandler</a>.reset(<span class="keyword">new</span> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html" title="Dumps stats to the debug log (NOTICE level) periodically.">TimerHandler</a>(<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a8b0e6aebf49f1e883b8abd82bf9f78f2" title="Server-wide objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa79e668d84e1c96ce5d39d1ae3b35200" title="The event loop that runs the RPC system.">eventLoop</a>, *<span class="keyword">this</span>));
-<a name="l00051"></a>00051         <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a08ff2aca9ac8527f976e576f7487b4e6" title="If true, enabled() has already been called, and other modules should be queried for stats during getC...">enabled</a> = <span class="keyword">true</span>;
-<a name="l00052"></a>00052     }
-<a name="l00053"></a>00053 }
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 Protocol::ServerStats
-<a name="l00056"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456">00056</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456" title="Calculate and return the current server stats.">ServerStats::getCurrent</a>()
-<a name="l00057"></a>00057 {
-<a name="l00058"></a>00058     Protocol::ServerStats <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6" title="Copy the contents of a protocol buffer into a new one.">copy</a>;
-<a name="l00059"></a>00059     copy.set_start_at(std::chrono::nanoseconds(
-<a name="l00060"></a>00060         <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Core::Time::SystemClock::now</a>().time_since_epoch()).count());
-<a name="l00061"></a>00061     <span class="keywordtype">bool</span> enabledCopy;
-<a name="l00062"></a>00062     {
-<a name="l00063"></a>00063         <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html" title="Provides read/write access to stats, protected against concurrent access.">Lock</a> lock(*<span class="keyword">this</span>);
-<a name="l00064"></a>00064         copy = *lock;
-<a name="l00065"></a>00065         enabledCopy = <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a08ff2aca9ac8527f976e576f7487b4e6" title="If true, enabled() has already been called, and other modules should be queried for stats during getC...">enabled</a>;
-<a name="l00066"></a>00066     }
-<a name="l00067"></a>00067     <span class="keywordflow">if</span> (enabledCopy) {
-<a name="l00068"></a>00068         <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a8b0e6aebf49f1e883b8abd82bf9f78f2" title="Server-wide objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;updateServerStats(copy);
-<a name="l00069"></a>00069     }
-<a name="l00070"></a>00070     copy.set_end_at(std::chrono::nanoseconds(
-<a name="l00071"></a>00071         <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Core::Time::SystemClock::now</a>().time_since_epoch()).count());
-<a name="l00072"></a>00072     <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6" title="Copy the contents of a protocol buffer into a new one.">copy</a>;
-<a name="l00073"></a>00073 }
-<a name="l00074"></a>00074 
-<a name="l00075"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a213b959ec3cebaea75946c9a0a4db3de">00075</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a213b959ec3cebaea75946c9a0a4db3de" title="Constructor.">ServerStats::Lock::Lock</a>(<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html" title="Manages creation of server statistics, which are used for diagnostics.">ServerStats</a>&amp; wrapper)
-<a name="l00076"></a>00076     : wrapper(wrapper)
-<a name="l00077"></a>00077     , lockGuard()
-<a name="l00078"></a>00078 {
-<a name="l00079"></a>00079 }
-<a name="l00080"></a>00080 
-<a name="l00081"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a8a35f14f47dd3b555df055606bd61d82">00081</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a8a35f14f47dd3b555df055606bd61d82" title="Destructor.">ServerStats::Lock::~Lock</a>()
-<a name="l00082"></a>00082 {
-<a name="l00083"></a>00083 }
-<a name="l00084"></a>00084 
-<a name="l00085"></a>00085 Protocol::ServerStats*
-<a name="l00086"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a5549e0e9e4bf206661ee1fd8993de88c">00086</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a5549e0e9e4bf206661ee1fd8993de88c" title="Structure dereference operator. Returns stats pointer.">ServerStats::Lock::operator-&gt;</a>()
-<a name="l00087"></a>00087 {
-<a name="l00088"></a>00088     <span class="keywordflow">return</span> &amp;wrapper.stats;
-<a name="l00089"></a>00089 }
-<a name="l00090"></a>00090 
-<a name="l00091"></a>00091 Protocol::ServerStats&amp;
-<a name="l00092"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#aecbca50176e1526bf1315eaba575913c">00092</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#aecbca50176e1526bf1315eaba575913c" title="Indirection (dereference) operator. Returns stats reference.">ServerStats::Lock::operator*</a>()
-<a name="l00093"></a>00093 {
-<a name="l00094"></a>00094     <span class="keywordflow">return</span> wrapper.stats;
-<a name="l00095"></a>00095 }
-<a name="l00096"></a>00096 
-<a name="l00097"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a72868c01cb8cb1a0588594a77706d0a9">00097</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a72868c01cb8cb1a0588594a77706d0a9" title="Constructor. Registers itself as SIGUSR1 handler.">ServerStats::SignalHandler::SignalHandler</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; eventLoop,
-<a name="l00098"></a>00098                                           <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html" title="Manages creation of server statistics, which are used for diagnostics.">ServerStats</a>&amp; serverStats)
-<a name="l00099"></a>00099     : Signal(eventLoop, SIGUSR1)
-<a name="l00100"></a>00100     , serverStats(serverStats)
-<a name="l00101"></a>00101 {
-<a name="l00102"></a>00102 }
-<a name="l00103"></a>00103 
-<a name="l00104"></a>00104 <span class="keywordtype">void</span>
-<a name="l00105"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a28a413785db2a27eb7be9a376de9caca">00105</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a28a413785db2a27eb7be9a376de9caca" title="Fires when SIGUSR1 is received. Prints the stats to the log.">ServerStats::SignalHandler::handleSignalEvent</a>()
-<a name="l00106"></a>00106 {
-<a name="l00107"></a>00107     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Received %s: ServerStats:\n%s&quot;</span>, strsignal(signalNumber),
-<a name="l00108"></a>00108            <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(serverStats.getCurrent()).c_str());
-<a name="l00109"></a>00109 }
-<a name="l00110"></a>00110 
-<a name="l00111"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a022295268475838ecbb5b5fb67259375">00111</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a022295268475838ecbb5b5fb67259375" title="Constructor. Begins periodic timer.">ServerStats::TimerHandler::TimerHandler</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; eventLoop,
-<a name="l00112"></a>00112                                         <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html" title="Manages creation of server statistics, which are used for diagnostics.">ServerStats</a>&amp; serverStats)
-<a name="l00113"></a>00113     : Timer(eventLoop)
-<a name="l00114"></a>00114     , serverStats(serverStats)
-<a name="l00115"></a>00115     , intervalNanos(1000 * 1000 *
-<a name="l00116"></a>00116                     serverStats.<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a8b0e6aebf49f1e883b8abd82bf9f78f2" title="Server-wide objects.">globals</a>.config.read&lt;uint64_t&gt;(
-<a name="l00117"></a>00117                          <span class="stringliteral">&quot;statsDumpIntervalMilliseconds&quot;</span>, 60000))
-<a name="l00118"></a>00118 {
-<a name="l00119"></a>00119     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#adde0bf4e9deee47d3be72d4d0ecaab97" title="How often to dump the stats to the log, in nanoseconds.">intervalNanos</a> != 0)
-<a name="l00120"></a>00120         <a class="code" href="classLogCabin_1_1Event_1_1Timer.html#a69fef683c8212f3e83840d4cfb96065e" title="Start the timer.">schedule</a>(<a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#adde0bf4e9deee47d3be72d4d0ecaab97" title="How often to dump the stats to the log, in nanoseconds.">intervalNanos</a>);
-<a name="l00121"></a>00121 }
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123 <span class="keywordtype">void</span>
-<a name="l00124"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#abb7c8179ddb03f00b42da7363477f0af">00124</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#abb7c8179ddb03f00b42da7363477f0af" title="Fires when timer expires. Prints the stats to the log.">ServerStats::TimerHandler::handleTimerEvent</a>()
-<a name="l00125"></a>00125 {
-<a name="l00126"></a>00126     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Periodic dump of ServerStats:\n%s&quot;</span>,
-<a name="l00127"></a>00127            <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(serverStats.getCurrent()).c_str());
-<a name="l00128"></a>00128     <span class="keywordflow">if</span> (intervalNanos != 0)
-<a name="l00129"></a>00129         schedule(intervalNanos);
-<a name="l00130"></a>00130 }
-<a name="l00131"></a>00131 
-<a name="l00132"></a>00132 
-<a name="l00133"></a>00133 
-<a name="l00134"></a>00134 } <span class="comment">// namespace LogCabin::Server</span>
-<a name="l00135"></a>00135 } <span class="comment">// namespace LogCabin</span>
+<a name="l00036"></a>00036     <span class="comment">// Enable signal handler early so that it blocks signals on the main thread</span>
+<a name="l00037"></a>00037     <span class="comment">// before other threads are started.</span>
+<a name="l00038"></a>00038     <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a488f25c9fbf172c4ad52eb46c27c0aa3" title="See SignalHandler.">signalHandler</a>.reset(<span class="keyword">new</span> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html" title="Dumps stats to the debug log (NOTICE level) on SIGUSR1 signal.">SignalHandler</a>(globals.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa79e668d84e1c96ce5d39d1ae3b35200" title="The event loop that runs the RPC system.">eventLoop</a>, *<span class="keyword">this</span>));
+<a name="l00039"></a>00039 }
+<a name="l00040"></a>00040 
+<a name="l00041"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#ac7e9dcabf4d80db703a688785c7dc6b0">00041</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#ac7e9dcabf4d80db703a688785c7dc6b0" title="Destructor.">ServerStats::~ServerStats</a>()
+<a name="l00042"></a>00042 {
+<a name="l00043"></a>00043 }
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 <span class="keywordtype">void</span>
+<a name="l00046"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a4fe7e36f3b166e01dbc0937ed92d898f">00046</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a4fe7e36f3b166e01dbc0937ed92d898f" title="Called after Globals are initialized to finish setting up this class.">ServerStats::enable</a>()
+<a name="l00047"></a>00047 {
+<a name="l00048"></a>00048     <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html" title="Provides read/write access to stats, protected against concurrent access.">Lock</a> lock(*<span class="keyword">this</span>);
+<a name="l00049"></a>00049     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a08ff2aca9ac8527f976e576f7487b4e6" title="If true, enabled() has already been called, and other modules should be queried for stats during getC...">enabled</a>) {
+<a name="l00050"></a>00050         <span class="comment">// Defer construction of timer so that TimerHandler constructor can</span>
+<a name="l00051"></a>00051         <span class="comment">// access globals.config.</span>
+<a name="l00052"></a>00052         <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a28cf8045a12787e6efe425c222b6999b" title="See TimerHandler.">timerHandler</a>.reset(<span class="keyword">new</span> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html" title="Dumps stats to the debug log (NOTICE level) periodically.">TimerHandler</a>(<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a8b0e6aebf49f1e883b8abd82bf9f78f2" title="Server-wide objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa79e668d84e1c96ce5d39d1ae3b35200" title="The event loop that runs the RPC system.">eventLoop</a>, *<span class="keyword">this</span>));
+<a name="l00053"></a>00053         <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a08ff2aca9ac8527f976e576f7487b4e6" title="If true, enabled() has already been called, and other modules should be queried for stats during getC...">enabled</a> = <span class="keyword">true</span>;
+<a name="l00054"></a>00054     }
+<a name="l00055"></a>00055 }
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 Protocol::ServerStats
+<a name="l00058"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456">00058</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456" title="Calculate and return the current server stats.">ServerStats::getCurrent</a>()
+<a name="l00059"></a>00059 {
+<a name="l00060"></a>00060     Protocol::ServerStats <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6" title="Copy the contents of a protocol buffer into a new one.">copy</a>;
+<a name="l00061"></a>00061     int64_t startTime = std::chrono::nanoseconds(
+<a name="l00062"></a>00062         <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Core::Time::SystemClock::now</a>().time_since_epoch()).count();
+<a name="l00063"></a>00063     <span class="keywordtype">bool</span> enabledCopy;
+<a name="l00064"></a>00064     {
+<a name="l00065"></a>00065         <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html" title="Provides read/write access to stats, protected against concurrent access.">Lock</a> lock(*<span class="keyword">this</span>);
+<a name="l00066"></a>00066         copy = *lock;
+<a name="l00067"></a>00067         enabledCopy = <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a08ff2aca9ac8527f976e576f7487b4e6" title="If true, enabled() has already been called, and other modules should be queried for stats during getC...">enabled</a>;
+<a name="l00068"></a>00068     }
+<a name="l00069"></a>00069     copy.set_start_at(startTime);
+<a name="l00070"></a>00070     <span class="keywordflow">if</span> (enabledCopy) {
+<a name="l00071"></a>00071         <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a8b0e6aebf49f1e883b8abd82bf9f78f2" title="Server-wide objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;updateServerStats(copy);
+<a name="l00072"></a>00072     }
+<a name="l00073"></a>00073     copy.set_end_at(std::chrono::nanoseconds(
+<a name="l00074"></a>00074         <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Core::Time::SystemClock::now</a>().time_since_epoch()).count());
+<a name="l00075"></a>00075     <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6" title="Copy the contents of a protocol buffer into a new one.">copy</a>;
+<a name="l00076"></a>00076 }
+<a name="l00077"></a>00077 
+<a name="l00078"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a213b959ec3cebaea75946c9a0a4db3de">00078</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a213b959ec3cebaea75946c9a0a4db3de" title="Constructor.">ServerStats::Lock::Lock</a>(<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html" title="Manages creation of server statistics, which are used for diagnostics.">ServerStats</a>&amp; wrapper)
+<a name="l00079"></a>00079     : wrapper(wrapper)
+<a name="l00080"></a>00080     , lockGuard()
+<a name="l00081"></a>00081 {
+<a name="l00082"></a>00082 }
+<a name="l00083"></a>00083 
+<a name="l00084"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a8a35f14f47dd3b555df055606bd61d82">00084</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a8a35f14f47dd3b555df055606bd61d82" title="Destructor.">ServerStats::Lock::~Lock</a>()
+<a name="l00085"></a>00085 {
+<a name="l00086"></a>00086 }
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088 Protocol::ServerStats*
+<a name="l00089"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a5549e0e9e4bf206661ee1fd8993de88c">00089</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a5549e0e9e4bf206661ee1fd8993de88c" title="Structure dereference operator. Returns stats pointer.">ServerStats::Lock::operator-&gt;</a>()
+<a name="l00090"></a>00090 {
+<a name="l00091"></a>00091     <span class="keywordflow">return</span> &amp;wrapper.stats;
+<a name="l00092"></a>00092 }
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 Protocol::ServerStats&amp;
+<a name="l00095"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#aecbca50176e1526bf1315eaba575913c">00095</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#aecbca50176e1526bf1315eaba575913c" title="Indirection (dereference) operator. Returns stats reference.">ServerStats::Lock::operator*</a>()
+<a name="l00096"></a>00096 {
+<a name="l00097"></a>00097     <span class="keywordflow">return</span> wrapper.stats;
+<a name="l00098"></a>00098 }
+<a name="l00099"></a>00099 
+<a name="l00100"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a72868c01cb8cb1a0588594a77706d0a9">00100</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a72868c01cb8cb1a0588594a77706d0a9" title="Constructor. Registers itself as SIGUSR1 handler.">ServerStats::SignalHandler::SignalHandler</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; eventLoop,
+<a name="l00101"></a>00101                                           <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html" title="Manages creation of server statistics, which are used for diagnostics.">ServerStats</a>&amp; serverStats)
+<a name="l00102"></a>00102     : Signal(eventLoop, SIGUSR1)
+<a name="l00103"></a>00103     , serverStats(serverStats)
+<a name="l00104"></a>00104 {
+<a name="l00105"></a>00105 }
+<a name="l00106"></a>00106 
+<a name="l00107"></a>00107 <span class="keywordtype">void</span>
+<a name="l00108"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a28a413785db2a27eb7be9a376de9caca">00108</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a28a413785db2a27eb7be9a376de9caca" title="Fires when SIGUSR1 is received. Prints the stats to the log.">ServerStats::SignalHandler::handleSignalEvent</a>()
+<a name="l00109"></a>00109 {
+<a name="l00110"></a>00110     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Received %s: ServerStats:\n%s&quot;</span>, strsignal(signalNumber),
+<a name="l00111"></a>00111            <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(serverStats.getCurrent()).c_str());
+<a name="l00112"></a>00112 }
+<a name="l00113"></a>00113 
+<a name="l00114"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a022295268475838ecbb5b5fb67259375">00114</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a022295268475838ecbb5b5fb67259375" title="Constructor. Begins periodic timer.">ServerStats::TimerHandler::TimerHandler</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; eventLoop,
+<a name="l00115"></a>00115                                         <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html" title="Manages creation of server statistics, which are used for diagnostics.">ServerStats</a>&amp; serverStats)
+<a name="l00116"></a>00116     : Timer(eventLoop)
+<a name="l00117"></a>00117     , serverStats(serverStats)
+<a name="l00118"></a>00118     , intervalNanos(1000 * 1000 *
+<a name="l00119"></a>00119                     serverStats.<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a8b0e6aebf49f1e883b8abd82bf9f78f2" title="Server-wide objects.">globals</a>.config.read&lt;uint64_t&gt;(
+<a name="l00120"></a>00120                          <span class="stringliteral">&quot;statsDumpIntervalMilliseconds&quot;</span>, 60000))
+<a name="l00121"></a>00121 {
+<a name="l00122"></a>00122     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#adde0bf4e9deee47d3be72d4d0ecaab97" title="How often to dump the stats to the log, in nanoseconds.">intervalNanos</a> != 0)
+<a name="l00123"></a>00123         <a class="code" href="classLogCabin_1_1Event_1_1Timer.html#a69fef683c8212f3e83840d4cfb96065e" title="Start the timer.">schedule</a>(<a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#adde0bf4e9deee47d3be72d4d0ecaab97" title="How often to dump the stats to the log, in nanoseconds.">intervalNanos</a>);
+<a name="l00124"></a>00124 }
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 <span class="keywordtype">void</span>
+<a name="l00127"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#abb7c8179ddb03f00b42da7363477f0af">00127</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#abb7c8179ddb03f00b42da7363477f0af" title="Fires when timer expires. Prints the stats to the log.">ServerStats::TimerHandler::handleTimerEvent</a>()
+<a name="l00128"></a>00128 {
+<a name="l00129"></a>00129     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Periodic dump of ServerStats:\n%s&quot;</span>,
+<a name="l00130"></a>00130            <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(serverStats.getCurrent()).c_str());
+<a name="l00131"></a>00131     <span class="keywordflow">if</span> (intervalNanos != 0)
+<a name="l00132"></a>00132         schedule(intervalNanos);
+<a name="l00133"></a>00133 }
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137 } <span class="comment">// namespace LogCabin::Server</span>
+<a name="l00138"></a>00138 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
