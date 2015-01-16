@@ -36,6 +36,7 @@ var searchData=
   ['convert',['convert',['../classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#af3e1ab4770d3fab346fa6759858b2418',1,'LogCabin::Core::Time::SteadyTimeConverter']]],
   ['copy',['copy',['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a055f008ffba08581bfe5910d1ff3fe6a',1,'LogCabin::Storage::FilesystemUtil::FileContents::copy()'],['../namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6',1,'LogCabin::Core::ProtoBuf::copy()']]],
   ['copypartial',['copyPartial',['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a82c1143e0efa76307e2b90713a7cf118',1,'LogCabin::Storage::FilesystemUtil::FileContents']]],
+  ['createepollfd',['createEpollFd',['../namespaceLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03.html#af181168c10e9f98057ef4dd94449138d',1,'LogCabin::Event::anonymous_namespace{Loop.cc}']]],
   ['createsignalfd',['createSignalFd',['../namespaceLogCabin_1_1Event_1_1anonymous__namespace_02Signal_8cc_03.html#ab45b8c28a4e138a03968bbd7e603c7bb',1,'LogCabin::Event::anonymous_namespace{Signal.cc}']]],
   ['createtimerfd',['createTimerFd',['../namespaceLogCabin_1_1Event_1_1anonymous__namespace_02Timer_8cc_03.html#adaedb86b1ad3f7d43758d995ba180925',1,'LogCabin::Event::anonymous_namespace{Timer.cc}']]],
   ['fromstring_3c_20std_3a_3astring_20_3e',['fromString< std::string >',['../namespaceLogCabin_1_1Core.html#aafa9cb72bb44de25631df58c58de61a3',1,'LogCabin::Core']]]

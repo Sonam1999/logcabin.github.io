@@ -124,7 +124,7 @@ Inheritance diagram for LogCabin::RPC::MessageSocket::ReceiveSocket:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ae177af141ed186c6a2357183721ee51f">ReceiveSocket</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42">eventLoop</a>, int <a class="el" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54">fd</a>, <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html">MessageSocket</a> &amp;<a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#a18ceeebe443efe438393061e961c753c">messageSocket</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ab74acad2a73ccb82458a763b5004f1ad">ReceiveSocket</a> (int <a class="el" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0">fd</a>, <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html">MessageSocket</a> &amp;<a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#a18ceeebe443efe438393061e961c753c">messageSocket</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#a406f4f4c6663bf1cdbe335d286b34b40">~ReceiveSocket</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ad45fb20e5b8c08412f472ffd96a094cb">handleFileEvent</a> (int events)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when a file event occurs.  <a href="#ad45fb20e5b8c08412f472ffd96a094cb"></a><br/></td></tr>
@@ -136,21 +136,15 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>This class is an <a class="el" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">Event::File</a> monitor that calls <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a5b6eecff88212b9ff6ed759b8fd864b3" title="Called when the socket has data that can be read without blocking.">readable()</a> when the socket can be read from without blocking. </p>
 <p>This is always set for EPOLLIN events in a non-one-shot (persistent) manner. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00141">141</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00140">140</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ae177af141ed186c6a2357183721ee51f"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::ReceiveSocket::ReceiveSocket" ref="ae177af141ed186c6a2357183721ee51f" args="(Event::Loop &amp;eventLoop, int fd, MessageSocket &amp;messageSocket)" -->
+<a class="anchor" id="ab74acad2a73ccb82458a763b5004f1ad"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::ReceiveSocket::ReceiveSocket" ref="ab74acad2a73ccb82458a763b5004f1ad" args="(int fd, MessageSocket &amp;messageSocket)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ae177af141ed186c6a2357183721ee51f">LogCabin::RPC::MessageSocket::ReceiveSocket::ReceiveSocket</a> </td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ab74acad2a73ccb82458a763b5004f1ad">LogCabin::RPC::MessageSocket::ReceiveSocket::ReceiveSocket</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td>
-          <td class="paramname"><em>eventLoop</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>fd</em>, </td>
         </tr>
@@ -169,7 +163,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="MessageSocket_8cc_source.html#l00077">77</a> of file <a class="el" href="MessageSocket_8cc_source.html">MessageSocket.cc</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8cc_source.html#l00076">76</a> of file <a class="el" href="MessageSocket_8cc_source.html">MessageSocket.cc</a>.</p>
 
 </div>
 </div>
@@ -187,7 +181,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="MessageSocket_8cc_source.html#l00095">95</a> of file <a class="el" href="MessageSocket_8cc_source.html">MessageSocket.cc</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8cc_source.html#l00093">93</a> of file <a class="el" href="MessageSocket_8cc_source.html">MessageSocket.cc</a>.</p>
 
 </div>
 </div>
@@ -219,7 +213,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Event_1_1File.html#a65772259f49bd8f7b757d8d12cb5921f">LogCabin::Event::File</a>.</p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8cc_source.html#l00100">100</a> of file <a class="el" href="MessageSocket_8cc_source.html">MessageSocket.cc</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8cc_source.html#l00098">98</a> of file <a class="el" href="MessageSocket_8cc_source.html">MessageSocket.cc</a>.</p>
 
 </div>
 </div>
@@ -235,7 +229,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00148">148</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00146">146</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>

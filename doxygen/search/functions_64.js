@@ -1,10 +1,12 @@
 var searchData=
 [
+  ['deferred',['Deferred',['../structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#afc8952c46778acefaea54245e0520c02',1,'LogCabin::Server::ServerStats::Deferred']]],
   ['deletearrayfn',['deleteArrayFn',['../classLogCabin_1_1RPC_1_1Buffer.html#a80a95f91175c14844388964258ac4ce8',1,'LogCabin::RPC::Buffer']]],
   ['deleteobjectfn',['deleteObjectFn',['../classLogCabin_1_1RPC_1_1Buffer.html#a33990070ecee6862ace841fd9deb3922',1,'LogCabin::RPC::Buffer']]],
   ['demangle',['demangle',['../namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a5766c3478ce808eee34e819527a4ec78',1,'LogCabin::Core::anonymous_namespace{Config.cc}']]],
   ['deschedule',['deschedule',['../classLogCabin_1_1Event_1_1Timer.html#aaa60ccb04533e48aad6f517b89f134b6',1,'LogCabin::Event::Timer']]],
   ['directory',['Directory',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a4eb07d7b9f07af7f3095c5afc39d43b3',1,'LogCabin::Tree::Internal::Directory']]],
+  ['disableforever',['disableForever',['../classLogCabin_1_1Event_1_1File_1_1Monitor.html#a2b38fde47fcf4ac96b59d7835ad3b26d',1,'LogCabin::Event::File::Monitor']]],
   ['discard',['discard',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#adff750be580dd1545f6232792220f2c5',1,'LogCabin::Storage::SnapshotFile::Writer']]],
   ['discardunneededentries',['discardUnneededEntries',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac1a7962c0e417508be477e49e9506acb',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['disconnect',['disconnect',['../classLogCabin_1_1RPC_1_1MessageSocket.html#af6f6db4ae752670c8c758b40b39a74ab',1,'LogCabin::RPC::MessageSocket']]],

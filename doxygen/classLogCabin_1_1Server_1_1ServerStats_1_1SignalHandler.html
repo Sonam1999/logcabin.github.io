@@ -125,8 +125,8 @@ Inheritance diagram for LogCabin::Server::ServerStats::SignalHandler:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a72868c01cb8cb1a0588594a77706d0a9">SignalHandler</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42">eventLoop</a>, <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html">ServerStats</a> &amp;<a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#aee6a4b72617971d63ce7382c6f057d83">serverStats</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Registers itself as SIGUSR1 handler.  <a href="#a72868c01cb8cb1a0588594a77706d0a9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a8e337f70dd57e19405ac1c3284ece7a5">SignalHandler</a> (<a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html">ServerStats</a> &amp;<a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#aee6a4b72617971d63ce7382c6f057d83">serverStats</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Registers itself as SIGUSR1 handler.  <a href="#a8e337f70dd57e19405ac1c3284ece7a5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a28a413785db2a27eb7be9a376de9caca">handleSignalEvent</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fires when SIGUSR1 is received. Prints the stats to the log.  <a href="#a28a413785db2a27eb7be9a376de9caca"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
@@ -139,26 +139,16 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00087">87</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a72868c01cb8cb1a0588594a77706d0a9"></a><!-- doxytag: member="LogCabin::Server::ServerStats::SignalHandler::SignalHandler" ref="a72868c01cb8cb1a0588594a77706d0a9" args="(Event::Loop &amp;eventLoop, ServerStats &amp;serverStats)" -->
+<a class="anchor" id="a8e337f70dd57e19405ac1c3284ece7a5"></a><!-- doxytag: member="LogCabin::Server::ServerStats::SignalHandler::SignalHandler" ref="a8e337f70dd57e19405ac1c3284ece7a5" args="(ServerStats &amp;serverStats)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a72868c01cb8cb1a0588594a77706d0a9">LogCabin::Server::ServerStats::SignalHandler::SignalHandler</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a8e337f70dd57e19405ac1c3284ece7a5">LogCabin::Server::ServerStats::SignalHandler::SignalHandler</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td>
-          <td class="paramname"><em>eventLoop</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html">ServerStats</a> &amp;&#160;</td>
-          <td class="paramname"><em>serverStats</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramname"><em>serverStats</em></td><td>)</td>
+          <td><code> [explicit]</code></td>
         </tr>
       </table>
 </div>
@@ -166,7 +156,7 @@ Public Attributes</h2></td></tr>
 
 <p>Constructor. Registers itself as SIGUSR1 handler. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00100">100</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00054">54</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
 
 </div>
 </div>
@@ -189,7 +179,7 @@ Public Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Event_1_1Signal.html#aef1177de7a82a50c6b591d384ecf7349">LogCabin::Event::Signal</a>.</p>
 
-<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00108">108</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00061">61</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
 
 </div>
 </div>

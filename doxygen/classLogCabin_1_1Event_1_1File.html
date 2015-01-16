@@ -100,9 +100,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pri-methods">Private Member Functions</a>  </div>
+<a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">LogCabin::Event::File Class Reference</div>  </div>
 </div><!--header-->
@@ -126,7 +127,7 @@ Inheritance diagram for LogCabin::Event::File:</div>
 <area href="classLogCabin_1_1RPC_1_1TCPListener_1_1BoundListener.html" title="A socket that listens on a particular address." alt="LogCabin::RPC::TCPListener::BoundListener" shape="rect" coords="3210,56,3628,80"/>
 <area href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html" title="Exits from the event loop upon receiving a UNIX signal." alt="LogCabin::Server::Globals::ExitHandler" shape="rect" coords="0,112,418,136"/>
 <area href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html" title="Dumps stats to the debug log (NOTICE level) on SIGUSR1 signal." alt="LogCabin::Server::ServerStats::SignalHandler" shape="rect" coords="428,112,846,136"/>
-<area href="classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.html" alt="LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer" shape="rect" coords="856,112,1274,136"/>
+<area href="classLogCabin_1_1Event_1_1Loop_1_1NullTimer.html" title="Used in breakTimer, whose purpose is not to handle events but to break runForever() out of epoll_wait..." alt="LogCabin::Event::Loop::NullTimer" shape="rect" coords="856,112,1274,136"/>
 <area href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html" title="Exits an event loop when a timer event occurs." alt="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier" shape="rect" coords="1284,112,1702,136"/>
 <area href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html" title="This is used to time out RPCs and sessions when the server is no longer responding." alt="LogCabin::RPC::ClientSession::Timer" shape="rect" coords="1712,112,2130,136"/>
 <area href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html" title="Dumps stats to the debug log (NOTICE level) periodically." alt="LogCabin::Server::ServerStats::TimerHandler" shape="rect" coords="2140,112,2558,136"/>
@@ -135,30 +136,35 @@ Inheritance diagram for LogCabin::Event::File:</div>
 
 <p><a href="classLogCabin_1_1Event_1_1File-members.html">List of all members.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html">Monitor</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a <a class="el" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a> handler to be monitored by the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>.  <a href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#details">More...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25">Ownership</a> { <br/>
+&#160;&#160;<a class="el" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25a177e6355b3cc70f31333f162b0a8f6ca">CLOSE_ON_DESTROY</a>, 
+<br/>
+&#160;&#160;<a class="el" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25a8d388f3cae0684a3eb73ea6baa87be70">CALLER_CLOSES_FD</a>
+<br/>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Specifies who is in charge of closing the file descriptor.  <a href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a7563195f04344ae8684f44b029daeffa">File</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42">eventLoop</a>, int <a class="el" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54">fd</a>, int events)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct and enable monitoring a file descriptor.  <a href="#a7563195f04344ae8684f44b029daeffa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a3b300ea4c694f01d3694e02971093c08">File</a> (int <a class="el" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0">fd</a>, <a class="el" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25">Ownership</a> <a class="el" href="classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139">ownership</a>=<a class="el" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25a177e6355b3cc70f31333f162b0a8f6ca">CLOSE_ON_DESTROY</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a file event handler.  <a href="#a3b300ea4c694f01d3694e02971093c08"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a0e19f03631cf782015d39bbb98ec8365">~File</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a0e19f03631cf782015d39bbb98ec8365"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a65772259f49bd8f7b757d8d12cb5921f">handleFileEvent</a> (int events)=0</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when a file event occurs.  <a href="#a65772259f49bd8f7b757d8d12cb5921f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#aab3c1cafdf43034823597e537fdefa1b">release</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the file descriptor from being monitored by this object.  <a href="#aab3c1cafdf43034823597e537fdefa1b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a54c241c86227cec338469e1c4f3caf54">setEvents</a> (int events)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Specify the events of interest for this file handler.  <a href="#a54c241c86227cec338469e1c4f3caf54"></a><br/></td></tr>
-<tr><td colspan="2"><h2><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42">eventLoop</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> that will manage this file.  <a href="#a9d89637a9a28298bcdd3aff6b03a5b42"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#aca3f3f6ddbfc265e822f35456809ef78">fdMutex</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects <a class="el" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a> from concurrent access between <a class="el" href="classLogCabin_1_1Event_1_1File.html#aab3c1cafdf43034823597e537fdefa1b" title="Remove the file descriptor from being monitored by this object.">release()</a>, which modifies <a class="el" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a>, and <a class="el" href="classLogCabin_1_1Event_1_1File.html#a54c241c86227cec338469e1c4f3caf54" title="Specify the events of interest for this file handler.">setEvents()</a>, which uses it.  <a href="#aca3f3f6ddbfc265e822f35456809ef78"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54">fd</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The file descriptor to monitor.  <a href="#a016006e21779261323216cbe5fd11f54"></a><br/></td></tr>
-<tr><td colspan="2"><h2><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#abcad7a8697dbe64730c1925f665488dd">File</a> (const <a class="el" href="classLogCabin_1_1Event_1_1File.html">File</a> &amp;)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1File.html">File</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#af3e355d84b3a1e4191aeb1c15b7781d6">operator=</a> (const <a class="el" href="classLogCabin_1_1Event_1_1File.html">File</a> &amp;)</td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0">fd</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The file descriptor to monitor.  <a href="#a3ed9c9de5f24ffe58ccf1c526190b6a0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25">Ownership</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139">ownership</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See Ownership.  <a href="#ace0674277883dc8e370dd2584229e139"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A <a class="el" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a> is called by the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> when a file becomes readable or writable. </p>
@@ -166,28 +172,51 @@ Private Member Functions</h2></td></tr>
 <p><a class="el" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a> objects can be created from any thread, but they will always fire on the thread running the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>. </p>
 
 <p>Definition at line <a class="el" href="File_8h_source.html#l00036">36</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
-</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a7563195f04344ae8684f44b029daeffa"></a><!-- doxytag: member="LogCabin::Event::File::File" ref="a7563195f04344ae8684f44b029daeffa" args="(Event::Loop &amp;eventLoop, int fd, int events)" -->
+</div><hr/><h2>Member Enumeration Documentation</h2>
+<a class="anchor" id="a7c031367840fbc7ec54fa81d3ce9ef25"></a><!-- doxytag: member="LogCabin::Event::File::Ownership" ref="a7c031367840fbc7ec54fa81d3ce9ef25" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a7563195f04344ae8684f44b029daeffa">LogCabin::Event::File::File</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td>
-          <td class="paramname"><em>eventLoop</em>, </td>
+          <td class="memname">enum <a class="el" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25">LogCabin::Event::File::Ownership</a></td>
         </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Specifies who is in charge of closing the file descriptor. </p>
+<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="a7c031367840fbc7ec54fa81d3ce9ef25a177e6355b3cc70f31333f162b0a8f6ca"></a><!-- doxytag: member="CLOSE_ON_DESTROY" ref="a7c031367840fbc7ec54fa81d3ce9ef25a177e6355b3cc70f31333f162b0a8f6ca" args="" -->CLOSE_ON_DESTROY</em>&nbsp;</td><td>
+<p>The <a class="el" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a> destructor will close() fd. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7c031367840fbc7ec54fa81d3ce9ef25a8d388f3cae0684a3eb73ea6baa87be70"></a><!-- doxytag: member="CALLER_CLOSES_FD" ref="a7c031367840fbc7ec54fa81d3ce9ef25a8d388f3cae0684a3eb73ea6baa87be70" args="" -->CALLER_CLOSES_FD</em>&nbsp;</td><td>
+<p>The caller will be in charge of closing fd. </p>
+<p>The <a class="el" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a> destructor will not close() fd. </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>Definition at line <a class="el" href="File_8h_source.html#l00129">129</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a3b300ea4c694f01d3694e02971093c08"></a><!-- doxytag: member="LogCabin::Event::File::File" ref="a3b300ea4c694f01d3694e02971093c08" args="(int fd, Ownership ownership=CLOSE_ON_DESTROY)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
         <tr>
-          <td class="paramkey"></td>
-          <td></td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a3b300ea4c694f01d3694e02971093c08">LogCabin::Event::File::File</a> </td>
+          <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>fd</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>events</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25">Ownership</a>&#160;</td>
+          <td class="paramname"><em>ownership</em> = <code><a class="el" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25a177e6355b3cc70f31333f162b0a8f6ca">CLOSE_ON_DESTROY</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -198,17 +227,17 @@ Private Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Construct and enable monitoring a file descriptor. </p>
+<p>Construct a file event handler. </p>
+<p>After this is constructed, you'll want to create an <a class="el" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html" title="Registers a File handler to be monitored by the Event::Loop.">Event::File::Monitor</a> for it. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">eventLoop</td><td><a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> that will manage this <a class="el" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a> object. </td></tr>
-    <tr><td class="paramname">fd</td><td>A file descriptor of a valid open file to monitor. Unless <a class="el" href="classLogCabin_1_1Event_1_1File.html#aab3c1cafdf43034823597e537fdefa1b" title="Remove the file descriptor from being monitored by this object.">release()</a> is called first, this <a class="el" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a> object will close the file descriptor when it is destroyed. </td></tr>
-    <tr><td class="paramname">events</td><td>Invoke the handler when any of the events specified by this parameter occur (OR-ed combination of EPOLL_EVENTS values). If this is 0 then the file handler starts off inactive; it will not trigger until <a class="el" href="classLogCabin_1_1Event_1_1File.html#a54c241c86227cec338469e1c4f3caf54" title="Specify the events of interest for this file handler.">setEvents()</a> has been called (except possibly for errors such as EPOLLHUP; these events are always active). </td></tr>
+    <tr><td class="paramname">fd</td><td>A file descriptor of a valid open file to monitor. Unless release() is called first, this <a class="el" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a> object will close the file descriptor when it is destroyed. </td></tr>
+    <tr><td class="paramname">ownership</td><td>Specifies who is in charge of closing fd. Default: this class will close fd in the destructor. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="File_8cc_source.html#l00028">28</a> of file <a class="el" href="File_8cc_source.html">File.cc</a>.</p>
+<p>Definition at line <a class="el" href="File_8cc_source.html#l00086">86</a> of file <a class="el" href="File_8cc_source.html">File.cc</a>.</p>
 
 </div>
 </div>
@@ -227,8 +256,9 @@ Private Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Destructor. </p>
+<p>Closes the file descriptor if ownership is set to CLOSE_ON_DESTROY. </p>
 
-<p>Definition at line <a class="el" href="File_8cc_source.html#l00044">44</a> of file <a class="el" href="File_8cc_source.html">File.cc</a>.</p>
+<p>Definition at line <a class="el" href="File_8cc_source.html#l00092">92</a> of file <a class="el" href="File_8cc_source.html">File.cc</a>.</p>
 
 </div>
 </div>
@@ -237,11 +267,11 @@ Private Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a7563195f04344ae8684f44b029daeffa">LogCabin::Event::File::File</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a3b300ea4c694f01d3694e02971093c08">LogCabin::Event::File::File</a> </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classLogCabin_1_1Event_1_1File.html">File</a> &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
-          <td><code> [private]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
@@ -275,56 +305,7 @@ Private Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ad45fb20e5b8c08412f472ffd96a094cb">LogCabin::RPC::MessageSocket::ReceiveSocket</a>, <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html#a3f245586d9172aa94630b7c57b3e5b97">LogCabin::RPC::MessageSocket::SendSocket</a>, <a class="el" href="classLogCabin_1_1RPC_1_1TCPListener_1_1BoundListener.html#afb9bd65a31ad341b30dcad6265b1e322">LogCabin::RPC::TCPListener::BoundListener</a>, <a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#aaada4c386b6fffae8a10c2f55785c133">LogCabin::RPC::anonymous_namespace{ClientSession.cc}::FileNotifier</a>, <a class="el" href="classLogCabin_1_1Event_1_1Signal.html#a100f317ed4da04b6c4278bd98b4fd236">LogCabin::Event::Signal</a>, and <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a2081aa52c39a3b225bede3550f270382">LogCabin::Event::Timer</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aab3c1cafdf43034823597e537fdefa1b"></a><!-- doxytag: member="LogCabin::Event::File::release" ref="aab3c1cafdf43034823597e537fdefa1b" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="classLogCabin_1_1Event_1_1File.html#aab3c1cafdf43034823597e537fdefa1b">LogCabin::Event::File::release</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Remove the file descriptor from being monitored by this object. </p>
-<p>Unless running in the event loop thread, a caller must typically take an <a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Event::Loop::Lock</a> before closing the file descriptor, to ensure that a concurrent handler call does not access the closed file. This may only be called once. </p>
-
-<p>Definition at line <a class="el" href="File_8cc_source.html#l00073">73</a> of file <a class="el" href="File_8cc_source.html">File.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a54c241c86227cec338469e1c4f3caf54"></a><!-- doxytag: member="LogCabin::Event::File::setEvents" ref="a54c241c86227cec338469e1c4f3caf54" args="(int events)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Event_1_1File.html#a54c241c86227cec338469e1c4f3caf54">LogCabin::Event::File::setEvents</a> </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>events</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Specify the events of interest for this file handler. </p>
-<p>This method is safe to call concurrently with file events triggering. If called outside an event handler and no <a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Event::Loop::Lock</a> is taken, this may have a short delay while active handlers continue to be called.</p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">events</td><td>Indicates the conditions under which this object should be invoked (OR-ed combination of EPOLL_EVENTS values). If this is 0 then the file handler is set to inactive; it will not trigger until <a class="el" href="classLogCabin_1_1Event_1_1File.html#a54c241c86227cec338469e1c4f3caf54" title="Specify the events of interest for this file handler.">setEvents()</a> has been called (except possibly for errors such as EPOLLHUP; these events are always active). </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="File_8cc_source.html#l00056">56</a> of file <a class="el" href="File_8cc_source.html">File.cc</a>.</p>
+<p>Implemented in <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ad45fb20e5b8c08412f472ffd96a094cb">LogCabin::RPC::MessageSocket::ReceiveSocket</a>, <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a2081aa52c39a3b225bede3550f270382">LogCabin::Event::Timer</a>, <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html#a3f245586d9172aa94630b7c57b3e5b97">LogCabin::RPC::MessageSocket::SendSocket</a>, <a class="el" href="classLogCabin_1_1Event_1_1Signal.html#a100f317ed4da04b6c4278bd98b4fd236">LogCabin::Event::Signal</a>, <a class="el" href="classLogCabin_1_1RPC_1_1TCPListener_1_1BoundListener.html#afb9bd65a31ad341b30dcad6265b1e322">LogCabin::RPC::TCPListener::BoundListener</a>, and <a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#aaada4c386b6fffae8a10c2f55785c133">LogCabin::RPC::anonymous_namespace{ClientSession.cc}::FileNotifier</a>.</p>
 
 </div>
 </div>
@@ -337,7 +318,7 @@ Private Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classLogCabin_1_1Event_1_1File.html">File</a> &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
-          <td><code> [private]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
@@ -346,46 +327,12 @@ Private Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a9d89637a9a28298bcdd3aff6b03a5b42"></a><!-- doxytag: member="LogCabin::Event::File::eventLoop" ref="a9d89637a9a28298bcdd3aff6b03a5b42" args="" -->
+<a class="anchor" id="a3ed9c9de5f24ffe58ccf1c526190b6a0"></a><!-- doxytag: member="LogCabin::Event::File::fd" ref="a3ed9c9de5f24ffe58ccf1c526190b6a0" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a>&amp; <a class="el" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42">LogCabin::Event::File::eventLoop</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p><a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> that will manage this file. </p>
-
-<p>Definition at line <a class="el" href="File_8h_source.html#l00103">103</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aca3f3f6ddbfc265e822f35456809ef78"></a><!-- doxytag: member="LogCabin::Event::File::fdMutex" ref="aca3f3f6ddbfc265e822f35456809ef78" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::mutex <a class="el" href="classLogCabin_1_1Event_1_1File.html#aca3f3f6ddbfc265e822f35456809ef78">LogCabin::Event::File::fdMutex</a><code> [mutable]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Protects <a class="el" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a> from concurrent access between <a class="el" href="classLogCabin_1_1Event_1_1File.html#aab3c1cafdf43034823597e537fdefa1b" title="Remove the file descriptor from being monitored by this object.">release()</a>, which modifies <a class="el" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a>, and <a class="el" href="classLogCabin_1_1Event_1_1File.html#a54c241c86227cec338469e1c4f3caf54" title="Specify the events of interest for this file handler.">setEvents()</a>, which uses it. </p>
-
-<p>Definition at line <a class="el" href="File_8h_source.html#l00109">109</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a016006e21779261323216cbe5fd11f54"></a><!-- doxytag: member="LogCabin::Event::File::fd" ref="a016006e21779261323216cbe5fd11f54" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54">LogCabin::Event::File::fd</a></td>
+          <td class="memname">const int <a class="el" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0">LogCabin::Event::File::fd</a></td>
         </tr>
       </table>
 </div>
@@ -393,7 +340,24 @@ Private Member Functions</h2></td></tr>
 
 <p>The file descriptor to monitor. </p>
 
-<p>Definition at line <a class="el" href="File_8h_source.html#l00114">114</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
+<p>Definition at line <a class="el" href="File_8h_source.html#l00178">178</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ace0674277883dc8e370dd2584229e139"></a><!-- doxytag: member="LogCabin::Event::File::ownership" ref="ace0674277883dc8e370dd2584229e139" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25">Ownership</a> <a class="el" href="classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139">LogCabin::Event::File::ownership</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>See Ownership. </p>
+
+<p>Definition at line <a class="el" href="File_8h_source.html#l00183">183</a> of file <a class="el" href="File_8h_source.html">File.h</a>.</p>
 
 </div>
 </div>

@@ -124,11 +124,12 @@ Inheritance diagram for LogCabin::RPC::anonymous_namespace{ClientSession.cc}::Fi
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#a21af26a295dad87372acd60e9cb5d386">FileNotifier</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42">eventLoop</a>, int <a class="el" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54">fd</a>, int events)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#a1a8b5316d55cd83969ba57dfa1d3ee0d">FileNotifier</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#ab6350bb7d9eeeea213a22c4d5f3c40d3">eventLoop</a>, int <a class="el" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0">fd</a>, <a class="el" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25">Ownership</a> <a class="el" href="classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139">ownership</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#aaada4c386b6fffae8a10c2f55785c133">handleFileEvent</a> (int events)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when a file event occurs.  <a href="#aaada4c386b6fffae8a10c2f55785c133"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#ab6350bb7d9eeeea213a22c4d5f3c40d3">eventLoop</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#a92f3082ed036963dc9a4e8f51c5d14fc">count</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
@@ -137,12 +138,12 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00058">58</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a21af26a295dad87372acd60e9cb5d386"></a><!-- doxytag: member="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::FileNotifier::FileNotifier" ref="a21af26a295dad87372acd60e9cb5d386" args="(Event::Loop &amp;eventLoop, int fd, int events)" -->
+<a class="anchor" id="a1a8b5316d55cd83969ba57dfa1d3ee0d"></a><!-- doxytag: member="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::FileNotifier::FileNotifier" ref="a1a8b5316d55cd83969ba57dfa1d3ee0d" args="(Event::Loop &amp;eventLoop, int fd, Ownership ownership)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">LogCabin::RPC::anonymous_namespace{ClientSession.cc}::<a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#a21af26a295dad87372acd60e9cb5d386">FileNotifier::FileNotifier</a> </td>
+          <td class="memname">LogCabin::RPC::anonymous_namespace{ClientSession.cc}::<a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#a1a8b5316d55cd83969ba57dfa1d3ee0d">FileNotifier::FileNotifier</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td>
           <td class="paramname"><em>eventLoop</em>, </td>
@@ -156,8 +157,8 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>events</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25">Ownership</a>&#160;</td>
+          <td class="paramname"><em>ownership</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -200,11 +201,26 @@ Public Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Event_1_1File.html#a65772259f49bd8f7b757d8d12cb5921f">LogCabin::Event::File</a>.</p>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00064">64</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00065">65</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="ab6350bb7d9eeeea213a22c4d5f3c40d3"></a><!-- doxytag: member="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::FileNotifier::eventLoop" ref="ab6350bb7d9eeeea213a22c4d5f3c40d3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a>&amp; LogCabin::RPC::anonymous_namespace{ClientSession.cc}::<a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#ab6350bb7d9eeeea213a22c4d5f3c40d3">FileNotifier::eventLoop</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00069">69</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a92f3082ed036963dc9a4e8f51c5d14fc"></a><!-- doxytag: member="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::FileNotifier::count" ref="a92f3082ed036963dc9a4e8f51c5d14fc" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -216,7 +232,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00068">68</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00070">70</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>

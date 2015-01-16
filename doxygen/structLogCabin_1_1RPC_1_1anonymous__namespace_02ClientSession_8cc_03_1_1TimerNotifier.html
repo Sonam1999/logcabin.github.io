@@ -101,7 +101,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier Struct Reference</div>  </div>
 </div><!--header-->
@@ -124,15 +125,18 @@ Inheritance diagram for LogCabin::RPC::anonymous_namespace{ClientSession.cc}::Ti
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html#a246e30cda43a99cb960f962d9b2f148a">TimerNotifier</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42">eventLoop</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html#a246e30cda43a99cb960f962d9b2f148a">TimerNotifier</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html#aadb0484d1cb0af9bd868f4cabad6e5f9">eventLoop</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html#a0a04a8edca9a34a2310ad472fbdf687d">handleTimerEvent</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when the timer expires.  <a href="#a0a04a8edca9a34a2310ad472fbdf687d"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html#aadb0484d1cb0af9bd868f4cabad6e5f9">eventLoop</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Exits an event loop when a timer event occurs. </p>
 <p>Helper for <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> constructor. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00075">75</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00077">77</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a246e30cda43a99cb960f962d9b2f148a"></a><!-- doxytag: member="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier::TimerNotifier" ref="a246e30cda43a99cb960f962d9b2f148a" args="(Event::Loop &amp;eventLoop)" -->
 <div class="memitem">
@@ -149,7 +153,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00076">76</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00078">78</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
@@ -173,7 +177,23 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a61bc4b06ada2b649ba543586a499e484">LogCabin::Event::Timer</a>.</p>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00079">79</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00083">83</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="aadb0484d1cb0af9bd868f4cabad6e5f9"></a><!-- doxytag: member="LogCabin::RPC::anonymous_namespace{ClientSession.cc}::TimerNotifier::eventLoop" ref="aadb0484d1cb0af9bd868f4cabad6e5f9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a>&amp; LogCabin::RPC::anonymous_namespace{ClientSession.cc}::<a class="el" href="structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html#aadb0484d1cb0af9bd868f4cabad6e5f9">TimerNotifier::eventLoop</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00086">86</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>

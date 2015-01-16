@@ -125,8 +125,8 @@ Inheritance diagram for LogCabin::Server::ServerStats::TimerHandler:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a022295268475838ecbb5b5fb67259375">TimerHandler</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42">eventLoop</a>, <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html">ServerStats</a> &amp;<a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a997117de4c0076c61c03f5608d7c213d">serverStats</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Begins periodic timer.  <a href="#a022295268475838ecbb5b5fb67259375"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a81dc51a5fedec334d9dc6ffe10016b4c">TimerHandler</a> (<a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html">ServerStats</a> &amp;<a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a997117de4c0076c61c03f5608d7c213d">serverStats</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Begins periodic timer.  <a href="#a81dc51a5fedec334d9dc6ffe10016b4c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#abb7c8179ddb03f00b42da7363477f0af">handleTimerEvent</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fires when timer expires. Prints the stats to the log.  <a href="#abb7c8179ddb03f00b42da7363477f0af"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
@@ -141,26 +141,16 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00100">100</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a022295268475838ecbb5b5fb67259375"></a><!-- doxytag: member="LogCabin::Server::ServerStats::TimerHandler::TimerHandler" ref="a022295268475838ecbb5b5fb67259375" args="(Event::Loop &amp;eventLoop, ServerStats &amp;serverStats)" -->
+<a class="anchor" id="a81dc51a5fedec334d9dc6ffe10016b4c"></a><!-- doxytag: member="LogCabin::Server::ServerStats::TimerHandler::TimerHandler" ref="a81dc51a5fedec334d9dc6ffe10016b4c" args="(ServerStats &amp;serverStats)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a022295268475838ecbb5b5fb67259375">LogCabin::Server::ServerStats::TimerHandler::TimerHandler</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a81dc51a5fedec334d9dc6ffe10016b4c">LogCabin::Server::ServerStats::TimerHandler::TimerHandler</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td>
-          <td class="paramname"><em>eventLoop</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html">ServerStats</a> &amp;&#160;</td>
-          <td class="paramname"><em>serverStats</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramname"><em>serverStats</em></td><td>)</td>
+          <td><code> [explicit]</code></td>
         </tr>
       </table>
 </div>
@@ -168,7 +158,7 @@ Public Attributes</h2></td></tr>
 
 <p>Constructor. Begins periodic timer. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00114">114</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00069">69</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
 
 </div>
 </div>
@@ -191,7 +181,7 @@ Public Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a61bc4b06ada2b649ba543586a499e484">LogCabin::Event::Timer</a>.</p>
 
-<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00127">127</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00081">81</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
 
 </div>
 </div>

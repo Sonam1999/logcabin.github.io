@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="File_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* Copyright (c) 2011-2014 Stanford University</span>
-<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2014 Diego Ongaro</span>
+<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2014-2015 Diego Ongaro</span>
 <a name="l00003"></a>00003 <span class="comment"> *</span>
 <a name="l00004"></a>00004 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
 <a name="l00005"></a>00005 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
@@ -119,92 +119,160 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00037"></a>00037   <span class="keyword">public</span>:
 <a name="l00038"></a>00038 <span class="comment"></span>
 <a name="l00039"></a>00039 <span class="comment">    /**</span>
-<a name="l00040"></a>00040 <span class="comment">     * Construct and enable monitoring a file descriptor.</span>
-<a name="l00041"></a>00041 <span class="comment">     * \param eventLoop</span>
-<a name="l00042"></a>00042 <span class="comment">     *      Event::Loop that will manage this File object.</span>
-<a name="l00043"></a>00043 <span class="comment">     * \param fd</span>
-<a name="l00044"></a>00044 <span class="comment">     *      A file descriptor of a valid open file to monitor. Unless release()</span>
-<a name="l00045"></a>00045 <span class="comment">     *      is called first, this File object will close the file descriptor</span>
-<a name="l00046"></a>00046 <span class="comment">     *      when it is destroyed.</span>
-<a name="l00047"></a>00047 <span class="comment">     * \param events</span>
-<a name="l00048"></a>00048 <span class="comment">     *      Invoke the handler when any of the events specified by this</span>
-<a name="l00049"></a>00049 <span class="comment">     *      parameter occur (OR-ed combination of EPOLL_EVENTS values). If this</span>
-<a name="l00050"></a>00050 <span class="comment">     *      is 0 then the file handler starts off inactive; it will not trigger</span>
-<a name="l00051"></a>00051 <span class="comment">     *      until setEvents() has been called (except possibly for errors such</span>
-<a name="l00052"></a>00052 <span class="comment">     *      as EPOLLHUP; these events are always active).</span>
-<a name="l00053"></a>00053 <span class="comment">     */</span>
-<a name="l00054"></a>00054     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a7563195f04344ae8684f44b029daeffa" title="Construct and enable monitoring a file descriptor.">File</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; <a class="code" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42" title="Event::Loop that will manage this file.">eventLoop</a>, <span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a>, <span class="keywordtype">int</span> events);
-<a name="l00055"></a>00055 <span class="comment"></span>
-<a name="l00056"></a>00056 <span class="comment">    /**</span>
-<a name="l00057"></a>00057 <span class="comment">     * Destructor.</span>
-<a name="l00058"></a>00058 <span class="comment">     */</span>
-<a name="l00059"></a>00059     <span class="keyword">virtual</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a0e19f03631cf782015d39bbb98ec8365" title="Destructor.">~File</a>();
-<a name="l00060"></a>00060 <span class="comment"></span>
-<a name="l00061"></a>00061 <span class="comment">    /**</span>
-<a name="l00062"></a>00062 <span class="comment">     * This method is overridden by a subclass and invoked when a file event</span>
-<a name="l00063"></a>00063 <span class="comment">     * occurs. This method will be invoked by the main event loop on</span>
-<a name="l00064"></a>00064 <span class="comment">     * whatever thread is running the Event::Loop.</span>
-<a name="l00065"></a>00065 <span class="comment">     *</span>
-<a name="l00066"></a>00066 <span class="comment">     * If the event still exists when this method returns (e.g., the file is</span>
-<a name="l00067"></a>00067 <span class="comment">     * readable but the method did not read the data), then the method will be</span>
-<a name="l00068"></a>00068 <span class="comment">     * invoked again (unless flags such as EPOLLONESHOT or EPOLLET are used).</span>
-<a name="l00069"></a>00069 <span class="comment">     *</span>
-<a name="l00070"></a>00070 <span class="comment">     * \param events</span>
-<a name="l00071"></a>00071 <span class="comment">     *      Indicates whether the file is readable or writable or both (OR&#39;ed</span>
-<a name="l00072"></a>00072 <span class="comment">     *      combination of EPOLL_EVENTS values).</span>
-<a name="l00073"></a>00073 <span class="comment">     */</span>
-<a name="l00074"></a>00074     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a65772259f49bd8f7b757d8d12cb5921f" title="This method is overridden by a subclass and invoked when a file event occurs.">handleFileEvent</a>(<span class="keywordtype">int</span> events) = 0;
-<a name="l00075"></a>00075 <span class="comment"></span>
-<a name="l00076"></a>00076 <span class="comment">    /**</span>
-<a name="l00077"></a>00077 <span class="comment">     * Remove the file descriptor from being monitored by this object. Unless</span>
-<a name="l00078"></a>00078 <span class="comment">     * running in the event loop thread, a caller must typically take an</span>
-<a name="l00079"></a>00079 <span class="comment">     * Event::Loop::Lock before closing the file descriptor, to ensure that a</span>
-<a name="l00080"></a>00080 <span class="comment">     * concurrent handler call does not access the closed file.</span>
-<a name="l00081"></a>00081 <span class="comment">     * This may only be called once.</span>
-<a name="l00082"></a>00082 <span class="comment">     */</span>
-<a name="l00083"></a>00083     <span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#aab3c1cafdf43034823597e537fdefa1b" title="Remove the file descriptor from being monitored by this object.">release</a>();
-<a name="l00084"></a>00084 <span class="comment"></span>
-<a name="l00085"></a>00085 <span class="comment">    /**</span>
-<a name="l00086"></a>00086 <span class="comment">     * Specify the events of interest for this file handler.</span>
-<a name="l00087"></a>00087 <span class="comment">     * This method is safe to call concurrently with file events triggering. If</span>
-<a name="l00088"></a>00088 <span class="comment">     * called outside an event handler and no Event::Loop::Lock is taken, this</span>
-<a name="l00089"></a>00089 <span class="comment">     * may have a short delay while active handlers continue to be called.</span>
-<a name="l00090"></a>00090 <span class="comment">     *</span>
-<a name="l00091"></a>00091 <span class="comment">     * \param events</span>
-<a name="l00092"></a>00092 <span class="comment">     *      Indicates the conditions under which this object should be invoked</span>
-<a name="l00093"></a>00093 <span class="comment">     *      (OR-ed combination of EPOLL_EVENTS values). If this is 0 then the</span>
-<a name="l00094"></a>00094 <span class="comment">     *      file handler is set to inactive; it will not trigger until</span>
-<a name="l00095"></a>00095 <span class="comment">     *      setEvents() has been called (except possibly for errors such as</span>
-<a name="l00096"></a>00096 <span class="comment">     *      EPOLLHUP; these events are always active).</span>
-<a name="l00097"></a>00097 <span class="comment">     */</span>
-<a name="l00098"></a>00098     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a54c241c86227cec338469e1c4f3caf54" title="Specify the events of interest for this file handler.">setEvents</a>(<span class="keywordtype">int</span> events);
-<a name="l00099"></a>00099 <span class="comment"></span>
-<a name="l00100"></a>00100 <span class="comment">    /**</span>
-<a name="l00101"></a>00101 <span class="comment">     * Event::Loop that will manage this file.</span>
-<a name="l00102"></a>00102 <span class="comment">     */</span>
-<a name="l00103"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42">00103</a>     <a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; <a class="code" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42" title="Event::Loop that will manage this file.">eventLoop</a>;
-<a name="l00104"></a>00104 <span class="comment"></span>
-<a name="l00105"></a>00105 <span class="comment">    /**</span>
-<a name="l00106"></a>00106 <span class="comment">     * Protects #fd from concurrent access between #release(),</span>
-<a name="l00107"></a>00107 <span class="comment">     * which modifies #fd, and #setEvents(), which uses it.</span>
-<a name="l00108"></a>00108 <span class="comment">     */</span>
-<a name="l00109"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#aca3f3f6ddbfc265e822f35456809ef78">00109</a>     <span class="keyword">mutable</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">std::mutex</a> <a class="code" href="classLogCabin_1_1Event_1_1File.html#aca3f3f6ddbfc265e822f35456809ef78" title="Protects fd from concurrent access between release(), which modifies fd, and setEvents(), which uses it.">fdMutex</a>;
-<a name="l00110"></a>00110 <span class="comment"></span>
-<a name="l00111"></a>00111 <span class="comment">    /**</span>
-<a name="l00112"></a>00112 <span class="comment">     * The file descriptor to monitor.</span>
-<a name="l00113"></a>00113 <span class="comment">     */</span>
-<a name="l00114"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54">00114</a>     <span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a>;
-<a name="l00115"></a>00115 
-<a name="l00116"></a>00116   <span class="keyword">private</span>:
-<a name="l00117"></a>00117     <span class="comment">// File is not copyable.</span>
-<a name="l00118"></a>00118     <a class="code" href="classLogCabin_1_1Event_1_1File.html#a7563195f04344ae8684f44b029daeffa" title="Construct and enable monitoring a file descriptor.">File</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00119"></a>00119     <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>&amp; <a class="code" href="classLogCabin_1_1Event_1_1File.html#af3e355d84b3a1e4191aeb1c15b7781d6">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00120"></a>00120 };
-<a name="l00121"></a>00121 
-<a name="l00122"></a>00122 } <span class="comment">// namespace LogCabin::Event</span>
-<a name="l00123"></a>00123 } <span class="comment">// namespace LogCabin</span>
-<a name="l00124"></a>00124 
-<a name="l00125"></a>00125 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_EVENT_FILE_H */</span>
+<a name="l00040"></a>00040 <span class="comment">     * Registers a File handler to be monitored by the Event::Loop. Once this</span>
+<a name="l00041"></a>00041 <span class="comment">     * is constructed, the Event::Loop will call the File&#39;s event handler</span>
+<a name="l00042"></a>00042 <span class="comment">     * appropriately.</span>
+<a name="l00043"></a>00043 <span class="comment">     *</span>
+<a name="l00044"></a>00044 <span class="comment">     * This object must be destroyed or disableForever() called BEFORE the File</span>
+<a name="l00045"></a>00045 <span class="comment">     * object can be destroyed safely.</span>
+<a name="l00046"></a>00046 <span class="comment">     *</span>
+<a name="l00047"></a>00047 <span class="comment">     * Details: That Monitor objects have distinct lifetimes from File objects</span>
+<a name="l00048"></a>00048 <span class="comment">     * is the key reason why they exist. The registration functionality</span>
+<a name="l00049"></a>00049 <span class="comment">     * used to be integrated in File itself, but that posed a problem on</span>
+<a name="l00050"></a>00050 <span class="comment">     * destruction. Suppose class MyFile derives from File. ~File() is called</span>
+<a name="l00051"></a>00051 <span class="comment">     * after MyFile::handleFileEvent() is no longer safe to call (since MyFile</span>
+<a name="l00052"></a>00052 <span class="comment">     * members are already destroyed). So ~File() is too late to block the</span>
+<a name="l00053"></a>00053 <span class="comment">     * Event::Loop; it needs to happen before all this. See also</span>
+<a name="l00054"></a>00054 <span class="comment">     * https://github.com/logcabin/logcabin/issues/82</span>
+<a name="l00055"></a>00055 <span class="comment">     */</span>
+<a name="l00056"></a><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html">00056</a>     <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html" title="Registers a File handler to be monitored by the Event::Loop.">Monitor</a> {
+<a name="l00057"></a>00057       <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00058"></a>00058 <span class="comment">        /**</span>
+<a name="l00059"></a>00059 <span class="comment">         * Constructor; begins monitoring events on a file.</span>
+<a name="l00060"></a>00060 <span class="comment">         * \param eventLoop</span>
+<a name="l00061"></a>00061 <span class="comment">         *      Event::Loop that will monitor the File object.</span>
+<a name="l00062"></a>00062 <span class="comment">         * \param file</span>
+<a name="l00063"></a>00063 <span class="comment">         *      The file to monitor for events.</span>
+<a name="l00064"></a>00064 <span class="comment">         * \param fileEvents</span>
+<a name="l00065"></a>00065 <span class="comment">         *      The files handler will be invoked when any of the events</span>
+<a name="l00066"></a>00066 <span class="comment">         *      specified by this parameter occur (OR-ed combination of</span>
+<a name="l00067"></a>00067 <span class="comment">         *      EPOLL_EVENTS values). If this is 0 then the file handler starts</span>
+<a name="l00068"></a>00068 <span class="comment">         *      off inactive; it will not trigger until setEvents() has been</span>
+<a name="l00069"></a>00069 <span class="comment">         *      called (except possibly for errors such as EPOLLHUP; these</span>
+<a name="l00070"></a>00070 <span class="comment">         *      events are always active).</span>
+<a name="l00071"></a>00071 <span class="comment">         */</span>
+<a name="l00072"></a>00072         <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#afe248c4f395416e16c65f7c5ead569f0" title="Constructor; begins monitoring events on a file.">Monitor</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a809482d1ac7026bb8692c8a851f4b0af" title="Event::Loop that will monitor the file.">eventLoop</a>, <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>&amp; <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ac41263cf073e9c7422978623fe01444c" title="Pointer to file being monitored, or NULL if disableForever() has been called.">file</a>, <span class="keywordtype">int</span> fileEvents);
+<a name="l00073"></a>00073 <span class="comment"></span>
+<a name="l00074"></a>00074 <span class="comment">        /**</span>
+<a name="l00075"></a>00075 <span class="comment">         * Destructor; disables monitoring the file. See disableForever().</span>
+<a name="l00076"></a>00076 <span class="comment">         */</span>
+<a name="l00077"></a>00077         <span class="keyword">virtual</span> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ad9a5d99d778bb88bf2fd4c9c4d21947e" title="Destructor; disables monitoring the file.">~Monitor</a>();
+<a name="l00078"></a>00078 <span class="comment"></span>
+<a name="l00079"></a>00079 <span class="comment">        /**</span>
+<a name="l00080"></a>00080 <span class="comment">         * Stop monitoring this file. To guarantee that the event loop thread</span>
+<a name="l00081"></a>00081 <span class="comment">         * is no longer operating on the File, this method takes an</span>
+<a name="l00082"></a>00082 <span class="comment">         * Event::Loop::Lock internally. Once this returns, it is safe to</span>
+<a name="l00083"></a>00083 <span class="comment">         * destroy the File object, and it is guaranteed that the event loop</span>
+<a name="l00084"></a>00084 <span class="comment">         * thread is no longer operating on the File (unless the caller is</span>
+<a name="l00085"></a>00085 <span class="comment">         * running in the context of the File&#39;s event handler).</span>
+<a name="l00086"></a>00086 <span class="comment">         */</span>
+<a name="l00087"></a>00087         <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a2b38fde47fcf4ac96b59d7835ad3b26d" title="Stop monitoring this file.">disableForever</a>();
+<a name="l00088"></a>00088 <span class="comment"></span>
+<a name="l00089"></a>00089 <span class="comment">        /**</span>
+<a name="l00090"></a>00090 <span class="comment">         * Specify the events of interest for the file.</span>
+<a name="l00091"></a>00091 <span class="comment">         * This method is safe to call concurrently with file events</span>
+<a name="l00092"></a>00092 <span class="comment">         * triggering and disableForever. If called outside an event handler</span>
+<a name="l00093"></a>00093 <span class="comment">         * and no Event::Loop::Lock is taken, this may have a short delay while</span>
+<a name="l00094"></a>00094 <span class="comment">         * active handlers continue to be called.</span>
+<a name="l00095"></a>00095 <span class="comment">         * \param events</span>
+<a name="l00096"></a>00096 <span class="comment">         *      Indicates the conditions under which this object should be</span>
+<a name="l00097"></a>00097 <span class="comment">         *      invoked (OR-ed combination of EPOLL_EVENTS values). If this is</span>
+<a name="l00098"></a>00098 <span class="comment">         *      0 then the file handler is set to inactive; it will not trigger</span>
+<a name="l00099"></a>00099 <span class="comment">         *      until setEvents() has been called (except possibly for errors</span>
+<a name="l00100"></a>00100 <span class="comment">         *      such as EPOLLHUP; these events are always active).</span>
+<a name="l00101"></a>00101 <span class="comment">         */</span>
+<a name="l00102"></a>00102         <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a37ab4c08d28e255cb465060007163083" title="Specify the events of interest for the file.">setEvents</a>(<span class="keywordtype">int</span> events);
+<a name="l00103"></a>00103 <span class="comment"></span>
+<a name="l00104"></a>00104 <span class="comment">        /**</span>
+<a name="l00105"></a>00105 <span class="comment">         * Event::Loop that will monitor the file.</span>
+<a name="l00106"></a>00106 <span class="comment">         */</span>
+<a name="l00107"></a><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a809482d1ac7026bb8692c8a851f4b0af">00107</a>         <a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a809482d1ac7026bb8692c8a851f4b0af" title="Event::Loop that will monitor the file.">eventLoop</a>;
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109       <span class="keyword">private</span>:<span class="comment"></span>
+<a name="l00110"></a>00110 <span class="comment">        /**</span>
+<a name="l00111"></a>00111 <span class="comment">         * Protects #file from concurrent access/modification.</span>
+<a name="l00112"></a>00112 <span class="comment">         */</span>
+<a name="l00113"></a><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#acc064bfba3b0ac87f7c84971def8f971">00113</a>         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">std::mutex</a> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#acc064bfba3b0ac87f7c84971def8f971" title="Protects file from concurrent access/modification.">mutex</a>;
+<a name="l00114"></a>00114 <span class="comment"></span>
+<a name="l00115"></a>00115 <span class="comment">        /**</span>
+<a name="l00116"></a>00116 <span class="comment">         * Pointer to file being monitored, or NULL if disableForever() has</span>
+<a name="l00117"></a>00117 <span class="comment">         * been called.</span>
+<a name="l00118"></a>00118 <span class="comment">         */</span>
+<a name="l00119"></a><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ac41263cf073e9c7422978623fe01444c">00119</a>         <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>* <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ac41263cf073e9c7422978623fe01444c" title="Pointer to file being monitored, or NULL if disableForever() has been called.">file</a>;
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121         <span class="comment">// Monitor is not copyable.</span>
+<a name="l00122"></a>00122         <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#afe248c4f395416e16c65f7c5ead569f0" title="Constructor; begins monitoring events on a file.">Monitor</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html" title="Registers a File handler to be monitored by the Event::Loop.">Monitor</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00123"></a>00123         <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html" title="Registers a File handler to be monitored by the Event::Loop.">Monitor</a>&amp; <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a2ebac55819f5314d802b8b79a07708c8">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html" title="Registers a File handler to be monitored by the Event::Loop.">Monitor</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00124"></a>00124     };
+<a name="l00125"></a>00125 <span class="comment"></span>
+<a name="l00126"></a>00126 <span class="comment">    /**</span>
+<a name="l00127"></a>00127 <span class="comment">     * Specifies who is in charge of closing the file descriptor.</span>
+<a name="l00128"></a>00128 <span class="comment">     */</span>
+<a name="l00129"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25">00129</a>     <span class="keyword">enum</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25" title="Specifies who is in charge of closing the file descriptor.">Ownership</a> {<span class="comment"></span>
+<a name="l00130"></a>00130 <span class="comment">        /**</span>
+<a name="l00131"></a>00131 <span class="comment">         * The File destructor will close() fd.</span>
+<a name="l00132"></a>00132 <span class="comment">         */</span>
+<a name="l00133"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25a177e6355b3cc70f31333f162b0a8f6ca">00133</a>         <a class="code" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25a177e6355b3cc70f31333f162b0a8f6ca" title="The File destructor will close() fd.">CLOSE_ON_DESTROY</a>,<span class="comment"></span>
+<a name="l00134"></a>00134 <span class="comment">        /**</span>
+<a name="l00135"></a>00135 <span class="comment">         * The caller will be in charge of closing fd. The File destructor will</span>
+<a name="l00136"></a>00136 <span class="comment">         * not close() fd.</span>
+<a name="l00137"></a>00137 <span class="comment">         */</span>
+<a name="l00138"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25a8d388f3cae0684a3eb73ea6baa87be70">00138</a>         <a class="code" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25a8d388f3cae0684a3eb73ea6baa87be70" title="The caller will be in charge of closing fd.">CALLER_CLOSES_FD</a>,
+<a name="l00139"></a>00139     };
+<a name="l00140"></a>00140 <span class="comment"></span>
+<a name="l00141"></a>00141 <span class="comment">    /**</span>
+<a name="l00142"></a>00142 <span class="comment">     * Construct a file event handler. After this is constructed, you&#39;ll want</span>
+<a name="l00143"></a>00143 <span class="comment">     * to create an Event::File::Monitor for it.</span>
+<a name="l00144"></a>00144 <span class="comment">     * \param fd</span>
+<a name="l00145"></a>00145 <span class="comment">     *      A file descriptor of a valid open file to monitor. Unless release()</span>
+<a name="l00146"></a>00146 <span class="comment">     *      is called first, this File object will close the file descriptor</span>
+<a name="l00147"></a>00147 <span class="comment">     *      when it is destroyed.</span>
+<a name="l00148"></a>00148 <span class="comment">     * \param ownership</span>
+<a name="l00149"></a>00149 <span class="comment">     *      Specifies who is in charge of closing fd. Default: this class will</span>
+<a name="l00150"></a>00150 <span class="comment">     *      close fd in the destructor.</span>
+<a name="l00151"></a>00151 <span class="comment">     */</span>
+<a name="l00152"></a>00152     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a3b300ea4c694f01d3694e02971093c08" title="Construct a file event handler.">File</a>(<span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>, <a class="code" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25" title="Specifies who is in charge of closing the file descriptor.">Ownership</a> <a class="code" href="classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139" title="See Ownership.">ownership</a> = <a class="code" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25a177e6355b3cc70f31333f162b0a8f6ca" title="The File destructor will close() fd.">CLOSE_ON_DESTROY</a>);
+<a name="l00153"></a>00153 <span class="comment"></span>
+<a name="l00154"></a>00154 <span class="comment">    /**</span>
+<a name="l00155"></a>00155 <span class="comment">     * Destructor. Closes the file descriptor if ownership is set to</span>
+<a name="l00156"></a>00156 <span class="comment">     * CLOSE_ON_DESTROY.</span>
+<a name="l00157"></a>00157 <span class="comment">     */</span>
+<a name="l00158"></a>00158     <span class="keyword">virtual</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a0e19f03631cf782015d39bbb98ec8365" title="Destructor.">~File</a>();
+<a name="l00159"></a>00159 <span class="comment"></span>
+<a name="l00160"></a>00160 <span class="comment">    /**</span>
+<a name="l00161"></a>00161 <span class="comment">     * This method is overridden by a subclass and invoked when a file event</span>
+<a name="l00162"></a>00162 <span class="comment">     * occurs. This method will be invoked by the main event loop on</span>
+<a name="l00163"></a>00163 <span class="comment">     * whatever thread is running the Event::Loop.</span>
+<a name="l00164"></a>00164 <span class="comment">     *</span>
+<a name="l00165"></a>00165 <span class="comment">     * If the event still exists when this method returns (e.g., the file is</span>
+<a name="l00166"></a>00166 <span class="comment">     * readable but the method did not read the data), then the method will be</span>
+<a name="l00167"></a>00167 <span class="comment">     * invoked again (unless flags such as EPOLLONESHOT or EPOLLET are used).</span>
+<a name="l00168"></a>00168 <span class="comment">     *</span>
+<a name="l00169"></a>00169 <span class="comment">     * \param events</span>
+<a name="l00170"></a>00170 <span class="comment">     *      Indicates whether the file is readable or writable or both (OR&#39;ed</span>
+<a name="l00171"></a>00171 <span class="comment">     *      combination of EPOLL_EVENTS values).</span>
+<a name="l00172"></a>00172 <span class="comment">     */</span>
+<a name="l00173"></a>00173     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a65772259f49bd8f7b757d8d12cb5921f" title="This method is overridden by a subclass and invoked when a file event occurs.">handleFileEvent</a>(<span class="keywordtype">int</span> events) = 0;
+<a name="l00174"></a>00174 <span class="comment"></span>
+<a name="l00175"></a>00175 <span class="comment">    /**</span>
+<a name="l00176"></a>00176 <span class="comment">     * The file descriptor to monitor.</span>
+<a name="l00177"></a>00177 <span class="comment">     */</span>
+<a name="l00178"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0">00178</a>     <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>;
+<a name="l00179"></a>00179 <span class="comment"></span>
+<a name="l00180"></a>00180 <span class="comment">    /**</span>
+<a name="l00181"></a>00181 <span class="comment">     * See Ownership.</span>
+<a name="l00182"></a>00182 <span class="comment">     */</span>
+<a name="l00183"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139">00183</a>     <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25" title="Specifies who is in charge of closing the file descriptor.">Ownership</a> <a class="code" href="classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139" title="See Ownership.">ownership</a>;
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185     <span class="comment">// File is not copyable.</span>
+<a name="l00186"></a>00186     <a class="code" href="classLogCabin_1_1Event_1_1File.html#a3b300ea4c694f01d3694e02971093c08" title="Construct a file event handler.">File</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00187"></a>00187     <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>&amp; <a class="code" href="classLogCabin_1_1Event_1_1File.html#af3e355d84b3a1e4191aeb1c15b7781d6">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00188"></a>00188 };
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190 } <span class="comment">// namespace LogCabin::Event</span>
+<a name="l00191"></a>00191 } <span class="comment">// namespace LogCabin</span>
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_EVENT_FILE_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

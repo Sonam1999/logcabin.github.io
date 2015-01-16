@@ -117,6 +117,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html">Deferred</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Members that are constructed later, during <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a4fe7e36f3b166e01dbc0937ed92d898f" title="Called after Globals are initialized to finish setting up this class.">enable()</a>.  <a href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html">Lock</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides read/write access to <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a1bba9f0d46774de2eeceb8e06d792367" title="Partially filled-in structure that is copied as the basis of all calls to getCurrent().">stats</a>, protected against concurrent access.  <a href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html">SignalHandler</a></td></tr>
@@ -139,14 +141,10 @@ Private Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Server-wide objects.  <a href="#a8b0e6aebf49f1e883b8abd82bf9f78f2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#ab68f32865d3fb5fe202582e2554319fd">mutex</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects all of the following members of this class.  <a href="#ab68f32865d3fb5fe202582e2554319fd"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a08ff2aca9ac8527f976e576f7487b4e6">enabled</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a08ff2aca9ac8527f976e576f7487b4e6" title="If true, enabled() has already been called, and other modules should be queried for stats during getC...">enabled()</a> has already been called, and other modules should be queried for stats during <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456" title="Calculate and return the current server stats.">getCurrent()</a>.  <a href="#a08ff2aca9ac8527f976e576f7487b4e6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Protocol::ServerStats&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a1bba9f0d46774de2eeceb8e06d792367">stats</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Partially filled-in structure that is copied as the basis of all calls to <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456" title="Calculate and return the current server stats.">getCurrent()</a>.  <a href="#a1bba9f0d46774de2eeceb8e06d792367"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html">SignalHandler</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a488f25c9fbf172c4ad52eb46c27c0aa3">signalHandler</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html" title="Dumps stats to the debug log (NOTICE level) on SIGUSR1 signal.">SignalHandler</a>.  <a href="#a488f25c9fbf172c4ad52eb46c27c0aa3"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html">TimerHandler</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a28cf8045a12787e6efe425c222b6999b">timerHandler</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html" title="Dumps stats to the debug log (NOTICE level) periodically.">TimerHandler</a>.  <a href="#a28cf8045a12787e6efe425c222b6999b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html">Deferred</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#afb812ab906c5ad0e2a38521ed6ce6884">deferred</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html" title="Members that are constructed later, during enable().">Deferred</a>.  <a href="#afb812ab906c5ad0e2a38521ed6ce6884"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Manages creation of server statistics, which are used for diagnostics. </p>
@@ -171,7 +169,7 @@ Private Attributes</h2></td></tr>
 
 <p>Constructor. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00028">28</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00101">101</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
 
 </div>
 </div>
@@ -191,7 +189,7 @@ Private Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00041">41</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00109">109</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
 
 </div>
 </div>
@@ -213,7 +211,7 @@ Private Attributes</h2></td></tr>
 <p>Called after <a class="el" href="classLogCabin_1_1Server_1_1Globals.html" title="Holds the LogCabin daemon&#39;s top-level objects.">Globals</a> are initialized to finish setting up this class. </p>
 <p>Attaches signal handler and sets up timer. Starts calling other modules for their state in <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456" title="Calculate and return the current server stats.">getCurrent()</a>. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00046">46</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00114">114</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
 
 </div>
 </div>
@@ -233,7 +231,7 @@ Private Attributes</h2></td></tr>
 
 <p>Calculate and return the current server stats. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00058">58</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00125">125</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
 
 </div>
 </div>
@@ -251,7 +249,7 @@ Private Attributes</h2></td></tr>
 
 <p>Server-wide objects. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00116">116</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00135">135</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
 
 </div>
 </div>
@@ -268,24 +266,7 @@ Private Attributes</h2></td></tr>
 
 <p>Protects all of the following members of this class. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00120">120</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a08ff2aca9ac8527f976e576f7487b4e6"></a><!-- doxytag: member="LogCabin::Server::ServerStats::enabled" ref="a08ff2aca9ac8527f976e576f7487b4e6" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a08ff2aca9ac8527f976e576f7487b4e6">LogCabin::Server::ServerStats::enabled</a><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>If true, <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a08ff2aca9ac8527f976e576f7487b4e6" title="If true, enabled() has already been called, and other modules should be queried for stats during getC...">enabled()</a> has already been called, and other modules should be queried for stats during <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456" title="Calculate and return the current server stats.">getCurrent()</a>. </p>
-
-<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00125">125</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00139">139</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
 
 </div>
 </div>
@@ -302,41 +283,25 @@ Private Attributes</h2></td></tr>
 
 <p>Partially filled-in structure that is copied as the basis of all calls to <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456" title="Calculate and return the current server stats.">getCurrent()</a>. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00130">130</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00145">145</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a488f25c9fbf172c4ad52eb46c27c0aa3"></a><!-- doxytag: member="LogCabin::Server::ServerStats::signalHandler" ref="a488f25c9fbf172c4ad52eb46c27c0aa3" args="" -->
+<a class="anchor" id="afb812ab906c5ad0e2a38521ed6ce6884"></a><!-- doxytag: member="LogCabin::Server::ServerStats::deferred" ref="afb812ab906c5ad0e2a38521ed6ce6884" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html">SignalHandler</a>&gt; <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a488f25c9fbf172c4ad52eb46c27c0aa3">LogCabin::Server::ServerStats::signalHandler</a><code> [private]</code></td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html">Deferred</a>&gt; <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#afb812ab906c5ad0e2a38521ed6ce6884">LogCabin::Server::ServerStats::deferred</a><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>See <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html" title="Dumps stats to the debug log (NOTICE level) on SIGUSR1 signal.">SignalHandler</a>. </p>
+<p>See <a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html" title="Members that are constructed later, during enable().">Deferred</a>. </p>
+<p>If non-NULL, enabled() has already been called, and other modules should be queried for stats during <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456" title="Calculate and return the current server stats.">getCurrent()</a>. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00132">132</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a28cf8045a12787e6efe425c222b6999b"></a><!-- doxytag: member="LogCabin::Server::ServerStats::timerHandler" ref="a28cf8045a12787e6efe425c222b6999b" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html">TimerHandler</a>&gt; <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a28cf8045a12787e6efe425c222b6999b">LogCabin::Server::ServerStats::timerHandler</a><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>See <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html" title="Dumps stats to the debug log (NOTICE level) periodically.">TimerHandler</a>. </p>
-
-<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00134">134</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00151">151</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
 
 </div>
 </div>

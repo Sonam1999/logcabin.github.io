@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="File_8cc.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* Copyright (c) 2011-2014 Stanford University</span>
-<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2014 Diego Ongaro</span>
+<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2014-2015 Diego Ongaro</span>
 <a name="l00003"></a>00003 <span class="comment"> *</span>
 <a name="l00004"></a>00004 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
 <a name="l00005"></a>00005 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
@@ -106,69 +106,82 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00024"></a>00024 
 <a name="l00025"></a>00025 <span class="keyword">namespace </span>LogCabin {
 <a name="l00026"></a><a class="code" href="namespaceLogCabin_1_1Event.html">00026</a> <span class="keyword">namespace </span>Event {
-<a name="l00027"></a>00027 
-<a name="l00028"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#a7563195f04344ae8684f44b029daeffa">00028</a> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a7563195f04344ae8684f44b029daeffa" title="Construct and enable monitoring a file descriptor.">File::File</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; eventLoop, <span class="keywordtype">int</span> fd, <span class="keywordtype">int</span> fileEvents)
-<a name="l00029"></a>00029     : eventLoop(eventLoop)
-<a name="l00030"></a>00030     , fdMutex()
-<a name="l00031"></a>00031     , fd(fd)
-<a name="l00032"></a>00032 {
-<a name="l00033"></a>00033     <span class="keyword">struct </span>epoll_event event;
-<a name="l00034"></a>00034     memset(&amp;event, 0, <span class="keyword">sizeof</span>(event));
-<a name="l00035"></a>00035     <span class="keyword">event</span>.events = fileEvents;
-<a name="l00036"></a>00036     <span class="keyword">event</span>.data.ptr = <span class="keyword">this</span>;
-<a name="l00037"></a>00037     <span class="keywordtype">int</span> r = epoll_ctl(eventLoop.<a class="code" href="classLogCabin_1_1Event_1_1Loop.html#a69ab8c2d6e0d42d7011b07b600dee4a7" title="The file descriptor used in epoll calls to monitor other files.">epollfd</a>, EPOLL_CTL_ADD, fd, &amp;event);
-<a name="l00038"></a>00038     <span class="keywordflow">if</span> (r != 0) {
-<a name="l00039"></a>00039         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Adding file %d event with epoll_ctl failed: %s&quot;</span>,
-<a name="l00040"></a>00040               fd, strerror(errno));
-<a name="l00041"></a>00041     }
-<a name="l00042"></a>00042 }
-<a name="l00043"></a>00043 
-<a name="l00044"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#a0e19f03631cf782015d39bbb98ec8365">00044</a> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a0e19f03631cf782015d39bbb98ec8365" title="Destructor.">File::~File</a>()
-<a name="l00045"></a>00045 {
-<a name="l00046"></a>00046     <a class="code" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Event::Loop::Lock</a> lock(<a class="code" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42" title="Event::Loop that will manage this file.">eventLoop</a>);
-<a name="l00047"></a>00047     <span class="keywordtype">int</span> released = <a class="code" href="classLogCabin_1_1Event_1_1File.html#aab3c1cafdf43034823597e537fdefa1b" title="Remove the file descriptor from being monitored by this object.">release</a>();
-<a name="l00048"></a>00048     <span class="keywordflow">if</span> (released &gt;= 0) {
-<a name="l00049"></a>00049         <span class="keywordtype">int</span> r = close(released);
-<a name="l00050"></a>00050         <span class="keywordflow">if</span> (r != 0)
-<a name="l00051"></a>00051             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not close file %d: %s&quot;</span>, released, strerror(errno));
-<a name="l00052"></a>00052     }
-<a name="l00053"></a>00053 }
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 <span class="keywordtype">void</span>
-<a name="l00056"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#a54c241c86227cec338469e1c4f3caf54">00056</a> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a54c241c86227cec338469e1c4f3caf54" title="Specify the events of interest for this file handler.">File::setEvents</a>(<span class="keywordtype">int</span> fileEvents)
-<a name="l00057"></a>00057 {
-<a name="l00058"></a>00058     std::unique_lock&lt;std::mutex&gt; mutexGuard(<a class="code" href="classLogCabin_1_1Event_1_1File.html#aca3f3f6ddbfc265e822f35456809ef78" title="Protects fd from concurrent access between release(), which modifies fd, and setEvents(), which uses it.">fdMutex</a>);
-<a name="l00059"></a>00059     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a> &lt; 0)
-<a name="l00060"></a>00060         <span class="keywordflow">return</span>;
-<a name="l00061"></a>00061     <span class="keyword">struct </span>epoll_event event;
-<a name="l00062"></a>00062     memset(&amp;event, 0, <span class="keyword">sizeof</span>(event));
-<a name="l00063"></a>00063     <span class="keyword">event</span>.events = fileEvents;
-<a name="l00064"></a>00064     <span class="keyword">event</span>.data.ptr = <span class="keyword">this</span>;
-<a name="l00065"></a>00065     <span class="keywordtype">int</span> r = epoll_ctl(<a class="code" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42" title="Event::Loop that will manage this file.">eventLoop</a>.<a class="code" href="classLogCabin_1_1Event_1_1Loop.html#a69ab8c2d6e0d42d7011b07b600dee4a7" title="The file descriptor used in epoll calls to monitor other files.">epollfd</a>, EPOLL_CTL_MOD, <a class="code" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a>, &amp;event);
-<a name="l00066"></a>00066     <span class="keywordflow">if</span> (r != 0) {
-<a name="l00067"></a>00067         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Modifying file %d event with epoll_ctl failed: %s&quot;</span>,
-<a name="l00068"></a>00068               <a class="code" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a>, strerror(errno));
-<a name="l00069"></a>00069     }
-<a name="l00070"></a>00070 }
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 <span class="keywordtype">int</span>
-<a name="l00073"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#aab3c1cafdf43034823597e537fdefa1b">00073</a> <a class="code" href="classLogCabin_1_1Event_1_1File.html#aab3c1cafdf43034823597e537fdefa1b" title="Remove the file descriptor from being monitored by this object.">File::release</a>()
-<a name="l00074"></a>00074 {
-<a name="l00075"></a>00075     std::unique_lock&lt;std::mutex&gt; mutexGuard(<a class="code" href="classLogCabin_1_1Event_1_1File.html#aca3f3f6ddbfc265e822f35456809ef78" title="Protects fd from concurrent access between release(), which modifies fd, and setEvents(), which uses it.">fdMutex</a>);
-<a name="l00076"></a>00076     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a> &lt; 0)
-<a name="l00077"></a>00077         <span class="keywordflow">return</span> -1;
-<a name="l00078"></a>00078     <span class="keywordtype">int</span> r = epoll_ctl(<a class="code" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42" title="Event::Loop that will manage this file.">eventLoop</a>.<a class="code" href="classLogCabin_1_1Event_1_1Loop.html#a69ab8c2d6e0d42d7011b07b600dee4a7" title="The file descriptor used in epoll calls to monitor other files.">epollfd</a>, EPOLL_CTL_DEL, <a class="code" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a>, NULL);
-<a name="l00079"></a>00079     <span class="keywordflow">if</span> (r != 0) {
-<a name="l00080"></a>00080         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Removing file %d event with epoll_ctl failed: %s&quot;</span>,
-<a name="l00081"></a>00081               <a class="code" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a>, strerror(errno));
-<a name="l00082"></a>00082     }
-<a name="l00083"></a>00083     <span class="keywordtype">int</span> released = <a class="code" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a>;
-<a name="l00084"></a>00084     <a class="code" href="classLogCabin_1_1Event_1_1File.html#a016006e21779261323216cbe5fd11f54" title="The file descriptor to monitor.">fd</a> = -1;
-<a name="l00085"></a>00085     <span class="keywordflow">return</span> released;
-<a name="l00086"></a>00086 }
-<a name="l00087"></a>00087 
-<a name="l00088"></a>00088 } <span class="comment">// namespace LogCabin::Event</span>
-<a name="l00089"></a>00089 } <span class="comment">// namespace LogCabin</span>
+<a name="l00027"></a>00027 <span class="comment"></span>
+<a name="l00028"></a>00028 <span class="comment">//// class File::Monitor ////</span>
+<a name="l00029"></a>00029 <span class="comment"></span>
+<a name="l00030"></a><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#afe248c4f395416e16c65f7c5ead569f0">00030</a> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#afe248c4f395416e16c65f7c5ead569f0" title="Constructor; begins monitoring events on a file.">File::Monitor::Monitor</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; eventLoop, <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>&amp; file, <span class="keywordtype">int</span> fileEvents)
+<a name="l00031"></a>00031     : eventLoop(eventLoop)
+<a name="l00032"></a>00032     , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>()
+<a name="l00033"></a>00033     , file(&amp;file)
+<a name="l00034"></a>00034 {
+<a name="l00035"></a>00035     <span class="keyword">struct </span>epoll_event event;
+<a name="l00036"></a>00036     memset(&amp;event, 0, <span class="keyword">sizeof</span>(event));
+<a name="l00037"></a>00037     <span class="keyword">event</span>.events = fileEvents;
+<a name="l00038"></a>00038     <span class="keyword">event</span>.data.ptr = this-&gt;<a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ac41263cf073e9c7422978623fe01444c" title="Pointer to file being monitored, or NULL if disableForever() has been called.">file</a>;
+<a name="l00039"></a>00039     <span class="keywordtype">int</span> r = epoll_ctl(eventLoop.<a class="code" href="classLogCabin_1_1Event_1_1Loop.html#a69ab8c2d6e0d42d7011b07b600dee4a7" title="The file descriptor used in epoll calls to monitor other files.">epollfd</a>, EPOLL_CTL_ADD,
+<a name="l00040"></a>00040                       this-&gt;file-&gt;fd, &amp;event);
+<a name="l00041"></a>00041     <span class="keywordflow">if</span> (r != 0) {
+<a name="l00042"></a>00042         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Adding file %d event with epoll_ctl failed: %s&quot;</span>,
+<a name="l00043"></a>00043               this-&gt;file-&gt;<a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>, strerror(errno));
+<a name="l00044"></a>00044     }
+<a name="l00045"></a>00045 }
+<a name="l00046"></a>00046 
+<a name="l00047"></a><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ad9a5d99d778bb88bf2fd4c9c4d21947e">00047</a> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ad9a5d99d778bb88bf2fd4c9c4d21947e" title="Destructor; disables monitoring the file.">File::Monitor::~Monitor</a>()
+<a name="l00048"></a>00048 {
+<a name="l00049"></a>00049     disableForever();
+<a name="l00050"></a>00050 }
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052 <span class="keywordtype">void</span>
+<a name="l00053"></a><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a2b38fde47fcf4ac96b59d7835ad3b26d">00053</a> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a2b38fde47fcf4ac96b59d7835ad3b26d" title="Stop monitoring this file.">File::Monitor::disableForever</a>()
+<a name="l00054"></a>00054 {
+<a name="l00055"></a>00055     std::unique_lock&lt;std::mutex&gt; mutexGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>);
+<a name="l00056"></a>00056     <span class="keywordflow">if</span> (file == NULL)
+<a name="l00057"></a>00057         <span class="keywordflow">return</span>;
+<a name="l00058"></a>00058     <a class="code" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Event::Loop::Lock</a> lock(eventLoop);
+<a name="l00059"></a>00059     <span class="keywordtype">int</span> r = epoll_ctl(eventLoop.epollfd, EPOLL_CTL_DEL, file-&gt;fd, NULL);
+<a name="l00060"></a>00060     <span class="keywordflow">if</span> (r != 0) {
+<a name="l00061"></a>00061         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Removing file %d event with epoll_ctl failed: %s&quot;</span>,
+<a name="l00062"></a>00062               file-&gt;fd, strerror(errno));
+<a name="l00063"></a>00063     }
+<a name="l00064"></a>00064     file = NULL;
+<a name="l00065"></a>00065 }
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="keywordtype">void</span>
+<a name="l00068"></a><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a37ab4c08d28e255cb465060007163083">00068</a> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a37ab4c08d28e255cb465060007163083" title="Specify the events of interest for the file.">File::Monitor::setEvents</a>(<span class="keywordtype">int</span> fileEvents)
+<a name="l00069"></a>00069 {
+<a name="l00070"></a>00070     std::unique_lock&lt;std::mutex&gt; mutexGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>);
+<a name="l00071"></a>00071     <span class="keywordflow">if</span> (file == NULL)
+<a name="l00072"></a>00072         <span class="keywordflow">return</span>;
+<a name="l00073"></a>00073     <span class="keyword">struct </span>epoll_event event;
+<a name="l00074"></a>00074     memset(&amp;event, 0, <span class="keyword">sizeof</span>(event));
+<a name="l00075"></a>00075     <span class="keyword">event</span>.events = fileEvents;
+<a name="l00076"></a>00076     <span class="keyword">event</span>.data.ptr = file;
+<a name="l00077"></a>00077     <span class="keywordtype">int</span> r = epoll_ctl(eventLoop.epollfd, EPOLL_CTL_MOD, file-&gt;fd, &amp;event);
+<a name="l00078"></a>00078     <span class="keywordflow">if</span> (r != 0) {
+<a name="l00079"></a>00079         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Modifying file %d event with epoll_ctl failed: %s&quot;</span>,
+<a name="l00080"></a>00080               file-&gt;fd, strerror(errno));
+<a name="l00081"></a>00081     }
+<a name="l00082"></a>00082 }
+<a name="l00083"></a>00083 <span class="comment"></span>
+<a name="l00084"></a>00084 <span class="comment">//// class File ////</span>
+<a name="l00085"></a>00085 <span class="comment"></span>
+<a name="l00086"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#a3b300ea4c694f01d3694e02971093c08">00086</a> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a3b300ea4c694f01d3694e02971093c08" title="Construct a file event handler.">File::File</a>(<span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>, <a class="code" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25" title="Specifies who is in charge of closing the file descriptor.">Ownership</a> <a class="code" href="classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139" title="See Ownership.">ownership</a>)
+<a name="l00087"></a>00087     : fd(fd)
+<a name="l00088"></a>00088     , ownership(ownership)
+<a name="l00089"></a>00089 {
+<a name="l00090"></a>00090 }
+<a name="l00091"></a>00091 
+<a name="l00092"></a><a class="code" href="classLogCabin_1_1Event_1_1File.html#a0e19f03631cf782015d39bbb98ec8365">00092</a> <a class="code" href="classLogCabin_1_1Event_1_1File.html#a0e19f03631cf782015d39bbb98ec8365" title="Destructor.">File::~File</a>()
+<a name="l00093"></a>00093 {
+<a name="l00094"></a>00094     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139" title="See Ownership.">ownership</a> == <a class="code" href="classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25a177e6355b3cc70f31333f162b0a8f6ca" title="The File destructor will close() fd.">CLOSE_ON_DESTROY</a>) {
+<a name="l00095"></a>00095         <span class="keywordtype">int</span> r = close(<a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>);
+<a name="l00096"></a>00096         <span class="keywordflow">if</span> (r != 0)
+<a name="l00097"></a>00097             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not close file %d: %s&quot;</span>, <a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>, strerror(errno));
+<a name="l00098"></a>00098     }
+<a name="l00099"></a>00099 }
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 } <span class="comment">// namespace LogCabin::Event</span>
+<a name="l00102"></a>00102 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

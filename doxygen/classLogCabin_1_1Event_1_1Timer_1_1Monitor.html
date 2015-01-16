@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer Class Reference</title>
+<title>LogCabin: LogCabin::Event::Timer::Monitor Class Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -94,8 +94,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
       <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Event.html">Event</a>      </li>
-      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03.html">anonymous_namespace{Loop.cc}</a>      </li>
-      <li class="navelem"><a class="el" href="classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.html">NullTimer</a>      </li>
+      <li class="navelem"><a class="el" href="classLogCabin_1_1Event_1_1Timer.html">Timer</a>      </li>
+      <li class="navelem"><a class="el" href="classLogCabin_1_1Event_1_1Timer_1_1Monitor.html">Monitor</a>      </li>
     </ul>
   </div>
 </div>
@@ -103,77 +103,96 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<div class="title">LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer Class Reference</div>  </div>
+<div class="title">LogCabin::Event::Timer::Monitor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer" --><!-- doxytag: inherits="LogCabin::Event::Timer" --><div class="dynheader">
-Inheritance diagram for LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer:</div>
+<!-- doxytag: class="LogCabin::Event::Timer::Monitor" --><!-- doxytag: inherits="LogCabin::Event::File::Monitor" -->
+<p>Registers a <a class="el" href="classLogCabin_1_1Event_1_1Timer.html" title="A Timer is called by the Event::Loop when time has elapsed.">Timer</a> handler to be monitored by the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>.  
+ <a href="classLogCabin_1_1Event_1_1Timer_1_1Monitor.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Timer_8h_source.html">Timer.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for LogCabin::Event::Timer::Monitor:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.png" usemap="#LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer_map" alt=""/>
-  <map id="LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer_map" name="LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer_map">
-<area href="classLogCabin_1_1Event_1_1Timer.html" title="A Timer is called by the Event::Loop when time has elapsed." alt="LogCabin::Event::Timer" shape="rect" coords="0,56,358,80"/>
-<area href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable." alt="LogCabin::Event::File" shape="rect" coords="0,0,358,24"/>
+  <img src="classLogCabin_1_1Event_1_1Timer_1_1Monitor.png" usemap="#LogCabin::Event::Timer::Monitor_map" alt=""/>
+  <map id="LogCabin::Event::Timer::Monitor_map" name="LogCabin::Event::Timer::Monitor_map">
+<area href="classLogCabin_1_1Event_1_1File_1_1Monitor.html" title="Registers a File handler to be monitored by the Event::Loop." alt="LogCabin::Event::File::Monitor" shape="rect" coords="0,0,190,24"/>
 </map>
  </div></div>
 
-<p><a href="classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer-members.html">List of all members.</a></p>
+<p><a href="classLogCabin_1_1Event_1_1Timer_1_1Monitor-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.html#a5a03562c575a16e022ac75d3e9978f89">NullTimer</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Event_1_1File.html#a9d89637a9a28298bcdd3aff6b03a5b42">eventLoop</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.html#acf85d697d44898a16fd1bd0a9041327c">handleTimerEvent</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when the timer expires.  <a href="#acf85d697d44898a16fd1bd0a9041327c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Timer_1_1Monitor.html#ad101e1478738cc5bb5d49ae0418c103c">Monitor</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a809482d1ac7026bb8692c8a851f4b0af">eventLoop</a>, <a class="el" href="classLogCabin_1_1Event_1_1Timer.html">Timer</a> &amp;timer)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#afe248c4f395416e16c65f7c5ead569f0" title="Constructor; begins monitoring events on a file.">File::Monitor::Monitor</a>.  <a href="#ad101e1478738cc5bb5d49ae0418c103c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Timer_1_1Monitor.html#a7765f567782a55634e8fb75917c38e18">~Monitor</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ad9a5d99d778bb88bf2fd4c9c4d21947e" title="Destructor; disables monitoring the file.">File::Monitor::~Monitor</a>.  <a href="#a7765f567782a55634e8fb75917c38e18"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="Loop_8cc_source.html#l00035">35</a> of file <a class="el" href="Loop_8cc_source.html">Loop.cc</a>.</p>
+<div class="textblock"><p>Registers a <a class="el" href="classLogCabin_1_1Event_1_1Timer.html" title="A Timer is called by the Event::Loop when time has elapsed.">Timer</a> handler to be monitored by the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>. </p>
+<p>Once this is constructed, the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> will call the <a class="el" href="classLogCabin_1_1Event_1_1Timer.html" title="A Timer is called by the Event::Loop when time has elapsed.">Timer</a>'s event handler appropriately.</p>
+<p>This object must be destroyed or <a class="el" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a2b38fde47fcf4ac96b59d7835ad3b26d" title="Stop monitoring this file.">disableForever()</a> called BEFORE the <a class="el" href="classLogCabin_1_1Event_1_1Timer.html" title="A Timer is called by the Event::Loop when time has elapsed.">Timer</a> object can be destroyed safely. </p>
+
+<p>Definition at line <a class="el" href="Timer_8h_source.html#l00048">48</a> of file <a class="el" href="Timer_8h_source.html">Timer.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a5a03562c575a16e022ac75d3e9978f89"></a><!-- doxytag: member="LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer::NullTimer" ref="a5a03562c575a16e022ac75d3e9978f89" args="(Event::Loop &amp;eventLoop)" -->
+<a class="anchor" id="ad101e1478738cc5bb5d49ae0418c103c"></a><!-- doxytag: member="LogCabin::Event::Timer::Monitor::Monitor" ref="ad101e1478738cc5bb5d49ae0418c103c" args="(Event::Loop &amp;eventLoop, Timer &amp;timer)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">LogCabin::Event::anonymous_namespace{Loop.cc}::<a class="el" href="classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.html#a5a03562c575a16e022ac75d3e9978f89">NullTimer::NullTimer</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Event_1_1Timer_1_1Monitor.html#ad101e1478738cc5bb5d49ae0418c103c">LogCabin::Event::Timer::Monitor::Monitor</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td>
-          <td class="paramname"><em>eventLoop</em></td><td>)</td>
-          <td><code> [inline, explicit]</code></td>
+          <td class="paramname"><em>eventLoop</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Event_1_1Timer.html">Timer</a> &amp;&#160;</td>
+          <td class="paramname"><em>timer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Loop_8cc_source.html#l00037">37</a> of file <a class="el" href="Loop_8cc_source.html">Loop.cc</a>.</p>
+<p>See <a class="el" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#afe248c4f395416e16c65f7c5ead569f0" title="Constructor; begins monitoring events on a file.">File::Monitor::Monitor</a>. </p>
+
+<p>Definition at line <a class="el" href="Timer_8cc_source.html#l00046">46</a> of file <a class="el" href="Timer_8cc_source.html">Timer.cc</a>.</p>
 
 </div>
 </div>
-<hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="acf85d697d44898a16fd1bd0a9041327c"></a><!-- doxytag: member="LogCabin::Event::anonymous_namespace{Loop.cc}::NullTimer::handleTimerEvent" ref="acf85d697d44898a16fd1bd0a9041327c" args="()" -->
+<a class="anchor" id="a7765f567782a55634e8fb75917c38e18"></a><!-- doxytag: member="LogCabin::Event::Timer::Monitor::~Monitor" ref="a7765f567782a55634e8fb75917c38e18" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void LogCabin::Event::anonymous_namespace{Loop.cc}::<a class="el" href="classLogCabin_1_1Event_1_1anonymous__namespace_02Loop_8cc_03_1_1NullTimer.html#acf85d697d44898a16fd1bd0a9041327c">NullTimer::handleTimerEvent</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Event_1_1Timer_1_1Monitor.html#a7765f567782a55634e8fb75917c38e18">LogCabin::Event::Timer::Monitor::~Monitor</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td><code> [inline, virtual]</code></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>This method is overridden by a subclass and invoked when the timer expires. </p>
-<p>This method will be invoked by the main event loop on whatever thread is running the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>. </p>
+<p>See <a class="el" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ad9a5d99d778bb88bf2fd4c9c4d21947e" title="Destructor; disables monitoring the file.">File::Monitor::~Monitor</a>. </p>
 
-<p>Implements <a class="el" href="classLogCabin_1_1Event_1_1Timer.html#a61bc4b06ada2b649ba543586a499e484">LogCabin::Event::Timer</a>.</p>
+<p>Reimplemented from <a class="el" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ad9a5d99d778bb88bf2fd4c9c4d21947e">LogCabin::Event::File::Monitor</a>.</p>
 
-<p>Definition at line <a class="el" href="Loop_8cc_source.html#l00040">40</a> of file <a class="el" href="Loop_8cc_source.html">Loop.cc</a>.</p>
+<p>Definition at line <a class="el" href="Timer_8cc_source.html#l00051">51</a> of file <a class="el" href="Timer_8cc_source.html">Timer.cc</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>Event/<a class="el" href="Loop_8cc_source.html">Loop.cc</a></li>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>Event/<a class="el" href="Timer_8h_source.html">Timer.h</a></li>
+<li>Event/<a class="el" href="Timer_8cc_source.html">Timer.cc</a></li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->

@@ -148,9 +148,11 @@ Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a046933dd4839214b1753d512dbdcbd5f">eventLoop</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> which invokes listeners when a client requests a connection.  <a href="#a046933dd4839214b1753d512dbdcbd5f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a6048c74f181ee110d60658178401f155">mutex</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock to prevent concurrent modification of boundListeners.  <a href="#a6048c74f181ee110d60658178401f155"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock to prevent concurrent modification of boundListeners and boundListenerMonitors.  <a href="#a6048c74f181ee110d60658178401f155"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::deque&lt; <a class="el" href="classLogCabin_1_1RPC_1_1TCPListener_1_1BoundListener.html">BoundListener</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a6a9d1cadc74f82eac737b864123c1071">boundListeners</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of sockets that each listen on a particular address.  <a href="#a6a9d1cadc74f82eac737b864123c1071"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::deque&lt; <a class="el" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html">Event::File::Monitor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a3ba9aad2a9c01e08d7a9fa94fb522f16">boundListenerMonitors</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">For each socket in boundListeners, a corresponding monitor that registers it with the event loop.  <a href="#a3ba9aad2a9c01e08d7a9fa94fb522f16"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A <a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html" title="A TCPListener listens for incoming TCP connections and accepts them.">TCPListener</a> listens for incoming TCP connections and accepts them. </p>
@@ -184,7 +186,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="TCPListener_8cc_source.html#l00054">54</a> of file <a class="el" href="TCPListener_8cc_source.html">TCPListener.cc</a>.</p>
+<p>Definition at line <a class="el" href="TCPListener_8cc_source.html#l00053">53</a> of file <a class="el" href="TCPListener_8cc_source.html">TCPListener.cc</a>.</p>
 
 </div>
 </div>
@@ -251,7 +253,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>An error message if this was not able to listen on the given address; the empty string otherwise. </dd></dl>
 
-<p>Definition at line <a class="el" href="TCPListener_8cc_source.html#l00068">68</a> of file <a class="el" href="TCPListener_8cc_source.html">TCPListener.cc</a>.</p>
+<p>Definition at line <a class="el" href="TCPListener_8cc_source.html#l00069">69</a> of file <a class="el" href="TCPListener_8cc_source.html">TCPListener.cc</a>.</p>
 
 </div>
 </div>
@@ -309,7 +311,7 @@ Private Attributes</h2></td></tr>
 
 <p><a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> which invokes listeners when a client requests a connection. </p>
 
-<p>Definition at line <a class="el" href="TCPListener_8h_source.html#l00094">94</a> of file <a class="el" href="TCPListener_8h_source.html">TCPListener.h</a>.</p>
+<p>Definition at line <a class="el" href="TCPListener_8h_source.html#l00092">92</a> of file <a class="el" href="TCPListener_8h_source.html">TCPListener.h</a>.</p>
 
 </div>
 </div>
@@ -324,9 +326,9 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Lock to prevent concurrent modification of boundListeners. </p>
+<p>Lock to prevent concurrent modification of boundListeners and boundListenerMonitors. </p>
 
-<p>Definition at line <a class="el" href="TCPListener_8h_source.html#l00099">99</a> of file <a class="el" href="TCPListener_8h_source.html">TCPListener.h</a>.</p>
+<p>Definition at line <a class="el" href="TCPListener_8h_source.html#l00098">98</a> of file <a class="el" href="TCPListener_8h_source.html">TCPListener.h</a>.</p>
 
 </div>
 </div>
@@ -344,7 +346,24 @@ Private Attributes</h2></td></tr>
 <p>A list of sockets that each listen on a particular address. </p>
 <p>std::deque is used so that <a class="el" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">Event::File</a> objects have a stable memory location (otherwise their handlers would blow up). </p>
 
-<p>Definition at line <a class="el" href="TCPListener_8h_source.html#l00106">106</a> of file <a class="el" href="TCPListener_8h_source.html">TCPListener.h</a>.</p>
+<p>Definition at line <a class="el" href="TCPListener_8h_source.html#l00105">105</a> of file <a class="el" href="TCPListener_8h_source.html">TCPListener.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3ba9aad2a9c01e08d7a9fa94fb522f16"></a><!-- doxytag: member="LogCabin::RPC::TCPListener::boundListenerMonitors" ref="a3ba9aad2a9c01e08d7a9fa94fb522f16" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::deque&lt;<a class="el" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html">Event::File::Monitor</a>&gt; <a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a3ba9aad2a9c01e08d7a9fa94fb522f16">LogCabin::RPC::TCPListener::boundListenerMonitors</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>For each socket in boundListeners, a corresponding monitor that registers it with the event loop. </p>
+
+<p>Definition at line <a class="el" href="TCPListener_8h_source.html#l00111">111</a> of file <a class="el" href="TCPListener_8h_source.html">TCPListener.h</a>.</p>
 
 </div>
 </div>

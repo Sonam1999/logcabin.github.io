@@ -87,6 +87,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;memory&gt;</code><br/>
 <code>#include &quot;<a class="el" href="ConditionVariable_8h_source.html">Core/ConditionVariable.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Mutex_8h_source.html">Core/Mutex.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="Timer_8h_source.html">Event/Timer.h</a>&quot;</code><br/>
 </div>
 <p><a href="Loop_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -96,6 +97,8 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class contains an event loop based on Linux's epoll interface.  <a href="classLogCabin_1_1Event_1_1Loop.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html">LogCabin::Event::Loop::Lock</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Lock</a> objects are used to synchronize between the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> thread and other threads.  <a href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1NullTimer.html">LogCabin::Event::Loop::NullTimer</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used in breakTimer, whose purpose is not to handle events but to break <a class="el" href="classLogCabin_1_1Event_1_1Loop.html#a945d446d55bb84f4772c45dc13203bd6" title="Run the main event loop until exit() is called.">runForever()</a> out of epoll_wait.  <a href="classLogCabin_1_1Event_1_1Loop_1_1NullTimer.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>

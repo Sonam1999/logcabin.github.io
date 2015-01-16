@@ -135,7 +135,7 @@ Private Member Functions</h2></td></tr>
 <div class="textblock"><p><a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Lock</a> objects are used to synchronize between the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> thread and other threads. </p>
 <p>As long as a <a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Lock</a> object exists the following guarantees are in effect: either (a) the thread is the event loop thread or (b) no other thread has a <a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Lock</a> object and the event loop thread has paused in a safe place (with no event handlers active) waiting for the <a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Lock</a> to be destroyed. Locks may be used recursively. </p>
 
-<p>Definition at line <a class="el" href="Loop_8h_source.html#l00050">50</a> of file <a class="el" href="Loop_8h_source.html">Loop.h</a>.</p>
+<p>Definition at line <a class="el" href="Loop_8h_source.html#l00051">51</a> of file <a class="el" href="Loop_8h_source.html">Loop.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aa3001fa7acca86c468a26b884d2e6808"></a><!-- doxytag: member="LogCabin::Event::Loop::Lock::Lock" ref="aa3001fa7acca86c468a26b884d2e6808" args="(Event::Loop &amp;eventLoop)" -->
 <div class="memitem">
@@ -227,7 +227,7 @@ Private Member Functions</h2></td></tr>
 
 <p><a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> to lock. </p>
 
-<p>Definition at line <a class="el" href="Loop_8h_source.html#l00057">57</a> of file <a class="el" href="Loop_8h_source.html">Loop.h</a>.</p>
+<p>Definition at line <a class="el" href="Loop_8h_source.html#l00058">58</a> of file <a class="el" href="Loop_8h_source.html">Loop.h</a>.</p>
 
 </div>
 </div>
