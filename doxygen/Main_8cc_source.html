@@ -350,18 +350,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00268"></a>00268     PidFile pidFile(options.pidFilename);
 <a name="l00269"></a>00269     pidFile.writePid(getpid());
 <a name="l00270"></a>00270 
-<a name="l00271"></a>00271     <span class="comment">// Initialize and run Globals.</span>
-<a name="l00272"></a>00272     <a class="code" href="classLogCabin_1_1Server_1_1Globals.html" title="Holds the LogCabin daemon&#39;s top-level objects.">Server::Globals</a> globals;
-<a name="l00273"></a>00273     globals.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a0716780cdbc776d14d8e63f9b6cdce41" title="Global configuration options.">config</a>.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#ab00dd9529f6ae1d80bfd3d24831c8dad" title="Load a Config from a file.">readFile</a>(options.configFilename.c_str());
-<a name="l00274"></a>00274     globals.init(options.serverId);
-<a name="l00275"></a>00275     <span class="keywordflow">if</span> (options.bootstrap) {
-<a name="l00276"></a>00276         globals.raft-&gt;bootstrapConfiguration();
-<a name="l00277"></a>00277         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Done bootstrapping configuration. Exiting.&quot;</span>);
-<a name="l00278"></a>00278     } <span class="keywordflow">else</span> {
-<a name="l00279"></a>00279         globals.run();
-<a name="l00280"></a>00280     }
-<a name="l00281"></a>00281     <span class="keywordflow">return</span> 0;
-<a name="l00282"></a>00282 }
+<a name="l00271"></a>00271     {
+<a name="l00272"></a>00272         <span class="comment">// Initialize and run Globals.</span>
+<a name="l00273"></a>00273         <a class="code" href="classLogCabin_1_1Server_1_1Globals.html" title="Holds the LogCabin daemon&#39;s top-level objects.">Server::Globals</a> globals;
+<a name="l00274"></a>00274         globals.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a0716780cdbc776d14d8e63f9b6cdce41" title="Global configuration options.">config</a>.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#ab00dd9529f6ae1d80bfd3d24831c8dad" title="Load a Config from a file.">readFile</a>(options.configFilename.c_str());
+<a name="l00275"></a>00275         globals.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aabf4f26a4217c17414024de3117645fa" title="Finish initializing this object.">init</a>(options.serverId);
+<a name="l00276"></a>00276         <span class="keywordflow">if</span> (options.bootstrap) {
+<a name="l00277"></a>00277             globals.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;bootstrapConfiguration();
+<a name="l00278"></a>00278             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Done bootstrapping configuration. Exiting.&quot;</span>);
+<a name="l00279"></a>00279         } <span class="keywordflow">else</span> {
+<a name="l00280"></a>00280             globals.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7110e6c745d942fddad758a7c9a42e9f" title="Run the event loop until SIGINT, SIGTERM, or someone calls Event::Loop::exit().">run</a>();
+<a name="l00281"></a>00281         }
+<a name="l00282"></a>00282     }
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284     google::protobuf::ShutdownProtobufLibrary();
+<a name="l00285"></a>00285     <span class="keywordflow">return</span> 0;
+<a name="l00286"></a>00286 }
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
