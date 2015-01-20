@@ -1,6 +1,7 @@
 var searchData=
 [
   ['deferred',['Deferred',['../structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#afc8952c46778acefaea54245e0520c02',1,'LogCabin::Server::ServerStats::Deferred']]],
+  ['delayandbegin',['delayAndBegin',['../classLogCabin_1_1Client_1_1Backoff.html#a1695d3da40aaa2e2acbab1c4add0634e',1,'LogCabin::Client::Backoff']]],
   ['deletearrayfn',['deleteArrayFn',['../classLogCabin_1_1RPC_1_1Buffer.html#a80a95f91175c14844388964258ac4ce8',1,'LogCabin::RPC::Buffer']]],
   ['deleteobjectfn',['deleteObjectFn',['../classLogCabin_1_1RPC_1_1Buffer.html#a33990070ecee6862ace841fd9deb3922',1,'LogCabin::RPC::Buffer']]],
   ['demangle',['demangle',['../namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a5766c3478ce808eee34e819527a4ec78',1,'LogCabin::Core::anonymous_namespace{Config.cc}']]],

@@ -3,7 +3,6 @@ var searchData=
   ['lastackepoch',['lastAckEpoch',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a3ac99d0f0a94203643ac72cf4e4c0e69',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['lastagreeindex',['lastAgreeIndex',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['lastcatchupiterationms',['lastCatchUpIterationMs',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aa278a1b1f4db199d22db2077dab0bd1f',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
-  ['lastconnecttimes',['lastConnectTimes',['../classLogCabin_1_1Client_1_1LeaderRPC.html#a28504bac2ba040f03b6b74ebb03b7df6',1,'LogCabin::Client::LeaderRPC']]],
   ['lastentryid',['lastEntryId',['../classLogCabin_1_1Server_1_1StateMachine.html#a17c3a12dc6f39d4ff8b88a18dda89acc',1,'LogCabin::Server::StateMachine']]],
   ['lastindex',['lastIndex',['../classLogCabin_1_1Storage_1_1Log_1_1Sync.html#a8d7fdefda8b3c5f7b0bee116e73ddb6e',1,'LogCabin::Storage::Log::Sync']]],
   ['lastkeepalivestart',['lastKeepAliveStart',['../classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#adfb2719978aefcf420057c37d221b1bf',1,'LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper']]],

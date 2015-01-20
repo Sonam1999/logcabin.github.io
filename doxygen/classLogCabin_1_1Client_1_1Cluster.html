@@ -132,6 +132,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current, stable cluster configuration.  <a href="#a51ac6fd68d84f3659f6b975cfba69e23"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html">ConfigurationResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#ad81d174f4a9fc07f2afe12713d8b379f">setConfiguration</a> (uint64_t oldId, const <a class="el" href="namespaceLogCabin_1_1Client.html#a63581e43a22ec4472d57c7b920d1d520">Configuration</a> &amp;newConfiguration)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the cluster's configuration.  <a href="#ad81d174f4a9fc07f2afe12713d8b379f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507">getServerStats</a> (const std::string &amp;host, uint64_t timeoutNanoseconds, Protocol::ServerStats &amp;stats)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve statistics from the given server, which are useful for diagnostics.  <a href="#a3d1821618e39b1ce3ca58dc6ad2a9507"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Protocol::ServerStats&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a883654b25aa346a5cf8d0b843be6595e">getServerStatsEx</a> (const std::string &amp;host, uint64_t timeoutNanoseconds)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Like getServerStats but throws exceptions upon errors.  <a href="#a883654b25aa346a5cf8d0b843be6595e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Client_1_1Tree.html">Tree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#ab04d52131d9ddb8c0aa140c359dc2841">getTree</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return an object to access the hierarchical key-value store.  <a href="#ab04d52131d9ddb8c0aa140c359dc2841"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
@@ -142,7 +146,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>A handle to the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster. </p>
 <p>If the client requests changes to the cluster's replicated state machine (for example, by writing a value), the client library will first open a session with the cluster. It will thereafter periodically send keep-alive requests to the cluster during periods of inactivity to maintain this session. If communication to the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster is lost for an extended period of time, the client's session will expire, and this library will force the client to crash. </p>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00467">467</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00472">472</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 </div><hr/><h2>Member Enumeration Documentation</h2>
 <a class="anchor" id="a3e900cdfb7c8a230e5abab9be53231a5"></a><!-- doxytag: member="LogCabin::Client::Cluster::ForTesting" ref="a3e900cdfb7c8a230e5abab9be53231a5" args="" -->
 <div class="memitem">
@@ -163,7 +167,7 @@ Private Attributes</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00474">474</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00479">479</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
@@ -295,6 +299,89 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a3d1821618e39b1ce3ca58dc6ad2a9507"></a><!-- doxytag: member="LogCabin::Client::Cluster::getServerStats" ref="a3d1821618e39b1ce3ca58dc6ad2a9507" args="(const std::string &amp;host, uint64_t timeoutNanoseconds, Protocol::ServerStats &amp;stats)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507">LogCabin::Client::Cluster::getServerStats</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>timeoutNanoseconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Protocol::ServerStats &amp;&#160;</td>
+          <td class="paramname"><em>stats</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Retrieve statistics from the given server, which are useful for diagnostics. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host</td><td>The hostname or IP address of the server to retrieve stats from. It is recommended that you do not use a DNS name that resolves to multiple hosts here. </td></tr>
+    <tr><td class="paramname">timeoutNanoseconds</td><td>Abort the operation if it has not completed within the specified period of time. Time is specified in nanoseconds, and the special value of 0 indicates no timeout. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="warning"><dt><b>Warning:</b></dt><dd>The client library does not currently implement timeouts for DNS lookups. See <a href="https://github.com/logcabin/logcabin/issues/75">https://github.com/logcabin/logcabin/issues/75</a> </dd></dl>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">stats</td><td><a class="el" href="namespaceLogCabin_1_1Protocol.html">Protocol</a> buffer of Stats as retrieved from the server. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Either OK or TIMEOUT. </dd></dl>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00470">470</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a883654b25aa346a5cf8d0b843be6595e"></a><!-- doxytag: member="LogCabin::Client::Cluster::getServerStatsEx" ref="a883654b25aa346a5cf8d0b843be6595e" args="(const std::string &amp;host, uint64_t timeoutNanoseconds)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Protocol::ServerStats <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a883654b25aa346a5cf8d0b843be6595e">LogCabin::Client::Cluster::getServerStatsEx</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>timeoutNanoseconds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Like getServerStats but throws exceptions upon errors. </p>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00481">481</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ab04d52131d9ddb8c0aa140c359dc2841"></a><!-- doxytag: member="LogCabin::Client::Cluster::getTree" ref="ab04d52131d9ddb8c0aa140c359dc2841" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -312,7 +399,7 @@ Private Attributes</h2></td></tr>
 <p>Return an object to access the hierarchical key-value store. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> object with the working directory of '/'. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00470">470</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00490">490</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -328,7 +415,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00522">522</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00557">557</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>

@@ -129,6 +129,8 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a0770208b7d69cde83a7d092be8e5c931">getTimeNanos</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the system time since the Unix epoch in nanoseconds.  <a href="#a0770208b7d69cde83a7d092be8e5c931"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75">sleep</a> (<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> wake)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Block the calling thread until the given time.  <a href="#a8f257504e3a87c3f6fcafce6729c1f75"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename Clock , typename Duration &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">struct timespec&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ab1f0bfec14cc5ca8578cf2ce2f2092d6">makeTimeSpec</a> (const std::chrono::time_point&lt; Clock, Duration &gt; &amp;when)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a C++11 time point into a POSIX timespec.  <a href="#ab1f0bfec14cc5ca8578cf2ce2f2092d6"></a><br/></td></tr>
@@ -192,6 +194,27 @@ Variables</h2></td></tr>
 <p>Return the system time since the Unix epoch in nanoseconds. </p>
 
 <p>Definition at line <a class="el" href="Time_8cc_source.html#l00049">49</a> of file <a class="el" href="Time_8cc_source.html">Time.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8f257504e3a87c3f6fcafce6729c1f75"></a><!-- doxytag: member="LogCabin::Core::Time::sleep" ref="a8f257504e3a87c3f6fcafce6729c1f75" args="(SteadyClock::time_point wake)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75">LogCabin::Core::Time::sleep</a> </td>
+          <td>(</td>
+          <td class="paramtype">SteadyClock::time_point&#160;</td>
+          <td class="paramname"><em>wake</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Block the calling thread until the given time. </p>
+
+<p>Definition at line <a class="el" href="Time_8cc_source.html#l00061">61</a> of file <a class="el" href="Time_8cc_source.html">Time.cc</a>.</p>
 
 </div>
 </div>

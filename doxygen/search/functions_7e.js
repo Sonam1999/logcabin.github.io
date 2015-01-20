@@ -1,6 +1,7 @@
 var searchData=
 [
   ['_7ealgorithm',['~Algorithm',['../classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithm.html#a7f356f95719021316c39394e6d74d88a',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::Algorithm']]],
+  ['_7ebackoff',['~Backoff',['../classLogCabin_1_1Client_1_1Backoff.html#a26efd706566aae3032e6c10d86c4c8e1',1,'LogCabin::Client::Backoff']]],
   ['_7eblocker',['~Blocker',['../classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2b0801a61222f6f02380247945b56289',1,'LogCabin::Event::Signal::Blocker']]],
   ['_7ebuffer',['~Buffer',['../classLogCabin_1_1RPC_1_1Buffer.html#a302d1ca56f0ce4204e3aa25f5a20b11a',1,'LogCabin::RPC::Buffer']]],
   ['_7ecall',['~Call',['../classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html#a259be0ae17cf7550e80762a19f31b936',1,'LogCabin::Client::LeaderRPCBase::Call::~Call()'],['../classLogCabin_1_1Client_1_1LeaderRPC_1_1Call.html#a8db91a60b4611bd91eb937f3e5b81221',1,'LogCabin::Client::LeaderRPC::Call::~Call()']]],

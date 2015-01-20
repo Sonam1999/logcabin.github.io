@@ -40,6 +40,7 @@ var searchData=
   ['signalhandler',['SignalHandler',['../classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a8e337f70dd57e19405ac1c3284ece7a5',1,'LogCabin::Server::ServerStats::SignalHandler']]],
   ['simpleconfiguration',['SimpleConfiguration',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration_1_1SimpleConfiguration.html#aefd1222c1b81600f7a7c410cafab918e',1,'LogCabin::Server::RaftConsensusInternal::Configuration::SimpleConfiguration']]],
   ['simplefilelog',['SimpleFileLog',['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#aa7a6ff21568b7d4fd4d99708cab910e6',1,'LogCabin::Storage::SimpleFileLog']]],
+  ['sleep',['sleep',['../namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75',1,'LogCabin::Core::Time']]],
   ['snapshotdone',['snapshotDone',['../classLogCabin_1_1Server_1_1Consensus.html#aff3d1a1d849dab84cf83c2476ad50b80',1,'LogCabin::Server::Consensus::snapshotDone()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a06654aa9da2607aa175e2b00a062c8cc',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::snapshotDone()']]],
   ['snapshotthreadmain',['snapshotThreadMain',['../classLogCabin_1_1Server_1_1StateMachine.html#a6c2fd3f31f6b186194efa2741b4908f2',1,'LogCabin::Server::StateMachine']]],
   ['sorted',['sorted',['../namespaceLogCabin_1_1Core_1_1STLUtil.html#a3ac08acf7d65b2baca588b7ba960ea24',1,'LogCabin::Core::STLUtil']]],
