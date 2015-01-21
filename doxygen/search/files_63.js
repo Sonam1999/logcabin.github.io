@@ -16,7 +16,5 @@ var searchData=
   ['conditionvariable_2ecc',['ConditionVariable.cc',['../ConditionVariable_8cc.html',1,'']]],
   ['conditionvariable_2eh',['ConditionVariable.h',['../ConditionVariable_8h.html',1,'']]],
   ['config_2ecc',['Config.cc',['../Config_8cc.html',1,'']]],
-  ['config_2eh',['Config.h',['../Config_8h.html',1,'']]],
-  ['consensus_2ecc',['Consensus.cc',['../Consensus_8cc.html',1,'']]],
-  ['consensus_2eh',['Consensus.h',['../Consensus_8h.html',1,'']]]
+  ['config_2eh',['Config.h',['../Config_8h.html',1,'']]]
 ];

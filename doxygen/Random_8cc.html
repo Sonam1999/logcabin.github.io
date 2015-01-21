@@ -77,8 +77,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -90,6 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;cstring&gt;</code><br/>
 <code>#include &lt;fcntl.h&gt;</code><br/>
 <code>#include &lt;limits&gt;</code><br/>
+<code>#include &lt;mutex&gt;</code><br/>
 <code>#include &lt;sys/stat.h&gt;</code><br/>
 <code>#include &lt;unistd.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="Debug_8h_source.html">Core/Debug.h</a>&quot;</code><br/>
@@ -97,6 +98,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <p><a href="Random_8cc_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html">LogCabin::Core::Random::anonymous_namespace{Random.cc}::RandomState</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Keeps state needed by the random number generator, protected by a mutex.  <a href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
@@ -105,14 +110,8 @@ Namespaces</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>Thread-safe pseudo-random number generator. </p>
 <br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html">LogCabin::Core::Random::anonymous_namespace{Random.cc}</a></td></tr>
-<tr><td colspan="2"><h2><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ab4fe7218afbd0b78122c0c84a0390667a2125a8022e33f2b7eb5eae703190a91f">LogCabin::Core::Random::anonymous_namespace{Random.cc}::STATE_BYTES</a>
- }</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ae2c5f312f1760e6181086d00d308f730">LogCabin::Core::Random::anonymous_namespace{Random.cc}::initRandom</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize thread-local state for random number generator.  <a href="#ae2c5f312f1760e6181086d00d308f730"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ac8535276bfdb0565dbb16455a03a8aea">LogCabin::Core::Random::anonymous_namespace{Random.cc}::getRandomBytes</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill a variable of type T with some random bytes.  <a href="#ac8535276bfdb0565dbb16455a03a8aea"></a><br/></td></tr>
@@ -132,8 +131,8 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a random integer between start and end, inclusive.  <a href="#af8e82c49f7a898ab54ed0b18a89a5419"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">__thread char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a56a0c80db5b3ed94b2ea9b2bb2be0e46">LogCabin::Core::Random::anonymous_namespace{Random.cc}::statebuf</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">__thread random_data&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a806ec438a2812a4b2b2e3cabda3656e1">LogCabin::Core::Random::anonymous_namespace{Random.cc}::randbuf</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class <br class="typebreak"/>
+LogCabin::Core::Random::anonymous_namespace{Random.cc}::RandomState&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246">LogCabin::Core::Random::anonymous_namespace{Random.cc}::randomState</a></td></tr>
 </table>
 </div><!-- contents -->
 <!-- window showing the filter options -->

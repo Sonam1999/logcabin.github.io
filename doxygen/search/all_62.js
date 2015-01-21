@@ -11,7 +11,7 @@ var searchData=
   ['becomeleader',['becomeLeader',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a99c3e4320ad96dc929a25c0fae70bd63',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['beginleadership',['beginLeadership',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ad03f113b797b25406325dde9bcf78fb2',1,'LogCabin::Server::RaftConsensusInternal::Server::beginLeadership()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a59663bf7fc26786c1ef25c90ece3bfa5',1,'LogCabin::Server::RaftConsensusInternal::LocalServer::beginLeadership()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad5ba27d28751c0c5c12e3670f7055afd',1,'LogCabin::Server::RaftConsensusInternal::Peer::beginLeadership()']]],
   ['beginrequestvote',['beginRequestVote',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#aab43402fe28b4fac77a2a53da7f7c779',1,'LogCabin::Server::RaftConsensusInternal::Server::beginRequestVote()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#ac3e344c14b56bde9c89ce29b8d4ae4f9',1,'LogCabin::Server::RaftConsensusInternal::LocalServer::beginRequestVote()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aa7a24ef9188194eefe118684d66a2ec5',1,'LogCabin::Server::RaftConsensusInternal::Peer::beginRequestVote()']]],
-  ['beginsnapshot',['beginSnapshot',['../classLogCabin_1_1Server_1_1Consensus.html#a791c4e3a12014586483b847be4d097bb',1,'LogCabin::Server::Consensus::beginSnapshot()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad972a7ee3e07e19205a56b435ca02515',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::beginSnapshot()']]],
+  ['beginsnapshot',['beginSnapshot',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad972a7ee3e07e19205a56b435ca02515',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['benchmark_2ecc',['Benchmark.cc',['../Benchmark_8cc.html',1,'']]],
   ['binary',['binary',['../classanonymous__namespace_02ServerStats_8cc_03_1_1OptionParser.html#a357b5b0e250d8c79a7c19929ced41fa7',1,'anonymous_namespace{ServerStats.cc}::OptionParser']]],
   ['bind',['bind',['../classLogCabin_1_1RPC_1_1OpaqueServer.html#ae8b06de44eef3df7e5f0091ebcc4984e',1,'LogCabin::RPC::OpaqueServer::bind()'],['../classLogCabin_1_1RPC_1_1TCPListener.html#af928cc7d97ee2a168eb98824b513c79e',1,'LogCabin::RPC::TCPListener::bind()']]],
@@ -30,6 +30,7 @@ var searchData=
   ['buffer',['Buffer',['../classLogCabin_1_1RPC_1_1Buffer.html',1,'LogCabin::RPC']]],
   ['buffer_2ecc',['Buffer.cc',['../Buffer_8cc.html',1,'']]],
   ['buffer_2eh',['Buffer.h',['../Buffer_8h.html',1,'']]],
+  ['byname',['byName',['../classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithms.html#ae26da697d10525ce104508c63786480b',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::Algorithms']]],
   ['bytesread',['bytesRead',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1Inbound.html#ad49d1e61c76635948dd9117a41aaa7ce',1,'LogCabin::RPC::MessageSocket::Inbound']]],
   ['bytessent',['bytesSent',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#aea15b927af79f6aef509496096c85d4c',1,'LogCabin::RPC::MessageSocket::Outbound']]]
 ];

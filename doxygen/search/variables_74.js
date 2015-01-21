@@ -17,6 +17,6 @@ var searchData=
   ['totalwrites',['totalWrites',['../classanonymous__namespace_02Benchmark_8cc_03_1_1OptionParser.html#a185c523a680d2ab4acaf952a57fe46e1',1,'anonymous_namespace{Benchmark.cc}::OptionParser']]],
   ['tree',['tree',['../classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a9979a17d7e4f5ca99d74eb7b733cf10e',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC::tree()'],['../classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981',1,'LogCabin::Server::StateMachine::tree()']]],
   ['treedetails',['treeDetails',['../classLogCabin_1_1Client_1_1Tree.html#aa226e2ed8ef8fd4ac53467fb88826646',1,'LogCabin::Client::Tree']]],
-  ['type',['type',['../structLogCabin_1_1Server_1_1Consensus_1_1Entry.html#a85e15ada063a0667f5a19e7421373ffd',1,'LogCabin::Server::Consensus::Entry']]],
+  ['type',['type',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a3b2231a069f4de6b26e6e6e2d90f002a',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry']]],
   ['typename',['typeName',['../structLogCabin_1_1Core_1_1Config_1_1ConversionError.html#a917b79ac35e42cea7db5eabce5f631a0',1,'LogCabin::Core::Config::ConversionError']]]
 ];

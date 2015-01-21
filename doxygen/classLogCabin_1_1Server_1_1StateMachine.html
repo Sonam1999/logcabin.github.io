@@ -122,7 +122,7 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Tracks state for a particular client.  <a href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a8a3db177357cbb703b30089b45d89c32">StateMachine</a> (std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1Server_1_1Consensus.html">Consensus</a> &gt; <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#abd80ccb2a68347a3d166626f0e960bd8">consensus</a>, <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Core::Config</a> &amp;config)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a5e86d370aa16f915148689c8ee188477">StateMachine</a> (std::shared_ptr&lt; RaftConsensus &gt; <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>, <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Core::Config</a> &amp;config)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a03e6875c4281a4d394e10bcf1657b7e2">~StateMachine</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a64059cbdf3fbf7e04243568bdadb67ff">getResponse</a> (const Protocol::Client::ExactlyOnceRPCInfo &amp;rpcInfo, Protocol::Client::CommandResponse &amp;response) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a> to get a response for a read-write operation on the <a class="el" href="namespaceLogCabin_1_1Tree.html">Tree</a>.  <a href="#a64059cbdf3fbf7e04243568bdadb67ff"></a><br/></td></tr>
@@ -152,7 +152,7 @@ Private Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by snapshotThreadMain to actually take the snapshot.  <a href="#ab79199c9f82bf4c897fb6147ca30315b"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1Server_1_1Consensus.html">Consensus</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#abd80ccb2a68347a3d166626f0e960bd8">consensus</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; RaftConsensus &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a4f131806d00456d018b8ea8b9e516f9d">snapshotMinLogSize</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Size in bytes of smallest log to snapshot.  <a href="#a4f131806d00456d018b8ea8b9e516f9d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a516e894dfa8ec79d4e1d76a106ac94a5">snapshotRatio</a></td></tr>
@@ -186,14 +186,14 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00039">39</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a8a3db177357cbb703b30089b45d89c32"></a><!-- doxytag: member="LogCabin::Server::StateMachine::StateMachine" ref="a8a3db177357cbb703b30089b45d89c32" args="(std::shared_ptr&lt; Consensus &gt; consensus, Core::Config &amp;config)" -->
+<a class="anchor" id="a5e86d370aa16f915148689c8ee188477"></a><!-- doxytag: member="LogCabin::Server::StateMachine::StateMachine" ref="a5e86d370aa16f915148689c8ee188477" args="(std::shared_ptr&lt; RaftConsensus &gt; consensus, Core::Config &amp;config)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a8a3db177357cbb703b30089b45d89c32">LogCabin::Server::StateMachine::StateMachine</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a5e86d370aa16f915148689c8ee188477">LogCabin::Server::StateMachine::StateMachine</a> </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1Server_1_1Consensus.html">Consensus</a> &gt;&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; RaftConsensus &gt;&#160;</td>
           <td class="paramname"><em>consensus</em>, </td>
         </tr>
         <tr>
@@ -211,7 +211,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00042">42</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00043">43</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -229,7 +229,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00071">71</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00072">72</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -262,7 +262,7 @@ Private Attributes</h2></td></tr>
 <p>Called by <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a> to get a response for a read-write operation on the <a class="el" href="namespaceLogCabin_1_1Tree.html">Tree</a>. </p>
 <dl class="warning"><dt><b>Warning:</b></dt><dd>Be sure to <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a25de03c98a3d661656677ba23fd508d3" title="Return once the state machine has applied at least the given entry.">wait()</a> first! </dd></dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00084">84</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00085">85</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -293,7 +293,7 @@ Private Attributes</h2></td></tr>
 
 <p>Called by <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a> to execute read-only operations on the <a class="el" href="namespaceLogCabin_1_1Tree.html">Tree</a>. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00109">109</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00110">110</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -314,7 +314,7 @@ Private Attributes</h2></td></tr>
 
 <p>Return once the state machine has applied at least the given entry. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00117">117</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00118">118</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -345,7 +345,7 @@ Private Attributes</h2></td></tr>
 
 <p>Invoked once per committed entry from the Raft log. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00128">128</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00129">129</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -365,7 +365,7 @@ Private Attributes</h2></td></tr>
 
 <p>Main function for thread that waits for new commands from Raft. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00176">176</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00177">177</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -386,7 +386,7 @@ Private Attributes</h2></td></tr>
 
 <p>Write the <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a> table to a snapshot file. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00218">218</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00219">219</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -424,7 +424,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00244">244</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00245">245</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -451,7 +451,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00259">259</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00260">260</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -472,7 +472,7 @@ Private Attributes</h2></td></tr>
 
 <p>Read the <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a> table from a snapshot file. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00281">281</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00282">282</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -494,7 +494,7 @@ Private Attributes</h2></td></tr>
 <p>Return true if it is time to create a new snapshot. </p>
 <p>This is called by applyThread as an optimization to avoid waking up snapshotThread upon applying every single entry. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00315">315</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00316">316</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -514,7 +514,7 @@ Private Attributes</h2></td></tr>
 
 <p>Main function for thread that calls takeSnapshot when appropriate. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00330">330</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00331">331</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -545,17 +545,17 @@ Private Attributes</h2></td></tr>
 
 <p>Called by snapshotThreadMain to actually take the snapshot. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00345">345</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00346">346</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="abd80ccb2a68347a3d166626f0e960bd8"></a><!-- doxytag: member="LogCabin::Server::StateMachine::consensus" ref="abd80ccb2a68347a3d166626f0e960bd8" args="" -->
+<a class="anchor" id="accaa5dfed378d3e5b03b6c082aed25d6"></a><!-- doxytag: member="LogCabin::Server::StateMachine::consensus" ref="accaa5dfed378d3e5b03b6c082aed25d6" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classLogCabin_1_1Server_1_1Consensus.html">Consensus</a>&gt; <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#abd80ccb2a68347a3d166626f0e960bd8">LogCabin::Server::StateMachine::consensus</a><code> [private]</code></td>
+          <td class="memname">std::shared_ptr&lt;RaftConsensus&gt; <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">LogCabin::Server::StateMachine::consensus</a><code> [private]</code></td>
         </tr>
       </table>
 </div>

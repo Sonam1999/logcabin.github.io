@@ -23,7 +23,7 @@ var searchData=
   ['filesystemutil_2ecc',['FilesystemUtil.cc',['../FilesystemUtil_8cc.html',1,'']]],
   ['filesystemutil_2eh',['FilesystemUtil.h',['../FilesystemUtil_8h.html',1,'']]],
   ['filetoproto',['fileToProto',['../namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html#afc9613681322d6febf64d33e12d83b45',1,'LogCabin::Storage::anonymous_namespace{SimpleFileLog.cc}']]],
-  ['find',['find',['../namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithms.html#ad74815ceecc1a9946fdcb87071cdec42',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::Algorithms']]],
+  ['find',['find',['../classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithms.html#ad74815ceecc1a9946fdcb87071cdec42',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::Algorithms']]],
   ['firstoutstandingrpc',['firstOutstandingRPC',['../structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9',1,'LogCabin::Server::StateMachine::Session']]],
   ['flushtoos',['flushToOS',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a5acdfa8012bd95341a898946e624bc2b',1,'LogCabin::Storage::SnapshotFile::Writer']]],
   ['follower',['FOLLOWER',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a14a6602e14d73dc067e2b9de50c1711cad442de331e163d23069b86bdc7140981',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],

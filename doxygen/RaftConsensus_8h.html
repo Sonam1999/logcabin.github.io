@@ -92,11 +92,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;thread&gt;</code><br/>
 <code>#include &lt;unordered_map&gt;</code><br/>
 <code>#include &quot;build/Protocol/Raft.pb.h&quot;</code><br/>
+<code>#include &quot;build/Protocol/ServerStats.pb.h&quot;</code><br/>
+<code>#include &quot;build/Server/SnapshotStats.pb.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Mutex_8h_source.html">Core/Mutex.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="ConditionVariable_8h_source.html">Core/ConditionVariable.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Time_8h_source.html">Core/Time.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="ClientRPC_8h_source.html">RPC/ClientRPC.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Consensus_8h_source.html">Server/Consensus.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Log_8h_source.html">Storage/Log.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="SnapshotFile_8h_source.html">Storage/SnapshotFile.h</a>&quot;</code><br/>
 </div>
@@ -119,6 +120,8 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures the current configuration reflects the latest state of the log and snapshot.  <a href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">LogCabin::Server::RaftConsensusInternal::RaftConsensus</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">An implementation of the Raft consensus algorithm.  <a href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html">LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is returned by <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ae36b89c65e07d35661f82fc739ab4fb9" title="This returns the entry following lastEntryId in the replicated log.">getNextEntry()</a>.  <a href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name',['name',['../classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithm.html#a0436790a02be391930ad0a2392351d95',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::Algorithm']]],
+  ['name',['name',['../classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithm.html#a687efdc889133c2f0367928e439a5c37',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::Algorithm']]],
   ['newservers',['newServers',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a0a131fa2c4a9aabc0186b1c2c91f8661',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
   ['nextheartbeattime',['nextHeartbeatTime',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#af3115d040af27bfe093f1881fd243716',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['nextid',['nextId',['../namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#a6909b5fc9c912849b9c7a696e97a4908',1,'LogCabin::Core::ThreadId::Internal']]],

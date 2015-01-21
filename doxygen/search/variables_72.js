@@ -2,7 +2,8 @@ var searchData=
 [
   ['raft',['raft',['../classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2',1,'LogCabin::Server::Globals']]],
   ['raftservice',['raftService',['../classLogCabin_1_1Server_1_1Globals.html#a93b3db0fbb6b40c579560de4c289e81e',1,'LogCabin::Server::Globals']]],
-  ['randbuf',['randbuf',['../namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a806ec438a2812a4b2b2e3cabda3656e1',1,'LogCabin::Core::Random::anonymous_namespace{Random.cc}']]],
+  ['randbuf',['randbuf',['../classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#ad5aa31228f38d4879ff2bf8ccdddae22',1,'LogCabin::Core::Random::anonymous_namespace{Random.cc}::RandomState']]],
+  ['randomstate',['randomState',['../namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246',1,'LogCabin::Core::Random::anonymous_namespace{Random.cc}']]],
   ['ready',['ready',['../structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#ad0cc04b964092736ee0836b301c07c28',1,'LogCabin::RPC::ClientSession::Response']]],
   ['receivesocket',['receiveSocket',['../classLogCabin_1_1RPC_1_1MessageSocket.html#a39c126c94d65df0a306e7ce4c15d1cf7',1,'LogCabin::RPC::MessageSocket']]],
   ['receivesocketmonitor',['receiveSocketMonitor',['../classLogCabin_1_1RPC_1_1MessageSocket.html#aa28c5ff2447ded91f8a8bf6ea57a11ea',1,'LogCabin::RPC::MessageSocket']]],

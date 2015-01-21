@@ -3,7 +3,7 @@ var searchData=
   ['election_5ftimeout_5fms',['ELECTION_TIMEOUT_MS',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad72f4957c67523b22066e78353027123',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['entries',['entries',['../classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278',1,'LogCabin::Storage::MemoryLog']]],
   ['entriesapplied',['entriesApplied',['../classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5',1,'LogCabin::Server::StateMachine']]],
-  ['entryid',['entryId',['../structLogCabin_1_1Server_1_1Consensus_1_1Entry.html#a8cf5acad66cd7a5b7d1b986c1e1d25f1',1,'LogCabin::Server::Consensus::Entry']]],
+  ['entryid',['entryId',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a20292de26b78738634519b22db6ccea6',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry']]],
   ['epollfd',['epollfd',['../classLogCabin_1_1Event_1_1Loop.html#a69ab8c2d6e0d42d7011b07b600dee4a7',1,'LogCabin::Event::Loop']]],
   ['error',['error',['../structLogCabin_1_1Client_1_1Result.html#a87f803b070b9490347beed0dd0c07512',1,'LogCabin::Client::Result::error()'],['../structLogCabin_1_1Tree_1_1Result.html#abf3da69e483dec665e273e59956a043b',1,'LogCabin::Tree::Result::error()']]],
   ['errormessage',['errorMessage',['../classLogCabin_1_1RPC_1_1ClientSession.html#af172e57ace94978917bc48d962ca61bc',1,'LogCabin::RPC::ClientSession::errorMessage()'],['../classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a61bff204e305e875e22f878bbfeee749',1,'LogCabin::RPC::OpaqueClientRPC::errorMessage()']]],

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['_7ealgorithm',['~Algorithm',['../classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithm.html#a7f356f95719021316c39394e6d74d88a',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::Algorithm']]],
   ['_7ebackoff',['~Backoff',['../classLogCabin_1_1Client_1_1Backoff.html#a26efd706566aae3032e6c10d86c4c8e1',1,'LogCabin::Client::Backoff']]],
   ['_7eblocker',['~Blocker',['../classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2b0801a61222f6f02380247945b56289',1,'LogCabin::Event::Signal::Blocker']]],
   ['_7ebuffer',['~Buffer',['../classLogCabin_1_1RPC_1_1Buffer.html#a302d1ca56f0ce4204e3aa25f5a20b11a',1,'LogCabin::RPC::Buffer']]],
@@ -14,9 +13,8 @@ var searchData=
   ['_7econfiguration',['~Configuration',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a70852b392d571b34d2f3f9d363dc0d49',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
   ['_7econfigurationmanager',['~ConfigurationManager',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#abb9e78257346313f89d479aad1cf360f',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],
   ['_7econfigurationresult',['~ConfigurationResult',['../structLogCabin_1_1Client_1_1ConfigurationResult.html#acfb9509c9c7c5f6aac2885715455f4e1',1,'LogCabin::Client::ConfigurationResult']]],
-  ['_7econsensus',['~Consensus',['../classLogCabin_1_1Server_1_1Consensus.html#aeaa27e36e195de2ef05851f79dc9dfb9',1,'LogCabin::Server::Consensus']]],
   ['_7econversionerror',['~ConversionError',['../structLogCabin_1_1Core_1_1Config_1_1ConversionError.html#a7f0948bda3855a940d76123e2616668e',1,'LogCabin::Core::Config::ConversionError']]],
-  ['_7eentry',['~Entry',['../structLogCabin_1_1Server_1_1Consensus_1_1Entry.html#a491f27ea967e7795a2c732b8bd638bff',1,'LogCabin::Server::Consensus::Entry']]],
+  ['_7eentry',['~Entry',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a5af27475be55a39c930916709a5d2c3c',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry']]],
   ['_7eexactlyoncerpchelper',['~ExactlyOnceRPCHelper',['../classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ad36f3448a815fcf55e0295aeefa36b5a',1,'LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper']]],
   ['_7efile',['~File',['../classLogCabin_1_1Event_1_1File.html#a0e19f03631cf782015d39bbb98ec8365',1,'LogCabin::Event::File::~File()'],['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad6e1ec036aae278762999fc8827cf911',1,'LogCabin::Storage::FilesystemUtil::File::~File()']]],
   ['_7efilecontents',['~FileContents',['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#ad8686f214beefff43813b9e1675a4ae0',1,'LogCabin::Storage::FilesystemUtil::FileContents']]],

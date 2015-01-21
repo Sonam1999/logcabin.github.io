@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['algorithms',['Algorithms',['../namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithms.html',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}']]],
   ['anonymous_5fnamespace_7bchecksum_2ecc_7d',['anonymous_namespace{Checksum.cc}',['../namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html',1,'LogCabin::Core::Checksum']]],
   ['anonymous_5fnamespace_7bclient_2ecc_7d',['anonymous_namespace{Client.cc}',['../namespaceLogCabin_1_1Client_1_1anonymous__namespace_02Client_8cc_03.html',1,'LogCabin::Client']]],
   ['anonymous_5fnamespace_7bclientimpl_2ecc_7d',['anonymous_namespace{ClientImpl.cc}',['../namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html',1,'LogCabin::Client']]],
@@ -23,12 +22,11 @@ var searchData=
   ['debug',['Debug',['../namespaceLogCabin_1_1Core_1_1Debug.html',1,'LogCabin::Core']]],
   ['event',['Event',['../namespaceLogCabin_1_1Event.html',1,'LogCabin']]],
   ['filesystemutil',['FilesystemUtil',['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html',1,'LogCabin::Storage']]],
-  ['internal',['Internal',['../namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1Internal.html',1,'LogCabin::Core::ProtoBuf']]],
   ['internal',['Internal',['../namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html',1,'LogCabin::Core::ThreadId']]],
-  ['internal',['Internal',['../namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithms_1_1Internal.html',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::Algorithms']]],
   ['internal',['Internal',['../namespaceLogCabin_1_1Tree_1_1Internal.html',1,'LogCabin::Tree']]],
-  ['internal',['Internal',['../namespaceLogCabin_1_1Client_1_1Internal.html',1,'LogCabin::Client']]],
   ['internal',['Internal',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html',1,'LogCabin::Core::Debug']]],
+  ['internal',['Internal',['../namespaceLogCabin_1_1Client_1_1Internal.html',1,'LogCabin::Client']]],
+  ['internal',['Internal',['../namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1Internal.html',1,'LogCabin::Core::ProtoBuf']]],
   ['logcabin',['LogCabin',['../namespaceLogCabin.html',1,'']]],
   ['logfactory',['LogFactory',['../namespaceLogCabin_1_1Storage_1_1LogFactory.html',1,'LogCabin::Storage']]],
   ['protobuf',['ProtoBuf',['../namespaceLogCabin_1_1RPC_1_1ProtoBuf.html',1,'LogCabin::RPC']]],

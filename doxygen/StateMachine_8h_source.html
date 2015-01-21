@@ -112,7 +112,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00030"></a>00030 <span class="keyword">namespace </span>Server {
 <a name="l00031"></a>00031 
 <a name="l00032"></a>00032 <span class="comment">// forward declaration</span>
-<a name="l00033"></a>00033 <span class="keyword">class </span>Consensus;
+<a name="l00033"></a>00033 <span class="keyword">class </span>RaftConsensus;
 <a name="l00034"></a>00034 <span class="comment"></span>
 <a name="l00035"></a>00035 <span class="comment">/**</span>
 <a name="l00036"></a>00036 <span class="comment"> * Interprets and executes operations that have been committed into the Raft</span>
@@ -120,7 +120,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00038"></a>00038 <span class="comment"> */</span>
 <a name="l00039"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html">00039</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html" title="Interprets and executes operations that have been committed into the Raft log.">StateMachine</a> {
 <a name="l00040"></a>00040   <span class="keyword">public</span>:
-<a name="l00041"></a>00041     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a8a3db177357cbb703b30089b45d89c32">StateMachine</a>(std::shared_ptr&lt;Consensus&gt; <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#abd80ccb2a68347a3d166626f0e960bd8">consensus</a>,
+<a name="l00041"></a>00041     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a5e86d370aa16f915148689c8ee188477">StateMachine</a>(std::shared_ptr&lt;RaftConsensus&gt; <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>,
 <a name="l00042"></a>00042                  <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Core::Config</a>&amp; config);
 <a name="l00043"></a>00043     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a03e6875c4281a4d394e10bcf1657b7e2">~StateMachine</a>();
 <a name="l00044"></a>00044 <span class="comment"></span>
@@ -206,7 +206,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00124"></a>00124     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab79199c9f82bf4c897fb6147ca30315b" title="Called by snapshotThreadMain to actually take the snapshot.">takeSnapshot</a>(uint64_t lastIncludedIndex,
 <a name="l00125"></a>00125                       std::unique_lock&lt;std::mutex&gt;&amp; lockGuard);
 <a name="l00126"></a>00126 
-<a name="l00127"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#abd80ccb2a68347a3d166626f0e960bd8">00127</a>     std::shared_ptr&lt;Consensus&gt; <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#abd80ccb2a68347a3d166626f0e960bd8">consensus</a>;
+<a name="l00127"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">00127</a>     std::shared_ptr&lt;RaftConsensus&gt; <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>;
 <a name="l00128"></a>00128 <span class="comment"></span>
 <a name="l00129"></a>00129 <span class="comment">    /**</span>
 <a name="l00130"></a>00130 <span class="comment">     * Size in bytes of smallest log to snapshot.</span>
