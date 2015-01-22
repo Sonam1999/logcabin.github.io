@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: Event/Loop.h File Reference</title>
+<title>LogCabin: Member List</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -48,8 +48,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -70,43 +70,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+    </ul>
+  </div>
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Event.html">Event</a>      </li>
+      <li class="navelem"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Loop</a>      </li>
+      <li class="navelem"><a class="el" href="structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html">NoOpLockable</a>      </li>
     </ul>
   </div>
 </div>
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">Event/Loop.h File Reference</div>  </div>
+<div class="title">LogCabin::Event::Loop::NoOpLockable Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;cinttypes&gt;</code><br/>
-<code>#include &lt;memory&gt;</code><br/>
-<code>#include &quot;<a class="el" href="ConditionVariable_8h_source.html">Core/ConditionVariable.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Mutex_8h_source.html">Core/Mutex.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Timer_8h_source.html">Event/Timer.h</a>&quot;</code><br/>
-</div>
-<p><a href="Loop_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr><td colspan="2"><h2><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">LogCabin::Event::Loop</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class contains an event loop based on Linux's epoll interface.  <a href="classLogCabin_1_1Event_1_1Loop.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html">LogCabin::Event::Loop::Lock</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Lock</a> objects are used to synchronize between the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> thread and other threads.  <a href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1NullTimer.html">LogCabin::Event::Loop::NullTimer</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used in breakTimer, whose purpose is not to handle events but to break <a class="el" href="classLogCabin_1_1Event_1_1Loop.html#a945d446d55bb84f4772c45dc13203bd6" title="Run the main event loop until exit() is called.">runForever()</a> out of epoll_wait.  <a href="classLogCabin_1_1Event_1_1Loop_1_1NullTimer.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html">LogCabin::Event::Loop::NoOpLockable</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lockable type that compiles out entirely.  <a href="structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html#details">More...</a><br/></td></tr>
-<tr><td colspan="2"><h2><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Event.html">LogCabin::Event</a></td></tr>
-</table>
-</div><!-- contents -->
+This is the complete list of members for <a class="el" href="structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html">LogCabin::Event::Loop::NoOpLockable</a>, including all inherited members.<table>
+  <tr class="memlist"><td><a class="el" href="structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html#a4a1c30deb54b6a7584b764aa32d391e1">lock</a>()</td><td><a class="el" href="structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html">LogCabin::Event::Loop::NoOpLockable</a></td><td><code> [inline]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html#a9f41db33b473d9992eda36128ef9399d">unlock</a>()</td><td><a class="el" href="structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html">LogCabin::Event::Loop::NoOpLockable</a></td><td><code> [inline]</code></td></tr>
+</table></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"

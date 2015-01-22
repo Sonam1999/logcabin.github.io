@@ -37,7 +37,7 @@ var searchData=
   ['timer',['Timer',['../classLogCabin_1_1Event_1_1Timer.html',1,'LogCabin::Event']]],
   ['timer_2ecc',['Timer.cc',['../Timer_8cc.html',1,'']]],
   ['timer_2eh',['Timer.h',['../Timer_8h.html',1,'']]],
-  ['timerhandler',['TimerHandler',['../classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a81dc51a5fedec334d9dc6ffe10016b4c',1,'LogCabin::Server::ServerStats::TimerHandler::TimerHandler()'],['../structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#afc458ddfeef940135292b600918bab71',1,'LogCabin::Server::ServerStats::Deferred::timerHandler()']]],
+  ['timerhandler',['timerHandler',['../structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#afc458ddfeef940135292b600918bab71',1,'LogCabin::Server::ServerStats::Deferred::timerHandler()'],['../classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a81dc51a5fedec334d9dc6ffe10016b4c',1,'LogCabin::Server::ServerStats::TimerHandler::TimerHandler()']]],
   ['timerhandler',['TimerHandler',['../classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html',1,'LogCabin::Server::ServerStats']]],
   ['timermonitor',['timerMonitor',['../classLogCabin_1_1RPC_1_1ClientSession.html#a24a9f5a340b51a22bdef16125f8abff2',1,'LogCabin::RPC::ClientSession::timerMonitor()'],['../structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#a2679b011a7d8b4f5aba2a92f66270846',1,'LogCabin::Server::ServerStats::Deferred::timerMonitor()']]],
   ['timernotifier',['TimerNotifier',['../structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1TimerNotifier.html',1,'LogCabin::RPC::anonymous_namespace{ClientSession.cc}']]],

@@ -13,6 +13,7 @@ var searchData=
   ['nextrpcnumber',['nextRPCNumber',['../classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a2213ef3e191984e26d7cdf4852bf4065',1,'LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper']]],
   ['no_5fentry_5fid',['NO_ENTRY_ID',['../namespaceLogCabin_1_1Server.html#a9185925cb5b0b4026e6f668c51360db7',1,'LogCabin::Server']]],
   ['none',['NONE',['../namespaceLogCabin_1_1Core_1_1ThreadId.html#ae328898111c7d242cf6be298c827ac22',1,'LogCabin::Core::ThreadId']]],
+  ['nooplockable',['NoOpLockable',['../structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html',1,'LogCabin::Event::Loop']]],
   ['normallookup',['normalLookup',['../classLogCabin_1_1Tree_1_1Tree.html#a5c6592f10128f3fea328d1a1b5e3e8b8',1,'LogCabin::Tree::Tree::normalLookup(const Internal::Path &amp;path, Internal::Directory **parent)'],['../classLogCabin_1_1Tree_1_1Tree.html#a9c84c47883180fe6464931bf723c5801',1,'LogCabin::Tree::Tree::normalLookup(const Internal::Path &amp;path, const Internal::Directory **parent) const ']]],
   ['not_5fleader',['NOT_LEADER',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0615edf4bb111f046846a730452b34bfaf3647ba82dbe5d9bed749c423b49fc13',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['not_5fready',['NOT_READY',['../classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a573067fc8bb72213a4d3ba30c17a047cadc5f08a66bad19962ecb0631202d266b',1,'LogCabin::RPC::OpaqueClientRPC']]],

@@ -28,5 +28,6 @@ var searchData=
   ['expected',['Expected',['../structLogCabin_1_1RPC_1_1ServiceMock_1_1Expected.html#aa71f47909b25ff77fa62e2067f7b3171',1,'LogCabin::RPC::ServiceMock::Expected::Expected(uint16_t opCode, std::unique_ptr&lt; Message &gt; request, std::shared_ptr&lt; Handler &gt; response)'],['../structLogCabin_1_1RPC_1_1ServiceMock_1_1Expected.html#a0d7c20c8154bc4cd5e026f7fc61c642c',1,'LogCabin::RPC::ServiceMock::Expected::Expected(Expected &amp;&amp;other)']]],
   ['expireresponses',['expireResponses',['../classLogCabin_1_1Server_1_1StateMachine.html#ab1431a7e9a631e1fb03d668ba9a4bd16',1,'LogCabin::Server::StateMachine']]],
   ['expiresessions',['expireSessions',['../classLogCabin_1_1Server_1_1StateMachine.html#a00bc7242ed3c8b28b72fab61545a386c',1,'LogCabin::Server::StateMachine']]],
+  ['extramutextosatisfyracedetector',['extraMutexToSatisfyRaceDetector',['../classLogCabin_1_1Event_1_1Loop.html#a1f41dccda6c8c052932d66cfd041108d',1,'LogCabin::Event::Loop']]],
   ['file',['File',['../classLogCabin_1_1Event_1_1Loop.html#a3c8bbe4b62a5e395f90fc60eaf5e5efa',1,'LogCabin::Event::Loop']]]
 ];

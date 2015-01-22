@@ -121,6 +121,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html">Lock</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Lock</a> objects are used to synchronize between the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> thread and other threads.  <a href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html">NoOpLockable</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lockable type that compiles out entirely.  <a href="structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1NullTimer.html">NullTimer</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used in breakTimer, whose purpose is not to handle events but to break <a class="el" href="classLogCabin_1_1Event_1_1Loop.html#a945d446d55bb84f4772c45dc13203bd6" title="Run the main event loop until exit() is called.">runForever()</a> out of epoll_wait.  <a href="classLogCabin_1_1Event_1_1Loop_1_1NullTimer.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
@@ -159,6 +161,8 @@ Private Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Signaled when it may be safe for a <a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Lock</a> constructor to complete.  <a href="#a1c5d24cf0a22aae6451482d8d2d28dfd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html#a961ad5e2126abf8e7b519d202a7f1e1b">unlocked</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Signaled when there are no longer any Locks active.  <a href="#a961ad5e2126abf8e7b519d202a7f1e1b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct <br class="typebreak"/>
+<a class="el" href="structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html">LogCabin::Event::Loop::NoOpLockable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html#a1f41dccda6c8c052932d66cfd041108d">extraMutexToSatisfyRaceDetector</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Timer_1_1Monitor.html">Event::Timer::Monitor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html#a1b8a084f44a7a9a378355c39ceb6267e">breakTimerMonitor</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Watches breakTimer for events.  <a href="#a1b8a084f44a7a9a378355c39ceb6267e"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="friends"></a>
@@ -187,7 +191,7 @@ Friends</h2></td></tr>
 
 <p>Constructor. </p>
 
-<p>Definition at line <a class="el" href="Loop_8cc_source.html#l00093">93</a> of file <a class="el" href="Loop_8cc_source.html">Loop.cc</a>.</p>
+<p>Definition at line <a class="el" href="Loop_8cc_source.html#l00097">97</a> of file <a class="el" href="Loop_8cc_source.html">Loop.cc</a>.</p>
 
 </div>
 </div>
@@ -208,7 +212,7 @@ Friends</h2></td></tr>
 <p>Destructor. </p>
 <p>The caller must ensure that no events still exist and that the event loop is not running. </p>
 
-<p>Definition at line <a class="el" href="Loop_8cc_source.html#l00108">108</a> of file <a class="el" href="Loop_8cc_source.html">Loop.cc</a>.</p>
+<p>Definition at line <a class="el" href="Loop_8cc_source.html#l00113">113</a> of file <a class="el" href="Loop_8cc_source.html">Loop.cc</a>.</p>
 
 </div>
 </div>
@@ -247,7 +251,7 @@ Friends</h2></td></tr>
 <p>Run the main event loop until <a class="el" href="classLogCabin_1_1Event_1_1Loop.html#adce1d647680489aeae87a0a6dfc0b1a9" title="Exit the main event loop, if one is running.">exit()</a> is called. </p>
 <p>It is safe to call this again after it returns. The caller must ensure that only one thread is executing <a class="el" href="classLogCabin_1_1Event_1_1Loop.html#a945d446d55bb84f4772c45dc13203bd6" title="Run the main event loop until exit() is called.">runForever()</a> at a time. </p>
 
-<p>Definition at line <a class="el" href="Loop_8cc_source.html#l00119">119</a> of file <a class="el" href="Loop_8cc_source.html">Loop.cc</a>.</p>
+<p>Definition at line <a class="el" href="Loop_8cc_source.html#l00124">124</a> of file <a class="el" href="Loop_8cc_source.html">Loop.cc</a>.</p>
 
 </div>
 </div>
@@ -270,7 +274,7 @@ Friends</h2></td></tr>
 <p>If the event loop is not running, then the next time it runs, it will exit right away (these semantics can be useful to avoid races).</p>
 <p>This may be called from an event handler or from any thread. </p>
 
-<p>Definition at line <a class="el" href="Loop_8cc_source.html#l00161">161</a> of file <a class="el" href="Loop_8cc_source.html">Loop.cc</a>.</p>
+<p>Definition at line <a class="el" href="Loop_8cc_source.html#l00168">168</a> of file <a class="el" href="Loop_8cc_source.html">Loop.cc</a>.</p>
 
 </div>
 </div>
@@ -303,7 +307,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Loop_8h_source.html#l00175">175</a> of file <a class="el" href="Loop_8h_source.html">Loop.h</a>.</p>
+<p>Definition at line <a class="el" href="Loop_8h_source.html#l00194">194</a> of file <a class="el" href="Loop_8h_source.html">Loop.h</a>.</p>
 
 </div>
 </div>
@@ -484,6 +488,19 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a1f41dccda6c8c052932d66cfd041108d"></a><!-- doxytag: member="LogCabin::Event::Loop::extraMutexToSatisfyRaceDetector" ref="a1f41dccda6c8c052932d66cfd041108d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html">LogCabin::Event::Loop::NoOpLockable</a>  <a class="el" href="classLogCabin_1_1Event_1_1Loop.html#a1f41dccda6c8c052932d66cfd041108d">LogCabin::Event::Loop::extraMutexToSatisfyRaceDetector</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a1b8a084f44a7a9a378355c39ceb6267e"></a><!-- doxytag: member="LogCabin::Event::Loop::breakTimerMonitor" ref="a1b8a084f44a7a9a378355c39ceb6267e" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -497,7 +514,7 @@ Friends</h2></td></tr>
 
 <p>Watches breakTimer for events. </p>
 
-<p>Definition at line <a class="el" href="Loop_8h_source.html#l00173">173</a> of file <a class="el" href="Loop_8h_source.html">Loop.h</a>.</p>
+<p>Definition at line <a class="el" href="Loop_8h_source.html#l00192">192</a> of file <a class="el" href="Loop_8h_source.html">Loop.h</a>.</p>
 
 </div>
 </div>

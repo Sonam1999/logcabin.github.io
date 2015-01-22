@@ -8,7 +8,7 @@ var searchData=
   ['raftconsensus_2eh',['RaftConsensus.h',['../RaftConsensus_8h.html',1,'']]],
   ['raftconsensusinvariants_2ecc',['RaftConsensusInvariants.cc',['../RaftConsensusInvariants_8cc.html',1,'']]],
   ['raftservice',['RaftService',['../classLogCabin_1_1Server_1_1RaftService.html',1,'LogCabin::Server']]],
-  ['raftservice',['raftService',['../classLogCabin_1_1Server_1_1Globals.html#a93b3db0fbb6b40c579560de4c289e81e',1,'LogCabin::Server::Globals::raftService()'],['../classLogCabin_1_1Server_1_1RaftService.html#a0917d3e4ccc1d6bbeecce1b19ff9d2cc',1,'LogCabin::Server::RaftService::RaftService(Globals &amp;globals)'],['../classLogCabin_1_1Server_1_1RaftService.html#a421d25f82d811f4cdce8a2f441bf0893',1,'LogCabin::Server::RaftService::RaftService(const RaftService &amp;)']]],
+  ['raftservice',['RaftService',['../classLogCabin_1_1Server_1_1RaftService.html#a0917d3e4ccc1d6bbeecce1b19ff9d2cc',1,'LogCabin::Server::RaftService::RaftService(Globals &amp;globals)'],['../classLogCabin_1_1Server_1_1RaftService.html#a421d25f82d811f4cdce8a2f441bf0893',1,'LogCabin::Server::RaftService::RaftService(const RaftService &amp;)'],['../classLogCabin_1_1Server_1_1Globals.html#a93b3db0fbb6b40c579560de4c289e81e',1,'LogCabin::Server::Globals::raftService()']]],
   ['raftservice_2ecc',['RaftService.cc',['../RaftService_8cc.html',1,'']]],
   ['raftservice_2eh',['RaftService.h',['../RaftService_8h.html',1,'']]],
   ['randbuf',['randbuf',['../classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#ad5aa31228f38d4879ff2bf8ccdddae22',1,'LogCabin::Core::Random::anonymous_namespace{Random.cc}::RandomState']]],

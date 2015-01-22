@@ -1,7 +1,7 @@
 var searchData=
 [
   ['unixnanos',['unixNanos',['../classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#aa967e929bf170e2fe251eb06ad8b3dd7',1,'LogCabin::Core::Time::SteadyTimeConverter']]],
-  ['unlock',['unlock',['../classLogCabin_1_1Core_1_1Mutex.html#a7ca22aeba53a48d3824f34ec7748f3d6',1,'LogCabin::Core::Mutex']]],
+  ['unlock',['unlock',['../classLogCabin_1_1Core_1_1Mutex.html#a7ca22aeba53a48d3824f34ec7748f3d6',1,'LogCabin::Core::Mutex::unlock()'],['../structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html#a9f41db33b473d9992eda36128ef9399d',1,'LogCabin::Event::Loop::NoOpLockable::unlock()']]],
   ['update',['update',['../classLogCabin_1_1RPC_1_1ClientSession.html#a464dbb3925165c6bc8bf94bd4a8a39be',1,'LogCabin::RPC::ClientSession::update()'],['../classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a03b014c343c2011dc957ee60a573525e',1,'LogCabin::RPC::OpaqueClientRPC::update()']]],
   ['updatelogmetadata',['updateLogMetadata',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad537af7eb29ec2cdee4df514a1c88062',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['updatemetadata',['updateMetadata',['../classLogCabin_1_1Storage_1_1Log.html#affd60dcee3571e1afc169cf36d887a13',1,'LogCabin::Storage::Log::updateMetadata()'],['../classLogCabin_1_1Storage_1_1MemoryLog.html#aa0f98d5650518eb17d1378c504238e30',1,'LogCabin::Storage::MemoryLog::updateMetadata()'],['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#ac0fe066ac9218c9afc0049db9d7475e5',1,'LogCabin::Storage::SimpleFileLog::updateMetadata()']]],
