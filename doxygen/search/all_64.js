@@ -1,7 +1,7 @@
 var searchData=
 [
   ['daemon',['daemon',['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#af0739fee4e519388ee65e82d66e0233d',1,'anonymous_namespace{Main.cc}::OptionParser']]],
-  ['data',['DATA',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#ad3faa7f9b282d60e8253185b09a88c5aa6d451f3ccae3822b3ec4e0df95282d71',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::DATA()'],['../classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36',1,'LogCabin::RPC::Buffer::data()'],['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#aaeeb0cef565cc48eed0987d272ea65be',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::data()']]],
+  ['data',['data',['../classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36',1,'LogCabin::RPC::Buffer::data()'],['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#aaeeb0cef565cc48eed0987d272ea65be',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::data()'],['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#ad3faa7f9b282d60e8253185b09a88c5aa6d451f3ccae3822b3ec4e0df95282d71',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::DATA()']]],
   ['debug_2ecc',['Debug.cc',['../Debug_8cc.html',1,'']]],
   ['debug_2eh',['Debug.h',['../Debug_8h.html',1,'']]],
   ['debuglogfilename',['debugLogFilename',['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#a813286f4c03c4c3b973a917e74231ce2',1,'anonymous_namespace{Main.cc}::OptionParser']]],
@@ -17,7 +17,6 @@ var searchData=
   ['deschedule',['deschedule',['../classLogCabin_1_1Event_1_1Timer.html#aaa60ccb04533e48aad6f517b89f134b6',1,'LogCabin::Event::Timer']]],
   ['description',['description',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a18b5ea1ff0070a8f98260947f420a838',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
   ['descriptions',['descriptions',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#a1b0e9174e1e054fdb2f6ec398575900b',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],
-  ['digestsize',['digestSize',['../classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithm.html#a79262614dd970edc30afefc6053c398e',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::Algorithm']]],
   ['dir',['dir',['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#ab890d1502e17b40cf3f8877a06df703f',1,'LogCabin::Storage::SimpleFileLog']]],
   ['directories',['directories',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a280d1d212295450b804935d32b5692af',1,'LogCabin::Tree::Internal::Directory']]],
   ['directory',['Directory',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html',1,'LogCabin::Tree::Internal']]],

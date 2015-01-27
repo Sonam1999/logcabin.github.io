@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['name',['name',['../classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithm.html#a687efdc889133c2f0367928e439a5c37',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::Algorithm']]],
   ['native_5fhandle',['native_handle',['../classLogCabin_1_1Core_1_1Mutex.html#a8e7714adecbd7c7f285c4a22f143230d',1,'LogCabin::Core::Mutex']]],
   ['native_5fhandle_5ftype',['native_handle_type',['../classLogCabin_1_1Core_1_1Mutex.html#a50c44eaee619ac7b7d2f62e7ee994706',1,'LogCabin::Core::Mutex']]],
   ['needsreply',['needsReply',['../classLogCabin_1_1RPC_1_1ServerRPC.html#a18eef351dce8b16ce44f358cb9acbbb6',1,'LogCabin::RPC::ServerRPC']]],

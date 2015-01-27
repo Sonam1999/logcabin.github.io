@@ -100,6 +100,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc} Namespace Reference</div>  </div>
@@ -108,15 +110,127 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithm.html">Algorithm</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Different algorithms implement different hash functions.  <a href="classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithm.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithms.html">Algorithms</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A container for a set of <a class="el" href="classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithm.html" title="Different algorithms implement different hash functions.">Algorithm</a> implementations.  <a href="classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithms.html#details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A container for a set of Algorithm implementations.  <a href="classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithms.html#details">More...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef uint32_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html#a4e906598b7321f000f0362592445b860">Algorithm</a> )(std::initializer_list&lt; std::pair&lt; const void *, uint64_t &gt;&gt; data, char result[<a class="el" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a1982d4ee28f2bcb1c81861691fda7c31abb2b22ec01561b5d03e4f8c85a8d9d4a">MAX_LENGTH</a>])</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for function that calculate the checksum for some data.  <a href="#a4e906598b7321f000f0362592445b860"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html#ae47f6afd442b289d4e27741de1aa8ea9">writeChecksumHelper</a> (CryptoPP::HashTransformation &amp;hashFn, const char *name, std::initializer_list&lt; std::pair&lt; const void *, uint64_t &gt;&gt; data, char result[<a class="el" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a1982d4ee28f2bcb1c81861691fda7c31abb2b22ec01561b5d03e4f8c85a8d9d4a">MAX_LENGTH</a>])</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper for writeChecksum template, to keep code bloat to a minimum.  <a href="#ae47f6afd442b289d4e27741de1aa8ea9"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename HashFn &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html#a7bfff338344ea9be420507e630fe19ac">writeChecksum</a> (std::initializer_list&lt; std::pair&lt; const void *, uint64_t &gt;&gt; data, char result[<a class="el" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a1982d4ee28f2bcb1c81861691fda7c31abb2b22ec01561b5d03e4f8c85a8d9d4a">MAX_LENGTH</a>])</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Template to produce functions of type Algorithm when instantiated with a CryptoPP::HashTransformation.  <a href="#a7bfff338344ea9be420507e630fe19ac"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class <br class="typebreak"/>
 LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::<a class="el" href="classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithms.html">Algorithms</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html#a94acd59c9d2ca550250909fa5f0d2970">algorithms</a></td></tr>
 </table>
+<hr/><h2>Typedef Documentation</h2>
+<a class="anchor" id="a4e906598b7321f000f0362592445b860"></a><!-- doxytag: member="LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::Algorithm" ref="a4e906598b7321f000f0362592445b860" args=")(std::initializer_list&lt; std::pair&lt; const void *, uint64_t &gt;&gt; data, char result[MAX_LENGTH])" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint32_t(* LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::<a class="el" href="namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html#a4e906598b7321f000f0362592445b860">Algorithm</a>)(std::initializer_list&lt; std::pair&lt; const void *, uint64_t &gt;&gt; data, char result[<a class="el" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a1982d4ee28f2bcb1c81861691fda7c31abb2b22ec01561b5d03e4f8c85a8d9d4a">MAX_LENGTH</a>])</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Type for function that calculate the checksum for some data. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">data</td><td>An list of (pointer, length) pairs describing what to checksum. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">result</td><td>The result of the hash function will be placed here. This will be a null-terminated, printable C-string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The number of valid characters in 'output', including the null terminator. This is guaranteed to be greater than 1. </dd></dl>
+
+<p>Definition at line <a class="el" href="Checksum_8cc_source.html#l00121">121</a> of file <a class="el" href="Checksum_8cc_source.html">Checksum.cc</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Function Documentation</h2>
+<a class="anchor" id="ae47f6afd442b289d4e27741de1aa8ea9"></a><!-- doxytag: member="LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::writeChecksumHelper" ref="ae47f6afd442b289d4e27741de1aa8ea9" args="(CryptoPP::HashTransformation &amp;hashFn, const char *name, std::initializer_list&lt; std::pair&lt; const void *, uint64_t &gt;&gt; data, char result[MAX_LENGTH])" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::<a class="el" href="namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html#ae47f6afd442b289d4e27741de1aa8ea9">writeChecksumHelper</a> </td>
+          <td>(</td>
+          <td class="paramtype">CryptoPP::HashTransformation &amp;&#160;</td>
+          <td class="paramname"><em>hashFn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::initializer_list&lt; std::pair&lt; const void *, uint64_t &gt;&gt;&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>result</em>[MAX_LENGTH]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Helper for writeChecksum template, to keep code bloat to a minimum. </p>
+
+<p>Definition at line <a class="el" href="Checksum_8cc_source.html#l00051">51</a> of file <a class="el" href="Checksum_8cc_source.html">Checksum.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7bfff338344ea9be420507e630fe19ac"></a><!-- doxytag: member="LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::writeChecksum" ref="a7bfff338344ea9be420507e630fe19ac" args="(std::initializer_list&lt; std::pair&lt; const void *, uint64_t &gt;&gt; data, char result[MAX_LENGTH])" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename HashFn &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::<a class="el" href="namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html#a7bfff338344ea9be420507e630fe19ac">writeChecksum</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::initializer_list&lt; std::pair&lt; const void *, uint64_t &gt;&gt;&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>result</em>[MAX_LENGTH]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Template to produce functions of type Algorithm when instantiated with a CryptoPP::HashTransformation. </p>
+
+<p>Definition at line <a class="el" href="Checksum_8cc_source.html#l00100">100</a> of file <a class="el" href="Checksum_8cc_source.html">Checksum.cc</a>.</p>
+
+</div>
+</div>
 <hr/><h2>Variable Documentation</h2>
 <a class="anchor" id="a94acd59c9d2ca550250909fa5f0d2970"></a><!-- doxytag: member="LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::algorithms" ref="a94acd59c9d2ca550250909fa5f0d2970" args="" -->
 <div class="memitem">
