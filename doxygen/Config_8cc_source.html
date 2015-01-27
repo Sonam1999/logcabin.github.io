@@ -109,270 +109,279 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00027"></a>00027 <span class="comment"> * It was subsequently modified:</span>
 <a name="l00028"></a>00028 <span class="comment"> *</span>
 <a name="l00029"></a>00029 <span class="comment"> * Copyright (c) 2012 Stanford University</span>
-<a name="l00030"></a>00030 <span class="comment"> *</span>
-<a name="l00031"></a>00031 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
-<a name="l00032"></a>00032 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
-<a name="l00033"></a>00033 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
-<a name="l00034"></a>00034 <span class="comment"> *</span>
-<a name="l00035"></a>00035 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
-<a name="l00036"></a>00036 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
-<a name="l00037"></a>00037 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
-<a name="l00038"></a>00038 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
-<a name="l00039"></a>00039 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
-<a name="l00040"></a>00040 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
-<a name="l00041"></a>00041 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
-<a name="l00042"></a>00042 <span class="comment"> */</span>
-<a name="l00043"></a>00043 
-<a name="l00044"></a>00044 <span class="preprocessor">#include &lt;cxxabi.h&gt;</span>
-<a name="l00045"></a>00045 <span class="preprocessor">#include &lt;fstream&gt;</span>
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047 <span class="preprocessor">#include &quot;<a class="code" href="Config_8h.html">Core/Config.h</a>&quot;</span>
-<a name="l00048"></a>00048 <span class="preprocessor">#include &quot;<a class="code" href="StringUtil_8h.html">Core/StringUtil.h</a>&quot;</span>
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050 <span class="keyword">namespace </span>LogCabin {
-<a name="l00051"></a>00051 <span class="keyword">namespace </span>Core {
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">Core::StringUtil::format</a>;
-<a name="l00054"></a>00054 <span class="keyword">using</span> std::string;
-<a name="l00055"></a>00055 
-<a name="l00056"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html">00056</a> <span class="keyword">namespace </span>{
-<a name="l00057"></a>00057 <span class="comment"></span>
-<a name="l00058"></a>00058 <span class="comment">/// The set of whitespace characters.</span>
-<a name="l00059"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a565ff55bd6b34e18c8a3de2466487a2d">00059</a> <span class="comment"></span><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a565ff55bd6b34e18c8a3de2466487a2d" title="The set of whitespace characters.">whitespace</a>[] = <span class="stringliteral">&quot; \n\t\v\r\f&quot;</span>;
-<a name="l00060"></a>00060 <span class="comment"></span>
-<a name="l00061"></a>00061 <span class="comment">/// Remove leading whitespace.</span>
-<a name="l00062"></a>00062 <span class="comment"></span><span class="keywordtype">void</span>
-<a name="l00063"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#adc829e5a3c42e01de0e7ed01e892ce81">00063</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#adc829e5a3c42e01de0e7ed01e892ce81" title="Remove leading whitespace.">ltrim</a>(<span class="keywordtype">string</span>&amp; s)
-<a name="l00064"></a>00064 {
-<a name="l00065"></a>00065     s.erase(0, s.find_first_not_of(whitespace));
-<a name="l00066"></a>00066 }
-<a name="l00067"></a>00067 <span class="comment"></span>
-<a name="l00068"></a>00068 <span class="comment">/// Remove trailing whitespace.</span>
-<a name="l00069"></a>00069 <span class="comment"></span><span class="keywordtype">void</span>
-<a name="l00070"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a2389e943ca00d0e4d022f160acbeceba">00070</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a2389e943ca00d0e4d022f160acbeceba" title="Remove trailing whitespace.">rtrim</a>(<span class="keywordtype">string</span>&amp; s)
-<a name="l00071"></a>00071 {
-<a name="l00072"></a>00072     s.erase(s.find_last_not_of(whitespace) + 1);
-<a name="l00073"></a>00073 }
-<a name="l00074"></a>00074 <span class="comment"></span>
-<a name="l00075"></a>00075 <span class="comment">/// Remove leading and trailing whitespace.</span>
-<a name="l00076"></a>00076 <span class="comment"></span><span class="keywordtype">void</span>
-<a name="l00077"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a412f2ee8d41c1b8c68f2137dc26b55f3">00077</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a412f2ee8d41c1b8c68f2137dc26b55f3" title="Remove leading and trailing whitespace.">trim</a>(<span class="keywordtype">string</span>&amp; s)
-<a name="l00078"></a>00078 {
-<a name="l00079"></a>00079     <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#adc829e5a3c42e01de0e7ed01e892ce81" title="Remove leading whitespace.">ltrim</a>(s);
-<a name="l00080"></a>00080     <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a2389e943ca00d0e4d022f160acbeceba" title="Remove trailing whitespace.">rtrim</a>(s);
-<a name="l00081"></a>00081 }
-<a name="l00082"></a>00082 <span class="comment"></span>
-<a name="l00083"></a>00083 <span class="comment">/// Demangle a C++ type name.</span>
-<a name="l00084"></a>00084 <span class="comment"></span><span class="keywordtype">string</span>
-<a name="l00085"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a5766c3478ce808eee34e819527a4ec78">00085</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a5766c3478ce808eee34e819527a4ec78" title="Demangle a C++ type name.">demangle</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; name)
-<a name="l00086"></a>00086 {
-<a name="l00087"></a>00087     <span class="keywordtype">char</span>* result = abi::__cxa_demangle(name.c_str(),
-<a name="l00088"></a>00088                                        NULL, NULL, NULL);
-<a name="l00089"></a>00089     <span class="keywordflow">if</span> (result == NULL)
-<a name="l00090"></a>00090         <span class="keywordflow">return</span> name;
-<a name="l00091"></a>00091     <span class="keywordtype">string</span> ret(result);
-<a name="l00092"></a>00092     free(result);
-<a name="l00093"></a>00093     <span class="keywordflow">return</span> ret;
-<a name="l00094"></a>00094 }
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096 } <span class="comment">// anonymous namespace</span>
-<a name="l00097"></a>00097 
+<a name="l00030"></a>00030 <span class="comment"> * Copyright (c) 2015 Diego Ongaro</span>
+<a name="l00031"></a>00031 <span class="comment"> *</span>
+<a name="l00032"></a>00032 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
+<a name="l00033"></a>00033 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
+<a name="l00034"></a>00034 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
+<a name="l00035"></a>00035 <span class="comment"> *</span>
+<a name="l00036"></a>00036 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
+<a name="l00037"></a>00037 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
+<a name="l00038"></a>00038 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
+<a name="l00039"></a>00039 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
+<a name="l00040"></a>00040 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
+<a name="l00041"></a>00041 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
+<a name="l00042"></a>00042 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
+<a name="l00043"></a>00043 <span class="comment"> */</span>
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 <span class="preprocessor">#include &lt;cxxabi.h&gt;</span>
+<a name="l00046"></a>00046 <span class="preprocessor">#include &lt;fstream&gt;</span>
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 <span class="preprocessor">#include &quot;<a class="code" href="Config_8h.html">Core/Config.h</a>&quot;</span>
+<a name="l00049"></a>00049 <span class="preprocessor">#include &quot;<a class="code" href="StringUtil_8h.html">Core/StringUtil.h</a>&quot;</span>
+<a name="l00050"></a>00050 
+<a name="l00051"></a>00051 <span class="keyword">namespace </span>LogCabin {
+<a name="l00052"></a>00052 <span class="keyword">namespace </span>Core {
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">Core::StringUtil::format</a>;
+<a name="l00055"></a>00055 <span class="keyword">using</span> std::string;
+<a name="l00056"></a>00056 
+<a name="l00057"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html">00057</a> <span class="keyword">namespace </span>{
+<a name="l00058"></a>00058 <span class="comment"></span>
+<a name="l00059"></a>00059 <span class="comment">/// The set of whitespace characters.</span>
+<a name="l00060"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a565ff55bd6b34e18c8a3de2466487a2d">00060</a> <span class="comment"></span><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a565ff55bd6b34e18c8a3de2466487a2d" title="The set of whitespace characters.">whitespace</a>[] = <span class="stringliteral">&quot; \n\t\v\r\f&quot;</span>;
+<a name="l00061"></a>00061 <span class="comment"></span>
+<a name="l00062"></a>00062 <span class="comment">/// Remove leading whitespace.</span>
+<a name="l00063"></a>00063 <span class="comment"></span><span class="keywordtype">void</span>
+<a name="l00064"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#adc829e5a3c42e01de0e7ed01e892ce81">00064</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#adc829e5a3c42e01de0e7ed01e892ce81" title="Remove leading whitespace.">ltrim</a>(<span class="keywordtype">string</span>&amp; s)
+<a name="l00065"></a>00065 {
+<a name="l00066"></a>00066     s.erase(0, s.find_first_not_of(whitespace));
+<a name="l00067"></a>00067 }
+<a name="l00068"></a>00068 <span class="comment"></span>
+<a name="l00069"></a>00069 <span class="comment">/// Remove trailing whitespace.</span>
+<a name="l00070"></a>00070 <span class="comment"></span><span class="keywordtype">void</span>
+<a name="l00071"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a2389e943ca00d0e4d022f160acbeceba">00071</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a2389e943ca00d0e4d022f160acbeceba" title="Remove trailing whitespace.">rtrim</a>(<span class="keywordtype">string</span>&amp; s)
+<a name="l00072"></a>00072 {
+<a name="l00073"></a>00073     s.erase(s.find_last_not_of(whitespace) + 1);
+<a name="l00074"></a>00074 }
+<a name="l00075"></a>00075 <span class="comment"></span>
+<a name="l00076"></a>00076 <span class="comment">/// Remove leading and trailing whitespace.</span>
+<a name="l00077"></a>00077 <span class="comment"></span><span class="keywordtype">void</span>
+<a name="l00078"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a412f2ee8d41c1b8c68f2137dc26b55f3">00078</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a412f2ee8d41c1b8c68f2137dc26b55f3" title="Remove leading and trailing whitespace.">trim</a>(<span class="keywordtype">string</span>&amp; s)
+<a name="l00079"></a>00079 {
+<a name="l00080"></a>00080     <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#adc829e5a3c42e01de0e7ed01e892ce81" title="Remove leading whitespace.">ltrim</a>(s);
+<a name="l00081"></a>00081     <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a2389e943ca00d0e4d022f160acbeceba" title="Remove trailing whitespace.">rtrim</a>(s);
+<a name="l00082"></a>00082 }
+<a name="l00083"></a>00083 <span class="comment"></span>
+<a name="l00084"></a>00084 <span class="comment">/// Demangle a C++ type name.</span>
+<a name="l00085"></a>00085 <span class="comment"></span><span class="keywordtype">string</span>
+<a name="l00086"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a5766c3478ce808eee34e819527a4ec78">00086</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a5766c3478ce808eee34e819527a4ec78" title="Demangle a C++ type name.">demangle</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; name)
+<a name="l00087"></a>00087 {
+<a name="l00088"></a>00088     <span class="keywordtype">char</span>* result = abi::__cxa_demangle(name.c_str(),
+<a name="l00089"></a>00089                                        NULL, NULL, NULL);
+<a name="l00090"></a>00090     <span class="keywordflow">if</span> (result == NULL)
+<a name="l00091"></a>00091         <span class="keywordflow">return</span> name;
+<a name="l00092"></a>00092     <span class="keywordtype">string</span> ret(result);
+<a name="l00093"></a>00093     free(result);
+<a name="l00094"></a>00094     <span class="keywordflow">return</span> ret;
+<a name="l00095"></a>00095 }
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097 } <span class="comment">// anonymous namespace</span>
 <a name="l00098"></a>00098 
-<a name="l00099"></a>00099 <span class="comment">// exceptions</span>
-<a name="l00100"></a>00100 
-<a name="l00101"></a><a class="code" href="structLogCabin_1_1Core_1_1Config_1_1FileNotFound.html#a19ae62b02ea8d2104e5352db14100480">00101</a> <a class="code" href="structLogCabin_1_1Core_1_1Config_1_1FileNotFound.html#a19ae62b02ea8d2104e5352db14100480">Config::FileNotFound::FileNotFound</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename)
-<a name="l00102"></a>00102     : runtime_error(<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(
-<a name="l00103"></a>00103         <span class="stringliteral">&quot;The config file %s could not be opened&quot;</span>,
-<a name="l00104"></a>00104         filename.c_str()))
-<a name="l00105"></a>00105     , filename(filename)
-<a name="l00106"></a>00106 {
-<a name="l00107"></a>00107 }
-<a name="l00108"></a>00108 
-<a name="l00109"></a><a class="code" href="structLogCabin_1_1Core_1_1Config_1_1KeyNotFound.html#a9cccd4eec08b04e42d395c88d3a14a68">00109</a> <a class="code" href="structLogCabin_1_1Core_1_1Config_1_1KeyNotFound.html#a9cccd4eec08b04e42d395c88d3a14a68">Config::KeyNotFound::KeyNotFound</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key)
-<a name="l00110"></a>00110     : runtime_error(<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(
-<a name="l00111"></a>00111         <span class="stringliteral">&quot;The configuration does not specify %s&quot;</span>,
-<a name="l00112"></a>00112         key.c_str()))
-<a name="l00113"></a>00113     , key(key)
-<a name="l00114"></a>00114 {
-<a name="l00115"></a>00115 }
-<a name="l00116"></a>00116 
-<a name="l00117"></a><a class="code" href="structLogCabin_1_1Core_1_1Config_1_1ConversionError.html#a957d64ad03d6718ea4d70dcb63e78ed1">00117</a> <a class="code" href="structLogCabin_1_1Core_1_1Config_1_1ConversionError.html#a957d64ad03d6718ea4d70dcb63e78ed1">Config::ConversionError::ConversionError</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key,
-<a name="l00118"></a>00118                                          <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; value,
-<a name="l00119"></a>00119                                          <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; typeName)
-<a name="l00120"></a>00120     : runtime_error(<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(
-<a name="l00121"></a>00121         <span class="stringliteral">&quot;The value %s for key %s could not be converted to a %s&quot;</span>,
-<a name="l00122"></a>00122         key.c_str(), value.c_str(), <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a5766c3478ce808eee34e819527a4ec78" title="Demangle a C++ type name.">demangle</a>(typeName).c_str()))
-<a name="l00123"></a>00123     , key(key)
-<a name="l00124"></a>00124     , value(value)
-<a name="l00125"></a>00125     , typeName(typeName)
-<a name="l00126"></a>00126 {
-<a name="l00127"></a>00127 }
-<a name="l00128"></a>00128 
-<a name="l00129"></a>00129 <span class="comment">// class Config</span>
-<a name="l00130"></a>00130 
-<a name="l00131"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#ad12bb4d960ef8b4b4cdb96fa434b9283">00131</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#ad12bb4d960ef8b4b4cdb96fa434b9283" title="Construct an empty Config.">Config::Config</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a6a68eb2bc7cc74d868a5b8d501172377" title="Separator between key and value, usually &quot;=&quot;.">delimiter</a>,
-<a name="l00132"></a>00132                <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a0999d64055c63a5ad812b9d85dea4b96" title="Starts a comment, usually &quot;#&quot;.">comment</a>)
-<a name="l00133"></a>00133     : delimiter(delimiter)
-<a name="l00134"></a>00134     , comment(comment)
-<a name="l00135"></a>00135     , <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>()
-<a name="l00136"></a>00136 {
-<a name="l00137"></a>00137 }
-<a name="l00138"></a>00138 
-<a name="l00139"></a>00139 <span class="keywordtype">void</span>
-<a name="l00140"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#ab00dd9529f6ae1d80bfd3d24831c8dad">00140</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#ab00dd9529f6ae1d80bfd3d24831c8dad" title="Load a Config from a file.">Config::readFile</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename)
-<a name="l00141"></a>00141 {
-<a name="l00142"></a>00142     std::ifstream in(filename.c_str());
-<a name="l00143"></a>00143     <span class="keywordflow">if</span> (!in)
-<a name="l00144"></a>00144         <span class="keywordflow">throw</span> <a class="code" href="structLogCabin_1_1Core_1_1Config_1_1FileNotFound.html">FileNotFound</a>(filename);
-<a name="l00145"></a>00145     in &gt;&gt; (*this);
-<a name="l00146"></a>00146 }
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 <span class="comment">// exceptions</span>
+<a name="l00101"></a>00101 
+<a name="l00102"></a><a class="code" href="structLogCabin_1_1Core_1_1Config_1_1FileNotFound.html#a19ae62b02ea8d2104e5352db14100480">00102</a> <a class="code" href="structLogCabin_1_1Core_1_1Config_1_1FileNotFound.html#a19ae62b02ea8d2104e5352db14100480">Config::FileNotFound::FileNotFound</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename)
+<a name="l00103"></a>00103     : runtime_error(<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(
+<a name="l00104"></a>00104         <span class="stringliteral">&quot;The config file %s could not be opened&quot;</span>,
+<a name="l00105"></a>00105         filename.c_str()))
+<a name="l00106"></a>00106     , filename(filename)
+<a name="l00107"></a>00107 {
+<a name="l00108"></a>00108 }
+<a name="l00109"></a>00109 
+<a name="l00110"></a><a class="code" href="structLogCabin_1_1Core_1_1Config_1_1KeyNotFound.html#a9cccd4eec08b04e42d395c88d3a14a68">00110</a> <a class="code" href="structLogCabin_1_1Core_1_1Config_1_1KeyNotFound.html#a9cccd4eec08b04e42d395c88d3a14a68">Config::KeyNotFound::KeyNotFound</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key)
+<a name="l00111"></a>00111     : runtime_error(<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(
+<a name="l00112"></a>00112         <span class="stringliteral">&quot;The configuration does not specify %s&quot;</span>,
+<a name="l00113"></a>00113         key.c_str()))
+<a name="l00114"></a>00114     , key(key)
+<a name="l00115"></a>00115 {
+<a name="l00116"></a>00116 }
+<a name="l00117"></a>00117 
+<a name="l00118"></a><a class="code" href="structLogCabin_1_1Core_1_1Config_1_1ConversionError.html#a957d64ad03d6718ea4d70dcb63e78ed1">00118</a> <a class="code" href="structLogCabin_1_1Core_1_1Config_1_1ConversionError.html#a957d64ad03d6718ea4d70dcb63e78ed1">Config::ConversionError::ConversionError</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key,
+<a name="l00119"></a>00119                                          <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; value,
+<a name="l00120"></a>00120                                          <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; typeName)
+<a name="l00121"></a>00121     : runtime_error(<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(
+<a name="l00122"></a>00122         <span class="stringliteral">&quot;The value %s for key %s could not be converted to a %s&quot;</span>,
+<a name="l00123"></a>00123         key.c_str(), value.c_str(), <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a5766c3478ce808eee34e819527a4ec78" title="Demangle a C++ type name.">demangle</a>(typeName).c_str()))
+<a name="l00124"></a>00124     , key(key)
+<a name="l00125"></a>00125     , value(value)
+<a name="l00126"></a>00126     , typeName(typeName)
+<a name="l00127"></a>00127 {
+<a name="l00128"></a>00128 }
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130 <span class="comment">// class Config</span>
+<a name="l00131"></a>00131 
+<a name="l00132"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#ad12bb4d960ef8b4b4cdb96fa434b9283">00132</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#ad12bb4d960ef8b4b4cdb96fa434b9283" title="Construct an empty Config.">Config::Config</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a6a68eb2bc7cc74d868a5b8d501172377" title="Separator between key and value, usually &quot;=&quot;.">delimiter</a>,
+<a name="l00133"></a>00133                <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a0999d64055c63a5ad812b9d85dea4b96" title="Starts a comment, usually &quot;#&quot;.">comment</a>)
+<a name="l00134"></a>00134     : delimiter(delimiter)
+<a name="l00135"></a>00135     , comment(comment)
+<a name="l00136"></a>00136     , <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>()
+<a name="l00137"></a>00137 {
+<a name="l00138"></a>00138 }
+<a name="l00139"></a>00139 
+<a name="l00140"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#aff698eabc842b079f9f06bad015d102f">00140</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#ad12bb4d960ef8b4b4cdb96fa434b9283" title="Construct an empty Config.">Config::Config</a>(<span class="keyword">const</span> std::map&lt;string, string&gt;&amp; options)
+<a name="l00141"></a>00141     : delimiter(<span class="stringliteral">&quot;=&quot;</span>)
+<a name="l00142"></a>00142     , comment(<span class="stringliteral">&quot;#&quot;</span>)
+<a name="l00143"></a>00143     , contents(options)
+<a name="l00144"></a>00144 {
+<a name="l00145"></a>00145 }
+<a name="l00146"></a>00146 
 <a name="l00147"></a>00147 
-<a name="l00148"></a>00148 std::istream&amp;
-<a name="l00149"></a><a class="code" href="namespaceLogCabin_1_1Core.html#a264c66ab3fb5085752e9d781f2cfbbae">00149</a> <a class="code" href="namespaceLogCabin_1_1Core.html#a264c66ab3fb5085752e9d781f2cfbbae">operator&gt;&gt;</a>(std::istream&amp; is, <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Config</a>&amp; cf)
+<a name="l00148"></a>00148 <span class="keywordtype">void</span>
+<a name="l00149"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#ab00dd9529f6ae1d80bfd3d24831c8dad">00149</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#ab00dd9529f6ae1d80bfd3d24831c8dad" title="Load a Config from a file.">Config::readFile</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename)
 <a name="l00150"></a>00150 {
-<a name="l00151"></a>00151     <span class="comment">// might need to read ahead to see where value ends</span>
-<a name="l00152"></a>00152     <span class="keywordtype">string</span> nextLine;
-<a name="l00153"></a>00153 
-<a name="l00154"></a>00154     <span class="keywordflow">while</span> (is || !nextLine.empty()) {
-<a name="l00155"></a>00155         <span class="comment">// Read an entire line at a time</span>
-<a name="l00156"></a>00156         <span class="keywordtype">string</span> line;
-<a name="l00157"></a>00157         <span class="keywordflow">if</span> (nextLine.empty())
-<a name="l00158"></a>00158             line = cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a54fafd9bea6d3e7141d18adc3ea6f83d" title="Read a line, strip comments, and trim it.">readLine</a>(is);
-<a name="l00159"></a>00159         <span class="keywordflow">else</span>
-<a name="l00160"></a>00160             line.swap(nextLine); <span class="comment">// we read ahead; use it now</span>
-<a name="l00161"></a>00161 
-<a name="l00162"></a>00162         <span class="keywordtype">size_t</span> delimPos = line.find(cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a6a68eb2bc7cc74d868a5b8d501172377" title="Separator between key and value, usually &quot;=&quot;.">delimiter</a>);
-<a name="l00163"></a>00163         <span class="keywordflow">if</span> (delimPos != string::npos) {
-<a name="l00164"></a>00164             <span class="comment">// Extract the key from line</span>
-<a name="l00165"></a>00165             <span class="keywordtype">string</span> key = line.substr(0, delimPos);
-<a name="l00166"></a>00166             <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a2389e943ca00d0e4d022f160acbeceba" title="Remove trailing whitespace.">rtrim</a>(key);
-<a name="l00167"></a>00167 
-<a name="l00168"></a>00168             <span class="comment">// Extract the value from line</span>
-<a name="l00169"></a>00169             <span class="keywordtype">string</span> value;
-<a name="l00170"></a>00170             line.swap(value);
-<a name="l00171"></a>00171             value.erase(0, delimPos + cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a6a68eb2bc7cc74d868a5b8d501172377" title="Separator between key and value, usually &quot;=&quot;.">delimiter</a>.length());
-<a name="l00172"></a>00172             <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#adc829e5a3c42e01de0e7ed01e892ce81" title="Remove leading whitespace.">ltrim</a>(value);
-<a name="l00173"></a>00173 
-<a name="l00174"></a>00174             <span class="comment">// See if value continues on the next line</span>
-<a name="l00175"></a>00175             <span class="comment">// Stop at empty line, next line with a key, or end of stream</span>
-<a name="l00176"></a>00176             <span class="keywordflow">while</span> (is) {
-<a name="l00177"></a>00177                 line = cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a54fafd9bea6d3e7141d18adc3ea6f83d" title="Read a line, strip comments, and trim it.">readLine</a>(is);
-<a name="l00178"></a>00178 
-<a name="l00179"></a>00179                 <span class="comment">// Empty lines end multi-line values</span>
-<a name="l00180"></a>00180                 <span class="keywordflow">if</span> (line.empty())
-<a name="l00181"></a>00181                     <span class="keywordflow">break</span>;
+<a name="l00151"></a>00151     std::ifstream in(filename.c_str());
+<a name="l00152"></a>00152     <span class="keywordflow">if</span> (!in)
+<a name="l00153"></a>00153         <span class="keywordflow">throw</span> <a class="code" href="structLogCabin_1_1Core_1_1Config_1_1FileNotFound.html">FileNotFound</a>(filename);
+<a name="l00154"></a>00154     in &gt;&gt; (*this);
+<a name="l00155"></a>00155 }
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157 std::istream&amp;
+<a name="l00158"></a><a class="code" href="namespaceLogCabin_1_1Core.html#a264c66ab3fb5085752e9d781f2cfbbae">00158</a> <a class="code" href="namespaceLogCabin_1_1Core.html#a264c66ab3fb5085752e9d781f2cfbbae">operator&gt;&gt;</a>(std::istream&amp; is, <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Config</a>&amp; cf)
+<a name="l00159"></a>00159 {
+<a name="l00160"></a>00160     <span class="comment">// might need to read ahead to see where value ends</span>
+<a name="l00161"></a>00161     <span class="keywordtype">string</span> nextLine;
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163     <span class="keywordflow">while</span> (is || !nextLine.empty()) {
+<a name="l00164"></a>00164         <span class="comment">// Read an entire line at a time</span>
+<a name="l00165"></a>00165         <span class="keywordtype">string</span> line;
+<a name="l00166"></a>00166         <span class="keywordflow">if</span> (nextLine.empty())
+<a name="l00167"></a>00167             line = cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a54fafd9bea6d3e7141d18adc3ea6f83d" title="Read a line, strip comments, and trim it.">readLine</a>(is);
+<a name="l00168"></a>00168         <span class="keywordflow">else</span>
+<a name="l00169"></a>00169             line.swap(nextLine); <span class="comment">// we read ahead; use it now</span>
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171         <span class="keywordtype">size_t</span> delimPos = line.find(cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a6a68eb2bc7cc74d868a5b8d501172377" title="Separator between key and value, usually &quot;=&quot;.">delimiter</a>);
+<a name="l00172"></a>00172         <span class="keywordflow">if</span> (delimPos != string::npos) {
+<a name="l00173"></a>00173             <span class="comment">// Extract the key from line</span>
+<a name="l00174"></a>00174             <span class="keywordtype">string</span> key = line.substr(0, delimPos);
+<a name="l00175"></a>00175             <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a2389e943ca00d0e4d022f160acbeceba" title="Remove trailing whitespace.">rtrim</a>(key);
+<a name="l00176"></a>00176 
+<a name="l00177"></a>00177             <span class="comment">// Extract the value from line</span>
+<a name="l00178"></a>00178             <span class="keywordtype">string</span> value;
+<a name="l00179"></a>00179             line.swap(value);
+<a name="l00180"></a>00180             value.erase(0, delimPos + cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a6a68eb2bc7cc74d868a5b8d501172377" title="Separator between key and value, usually &quot;=&quot;.">delimiter</a>.length());
+<a name="l00181"></a>00181             <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#adc829e5a3c42e01de0e7ed01e892ce81" title="Remove leading whitespace.">ltrim</a>(value);
 <a name="l00182"></a>00182 
-<a name="l00183"></a>00183                 <span class="comment">// Lines with delimiters end multi-line values</span>
-<a name="l00184"></a>00184                 delimPos = line.find(cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a6a68eb2bc7cc74d868a5b8d501172377" title="Separator between key and value, usually &quot;=&quot;.">delimiter</a>);
-<a name="l00185"></a>00185                 <span class="keywordflow">if</span> (delimPos != string::npos) {
-<a name="l00186"></a>00186                     nextLine.swap(line);
-<a name="l00187"></a>00187                     <span class="keywordflow">break</span>;
-<a name="l00188"></a>00188                 }
-<a name="l00189"></a>00189 
-<a name="l00190"></a>00190                 <span class="comment">// Append this line to the multi-line value.</span>
-<a name="l00191"></a>00191                 value += <span class="stringliteral">&quot;\n&quot;</span>;
-<a name="l00192"></a>00192                 value += line;
-<a name="l00193"></a>00193             }
-<a name="l00194"></a>00194 
-<a name="l00195"></a>00195             <span class="comment">// Store key and value</span>
-<a name="l00196"></a>00196             cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>[key] = value;  <span class="comment">// overwrites if key is repeated</span>
-<a name="l00197"></a>00197         }
-<a name="l00198"></a>00198     }
-<a name="l00199"></a>00199 
-<a name="l00200"></a>00200     <span class="keywordflow">return</span> is;
-<a name="l00201"></a>00201 }
-<a name="l00202"></a>00202 
-<a name="l00203"></a>00203 std::ostream&amp;
-<a name="l00204"></a><a class="code" href="namespaceLogCabin_1_1Core.html#a2d238b270736707dd76f5161b3247fcc">00204</a> <a class="code" href="namespaceLogCabin_1_1Core.html#a2d238b270736707dd76f5161b3247fcc">operator&lt;&lt;</a>(std::ostream&amp; os, <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Config</a>&amp; cf)
-<a name="l00205"></a>00205 {
-<a name="l00206"></a>00206     <span class="keywordflow">for</span> (<span class="keyword">auto</span> p = cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.begin(); p != cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.end(); ++p) {
-<a name="l00207"></a>00207         os &lt;&lt; p-&gt;first &lt;&lt; <span class="stringliteral">&quot; &quot;</span>
-<a name="l00208"></a>00208            &lt;&lt; cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a6a68eb2bc7cc74d868a5b8d501172377" title="Separator between key and value, usually &quot;=&quot;.">delimiter</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span>
-<a name="l00209"></a>00209            &lt;&lt; p-&gt;second &lt;&lt; std::endl;
-<a name="l00210"></a>00210     }
-<a name="l00211"></a>00211     <span class="keywordflow">return</span> os;
-<a name="l00212"></a>00212 }
-<a name="l00213"></a>00213 
-<a name="l00214"></a>00214 <span class="keywordtype">bool</span>
-<a name="l00215"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#a644b1f65b2aee3dc8e04439be46f30a7">00215</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a644b1f65b2aee3dc8e04439be46f30a7" title="Check whether key exists in configuration.">Config::keyExists</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key)<span class="keyword"> const</span>
-<a name="l00216"></a>00216 <span class="keyword"></span>{
-<a name="l00217"></a>00217     <span class="keywordflow">return</span> (<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.find(key) != <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.end());
-<a name="l00218"></a>00218 }
-<a name="l00219"></a>00219 
-<a name="l00220"></a>00220 <span class="keywordtype">void</span>
-<a name="l00221"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#ac48c55b59eba6e52dfd1fc56aa525529">00221</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a6cc0f2bb8708735b21c078b8b5e25294" title="Set a key to the given value.">Config::set</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; value)
-<a name="l00222"></a>00222 {
-<a name="l00223"></a>00223     <span class="keywordtype">string</span> k = key;
-<a name="l00224"></a>00224     <span class="keywordtype">string</span> v = value;
-<a name="l00225"></a>00225     <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a412f2ee8d41c1b8c68f2137dc26b55f3" title="Remove leading and trailing whitespace.">trim</a>(k);
-<a name="l00226"></a>00226     <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a412f2ee8d41c1b8c68f2137dc26b55f3" title="Remove leading and trailing whitespace.">trim</a>(v);
-<a name="l00227"></a>00227     <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>[k] = v;
-<a name="l00228"></a>00228 }
-<a name="l00229"></a>00229 
-<a name="l00230"></a>00230 <span class="keywordtype">void</span>
-<a name="l00231"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#aa55080921ff76e4a1622b287b226389b">00231</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#aa55080921ff76e4a1622b287b226389b" title="Remove a key and its value.">Config::remove</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key)
-<a name="l00232"></a>00232 {
-<a name="l00233"></a>00233     <span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.find(key);
-<a name="l00234"></a>00234     <span class="keywordflow">if</span> (it != <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.end())
-<a name="l00235"></a>00235         <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.erase(it);
-<a name="l00236"></a>00236 }
-<a name="l00237"></a>00237 
-<a name="l00238"></a>00238 <span class="comment">// private methods</span>
-<a name="l00239"></a>00239 
-<a name="l00240"></a>00240 <span class="keyword">template</span>&lt;&gt;
-<a name="l00241"></a>00241 std::string
-<a name="l00242"></a><a class="code" href="namespaceLogCabin_1_1Core.html#aafa9cb72bb44de25631df58c58de61a3">00242</a> Config::fromString&lt;std::string&gt;(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; s)
-<a name="l00243"></a>00243 {
-<a name="l00244"></a>00244     <span class="keywordflow">return</span> s;
+<a name="l00183"></a>00183             <span class="comment">// See if value continues on the next line</span>
+<a name="l00184"></a>00184             <span class="comment">// Stop at empty line, next line with a key, or end of stream</span>
+<a name="l00185"></a>00185             <span class="keywordflow">while</span> (is) {
+<a name="l00186"></a>00186                 line = cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a54fafd9bea6d3e7141d18adc3ea6f83d" title="Read a line, strip comments, and trim it.">readLine</a>(is);
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188                 <span class="comment">// Empty lines end multi-line values</span>
+<a name="l00189"></a>00189                 <span class="keywordflow">if</span> (line.empty())
+<a name="l00190"></a>00190                     <span class="keywordflow">break</span>;
+<a name="l00191"></a>00191 
+<a name="l00192"></a>00192                 <span class="comment">// Lines with delimiters end multi-line values</span>
+<a name="l00193"></a>00193                 delimPos = line.find(cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a6a68eb2bc7cc74d868a5b8d501172377" title="Separator between key and value, usually &quot;=&quot;.">delimiter</a>);
+<a name="l00194"></a>00194                 <span class="keywordflow">if</span> (delimPos != string::npos) {
+<a name="l00195"></a>00195                     nextLine.swap(line);
+<a name="l00196"></a>00196                     <span class="keywordflow">break</span>;
+<a name="l00197"></a>00197                 }
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199                 <span class="comment">// Append this line to the multi-line value.</span>
+<a name="l00200"></a>00200                 value += <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00201"></a>00201                 value += line;
+<a name="l00202"></a>00202             }
+<a name="l00203"></a>00203 
+<a name="l00204"></a>00204             <span class="comment">// Store key and value</span>
+<a name="l00205"></a>00205             cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>[key] = value;  <span class="comment">// overwrites if key is repeated</span>
+<a name="l00206"></a>00206         }
+<a name="l00207"></a>00207     }
+<a name="l00208"></a>00208 
+<a name="l00209"></a>00209     <span class="keywordflow">return</span> is;
+<a name="l00210"></a>00210 }
+<a name="l00211"></a>00211 
+<a name="l00212"></a>00212 std::ostream&amp;
+<a name="l00213"></a><a class="code" href="namespaceLogCabin_1_1Core.html#a2d238b270736707dd76f5161b3247fcc">00213</a> <a class="code" href="namespaceLogCabin_1_1Core.html#a2d238b270736707dd76f5161b3247fcc">operator&lt;&lt;</a>(std::ostream&amp; os, <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Config</a>&amp; cf)
+<a name="l00214"></a>00214 {
+<a name="l00215"></a>00215     <span class="keywordflow">for</span> (<span class="keyword">auto</span> p = cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.begin(); p != cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.end(); ++p) {
+<a name="l00216"></a>00216         os &lt;&lt; p-&gt;first &lt;&lt; <span class="stringliteral">&quot; &quot;</span>
+<a name="l00217"></a>00217            &lt;&lt; cf.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a6a68eb2bc7cc74d868a5b8d501172377" title="Separator between key and value, usually &quot;=&quot;.">delimiter</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span>
+<a name="l00218"></a>00218            &lt;&lt; p-&gt;second &lt;&lt; std::endl;
+<a name="l00219"></a>00219     }
+<a name="l00220"></a>00220     <span class="keywordflow">return</span> os;
+<a name="l00221"></a>00221 }
+<a name="l00222"></a>00222 
+<a name="l00223"></a>00223 <span class="keywordtype">bool</span>
+<a name="l00224"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#a644b1f65b2aee3dc8e04439be46f30a7">00224</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a644b1f65b2aee3dc8e04439be46f30a7" title="Check whether key exists in configuration.">Config::keyExists</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key)<span class="keyword"> const</span>
+<a name="l00225"></a>00225 <span class="keyword"></span>{
+<a name="l00226"></a>00226     <span class="keywordflow">return</span> (<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.find(key) != <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.end());
+<a name="l00227"></a>00227 }
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229 <span class="keywordtype">void</span>
+<a name="l00230"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#ac48c55b59eba6e52dfd1fc56aa525529">00230</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a6cc0f2bb8708735b21c078b8b5e25294" title="Set a key to the given value.">Config::set</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; value)
+<a name="l00231"></a>00231 {
+<a name="l00232"></a>00232     <span class="keywordtype">string</span> k = key;
+<a name="l00233"></a>00233     <span class="keywordtype">string</span> v = value;
+<a name="l00234"></a>00234     <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a412f2ee8d41c1b8c68f2137dc26b55f3" title="Remove leading and trailing whitespace.">trim</a>(k);
+<a name="l00235"></a>00235     <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a412f2ee8d41c1b8c68f2137dc26b55f3" title="Remove leading and trailing whitespace.">trim</a>(v);
+<a name="l00236"></a>00236     <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>[k] = v;
+<a name="l00237"></a>00237 }
+<a name="l00238"></a>00238 
+<a name="l00239"></a>00239 <span class="keywordtype">void</span>
+<a name="l00240"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#aa55080921ff76e4a1622b287b226389b">00240</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#aa55080921ff76e4a1622b287b226389b" title="Remove a key and its value.">Config::remove</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key)
+<a name="l00241"></a>00241 {
+<a name="l00242"></a>00242     <span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.find(key);
+<a name="l00243"></a>00243     <span class="keywordflow">if</span> (it != <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.end())
+<a name="l00244"></a>00244         <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a7171b7b0ea9ccb314a6ef7fcf51b53ef" title="Extracted keys and values.">contents</a>.erase(it);
 <a name="l00245"></a>00245 }
 <a name="l00246"></a>00246 
-<a name="l00247"></a>00247 <span class="keyword">template</span>&lt;&gt;
-<a name="l00248"></a>00248 <span class="keywordtype">bool</span>
-<a name="l00249"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#a902a3d60cc4fdac1cf6526253299f41c">00249</a> Config::fromString&lt;bool&gt;(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; s)
-<a name="l00250"></a>00250 {
-<a name="l00251"></a>00251     <span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;string, bool&gt; values {
-<a name="l00252"></a>00252         <span class="comment">// These must be in sorted ASCII order for binary search to work. All</span>
-<a name="l00253"></a>00253         <span class="comment">// alpha entries should appear once in lowercase and once in uppercase.</span>
-<a name="l00254"></a>00254         { <span class="stringliteral">&quot;0&quot;</span>,     <span class="keyword">false</span> },
-<a name="l00255"></a>00255         { <span class="stringliteral">&quot;1&quot;</span>,     <span class="keyword">true</span>  },
-<a name="l00256"></a>00256         { <span class="stringliteral">&quot;F&quot;</span>,     <span class="keyword">false</span> },
-<a name="l00257"></a>00257         { <span class="stringliteral">&quot;FALSE&quot;</span>, <span class="keyword">false</span> },
-<a name="l00258"></a>00258         { <span class="stringliteral">&quot;N&quot;</span>,     <span class="keyword">false</span> },
-<a name="l00259"></a>00259         { <span class="stringliteral">&quot;NO&quot;</span>,    <span class="keyword">false</span> },
-<a name="l00260"></a>00260         { <span class="stringliteral">&quot;T&quot;</span>,     <span class="keyword">true</span>  },
-<a name="l00261"></a>00261         { <span class="stringliteral">&quot;TRUE&quot;</span>,  <span class="keyword">true</span>  },
-<a name="l00262"></a>00262         { <span class="stringliteral">&quot;Y&quot;</span>,     <span class="keyword">true</span>  },
-<a name="l00263"></a>00263         { <span class="stringliteral">&quot;YES&quot;</span>,   <span class="keyword">true</span>  },
-<a name="l00264"></a>00264         { <span class="stringliteral">&quot;f&quot;</span>,     <span class="keyword">false</span> },
-<a name="l00265"></a>00265         { <span class="stringliteral">&quot;false&quot;</span>, <span class="keyword">false</span> },
-<a name="l00266"></a>00266         { <span class="stringliteral">&quot;n&quot;</span>,     <span class="keyword">false</span> },
-<a name="l00267"></a>00267         { <span class="stringliteral">&quot;no&quot;</span>,    <span class="keyword">false</span> },
-<a name="l00268"></a>00268         { <span class="stringliteral">&quot;t&quot;</span>,     <span class="keyword">true</span>  },
-<a name="l00269"></a>00269         { <span class="stringliteral">&quot;true&quot;</span>,  <span class="keyword">true</span>  },
-<a name="l00270"></a>00270         { <span class="stringliteral">&quot;y&quot;</span>,     <span class="keyword">true</span>  },
-<a name="l00271"></a>00271         { <span class="stringliteral">&quot;yes&quot;</span>,   <span class="keyword">true</span>  },
-<a name="l00272"></a>00272     };
-<a name="l00273"></a>00273     <span class="keyword">auto</span> it = values.find(s);
-<a name="l00274"></a>00274     <span class="keywordflow">if</span> (it != values.end())
-<a name="l00275"></a>00275         <span class="keywordflow">return</span> it-&gt;second;
-<a name="l00276"></a>00276     <span class="keywordflow">throw</span> <a class="code" href="structLogCabin_1_1Core_1_1Config_1_1ConversionError.html">ConversionError</a>(key, s, <span class="stringliteral">&quot;bool&quot;</span>);
-<a name="l00277"></a>00277 }
-<a name="l00278"></a>00278 
-<a name="l00279"></a>00279 
-<a name="l00280"></a>00280 std::string
-<a name="l00281"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#a54fafd9bea6d3e7141d18adc3ea6f83d">00281</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a54fafd9bea6d3e7141d18adc3ea6f83d" title="Read a line, strip comments, and trim it.">Config::readLine</a>(std::istream&amp; is)<span class="keyword"> const</span>
-<a name="l00282"></a>00282 <span class="keyword"></span>{
-<a name="l00283"></a>00283     <span class="keywordtype">string</span> line;
-<a name="l00284"></a>00284     std::getline(is, line);
-<a name="l00285"></a>00285     <span class="keywordtype">size_t</span> commentPos = line.find(<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a0999d64055c63a5ad812b9d85dea4b96" title="Starts a comment, usually &quot;#&quot;.">comment</a>);
-<a name="l00286"></a>00286     <span class="keywordflow">if</span> (commentPos != string::npos)
-<a name="l00287"></a>00287         line.erase(commentPos);
-<a name="l00288"></a>00288     <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a412f2ee8d41c1b8c68f2137dc26b55f3" title="Remove leading and trailing whitespace.">trim</a>(line);
-<a name="l00289"></a>00289     <span class="keywordflow">return</span> line;
-<a name="l00290"></a>00290 }
-<a name="l00291"></a>00291 
-<a name="l00292"></a>00292 } <span class="comment">// namespace LogCabin::Core</span>
-<a name="l00293"></a>00293 } <span class="comment">// namespace LogCabin</span>
+<a name="l00247"></a>00247 <span class="comment">// private methods</span>
+<a name="l00248"></a>00248 
+<a name="l00249"></a>00249 <span class="keyword">template</span>&lt;&gt;
+<a name="l00250"></a>00250 std::string
+<a name="l00251"></a><a class="code" href="namespaceLogCabin_1_1Core.html#aafa9cb72bb44de25631df58c58de61a3">00251</a> Config::fromString&lt;std::string&gt;(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; s)
+<a name="l00252"></a>00252 {
+<a name="l00253"></a>00253     <span class="keywordflow">return</span> s;
+<a name="l00254"></a>00254 }
+<a name="l00255"></a>00255 
+<a name="l00256"></a>00256 <span class="keyword">template</span>&lt;&gt;
+<a name="l00257"></a>00257 <span class="keywordtype">bool</span>
+<a name="l00258"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#a902a3d60cc4fdac1cf6526253299f41c">00258</a> Config::fromString&lt;bool&gt;(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; key, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; s)
+<a name="l00259"></a>00259 {
+<a name="l00260"></a>00260     <span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;string, bool&gt; values {
+<a name="l00261"></a>00261         <span class="comment">// These must be in sorted ASCII order for binary search to work. All</span>
+<a name="l00262"></a>00262         <span class="comment">// alpha entries should appear once in lowercase and once in uppercase.</span>
+<a name="l00263"></a>00263         { <span class="stringliteral">&quot;0&quot;</span>,     <span class="keyword">false</span> },
+<a name="l00264"></a>00264         { <span class="stringliteral">&quot;1&quot;</span>,     <span class="keyword">true</span>  },
+<a name="l00265"></a>00265         { <span class="stringliteral">&quot;F&quot;</span>,     <span class="keyword">false</span> },
+<a name="l00266"></a>00266         { <span class="stringliteral">&quot;FALSE&quot;</span>, <span class="keyword">false</span> },
+<a name="l00267"></a>00267         { <span class="stringliteral">&quot;N&quot;</span>,     <span class="keyword">false</span> },
+<a name="l00268"></a>00268         { <span class="stringliteral">&quot;NO&quot;</span>,    <span class="keyword">false</span> },
+<a name="l00269"></a>00269         { <span class="stringliteral">&quot;T&quot;</span>,     <span class="keyword">true</span>  },
+<a name="l00270"></a>00270         { <span class="stringliteral">&quot;TRUE&quot;</span>,  <span class="keyword">true</span>  },
+<a name="l00271"></a>00271         { <span class="stringliteral">&quot;Y&quot;</span>,     <span class="keyword">true</span>  },
+<a name="l00272"></a>00272         { <span class="stringliteral">&quot;YES&quot;</span>,   <span class="keyword">true</span>  },
+<a name="l00273"></a>00273         { <span class="stringliteral">&quot;f&quot;</span>,     <span class="keyword">false</span> },
+<a name="l00274"></a>00274         { <span class="stringliteral">&quot;false&quot;</span>, <span class="keyword">false</span> },
+<a name="l00275"></a>00275         { <span class="stringliteral">&quot;n&quot;</span>,     <span class="keyword">false</span> },
+<a name="l00276"></a>00276         { <span class="stringliteral">&quot;no&quot;</span>,    <span class="keyword">false</span> },
+<a name="l00277"></a>00277         { <span class="stringliteral">&quot;t&quot;</span>,     <span class="keyword">true</span>  },
+<a name="l00278"></a>00278         { <span class="stringliteral">&quot;true&quot;</span>,  <span class="keyword">true</span>  },
+<a name="l00279"></a>00279         { <span class="stringliteral">&quot;y&quot;</span>,     <span class="keyword">true</span>  },
+<a name="l00280"></a>00280         { <span class="stringliteral">&quot;yes&quot;</span>,   <span class="keyword">true</span>  },
+<a name="l00281"></a>00281     };
+<a name="l00282"></a>00282     <span class="keyword">auto</span> it = values.find(s);
+<a name="l00283"></a>00283     <span class="keywordflow">if</span> (it != values.end())
+<a name="l00284"></a>00284         <span class="keywordflow">return</span> it-&gt;second;
+<a name="l00285"></a>00285     <span class="keywordflow">throw</span> <a class="code" href="structLogCabin_1_1Core_1_1Config_1_1ConversionError.html">ConversionError</a>(key, s, <span class="stringliteral">&quot;bool&quot;</span>);
+<a name="l00286"></a>00286 }
+<a name="l00287"></a>00287 
+<a name="l00288"></a>00288 
+<a name="l00289"></a>00289 std::string
+<a name="l00290"></a><a class="code" href="classLogCabin_1_1Core_1_1Config.html#a54fafd9bea6d3e7141d18adc3ea6f83d">00290</a> <a class="code" href="classLogCabin_1_1Core_1_1Config.html#a54fafd9bea6d3e7141d18adc3ea6f83d" title="Read a line, strip comments, and trim it.">Config::readLine</a>(std::istream&amp; is)<span class="keyword"> const</span>
+<a name="l00291"></a>00291 <span class="keyword"></span>{
+<a name="l00292"></a>00292     <span class="keywordtype">string</span> line;
+<a name="l00293"></a>00293     std::getline(is, line);
+<a name="l00294"></a>00294     <span class="keywordtype">size_t</span> commentPos = line.find(<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a0999d64055c63a5ad812b9d85dea4b96" title="Starts a comment, usually &quot;#&quot;.">comment</a>);
+<a name="l00295"></a>00295     <span class="keywordflow">if</span> (commentPos != string::npos)
+<a name="l00296"></a>00296         line.erase(commentPos);
+<a name="l00297"></a>00297     <a class="code" href="namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a412f2ee8d41c1b8c68f2137dc26b55f3" title="Remove leading and trailing whitespace.">trim</a>(line);
+<a name="l00298"></a>00298     <span class="keywordflow">return</span> line;
+<a name="l00299"></a>00299 }
+<a name="l00300"></a>00300 
+<a name="l00301"></a>00301 } <span class="comment">// namespace LogCabin::Core</span>
+<a name="l00302"></a>00302 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

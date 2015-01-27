@@ -131,8 +131,8 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html" title="An asynchronous version of call().">LeaderRPCBase::Call</a>.  <a href="classLogCabin_1_1Client_1_1LeaderRPC_1_1Call.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a2ec14471616ca2f93d379217714c6f25">LeaderRPC</a> (const <a class="el" href="classLogCabin_1_1RPC_1_1Address.html">RPC::Address</a> &amp;<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#acd9136a4af974de121641e6d3ee8938f">hosts</a>, <a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aad92a08ee187acf53aa0c582e3bb6954">eventLoop</a>, <a class="el" href="classLogCabin_1_1Client_1_1Backoff.html">Backoff</a> &amp;<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a68a04d56f2aff9ba37e4ca271ca9cd27">sessionCreationBackoff</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a2ec14471616ca2f93d379217714c6f25"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a722854832389775842a22fb6191bbe22">LeaderRPC</a> (const <a class="el" href="classLogCabin_1_1RPC_1_1Address.html">RPC::Address</a> &amp;<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#acd9136a4af974de121641e6d3ee8938f">hosts</a>, <a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aad92a08ee187acf53aa0c582e3bb6954">eventLoop</a>, <a class="el" href="classLogCabin_1_1Client_1_1Backoff.html">Backoff</a> &amp;<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a68a04d56f2aff9ba37e4ca271ca9cd27">sessionCreationBackoff</a>, const <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Core::Config</a> &amp;<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#acd18a12e9e9138220a96cbf111bb0b8b">config</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a722854832389775842a22fb6191bbe22"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a4e43fcbc01c0f4d32884c4e092a4569e">~LeaderRPC</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a4e43fcbc01c0f4d32884c4e092a4569e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aebd65669e90cd4b1d9011a052633a8dc">call</a> (<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7">OpCode</a> opCode, const google::protobuf::Message &amp;request, google::protobuf::Message &amp;response, <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ab8c09d1a16236b8b75f575c9d2681c78">TimePoint</a> timeout)</td></tr>
@@ -155,6 +155,8 @@ Private Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to drive the underlying <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> mechanism.  <a href="#aad92a08ee187acf53aa0c582e3bb6954"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Client_1_1Backoff.html">Backoff</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a68a04d56f2aff9ba37e4ca271ca9cd27">sessionCreationBackoff</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to rate-limit the creation of ClientSession objects (TCP connections).  <a href="#a68a04d56f2aff9ba37e4ca271ca9cd27"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Core::Config</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#acd18a12e9e9138220a96cbf111bb0b8b">config</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Settings for client library.  <a href="#acd18a12e9e9138220a96cbf111bb0b8b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a7138a39c8bce5a72e4a1a10cc1cff827">mutex</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects all of the following member variables in this class.  <a href="#a7138a39c8bce5a72e4a1a10cc1cff827"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1Address.html">RPC::Address</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#acd9136a4af974de121641e6d3ee8938f">hosts</a></td></tr>
@@ -169,14 +171,14 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>This is the implementation of <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html" title="This class is used to send RPCs from clients to the leader of the LogCabin cluster.">LeaderRPCBase</a> that uses the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> system. </p>
 <p>(The other implementation, <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCMock.html" title="This class is used in unit testing to interpose when clients send RPCs to the leader of the LogCabin ...">LeaderRPCMock</a>, is only used for testing.) </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00207">207</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00212">212</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a2ec14471616ca2f93d379217714c6f25"></a><!-- doxytag: member="LogCabin::Client::LeaderRPC::LeaderRPC" ref="a2ec14471616ca2f93d379217714c6f25" args="(const RPC::Address &amp;hosts, Event::Loop &amp;eventLoop, Backoff &amp;sessionCreationBackoff)" -->
+<a class="anchor" id="a722854832389775842a22fb6191bbe22"></a><!-- doxytag: member="LogCabin::Client::LeaderRPC::LeaderRPC" ref="a722854832389775842a22fb6191bbe22" args="(const RPC::Address &amp;hosts, Event::Loop &amp;eventLoop, Backoff &amp;sessionCreationBackoff, const Core::Config &amp;config)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a2ec14471616ca2f93d379217714c6f25">LogCabin::Client::LeaderRPC::LeaderRPC</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a722854832389775842a22fb6191bbe22">LogCabin::Client::LeaderRPC::LeaderRPC</a> </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classLogCabin_1_1RPC_1_1Address.html">RPC::Address</a> &amp;&#160;</td>
           <td class="paramname"><em>hosts</em>, </td>
@@ -191,7 +193,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1Backoff.html">Backoff</a> &amp;&#160;</td>
-          <td class="paramname"><em>sessionCreationBackoff</em>&#160;</td>
+          <td class="paramname"><em>sessionCreationBackoff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Core::Config</a> &amp;&#160;</td>
+          <td class="paramname"><em>config</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -208,6 +216,7 @@ Private Attributes</h2></td></tr>
     <tr><td class="paramname">hosts</td><td>Describe the servers to connect to. This class assumes that refreshing 'hosts' will result in a random host that might be the current cluster leader. </td></tr>
     <tr><td class="paramname">eventLoop</td><td>Used to invoke RPCs. </td></tr>
     <tr><td class="paramname">sessionCreationBackoff</td><td>Used to rate-limit new TCP connections. </td></tr>
+    <tr><td class="paramname">config</td><td>Settings for the client library. This object keeps a reference. </td></tr>
   </table>
   </dd>
 </dl>
@@ -232,7 +241,7 @@ Private Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00168">168</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00170">170</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -278,7 +287,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#affe219f260f2dba9f73f2db4fa16d0c4">LogCabin::Client::LeaderRPCBase</a>.</p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00174">174</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00176">176</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -300,7 +309,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ac8317451a34eefd8e2938586dc57e5a7">LogCabin::Client::LeaderRPCBase</a>.</p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00195">195</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00197">197</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -328,7 +337,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Session on which to execute RPCs. </dd></dl>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00201">201</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00203">203</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -356,7 +365,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00231">231</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00234">234</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -395,7 +404,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00239">239</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00242">242</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -413,7 +422,7 @@ Private Attributes</h2></td></tr>
 
 <p>Used to drive the underlying <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> mechanism. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00301">301</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00309">309</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>
@@ -430,7 +439,24 @@ Private Attributes</h2></td></tr>
 
 <p>Used to rate-limit the creation of ClientSession objects (TCP connections). </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00307">307</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00315">315</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acd18a12e9e9138220a96cbf111bb0b8b"></a><!-- doxytag: member="LogCabin::Client::LeaderRPC::config" ref="acd18a12e9e9138220a96cbf111bb0b8b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Core::Config</a>&amp; <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#acd18a12e9e9138220a96cbf111bb0b8b">LogCabin::Client::LeaderRPC::config</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Settings for client library. </p>
+
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00320">320</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>
@@ -448,7 +474,7 @@ Private Attributes</h2></td></tr>
 <p>Protects all of the following member variables in this class. </p>
 <p>Threads hang on to this mutex while initiating new sessions to possible cluster leaders, in case other threads are already handling the problem. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00314">314</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00327">327</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>
@@ -466,7 +492,7 @@ Private Attributes</h2></td></tr>
 <p>An address referring to the hosts in the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster. </p>
 <p>A random host is selected from here when this class doesn't know who the cluster leader is. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00321">321</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00334">334</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>
@@ -483,7 +509,7 @@ Private Attributes</h2></td></tr>
 
 <p>If nonempty, the address of the server that is likely to be the current leader. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00327">327</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00340">340</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>
@@ -501,7 +527,7 @@ Private Attributes</h2></td></tr>
 <p>The goal is to get this session connected to the cluster leader. </p>
 <p>This is never null, but it might sometimes point to the wrong host. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00333">333</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00346">346</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>

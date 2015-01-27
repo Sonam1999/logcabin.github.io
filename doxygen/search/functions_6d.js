@@ -7,7 +7,7 @@ var searchData=
   ['makedirectoryex',['makeDirectoryEx',['../classLogCabin_1_1Client_1_1Tree.html#aa5a402128a5beb6cb29206cea7e747a1',1,'LogCabin::Client::Tree']]],
   ['makefile',['makeFile',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a5c4e729b2d218b465c5dfed34890793c',1,'LogCabin::Tree::Internal::Directory']]],
   ['makelog',['makeLog',['../namespaceLogCabin_1_1Storage_1_1LogFactory.html#a0c0b522f7e4ae3f7a3ab20b0ed2727d8',1,'LogCabin::Storage::LogFactory']]],
-  ['makesession',['makeSession',['../classLogCabin_1_1RPC_1_1ClientSession.html#a43aad9871250e6efc1adef014a0012f2',1,'LogCabin::RPC::ClientSession']]],
+  ['makesession',['makeSession',['../classLogCabin_1_1RPC_1_1ClientSession.html#ae31d3bbbaabcebd4d74f98e9bec63d04',1,'LogCabin::RPC::ClientSession']]],
   ['maketimespec',['makeTimeSpec',['../namespaceLogCabin_1_1Core_1_1Time.html#ab1f0bfec14cc5ca8578cf2ce2f2092d6',1,'LogCabin::Core::Time']]],
   ['memorylog',['MemoryLog',['../classLogCabin_1_1Storage_1_1MemoryLog.html#ae844aa88d58adfb71662f2a2f67df647',1,'LogCabin::Storage::MemoryLog']]],
   ['messagesocket',['MessageSocket',['../classLogCabin_1_1RPC_1_1MessageSocket.html#a1d7d1fa949ec65503733f48a0b702e5f',1,'LogCabin::RPC::MessageSocket::MessageSocket(Handler &amp;handler, Event::Loop &amp;eventLoop, int fd, uint32_t maxMessageLength)'],['../classLogCabin_1_1RPC_1_1MessageSocket.html#a3d560eca1b7f14ce92e17afff9e298e8',1,'LogCabin::RPC::MessageSocket::MessageSocket(const MessageSocket &amp;)']]],

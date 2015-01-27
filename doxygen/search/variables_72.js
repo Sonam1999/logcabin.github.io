@@ -18,7 +18,7 @@ var searchData=
   ['responsetoken',['responseToken',['../classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#ab01913266583c9aced29e75609ec1064',1,'LogCabin::RPC::OpaqueClientRPC']]],
   ['result',['result',['../classLogCabin_1_1Tree_1_1Internal_1_1Path.html#a45b458a812263f7855a099f831693121',1,'LogCabin::Tree::Internal::Path']]],
   ['rpc',['rpc',['../classLogCabin_1_1Client_1_1LeaderRPC_1_1Call.html#a66147ac6fe5d6a1ed03ba0a33ff80dd8',1,'LogCabin::Client::LeaderRPC::Call::rpc()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a6152a1441ad8d36900beae23b8adb231',1,'LogCabin::Server::RaftConsensusInternal::Peer::rpc()']]],
-  ['rpc_5ffailure_5fbackoff_5fms',['RPC_FAILURE_BACKOFF_MS',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aebdeb95bd64ec627e7e6b6833f2bbe35',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
+  ['rpc_5ffailure_5fbackoff_5fms',['RPC_FAILURE_BACKOFF_MS',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a2f6b8c578a37bbf9ab24fa1bca6efdfd',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['rpcfailuressincelastwarning',['rpcFailuresSinceLastWarning',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#af384128771f7e60f485b837114f56788',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['rpchandler',['rpcHandler',['../classLogCabin_1_1RPC_1_1OpaqueServer.html#a43457466d16027aeb7bab822cc468107',1,'LogCabin::RPC::OpaqueServer::rpcHandler()'],['../classLogCabin_1_1RPC_1_1Server.html#ab14da95e44bc36465a4dcc2463162917',1,'LogCabin::RPC::Server::rpcHandler()']]],
   ['rpcprotocolversion',['rpcProtocolVersion',['../classLogCabin_1_1Client_1_1ClientImpl.html#adb4ad6145d875b81cd94cff9bb1d74dc',1,'LogCabin::Client::ClientImpl']]],

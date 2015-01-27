@@ -78,8 +78,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
 <div class="title">RPC/ClientSession.cc File Reference</div>  </div>
 </div><!--header-->
@@ -109,39 +108,7 @@ Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1RPC.html">LogCabin::RPC</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03.html">LogCabin::RPC::anonymous_namespace{ClientSession.cc}</a></td></tr>
-<tr><td colspan="2"><h2><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="ClientSession_8cc.html#a726ca809ffd3d67ab4b8476646f26635a8e68e1a9e04428fc07cbc4f6dc82ace3">TIMEOUT_MS</a>
- }</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of milliseconds to wait until the client gets suspicious about the server not responding.  <a href="ClientSession_8cc.html#a726ca809ffd3d67ab4b8476646f26635">More...</a><br/></td></tr>
 </table>
-<hr/><h2>Enumeration Type Documentation</h2>
-<a class="anchor" id="a726ca809ffd3d67ab4b8476646f26635"></a><!-- doxytag: member="ClientSession.cc::@6" ref="a726ca809ffd3d67ab4b8476646f26635" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">anonymous enum</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>The number of milliseconds to wait until the client gets suspicious about the server not responding. </p>
-<p>After this amount of time elapses, the client will send a ping to the server. If no response is received within another TIMEOUT_MS milliseconds, the session is closed.</p>
-<p>TODO(ongaro): How should this value be chosen? Ideally, you probably want this to be set to something like the 99-th percentile of your RPC latency.</p>
-<p>TODO(ongaro): How does this interact with TCP? </p>
-<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em><a class="anchor" id="a726ca809ffd3d67ab4b8476646f26635a8e68e1a9e04428fc07cbc4f6dc82ace3"></a><!-- doxytag: member="TIMEOUT_MS" ref="a726ca809ffd3d67ab4b8476646f26635a8e68e1a9e04428fc07cbc4f6dc82ace3" args="" -->TIMEOUT_MS</em>&nbsp;</td><td>
-</td></tr>
-</table>
-</dd>
-</dl>
-
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00042">42</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

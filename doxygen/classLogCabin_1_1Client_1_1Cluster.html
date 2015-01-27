@@ -120,13 +120,17 @@ Public Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a3e900cdfb7c8a230e5abab9be53231a5">ForTesting</a> { <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a3e900cdfb7c8a230e5abab9be53231a5a28b48e840b5ea727849b6042a563f84d">FOR_TESTING</a>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a special type to use as an argument to the constructor that is for testing purposes only.  <a href="classLogCabin_1_1Client_1_1Cluster.html#a3e900cdfb7c8a230e5abab9be53231a5">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; std::string, <br class="typebreak"/>
+std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb">Options</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Settings for the client library.  <a href="#a2b6a1f4ea0bcfc15f5425101c702b6fb"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a5c43410dc285162dd55f525f11bf06bf">Cluster</a> (<a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a3e900cdfb7c8a230e5abab9be53231a5">ForTesting</a> t)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html" title="A handle to the LogCabin cluster.">Cluster</a> object for testing purposes only.  <a href="#a5c43410dc285162dd55f525f11bf06bf"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a91e20e722e627d0d55cfcb752b4a48bc">Cluster</a> (const std::string &amp;hosts)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a91e20e722e627d0d55cfcb752b4a48bc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#ab3078e3d594753cc5d0fcd85b549bcaf">Cluster</a> (<a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a3e900cdfb7c8a230e5abab9be53231a5">ForTesting</a> t, const <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb">Options</a> &amp;options=<a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb">Options</a>())</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html" title="A handle to the LogCabin cluster.">Cluster</a> object for testing purposes only.  <a href="#ab3078e3d594753cc5d0fcd85b549bcaf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a070305a8253e278203f852f2cb229226">Cluster</a> (const std::string &amp;hosts, const <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb">Options</a> &amp;options=<a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb">Options</a>())</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a070305a8253e278203f852f2cb229226"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a1f69768e6df8502e765ada146e785bcf">~Cluster</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a1f69768e6df8502e765ada146e785bcf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::pair&lt; uint64_t, <br class="typebreak"/>
 <a class="el" href="namespaceLogCabin_1_1Client.html#a63581e43a22ec4472d57c7b920d1d520">Configuration</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a51ac6fd68d84f3659f6b975cfba69e23">getConfiguration</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current, stable cluster configuration.  <a href="#a51ac6fd68d84f3659f6b975cfba69e23"></a><br/></td></tr>
@@ -146,8 +150,30 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>A handle to the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster. </p>
 <p>If the client requests changes to the cluster's replicated state machine (for example, by writing a value), the client library will first open a session with the cluster. It will thereafter periodically send keep-alive requests to the cluster during periods of inactivity to maintain this session. If communication to the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster is lost for an extended period of time, the client's session will expire, and this library will force the client to crash. </p>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00472">472</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
-</div><hr/><h2>Member Enumeration Documentation</h2>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00473">473</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+</div><hr/><h2>Member Typedef Documentation</h2>
+<a class="anchor" id="a2b6a1f4ea0bcfc15f5425101c702b6fb"></a><!-- doxytag: member="LogCabin::Client::Cluster::Options" ref="a2b6a1f4ea0bcfc15f5425101c702b6fb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::map&lt;std::string, std::string&gt; <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb">LogCabin::Client::Cluster::Options</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Settings for the client library. </p>
+<p>These are all optional. Currently supported options:</p>
+<ul>
+<li>tcpHeartbeatTimeoutMilliseconds (see sample.conf) </li>
+</ul>
+
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00481">481</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Member Enumeration Documentation</h2>
 <a class="anchor" id="a3e900cdfb7c8a230e5abab9be53231a5"></a><!-- doxytag: member="LogCabin::Client::Cluster::ForTesting" ref="a3e900cdfb7c8a230e5abab9be53231a5" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -167,21 +193,31 @@ Private Attributes</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00479">479</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00487">487</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a5c43410dc285162dd55f525f11bf06bf"></a><!-- doxytag: member="LogCabin::Client::Cluster::Cluster" ref="a5c43410dc285162dd55f525f11bf06bf" args="(ForTesting t)" -->
+<a class="anchor" id="ab3078e3d594753cc5d0fcd85b549bcaf"></a><!-- doxytag: member="LogCabin::Client::Cluster::Cluster" ref="ab3078e3d594753cc5d0fcd85b549bcaf" args="(ForTesting t, const Options &amp;options=Options())" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a5c43410dc285162dd55f525f11bf06bf">LogCabin::Client::Cluster::Cluster</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#ab3078e3d594753cc5d0fcd85b549bcaf">LogCabin::Client::Cluster::Cluster</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a3e900cdfb7c8a230e5abab9be53231a5">ForTesting</a>&#160;</td>
-          <td class="paramname"><em>t</em></td><td>)</td>
-          <td><code> [explicit]</code></td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb">Options</a> &amp;&#160;</td>
+          <td class="paramname"><em>options</em> = <code><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb">Options</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [explicit]</code></td>
         </tr>
       </table>
 </div>
@@ -189,21 +225,38 @@ Private Attributes</h2></td></tr>
 
 <p>Construct a <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html" title="A handle to the LogCabin cluster.">Cluster</a> object for testing purposes only. </p>
 <p>Instead of connecting to a <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster, it will keep all state locally in memory. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>The only possible value is <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a3e900cdfb7c8a230e5abab9be53231a5a28b48e840b5ea727849b6042a563f84d">Cluster::FOR_TESTING</a>. </td></tr>
+    <tr><td class="paramname">options</td><td>Settings for the client library. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Definition at line <a class="el" href="Client_8cc_source.html#l00436">436</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a91e20e722e627d0d55cfcb752b4a48bc"></a><!-- doxytag: member="LogCabin::Client::Cluster::Cluster" ref="a91e20e722e627d0d55cfcb752b4a48bc" args="(const std::string &amp;hosts)" -->
+<a class="anchor" id="a070305a8253e278203f852f2cb229226"></a><!-- doxytag: member="LogCabin::Client::Cluster::Cluster" ref="a070305a8253e278203f852f2cb229226" args="(const std::string &amp;hosts, const Options &amp;options=Options())" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a5c43410dc285162dd55f525f11bf06bf">LogCabin::Client::Cluster::Cluster</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#ab3078e3d594753cc5d0fcd85b549bcaf">LogCabin::Client::Cluster::Cluster</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>hosts</em></td><td>)</td>
-          <td><code> [explicit]</code></td>
+          <td class="paramname"><em>hosts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb">Options</a> &amp;&#160;</td>
+          <td class="paramname"><em>options</em> = <code><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb">Options</a>()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [explicit]</code></td>
         </tr>
       </table>
 </div>
@@ -213,11 +266,12 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">hosts</td><td>A string describing the hosts in the cluster. This should be of the form host:port, where host is usually a DNS name that resolves to multiple IP addresses. Alternatively, you can pass a list of hosts as host1:port1;host2:port2;host3:port3. </td></tr>
+    <tr><td class="paramname">options</td><td>Settings for the client library. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00442">442</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00443">443</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -235,7 +289,9 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00452">452</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Destructor. </p>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00454">454</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -257,7 +313,7 @@ Private Attributes</h2></td></tr>
 <p>Get the current, stable cluster configuration. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>first: configurationId: Identifies the configuration. Pass this to setConfiguration later. second: The list of servers in the configuration. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00457">457</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00459">459</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -295,7 +351,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00463">463</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00465">465</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -347,7 +403,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Either OK or TIMEOUT. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00470">470</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00472">472</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -378,7 +434,7 @@ Private Attributes</h2></td></tr>
 
 <p>Like getServerStats but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00481">481</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00483">483</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -399,7 +455,7 @@ Private Attributes</h2></td></tr>
 <p>Return an object to access the hierarchical key-value store. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> object with the working directory of '/'. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00490">490</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00492">492</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -415,7 +471,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00557">557</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00577">577</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
