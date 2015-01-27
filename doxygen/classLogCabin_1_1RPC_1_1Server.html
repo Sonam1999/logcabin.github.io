@@ -100,6 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a>  </div>
@@ -107,50 +108,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">LogCabin::RPC::Server Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="LogCabin::RPC::Server" --><!-- doxytag: inherits="LogCabin::RPC::OpaqueServer" -->
+<!-- doxytag: class="LogCabin::RPC::Server" -->
 <p>A <a class="el" href="classLogCabin_1_1RPC_1_1Server.html" title="A Server listens for incoming RPCs over TCP connections and dispatches these to Services.">Server</a> listens for incoming RPCs over TCP connections and dispatches these to Services.  
  <a href="classLogCabin_1_1RPC_1_1Server.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Server_8h_source.html">Server.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for LogCabin::RPC::Server:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classLogCabin_1_1RPC_1_1Server.png" usemap="#LogCabin::RPC::Server_map" alt=""/>
-  <map id="LogCabin::RPC::Server_map" name="LogCabin::RPC::Server_map">
-<area href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections." alt="LogCabin::RPC::OpaqueServer" shape="rect" coords="0,0,186,24"/>
-</map>
- </div></div>
 
 <p><a href="classLogCabin_1_1RPC_1_1Server-members.html">List of all members.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html">RPCHandler</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Services RPCs.  <a href="classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a4efbf4a7c07d3ec0dd3b9ce6ee7984cd">Server</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ab2e0da8ed3e967fc08db7cd871fbc3f9">eventLoop</a>, uint32_t <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#acb2edeca2b4c9adaeb9c2d12f78e70d7">maxMessageLength</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a4efbf4a7c07d3ec0dd3b9ce6ee7984cd">Server</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;eventLoop, uint32_t maxMessageLength)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a4efbf4a7c07d3ec0dd3b9ce6ee7984cd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a73abc3bbeb93bfdfa820010b8deba75d">~Server</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a73abc3bbeb93bfdfa820010b8deba75d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html#ab2c01ae32904be28b82d263893c209b1">bind</a> (const <a class="el" href="classLogCabin_1_1RPC_1_1Address.html">Address</a> &amp;listenAddress)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ae8b06de44eef3df7e5f0091ebcc4984e" title="Listen on an address for new client connections.">OpaqueServer::bind()</a>.  <a href="#ab2c01ae32904be28b82d263893c209b1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a8ccc769575306c6efa6489326327179f">registerService</a> (uint16_t serviceId, std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1Service.html">Service</a> &gt; service, uint32_t maxThreads)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a <a class="el" href="classLogCabin_1_1RPC_1_1Service.html" title="Base class for RPC services.">Service</a> to receive RPCs from clients.  <a href="#a8ccc769575306c6efa6489326327179f"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html#aba4ad3f6448bda618a308d8e24eb0cf8">handleRPC</a> (<a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html">RPC::OpaqueServerRPC</a> opaqueRPC)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is called by the base class, <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a>, when an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> arrives.  <a href="#aba4ad3f6448bda618a308d8e24eb0cf8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html#aa5338139346f1c15e89db0953427f7b2">Server</a> (const <a class="el" href="classLogCabin_1_1RPC_1_1Server.html">Server</a> &amp;)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html">Server</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a74d6a0663c342f5478213a795458d508">operator=</a> (const <a class="el" href="classLogCabin_1_1RPC_1_1Server.html">Server</a> &amp;)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a19ad1da8f494720f563082bf6b26c6ed">mutex</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects services from concurrent modification.  <a href="#a19ad1da8f494720f563082bf6b26c6ed"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects <a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a070de7c01a743538a4327525a4273ccc" title="Maps from service IDs to ThreadDispatchService instances.">services</a> from concurrent modification.  <a href="#a19ad1da8f494720f563082bf6b26c6ed"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; uint16_t, <br class="typebreak"/>
 std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1Service.html">Service</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a070de7c01a743538a4327525a4273ccc">services</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps from service IDs to <a class="el" href="classLogCabin_1_1RPC_1_1ThreadDispatchService.html" title="This class is an adaptor to enable multi-threaded services.">ThreadDispatchService</a> instances.  <a href="#a070de7c01a743538a4327525a4273ccc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html">RPCHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html#ab14da95e44bc36465a4dcc2463162917">rpcHandler</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Deals with RPCs created by <a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a5495888ce730c6f455c3c5b79c6faabe" title="Listens for new RPCs on TCP connections and invokes rpcHandler with them.">opaqueServer</a>.  <a href="#ab14da95e44bc36465a4dcc2463162917"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html">OpaqueServer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a5495888ce730c6f455c3c5b79c6faabe">opaqueServer</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Listens for new RPCs on TCP connections and invokes <a class="el" href="classLogCabin_1_1RPC_1_1Server.html#ab14da95e44bc36465a4dcc2463162917" title="Deals with RPCs created by opaqueServer.">rpcHandler</a> with them.  <a href="#a5495888ce730c6f455c3c5b79c6faabe"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A <a class="el" href="classLogCabin_1_1RPC_1_1Server.html" title="A Server listens for incoming RPCs over TCP connections and dispatches these to Services.">Server</a> listens for incoming RPCs over TCP connections and dispatches these to Services. </p>
 <p>Servers can be created from any thread, but they will always run on the thread running the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>. Services will always run on a thread pool. </p>
 
-<p>Definition at line <a class="el" href="Server_8h_source.html#l00037">37</a> of file <a class="el" href="Server_8h_source.html">Server.h</a>.</p>
+<p>Definition at line <a class="el" href="Server_8h_source.html#l00038">38</a> of file <a class="el" href="Server_8h_source.html">Server.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a4efbf4a7c07d3ec0dd3b9ce6ee7984cd"></a><!-- doxytag: member="LogCabin::RPC::Server::Server" ref="a4efbf4a7c07d3ec0dd3b9ce6ee7984cd" args="(Event::Loop &amp;eventLoop, uint32_t maxMessageLength)" -->
 <div class="memitem">
@@ -178,7 +178,7 @@ std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1Service.html">Se
 <div class="memdoc">
 
 <p>Constructor. </p>
-<p>This object won't actually do anything until <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ae8b06de44eef3df7e5f0091ebcc4984e" title="Listen on an address for new client connections.">bind()</a> is called. </p>
+<p>This object won't actually do anything until <a class="el" href="classLogCabin_1_1RPC_1_1Server.html#ab2c01ae32904be28b82d263893c209b1" title="See OpaqueServer::bind().">bind()</a> is called. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">eventLoop</td><td><a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> that will be used to find out when the underlying socket may be read from or written to without blocking. </td></tr>
@@ -187,7 +187,7 @@ std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1Service.html">Se
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Server_8cc_source.html#l00024">24</a> of file <a class="el" href="Server_8cc_source.html">Server.cc</a>.</p>
+<p>Definition at line <a class="el" href="Server_8cc_source.html#l00060">60</a> of file <a class="el" href="Server_8cc_source.html">Server.cc</a>.</p>
 
 </div>
 </div>
@@ -208,7 +208,7 @@ std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1Service.html">Se
 <p>Destructor. </p>
 <p><a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">ServerRPC</a> objects originating from this <a class="el" href="classLogCabin_1_1RPC_1_1Server.html" title="A Server listens for incoming RPCs over TCP connections and dispatches these to Services.">Server</a> may be kept around after this destructor returns; however, they won't actually send replies anymore. </p>
 
-<p>Definition at line <a class="el" href="Server_8cc_source.html#l00031">31</a> of file <a class="el" href="Server_8cc_source.html">Server.cc</a>.</p>
+<p>Definition at line <a class="el" href="Server_8cc_source.html#l00068">68</a> of file <a class="el" href="Server_8cc_source.html">Server.cc</a>.</p>
 
 </div>
 </div>
@@ -230,6 +230,27 @@ std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1Service.html">Se
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ab2c01ae32904be28b82d263893c209b1"></a><!-- doxytag: member="LogCabin::RPC::Server::bind" ref="ab2c01ae32904be28b82d263893c209b1" args="(const Address &amp;listenAddress)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classLogCabin_1_1RPC_1_1Server.html#ab2c01ae32904be28b82d263893c209b1">LogCabin::RPC::Server::bind</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classLogCabin_1_1RPC_1_1Address.html">Address</a> &amp;&#160;</td>
+          <td class="paramname"><em>listenAddress</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>See <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ae8b06de44eef3df7e5f0091ebcc4984e" title="Listen on an address for new client connections.">OpaqueServer::bind()</a>. </p>
+
+<p>Definition at line <a class="el" href="Server_8cc_source.html#l00073">73</a> of file <a class="el" href="Server_8cc_source.html">Server.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a8ccc769575306c6efa6489326327179f"></a><!-- doxytag: member="LogCabin::RPC::Server::registerService" ref="a8ccc769575306c6efa6489326327179f" args="(uint16_t serviceId, std::shared_ptr&lt; Service &gt; service, uint32_t maxThreads)" -->
 <div class="memitem">
 <div class="memproto">
@@ -272,30 +293,7 @@ std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1Service.html">Se
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Server_8cc_source.html#l00036">36</a> of file <a class="el" href="Server_8cc_source.html">Server.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aba4ad3f6448bda618a308d8e24eb0cf8"></a><!-- doxytag: member="LogCabin::RPC::Server::handleRPC" ref="aba4ad3f6448bda618a308d8e24eb0cf8" args="(RPC::OpaqueServerRPC opaqueRPC)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1RPC_1_1Server.html#aba4ad3f6448bda618a308d8e24eb0cf8">LogCabin::RPC::Server::handleRPC</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html">RPC::OpaqueServerRPC</a>&#160;</td>
-          <td class="paramname"><em>opaqueRPC</em></td><td>)</td>
-          <td><code> [private, virtual]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>This is called by the base class, <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a>, when an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> arrives. </p>
-
-<p>Implements <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a4b02711a907427c9b50fe14bee8c33fa">LogCabin::RPC::OpaqueServer</a>.</p>
-
-<p>Definition at line <a class="el" href="Server_8cc_source.html#l00046">46</a> of file <a class="el" href="Server_8cc_source.html">Server.cc</a>.</p>
+<p>Definition at line <a class="el" href="Server_8cc_source.html#l00079">79</a> of file <a class="el" href="Server_8cc_source.html">Server.cc</a>.</p>
 
 </div>
 </div>
@@ -328,9 +326,9 @@ std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1Service.html">Se
 </div>
 <div class="memdoc">
 
-<p>Protects services from concurrent modification. </p>
+<p>Protects <a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a070de7c01a743538a4327525a4273ccc" title="Maps from service IDs to ThreadDispatchService instances.">services</a> from concurrent modification. </p>
 
-<p>Definition at line <a class="el" href="Server_8h_source.html#l00086">86</a> of file <a class="el" href="Server_8h_source.html">Server.h</a>.</p>
+<p>Definition at line <a class="el" href="Server_8h_source.html#l00102">102</a> of file <a class="el" href="Server_8h_source.html">Server.h</a>.</p>
 
 </div>
 </div>
@@ -348,7 +346,41 @@ std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1Service.html">Se
 <p>Maps from service IDs to <a class="el" href="classLogCabin_1_1RPC_1_1ThreadDispatchService.html" title="This class is an adaptor to enable multi-threaded services.">ThreadDispatchService</a> instances. </p>
 <p>Protected by <a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a19ad1da8f494720f563082bf6b26c6ed" title="Protects services from concurrent modification.">mutex</a>. </p>
 
-<p>Definition at line <a class="el" href="Server_8h_source.html#l00092">92</a> of file <a class="el" href="Server_8h_source.html">Server.h</a>.</p>
+<p>Definition at line <a class="el" href="Server_8h_source.html#l00108">108</a> of file <a class="el" href="Server_8h_source.html">Server.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab14da95e44bc36465a4dcc2463162917"></a><!-- doxytag: member="LogCabin::RPC::Server::rpcHandler" ref="ab14da95e44bc36465a4dcc2463162917" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html">RPCHandler</a> <a class="el" href="classLogCabin_1_1RPC_1_1Server.html#ab14da95e44bc36465a4dcc2463162917">LogCabin::RPC::Server::rpcHandler</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Deals with RPCs created by <a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a5495888ce730c6f455c3c5b79c6faabe" title="Listens for new RPCs on TCP connections and invokes rpcHandler with them.">opaqueServer</a>. </p>
+
+<p>Definition at line <a class="el" href="Server_8h_source.html#l00113">113</a> of file <a class="el" href="Server_8h_source.html">Server.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5495888ce730c6f455c3c5b79c6faabe"></a><!-- doxytag: member="LogCabin::RPC::Server::opaqueServer" ref="a5495888ce730c6f455c3c5b79c6faabe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html">OpaqueServer</a> <a class="el" href="classLogCabin_1_1RPC_1_1Server.html#a5495888ce730c6f455c3c5b79c6faabe">LogCabin::RPC::Server::opaqueServer</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Listens for new RPCs on TCP connections and invokes <a class="el" href="classLogCabin_1_1RPC_1_1Server.html#ab14da95e44bc36465a4dcc2463162917" title="Deals with RPCs created by opaqueServer.">rpcHandler</a> with them. </p>
+
+<p>Definition at line <a class="el" href="Server_8h_source.html#l00119">119</a> of file <a class="el" href="Server_8h_source.html">Server.h</a>.</p>
 
 </div>
 </div>

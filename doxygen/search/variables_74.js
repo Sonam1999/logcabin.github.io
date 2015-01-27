@@ -1,7 +1,6 @@
 var searchData=
 [
   ['target',['target',['../classLogCabin_1_1Tree_1_1Internal_1_1Path.html#af3588d81db28e5f4b78b47770dd3cb04',1,'LogCabin::Tree::Internal::Path']]],
-  ['tcplistener',['tcpListener',['../classLogCabin_1_1RPC_1_1TCPListener_1_1BoundListener.html#a44444b3b119875e82e09be24670acfc2',1,'LogCabin::RPC::TCPListener::BoundListener']]],
   ['thiscatchupiterationgoalid',['thisCatchUpIterationGoalId',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0b1063ab72094143e3e1acdfb531b355',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['thiscatchupiterationstart',['thisCatchUpIterationStart',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aee6a46284ffbb597bdaaf4171cca5b6a',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['thread',['thread',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a45d9389965055a93871c27c0fa00817f',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
@@ -17,6 +16,6 @@ var searchData=
   ['totalwrites',['totalWrites',['../classanonymous__namespace_02Benchmark_8cc_03_1_1OptionParser.html#a185c523a680d2ab4acaf952a57fe46e1',1,'anonymous_namespace{Benchmark.cc}::OptionParser']]],
   ['tree',['tree',['../classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a9979a17d7e4f5ca99d74eb7b733cf10e',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC::tree()'],['../classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981',1,'LogCabin::Server::StateMachine::tree()']]],
   ['treedetails',['treeDetails',['../classLogCabin_1_1Client_1_1Tree.html#aa226e2ed8ef8fd4ac53467fb88826646',1,'LogCabin::Client::Tree']]],
-  ['type',['type',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a3b2231a069f4de6b26e6e6e2d90f002a',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry']]],
+  ['type',['type',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#af515cdc8da09ccacdf4f9994a9522755',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry']]],
   ['typename',['typeName',['../structLogCabin_1_1Core_1_1Config_1_1ConversionError.html#a917b79ac35e42cea7db5eabce5f631a0',1,'LogCabin::Core::Config::ConversionError']]]
 ];

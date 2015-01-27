@@ -118,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00036"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html">00036</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a> {<span class="comment"></span>
 <a name="l00037"></a>00037 <span class="comment">    /**</span>
 <a name="l00038"></a>00038 <span class="comment">     * Constructor for OpaqueServerRPC. This is called by OpaqueServer.</span>
-<a name="l00039"></a>00039 <span class="comment">     * \param messageSocket</span>
+<a name="l00039"></a>00039 <span class="comment">     * \param socket</span>
 <a name="l00040"></a>00040 <span class="comment">     *      The socket on which to send the reply.</span>
 <a name="l00041"></a>00041 <span class="comment">     * \param messageId</span>
 <a name="l00042"></a>00042 <span class="comment">     *      The message ID received with the request.</span>
@@ -126,7 +126,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00044"></a>00044 <span class="comment">     *      The RPC request received from the client.</span>
 <a name="l00045"></a>00045 <span class="comment">     */</span>
 <a name="l00046"></a>00046     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a7d875bfc2d1ec28592dde60e613c49cb" title="Default constructor for empty RPC that can&#39;t be replied to.">OpaqueServerRPC</a>(
-<a name="l00047"></a>00047             std::weak_ptr&lt;OpaqueServer::ServerMessageSocket&gt; <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#addd3d68c16ca9bf75663f25adad2898c" title="The socket on which to send the reply.">messageSocket</a>,
+<a name="l00047"></a>00047             std::weak_ptr&lt;OpaqueServer::SocketWithHandler&gt; <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a90d1a6a71ff0914310921ca1c5238a5e" title="The socket on which to send the reply.">socket</a>,
 <a name="l00048"></a>00048             <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#abef3021a3d11c0dd0ff037b567d3e686" title="An opaque identifier for a message.">MessageSocket::MessageId</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#ad01d2ec573282f5e28e8ce149ef792bb" title="The message ID received with the request.">messageId</a>,
 <a name="l00049"></a>00049             <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a5b18a1cf14affa0ad9af1221ad77fbec" title="The RPC request received from the client.">request</a>);
 <a name="l00050"></a>00050 
@@ -181,7 +181,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00099"></a>00099 <span class="comment">    /**</span>
 <a name="l00100"></a>00100 <span class="comment">     * The socket on which to send the reply.</span>
 <a name="l00101"></a>00101 <span class="comment">     */</span>
-<a name="l00102"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#addd3d68c16ca9bf75663f25adad2898c">00102</a>     std::weak_ptr&lt;OpaqueServer::ServerMessageSocket&gt; <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#addd3d68c16ca9bf75663f25adad2898c" title="The socket on which to send the reply.">messageSocket</a>;
+<a name="l00102"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a90d1a6a71ff0914310921ca1c5238a5e">00102</a>     std::weak_ptr&lt;OpaqueServer::SocketWithHandler&gt; <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a90d1a6a71ff0914310921ca1c5238a5e" title="The socket on which to send the reply.">socket</a>;
 <a name="l00103"></a>00103 <span class="comment"></span>
 <a name="l00104"></a>00104 <span class="comment">    /**</span>
 <a name="l00105"></a>00105 <span class="comment">     * The message ID received with the request. This should be sent back to</span>

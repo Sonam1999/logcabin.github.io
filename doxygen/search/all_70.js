@@ -16,7 +16,7 @@ var searchData=
   ['pidfile',['PidFile',['../classanonymous__namespace_02Main_8cc_03_1_1PidFile.html',1,'anonymous_namespace{Main.cc}']]],
   ['pidfile',['PidFile',['../classanonymous__namespace_02Main_8cc_03_1_1PidFile.html#a55863420948e957826f8f1efc435f064',1,'anonymous_namespace{Main.cc}::PidFile']]],
   ['pidfilename',['pidFilename',['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#ad87c6524a04dbe73b6a776aa36db0470',1,'anonymous_namespace{Main.cc}::OptionParser']]],
-  ['ping_5fmessage_5fid',['PING_MESSAGE_ID',['../ClientSession_8cc.html#a726ca809ffd3d67ab4b8476646f26635a2c8da20e8b77c955c65add043613b032',1,'PING_MESSAGE_ID():&#160;ClientSession.cc'],['../OpaqueServer_8cc.html#abed82baf7f470b522273a3e37c24c600a2c8da20e8b77c955c65add043613b032',1,'PING_MESSAGE_ID():&#160;OpaqueServer.cc']]],
+  ['ping_5fmessage_5fid',['PING_MESSAGE_ID',['../namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a',1,'LogCabin::Protocol::Common']]],
   ['poprequest',['popRequest',['../classLogCabin_1_1Client_1_1LeaderRPCMock.html#aeacd39bf1791b2dea3b177c1963e4e10',1,'LogCabin::Client::LeaderRPCMock']]],
   ['predicate',['Predicate',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#ab03a45ca76847baf9dd1f673a1d4a0bf',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
   ['prefix',['prefix',['../structLogCabin_1_1RPC_1_1Protocol_1_1RequestHeaderVersion1.html#af29f2edd4e48f1c4111ae1ebf1947e1c',1,'LogCabin::RPC::Protocol::RequestHeaderVersion1::prefix()'],['../structLogCabin_1_1RPC_1_1Protocol_1_1ResponseHeaderVersion1.html#a2a8b7ce96c9fd58d0354421d21fbb9e6',1,'LogCabin::RPC::Protocol::ResponseHeaderVersion1::prefix()']]],

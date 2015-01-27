@@ -113,9 +113,12 @@ Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#a22c6438e512e84fa30d19c2fad7eba9caa9728f693e5b04009f08df50d73e9662">DEFAULT_PORT</a>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The default TCP port on which <a class="el" href="namespaceLogCabin.html">LogCabin</a> servers serve RPCs.  <a href="namespaceLogCabin_1_1Protocol_1_1Common.html#a22c6438e512e84fa30d19c2fad7eba9c">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a04fad61d856722e9a6d32f23980b332f">MAX_MESSAGE_LENGTH</a>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a">PING_MESSAGE_ID</a>
  }</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of bytes per RPC request or response, including these headers.  <a href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A MessageSocket::MessageID reserved for ping messages that are used to check the server's liveness.  <a href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa6228f646abedfa36fd7716cb7228570a04fad61d856722e9a6d32f23980b332f">MAX_MESSAGE_LENGTH</a>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of bytes per RPC request or response, including these headers.  <a href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa6228f646abedfa36fd7716cb7228570">More...</a><br/></td></tr>
 </table>
 <hr/><h2>Enumeration Type Documentation</h2>
 <a class="anchor" id="a22c6438e512e84fa30d19c2fad7eba9c"></a><!-- doxytag: member="LogCabin::Protocol::Common::@2" ref="a22c6438e512e84fa30d19c2fad7eba9c" args="" -->
@@ -152,16 +155,40 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>The maximum number of bytes per <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> request or response, including these headers. </p>
-<p>This is set to slightly over 1 MB because the maximum size of log entries is 1 MB. </p>
+<p>A MessageSocket::MessageID reserved for ping messages that are used to check the server's liveness. </p>
+<p>No real <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> will ever be assigned this ID. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em><a class="anchor" id="aa710500562524493a074bb752b28d5d1a04fad61d856722e9a6d32f23980b332f"></a><!-- doxytag: member="MAX_MESSAGE_LENGTH" ref="aa710500562524493a074bb752b28d5d1a04fad61d856722e9a6d32f23980b332f" args="" -->MAX_MESSAGE_LENGTH</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a"></a><!-- doxytag: member="PING_MESSAGE_ID" ref="aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a" args="" -->PING_MESSAGE_ID</em>&nbsp;</td><td>
 </td></tr>
 </table>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Common_8h_source.html#l00038">38</a> of file <a class="el" href="Common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="Common_8h_source.html#l00037">37</a> of file <a class="el" href="Common_8h_source.html">Common.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa6228f646abedfa36fd7716cb7228570"></a><!-- doxytag: member="LogCabin::Protocol::Common::@4" ref="aa6228f646abedfa36fd7716cb7228570" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The maximum number of bytes per <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> request or response, including these headers. </p>
+<p>This is set to slightly over 1 MB because the maximum size of log entries is 1 MB. </p>
+<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="aa6228f646abedfa36fd7716cb7228570a04fad61d856722e9a6d32f23980b332f"></a><!-- doxytag: member="MAX_MESSAGE_LENGTH" ref="aa6228f646abedfa36fd7716cb7228570a04fad61d856722e9a6d32f23980b332f" args="" -->MAX_MESSAGE_LENGTH</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>Definition at line <a class="el" href="Common_8h_source.html#l00044">44</a> of file <a class="el" href="Common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>

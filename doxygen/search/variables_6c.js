@@ -23,7 +23,6 @@ var searchData=
   ['len',['len',['../classLogCabin_1_1RPC_1_1Address.html#a61ebbe3a4d064dbaf31b5184df5e3cf8',1,'LogCabin::RPC::Address']]],
   ['length',['length',['../classLogCabin_1_1RPC_1_1Buffer.html#a9e4906cd1ea38171b562528a5522548b',1,'LogCabin::RPC::Buffer']]],
   ['lengthfileprefix',['lengthFilePrefix',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a136afb482ee2a2fa4d93983d2edb50fd',1,'LogCabin::Core::Debug::Internal']]],
-  ['listener',['listener',['../classLogCabin_1_1RPC_1_1OpaqueServer.html#a7af714c3605d8d1079e9c9a69128b88e',1,'LogCabin::RPC::OpaqueServer']]],
   ['localserver',['localServer',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#ab4ddea6874ae1a4c7a6fe22fc752d6af',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
   ['lockguard',['lockGuard',['../classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a4e8ec46fc587cfce8409fe62522860a8',1,'LogCabin::Server::ServerStats::Lock']]],
   ['lockowner',['lockOwner',['../classLogCabin_1_1Event_1_1Loop.html#a2257b824bb17445bbe22854f4a9cc3be',1,'LogCabin::Event::Loop']]],

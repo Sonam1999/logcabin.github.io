@@ -12,6 +12,7 @@ var searchData=
   ['response',['Response',['../structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html',1,'LogCabin::RPC::ClientSession']]],
   ['responseheaderprefix',['ResponseHeaderPrefix',['../structLogCabin_1_1RPC_1_1Protocol_1_1ResponseHeaderPrefix.html',1,'LogCabin::RPC::Protocol']]],
   ['responseheaderversion1',['ResponseHeaderVersion1',['../structLogCabin_1_1RPC_1_1Protocol_1_1ResponseHeaderVersion1.html',1,'LogCabin::RPC::Protocol']]],
+  ['result',['Result',['../structLogCabin_1_1Client_1_1Result.html',1,'LogCabin::Client']]],
   ['result',['Result',['../structLogCabin_1_1Tree_1_1Result.html',1,'LogCabin::Tree']]],
-  ['result',['Result',['../structLogCabin_1_1Client_1_1Result.html',1,'LogCabin::Client']]]
+  ['rpchandler',['RPCHandler',['../classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html',1,'LogCabin::RPC::Server']]]
 ];

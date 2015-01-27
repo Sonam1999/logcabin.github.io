@@ -5,7 +5,6 @@ var searchData=
   ['call',['Call',['../classLogCabin_1_1Client_1_1LeaderRPC_1_1Call.html',1,'LogCabin::Client::LeaderRPC']]],
   ['call',['Call',['../classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html',1,'LogCabin::Client::LeaderRPCBase']]],
   ['clientimpl',['ClientImpl',['../classLogCabin_1_1Client_1_1ClientImpl.html',1,'LogCabin::Client']]],
-  ['clientmessagesocket',['ClientMessageSocket',['../classLogCabin_1_1RPC_1_1ClientSession_1_1ClientMessageSocket.html',1,'LogCabin::RPC::ClientSession']]],
   ['clientrpc',['ClientRPC',['../classLogCabin_1_1RPC_1_1ClientRPC.html',1,'LogCabin::RPC']]],
   ['clientservice',['ClientService',['../classLogCabin_1_1Server_1_1ClientService.html',1,'LogCabin::Server']]],
   ['clientsession',['ClientSession',['../classLogCabin_1_1RPC_1_1ClientSession.html',1,'LogCabin::RPC']]],

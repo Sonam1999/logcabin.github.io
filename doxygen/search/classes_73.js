@@ -3,10 +3,8 @@ var searchData=
   ['sendsocket',['SendSocket',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html',1,'LogCabin::RPC::MessageSocket']]],
   ['server',['Server',['../classLogCabin_1_1RPC_1_1Server.html',1,'LogCabin::RPC']]],
   ['server',['Server',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html',1,'LogCabin::Server::RaftConsensusInternal']]],
-  ['servermessagesocket',['ServerMessageSocket',['../classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html',1,'LogCabin::RPC::OpaqueServer']]],
   ['serverrpc',['ServerRPC',['../classLogCabin_1_1RPC_1_1ServerRPC.html',1,'LogCabin::RPC']]],
   ['serverstats',['ServerStats',['../classLogCabin_1_1Server_1_1ServerStats.html',1,'LogCabin::Server']]],
-  ['servertcplistener',['ServerTCPListener',['../classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerTCPListener.html',1,'LogCabin::RPC::OpaqueServer']]],
   ['service',['Service',['../classLogCabin_1_1RPC_1_1Service.html',1,'LogCabin::RPC']]],
   ['servicemock',['ServiceMock',['../classLogCabin_1_1RPC_1_1ServiceMock.html',1,'LogCabin::RPC']]],
   ['servicespecificerror',['ServiceSpecificError',['../classLogCabin_1_1RPC_1_1ServiceMock_1_1ServiceSpecificError.html',1,'LogCabin::RPC::ServiceMock']]],
@@ -15,8 +13,9 @@ var searchData=
   ['signalhandler',['SignalHandler',['../classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html',1,'LogCabin::Server::ServerStats']]],
   ['simpleconfiguration',['SimpleConfiguration',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration_1_1SimpleConfiguration.html',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
   ['simplefilelog',['SimpleFileLog',['../classLogCabin_1_1Storage_1_1SimpleFileLog.html',1,'LogCabin::Storage']]],
+  ['socketwithhandler',['SocketWithHandler',['../structLogCabin_1_1RPC_1_1OpaqueServer_1_1SocketWithHandler.html',1,'LogCabin::RPC::OpaqueServer']]],
   ['statemachine',['StateMachine',['../classLogCabin_1_1Server_1_1StateMachine.html',1,'LogCabin::Server']]],
   ['steadytimeconverter',['SteadyTimeConverter',['../classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html',1,'LogCabin::Core::Time']]],
-  ['sync',['Sync',['../classLogCabin_1_1Storage_1_1Log_1_1Sync.html',1,'LogCabin::Storage::Log']]],
-  ['sync',['Sync',['../classLogCabin_1_1Storage_1_1SimpleFileLog_1_1Sync.html',1,'LogCabin::Storage::SimpleFileLog']]]
+  ['sync',['Sync',['../classLogCabin_1_1Storage_1_1SimpleFileLog_1_1Sync.html',1,'LogCabin::Storage::SimpleFileLog']]],
+  ['sync',['Sync',['../classLogCabin_1_1Storage_1_1Log_1_1Sync.html',1,'LogCabin::Storage::Log']]]
 ];

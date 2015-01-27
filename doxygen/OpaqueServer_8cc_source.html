@@ -80,150 +80,239 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">RPC/OpaqueServer.cc</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="OpaqueServer_8cc.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* Copyright (c) 2012 Stanford University</span>
-<a name="l00002"></a>00002 <span class="comment"> *</span>
-<a name="l00003"></a>00003 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
-<a name="l00004"></a>00004 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
-<a name="l00005"></a>00005 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
-<a name="l00006"></a>00006 <span class="comment"> *</span>
-<a name="l00007"></a>00007 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
-<a name="l00008"></a>00008 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
-<a name="l00009"></a>00009 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
-<a name="l00010"></a>00010 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
-<a name="l00011"></a>00011 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
-<a name="l00012"></a>00012 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
-<a name="l00013"></a>00013 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
-<a name="l00014"></a>00014 <span class="comment"> */</span>
-<a name="l00015"></a>00015 
-<a name="l00016"></a>00016 <span class="preprocessor">#include &lt;errno.h&gt;</span>
-<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;string.h&gt;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;unistd.h&gt;</span>
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020 <span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Core/Debug.h</a>&quot;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#include &quot;<a class="code" href="Loop_8h.html">Event/Loop.h</a>&quot;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;<a class="code" href="OpaqueServer_8h.html">RPC/OpaqueServer.h</a>&quot;</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#include &quot;<a class="code" href="OpaqueServerRPC_8h.html">RPC/OpaqueServerRPC.h</a>&quot;</span>
-<a name="l00024"></a>00024 <span class="comment"></span>
-<a name="l00025"></a>00025 <span class="comment">/**</span>
-<a name="l00026"></a>00026 <span class="comment"> * A message ID reserved for ping messages used to check the server&#39;s liveness.</span>
-<a name="l00027"></a>00027 <span class="comment"> * No real RPC will ever be assigned this ID.</span>
-<a name="l00028"></a>00028 <span class="comment"> */</span>
-<a name="l00029"></a><a class="code" href="OpaqueServer_8cc.html#abed82baf7f470b522273a3e37c24c600a2c8da20e8b77c955c65add043613b032">00029</a> <span class="keyword">enum</span> { <a class="code" href="ClientSession_8cc.html#a726ca809ffd3d67ab4b8476646f26635a2c8da20e8b77c955c65add043613b032">PING_MESSAGE_ID</a> = 0 };
+<a href="OpaqueServer_8cc.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* Copyright (c) 2011-2014 Stanford University</span>
+<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2015 Diego Ongaro</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
+<a name="l00005"></a>00005 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
+<a name="l00006"></a>00006 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
+<a name="l00007"></a>00007 <span class="comment"> *</span>
+<a name="l00008"></a>00008 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
+<a name="l00009"></a>00009 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
+<a name="l00010"></a>00010 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
+<a name="l00011"></a>00011 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
+<a name="l00012"></a>00012 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
+<a name="l00013"></a>00013 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
+<a name="l00014"></a>00014 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
+<a name="l00015"></a>00015 <span class="comment"> */</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;errno.h&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;sys/epoll.h&gt;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include &lt;sys/socket.h&gt;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;sys/types.h&gt;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;unistd.h&gt;</span>
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Core/Debug.h</a>&quot;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &quot;<a class="code" href="Loop_8h.html">Event/Loop.h</a>&quot;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include &quot;<a class="code" href="Common_8h.html" title="This file contains declarations useful to all LogCabin RPCs.">Protocol/Common.h</a>&quot;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &quot;<a class="code" href="Address_8h.html">RPC/Address.h</a>&quot;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#include &quot;<a class="code" href="OpaqueServer_8h.html">RPC/OpaqueServer.h</a>&quot;</span>
+<a name="l00029"></a>00029 <span class="preprocessor">#include &quot;<a class="code" href="OpaqueServerRPC_8h.html">RPC/OpaqueServerRPC.h</a>&quot;</span>
 <a name="l00030"></a>00030 
 <a name="l00031"></a>00031 <span class="keyword">namespace </span>LogCabin {
 <a name="l00032"></a>00032 <span class="keyword">namespace </span>RPC {
-<a name="l00033"></a>00033 <span class="comment"></span>
-<a name="l00034"></a>00034 <span class="comment">////////// OpaqueServer::ServerTCPListener //////////</span>
-<a name="l00035"></a>00035 <span class="comment"></span>
-<a name="l00036"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerTCPListener.html#a445c1acfe52a3053a6ef279a943c68ea">00036</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerTCPListener.html#a445c1acfe52a3053a6ef279a943c68ea">OpaqueServer::ServerTCPListener::ServerTCPListener</a>(
-<a name="l00037"></a>00037         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a>* server)
-<a name="l00038"></a>00038     : <a class="code" href="classLogCabin_1_1RPC_1_1TCPListener.html" title="A TCPListener listens for incoming TCP connections and accepts them.">TCPListener</a>(server-&gt;eventLoop)
-<a name="l00039"></a>00039     , server(server)
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <span class="comment"></span>
+<a name="l00035"></a>00035 <span class="comment">////////// OpaqueServer::MessageSocketHandler //////////</span>
+<a name="l00036"></a>00036 <span class="comment"></span>
+<a name="l00037"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#ad8e2ba44b76bb8e02a9f8652ba23a63e">00037</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#ad8e2ba44b76bb8e02a9f8652ba23a63e">OpaqueServer::MessageSocketHandler::MessageSocketHandler</a>(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a>* server)
+<a name="l00038"></a>00038     : server(server)
+<a name="l00039"></a>00039     , self()
 <a name="l00040"></a>00040 {
 <a name="l00041"></a>00041 }
 <a name="l00042"></a>00042 
 <a name="l00043"></a>00043 <span class="keywordtype">void</span>
-<a name="l00044"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerTCPListener.html#a9caf207c21f97f0760e287289a982cb7">00044</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerTCPListener.html#a9caf207c21f97f0760e287289a982cb7" title="This method is overridden by a subclass and invoked when a new connection is accepted.">OpaqueServer::ServerTCPListener::handleNewConnection</a>(
-<a name="l00045"></a>00045         <span class="keywordtype">int</span> fd)
-<a name="l00046"></a>00046 {
-<a name="l00047"></a>00047     <span class="keywordflow">if</span> (server == NULL) {
-<a name="l00048"></a>00048         <span class="keywordflow">if</span> (close(fd) != 0)
-<a name="l00049"></a>00049             <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;close(%d) failed: %s&quot;</span>, fd, strerror(errno));
-<a name="l00050"></a>00050     } <span class="keywordflow">else</span> {
-<a name="l00051"></a>00051         std::shared_ptr&lt;ServerMessageSocket&gt; messageSocket(
-<a name="l00052"></a>00052                 <span class="keyword">new</span> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html" title="This is a MessageSocket with callbacks set up for OpaqueServer.">ServerMessageSocket</a>(server, fd, server-&gt;sockets.size()));
-<a name="l00053"></a>00053         messageSocket-&gt;self = messageSocket;
-<a name="l00054"></a>00054         server-&gt;sockets.push_back(messageSocket);
-<a name="l00055"></a>00055     }
-<a name="l00056"></a>00056 }
-<a name="l00057"></a>00057 <span class="comment"></span>
-<a name="l00058"></a>00058 <span class="comment">////////// OpaqueServer::ServerMessageSocket //////////</span>
-<a name="l00059"></a>00059 <span class="comment"></span>
-<a name="l00060"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html#a105adb26b6b29cda266e6781f824788d">00060</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html#a105adb26b6b29cda266e6781f824788d" title="Constructor.">OpaqueServer::ServerMessageSocket::ServerMessageSocket</a>(
-<a name="l00061"></a>00061         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a>* server,
-<a name="l00062"></a>00062         <span class="keywordtype">int</span> fd,
-<a name="l00063"></a>00063         <span class="keywordtype">size_t</span> socketsIndex)
-<a name="l00064"></a>00064     : <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html" title="A MessageSocket is a message-oriented layer on top of a TCP connection.">MessageSocket</a>(server-&gt;<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ab2e0da8ed3e967fc08db7cd871fbc3f9" title="The event loop that is used for non-blocking I/O.">eventLoop</a>, fd, server-&gt;<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#acb2edeca2b4c9adaeb9c2d12f78e70d7" title="The maximum number of bytes to allow per request/response.">maxMessageLength</a>)
-<a name="l00065"></a>00065     , <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ab2e0da8ed3e967fc08db7cd871fbc3f9" title="The event loop that is used for non-blocking I/O.">eventLoop</a>(server-&gt;<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ab2e0da8ed3e967fc08db7cd871fbc3f9" title="The event loop that is used for non-blocking I/O.">eventLoop</a>)
-<a name="l00066"></a>00066     , server(server)
-<a name="l00067"></a>00067     , socketsIndex(socketsIndex)
-<a name="l00068"></a>00068     , self()
-<a name="l00069"></a>00069 {
-<a name="l00070"></a>00070 }
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 <span class="keywordtype">void</span>
-<a name="l00073"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html#a32bac1d3834c77f3a2a89663fa6781bc">00073</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html#a32bac1d3834c77f3a2a89663fa6781bc" title="This method is overridden by a subclass and invoked when a new message is received.">OpaqueServer::ServerMessageSocket::onReceiveMessage</a>(
-<a name="l00074"></a>00074         <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#abef3021a3d11c0dd0ff037b567d3e686" title="An opaque identifier for a message.">MessageId</a> messageId,
-<a name="l00075"></a>00075         <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a> message)
-<a name="l00076"></a>00076 {
-<a name="l00077"></a>00077     <span class="comment">// Reply to ping requests here.</span>
-<a name="l00078"></a>00078     <span class="keywordflow">if</span> (messageId == <a class="code" href="ClientSession_8cc.html#a726ca809ffd3d67ab4b8476646f26635a2c8da20e8b77c955c65add043613b032">PING_MESSAGE_ID</a>) {
-<a name="l00079"></a>00079         <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Responding to ping&quot;</span>);
-<a name="l00080"></a>00080         sendMessage(<a class="code" href="ClientSession_8cc.html#a726ca809ffd3d67ab4b8476646f26635a2c8da20e8b77c955c65add043613b032">PING_MESSAGE_ID</a>, <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a>());
-<a name="l00081"></a>00081         <span class="keywordflow">return</span>;
-<a name="l00082"></a>00082     }
-<a name="l00083"></a>00083     <span class="keywordflow">if</span> (server != NULL) {
-<a name="l00084"></a>00084         <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Handling RPC&quot;</span>);
-<a name="l00085"></a>00085         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a> rpc(<span class="keyword">self</span>, messageId, std::move(message));
-<a name="l00086"></a>00086         server-&gt;handleRPC(std::move(rpc));
-<a name="l00087"></a>00087     }
+<a name="l00044"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#a41201fe6e3f66aa34a4e647e5224fe42">00044</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#a41201fe6e3f66aa34a4e647e5224fe42" title="This method is overridden by a subclass and invoked when a new message is received.">OpaqueServer::MessageSocketHandler::handleReceivedMessage</a>(
+<a name="l00045"></a>00045         <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html#ad5bd8faa628b0beaeca6560e6908fb1c">MessageId</a> messageId,
+<a name="l00046"></a>00046         <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a> message)
+<a name="l00047"></a>00047 {
+<a name="l00048"></a>00048     <span class="keywordflow">if</span> (server == NULL)
+<a name="l00049"></a>00049         <span class="keywordflow">return</span>;
+<a name="l00050"></a>00050     <span class="keywordflow">if</span> (messageId == <a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a">Protocol::Common::PING_MESSAGE_ID</a>) { <span class="comment">// ping request</span>
+<a name="l00051"></a>00051         std::shared_ptr&lt;SocketWithHandler&gt; socketRef = <span class="keyword">self</span>.lock();
+<a name="l00052"></a>00052         <span class="keywordflow">if</span> (socketRef) { <span class="comment">// expect so, since we&#39;re receiving messages</span>
+<a name="l00053"></a>00053             <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Responding to ping&quot;</span>);
+<a name="l00054"></a>00054             socketRef-&gt;monitor.sendMessage(<a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a">Protocol::Common::PING_MESSAGE_ID</a>,
+<a name="l00055"></a>00055                                            <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a>());
+<a name="l00056"></a>00056         }
+<a name="l00057"></a>00057     } <span class="keywordflow">else</span> { <span class="comment">// normal RPC request</span>
+<a name="l00058"></a>00058         <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Handling RPC&quot;</span>);
+<a name="l00059"></a>00059         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a> rpc(<span class="keyword">self</span>, messageId, std::move(message));
+<a name="l00060"></a>00060         server-&gt;rpcHandler.handleRPC(std::move(rpc));
+<a name="l00061"></a>00061     }
+<a name="l00062"></a>00062 }
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 <span class="keywordtype">void</span>
+<a name="l00065"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#af50b59a7b36db295a48b9b13e7316dd5">00065</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#af50b59a7b36db295a48b9b13e7316dd5" title="This method is overridden by a subclass and invoked when the socket has been disconnected and will be...">OpaqueServer::MessageSocketHandler::handleDisconnect</a>()
+<a name="l00066"></a>00066 {
+<a name="l00067"></a>00067     <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Disconnected from client&quot;</span>);
+<a name="l00068"></a>00068     std::shared_ptr&lt;SocketWithHandler&gt; socketRef = <span class="keyword">self</span>.lock();
+<a name="l00069"></a>00069     <span class="keywordflow">if</span> (server != NULL &amp;&amp; socketRef) {
+<a name="l00070"></a>00070         <span class="comment">// This drops the reference count on the socket. It may cause the</span>
+<a name="l00071"></a>00071         <span class="comment">// SocketWithHandler object (which includes this object) to be</span>
+<a name="l00072"></a>00072         <span class="comment">// destroyed when &#39;socketRef&#39; goes out of scope.</span>
+<a name="l00073"></a>00073         server-&gt;sockets.erase(socketRef);
+<a name="l00074"></a>00074         server = NULL;
+<a name="l00075"></a>00075     }
+<a name="l00076"></a>00076 }
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 <span class="comment"></span>
+<a name="l00079"></a>00079 <span class="comment">////////// OpaqueServer::SocketWithHandler //////////</span>
+<a name="l00080"></a>00080 <span class="comment"></span>
+<a name="l00081"></a>00081 std::shared_ptr&lt;OpaqueServer::SocketWithHandler&gt;
+<a name="l00082"></a><a class="code" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1SocketWithHandler.html#a52420b47a91a399faf61443305a2ceac">00082</a> <a class="code" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1SocketWithHandler.html#a52420b47a91a399faf61443305a2ceac" title="Return a newly constructed SocketWithHandler, with the handler&#39;s self field pointing to itself...">OpaqueServer::SocketWithHandler::make</a>(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a>* server, <span class="keywordtype">int</span> fd)
+<a name="l00083"></a>00083 {
+<a name="l00084"></a>00084     std::shared_ptr&lt;SocketWithHandler&gt; socket(
+<a name="l00085"></a>00085         <span class="keyword">new</span> <a class="code" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1SocketWithHandler.html" title="Couples a MessageSocketHandler with a MessageSocket (monitor) and destroys them in the right order (m...">SocketWithHandler</a>(server, fd));
+<a name="l00086"></a>00086     socket-&gt;handler.self = socket;
+<a name="l00087"></a>00087     <span class="keywordflow">return</span> socket;
 <a name="l00088"></a>00088 }
 <a name="l00089"></a>00089 
-<a name="l00090"></a>00090 <span class="keywordtype">void</span>
-<a name="l00091"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html#a86edaed5e1ff9bf167509d9f8a799d16">00091</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html#a86edaed5e1ff9bf167509d9f8a799d16" title="This method is overridden by a subclass and invoked when the socket has been closed.">OpaqueServer::ServerMessageSocket::onDisconnect</a>()
-<a name="l00092"></a>00092 {
-<a name="l00093"></a>00093     <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Disconnected from client&quot;</span>);
-<a name="l00094"></a>00094     close();
-<a name="l00095"></a>00095 }
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097 <span class="keywordtype">void</span>
-<a name="l00098"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html#ab471c8389799d79787cd2bc54ce36fbc">00098</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html#ab471c8389799d79787cd2bc54ce36fbc" title="Disconnect this socket.">OpaqueServer::ServerMessageSocket::close</a>()
-<a name="l00099"></a>00099 {
-<a name="l00100"></a>00100     <a class="code" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Event::Loop::Lock</a> lock(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ab2e0da8ed3e967fc08db7cd871fbc3f9" title="The event loop that is used for non-blocking I/O.">eventLoop</a>);
-<a name="l00101"></a>00101     <span class="keywordflow">if</span> (server != NULL) {
-<a name="l00102"></a>00102         <span class="keyword">auto</span>&amp; <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a7a1d2a9cc624a8562907fd2535374c66" title="Every open ServerMessageSocket is referenced here so that it can be cleaned up when this OpaqueServer...">sockets</a> = server-&gt;sockets;
-<a name="l00103"></a>00103         server = NULL;
-<a name="l00104"></a>00104         std::swap(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a7a1d2a9cc624a8562907fd2535374c66" title="Every open ServerMessageSocket is referenced here so that it can be cleaned up when this OpaqueServer...">sockets</a>.at(socketsIndex), <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a7a1d2a9cc624a8562907fd2535374c66" title="Every open ServerMessageSocket is referenced here so that it can be cleaned up when this OpaqueServer...">sockets</a>.back());
-<a name="l00105"></a>00105         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a7a1d2a9cc624a8562907fd2535374c66" title="Every open ServerMessageSocket is referenced here so that it can be cleaned up when this OpaqueServer...">sockets</a>.at(socketsIndex)-&gt;socketsIndex = socketsIndex;
-<a name="l00106"></a>00106         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a7a1d2a9cc624a8562907fd2535374c66" title="Every open ServerMessageSocket is referenced here so that it can be cleaned up when this OpaqueServer...">sockets</a>.pop_back(); <span class="comment">// may destroy this object, so do it last</span>
-<a name="l00107"></a>00107     }
-<a name="l00108"></a>00108 }
-<a name="l00109"></a>00109 <span class="comment"></span>
-<a name="l00110"></a>00110 <span class="comment">////////// OpaqueServer //////////</span>
-<a name="l00111"></a>00111 <span class="comment"></span>
-<a name="l00112"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a8ce2ff5f64a1f716ca931aa467750694">00112</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a8ce2ff5f64a1f716ca931aa467750694" title="Constructor.">OpaqueServer::OpaqueServer</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ab2e0da8ed3e967fc08db7cd871fbc3f9" title="The event loop that is used for non-blocking I/O.">eventLoop</a>,
-<a name="l00113"></a>00113                            uint32_t <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#acb2edeca2b4c9adaeb9c2d12f78e70d7" title="The maximum number of bytes to allow per request/response.">maxMessageLength</a>)
-<a name="l00114"></a>00114     : eventLoop(eventLoop)
-<a name="l00115"></a>00115     , maxMessageLength(maxMessageLength)
-<a name="l00116"></a>00116     , <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a7a1d2a9cc624a8562907fd2535374c66" title="Every open ServerMessageSocket is referenced here so that it can be cleaned up when this OpaqueServer...">sockets</a>()
-<a name="l00117"></a>00117     , <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a7af714c3605d8d1079e9c9a69128b88e" title="This listens for incoming TCP connections and accepts them.">listener</a>(this)
+<a name="l00090"></a><a class="code" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1SocketWithHandler.html#ac33d1b2ba5f69b06dcb77cb3f88a9f8c">00090</a> <a class="code" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1SocketWithHandler.html#ac33d1b2ba5f69b06dcb77cb3f88a9f8c">OpaqueServer::SocketWithHandler::SocketWithHandler</a>(
+<a name="l00091"></a>00091         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a>* server,
+<a name="l00092"></a>00092         <span class="keywordtype">int</span> fd)
+<a name="l00093"></a>00093     : handler(server)
+<a name="l00094"></a>00094     , monitor(handler, server-&gt;<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ab2e0da8ed3e967fc08db7cd871fbc3f9" title="The event loop that is used for non-blocking I/O.">eventLoop</a>, fd, server-&gt;<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#acb2edeca2b4c9adaeb9c2d12f78e70d7" title="The maximum number of bytes to allow per request/response.">maxMessageLength</a>)
+<a name="l00095"></a>00095 {
+<a name="l00096"></a>00096 }
+<a name="l00097"></a>00097 
+<a name="l00098"></a><a class="code" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1SocketWithHandler.html#a3f461a1a90fa06e99270fadfa19db29e">00098</a> <a class="code" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1SocketWithHandler.html#a3f461a1a90fa06e99270fadfa19db29e">OpaqueServer::SocketWithHandler::~SocketWithHandler</a>() {
+<a name="l00099"></a>00099     <span class="comment">// &#39;handler&#39; shouldn&#39;t have access to &#39;monitor&#39; while/after &#39;monitor&#39; is</span>
+<a name="l00100"></a>00100     <span class="comment">// destroyed. Clear the reference here, then C++ will destroy &#39;monitor&#39;,</span>
+<a name="l00101"></a>00101     <span class="comment">// then &#39;handler&#39;.</span>
+<a name="l00102"></a>00102     handler.self.reset();
+<a name="l00103"></a>00103 }
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 <span class="comment"></span>
+<a name="l00106"></a>00106 <span class="comment">////////// OpaqueServer::BoundListener //////////</span>
+<a name="l00107"></a>00107 <span class="comment"></span>
+<a name="l00108"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1BoundListener.html#adb8cbeadc3bec751082d76150d2f72b4">00108</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1BoundListener.html#adb8cbeadc3bec751082d76150d2f72b4" title="Constructor.">OpaqueServer::BoundListener::BoundListener</a>(
+<a name="l00109"></a>00109         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a>&amp; server,
+<a name="l00110"></a>00110         <span class="keywordtype">int</span> fd)
+<a name="l00111"></a>00111     : Event::File(fd)
+<a name="l00112"></a>00112     , server(server)
+<a name="l00113"></a>00113 {
+<a name="l00114"></a>00114 }
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 <span class="keywordtype">void</span>
+<a name="l00117"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1BoundListener.html#a61d9b85a63e430bd04a1511c54126340">00117</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1BoundListener.html#a61d9b85a63e430bd04a1511c54126340" title="This method is overridden by a subclass and invoked when a file event occurs.">OpaqueServer::BoundListener::handleFileEvent</a>(<span class="keywordtype">int</span> events)
 <a name="l00118"></a>00118 {
-<a name="l00119"></a>00119 }
-<a name="l00120"></a>00120 
-<a name="l00121"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a4bc28f1cd088c9dac15a725af4a7ebab">00121</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a4bc28f1cd088c9dac15a725af4a7ebab" title="Destructor.">OpaqueServer::~OpaqueServer</a>()
-<a name="l00122"></a>00122 {
-<a name="l00123"></a>00123     <span class="comment">// Block the event loop.</span>
-<a name="l00124"></a>00124     <a class="code" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Event::Loop::Lock</a> lockGuard(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ab2e0da8ed3e967fc08db7cd871fbc3f9" title="The event loop that is used for non-blocking I/O.">eventLoop</a>);
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126     <span class="comment">// Stop the listener from accepting new connections</span>
-<a name="l00127"></a>00127     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a7af714c3605d8d1079e9c9a69128b88e" title="This listens for incoming TCP connections and accepts them.">listener</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerTCPListener.html#ae12be062db09be745715bee807ea765b" title="The OpaqueServer which owns this object, or NULL if the server is going away.">server</a> = NULL;
-<a name="l00128"></a>00128 
-<a name="l00129"></a>00129     <span class="comment">// Stop the socket objects from handling new RPCs and</span>
-<a name="l00130"></a>00130     <span class="comment">// accessing the sockets vector.</span>
-<a name="l00131"></a>00131     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a7a1d2a9cc624a8562907fd2535374c66" title="Every open ServerMessageSocket is referenced here so that it can be cleaned up when this OpaqueServer...">sockets</a>.begin(); it != <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a7a1d2a9cc624a8562907fd2535374c66" title="Every open ServerMessageSocket is referenced here so that it can be cleaned up when this OpaqueServer...">sockets</a>.end(); ++it) {
-<a name="l00132"></a>00132         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html" title="This is a MessageSocket with callbacks set up for OpaqueServer.">ServerMessageSocket</a>&amp; socket = **it;
-<a name="l00133"></a>00133         socket.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html#a28d0de09da902f1ef5ffefc37a7058d4" title="The OpaqueServer which keeps a strong reference to this object, or NULL if the server has gone away...">server</a> = NULL;
-<a name="l00134"></a>00134     }
-<a name="l00135"></a>00135 }
-<a name="l00136"></a>00136 
-<a name="l00137"></a>00137 std::string
-<a name="l00138"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ae8b06de44eef3df7e5f0091ebcc4984e">00138</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ae8b06de44eef3df7e5f0091ebcc4984e" title="Listen on an address for new client connections.">OpaqueServer::bind</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1RPC_1_1Address.html" title="This class resolves user-friendly addresses for services into socket-level addresses.">Address</a>&amp; listenAddress)
-<a name="l00139"></a>00139 {
-<a name="l00140"></a>00140     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a7af714c3605d8d1079e9c9a69128b88e" title="This listens for incoming TCP connections and accepts them.">listener</a>.<a class="code" href="classLogCabin_1_1RPC_1_1TCPListener.html#af928cc7d97ee2a168eb98824b513c79e" title="Listen on a new address.">bind</a>(listenAddress);
+<a name="l00119"></a>00119     <span class="keywordtype">int</span> clientfd = accept4(fd, NULL, NULL, SOCK_NONBLOCK|SOCK_CLOEXEC);
+<a name="l00120"></a>00120     <span class="keywordflow">if</span> (clientfd &lt; 0) {
+<a name="l00121"></a>00121         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not accept connection on fd %d: %s&quot;</span>,
+<a name="l00122"></a>00122               fd, strerror(errno));
+<a name="l00123"></a>00123     }
+<a name="l00124"></a>00124 
+<a name="l00125"></a>00125     server.sockets.insert(<a class="code" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1SocketWithHandler.html#a52420b47a91a399faf61443305a2ceac" title="Return a newly constructed SocketWithHandler, with the handler&#39;s self field pointing to itself...">SocketWithHandler::make</a>(&amp;server, clientfd));
+<a name="l00126"></a>00126 }
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128 <span class="comment"></span>
+<a name="l00129"></a>00129 <span class="comment">////////// OpaqueServer::BoundListenerWithMonitor //////////</span>
+<a name="l00130"></a>00130 <span class="comment"></span>
+<a name="l00131"></a><a class="code" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1BoundListenerWithMonitor.html#ad8931cdcb1a1359c3ff7fdc6e1c0580c">00131</a> <a class="code" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1BoundListenerWithMonitor.html#ad8931cdcb1a1359c3ff7fdc6e1c0580c" title="Constructor. See BoundListener.">OpaqueServer::BoundListenerWithMonitor::BoundListenerWithMonitor</a>(
+<a name="l00132"></a>00132         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a>&amp; server,
+<a name="l00133"></a>00133         <span class="keywordtype">int</span> fd)
+<a name="l00134"></a>00134     : handler(server, fd)
+<a name="l00135"></a>00135     , monitor(server.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ab2e0da8ed3e967fc08db7cd871fbc3f9" title="The event loop that is used for non-blocking I/O.">eventLoop</a>, handler, EPOLLIN)
+<a name="l00136"></a>00136 {
+<a name="l00137"></a>00137 }
+<a name="l00138"></a>00138 
+<a name="l00139"></a><a class="code" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1BoundListenerWithMonitor.html#a2acae127aa8ce553b98d3208cd1073b0">00139</a> <a class="code" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1BoundListenerWithMonitor.html#a2acae127aa8ce553b98d3208cd1073b0" title="Destructor.">OpaqueServer::BoundListenerWithMonitor::~BoundListenerWithMonitor</a>()
+<a name="l00140"></a>00140 {
 <a name="l00141"></a>00141 }
 <a name="l00142"></a>00142 
-<a name="l00143"></a>00143 } <span class="comment">// namespace LogCabin::RPC</span>
-<a name="l00144"></a>00144 } <span class="comment">// namespace LogCabin</span>
+<a name="l00143"></a>00143 <span class="comment"></span>
+<a name="l00144"></a>00144 <span class="comment">////////// OpaqueServer //////////</span>
+<a name="l00145"></a>00145 <span class="comment"></span>
+<a name="l00146"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a70b3a545f635ffe31a5e06aa31f379a6">00146</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a70b3a545f635ffe31a5e06aa31f379a6" title="Constructor.">OpaqueServer::OpaqueServer</a>(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1Handler.html" title="An interface for handling events generated by an OpaqueServer.">Handler</a>&amp; handler,
+<a name="l00147"></a>00147                            <a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ab2e0da8ed3e967fc08db7cd871fbc3f9" title="The event loop that is used for non-blocking I/O.">eventLoop</a>,
+<a name="l00148"></a>00148                            uint32_t <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#acb2edeca2b4c9adaeb9c2d12f78e70d7" title="The maximum number of bytes to allow per request/response.">maxMessageLength</a>)
+<a name="l00149"></a>00149     : <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a43457466d16027aeb7bab822cc468107" title="Deals with OpaqueServerRPC objects that this class creates when it receives a request.">rpcHandler</a>(handler)
+<a name="l00150"></a>00150     , eventLoop(eventLoop)
+<a name="l00151"></a>00151     , maxMessageLength(maxMessageLength)
+<a name="l00152"></a>00152     , <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a4a5da4248ff93b5d1f9726f5af0c9812" title="Every open socket is referenced here so that it can be cleaned up when this OpaqueServer is destroyed...">sockets</a>()
+<a name="l00153"></a>00153     , <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#aea4127f7de6d74ee0f21c7c98e2ffea0" title="Lock to prevent concurrent modification of boundListeners.">boundListenersMutex</a>()
+<a name="l00154"></a>00154     , <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a18bced70dd394238cac7a60fa6abe851" title="A list of listening sockets that each listen on a particular address.">boundListeners</a>()
+<a name="l00155"></a>00155 {
+<a name="l00156"></a>00156 }
+<a name="l00157"></a>00157 
+<a name="l00158"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a4bc28f1cd088c9dac15a725af4a7ebab">00158</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a4bc28f1cd088c9dac15a725af4a7ebab" title="Destructor.">OpaqueServer::~OpaqueServer</a>()
+<a name="l00159"></a>00159 {
+<a name="l00160"></a>00160     <span class="comment">// Stop accepting new connections.</span>
+<a name="l00161"></a>00161     {
+<a name="l00162"></a>00162         std::unique_lock&lt;Core::Mutex&gt; lock(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#aea4127f7de6d74ee0f21c7c98e2ffea0" title="Lock to prevent concurrent modification of boundListeners.">boundListenersMutex</a>);
+<a name="l00163"></a>00163         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a18bced70dd394238cac7a60fa6abe851" title="A list of listening sockets that each listen on a particular address.">boundListeners</a>.clear();
+<a name="l00164"></a>00164     }
+<a name="l00165"></a>00165 
+<a name="l00166"></a>00166     <span class="comment">// Stop the socket objects from handling new RPCs and accessing the</span>
+<a name="l00167"></a>00167     <span class="comment">// &#39;sockets&#39; set. They may continue to process existing RPCs, though</span>
+<a name="l00168"></a>00168     <span class="comment">// idle sockets will be destroyed here.</span>
+<a name="l00169"></a>00169     {
+<a name="l00170"></a>00170         <span class="comment">// Block the event loop to operate on &#39;sockets&#39; safely.</span>
+<a name="l00171"></a>00171         <a class="code" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Event::Loop::Lock</a> lockGuard(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ab2e0da8ed3e967fc08db7cd871fbc3f9" title="The event loop that is used for non-blocking I/O.">eventLoop</a>);
+<a name="l00172"></a>00172         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a4a5da4248ff93b5d1f9726f5af0c9812" title="Every open socket is referenced here so that it can be cleaned up when this OpaqueServer is destroyed...">sockets</a>.begin(); it != <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a4a5da4248ff93b5d1f9726f5af0c9812" title="Every open socket is referenced here so that it can be cleaned up when this OpaqueServer is destroyed...">sockets</a>.end(); ++it) {
+<a name="l00173"></a>00173             std::shared_ptr&lt;SocketWithHandler&gt; socket = *it;
+<a name="l00174"></a>00174             socket-&gt;handler.server = NULL;
+<a name="l00175"></a>00175         }
+<a name="l00176"></a>00176         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a4a5da4248ff93b5d1f9726f5af0c9812" title="Every open socket is referenced here so that it can be cleaned up when this OpaqueServer is destroyed...">sockets</a>.clear();
+<a name="l00177"></a>00177     }
+<a name="l00178"></a>00178 }
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180 std::string
+<a name="l00181"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ae8b06de44eef3df7e5f0091ebcc4984e">00181</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ae8b06de44eef3df7e5f0091ebcc4984e" title="Listen on an address for new client connections.">OpaqueServer::bind</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1RPC_1_1Address.html" title="This class resolves user-friendly addresses for services into socket-level addresses.">Address</a>&amp; listenAddress)
+<a name="l00182"></a>00182 {
+<a name="l00183"></a>00183     <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">Core::StringUtil::format</a>;
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185     <span class="keywordflow">if</span> (!listenAddress.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#a23cefe87e6b3185263fca1efb12332fb" title="Return true if the sockaddr returned by getSockAddr() is valid.">isValid</a>()) {
+<a name="l00186"></a>00186         <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;Can&#39;t listen on invalid address: %s&quot;</span>,
+<a name="l00187"></a>00187                       listenAddress.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#ab6a0a36311326ceb780aa3a9bad3ac83" title="Return a string describing this Address.">toString</a>().c_str());
+<a name="l00188"></a>00188     }
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190     <span class="keywordtype">int</span> fd = socket(AF_INET, SOCK_STREAM|SOCK_CLOEXEC, 0);
+<a name="l00191"></a>00191     <span class="keywordflow">if</span> (fd &lt; 0)
+<a name="l00192"></a>00192         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not create new TCP socket&quot;</span>);
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194     <span class="keywordtype">int</span> flag = 1;
+<a name="l00195"></a>00195     <span class="keywordtype">int</span> r = setsockopt(fd, SOL_SOCKET, SO_REUSEADDR,
+<a name="l00196"></a>00196                        &amp;flag, <span class="keyword">sizeof</span>(flag));
+<a name="l00197"></a>00197     <span class="keywordflow">if</span> (r &lt; 0) {
+<a name="l00198"></a>00198         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not set SO_REUSEADDR on socket: %s&quot;</span>,
+<a name="l00199"></a>00199               strerror(errno));
+<a name="l00200"></a>00200     }
+<a name="l00201"></a>00201 
+<a name="l00202"></a>00202 
+<a name="l00203"></a>00203     r = <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#ae8b06de44eef3df7e5f0091ebcc4984e" title="Listen on an address for new client connections.">::bind</a>(fd, listenAddress.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#ae1a2ab0e38b309a67bfacfe3169cbcae" title="Return a sockaddr that may be used to connect a socket to this Address.">getSockAddr</a>(),
+<a name="l00204"></a>00204                    listenAddress.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#a35a95901abc5d978aa2a71b6a613c027" title="Return the length in bytes of the sockaddr in getSockAddr().">getSockAddrLen</a>());
+<a name="l00205"></a>00205     <span class="keywordflow">if</span> (r != 0) {
+<a name="l00206"></a>00206         std::string msg =
+<a name="l00207"></a>00207             <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;Could not bind to address %s: %s%s&quot;</span>,
+<a name="l00208"></a>00208                    listenAddress.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#ab6a0a36311326ceb780aa3a9bad3ac83" title="Return a string describing this Address.">toString</a>().c_str(),
+<a name="l00209"></a>00209                    strerror(errno),
+<a name="l00210"></a>00210                    errno == EINVAL ? <span class="stringliteral">&quot; (is the port in use?)&quot;</span> : <span class="stringliteral">&quot;&quot;</span>);
+<a name="l00211"></a>00211         r = close(fd);
+<a name="l00212"></a>00212         <span class="keywordflow">if</span> (r != 0) {
+<a name="l00213"></a>00213             <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Could not close socket that failed to bind: %s&quot;</span>,
+<a name="l00214"></a>00214                     strerror(errno));
+<a name="l00215"></a>00215         }
+<a name="l00216"></a>00216         <span class="keywordflow">return</span> msg;
+<a name="l00217"></a>00217     }
+<a name="l00218"></a>00218 
+<a name="l00219"></a>00219     <span class="comment">// Why 128? No clue. It&#39;s what libevent was setting it to.</span>
+<a name="l00220"></a>00220     r = listen(fd, 128);
+<a name="l00221"></a>00221     <span class="keywordflow">if</span> (r != 0) {
+<a name="l00222"></a>00222         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not invoke listen() on address %s: %s&quot;</span>,
+<a name="l00223"></a>00223               listenAddress.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#ab6a0a36311326ceb780aa3a9bad3ac83" title="Return a string describing this Address.">toString</a>().c_str(),
+<a name="l00224"></a>00224               strerror(errno));
+<a name="l00225"></a>00225     }
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227     std::unique_lock&lt;Core::Mutex&gt; lock(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#aea4127f7de6d74ee0f21c7c98e2ffea0" title="Lock to prevent concurrent modification of boundListeners.">boundListenersMutex</a>);
+<a name="l00228"></a>00228     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a18bced70dd394238cac7a60fa6abe851" title="A list of listening sockets that each listen on a particular address.">boundListeners</a>.emplace_back(*<span class="keyword">this</span>, fd);
+<a name="l00229"></a>00229     <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;
+<a name="l00230"></a>00230 }
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232 } <span class="comment">// namespace LogCabin::RPC</span>
+<a name="l00233"></a>00233 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

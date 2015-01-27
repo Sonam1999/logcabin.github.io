@@ -80,26 +80,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
       <li class="navelem"><a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>      </li>
-      <li class="navelem"><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html">TCPListener</a>      </li>
+      <li class="navelem"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a>      </li>
+      <li class="navelem"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html">MessageSocketHandler</a>      </li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">LogCabin::RPC::TCPListener Member List</div>  </div>
+<div class="title">LogCabin::RPC::ClientSession::MessageSocketHandler Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
-This is the complete list of members for <a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html">LogCabin::RPC::TCPListener</a>, including all inherited members.<table>
-  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#af928cc7d97ee2a168eb98824b513c79e">bind</a>(const RPC::Address &amp;listenAddress)</td><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html">LogCabin::RPC::TCPListener</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a3ba9aad2a9c01e08d7a9fa94fb522f16">boundListenerMonitors</a></td><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html">LogCabin::RPC::TCPListener</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a6a9d1cadc74f82eac737b864123c1071">boundListeners</a></td><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html">LogCabin::RPC::TCPListener</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a046933dd4839214b1753d512dbdcbd5f">eventLoop</a></td><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html">LogCabin::RPC::TCPListener</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#ab104c6a76c20e02218a7e9430a5f0cc9">handleNewConnection</a>(int socket)=0</td><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html">LogCabin::RPC::TCPListener</a></td><td><code> [pure virtual]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a6048c74f181ee110d60658178401f155">mutex</a></td><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html">LogCabin::RPC::TCPListener</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a1180342c57ed4641f975f5054756219b">operator=</a>(const TCPListener &amp;)</td><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html">LogCabin::RPC::TCPListener</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a4ab15837e81f60f0d5370731084022de">TCPListener</a>(Event::Loop &amp;eventLoop)</td><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html">LogCabin::RPC::TCPListener</a></td><td><code> [explicit]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a057b4fb2eb8ad37d1194cb84ae5cc983">TCPListener</a>(const TCPListener &amp;)</td><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html">LogCabin::RPC::TCPListener</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html#a7ff9d078d2d7f00d31a0c00c51e1c8f2">~TCPListener</a>()</td><td><a class="el" href="classLogCabin_1_1RPC_1_1TCPListener.html">LogCabin::RPC::TCPListener</a></td><td><code> [virtual]</code></td></tr>
+This is the complete list of members for <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html">LogCabin::RPC::ClientSession::MessageSocketHandler</a>, including all inherited members.<table>
+  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html#a4ca81acb078e9763706cd2c9130ae83e">handleDisconnect</a>()</td><td><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html">LogCabin::RPC::ClientSession::MessageSocketHandler</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html#a3c54737a0cf1ccd188ce3db04ff6ab46">handleReceivedMessage</a>(MessageId messageId, Buffer message)</td><td><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html">LogCabin::RPC::ClientSession::MessageSocketHandler</a></td><td><code> [virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html#ad5bd8faa628b0beaeca6560e6908fb1c">MessageId</a> typedef</td><td><a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html">LogCabin::RPC::MessageSocket::Handler</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html#ae678f7721ccde722d6995ca5751cb202">MessageSocketHandler</a>(ClientSession &amp;clientSession)</td><td><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html">LogCabin::RPC::ClientSession::MessageSocketHandler</a></td><td><code> [explicit]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html#a1e97d97a32b1d1f819f90ddc089bdd4f">session</a></td><td><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html">LogCabin::RPC::ClientSession::MessageSocketHandler</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html#aa1fab1f5b971e48bed1af1d4bb3f123a">~Handler</a>()</td><td><a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html">LogCabin::RPC::MessageSocket::Handler</a></td><td><code> [inline, virtual]</code></td></tr>
 </table></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

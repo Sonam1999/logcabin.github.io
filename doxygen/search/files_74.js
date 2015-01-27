@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['tcplistener_2ecc',['TCPListener.cc',['../TCPListener_8cc.html',1,'']]],
-  ['tcplistener_2eh',['TCPListener.h',['../TCPListener_8h.html',1,'']]],
   ['threaddispatchservice_2ecc',['ThreadDispatchService.cc',['../ThreadDispatchService_8cc.html',1,'']]],
   ['threaddispatchservice_2eh',['ThreadDispatchService.h',['../ThreadDispatchService_8h.html',1,'']]],
   ['threadid_2ecc',['ThreadId.cc',['../ThreadId_8cc.html',1,'']]],

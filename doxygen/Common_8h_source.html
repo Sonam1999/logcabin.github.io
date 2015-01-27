@@ -113,37 +113,43 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00031"></a><a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common.html#a22c6438e512e84fa30d19c2fad7eba9caa9728f693e5b04009f08df50d73e9662">00031</a> <span class="keyword">enum</span> { <a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common.html#a22c6438e512e84fa30d19c2fad7eba9caa9728f693e5b04009f08df50d73e9662">DEFAULT_PORT</a> = 61023 };
 <a name="l00032"></a>00032 <span class="comment"></span>
 <a name="l00033"></a>00033 <span class="comment">/**</span>
-<a name="l00034"></a>00034 <span class="comment"> * The maximum number of bytes per RPC request or response, including these</span>
-<a name="l00035"></a>00035 <span class="comment"> * headers. This is set to slightly over 1 MB because the maximum size of log</span>
-<a name="l00036"></a>00036 <span class="comment"> * entries is 1 MB.</span>
-<a name="l00037"></a>00037 <span class="comment"> */</span>
-<a name="l00038"></a><a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a04fad61d856722e9a6d32f23980b332f">00038</a> <span class="keyword">enum</span> { <a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a04fad61d856722e9a6d32f23980b332f">MAX_MESSAGE_LENGTH</a> = 1024 + 1024 * 1024 };
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040 <span class="comment">// This is not an enum class because it is usually used as a uint16_t;</span>
-<a name="l00041"></a>00041 <span class="comment">// enum class is too strict about conversions.</span>
-<a name="l00042"></a><a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html">00042</a> <span class="keyword">namespace </span>ServiceId {
-<a name="l00043"></a>00043 <span class="keyword">enum</span> {
-<a name="l00044"></a>00044 <span class="comment"></span>
-<a name="l00045"></a>00045 <span class="comment">    /**</span>
-<a name="l00046"></a>00046 <span class="comment">     * The service that LogCabin client applications communicate with via the</span>
-<a name="l00047"></a>00047 <span class="comment">     * client library.</span>
-<a name="l00048"></a>00048 <span class="comment">     */</span>
-<a name="l00049"></a><a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html#afeab568bfaf87649e448469afff30742ad973d65d1ac4d93ed82d4ab66d5548ce">00049</a>     <a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html#afeab568bfaf87649e448469afff30742ad973d65d1ac4d93ed82d4ab66d5548ce" title="The service that LogCabin client applications communicate with via the client library.">CLIENT_SERVICE</a> = 1,
+<a name="l00034"></a>00034 <span class="comment"> * A MessageSocket::MessageID reserved for ping messages that are  used to</span>
+<a name="l00035"></a>00035 <span class="comment"> * check the server&#39;s liveness. No real RPC will ever be assigned this ID.</span>
+<a name="l00036"></a>00036 <span class="comment"> */</span>
+<a name="l00037"></a><a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a">00037</a> <span class="keyword">enum</span> { <a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a">PING_MESSAGE_ID</a> = 0 };
+<a name="l00038"></a>00038 <span class="comment"></span>
+<a name="l00039"></a>00039 <span class="comment">/**</span>
+<a name="l00040"></a>00040 <span class="comment"> * The maximum number of bytes per RPC request or response, including these</span>
+<a name="l00041"></a>00041 <span class="comment"> * headers. This is set to slightly over 1 MB because the maximum size of log</span>
+<a name="l00042"></a>00042 <span class="comment"> * entries is 1 MB.</span>
+<a name="l00043"></a>00043 <span class="comment"> */</span>
+<a name="l00044"></a><a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa6228f646abedfa36fd7716cb7228570a04fad61d856722e9a6d32f23980b332f">00044</a> <span class="keyword">enum</span> { <a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa6228f646abedfa36fd7716cb7228570a04fad61d856722e9a6d32f23980b332f">MAX_MESSAGE_LENGTH</a> = 1024 + 1024 * 1024 };
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="comment">// This is not an enum class because it is usually used as a uint16_t;</span>
+<a name="l00047"></a>00047 <span class="comment">// enum class is too strict about conversions.</span>
+<a name="l00048"></a><a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html">00048</a> <span class="keyword">namespace </span>ServiceId {
+<a name="l00049"></a>00049 <span class="keyword">enum</span> {
 <a name="l00050"></a>00050 <span class="comment"></span>
 <a name="l00051"></a>00051 <span class="comment">    /**</span>
-<a name="l00052"></a>00052 <span class="comment">     * The service that LogCabin servers use to communicate with each other.</span>
-<a name="l00053"></a>00053 <span class="comment">     * The consensus protocol runs over this service.</span>
+<a name="l00052"></a>00052 <span class="comment">     * The service that LogCabin client applications communicate with via the</span>
+<a name="l00053"></a>00053 <span class="comment">     * client library.</span>
 <a name="l00054"></a>00054 <span class="comment">     */</span>
-<a name="l00055"></a><a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html#afeab568bfaf87649e448469afff30742ae4c9c4ef8aa160c1ecef9fa5b27fc955">00055</a>     <a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html#afeab568bfaf87649e448469afff30742ae4c9c4ef8aa160c1ecef9fa5b27fc955" title="The service that LogCabin servers use to communicate with each other.">RAFT_SERVICE</a> = 2,
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057 };
-<a name="l00058"></a>00058 }
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 } <span class="comment">// namespace LogCabin::Protocol::Common</span>
-<a name="l00061"></a>00061 } <span class="comment">// namespace LogCabin::Protocol</span>
-<a name="l00062"></a>00062 } <span class="comment">// namespace LogCabin</span>
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064 <span class="preprocessor">#endif // LOGCABIN_PROTOCOL_COMMON_H</span>
+<a name="l00055"></a><a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html#ae8d017d5dec1044c245d7073d70fc2caad973d65d1ac4d93ed82d4ab66d5548ce">00055</a>     <a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html#ae8d017d5dec1044c245d7073d70fc2caad973d65d1ac4d93ed82d4ab66d5548ce" title="The service that LogCabin client applications communicate with via the client library.">CLIENT_SERVICE</a> = 1,
+<a name="l00056"></a>00056 <span class="comment"></span>
+<a name="l00057"></a>00057 <span class="comment">    /**</span>
+<a name="l00058"></a>00058 <span class="comment">     * The service that LogCabin servers use to communicate with each other.</span>
+<a name="l00059"></a>00059 <span class="comment">     * The consensus protocol runs over this service.</span>
+<a name="l00060"></a>00060 <span class="comment">     */</span>
+<a name="l00061"></a><a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html#ae8d017d5dec1044c245d7073d70fc2caae4c9c4ef8aa160c1ecef9fa5b27fc955">00061</a>     <a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html#ae8d017d5dec1044c245d7073d70fc2caae4c9c4ef8aa160c1ecef9fa5b27fc955" title="The service that LogCabin servers use to communicate with each other.">RAFT_SERVICE</a> = 2,
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 };
+<a name="l00064"></a>00064 }
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066 } <span class="comment">// namespace LogCabin::Protocol::Common</span>
+<a name="l00067"></a>00067 } <span class="comment">// namespace LogCabin::Protocol</span>
+<a name="l00068"></a>00068 } <span class="comment">// namespace LogCabin</span>
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="preprocessor">#endif // LOGCABIN_PROTOCOL_COMMON_H</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

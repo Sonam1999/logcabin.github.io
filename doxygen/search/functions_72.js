@@ -49,6 +49,7 @@ var searchData=
   ['restoreinvariants',['restoreInvariants',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#a4e4d61fe51a62f8293d4a5667d68a1cc',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],
   ['result',['Result',['../structLogCabin_1_1Client_1_1Result.html#ac461a26211eb5bf8317c18846094b161',1,'LogCabin::Client::Result::Result()'],['../structLogCabin_1_1Tree_1_1Result.html#add38cdb362272b6e72167e6f1285b58b',1,'LogCabin::Tree::Result::Result()']]],
   ['returnerror',['returnError',['../classLogCabin_1_1RPC_1_1ServerRPC.html#ac817a925ce3cbd81f4d856586906555b',1,'LogCabin::RPC::ServerRPC']]],
+  ['rpchandler',['RPCHandler',['../classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html#a20e1a2fc2d8dd1d673748e5ef8471dbf',1,'LogCabin::RPC::Server::RPCHandler']]],
   ['rtrim',['rtrim',['../namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a2389e943ca00d0e4d022f160acbeceba',1,'LogCabin::Core::anonymous_namespace{Config.cc}']]],
   ['run',['run',['../classLogCabin_1_1Server_1_1Globals.html#a7110e6c745d942fddad758a7c9a42e9f',1,'LogCabin::Server::Globals']]],
   ['runarbitrarycode',['runArbitraryCode',['../classLogCabin_1_1RPC_1_1ServiceMock.html#af49ab45fb99f1f437fff31972b032832',1,'LogCabin::RPC::ServiceMock']]],

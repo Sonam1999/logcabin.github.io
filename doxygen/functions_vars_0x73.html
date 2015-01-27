@@ -122,7 +122,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>self
 : <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#af5f20f631eedc7dfed6815749d73c006">LogCabin::RPC::ClientSession</a>
-, <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html#abf3cc4495b920975a609fa005674c89e">LogCabin::RPC::OpaqueServer::ServerMessageSocket</a>
+, <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#a119717d01d4388ac366728825e02de84">LogCabin::RPC::OpaqueServer::MessageSocketHandler</a>
 </li>
 <li>sendSocket
 : <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a6b0b0f248f03624e5e7873b4ebf43970">LogCabin::RPC::MessageSocket</a>
@@ -131,8 +131,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a7ed2f3fbc5e2815b1e34065f50778945">LogCabin::RPC::MessageSocket</a>
 </li>
 <li>server
-: <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerTCPListener.html#ae12be062db09be745715bee807ea765b">LogCabin::RPC::OpaqueServer::ServerTCPListener</a>
-, <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html#a28d0de09da902f1ef5ffefc37a7058d4">LogCabin::RPC::OpaqueServer::ServerMessageSocket</a>
+: <a class="el" href="classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html#ac3a93fec5566318a6d595ad663929f12">LogCabin::RPC::Server::RPCHandler</a>
+, <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#a81c39a6fb4ac54d8484ad032c393c503">LogCabin::RPC::OpaqueServer::MessageSocketHandler</a>
+, <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1BoundListener.html#a0f95e747e7abc35722097c1246d4c215">LogCabin::RPC::OpaqueServer::BoundListener</a>
 </li>
 <li>serverAddress
 : <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0ea9d89817519010373852ee05f7af18">LogCabin::Server::RaftConsensusInternal::RaftConsensus</a>
@@ -148,9 +149,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration_1_1SimpleConfiguration.html#a9c4f16bc352add69d9094f0405c98b3a">LogCabin::Server::RaftConsensusInternal::Configuration::SimpleConfiguration</a>
 </li>
 <li>serverStats
-: <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#aee6a4b72617971d63ce7382c6f057d83">LogCabin::Server::ServerStats::SignalHandler</a>
+: <a class="el" href="classLogCabin_1_1Server_1_1Globals.html#a7dc92bf35a9d8d455210e5c497f8a714">LogCabin::Server::Globals</a>
+, <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#aee6a4b72617971d63ce7382c6f057d83">LogCabin::Server::ServerStats::SignalHandler</a>
 , <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#a997117de4c0076c61c03f5608d7c213d">LogCabin::Server::ServerStats::TimerHandler</a>
-, <a class="el" href="classLogCabin_1_1Server_1_1Globals.html#a7dc92bf35a9d8d455210e5c497f8a714">LogCabin::Server::Globals</a>
 </li>
 <li>service
 : <a class="el" href="structLogCabin_1_1RPC_1_1Protocol_1_1RequestHeaderVersion1.html#a2d17635039785e44123bf7f87820b34b">LogCabin::RPC::Protocol::RequestHeaderVersion1</a>
@@ -164,7 +165,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ae7287164c85593c1e9bb50294d38e46d">LogCabin::RPC::ServerRPC</a>
 </li>
 <li>session
-: <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1ClientMessageSocket.html#a3c5c88bdab1099551513203ea0cc67c0">LogCabin::RPC::ClientSession::ClientMessageSocket</a>
+: <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html#a1e97d97a32b1d1f819f90ddc089bdd4f">LogCabin::RPC::ClientSession::MessageSocketHandler</a>
 , <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html#a82d0605c93c2de793821564c21cfcd11">LogCabin::RPC::ClientSession::Timer</a>
 , <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#ab2cd86f3ba611a71befd2890dc8f8018">LogCabin::RPC::OpaqueClientRPC</a>
 , <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a16744a8ac76825923b7bd86625aa26c8">LogCabin::Server::RaftConsensusInternal::Peer</a>
@@ -244,11 +245,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>snapshotWriter
 : <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1">LogCabin::Server::RaftConsensusInternal::RaftConsensus</a>
 </li>
-<li>sockets
-: <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a7a1d2a9cc624a8562907fd2535374c66">LogCabin::RPC::OpaqueServer</a>
+<li>socket
+: <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a90d1a6a71ff0914310921ca1c5238a5e">LogCabin::RPC::OpaqueServerRPC</a>
 </li>
-<li>socketsIndex
-: <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1ServerMessageSocket.html#a4b52cffddde87f46b935a0d06c9b14a7">LogCabin::RPC::OpaqueServer::ServerMessageSocket</a>
+<li>sockets
+: <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a4a5da4248ff93b5d1f9726f5af0c9812">LogCabin::RPC::OpaqueServer</a>
 </li>
 <li>SOFT_RPC_SIZE_LIMIT
 : <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad708ed9c08b1e19230adee467408989e">LogCabin::Server::RaftConsensusInternal::RaftConsensus</a>
@@ -257,8 +258,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#aeb407e25f37b691bf104ed20c76fd46b">LogCabin::Storage::SnapshotFile::Writer</a>
 </li>
 <li>startElectionAt
-: <a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Invariants_1_1ConsensusSnapshot.html#a135e7a50e53e7cbefc5aa8048ddfaeda">LogCabin::Server::RaftConsensusInternal::Invariants::ConsensusSnapshot</a>
-, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6a6e253bff399e77713f62056613ba21">LogCabin::Server::RaftConsensusInternal::RaftConsensus</a>
+: <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6a6e253bff399e77713f62056613ba21">LogCabin::Server::RaftConsensusInternal::RaftConsensus</a>
+, <a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Invariants_1_1ConsensusSnapshot.html#a135e7a50e53e7cbefc5aa8048ddfaeda">LogCabin::Server::RaftConsensusInternal::Invariants::ConsensusSnapshot</a>
 </li>
 <li>startIndex
 : <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1">LogCabin::Storage::MemoryLog</a>
@@ -267,9 +268,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classLogCabin_1_1Client_1_1Backoff.html#ad8a75c7899b1bab2957e8c213786de5f">LogCabin::Client::Backoff</a>
 </li>
 <li>state
-: <a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Invariants_1_1ConsensusSnapshot.html#abc8fbef13f53f2562bcdbfff934acf40">LogCabin::Server::RaftConsensusInternal::Invariants::ConsensusSnapshot</a>
+: <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a34d943bf836bb3f45633f9ec7b7c667a">LogCabin::Server::RaftConsensusInternal::RaftConsensus</a>
+, <a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Invariants_1_1ConsensusSnapshot.html#abc8fbef13f53f2562bcdbfff934acf40">LogCabin::Server::RaftConsensusInternal::Invariants::ConsensusSnapshot</a>
 , <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#abba01502b5eb5e710d3bdfb57d79dde9">LogCabin::Server::RaftConsensusInternal::Configuration</a>
-, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a34d943bf836bb3f45633f9ec7b7c667a">LogCabin::Server::RaftConsensusInternal::RaftConsensus</a>
 </li>
 <li>statebuf
 : <a class="el" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#aaf6849886edb8317196d7559b0da0192">LogCabin::Core::Random::anonymous_namespace{Random.cc}::RandomState</a>
@@ -287,12 +288,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a1bba9f0d46774de2eeceb8e06d792367">LogCabin::Server::ServerStats</a>
 </li>
 <li>status
-: <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#acaa61e33f2ff621c4973cca566883f35">LogCabin::RPC::OpaqueClientRPC</a>
-, <a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a8d1359da3e668d4eaab3a4ac80478317">LogCabin::Client::ConfigurationResult</a>
-, <a class="el" href="structLogCabin_1_1Tree_1_1Result.html#a522ffe0e108c6d1d0b2e05b571906bdf">LogCabin::Tree::Result</a>
-, <a class="el" href="structLogCabin_1_1RPC_1_1Protocol_1_1ResponseHeaderPrefix.html#a06037b337b514c8e3277a74e95d1c6dd">LogCabin::RPC::Protocol::ResponseHeaderPrefix</a>
-, <a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#a2af56448a86a5708d84b377584b82a04">LogCabin::RPC::ClientSession::Response</a>
+: <a class="el" href="structLogCabin_1_1RPC_1_1Protocol_1_1ResponseHeaderPrefix.html#a06037b337b514c8e3277a74e95d1c6dd">LogCabin::RPC::Protocol::ResponseHeaderPrefix</a>
 , <a class="el" href="structLogCabin_1_1Client_1_1Result.html#afe2a6a0e2b5b95983b6541d95f36d384">LogCabin::Client::Result</a>
+, <a class="el" href="structLogCabin_1_1Tree_1_1Result.html#a522ffe0e108c6d1d0b2e05b571906bdf">LogCabin::Tree::Result</a>
+, <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#acaa61e33f2ff621c4973cca566883f35">LogCabin::RPC::OpaqueClientRPC</a>
+, <a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#a2af56448a86a5708d84b377584b82a04">LogCabin::RPC::ClientSession::Response</a>
+, <a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a8d1359da3e668d4eaab3a4ac80478317">LogCabin::Client::ConfigurationResult</a>
 </li>
 <li>steadyNow
 : <a class="el" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a53ec379672ab0d132ea80e9fe8fcfd80">LogCabin::Core::Time::SteadyTimeConverter</a>

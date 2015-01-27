@@ -77,17 +77,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
 <div class="title">RPC/OpaqueServer.cc File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;errno.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
+<code>#include &lt;sys/epoll.h&gt;</code><br/>
+<code>#include &lt;sys/socket.h&gt;</code><br/>
+<code>#include &lt;sys/types.h&gt;</code><br/>
 <code>#include &lt;unistd.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="Debug_8h_source.html">Core/Debug.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Loop_8h_source.html">Event/Loop.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="Common_8h_source.html">Protocol/Common.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="Address_8h_source.html">RPC/Address.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="OpaqueServer_8h_source.html">RPC/OpaqueServer.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="OpaqueServerRPC_8h_source.html">RPC/OpaqueServerRPC.h</a>&quot;</code><br/>
 </div>
@@ -97,37 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1RPC.html">LogCabin::RPC</a></td></tr>
-<tr><td colspan="2"><h2><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="OpaqueServer_8cc.html#abed82baf7f470b522273a3e37c24c600a2c8da20e8b77c955c65add043613b032">PING_MESSAGE_ID</a>
- }</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A message ID reserved for ping messages used to check the server's liveness.  <a href="OpaqueServer_8cc.html#abed82baf7f470b522273a3e37c24c600">More...</a><br/></td></tr>
 </table>
-<hr/><h2>Enumeration Type Documentation</h2>
-<a class="anchor" id="abed82baf7f470b522273a3e37c24c600"></a><!-- doxytag: member="OpaqueServer.cc::@8" ref="abed82baf7f470b522273a3e37c24c600" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">anonymous enum</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>A message ID reserved for ping messages used to check the server's liveness. </p>
-<p>No real RPC will ever be assigned this ID. </p>
-<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em><a class="anchor" id="abed82baf7f470b522273a3e37c24c600a2c8da20e8b77c955c65add043613b032"></a><!-- doxytag: member="PING_MESSAGE_ID" ref="abed82baf7f470b522273a3e37c24c600a2c8da20e8b77c955c65add043613b032" args="" -->PING_MESSAGE_ID</em>&nbsp;</td><td>
-</td></tr>
-</table>
-</dd>
-</dl>
-
-<p>Definition at line <a class="el" href="OpaqueServer_8cc_source.html#l00029">29</a> of file <a class="el" href="OpaqueServer_8cc_source.html">OpaqueServer.cc</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
