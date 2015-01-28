@@ -2428,74 +2428,75 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02346"></a>02346     uint64_t epoch = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#af6468e2726cf9c29c7442c51148ab102" title="A logical clock used to confirm leadership and connectivity.">currentEpoch</a>;
 <a name="l02347"></a>02347     <span class="comment">// schedule a heartbeat now so that this returns quickly</span>
 <a name="l02348"></a>02348     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aab8ccee6bc732959896dd2549222d6b6" title="Defines the servers that are part of the cluster.">configuration</a>-&gt;forEach(&amp;<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a33c58fbb1b5f1b39cfd9cd941ab2b153" title="Make the next heartbeat RPC happen soon.">Server::scheduleHeartbeat</a>);
-<a name="l02349"></a>02349     <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
-<a name="l02350"></a>02350         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac598c836150cf09441c10c1f9e25fee4" title="Set to true when this class is about to be destroyed.">exiting</a> || <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a34d943bf836bb3f45633f9ec7b7c667a" title="The server&#39;s current role in the cluster (follower, candidate, or leader).">state</a> != State::LEADER)
-<a name="l02351"></a>02351             <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l02352"></a>02352         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aab8ccee6bc732959896dd2549222d6b6" title="Defines the servers that are part of the cluster.">configuration</a>-&gt;quorumMin(&amp;<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a78554a4aaedbe99eca7dbb652b0ba355" title="Return the latest time this Server acknowledged our current term.">Server::getLastAckEpoch</a>) &gt;= epoch) {
-<a name="l02353"></a>02353             <span class="comment">// So we know we&#39;re the current leader, but do we have an</span>
-<a name="l02354"></a>02354             <span class="comment">// up-to-date commitIndex yet? What we&#39;d like to check is whether</span>
-<a name="l02355"></a>02355             <span class="comment">// the entry&#39;s term at commitIndex matches our currentTerm, but</span>
-<a name="l02356"></a>02356             <span class="comment">// snapshots mean that we may not have the entry in our log. Since</span>
-<a name="l02357"></a>02357             <span class="comment">// commitIndex &gt;= lastSnapshotIndex, we split into two cases:</span>
-<a name="l02358"></a>02358             uint64_t commitTerm;
-<a name="l02359"></a>02359             <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> == <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a68a556c556f81723b3eed67e6c3a7577" title="The latest good snapshot covers entries 1 through &#39;lastSnapshotIndex&#39; (inclusive).">lastSnapshotIndex</a>) {
-<a name="l02360"></a>02360                 commitTerm = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#abd196740be4fee2d3067c6048420aa3d" title="The term of the last entry covered by the latest good snapshot, or 0 if we have no snapshot...">lastSnapshotTerm</a>;
-<a name="l02361"></a>02361             } <span class="keywordflow">else</span> {
-<a name="l02362"></a>02362                 assert(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> &gt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a68a556c556f81723b3eed67e6c3a7577" title="The latest good snapshot covers entries 1 through &#39;lastSnapshotIndex&#39; (inclusive).">lastSnapshotIndex</a>);
-<a name="l02363"></a>02363                 assert(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> &gt;= <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLogStartIndex());
-<a name="l02364"></a>02364                 assert(commitIndex &lt;= log-&gt;getLastLogIndex());
-<a name="l02365"></a>02365                 commitTerm = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getEntry(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a>).term();
-<a name="l02366"></a>02366             }
-<a name="l02367"></a>02367             <span class="keywordflow">if</span> (commitTerm == <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac77ce12e038db59e7e3a5543ffcb4e7c" title="The latest term this server has seen.">currentTerm</a>)
-<a name="l02368"></a>02368                 <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l02369"></a>02369         }
-<a name="l02370"></a>02370         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6f93f73520a919d45b19e96968db9cca" title="Notified when basically anything changes.">stateChanged</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">wait</a>(lockGuard);
-<a name="l02371"></a>02371     }
-<a name="l02372"></a>02372 }
-<a name="l02373"></a>02373 
-<a name="l02374"></a>02374 std::ostream&amp;
-<a name="l02375"></a><a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a6158f1818d5c2ab46e066acf310a4d68">02375</a> <a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#ae6c452fe910faa2e4aee2efaeaaf0fd3">operator&lt;&lt;</a>(std::ostream&amp; os, <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0615edf4bb111f046846a730452b34bf">RaftConsensus::ClientResult</a> clientResult)
-<a name="l02376"></a>02376 {
-<a name="l02377"></a>02377     <span class="keyword">typedef</span> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0615edf4bb111f046846a730452b34bf">RaftConsensus::ClientResult</a> ClientResult;
-<a name="l02378"></a>02378     <span class="keywordflow">switch</span> (clientResult) {
-<a name="l02379"></a>02379         <span class="keywordflow">case</span> ClientResult::SUCCESS:
-<a name="l02380"></a>02380             os &lt;&lt; <span class="stringliteral">&quot;ClientResult::SUCCESS&quot;</span>;
-<a name="l02381"></a>02381             <span class="keywordflow">break</span>;
-<a name="l02382"></a>02382         <span class="keywordflow">case</span> ClientResult::FAIL:
-<a name="l02383"></a>02383             os &lt;&lt; <span class="stringliteral">&quot;ClientResult::FAIL&quot;</span>;
-<a name="l02384"></a>02384             <span class="keywordflow">break</span>;
-<a name="l02385"></a>02385         <span class="keywordflow">case</span> ClientResult::RETRY:
-<a name="l02386"></a>02386             os &lt;&lt; <span class="stringliteral">&quot;ClientResult::RETRY&quot;</span>;
-<a name="l02387"></a>02387             <span class="keywordflow">break</span>;
-<a name="l02388"></a>02388         <span class="keywordflow">case</span> ClientResult::NOT_LEADER:
-<a name="l02389"></a>02389             os &lt;&lt; <span class="stringliteral">&quot;ClientResult::NOT_LEADER&quot;</span>;
-<a name="l02390"></a>02390             <span class="keywordflow">break</span>;
-<a name="l02391"></a>02391     }
-<a name="l02392"></a>02392     <span class="keywordflow">return</span> os;
-<a name="l02393"></a>02393 }
-<a name="l02394"></a>02394 
-<a name="l02395"></a>02395 std::ostream&amp;
-<a name="l02396"></a><a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a70a514eb807c30dcb85f4ff6c20f21d4">02396</a> <a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#ae6c452fe910faa2e4aee2efaeaaf0fd3">operator&lt;&lt;</a>(std::ostream&amp; os, <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a14a6602e14d73dc067e2b9de50c1711c" title="See state.">RaftConsensus::State</a> state)
-<a name="l02397"></a>02397 {
-<a name="l02398"></a>02398     <span class="keyword">typedef</span> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a14a6602e14d73dc067e2b9de50c1711c" title="See state.">RaftConsensus::State</a> State;
-<a name="l02399"></a>02399     <span class="keywordflow">switch</span> (state) {
-<a name="l02400"></a>02400         <span class="keywordflow">case</span> State::FOLLOWER:
-<a name="l02401"></a>02401             os &lt;&lt; <span class="stringliteral">&quot;State::FOLLOWER&quot;</span>;
-<a name="l02402"></a>02402             <span class="keywordflow">break</span>;
-<a name="l02403"></a>02403         <span class="keywordflow">case</span> State::CANDIDATE:
-<a name="l02404"></a>02404             os &lt;&lt; <span class="stringliteral">&quot;State::CANDIDATE&quot;</span>;
-<a name="l02405"></a>02405             <span class="keywordflow">break</span>;
-<a name="l02406"></a>02406         <span class="keywordflow">case</span> State::LEADER:
-<a name="l02407"></a>02407             os &lt;&lt; <span class="stringliteral">&quot;State::LEADER&quot;</span>;
-<a name="l02408"></a>02408             <span class="keywordflow">break</span>;
-<a name="l02409"></a>02409     }
-<a name="l02410"></a>02410     <span class="keywordflow">return</span> os;
-<a name="l02411"></a>02411 }
-<a name="l02412"></a>02412 
-<a name="l02413"></a>02413 } <span class="comment">// namespace RaftConsensusInternal</span>
-<a name="l02414"></a>02414 
-<a name="l02415"></a>02415 } <span class="comment">// namespace LogCabin::Server</span>
-<a name="l02416"></a>02416 } <span class="comment">// namespace LogCabin</span>
+<a name="l02349"></a>02349     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6f93f73520a919d45b19e96968db9cca" title="Notified when basically anything changes.">stateChanged</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>();
+<a name="l02350"></a>02350     <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
+<a name="l02351"></a>02351         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac598c836150cf09441c10c1f9e25fee4" title="Set to true when this class is about to be destroyed.">exiting</a> || <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a34d943bf836bb3f45633f9ec7b7c667a" title="The server&#39;s current role in the cluster (follower, candidate, or leader).">state</a> != State::LEADER)
+<a name="l02352"></a>02352             <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l02353"></a>02353         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aab8ccee6bc732959896dd2549222d6b6" title="Defines the servers that are part of the cluster.">configuration</a>-&gt;quorumMin(&amp;<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a78554a4aaedbe99eca7dbb652b0ba355" title="Return the latest time this Server acknowledged our current term.">Server::getLastAckEpoch</a>) &gt;= epoch) {
+<a name="l02354"></a>02354             <span class="comment">// So we know we&#39;re the current leader, but do we have an</span>
+<a name="l02355"></a>02355             <span class="comment">// up-to-date commitIndex yet? What we&#39;d like to check is whether</span>
+<a name="l02356"></a>02356             <span class="comment">// the entry&#39;s term at commitIndex matches our currentTerm, but</span>
+<a name="l02357"></a>02357             <span class="comment">// snapshots mean that we may not have the entry in our log. Since</span>
+<a name="l02358"></a>02358             <span class="comment">// commitIndex &gt;= lastSnapshotIndex, we split into two cases:</span>
+<a name="l02359"></a>02359             uint64_t commitTerm;
+<a name="l02360"></a>02360             <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> == <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a68a556c556f81723b3eed67e6c3a7577" title="The latest good snapshot covers entries 1 through &#39;lastSnapshotIndex&#39; (inclusive).">lastSnapshotIndex</a>) {
+<a name="l02361"></a>02361                 commitTerm = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#abd196740be4fee2d3067c6048420aa3d" title="The term of the last entry covered by the latest good snapshot, or 0 if we have no snapshot...">lastSnapshotTerm</a>;
+<a name="l02362"></a>02362             } <span class="keywordflow">else</span> {
+<a name="l02363"></a>02363                 assert(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> &gt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a68a556c556f81723b3eed67e6c3a7577" title="The latest good snapshot covers entries 1 through &#39;lastSnapshotIndex&#39; (inclusive).">lastSnapshotIndex</a>);
+<a name="l02364"></a>02364                 assert(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> &gt;= <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLogStartIndex());
+<a name="l02365"></a>02365                 assert(commitIndex &lt;= log-&gt;getLastLogIndex());
+<a name="l02366"></a>02366                 commitTerm = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getEntry(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a>).term();
+<a name="l02367"></a>02367             }
+<a name="l02368"></a>02368             <span class="keywordflow">if</span> (commitTerm == <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac77ce12e038db59e7e3a5543ffcb4e7c" title="The latest term this server has seen.">currentTerm</a>)
+<a name="l02369"></a>02369                 <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l02370"></a>02370         }
+<a name="l02371"></a>02371         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6f93f73520a919d45b19e96968db9cca" title="Notified when basically anything changes.">stateChanged</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">wait</a>(lockGuard);
+<a name="l02372"></a>02372     }
+<a name="l02373"></a>02373 }
+<a name="l02374"></a>02374 
+<a name="l02375"></a>02375 std::ostream&amp;
+<a name="l02376"></a><a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a6158f1818d5c2ab46e066acf310a4d68">02376</a> <a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#ae6c452fe910faa2e4aee2efaeaaf0fd3">operator&lt;&lt;</a>(std::ostream&amp; os, <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0615edf4bb111f046846a730452b34bf">RaftConsensus::ClientResult</a> clientResult)
+<a name="l02377"></a>02377 {
+<a name="l02378"></a>02378     <span class="keyword">typedef</span> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0615edf4bb111f046846a730452b34bf">RaftConsensus::ClientResult</a> ClientResult;
+<a name="l02379"></a>02379     <span class="keywordflow">switch</span> (clientResult) {
+<a name="l02380"></a>02380         <span class="keywordflow">case</span> ClientResult::SUCCESS:
+<a name="l02381"></a>02381             os &lt;&lt; <span class="stringliteral">&quot;ClientResult::SUCCESS&quot;</span>;
+<a name="l02382"></a>02382             <span class="keywordflow">break</span>;
+<a name="l02383"></a>02383         <span class="keywordflow">case</span> ClientResult::FAIL:
+<a name="l02384"></a>02384             os &lt;&lt; <span class="stringliteral">&quot;ClientResult::FAIL&quot;</span>;
+<a name="l02385"></a>02385             <span class="keywordflow">break</span>;
+<a name="l02386"></a>02386         <span class="keywordflow">case</span> ClientResult::RETRY:
+<a name="l02387"></a>02387             os &lt;&lt; <span class="stringliteral">&quot;ClientResult::RETRY&quot;</span>;
+<a name="l02388"></a>02388             <span class="keywordflow">break</span>;
+<a name="l02389"></a>02389         <span class="keywordflow">case</span> ClientResult::NOT_LEADER:
+<a name="l02390"></a>02390             os &lt;&lt; <span class="stringliteral">&quot;ClientResult::NOT_LEADER&quot;</span>;
+<a name="l02391"></a>02391             <span class="keywordflow">break</span>;
+<a name="l02392"></a>02392     }
+<a name="l02393"></a>02393     <span class="keywordflow">return</span> os;
+<a name="l02394"></a>02394 }
+<a name="l02395"></a>02395 
+<a name="l02396"></a>02396 std::ostream&amp;
+<a name="l02397"></a><a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a70a514eb807c30dcb85f4ff6c20f21d4">02397</a> <a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#ae6c452fe910faa2e4aee2efaeaaf0fd3">operator&lt;&lt;</a>(std::ostream&amp; os, <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a14a6602e14d73dc067e2b9de50c1711c" title="See state.">RaftConsensus::State</a> state)
+<a name="l02398"></a>02398 {
+<a name="l02399"></a>02399     <span class="keyword">typedef</span> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a14a6602e14d73dc067e2b9de50c1711c" title="See state.">RaftConsensus::State</a> State;
+<a name="l02400"></a>02400     <span class="keywordflow">switch</span> (state) {
+<a name="l02401"></a>02401         <span class="keywordflow">case</span> State::FOLLOWER:
+<a name="l02402"></a>02402             os &lt;&lt; <span class="stringliteral">&quot;State::FOLLOWER&quot;</span>;
+<a name="l02403"></a>02403             <span class="keywordflow">break</span>;
+<a name="l02404"></a>02404         <span class="keywordflow">case</span> State::CANDIDATE:
+<a name="l02405"></a>02405             os &lt;&lt; <span class="stringliteral">&quot;State::CANDIDATE&quot;</span>;
+<a name="l02406"></a>02406             <span class="keywordflow">break</span>;
+<a name="l02407"></a>02407         <span class="keywordflow">case</span> State::LEADER:
+<a name="l02408"></a>02408             os &lt;&lt; <span class="stringliteral">&quot;State::LEADER&quot;</span>;
+<a name="l02409"></a>02409             <span class="keywordflow">break</span>;
+<a name="l02410"></a>02410     }
+<a name="l02411"></a>02411     <span class="keywordflow">return</span> os;
+<a name="l02412"></a>02412 }
+<a name="l02413"></a>02413 
+<a name="l02414"></a>02414 } <span class="comment">// namespace RaftConsensusInternal</span>
+<a name="l02415"></a>02415 
+<a name="l02416"></a>02416 } <span class="comment">// namespace LogCabin::Server</span>
+<a name="l02417"></a>02417 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

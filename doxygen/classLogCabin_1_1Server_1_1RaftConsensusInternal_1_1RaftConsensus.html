@@ -1381,7 +1381,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01492">1492</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01493">1493</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1396,7 +1396,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01493">1493</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01494">1494</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1411,7 +1411,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01494">1494</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01495">1495</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1473,7 +1473,7 @@ Friends</h2></td></tr>
 
 <p>Print out a ClientResult for debugging purposes. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02375">2375</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02376">2376</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1504,7 +1504,7 @@ Friends</h2></td></tr>
 
 <p>Print out a State for debugging purposes. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02396">2396</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02397">2397</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1689,10 +1689,11 @@ Friends</h2></td></tr>
 <li>configuration changes.</li>
 <li>startElectionAt changes (see note under startElectionAt).</li>
 <li>an acknowledgement from a peer is received.</li>
-<li>a server goes from not caught up to caught up. TODO(ongaro): Should there be multiple condition variables? This one is used by a lot of threads for a lot of different conditions. </li>
+<li>a server goes from not caught up to caught up.</li>
+<li>a heartbeat is scheduled. TODO(ongaro): Should there be multiple condition variables? This one is used by a lot of threads for a lot of different conditions. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01308">1308</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01309">1309</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1710,7 +1711,7 @@ Friends</h2></td></tr>
 <p>Set to true when this class is about to be destroyed. </p>
 <p>When this is true, threads must exit right away and no more RPCs should be sent or processed. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01315">1315</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01316">1316</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1728,7 +1729,7 @@ Friends</h2></td></tr>
 <p>The number of <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a45d9389965055a93871c27c0fa00817f" title="A thread that is used to send RPCs to the follower.">Peer::thread</a> threads that are still using this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> object. </p>
 <p>When they exit, they decrement this and notify <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6f93f73520a919d45b19e96968db9cca" title="Notified when basically anything changes.">stateChanged</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01322">1322</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01323">1323</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1747,7 +1748,7 @@ Friends</h2></td></tr>
 <p>Keeps track of all log entries and some additional metadata.</p>
 <p>If you modify this, be sure to keep <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a21dc5a2ac45769b005c3eabd7db074f7" title="Ensures that &#39;configuration&#39; reflects the latest state of the log and snapshot.">configurationManager</a> consistent. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01330">1330</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01331">1331</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1766,7 +1767,7 @@ Friends</h2></td></tr>
 <p>This is always false for followers and candidates and is only used for leaders.</p>
 <p>When a server steps down, it waits for all syncs to complete, that way followers can assume that all of their log entries are durable when replying to leaders. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01341">1341</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01342">1342</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1784,7 +1785,7 @@ Friends</h2></td></tr>
 <p>Used for <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#af7d665fe39bb83a27a15d9fc1046c5e6" title="Transition to being a follower.">stepDown()</a> to wait on <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a5b1e92314c102fd9495c767d62c0be75" title="The thread that executes leaderDiskThreadMain() to flush log entries to stable storage in the backgro...">leaderDiskThread</a> without releasing <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac19a9e103346ecdcfa7d06bf735880fe" title="This class behaves mostly like a monitor.">mutex</a>. </p>
 <p>This is true while <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a5b1e92314c102fd9495c767d62c0be75" title="The thread that executes leaderDiskThreadMain() to flush log entries to stable storage in the backgro...">leaderDiskThread</a> is writing to disk. It's set to true while holding <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac19a9e103346ecdcfa7d06bf735880fe" title="This class behaves mostly like a monitor.">mutex</a>; set to false without <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac19a9e103346ecdcfa7d06bf735880fe" title="This class behaves mostly like a monitor.">mutex</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01348">1348</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01349">1349</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1802,7 +1803,7 @@ Friends</h2></td></tr>
 <p>Defines the servers that are part of the cluster. </p>
 <p>See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html" title="A configuration defines the servers that are part of the cluster.">Configuration</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01353">1353</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01354">1354</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1819,7 +1820,7 @@ Friends</h2></td></tr>
 
 <p>Ensures that 'configuration' reflects the latest state of the log and snapshot. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01359">1359</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01360">1360</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1838,7 +1839,7 @@ Friends</h2></td></tr>
 <p>This value monotonically increases over time. It gets updated in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#af7d665fe39bb83a27a15d9fc1046c5e6" title="Transition to being a follower.">stepDown()</a>, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad20d4e86b9b92174f5f5f6ad1b6617e6" title="Transitions to being a candidate from being a follower or candidate.">startNewElection()</a>, and when a candidate receives a vote response with a newer term. </p>
 <dl class="warning"><dt><b>Warning:</b></dt><dd>After setting this value, you must call <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad537af7eb29ec2cdee4df514a1c88062" title="Persist critical state, such as the term and the vote, to stable storage.">updateLogMetadata()</a> to persist it. </dd></dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01369">1369</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01370">1370</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1856,7 +1857,7 @@ Friends</h2></td></tr>
 <p>The server's current role in the cluster (follower, candidate, or leader). </p>
 <p>See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a14a6602e14d73dc067e2b9de50c1711c" title="See state.">State</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01375">1375</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01376">1376</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1874,7 +1875,7 @@ Friends</h2></td></tr>
 <p>The latest good snapshot covers entries 1 through 'lastSnapshotIndex' (inclusive). </p>
 <p>It is known that these are committed. They are safe to remove from the log, but it may be advantageous to keep them around for a little while (to avoid shipping snapshots to straggling followers). Thus, the log may or may not have some of the entries in this range. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01384">1384</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01385">1385</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1891,7 +1892,7 @@ Friends</h2></td></tr>
 
 <p>The term of the last entry covered by the latest good snapshot, or 0 if we have no snapshot. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01390">1390</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01391">1391</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1908,7 +1909,7 @@ Friends</h2></td></tr>
 
 <p>The size of the latest good snapshot in bytes, or 0 if we have no snapshot. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01396">1396</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01397">1397</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1926,7 +1927,7 @@ Friends</h2></td></tr>
 <p>If not NULL, this is a <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html" title="Assists in reading snapshot files from the local filesystem.">Storage::SnapshotFile::Reader</a> that covers up through lastSnapshotIndex. </p>
 <p>This is ready for the state machine to process and is returned to the state machine in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ae36b89c65e07d35661f82fc739ab4fb9" title="This returns the entry following lastEntryId in the replicated log.">getNextEntry()</a>. It's just a cache which can be repopulated with <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aa6cab57eaa3a17298141e0a7d674701e" title="Try to read the latest good snapshot from disk.">readSnapshot()</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01404">1404</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01405">1405</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1944,7 +1945,7 @@ Friends</h2></td></tr>
 <p>This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader. </p>
 <p>The leader is assumed to send at most one snapshot at a time, and any partial snapshots here are discarded when the term changes. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01412">1412</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01413">1413</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1962,7 +1963,7 @@ Friends</h2></td></tr>
 <p>The largest entry ID for which a quorum is known to have stored the same entry as this server has. </p>
 <p>Entries 1 through commitIndex as stored in this server's log are guaranteed to never change. This value will monotonically increase over time. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01420">1420</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01421">1421</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1980,7 +1981,7 @@ Friends</h2></td></tr>
 <p>The server ID of the leader for this term. </p>
 <p>This is used to help point clients to the right server. The special value 0 means either there is no leader for this term yet or this server does not know who it is yet. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01427">1427</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01428">1428</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1999,7 +2000,7 @@ Friends</h2></td></tr>
 <p>The special value 0 means no vote has been given out during this term. </p>
 <dl class="warning"><dt><b>Warning:</b></dt><dd>After setting this value, you must call <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad537af7eb29ec2cdee4df514a1c88062" title="Persist critical state, such as the term and the vote, to stable storage.">updateLogMetadata()</a> to persist it. </dd></dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01437">1437</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01438">1438</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -2016,7 +2017,7 @@ Friends</h2></td></tr>
 
 <p>A logical clock used to confirm leadership and connectivity. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01443">1443</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01444">1444</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -2034,7 +2035,7 @@ Friends</h2></td></tr>
 <p>The earliest time at which <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ade96f5eaf2a06e4d5ef8bafb089b524b" title="The thread that executes timerThreadMain() to begin new elections after periods of inactivity...">timerThread</a> should begin a new election with <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad20d4e86b9b92174f5f5f6ad1b6617e6" title="Transitions to being a candidate from being a follower or candidate.">startNewElection()</a>. </p>
 <p>It is safe for increases to startElectionAt to not notify the condition variable. Decreases to this value, however, must notify the condition variable to make sure the timerThread gets woken in a timely manner. Unfortunately, startElectionAt does not monotonically increase because of the random jitter that is applied to the follower timeout, and it would reduce the jitter's effectiveness for the thread to wait as long as the largest startElectionAt value. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01457">1457</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01458">1458</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -2053,7 +2054,7 @@ Friends</h2></td></tr>
 <p>Until this time, they are rejected, as processing them risks causing the cluster leader to needlessly step down. For more motivation, see the "disruptive servers" issue in membership changes described in the Raft paper/thesis.</p>
 <p>This is set to the current time + an election timeout when a heartbeat is received, and it's set to infinity for leaders (who begin processing RequestVote messages again immediately when they step down). </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01470">1470</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01471">1471</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -2070,7 +2071,7 @@ Friends</h2></td></tr>
 
 <p>The thread that executes <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a1cb25a9efb212c25dae3b8bfee51fc9a" title="Flush log entries to stable storage in the background on leaders.">leaderDiskThreadMain()</a> to flush log entries to stable storage in the background on leaders. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01476">1476</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01477">1477</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -2087,7 +2088,7 @@ Friends</h2></td></tr>
 
 <p>The thread that executes <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a2380be6db16674c80263e350925a6d41" title="Start new elections when it&#39;s time to do so.">timerThreadMain()</a> to begin new elections after periods of inactivity. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01482">1482</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01483">1483</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -2104,7 +2105,7 @@ Friends</h2></td></tr>
 
 <p>The thread that executes <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac8cee5d6c14ffda0da84ee3ecef03727" title="Return to follower state when, as leader, this server is not able to communicate with a quorum...">stepDownThreadMain()</a> to return to the follower state if the leader becomes disconnected from a quorum of servers. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01488">1488</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01489">1489</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -2119,7 +2120,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01490">1490</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01491">1491</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
