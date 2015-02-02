@@ -102,8 +102,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00020"></a>00020 <span class="preprocessor">#include &lt;stdexcept&gt;</span>
 <a name="l00021"></a>00021 <span class="preprocessor">#include &lt;string&gt;</span>
 <a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="preprocessor">#include &quot;<a class="code" href="Time_8h.html">Core/Time.h</a>&quot;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="Buffer_8h.html">RPC/Buffer.h</a>&quot;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &quot;<a class="code" href="Buffer_8h.html">Core/Buffer.h</a>&quot;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="Time_8h.html">Core/Time.h</a>&quot;</span>
 <a name="l00025"></a>00025 
 <a name="l00026"></a>00026 <span class="preprocessor">#ifndef LOGCABIN_RPC_OPAQUECLIENTRPC_H</span>
 <a name="l00027"></a>00027 <span class="preprocessor"></span><span class="preprocessor">#define LOGCABIN_RPC_OPAQUECLIENTRPC_H</span>
@@ -201,7 +201,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00119"></a>00119 <span class="comment">     *      a pointer to the reply buffer inside this OpaqueClientRPC object.</span>
 <a name="l00120"></a>00120 <span class="comment">     *      Otherwise, returns NULL.</span>
 <a name="l00121"></a>00121 <span class="comment">     */</span>
-<a name="l00122"></a>00122     <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a>* <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a6deceb0428f71f5a61ed6fb53a6d9ba5" title="Look at the reply buffer.">peekReply</a>();
+<a name="l00122"></a>00122     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>* <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#afee80b4602eb33569dfb87b398776da7" title="Look at the reply buffer.">peekReply</a>();
 <a name="l00123"></a>00123 <span class="comment"></span>
 <a name="l00124"></a>00124 <span class="comment">    /**</span>
 <a name="l00125"></a>00125 <span class="comment">     * Block until the reply is ready, an error has occurred, or the given</span>
@@ -253,7 +253,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00171"></a>00171 <span class="comment">     * The payload of a successful reply, once available.</span>
 <a name="l00172"></a>00172 <span class="comment">     * This becomes valid when #status is OK.</span>
 <a name="l00173"></a>00173 <span class="comment">     */</span>
-<a name="l00174"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a9acd58a66c40a0137b9e01701158a337">00174</a>     <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a9acd58a66c40a0137b9e01701158a337" title="The payload of a successful reply, once available.">reply</a>;
+<a name="l00174"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a7a3c16b4e722789dfcbd2deb835fc854">00174</a>     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a7a3c16b4e722789dfcbd2deb835fc854" title="The payload of a successful reply, once available.">reply</a>;
 <a name="l00175"></a>00175 <span class="comment"></span>
 <a name="l00176"></a>00176 <span class="comment">    /**</span>
 <a name="l00177"></a>00177 <span class="comment">     * If an error occurred in the RPC then this holds the error message;</span>

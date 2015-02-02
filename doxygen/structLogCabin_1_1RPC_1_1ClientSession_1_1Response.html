@@ -134,8 +134,8 @@ Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum <br class="typebreak"/>
 LogCabin::RPC::ClientSession::Response:: { ... } &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#a807bb1252e8cfc38f0d8dc9a62b88899">status</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Current state of the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>.  <a href="#a807bb1252e8cfc38f0d8dc9a62b88899"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#ab1a83ec18e3d53352a26df091b8dd252">reply</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The contents of the response.  <a href="#ab1a83ec18e3d53352a26df091b8dd252"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#a2c96fa711085c4e628e5c4a3726b0ecb">reply</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The contents of the response.  <a href="#a2c96fa711085c4e628e5c4a3726b0ecb"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#a5d82c7200ecdec619426a7237b617a7a">hasWaiter</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, a thread is blocked waiting on <a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#ad0cc04b964092736ee0836b301c07c28" title="OpaqueClientRPC objects wait on this condition variable inside of wait().">ready</a>, and this object may not be deleted.  <a href="#a5d82c7200ecdec619426a7237b617a7a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#ad0cc04b964092736ee0836b301c07c28">ready</a></td></tr>
@@ -164,7 +164,7 @@ LogCabin::RPC::ClientSession::Response:: { ... } &#160;</td><td class="memItemRi
 <p>Waiting for a reply from the server. </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a60a15e24c566b17572f30ec32bc6adfba8dfe8e076c7ad2129188ab8a0ed9bcf7"></a><!-- doxytag: member="HAS_REPLY" ref="a60a15e24c566b17572f30ec32bc6adfba8dfe8e076c7ad2129188ab8a0ed9bcf7" args="" -->HAS_REPLY</em>&nbsp;</td><td>
-<p>Received a reply (find it in <a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#ab1a83ec18e3d53352a26df091b8dd252" title="The contents of the response.">reply</a>). </p>
+<p>Received a reply (find it in <a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#a2c96fa711085c4e628e5c4a3726b0ecb" title="The contents of the response.">reply</a>). </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a60a15e24c566b17572f30ec32bc6adfbae4a5340de0f63c6d180f3d4386e3b5a0"></a><!-- doxytag: member="CANCELED" ref="a60a15e24c566b17572f30ec32bc6adfbae4a5340de0f63c6d180f3d4386e3b5a0" args="" -->CANCELED</em>&nbsp;</td><td>
 <p>The <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> has been canceled by another thread. </p>
@@ -214,12 +214,12 @@ LogCabin::RPC::ClientSession::Response:: { ... } &#160;</td><td class="memItemRi
 
 </div>
 </div>
-<a class="anchor" id="ab1a83ec18e3d53352a26df091b8dd252"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::Response::reply" ref="ab1a83ec18e3d53352a26df091b8dd252" args="" -->
+<a class="anchor" id="a2c96fa711085c4e628e5c4a3726b0ecb"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::Response::reply" ref="a2c96fa711085c4e628e5c4a3726b0ecb" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a> <a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#ab1a83ec18e3d53352a26df091b8dd252">LogCabin::RPC::ClientSession::Response::reply</a></td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> <a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#a2c96fa711085c4e628e5c4a3726b0ecb">LogCabin::RPC::ClientSession::Response::reply</a></td>
         </tr>
       </table>
 </div>

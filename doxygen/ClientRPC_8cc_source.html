@@ -97,10 +97,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="comment"> */</span>
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Core/Debug.h</a>&quot;</span>
-<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="Protocol_8h.html" title="This file contains the headers used in all high-level RPCs.">RPC/Protocol.h</a>&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include &quot;<a class="code" href="ClientRPC_8h.html">RPC/ClientRPC.h</a>&quot;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#include &quot;<a class="code" href="ClientSession_8h.html">RPC/ClientSession.h</a>&quot;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#include &quot;<a class="code" href="RPC_2ProtoBuf_8h.html">RPC/ProtoBuf.h</a>&quot;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="Core_2ProtoBuf_8h.html" title="Utilities for dealing with protocol buffers.">Core/ProtoBuf.h</a>&quot;</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include &quot;<a class="code" href="Protocol_8h.html" title="This file contains the headers used in all high-level RPCs.">RPC/Protocol.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include &quot;<a class="code" href="ClientRPC_8h.html">RPC/ClientRPC.h</a>&quot;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &quot;<a class="code" href="ClientSession_8h.html">RPC/ClientSession.h</a>&quot;</span>
 <a name="l00022"></a>00022 
 <a name="l00023"></a>00023 <span class="keyword">namespace </span>LogCabin {
 <a name="l00024"></a>00024 <span class="keyword">namespace </span>RPC {
@@ -119,11 +119,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00037"></a>00037     : opaqueRPC() <span class="comment">// placeholder, set again below</span>
 <a name="l00038"></a>00038 {
 <a name="l00039"></a>00039     <span class="comment">// Serialize the request into a Buffer</span>
-<a name="l00040"></a>00040     <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a> requestBuffer;
-<a name="l00041"></a>00041     <a class="code" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf.html#a446b2b2e168faa0e07a8789de997e677" title="Serialize a protocol buffer message into an RPC::Buffer.">ProtoBuf::serialize</a>(request, requestBuffer,
-<a name="l00042"></a>00042                         <span class="keyword">sizeof</span>(RequestHeaderVersion1));
+<a name="l00040"></a>00040     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> requestBuffer;
+<a name="l00041"></a>00041     <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956" title="Serialize a protocol buffer message into a Core::Buffer.">Core::ProtoBuf::serialize</a>(request, requestBuffer,
+<a name="l00042"></a>00042                               <span class="keyword">sizeof</span>(RequestHeaderVersion1));
 <a name="l00043"></a>00043     <span class="keyword">auto</span>&amp; requestHeader =
-<a name="l00044"></a>00044         *<span class="keyword">static_cast&lt;</span>RequestHeaderVersion1*<span class="keyword">&gt;</span>(requestBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#addf2330add67835b4d9c056b7238c8d8" title="Return a pointer to the first byte of data.">getData</a>());
+<a name="l00044"></a>00044         *<span class="keyword">static_cast&lt;</span>RequestHeaderVersion1*<span class="keyword">&gt;</span>(requestBuffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>());
 <a name="l00045"></a>00045     requestHeader.prefix.version = 1;
 <a name="l00046"></a>00046     requestHeader.prefix.toBigEndian();
 <a name="l00047"></a>00047     requestHeader.service = service;
@@ -192,16 +192,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00110"></a>00110         <span class="keywordflow">case</span> OpaqueClientRPC::Status::CANCELED:
 <a name="l00111"></a>00111             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a48a78577b16fe1d628e0b66e5afb7909" title="The RPC was aborted using cancel().">Status::RPC_CANCELED</a>;
 <a name="l00112"></a>00112     }
-<a name="l00113"></a>00113     <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp; responseBuffer = *<a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a6deceb0428f71f5a61ed6fb53a6d9ba5" title="Look at the reply buffer.">peekReply</a>();
+<a name="l00113"></a>00113     <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>&amp; responseBuffer = *<a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#afee80b4602eb33569dfb87b398776da7" title="Look at the reply buffer.">peekReply</a>();
 <a name="l00114"></a>00114 
 <a name="l00115"></a>00115     <span class="comment">// Extract the response&#39;s status field.</span>
-<a name="l00116"></a>00116     <span class="keywordflow">if</span> (responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#af8656055846d619fe552af3ad99b5807" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(ResponseHeaderPrefix)) {
+<a name="l00116"></a>00116     <span class="keywordflow">if</span> (responseBuffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a9e80f0a14521d8d262ada6e1f1f5a44d" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(ResponseHeaderPrefix)) {
 <a name="l00117"></a>00117         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The response from the server was too short to be valid &quot;</span>
 <a name="l00118"></a>00118               <span class="stringliteral">&quot;(%u bytes). This probably indicates network or memory &quot;</span>
-<a name="l00119"></a>00119               <span class="stringliteral">&quot;corruption.&quot;</span>, responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#af8656055846d619fe552af3ad99b5807" title="Return the number of bytes that make up the data.">getLength</a>());
+<a name="l00119"></a>00119               <span class="stringliteral">&quot;corruption.&quot;</span>, responseBuffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a9e80f0a14521d8d262ada6e1f1f5a44d" title="Return the number of bytes that make up the data.">getLength</a>());
 <a name="l00120"></a>00120     }
 <a name="l00121"></a>00121     ResponseHeaderPrefix responseHeaderPrefix =
-<a name="l00122"></a>00122         *<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>ResponseHeaderPrefix*<span class="keyword">&gt;</span>(responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#addf2330add67835b4d9c056b7238c8d8" title="Return a pointer to the first byte of data.">getData</a>());
+<a name="l00122"></a>00122         *<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>ResponseHeaderPrefix*<span class="keyword">&gt;</span>(responseBuffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>());
 <a name="l00123"></a>00123     responseHeaderPrefix.fromBigEndian();
 <a name="l00124"></a>00124     <span class="keywordflow">if</span> (responseHeaderPrefix.status == <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a1a4c8d3c1c98c547b9caa581e7de0246" title="The server did not like the version number provided in the request header.">ProtocolStatus::INVALID_VERSION</a>) {
 <a name="l00125"></a>00125         <span class="comment">// The server doesn&#39;t understand this version of the header</span>
@@ -212,12 +212,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00130"></a>00130               <span class="stringliteral">&quot;You&#39;ll need to update your client library.&quot;</span>);
 <a name="l00131"></a>00131     }
 <a name="l00132"></a>00132 
-<a name="l00133"></a>00133     <span class="keywordflow">if</span> (responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#af8656055846d619fe552af3ad99b5807" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(ResponseHeaderVersion1)) {
+<a name="l00133"></a>00133     <span class="keywordflow">if</span> (responseBuffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a9e80f0a14521d8d262ada6e1f1f5a44d" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(ResponseHeaderVersion1)) {
 <a name="l00134"></a>00134         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The response from the server was too short to be valid. &quot;</span>
 <a name="l00135"></a>00135               <span class="stringliteral">&quot;This probably indicates network or memory corruption.&quot;</span>);
 <a name="l00136"></a>00136     }
 <a name="l00137"></a>00137     ResponseHeaderVersion1 responseHeader =
-<a name="l00138"></a>00138         *<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>ResponseHeaderVersion1*<span class="keyword">&gt;</span>(responseBuffer.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#addf2330add67835b4d9c056b7238c8d8" title="Return a pointer to the first byte of data.">getData</a>());
+<a name="l00138"></a>00138         *<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>ResponseHeaderVersion1*<span class="keyword">&gt;</span>(responseBuffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>());
 <a name="l00139"></a>00139     responseHeader.fromBigEndian();
 <a name="l00140"></a>00140 
 <a name="l00141"></a>00141     <span class="keywordflow">switch</span> (responseHeader.prefix.status) {
@@ -225,8 +225,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00143"></a>00143         <span class="comment">// The RPC succeeded. Parse the response into a protocol buffer.</span>
 <a name="l00144"></a>00144         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">ProtocolStatus::OK</a>:
 <a name="l00145"></a>00145             <span class="keywordflow">if</span> (response != NULL &amp;&amp;
-<a name="l00146"></a>00146                 !<a class="code" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf.html#adcd57e6a58689b5543c09f4229fa9f49" title="Parse a protocol buffer message out of an RPC::Buffer.">RPC::ProtoBuf::parse</a>(responseBuffer, *response,
-<a name="l00147"></a>00147                                       <span class="keyword">sizeof</span>(responseHeader))) {
+<a name="l00146"></a>00146                 !<a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c" title="Parse a protocol buffer message out of a Core::Buffer.">Core::ProtoBuf::parse</a>(responseBuffer, *response,
+<a name="l00147"></a>00147                                        <span class="keyword">sizeof</span>(responseHeader))) {
 <a name="l00148"></a>00148                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not parse the protocol buffer out of the server &quot;</span>
 <a name="l00149"></a>00149                       <span class="stringliteral">&quot;response&quot;</span>);
 <a name="l00150"></a>00150             }
@@ -236,8 +236,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00154"></a>00154         <span class="comment">// protocol buffer.</span>
 <a name="l00155"></a>00155         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a3808388a3c1e6c97bdb3dd5e5ecee8f3" title="An error specific to the particular service.">ProtocolStatus::SERVICE_SPECIFIC_ERROR</a>:
 <a name="l00156"></a>00156             <span class="keywordflow">if</span> (serviceSpecificError != NULL &amp;&amp;
-<a name="l00157"></a>00157                 !<a class="code" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf.html#adcd57e6a58689b5543c09f4229fa9f49" title="Parse a protocol buffer message out of an RPC::Buffer.">RPC::ProtoBuf::parse</a>(responseBuffer, *serviceSpecificError,
-<a name="l00158"></a>00158                                       <span class="keyword">sizeof</span>(responseHeader))) {
+<a name="l00157"></a>00157                 !<a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c" title="Parse a protocol buffer message out of a Core::Buffer.">Core::ProtoBuf::parse</a>(responseBuffer, *serviceSpecificError,
+<a name="l00158"></a>00158                                        <span class="keyword">sizeof</span>(responseHeader))) {
 <a name="l00159"></a>00159                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not parse the protocol buffer out of the &quot;</span>
 <a name="l00160"></a>00160                       <span class="stringliteral">&quot;service-specific error details&quot;</span>);
 <a name="l00161"></a>00161             }

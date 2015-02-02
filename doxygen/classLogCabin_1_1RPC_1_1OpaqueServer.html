@@ -167,7 +167,7 @@ Friends</h2></td></tr>
 <div class="textblock"><p>An <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a> listens for incoming RPCs over TCP connections. </p>
 <p>OpaqueServers can be created from any thread, but they will always run on the thread running the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>. </p>
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00047">47</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00051">51</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a70b3a545f635ffe31a5e06aa31f379a6"></a><!-- doxytag: member="LogCabin::RPC::OpaqueServer::OpaqueServer" ref="a70b3a545f635ffe31a5e06aa31f379a6" args="(Handler &amp;handler, Event::Loop &amp;eventLoop, uint32_t maxMessageLength)" -->
 <div class="memitem">
@@ -314,7 +314,7 @@ Friends</h2></td></tr>
 
 <p><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a> keeps a std::weak_ptr back to its originating ServerMessageSocket. </p>
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00263">263</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00267">267</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 
 </div>
 </div>
@@ -332,7 +332,7 @@ Friends</h2></td></tr>
 
 <p>Deals with <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a> objects that this class creates when it receives a request. </p>
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00221">221</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00225">225</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 
 </div>
 </div>
@@ -349,7 +349,7 @@ Friends</h2></td></tr>
 
 <p>The event loop that is used for non-blocking I/O. </p>
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00226">226</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00230">230</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 
 </div>
 </div>
@@ -366,7 +366,7 @@ Friends</h2></td></tr>
 
 <p>The maximum number of bytes to allow per request/response. </p>
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00231">231</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00235">235</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 
 </div>
 </div>
@@ -385,7 +385,7 @@ Friends</h2></td></tr>
 <p>These are reference-counted: the lifetime of each socket may slightly exceed the lifetime of the <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a> if it is being actively used to send out a <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a> response when the <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a> is destroyed.</p>
 <p>This may only be accessed from the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> or while holding an <a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Event::Loop::Lock</a> (it's almost entirely accessed from event handlers, so it's convenient to rely on the <a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Event::Loop::Lock</a> for mutual exclusion during OpauqeServer's destructor as well). </p>
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00245">245</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00249">249</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 
 </div>
 </div>
@@ -402,7 +402,7 @@ Friends</h2></td></tr>
 
 <p>Lock to prevent concurrent modification of <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a18bced70dd394238cac7a60fa6abe851" title="A list of listening sockets that each listen on a particular address.">boundListeners</a>. </p>
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00250">250</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00254">254</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 
 </div>
 </div>
@@ -420,7 +420,7 @@ Friends</h2></td></tr>
 <p>A list of listening sockets that each listen on a particular address. </p>
 <p>std::deque is used so that the handler objects have a stable memory location (otherwise their monitors would blow up). </p>
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00257">257</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00261">261</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 
 </div>
 </div>

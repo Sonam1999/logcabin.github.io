@@ -125,8 +125,8 @@ Inheritance diagram for LogCabin::RPC::OpaqueServer::MessageSocketHandler:</div>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#ad8e2ba44b76bb8e02a9f8652ba23a63e">MessageSocketHandler</a> (<a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html">OpaqueServer</a> *<a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#a81c39a6fb4ac54d8484ad032c393c503">server</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#a41201fe6e3f66aa34a4e647e5224fe42">handleReceivedMessage</a> (<a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html#ad5bd8faa628b0beaeca6560e6908fb1c">MessageId</a> messageId, <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a> message)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when a new message is received.  <a href="#a41201fe6e3f66aa34a4e647e5224fe42"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#a5cd5ff5f54110aa27ac70e84e4adcbf5">handleReceivedMessage</a> (<a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html#ad5bd8faa628b0beaeca6560e6908fb1c">MessageId</a> messageId, <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> message)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when a new message is received.  <a href="#a5cd5ff5f54110aa27ac70e84e4adcbf5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#af50b59a7b36db295a48b9b13e7316dd5">handleDisconnect</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when the socket has been disconnected and will be closed soon.  <a href="#af50b59a7b36db295a48b9b13e7316dd5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#acb53894737d113f736ce1e96875e23c1">MessageSocketHandler</a> (const <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html">MessageSocketHandler</a> &amp;)</td></tr>
@@ -141,7 +141,7 @@ Public Attributes</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Receives events from a <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html" title="A MessageSocket is a message-oriented layer on top of a TCP connection.">MessageSocket</a>. </p>
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00117">117</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00121">121</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ad8e2ba44b76bb8e02a9f8652ba23a63e"></a><!-- doxytag: member="LogCabin::RPC::OpaqueServer::MessageSocketHandler::MessageSocketHandler" ref="ad8e2ba44b76bb8e02a9f8652ba23a63e" args="(OpaqueServer *server)" -->
 <div class="memitem">
@@ -180,12 +180,12 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a41201fe6e3f66aa34a4e647e5224fe42"></a><!-- doxytag: member="LogCabin::RPC::OpaqueServer::MessageSocketHandler::handleReceivedMessage" ref="a41201fe6e3f66aa34a4e647e5224fe42" args="(MessageId messageId, Buffer message)" -->
+<a class="anchor" id="a5cd5ff5f54110aa27ac70e84e4adcbf5"></a><!-- doxytag: member="LogCabin::RPC::OpaqueServer::MessageSocketHandler::handleReceivedMessage" ref="a5cd5ff5f54110aa27ac70e84e4adcbf5" args="(MessageId messageId, Core::Buffer message)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#a41201fe6e3f66aa34a4e647e5224fe42">LogCabin::RPC::OpaqueServer::MessageSocketHandler::handleReceivedMessage</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#a5cd5ff5f54110aa27ac70e84e4adcbf5">LogCabin::RPC::OpaqueServer::MessageSocketHandler::handleReceivedMessage</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html#ad5bd8faa628b0beaeca6560e6908fb1c">MessageId</a>&#160;</td>
           <td class="paramname"><em>messageId</em>, </td>
@@ -193,7 +193,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a>&#160;</td>
           <td class="paramname"><em>contents</em>&#160;</td>
         </tr>
         <tr>
@@ -215,7 +215,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html#adaf2d4c3a49fb4e86f4f317b0ce87278">LogCabin::RPC::MessageSocket::Handler</a>.</p>
+<p>Implements <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html#a8487dd3a282d734cc7de00245de331ca">LogCabin::RPC::MessageSocket::Handler</a>.</p>
 
 <p>Definition at line <a class="el" href="OpaqueServer_8cc_source.html#l00044">44</a> of file <a class="el" href="OpaqueServer_8cc_source.html">OpaqueServer.cc</a>.</p>
 
@@ -278,7 +278,7 @@ Public Attributes</h2></td></tr>
 <p>Used to invoke the server's rpcHandler when receiving an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> request, or to drop the server's reference to this socket when disconnecting.</p>
 <p>May only be accessed with an <a class="el" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Event::Loop::Lock</a> or from the event loop, since the <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html" title="An OpaqueServer listens for incoming RPCs over TCP connections.">OpaqueServer</a> may set this to NULL under the same rules. </p>
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00133">133</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00137">137</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 
 </div>
 </div>
@@ -296,7 +296,7 @@ Public Attributes</h2></td></tr>
 <p>A weak reference to this object, used to give OpaqueServerRPCs a way to send their replies back on their originating socket. </p>
 <p>This may be empty when the <a class="el" href="structLogCabin_1_1RPC_1_1OpaqueServer_1_1SocketWithHandler.html" title="Couples a MessageSocketHandler with a MessageSocket (monitor) and destroys them in the right order (m...">SocketWithHandler</a> is shutting down. </p>
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00140">140</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00144">144</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 
 </div>
 </div>

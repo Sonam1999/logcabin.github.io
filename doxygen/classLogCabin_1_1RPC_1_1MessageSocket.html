@@ -143,8 +143,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a2054b35ebb14567ba1d44ab27947098d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a58dcfe739fcf7b753e46cdec7245e59a">close</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used when the server wishes to close this socket.  <a href="#a58dcfe739fcf7b753e46cdec7245e59a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a9e9ae98de80887bb0171ccfe8968c85d">sendMessage</a> (<a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#abef3021a3d11c0dd0ff037b567d3e686">MessageId</a> messageId, <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a> contents)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue a message to be sent to the other side of this socket.  <a href="#a9e9ae98de80887bb0171ccfe8968c85d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a01b688aa8e4b7b05c63584b1f802f007">sendMessage</a> (<a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#abef3021a3d11c0dd0ff037b567d3e686">MessageId</a> messageId, <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> contents)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue a message to be sent to the other side of this socket.  <a href="#a01b688aa8e4b7b05c63584b1f802f007"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#af6f6db4ae752670c8c758b40b39a74ab">disconnect</a> ()</td></tr>
@@ -318,12 +318,12 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9e9ae98de80887bb0171ccfe8968c85d"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::sendMessage" ref="a9e9ae98de80887bb0171ccfe8968c85d" args="(MessageId messageId, Buffer contents)" -->
+<a class="anchor" id="a01b688aa8e4b7b05c63584b1f802f007"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::sendMessage" ref="a01b688aa8e4b7b05c63584b1f802f007" args="(MessageId messageId, Core::Buffer contents)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a9e9ae98de80887bb0171ccfe8968c85d">LogCabin::RPC::MessageSocket::sendMessage</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a01b688aa8e4b7b05c63584b1f802f007">LogCabin::RPC::MessageSocket::sendMessage</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#abef3021a3d11c0dd0ff037b567d3e686">MessageId</a>&#160;</td>
           <td class="paramname"><em>messageId</em>, </td>
@@ -331,7 +331,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a>&#160;</td>
           <td class="paramname"><em>contents</em>&#160;</td>
         </tr>
         <tr>
@@ -574,7 +574,7 @@ Private Attributes</h2></td></tr>
 
 <p>A queue of messages waiting to be sent. </p>
 <p>The first one may be in the middle of transmission, while the others have not yet started. This queue is protected from concurrent modifications by <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#af0786d1f0f2169feb5d8ca39f48f1048" title="Protects outboundQueue only from concurrent modification.">outboundQueueMutex</a>.</p>
-<p>It's important that this remains a std::deque (or std::queue) because <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#ad22f31466c137cb6793902a03f0dac62" title="Called when the socket may be written to without blocking.">writable()</a> holds a pointer to the first element without the lock, while <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a9e9ae98de80887bb0171ccfe8968c85d" title="Queue a message to be sent to the other side of this socket.">sendMessage()</a> may concurrently push onto the queue. std::deques are guaranteed not to invalidate pointers while elements are pushed and popped from the ends. </p>
+<p>It's important that this remains a std::deque (or std::queue) because <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#ad22f31466c137cb6793902a03f0dac62" title="Called when the socket may be written to without blocking.">writable()</a> holds a pointer to the first element without the lock, while <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a01b688aa8e4b7b05c63584b1f802f007" title="Queue a message to be sent to the other side of this socket.">sendMessage()</a> may concurrently push onto the queue. std::deques are guaranteed not to invalidate pointers while elements are pushed and popped from the ends. </p>
 
 <p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00322">322</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 

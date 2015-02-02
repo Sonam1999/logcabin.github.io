@@ -3,7 +3,7 @@ var searchData=
   ['_7ebackoff',['~Backoff',['../classLogCabin_1_1Client_1_1Backoff.html#a26efd706566aae3032e6c10d86c4c8e1',1,'LogCabin::Client::Backoff']]],
   ['_7eblocker',['~Blocker',['../classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2b0801a61222f6f02380247945b56289',1,'LogCabin::Event::Signal::Blocker']]],
   ['_7eboundlistenerwithmonitor',['~BoundListenerWithMonitor',['../structLogCabin_1_1RPC_1_1OpaqueServer_1_1BoundListenerWithMonitor.html#a2acae127aa8ce553b98d3208cd1073b0',1,'LogCabin::RPC::OpaqueServer::BoundListenerWithMonitor']]],
-  ['_7ebuffer',['~Buffer',['../classLogCabin_1_1RPC_1_1Buffer.html#a302d1ca56f0ce4204e3aa25f5a20b11a',1,'LogCabin::RPC::Buffer']]],
+  ['_7ebuffer',['~Buffer',['../classLogCabin_1_1Core_1_1Buffer.html#a0e5bc4d1d42a1110457f9923156c3ec3',1,'LogCabin::Core::Buffer']]],
   ['_7ecall',['~Call',['../classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html#a259be0ae17cf7550e80762a19f31b936',1,'LogCabin::Client::LeaderRPCBase::Call::~Call()'],['../classLogCabin_1_1Client_1_1LeaderRPC_1_1Call.html#a8db91a60b4611bd91eb937f3e5b81221',1,'LogCabin::Client::LeaderRPC::Call::~Call()']]],
   ['_7eclientimpl',['~ClientImpl',['../classLogCabin_1_1Client_1_1ClientImpl.html#a6ee9902ccc91aca32bd0161b1509e616',1,'LogCabin::Client::ClientImpl']]],
   ['_7eclientrpc',['~ClientRPC',['../classLogCabin_1_1RPC_1_1ClientRPC.html#ace98a6c0c2fc06e5060c3d3e096782a2',1,'LogCabin::RPC::ClientRPC']]],

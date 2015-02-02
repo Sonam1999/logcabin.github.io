@@ -101,11 +101,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00019"></a>00019 <span class="preprocessor">#include &lt;string&gt;</span>
 <a name="l00020"></a>00020 <span class="preprocessor">#include &lt;unordered_map&gt;</span>
 <a name="l00021"></a>00021 
-<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;<a class="code" href="ConditionVariable_8h.html">Core/ConditionVariable.h</a>&quot;</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#include &quot;<a class="code" href="Config_8h.html">Core/Config.h</a>&quot;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="Timer_8h.html">Event/Timer.h</a>&quot;</span>
-<a name="l00025"></a>00025 <span class="preprocessor">#include &quot;<a class="code" href="Address_8h.html">RPC/Address.h</a>&quot;</span>
-<a name="l00026"></a>00026 <span class="preprocessor">#include &quot;<a class="code" href="Buffer_8h.html">RPC/Buffer.h</a>&quot;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;<a class="code" href="Buffer_8h.html">Core/Buffer.h</a>&quot;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &quot;<a class="code" href="ConditionVariable_8h.html">Core/ConditionVariable.h</a>&quot;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="Config_8h.html">Core/Config.h</a>&quot;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &quot;<a class="code" href="Timer_8h.html">Event/Timer.h</a>&quot;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include &quot;<a class="code" href="Address_8h.html">RPC/Address.h</a>&quot;</span>
 <a name="l00027"></a>00027 <span class="preprocessor">#include &quot;<a class="code" href="OpaqueClientRPC_8h.html">RPC/OpaqueClientRPC.h</a>&quot;</span>
 <a name="l00028"></a>00028 <span class="preprocessor">#include &quot;<a class="code" href="MessageSocket_8h.html">RPC/MessageSocket.h</a>&quot;</span>
 <a name="l00029"></a>00029 
@@ -188,7 +188,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00106"></a>00106 <span class="comment">     * \return</span>
 <a name="l00107"></a>00107 <span class="comment">     *      This is be used to wait for and retrieve the reply to the RPC.</span>
 <a name="l00108"></a>00108 <span class="comment">     */</span>
-<a name="l00109"></a>00109     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> <a class="code" href="classLogCabin_1_1RPC_1_1ClientSession.html#a959494c4b68a29310a77ba2035e879b6" title="Initiate an RPC.">sendRequest</a>(<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a> request);
+<a name="l00109"></a>00109     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> <a class="code" href="classLogCabin_1_1RPC_1_1ClientSession.html#aa3d551942de3875b7b16cb7789945a7a" title="Initiate an RPC.">sendRequest</a>(<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> request);
 <a name="l00110"></a>00110 <span class="comment"></span>
 <a name="l00111"></a>00111 <span class="comment">    /**</span>
 <a name="l00112"></a>00112 <span class="comment">     * If the socket has been disconnected, return a descriptive message.</span>
@@ -217,7 +217,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00135"></a><a class="code" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html">00135</a>     <span class="keyword">class </span><a class="code" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html" title="This handles events from messageSocket.">MessageSocketHandler</a> : <span class="keyword">public</span> <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html" title="A MessageSocket is a message-oriented layer on top of a TCP connection.">MessageSocket</a>::Handler {
 <a name="l00136"></a>00136       <span class="keyword">public</span>:
 <a name="l00137"></a>00137         <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html#ae678f7721ccde722d6995ca5751cb202">MessageSocketHandler</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a>&amp; clientSession);
-<a name="l00138"></a>00138         <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html#a3c54737a0cf1ccd188ce3db04ff6ab46" title="This method is overridden by a subclass and invoked when a new message is received.">handleReceivedMessage</a>(<a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html#ad5bd8faa628b0beaeca6560e6908fb1c">MessageId</a> messageId, <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a> message);
+<a name="l00138"></a>00138         <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html#a1b015b26b883d98a137c3c713ccae6b7" title="This method is overridden by a subclass and invoked when a new message is received.">handleReceivedMessage</a>(<a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html#ad5bd8faa628b0beaeca6560e6908fb1c">MessageId</a> messageId, <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> message);
 <a name="l00139"></a>00139         <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html#a4ca81acb078e9763706cd2c9130ae83e" title="This method is overridden by a subclass and invoked when the socket has been disconnected and will be...">handleDisconnect</a>();
 <a name="l00140"></a><a class="code" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html#a1e97d97a32b1d1f819f90ddc089bdd4f">00140</a>         <a class="code" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a>&amp; <a class="code" href="classLogCabin_1_1RPC_1_1ClientSession_1_1MessageSocketHandler.html#a1e97d97a32b1d1f819f90ddc089bdd4f">session</a>;
 <a name="l00141"></a>00141     };
@@ -254,7 +254,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00172"></a>00172 <span class="comment">         * The contents of the response. This is valid when</span>
 <a name="l00173"></a>00173 <span class="comment">         * #status is HAS_REPLY.</span>
 <a name="l00174"></a>00174 <span class="comment">         */</span>
-<a name="l00175"></a><a class="code" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#ab1a83ec18e3d53352a26df091b8dd252">00175</a>         <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a> <a class="code" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#ab1a83ec18e3d53352a26df091b8dd252" title="The contents of the response.">reply</a>;<span class="comment"></span>
+<a name="l00175"></a><a class="code" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#a2c96fa711085c4e628e5c4a3726b0ecb">00175</a>         <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> <a class="code" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html#a2c96fa711085c4e628e5c4a3726b0ecb" title="The contents of the response.">reply</a>;<span class="comment"></span>
 <a name="l00176"></a>00176 <span class="comment">        /**</span>
 <a name="l00177"></a>00177 <span class="comment">         * If true, a thread is blocked waiting on #ready,</span>
 <a name="l00178"></a>00178 <span class="comment">         * and this object may not be deleted.</span>

@@ -109,10 +109,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00027"></a>00027 {
 <a name="l00028"></a>00028 }
 <a name="l00029"></a>00029 
-<a name="l00030"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#aa4446031d178b3040d8d598b884262e8">00030</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a7d875bfc2d1ec28592dde60e613c49cb" title="Default constructor for empty RPC that can&#39;t be replied to.">OpaqueServerRPC::OpaqueServerRPC</a>(
+<a name="l00030"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a818c249341ce9b259567ddf7817d5202">00030</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a7d875bfc2d1ec28592dde60e613c49cb" title="Default constructor for empty RPC that can&#39;t be replied to.">OpaqueServerRPC::OpaqueServerRPC</a>(
 <a name="l00031"></a>00031         std::weak_ptr&lt;OpaqueServer::SocketWithHandler&gt; socket,
 <a name="l00032"></a>00032         <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#abef3021a3d11c0dd0ff037b567d3e686" title="An opaque identifier for a message.">MessageSocket::MessageId</a> messageId,
-<a name="l00033"></a>00033         <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a> request)
+<a name="l00033"></a>00033         <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> request)
 <a name="l00034"></a>00034     : request(std::move(request))
 <a name="l00035"></a>00035     , response()
 <a name="l00036"></a>00036     , socket(socket)
@@ -137,11 +137,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00055"></a>00055 <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a>&amp;
 <a name="l00056"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#afa0506929cbfeb7d1a47ece55fd590ca">00056</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#afa0506929cbfeb7d1a47ece55fd590ca" title="Move assignment.">OpaqueServerRPC::operator=</a>(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a>&amp;&amp; other)
 <a name="l00057"></a>00057 {
-<a name="l00058"></a>00058     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a5b18a1cf14affa0ad9af1221ad77fbec" title="The RPC request received from the client.">request</a> = std::move(other.request);
-<a name="l00059"></a>00059     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a0b40fbd408d2b326dd97a4cef02aa12f" title="The reply to the RPC, to send back to the client.">response</a> = std::move(other.response);
+<a name="l00058"></a>00058     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#af83d5705e1375ac12418f3dae1c0461a" title="The RPC request received from the client.">request</a> = std::move(other.request);
+<a name="l00059"></a>00059     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#aab79a2eb6ed3293e7e74f6ff1c1652cd" title="The reply to the RPC, to send back to the client.">response</a> = std::move(other.response);
 <a name="l00060"></a>00060     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a90d1a6a71ff0914310921ca1c5238a5e" title="The socket on which to send the reply.">socket</a> = std::move(other.socket);
 <a name="l00061"></a>00061     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#ad01d2ec573282f5e28e8ce149ef792bb" title="The message ID received with the request.">messageId</a> = std::move(other.messageId);
-<a name="l00062"></a>00062     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a75ceaa986c122f3ee2885900abf6050b" title="This is used in unit testing only.">responseTarget</a> = std::move(other.responseTarget);
+<a name="l00062"></a>00062     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#acd577925518b04fa3ba06b9e082f9a51" title="This is used in unit testing only.">responseTarget</a> = std::move(other.responseTarget);
 <a name="l00063"></a>00063     <span class="keywordflow">return</span> *<span class="keyword">this</span>;
 <a name="l00064"></a>00064 }
 <a name="l00065"></a>00065 
@@ -152,7 +152,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00070"></a>00070     <span class="keywordflow">if</span> (socketRef)
 <a name="l00071"></a>00071         socketRef-&gt;monitor.close();
 <a name="l00072"></a>00072     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a90d1a6a71ff0914310921ca1c5238a5e" title="The socket on which to send the reply.">socket</a>.reset();
-<a name="l00073"></a>00073     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a75ceaa986c122f3ee2885900abf6050b" title="This is used in unit testing only.">responseTarget</a> = NULL;
+<a name="l00073"></a>00073     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#acd577925518b04fa3ba06b9e082f9a51" title="This is used in unit testing only.">responseTarget</a> = NULL;
 <a name="l00074"></a>00074 }
 <a name="l00075"></a>00075 
 <a name="l00076"></a>00076 <span class="keywordtype">void</span>
@@ -160,20 +160,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00078"></a>00078 {
 <a name="l00079"></a>00079     std::shared_ptr&lt;OpaqueServer::SocketWithHandler&gt; socketRef = <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a90d1a6a71ff0914310921ca1c5238a5e" title="The socket on which to send the reply.">socket</a>.lock();
 <a name="l00080"></a>00080     <span class="keywordflow">if</span> (socketRef) {
-<a name="l00081"></a>00081         socketRef-&gt;monitor.sendMessage(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#ad01d2ec573282f5e28e8ce149ef792bb" title="The message ID received with the request.">messageId</a>, std::move(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a0b40fbd408d2b326dd97a4cef02aa12f" title="The reply to the RPC, to send back to the client.">response</a>));
+<a name="l00081"></a>00081         socketRef-&gt;monitor.sendMessage(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#ad01d2ec573282f5e28e8ce149ef792bb" title="The message ID received with the request.">messageId</a>, std::move(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#aab79a2eb6ed3293e7e74f6ff1c1652cd" title="The reply to the RPC, to send back to the client.">response</a>));
 <a name="l00082"></a>00082     } <span class="keywordflow">else</span> {
 <a name="l00083"></a>00083         <span class="comment">// During normal operation, this indicates that either the socket has</span>
 <a name="l00084"></a>00084         <span class="comment">// been disconnected or the reply has already been sent.</span>
 <a name="l00085"></a>00085 
 <a name="l00086"></a>00086         <span class="comment">// For unit testing only, we can store replies from mock RPCs</span>
 <a name="l00087"></a>00087         <span class="comment">// that have no sessions.</span>
-<a name="l00088"></a>00088         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a75ceaa986c122f3ee2885900abf6050b" title="This is used in unit testing only.">responseTarget</a> != NULL) {
-<a name="l00089"></a>00089             *<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a75ceaa986c122f3ee2885900abf6050b" title="This is used in unit testing only.">responseTarget</a> = std::move(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a0b40fbd408d2b326dd97a4cef02aa12f" title="The reply to the RPC, to send back to the client.">response</a>);
-<a name="l00090"></a>00090             <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a75ceaa986c122f3ee2885900abf6050b" title="This is used in unit testing only.">responseTarget</a> = NULL;
+<a name="l00088"></a>00088         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#acd577925518b04fa3ba06b9e082f9a51" title="This is used in unit testing only.">responseTarget</a> != NULL) {
+<a name="l00089"></a>00089             *<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#acd577925518b04fa3ba06b9e082f9a51" title="This is used in unit testing only.">responseTarget</a> = std::move(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#aab79a2eb6ed3293e7e74f6ff1c1652cd" title="The reply to the RPC, to send back to the client.">response</a>);
+<a name="l00090"></a>00090             <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#acd577925518b04fa3ba06b9e082f9a51" title="This is used in unit testing only.">responseTarget</a> = NULL;
 <a name="l00091"></a>00091         }
 <a name="l00092"></a>00092 
 <a name="l00093"></a>00093         <span class="comment">// Drop the reply on the floor.</span>
-<a name="l00094"></a>00094         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a0b40fbd408d2b326dd97a4cef02aa12f" title="The reply to the RPC, to send back to the client.">response</a>.<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#aeeaadac7a063c703ae7533aa5b0648bf" title="Empty the Buffer.">reset</a>();
+<a name="l00094"></a>00094         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#aab79a2eb6ed3293e7e74f6ff1c1652cd" title="The reply to the RPC, to send back to the client.">response</a>.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ac30c5784872a33a2f39a399ec688e4b7" title="Empty the Buffer.">reset</a>();
 <a name="l00095"></a>00095     }
 <a name="l00096"></a>00096     <span class="comment">// Prevent the server from replying again.</span>
 <a name="l00097"></a>00097     <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a90d1a6a71ff0914310921ca1c5238a5e" title="The socket on which to send the reply.">socket</a>.reset();

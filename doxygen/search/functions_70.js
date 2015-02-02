@@ -1,9 +1,9 @@
 var searchData=
 [
   ['parentsthrough',['parentsThrough',['../classLogCabin_1_1Tree_1_1Internal_1_1Path.html#a30850b2145ffb3ecad708e2c82ae8479',1,'LogCabin::Tree::Internal::Path']]],
-  ['parse',['parse',['../namespaceLogCabin_1_1RPC_1_1ProtoBuf.html#adcd57e6a58689b5543c09f4229fa9f49',1,'LogCabin::RPC::ProtoBuf']]],
+  ['parse',['parse',['../namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c',1,'LogCabin::Core::ProtoBuf']]],
   ['path',['Path',['../classLogCabin_1_1Tree_1_1Internal_1_1Path.html#a8e6c13abfbf9e3a2410da9f594233bfc',1,'LogCabin::Tree::Internal::Path']]],
-  ['peekreply',['peekReply',['../classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a6deceb0428f71f5a61ed6fb53a6d9ba5',1,'LogCabin::RPC::OpaqueClientRPC']]],
+  ['peekreply',['peekReply',['../classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#afee80b4602eb33569dfb87b398776da7',1,'LogCabin::RPC::OpaqueClientRPC']]],
   ['peer',['Peer',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ab658a5a52b9183a271843a5279d31ac9',1,'LogCabin::Server::RaftConsensusInternal::Peer::Peer(uint64_t serverId, RaftConsensus &amp;consensus)'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ae2e3c8a6a03b1234da9acde4e70c09ca',1,'LogCabin::Server::RaftConsensusInternal::Peer::Peer(const Peer &amp;)']]],
   ['peerthreadmain',['peerThreadMain',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac1f0d77d25c59e83ce7c446726292aaa',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['pidfile',['PidFile',['../classanonymous__namespace_02Main_8cc_03_1_1PidFile.html#a55863420948e957826f8f1efc435f064',1,'anonymous_namespace{Main.cc}::PidFile']]],

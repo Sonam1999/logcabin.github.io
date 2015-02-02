@@ -135,7 +135,7 @@ Private Member Functions</h2></td></tr>
 <div class="textblock"><p>Couples a <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html" title="Receives events from a MessageSocket.">MessageSocketHandler</a> with a <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html" title="A MessageSocket is a message-oriented layer on top of a TCP connection.">MessageSocket</a> (monitor) and destroys them in the right order (monitor first). </p>
 <p>This class is reference-counted with std::shared_ptr. Usually, one strong reference exists in <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer.html#a4a5da4248ff93b5d1f9726f5af0c9812" title="Every open socket is referenced here so that it can be cleaned up when this OpaqueServer is destroyed...">OpaqueServer::sockets</a>, which keeps this object alive. Weak references exist <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a> objects and in <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#a119717d01d4388ac366728825e02de84" title="A weak reference to this object, used to give OpaqueServerRPCs a way to send their replies back on th...">MessageSocketHandler::self</a> (to copy into <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a> objects). </p>
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00156">156</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00160">160</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a3f461a1a90fa06e99270fadfa19db29e"></a><!-- doxytag: member="LogCabin::RPC::OpaqueServer::SocketWithHandler::~SocketWithHandler" ref="a3f461a1a90fa06e99270fadfa19db29e" args="()" -->
 <div class="memitem">
@@ -235,7 +235,7 @@ Private Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00170">170</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00174">174</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 
 </div>
 </div>
@@ -250,7 +250,7 @@ Private Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00171">171</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
+<p>Definition at line <a class="el" href="OpaqueServer_8h_source.html#l00175">175</a> of file <a class="el" href="OpaqueServer_8h_source.html">OpaqueServer.h</a>.</p>
 
 </div>
 </div>

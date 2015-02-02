@@ -90,6 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;google/protobuf/text_format.h&gt;</code><br/>
 <code>#include &lt;memory&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
+<code>#include &quot;<a class="el" href="Buffer_8h_source.html">Core/Buffer.h</a>&quot;</code><br/>
 </div>
 <p><a href="Core_2ProtoBuf_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -121,6 +122,10 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr<br class="typebreak"/>
 &lt; google::protobuf::Message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6">LogCabin::Core::ProtoBuf::copy</a> (const google::protobuf::Message &amp;protoBuf)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the contents of a protocol buffer into a new one.  <a href="#a7004402716c3cf9ceefe79d1f9557dc6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c">LogCabin::Core::ProtoBuf::parse</a> (const Core::Buffer &amp;from, google::protobuf::Message &amp;to, uint32_t skipBytes=0)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a protocol buffer message out of a <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>.  <a href="#a23badda5bcd2986d9d4e67b3725a170c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956">LogCabin::Core::ProtoBuf::serialize</a> (const google::protobuf::Message &amp;from, Core::Buffer &amp;to, uint32_t skipBytes=0)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a protocol buffer message into a <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>.  <a href="#a59b769e00332b67dbfddb348c3707956"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Utilities for dealing with protocol buffers. </p>

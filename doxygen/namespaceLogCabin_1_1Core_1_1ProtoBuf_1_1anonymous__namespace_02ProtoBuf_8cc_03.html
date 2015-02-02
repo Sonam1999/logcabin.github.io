@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: LogCabin::RPC::ProtoBuf Namespace Reference</title>
+<title>LogCabin: LogCabin::Core::ProtoBuf::anonymous_namespace{ProtoBuf.cc} Namespace Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -91,124 +91,44 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
-      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>      </li>
-      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf.html">ProtoBuf</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Core.html">Core</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html">ProtoBuf</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1anonymous__namespace_02ProtoBuf_8cc_03.html">anonymous_namespace{ProtoBuf.cc}</a>      </li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">LogCabin::RPC::ProtoBuf Namespace Reference</div>  </div>
+<div class="title">LogCabin::Core::ProtoBuf::anonymous_namespace{ProtoBuf.cc} Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Utilities for dealing with protocol buffers in RPCs.  
-<a href="#details">More...</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf_1_1anonymous__namespace_02ProtoBuf_8cc_03.html">anonymous_namespace{ProtoBuf.cc}</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf.html#adcd57e6a58689b5543c09f4229fa9f49">parse</a> (const <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">RPC::Buffer</a> &amp;from, google::protobuf::Message &amp;to, uint32_t skipBytes=0)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a protocol buffer message out of an <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">RPC::Buffer</a>.  <a href="#adcd57e6a58689b5543c09f4229fa9f49"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf.html#a446b2b2e168faa0e07a8789de997e677">serialize</a> (const google::protobuf::Message &amp;from, <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">RPC::Buffer</a> &amp;to, uint32_t skipBytes=0)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a protocol buffer message into an <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">RPC::Buffer</a>.  <a href="#a446b2b2e168faa0e07a8789de997e677"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1anonymous__namespace_02ProtoBuf_8cc_03.html#a5e87e0b95a5966528fb77793c1f56d8b">truncateEnd</a> (std::string str)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the last character from the end of a string.  <a href="#a5e87e0b95a5966528fb77793c1f56d8b"></a><br/></td></tr>
 </table>
-<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Utilities for dealing with protocol buffers in RPCs. </p>
-</div><hr/><h2>Function Documentation</h2>
-<a class="anchor" id="adcd57e6a58689b5543c09f4229fa9f49"></a><!-- doxytag: member="LogCabin::RPC::ProtoBuf::parse" ref="adcd57e6a58689b5543c09f4229fa9f49" args="(const RPC::Buffer &amp;from, google::protobuf::Message &amp;to, uint32_t skipBytes=0)" -->
+<hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a5e87e0b95a5966528fb77793c1f56d8b"></a><!-- doxytag: member="LogCabin::Core::ProtoBuf::anonymous_namespace{ProtoBuf.cc}::truncateEnd" ref="a5e87e0b95a5966528fb77793c1f56d8b" args="(std::string str)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf.html#adcd57e6a58689b5543c09f4229fa9f49">LogCabin::RPC::ProtoBuf::parse</a> </td>
+          <td class="memname">std::string LogCabin::Core::ProtoBuf::anonymous_namespace{ProtoBuf.cc}::<a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1anonymous__namespace_02ProtoBuf_8cc_03.html#a5e87e0b95a5966528fb77793c1f56d8b">truncateEnd</a> </td>
           <td>(</td>
-          <td class="paramtype">const RPC::Buffer &amp;&#160;</td>
-          <td class="paramname"><em>from</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">google::protobuf::Message &amp;&#160;</td>
-          <td class="paramname"><em>to</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>skipBytes</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Parse a protocol buffer message out of an <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">RPC::Buffer</a>. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">from</td><td>The <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">RPC::Buffer</a> from which to extract a protocol buffer. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">to</td><td>The empty protocol buffer to fill in with the contents of the <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">RPC::Buffer</a>. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">skipBytes</td><td>The number of bytes to skip at the beginning of 'from' (defaults to 0). </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>True if the protocol buffer was parsed successfully; false otherwise (for example, if a required field is missing). </dd></dl>
+<p>Remove the last character from the end of a string. </p>
 
-<p>Definition at line <a class="el" href="RPC_2ProtoBuf_8cc_source.html#l00043">43</a> of file <a class="el" href="RPC_2ProtoBuf_8cc_source.html">ProtoBuf.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a446b2b2e168faa0e07a8789de997e677"></a><!-- doxytag: member="LogCabin::RPC::ProtoBuf::serialize" ref="a446b2b2e168faa0e07a8789de997e677" args="(const google::protobuf::Message &amp;from, RPC::Buffer &amp;to, uint32_t skipBytes=0)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="namespaceLogCabin_1_1RPC_1_1ProtoBuf.html#a446b2b2e168faa0e07a8789de997e677">LogCabin::RPC::ProtoBuf::serialize</a> </td>
-          <td>(</td>
-          <td class="paramtype">const google::protobuf::Message &amp;&#160;</td>
-          <td class="paramname"><em>from</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">RPC::Buffer &amp;&#160;</td>
-          <td class="paramname"><em>to</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>skipBytes</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Serialize a protocol buffer message into an <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">RPC::Buffer</a>. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">from</td><td>The protocol buffer containing the contents to serialize into the <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">RPC::Buffer</a>. All required fields must be set or this will PANIC. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">to</td><td>The <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">RPC::Buffer</a> to fill in with the contents of the protocol buffer. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">skipBytes</td><td>The number of bytes to allocate at the beginning of 'to' but leave uninitialized for someone else to fill in (defaults to 0). </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="RPC_2ProtoBuf_8cc_source.html#l00063">63</a> of file <a class="el" href="RPC_2ProtoBuf_8cc_source.html">ProtoBuf.cc</a>.</p>
+<p>Definition at line <a class="el" href="Core_2ProtoBuf_8cc_source.html#l00080">80</a> of file <a class="el" href="Core_2ProtoBuf_8cc_source.html">ProtoBuf.cc</a>.</p>
 
 </div>
 </div>

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: RPC/Buffer.h Source File</title>
+<title>LogCabin: Core/Buffer.h Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -77,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">RPC/Buffer.h</div>  </div>
+<div class="title">Core/Buffer.h</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a href="Buffer_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* Copyright (c) 2012 Stanford University</span>
@@ -98,18 +98,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00016"></a>00016 <span class="preprocessor">#include &lt;cinttypes&gt;</span>
 <a name="l00017"></a>00017 <span class="preprocessor">#include &lt;cstdlib&gt;</span>
 <a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="preprocessor">#ifndef LOGCABIN_RPC_BUFFER_H</span>
-<a name="l00020"></a>00020 <span class="preprocessor"></span><span class="preprocessor">#define LOGCABIN_RPC_BUFFER_H</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#ifndef LOGCABIN_CORE_BUFFER_H</span>
+<a name="l00020"></a>00020 <span class="preprocessor"></span><span class="preprocessor">#define LOGCABIN_CORE_BUFFER_H</span>
 <a name="l00021"></a>00021 <span class="preprocessor"></span>
 <a name="l00022"></a>00022 <span class="keyword">namespace </span>LogCabin {
-<a name="l00023"></a>00023 <span class="keyword">namespace </span>RPC {
+<a name="l00023"></a>00023 <span class="keyword">namespace </span>Core {
 <a name="l00024"></a>00024 <span class="comment"></span>
 <a name="l00025"></a>00025 <span class="comment">/**</span>
 <a name="l00026"></a>00026 <span class="comment"> * A container for opaque data. This makes it easy for code to operate on data</span>
 <a name="l00027"></a>00027 <span class="comment"> * without having to explicitly pass around its length and whether and how to</span>
 <a name="l00028"></a>00028 <span class="comment"> * free its memory.</span>
 <a name="l00029"></a>00029 <span class="comment"> */</span>
-<a name="l00030"></a><a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html">00030</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a> {
+<a name="l00030"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html">00030</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Buffer</a> {
 <a name="l00031"></a>00031   <span class="keyword">public</span>:<span class="comment"></span>
 <a name="l00032"></a>00032 <span class="comment">    /**</span>
 <a name="l00033"></a>00033 <span class="comment">     * A deleter is a function that can free the memory contained in the</span>
@@ -119,7 +119,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00037"></a>00037 <span class="comment">     * \param data</span>
 <a name="l00038"></a>00038 <span class="comment">     *      The memory that should be reclaimed.</span>
 <a name="l00039"></a>00039 <span class="comment">     */</span>
-<a name="l00040"></a><a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#aa5a0684969aee6d471bf78bd06c3f644">00040</a>     <span class="keyword">typedef</span> void (*<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#aa5a0684969aee6d471bf78bd06c3f644" title="A deleter is a function that can free the memory contained in the Buffer.">Deleter</a>)(<span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36" title="A pointer to the data or NULL if none has been set.">data</a>);
+<a name="l00040"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb">00040</a>     <span class="keyword">typedef</span> void (*<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb" title="A deleter is a function that can free the memory contained in the Buffer.">Deleter</a>)(<span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>);
 <a name="l00041"></a>00041 <span class="comment"></span>
 <a name="l00042"></a>00042 <span class="comment">    /**</span>
 <a name="l00043"></a>00043 <span class="comment">     * A Deleter that uses C++&#39;s delete keyword.</span>
@@ -131,8 +131,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00049"></a>00049 <span class="comment">     *      The type of the object as it was allocated with new.</span>
 <a name="l00050"></a>00050 <span class="comment">     */</span>
 <a name="l00051"></a>00051     <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00052"></a><a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a33990070ecee6862ace841fd9deb3922">00052</a>     <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a33990070ecee6862ace841fd9deb3922" title="A Deleter that uses C++&#39;s delete keyword.">deleteObjectFn</a>(<span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36" title="A pointer to the data or NULL if none has been set.">data</a>) {
-<a name="l00053"></a>00053         <span class="keyword">delete</span> <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36" title="A pointer to the data or NULL if none has been set.">data</a>);
+<a name="l00052"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a7b60260d551b949f9620c2a6c0b7996c">00052</a>     <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a7b60260d551b949f9620c2a6c0b7996c" title="A Deleter that uses C++&#39;s delete keyword.">deleteObjectFn</a>(<span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>) {
+<a name="l00053"></a>00053         <span class="keyword">delete</span> <span class="keyword">static_cast&lt;</span>T<span class="keyword">&gt;</span>(<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>);
 <a name="l00054"></a>00054     }
 <a name="l00055"></a>00055 <span class="comment"></span>
 <a name="l00056"></a>00056 <span class="comment">    /**</span>
@@ -146,14 +146,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00064"></a>00064 <span class="comment">     *      new[].</span>
 <a name="l00065"></a>00065 <span class="comment">     */</span>
 <a name="l00066"></a>00066     <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00067"></a><a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a80a95f91175c14844388964258ac4ce8">00067</a>     <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a80a95f91175c14844388964258ac4ce8" title="A Deleter that uses C++&#39;s array delete[] keyword.">deleteArrayFn</a>(<span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36" title="A pointer to the data or NULL if none has been set.">data</a>) {
-<a name="l00068"></a>00068         <span class="keyword">delete</span>[] <span class="keyword">static_cast&lt;</span>T*<span class="keyword">&gt;</span>(<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36" title="A pointer to the data or NULL if none has been set.">data</a>);
+<a name="l00067"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a54dbf730ff52a8c948d571fad110136c">00067</a>     <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a54dbf730ff52a8c948d571fad110136c" title="A Deleter that uses C++&#39;s array delete[] keyword.">deleteArrayFn</a>(<span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>) {
+<a name="l00068"></a>00068         <span class="keyword">delete</span>[] <span class="keyword">static_cast&lt;</span>T*<span class="keyword">&gt;</span>(<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>);
 <a name="l00069"></a>00069     }
 <a name="l00070"></a>00070 <span class="comment"></span>
 <a name="l00071"></a>00071 <span class="comment">    /**</span>
 <a name="l00072"></a>00072 <span class="comment">     * Default constructor.</span>
 <a name="l00073"></a>00073 <span class="comment">     */</span>
-<a name="l00074"></a>00074     <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a70b809aef5e4b68454faba8792a77f75" title="Default constructor.">Buffer</a>();
+<a name="l00074"></a>00074     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a852661fe15f359808cfad04825091b0b" title="Default constructor.">Buffer</a>();
 <a name="l00075"></a>00075 <span class="comment"></span>
 <a name="l00076"></a>00076 <span class="comment">    /**</span>
 <a name="l00077"></a>00077 <span class="comment">     * Construct a non-empty buffer. This is equivalent to using the default</span>
@@ -168,38 +168,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00086"></a>00086 <span class="comment">     *      owns the memory and guarantees its lifetime will extend beyond that</span>
 <a name="l00087"></a>00087 <span class="comment">     *      of the Buffer.</span>
 <a name="l00088"></a>00088 <span class="comment">     */</span>
-<a name="l00089"></a>00089     <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a70b809aef5e4b68454faba8792a77f75" title="Default constructor.">Buffer</a>(<span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36" title="A pointer to the data or NULL if none has been set.">data</a>, uint32_t <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a9e4906cd1ea38171b562528a5522548b" title="The number of bytes that make up data or 0 if none has been set.">length</a>, <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#aa5a0684969aee6d471bf78bd06c3f644" title="A deleter is a function that can free the memory contained in the Buffer.">Deleter</a> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a09114dca8f8be2a663a67e0cd69056b3" title="Describes how to release the memory for &#39;data&#39; when this Buffer is destroyed or its data is replaced...">deleter</a>);
+<a name="l00089"></a>00089     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a852661fe15f359808cfad04825091b0b" title="Default constructor.">Buffer</a>(<span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>, uint32_t <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#aebce20f448a89421cdd80172da572493" title="The number of bytes that make up data or 0 if none has been set.">length</a>, <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb" title="A deleter is a function that can free the memory contained in the Buffer.">Deleter</a> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238" title="Describes how to release the memory for &#39;data&#39; when this Buffer is destroyed or its data is replaced...">deleter</a>);
 <a name="l00090"></a>00090 <span class="comment"></span>
 <a name="l00091"></a>00091 <span class="comment">    /**</span>
 <a name="l00092"></a>00092 <span class="comment">     * Move constructor.</span>
 <a name="l00093"></a>00093 <span class="comment">     */</span>
-<a name="l00094"></a>00094     <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a70b809aef5e4b68454faba8792a77f75" title="Default constructor.">Buffer</a>(<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp;&amp; other);
+<a name="l00094"></a>00094     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a852661fe15f359808cfad04825091b0b" title="Default constructor.">Buffer</a>(<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp;&amp; other);
 <a name="l00095"></a>00095 <span class="comment"></span>
 <a name="l00096"></a>00096 <span class="comment">    /**</span>
 <a name="l00097"></a>00097 <span class="comment">     * Destructor. The memory for the existing data, if any, will be reclaimed</span>
 <a name="l00098"></a>00098 <span class="comment">     * according to its deleter.</span>
 <a name="l00099"></a>00099 <span class="comment">     */</span>
-<a name="l00100"></a>00100     <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a302d1ca56f0ce4204e3aa25f5a20b11a" title="Destructor.">~Buffer</a>();
+<a name="l00100"></a>00100     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a0e5bc4d1d42a1110457f9923156c3ec3" title="Destructor.">~Buffer</a>();
 <a name="l00101"></a>00101 <span class="comment"></span>
 <a name="l00102"></a>00102 <span class="comment">    /**</span>
 <a name="l00103"></a>00103 <span class="comment">     * Move assignment.</span>
 <a name="l00104"></a>00104 <span class="comment">     */</span>
-<a name="l00105"></a>00105     <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp; <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0de2e21e2696a97a951c2cd97435b0e7" title="Move assignment.">operator=</a>(<a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp;&amp; other);
+<a name="l00105"></a>00105     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp; <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a5029ed62f0a64c307c293ccdd43d85ff" title="Move assignment.">operator=</a>(<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp;&amp; other);
 <a name="l00106"></a>00106 <span class="comment"></span>
 <a name="l00107"></a>00107 <span class="comment">    /**</span>
 <a name="l00108"></a>00108 <span class="comment">     * Return a pointer to the first byte of data.</span>
 <a name="l00109"></a>00109 <span class="comment">     */</span>
-<a name="l00110"></a><a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#addf2330add67835b4d9c056b7238c8d8">00110</a>     <span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#addf2330add67835b4d9c056b7238c8d8" title="Return a pointer to the first byte of data.">getData</a>() { <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36" title="A pointer to the data or NULL if none has been set.">data</a>; }
+<a name="l00110"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e">00110</a>     <span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>() { <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>; }
 <a name="l00111"></a>00111 <span class="comment"></span>
 <a name="l00112"></a>00112 <span class="comment">    /**</span>
 <a name="l00113"></a>00113 <span class="comment">     * Return a pointer to the first byte of data (const variant).</span>
 <a name="l00114"></a>00114 <span class="comment">     */</span>
-<a name="l00115"></a><a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#ae39f884077010845e10c71daad535b5a">00115</a>     <span class="keyword">const</span> <span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#ae39f884077010845e10c71daad535b5a" title="Return a pointer to the first byte of data (const variant).">getData</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36" title="A pointer to the data or NULL if none has been set.">data</a>; }
+<a name="l00115"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#aa6e3a64e9ee54f5c87b1a62a138ca62f">00115</a>     <span class="keyword">const</span> <span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#aa6e3a64e9ee54f5c87b1a62a138ca62f" title="Return a pointer to the first byte of data (const variant).">getData</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>; }
 <a name="l00116"></a>00116 <span class="comment"></span>
 <a name="l00117"></a>00117 <span class="comment">    /**</span>
 <a name="l00118"></a>00118 <span class="comment">     * Return the number of bytes that make up the data.</span>
 <a name="l00119"></a>00119 <span class="comment">     */</span>
-<a name="l00120"></a><a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#af8656055846d619fe552af3ad99b5807">00120</a>     uint32_t <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#af8656055846d619fe552af3ad99b5807" title="Return the number of bytes that make up the data.">getLength</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a9e4906cd1ea38171b562528a5522548b" title="The number of bytes that make up data or 0 if none has been set.">length</a>; }
+<a name="l00120"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a9e80f0a14521d8d262ada6e1f1f5a44d">00120</a>     uint32_t <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a9e80f0a14521d8d262ada6e1f1f5a44d" title="Return the number of bytes that make up the data.">getLength</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#aebce20f448a89421cdd80172da572493" title="The number of bytes that make up data or 0 if none has been set.">length</a>; }
 <a name="l00121"></a>00121 <span class="comment"></span>
 <a name="l00122"></a>00122 <span class="comment">    /**</span>
 <a name="l00123"></a>00123 <span class="comment">     * Replace the data contained in this Buffer.</span>
@@ -215,24 +215,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00133"></a>00133 <span class="comment">     *      owns the memory and guarantees its lifetime will extend beyond that</span>
 <a name="l00134"></a>00134 <span class="comment">     *      of the Buffer.</span>
 <a name="l00135"></a>00135 <span class="comment">     */</span>
-<a name="l00136"></a>00136     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#abcc1e75b47f4f1a40df28ebe79c36ad3" title="Replace the data contained in this Buffer.">setData</a>(<span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36" title="A pointer to the data or NULL if none has been set.">data</a>, uint32_t <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a9e4906cd1ea38171b562528a5522548b" title="The number of bytes that make up data or 0 if none has been set.">length</a>, <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#aa5a0684969aee6d471bf78bd06c3f644" title="A deleter is a function that can free the memory contained in the Buffer.">Deleter</a> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a09114dca8f8be2a663a67e0cd69056b3" title="Describes how to release the memory for &#39;data&#39; when this Buffer is destroyed or its data is replaced...">deleter</a>);
+<a name="l00136"></a>00136     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ab419c0c44d7372aaeb1a06ee2d252426" title="Replace the data contained in this Buffer.">setData</a>(<span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>, uint32_t <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#aebce20f448a89421cdd80172da572493" title="The number of bytes that make up data or 0 if none has been set.">length</a>, <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb" title="A deleter is a function that can free the memory contained in the Buffer.">Deleter</a> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238" title="Describes how to release the memory for &#39;data&#39; when this Buffer is destroyed or its data is replaced...">deleter</a>);
 <a name="l00137"></a>00137 <span class="comment"></span>
 <a name="l00138"></a>00138 <span class="comment">    /**</span>
 <a name="l00139"></a>00139 <span class="comment">     * Empty the Buffer. The memory for the existing data, if any, will be</span>
 <a name="l00140"></a>00140 <span class="comment">     * reclaimed according to its deleter.</span>
 <a name="l00141"></a>00141 <span class="comment">     */</span>
-<a name="l00142"></a>00142     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#aeeaadac7a063c703ae7533aa5b0648bf" title="Empty the Buffer.">reset</a>();
+<a name="l00142"></a>00142     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ac30c5784872a33a2f39a399ec688e4b7" title="Empty the Buffer.">reset</a>();
 <a name="l00143"></a>00143 
 <a name="l00144"></a>00144   <span class="keyword">private</span>:<span class="comment"></span>
 <a name="l00145"></a>00145 <span class="comment">    /**</span>
 <a name="l00146"></a>00146 <span class="comment">     * A pointer to the data or NULL if none has been set.</span>
 <a name="l00147"></a>00147 <span class="comment">     */</span>
-<a name="l00148"></a><a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36">00148</a>     <span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36" title="A pointer to the data or NULL if none has been set.">data</a>;
+<a name="l00148"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e">00148</a>     <span class="keywordtype">void</span>* <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>;
 <a name="l00149"></a>00149 <span class="comment"></span>
 <a name="l00150"></a>00150 <span class="comment">    /**</span>
 <a name="l00151"></a>00151 <span class="comment">     * The number of bytes that make up data or 0 if none has been set.</span>
 <a name="l00152"></a>00152 <span class="comment">     */</span>
-<a name="l00153"></a><a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a9e4906cd1ea38171b562528a5522548b">00153</a>     uint32_t <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a9e4906cd1ea38171b562528a5522548b" title="The number of bytes that make up data or 0 if none has been set.">length</a>;
+<a name="l00153"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#aebce20f448a89421cdd80172da572493">00153</a>     uint32_t <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#aebce20f448a89421cdd80172da572493" title="The number of bytes that make up data or 0 if none has been set.">length</a>;
 <a name="l00154"></a>00154 <span class="comment"></span>
 <a name="l00155"></a>00155 <span class="comment">    /**</span>
 <a name="l00156"></a>00156 <span class="comment">     * Describes how to release the memory for &#39;data&#39; when this Buffer is</span>
@@ -240,18 +240,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00158"></a>00158 <span class="comment">     * This may be NULL, in which case it is not called (the memory is managed</span>
 <a name="l00159"></a>00159 <span class="comment">     * externally).</span>
 <a name="l00160"></a>00160 <span class="comment">     */</span>
-<a name="l00161"></a><a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a09114dca8f8be2a663a67e0cd69056b3">00161</a>     <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#aa5a0684969aee6d471bf78bd06c3f644" title="A deleter is a function that can free the memory contained in the Buffer.">Deleter</a> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a09114dca8f8be2a663a67e0cd69056b3" title="Describes how to release the memory for &#39;data&#39; when this Buffer is destroyed or its data is replaced...">deleter</a>;
+<a name="l00161"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238">00161</a>     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb" title="A deleter is a function that can free the memory contained in the Buffer.">Deleter</a> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238" title="Describes how to release the memory for &#39;data&#39; when this Buffer is destroyed or its data is replaced...">deleter</a>;
 <a name="l00162"></a>00162 
 <a name="l00163"></a>00163     <span class="comment">// Buffer is non-copyable.</span>
-<a name="l00164"></a>00164     <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a70b809aef5e4b68454faba8792a77f75" title="Default constructor.">Buffer</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00165"></a>00165     <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp; <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html#a0de2e21e2696a97a951c2cd97435b0e7" title="Move assignment.">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1RPC_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00164"></a>00164     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a852661fe15f359808cfad04825091b0b" title="Default constructor.">Buffer</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00165"></a>00165     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp; <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a5029ed62f0a64c307c293ccdd43d85ff" title="Move assignment.">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Buffer</a>&amp;) = <span class="keyword">delete</span>;
 <a name="l00166"></a>00166 
 <a name="l00167"></a>00167 }; <span class="comment">// class Buffer</span>
 <a name="l00168"></a>00168 
-<a name="l00169"></a>00169 } <span class="comment">// namespace LogCabin::RPC</span>
+<a name="l00169"></a>00169 } <span class="comment">// namespace LogCabin::Core</span>
 <a name="l00170"></a>00170 } <span class="comment">// namespace LogCabin</span>
 <a name="l00171"></a>00171 
-<a name="l00172"></a>00172 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_RPC_BUFFER_H */</span>
+<a name="l00172"></a>00172 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_CORE_BUFFER_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

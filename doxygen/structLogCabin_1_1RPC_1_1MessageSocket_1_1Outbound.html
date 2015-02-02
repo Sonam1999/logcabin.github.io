@@ -119,8 +119,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a858dd75a6a8597fdb39a04a40fc7b46d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#a854b8a0a6f7a770fe665b79388fd45f8">Outbound</a> (<a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html">Outbound</a> &amp;&amp;other)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="#a854b8a0a6f7a770fe665b79388fd45f8"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#a26ad758a3bc470ff5f13b47e5c6f7fee">Outbound</a> (<a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#abef3021a3d11c0dd0ff037b567d3e686">MessageId</a> messageId, <a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a> <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#ab2db72522a132baeef86d8bbdfac86ac">message</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a26ad758a3bc470ff5f13b47e5c6f7fee"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#aa1baeb4607a59c39359beb896eff6eee">Outbound</a> (<a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#abef3021a3d11c0dd0ff037b567d3e686">MessageId</a> messageId, <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#a360fe4dd0847275c26d8d95819abd802">message</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#aa1baeb4607a59c39359beb896eff6eee"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html">Outbound</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#aa616c958eb2722fed30b1cc1a6144124">operator=</a> (<a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html">Outbound</a> &amp;&amp;other)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment.  <a href="#aa616c958eb2722fed30b1cc1a6144124"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
@@ -129,8 +129,8 @@ Public Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes already sent for this message, including the header.  <a href="#aea15b927af79f6aef509496096c85d4c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html">Header</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#a9b75ac1d85309dd924690c1fdbacfaeb">header</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The message header, in big endian.  <a href="#a9b75ac1d85309dd924690c1fdbacfaeb"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#ab2db72522a132baeef86d8bbdfac86ac">message</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The contents of the message (after the header).  <a href="#ab2db72522a132baeef86d8bbdfac86ac"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#a360fe4dd0847275c26d8d95819abd802">message</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The contents of the message (after the header).  <a href="#a360fe4dd0847275c26d8d95819abd802"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This class stages a message while it is being sent. </p>
@@ -178,7 +178,7 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a26ad758a3bc470ff5f13b47e5c6f7fee"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::Outbound::Outbound" ref="a26ad758a3bc470ff5f13b47e5c6f7fee" args="(MessageId messageId, Buffer message)" -->
+<a class="anchor" id="aa1baeb4607a59c39359beb896eff6eee"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::Outbound::Outbound" ref="aa1baeb4607a59c39359beb896eff6eee" args="(MessageId messageId, Core::Buffer message)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -191,7 +191,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a>&#160;</td>
           <td class="paramname"><em>message</em>&#160;</td>
         </tr>
         <tr>
@@ -266,12 +266,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab2db72522a132baeef86d8bbdfac86ac"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::Outbound::message" ref="ab2db72522a132baeef86d8bbdfac86ac" args="" -->
+<a class="anchor" id="a360fe4dd0847275c26d8d95819abd802"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::Outbound::message" ref="a360fe4dd0847275c26d8d95819abd802" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a> <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#ab2db72522a132baeef86d8bbdfac86ac">LogCabin::RPC::MessageSocket::Outbound::message</a></td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#a360fe4dd0847275c26d8d95819abd802">LogCabin::RPC::MessageSocket::Outbound::message</a></td>
         </tr>
       </table>
 </div>

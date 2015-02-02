@@ -150,8 +150,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If an error has occurred, return a message describing that error.  <a href="#ae582457d237dfa5f835b84bcaef61c39"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a573067fc8bb72213a4d3ba30c17a047c">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a35a3f47dcbdec15d44fcb18a916e014f">getStatus</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a573067fc8bb72213a4d3ba30c17a047c" title="State of the RPC.">Status</a>.  <a href="#a35a3f47dcbdec15d44fcb18a916e014f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a6deceb0428f71f5a61ed6fb53a6d9ba5">peekReply</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Look at the reply buffer.  <a href="#a6deceb0428f71f5a61ed6fb53a6d9ba5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#afee80b4602eb33569dfb87b398776da7">peekReply</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Look at the reply buffer.  <a href="#afee80b4602eb33569dfb87b398776da7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a0e87185098bbce2562558be649fca43f">waitForReply</a> (<a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a2a65799a92f88f78c2cf63adfa50627f">TimePoint</a> timeout)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Block until the reply is ready, an error has occurred, or the given timeout elapses.  <a href="#a0e87185098bbce2562558be649fca43f"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
@@ -170,8 +170,8 @@ Private Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A token given to the session to look up new information about the progress of this <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>'s reply.  <a href="#ab01913266583c9aced29e75609ec1064"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a573067fc8bb72213a4d3ba30c17a047c">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#acaa61e33f2ff621c4973cca566883f35">status</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a573067fc8bb72213a4d3ba30c17a047c" title="State of the RPC.">Status</a>.  <a href="#acaa61e33f2ff621c4973cca566883f35"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a9acd58a66c40a0137b9e01701158a337">reply</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The payload of a successful reply, once available.  <a href="#a9acd58a66c40a0137b9e01701158a337"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a7a3c16b4e722789dfcbd2deb835fc854">reply</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The payload of a successful reply, once available.  <a href="#a7a3c16b4e722789dfcbd2deb835fc854"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a61bff204e305e875e22f878bbfeee749">errorMessage</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If an error occurred in the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> then this holds the error message; otherwise, this is the empty string.  <a href="#a61bff204e305e875e22f878bbfeee749"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="friends"></a>
@@ -417,12 +417,12 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6deceb0428f71f5a61ed6fb53a6d9ba5"></a><!-- doxytag: member="LogCabin::RPC::OpaqueClientRPC::peekReply" ref="a6deceb0428f71f5a61ed6fb53a6d9ba5" args="()" -->
+<a class="anchor" id="afee80b4602eb33569dfb87b398776da7"></a><!-- doxytag: member="LogCabin::RPC::OpaqueClientRPC::peekReply" ref="afee80b4602eb33569dfb87b398776da7" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a> * <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a6deceb0428f71f5a61ed6fb53a6d9ba5">LogCabin::RPC::OpaqueClientRPC::peekReply</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> * <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#afee80b4602eb33569dfb87b398776da7">LogCabin::RPC::OpaqueClientRPC::peekReply</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -590,12 +590,12 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9acd58a66c40a0137b9e01701158a337"></a><!-- doxytag: member="LogCabin::RPC::OpaqueClientRPC::reply" ref="a9acd58a66c40a0137b9e01701158a337" args="" -->
+<a class="anchor" id="a7a3c16b4e722789dfcbd2deb835fc854"></a><!-- doxytag: member="LogCabin::RPC::OpaqueClientRPC::reply" ref="a7a3c16b4e722789dfcbd2deb835fc854" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1RPC_1_1Buffer.html">Buffer</a> <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a9acd58a66c40a0137b9e01701158a337">LogCabin::RPC::OpaqueClientRPC::reply</a><code> [private]</code></td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a7a3c16b4e722789dfcbd2deb835fc854">LogCabin::RPC::OpaqueClientRPC::reply</a><code> [private]</code></td>
         </tr>
       </table>
 </div>

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['daemon',['daemon',['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#af0739fee4e519388ee65e82d66e0233d',1,'anonymous_namespace{Main.cc}::OptionParser']]],
-  ['data',['data',['../classLogCabin_1_1RPC_1_1Buffer.html#a0d5b35ff0ade6f44b7660a8dd5c63d36',1,'LogCabin::RPC::Buffer::data()'],['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#aaeeb0cef565cc48eed0987d272ea65be',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::data()'],['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#ad3faa7f9b282d60e8253185b09a88c5aa6d451f3ccae3822b3ec4e0df95282d71',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::DATA()']]],
+  ['data',['DATA',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#ad3faa7f9b282d60e8253185b09a88c5aa6d451f3ccae3822b3ec4e0df95282d71',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::DATA()'],['../classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e',1,'LogCabin::Core::Buffer::data()'],['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#aaeeb0cef565cc48eed0987d272ea65be',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::data()']]],
   ['debug_2ecc',['Debug.cc',['../Debug_8cc.html',1,'']]],
   ['debug_2eh',['Debug.h',['../Debug_8h.html',1,'']]],
   ['debuglogfilename',['debugLogFilename',['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#a813286f4c03c4c3b973a917e74231ce2',1,'anonymous_namespace{Main.cc}::OptionParser']]],
@@ -9,9 +9,9 @@ var searchData=
   ['deferred',['deferred',['../classLogCabin_1_1Server_1_1ServerStats.html#afb812ab906c5ad0e2a38521ed6ce6884',1,'LogCabin::Server::ServerStats::deferred()'],['../structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#afc8952c46778acefaea54245e0520c02',1,'LogCabin::Server::ServerStats::Deferred::Deferred()']]],
   ['deferred',['Deferred',['../structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html',1,'LogCabin::Server::ServerStats']]],
   ['delayandbegin',['delayAndBegin',['../classLogCabin_1_1Client_1_1Backoff.html#a1695d3da40aaa2e2acbab1c4add0634e',1,'LogCabin::Client::Backoff']]],
-  ['deletearrayfn',['deleteArrayFn',['../classLogCabin_1_1RPC_1_1Buffer.html#a80a95f91175c14844388964258ac4ce8',1,'LogCabin::RPC::Buffer']]],
-  ['deleteobjectfn',['deleteObjectFn',['../classLogCabin_1_1RPC_1_1Buffer.html#a33990070ecee6862ace841fd9deb3922',1,'LogCabin::RPC::Buffer']]],
-  ['deleter',['deleter',['../classLogCabin_1_1RPC_1_1Buffer.html#a09114dca8f8be2a663a67e0cd69056b3',1,'LogCabin::RPC::Buffer::deleter()'],['../classLogCabin_1_1RPC_1_1Buffer.html#aa5a0684969aee6d471bf78bd06c3f644',1,'LogCabin::RPC::Buffer::Deleter()']]],
+  ['deletearrayfn',['deleteArrayFn',['../classLogCabin_1_1Core_1_1Buffer.html#a54dbf730ff52a8c948d571fad110136c',1,'LogCabin::Core::Buffer']]],
+  ['deleteobjectfn',['deleteObjectFn',['../classLogCabin_1_1Core_1_1Buffer.html#a7b60260d551b949f9620c2a6c0b7996c',1,'LogCabin::Core::Buffer']]],
+  ['deleter',['deleter',['../classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238',1,'LogCabin::Core::Buffer::deleter()'],['../classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb',1,'LogCabin::Core::Buffer::Deleter()']]],
   ['delimiter',['delimiter',['../classLogCabin_1_1Core_1_1Config.html#a6a68eb2bc7cc74d868a5b8d501172377',1,'LogCabin::Core::Config']]],
   ['demangle',['demangle',['../namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a5766c3478ce808eee34e819527a4ec78',1,'LogCabin::Core::anonymous_namespace{Config.cc}']]],
   ['deschedule',['deschedule',['../classLogCabin_1_1Event_1_1Timer.html#aaa60ccb04533e48aad6f517b89f134b6',1,'LogCabin::Event::Timer']]],

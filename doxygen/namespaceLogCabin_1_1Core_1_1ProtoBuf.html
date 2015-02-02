@@ -107,6 +107,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1anonymous__namespace_02ProtoBuf_8cc_03.html">anonymous_namespace{ProtoBuf.cc}</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1Internal.html">Internal</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -115,6 +116,10 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr<br class="typebreak"/>
 &lt; google::protobuf::Message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6">copy</a> (const google::protobuf::Message &amp;protoBuf)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the contents of a protocol buffer into a new one.  <a href="#a7004402716c3cf9ceefe79d1f9557dc6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c">parse</a> (const <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> &amp;from, google::protobuf::Message &amp;to, uint32_t skipBytes=0)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a protocol buffer message out of a <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>.  <a href="#a23badda5bcd2986d9d4e67b3725a170c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956">serialize</a> (const google::protobuf::Message &amp;from, <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> &amp;to, uint32_t skipBytes=0)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a protocol buffer message into a <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>.  <a href="#a59b769e00332b67dbfddb348c3707956"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename ProtoBuf &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">ProtoBuf&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a8068fb78cce07fe41d438cd3cf9bed05">fromString</a> (const std::string &amp;str)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a protocol buffer message form a text format.  <a href="#a8068fb78cce07fe41d438cd3cf9bed05"></a><br/></td></tr>
@@ -156,7 +161,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Textual representation. This will be printable ASCII; binary will be escaped. </dd></dl>
 
-<p>Definition at line <a class="el" href="Core_2ProtoBuf_8cc_source.html#l00087">87</a> of file <a class="el" href="Core_2ProtoBuf_8cc_source.html">ProtoBuf.cc</a>.</p>
+<p>Definition at line <a class="el" href="Core_2ProtoBuf_8cc_source.html#l00101">101</a> of file <a class="el" href="Core_2ProtoBuf_8cc_source.html">ProtoBuf.cc</a>.</p>
 
 </div>
 </div>
@@ -177,7 +182,98 @@ Functions</h2></td></tr>
 
 <p>Copy the contents of a protocol buffer into a new one. </p>
 
-<p>Definition at line <a class="el" href="Core_2ProtoBuf_8cc_source.html#l00129">129</a> of file <a class="el" href="Core_2ProtoBuf_8cc_source.html">ProtoBuf.cc</a>.</p>
+<p>Definition at line <a class="el" href="Core_2ProtoBuf_8cc_source.html#l00143">143</a> of file <a class="el" href="Core_2ProtoBuf_8cc_source.html">ProtoBuf.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a23badda5bcd2986d9d4e67b3725a170c"></a><!-- doxytag: member="LogCabin::Core::ProtoBuf::parse" ref="a23badda5bcd2986d9d4e67b3725a170c" args="(const Core::Buffer &amp;from, google::protobuf::Message &amp;to, uint32_t skipBytes=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c">LogCabin::Core::ProtoBuf::parse</a> </td>
+          <td>(</td>
+          <td class="paramtype">const Core::Buffer &amp;&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">google::protobuf::Message &amp;&#160;</td>
+          <td class="paramname"><em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>skipBytes</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Parse a protocol buffer message out of a <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">from</td><td>The <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> from which to extract a protocol buffer. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">to</td><td>The empty protocol buffer to fill in with the contents of the <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">skipBytes</td><td>The number of bytes to skip at the beginning of 'from' (defaults to 0). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True if the protocol buffer was parsed successfully; false otherwise (for example, if a required field is missing). </dd></dl>
+
+<p>Definition at line <a class="el" href="Core_2ProtoBuf_8cc_source.html#l00151">151</a> of file <a class="el" href="Core_2ProtoBuf_8cc_source.html">ProtoBuf.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a59b769e00332b67dbfddb348c3707956"></a><!-- doxytag: member="LogCabin::Core::ProtoBuf::serialize" ref="a59b769e00332b67dbfddb348c3707956" args="(const google::protobuf::Message &amp;from, Core::Buffer &amp;to, uint32_t skipBytes=0)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956">LogCabin::Core::ProtoBuf::serialize</a> </td>
+          <td>(</td>
+          <td class="paramtype">const google::protobuf::Message &amp;&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Core::Buffer &amp;&#160;</td>
+          <td class="paramname"><em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>skipBytes</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Serialize a protocol buffer message into a <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">from</td><td>The protocol buffer containing the contents to serialize into the <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>. All required fields must be set or this will PANIC. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">to</td><td>The <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> to fill in with the contents of the protocol buffer. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">skipBytes</td><td>The number of bytes to allocate at the beginning of 'to' but leave uninitialized for someone else to fill in (defaults to 0). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="Core_2ProtoBuf_8cc_source.html#l00171">171</a> of file <a class="el" href="Core_2ProtoBuf_8cc_source.html">ProtoBuf.cc</a>.</p>
 
 </div>
 </div>
@@ -214,7 +310,7 @@ template&lt;typename ProtoBuf &gt; </div>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The parsed protocol buffer. </dd></dl>
 
-<p>Definition at line <a class="el" href="Core_2ProtoBuf_8h_source.html#l00079">79</a> of file <a class="el" href="Core_2ProtoBuf_8h_source.html">ProtoBuf.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2ProtoBuf_8h_source.html#l00081">81</a> of file <a class="el" href="Core_2ProtoBuf_8h_source.html">ProtoBuf.h</a>.</p>
 
 </div>
 </div>
