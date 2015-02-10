@@ -138,7 +138,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#aa7a6ff21568b7d4fd4d99708cab910e6">SimpleFileLog</a> (const <a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html">Storage::FilesystemUtil::File</a> &amp;parentDir)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#ad6d910df1e444ad721a196e8e86b77e8">~SimpleFileLog</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::pair&lt; uint64_t, uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a3fd8cd44fb0f21228974e55911735206">append</a> (const std::vector&lt; const <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0">Entry</a> * &gt; &amp;entries)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Append new entries to the log.  <a href="#a3fd8cd44fb0f21228974e55911735206"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Start to append new entries to the log.  <a href="#a3fd8cd44fb0f21228974e55911735206"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html">Log::Sync</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#aec4f3bab89a66ba7d94713d70b9ed141">takeSync</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get and remove the <a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Log</a>'s <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog_1_1Sync.html">Sync</a> object in order to wait on it.  <a href="#aec4f3bab89a66ba7d94713d70b9ed141"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a3db9d7ce06f0f16a77dc9117f191c819">truncatePrefix</a> (uint64_t firstEntryId)</td></tr>
@@ -248,7 +248,8 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Append new entries to the log. </p>
+<p>Start to append new entries to the log. </p>
+<p>The entries may not be on disk yet when this returns; see <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog_1_1Sync.html">Sync</a>. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">entries</td><td>Entries to place at the end of the log. </td></tr>
@@ -303,7 +304,7 @@ Protected Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Delete the log entries before the given index. </p>
-<p>Once you truncate a prefix from the log, there's no way to undo this. </p>
+<p>Once you truncate a prefix from the log, there's no way to undo this. The entries may still be on disk when this returns and file descriptors and other resources may remain open; see <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog_1_1Sync.html">Sync</a>. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">firstIndex</td><td>After this call, the log will contain no entries indexed less than firstIndex. This can be any log index, including 0 and those past the end of the log. </td></tr>

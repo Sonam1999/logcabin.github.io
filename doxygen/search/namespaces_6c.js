@@ -11,6 +11,7 @@ var searchData=
   ['anonymous_5fnamespace_7bprotobuf_2ecc_7d',['anonymous_namespace{ProtoBuf.cc}',['../namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1anonymous__namespace_02ProtoBuf_8cc_03.html',1,'LogCabin::Core::ProtoBuf']]],
   ['anonymous_5fnamespace_7braftconsensus_2ecc_7d',['anonymous_namespace{RaftConsensus.cc}',['../namespaceLogCabin_1_1Server_1_1RaftConsensusInternal_1_1anonymous__namespace_02RaftConsensus_8cc_03.html',1,'LogCabin::Server::RaftConsensusInternal']]],
   ['anonymous_5fnamespace_7brandom_2ecc_7d',['anonymous_namespace{Random.cc}',['../namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html',1,'LogCabin::Core::Random']]],
+  ['anonymous_5fnamespace_7bsegmentedlog_2ecc_7d',['anonymous_namespace{SegmentedLog.cc}',['../namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SegmentedLog_8cc_03.html',1,'LogCabin::Storage']]],
   ['anonymous_5fnamespace_7bsignal_2ecc_7d',['anonymous_namespace{Signal.cc}',['../namespaceLogCabin_1_1Event_1_1anonymous__namespace_02Signal_8cc_03.html',1,'LogCabin::Event']]],
   ['anonymous_5fnamespace_7bsimplefilelog_2ecc_7d',['anonymous_namespace{SimpleFileLog.cc}',['../namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html',1,'LogCabin::Storage']]],
   ['anonymous_5fnamespace_7bstringutil_2ecc_7d',['anonymous_namespace{StringUtil.cc}',['../namespaceLogCabin_1_1Core_1_1StringUtil_1_1anonymous__namespace_02StringUtil_8cc_03.html',1,'LogCabin::Core::StringUtil']]],

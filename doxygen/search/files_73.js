@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['segmentedlog_2ecc',['SegmentedLog.cc',['../SegmentedLog_8cc.html',1,'']]],
+  ['segmentedlog_2eh',['SegmentedLog.h',['../SegmentedLog_8h.html',1,'']]],
   ['server_2ecc',['Server.cc',['../Server_8cc.html',1,'']]],
   ['server_2eh',['Server.h',['../Server_8h.html',1,'']]],
   ['serverrpc_2ecc',['ServerRPC.cc',['../ServerRPC_8cc.html',1,'']]],

@@ -121,8 +121,9 @@ Inheritance diagram for LogCabin::Storage::Log:</div>
  <div class="center">
   <img src="classLogCabin_1_1Storage_1_1Log.png" usemap="#LogCabin::Storage::Log_map" alt=""/>
   <map id="LogCabin::Storage::Log_map" name="LogCabin::Storage::Log_map">
-<area href="classLogCabin_1_1Storage_1_1MemoryLog.html" alt="LogCabin::Storage::MemoryLog" shape="rect" coords="0,56,201,80"/>
-<area href="classLogCabin_1_1Storage_1_1SimpleFileLog.html" title="TODO(ongaro): docs." alt="LogCabin::Storage::SimpleFileLog" shape="rect" coords="211,56,412,80"/>
+<area href="classLogCabin_1_1Storage_1_1MemoryLog.html" alt="LogCabin::Storage::MemoryLog" shape="rect" coords="0,56,205,80"/>
+<area href="classLogCabin_1_1Storage_1_1SegmentedLog.html" title="This class persists a log on the filesystem efficiently." alt="LogCabin::Storage::SegmentedLog" shape="rect" coords="215,56,420,80"/>
+<area href="classLogCabin_1_1Storage_1_1SimpleFileLog.html" title="TODO(ongaro): docs." alt="LogCabin::Storage::SimpleFileLog" shape="rect" coords="430,56,635,80"/>
 </map>
  </div></div>
 
@@ -142,7 +143,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a1c1f8274b4bf49d977f16587a18974d0">~Log</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual std::pair&lt; uint64_t, <br class="typebreak"/>
 uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#ab006b493d5e63b4bf84fb3567fc03d51">append</a> (const std::vector&lt; const <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0">Entry</a> * &gt; &amp;entries)=0</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Append new entries to the log.  <a href="#ab006b493d5e63b4bf84fb3567fc03d51"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Start to append new entries to the log.  <a href="#ab006b493d5e63b4bf84fb3567fc03d51"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual const <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0">Entry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a8a7efeea930f2b56dd90e8796abf6c82">getEntry</a> (uint64_t index) const =0</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Look up an entry by its log index.  <a href="#a8a7efeea930f2b56dd90e8796abf6c82"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a5d995c35a5bf8ac1a28eadb83a04525e">getLogStartIndex</a> () const =0</td></tr>
@@ -161,6 +162,8 @@ uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete the log entries past the given index.  <a href="#a166833dce487be2a51f28ce2b0d03852"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#affd60dcee3571e1afc169cf36d887a13">updateMetadata</a> ()=0</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this after changing <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a3044e83ee00115379349495937630463" title="Opaque metadata that the log keeps track of.">metadata</a>.  <a href="#affd60dcee3571e1afc169cf36d887a13"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a3bdbcbd9789cfa2de387e7f8c0eb7f1e">updateServerStats</a> (Protocol::ServerStats &amp;serverStats) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add information about the log's state to the given structure.  <a href="#a3bdbcbd9789cfa2de387e7f8c0eb7f1e"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Protocol::RaftLogMetadata::Metadata&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a3044e83ee00115379349495937630463">metadata</a></td></tr>
@@ -180,7 +183,7 @@ Friends</h2></td></tr>
 <div class="textblock"><p>This interface is used by RaftConsensus to store log entries and metadata. </p>
 <p>Typically, implementations will persist the log entries and metadata to stable storage (but <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html">MemoryLog</a> keeps it all in volatile memory). </p>
 
-<p>Definition at line <a class="el" href="Log_8h_source.html#l00037">37</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
+<p>Definition at line <a class="el" href="Log_8h_source.html#l00040">40</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="a8ca64ace5d6ae6f0175186c595d4fbe0"></a><!-- doxytag: member="LogCabin::Storage::Log::Entry" ref="a8ca64ace5d6ae6f0175186c595d4fbe0" args="" -->
 <div class="memitem">
@@ -197,7 +200,7 @@ Friends</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#aa4bfee78ea8f371e629cdb3df9f22d90">LogCabin::Storage::SimpleFileLog</a>.</p>
 
-<p>Definition at line <a class="el" href="Log_8h_source.html#l00074">74</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
+<p>Definition at line <a class="el" href="Log_8h_source.html#l00077">77</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -271,7 +274,8 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Append new entries to the log. </p>
+<p>Start to append new entries to the log. </p>
+<p>The entries may not be on disk yet when this returns; see <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html" title="An interface for flushing newly appended log entries to stable storage.">Sync</a>. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">entries</td><td>Entries to place at the end of the log. </td></tr>
@@ -280,7 +284,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Range of indexes of the new entries in the log, inclusive. </dd></dl>
 
-<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a3fd8cd44fb0f21228974e55911735206">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ae13403645cbf625924c7ac7075ff0231">LogCabin::Storage::MemoryLog</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ae0b3ea9703e373566d879928296eae16">LogCabin::Storage::SegmentedLog</a>, <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a3fd8cd44fb0f21228974e55911735206">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ae13403645cbf625924c7ac7075ff0231">LogCabin::Storage::MemoryLog</a>.</p>
 
 </div>
 </div>
@@ -308,7 +312,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The entry corresponding to that index. This reference is only guaranteed to be valid until the next time the log is modified. </dd></dl>
 
-<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a5fdabbb3bd36b474152c2b095c2a87b6">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ab1dac3c06be6944dc7c4dec3bb19deb0">LogCabin::Storage::MemoryLog</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#af54cbc6f31d77719f3fe8d699b5c94da">LogCabin::Storage::SegmentedLog</a>, <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a5fdabbb3bd36b474152c2b095c2a87b6">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ab1dac3c06be6944dc7c4dec3bb19deb0">LogCabin::Storage::MemoryLog</a>.</p>
 
 </div>
 </div>
@@ -329,7 +333,7 @@ Friends</h2></td></tr>
 <p>Get the index of the first entry in the log (whether or not this entry exists). </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>1 for logs that have never had truncatePrefix called, otherwise the largest index passed to truncatePrefix. </dd></dl>
 
-<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a0b020e1cb32b04c50794b00c38f3c66f">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a72ba113f201a02064ab52ee111bc2251">LogCabin::Storage::MemoryLog</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad729715c9512554255bb0670f6c385a2">LogCabin::Storage::SegmentedLog</a>, <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a0b020e1cb32b04c50794b00c38f3c66f">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a72ba113f201a02064ab52ee111bc2251">LogCabin::Storage::MemoryLog</a>.</p>
 
 </div>
 </div>
@@ -350,7 +354,7 @@ Friends</h2></td></tr>
 <p>Get the index of the most recent entry in the log. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The index of the most recent entry in the log, or <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a5d995c35a5bf8ac1a28eadb83a04525e" title="Get the index of the first entry in the log (whether or not this entry exists).">getLogStartIndex()</a> - 1 if the log is empty. </dd></dl>
 
-<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#af588f338007eff05143ac726a98104ba">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a8e8d61ed9dcebbea66b5a5377443a891">LogCabin::Storage::MemoryLog</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a45c575000cfd56c3d77d6efa7a6286de">LogCabin::Storage::SegmentedLog</a>, <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#af588f338007eff05143ac726a98104ba">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a8e8d61ed9dcebbea66b5a5377443a891">LogCabin::Storage::MemoryLog</a>.</p>
 
 </div>
 </div>
@@ -370,7 +374,7 @@ Friends</h2></td></tr>
 
 <p>Get the size of the entire log in bytes. </p>
 
-<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#ac0a5ebd049381cedfe5b07230051bda5">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a95bb18ffc0ceacc0ddfaef9c3396f4c1">LogCabin::Storage::MemoryLog</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a4f5d68a1e78453d838b4406f4405bc4f">LogCabin::Storage::SegmentedLog</a>, <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#ac0a5ebd049381cedfe5b07230051bda5">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a95bb18ffc0ceacc0ddfaef9c3396f4c1">LogCabin::Storage::MemoryLog</a>.</p>
 
 </div>
 </div>
@@ -392,7 +396,7 @@ Friends</h2></td></tr>
 <p>Release resources attached to the <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html" title="An interface for flushing newly appended log entries to stable storage.">Sync</a> object. </p>
 <p>Call this after waiting on the <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html" title="An interface for flushing newly appended log entries to stable storage.">Sync</a> object. </p>
 
-<p>Definition at line <a class="el" href="Log_8h_source.html#l00126">126</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
+<p>Definition at line <a class="el" href="Log_8h_source.html#l00130">130</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -414,7 +418,7 @@ Friends</h2></td></tr>
 <p>See <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#ab99aa495171e1e60aab8b6b65df3d56f" title="Release resources attached to the Sync object.">syncComplete()</a>. </p>
 <p>Intended for subclasses to override. </p>
 
-<p>Definition at line <a class="el" href="Log_8h_source.html#l00134">134</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
+<p>Definition at line <a class="el" href="Log_8h_source.html#l00138">138</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -436,7 +440,7 @@ Friends</h2></td></tr>
 <p>This <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html" title="An interface for flushing newly appended log entries to stable storage.">Sync</a> object must later be returned to the <a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Log</a> with <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#ab99aa495171e1e60aab8b6b65df3d56f" title="Release resources attached to the Sync object.">syncComplete()</a>.</p>
 <p>While <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#aabf3345e03685b44d56b607ebbe282c9" title="Get and remove the Log&#39;s Sync object in order to wait on it.">takeSync()</a> and <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#ab99aa495171e1e60aab8b6b65df3d56f" title="Release resources attached to the Sync object.">syncComplete()</a> may not be done concurrently with other <a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Log</a> operations, <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html#ae86cc8eedc591121e0185beb6446a64b" title="Wait for the log entries to be durable.">Sync::wait()</a> may be done concurrently with all operations except <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a166833dce487be2a51f28ce2b0d03852" title="Delete the log entries past the given index.">truncateSuffix()</a>. </p>
 
-<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#aec4f3bab89a66ba7d94713d70b9ed141">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71aa639443824a36d17b7bcfa6ca3a06">LogCabin::Storage::MemoryLog</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a49998df90ec65f822e87a11d6f51a3e7">LogCabin::Storage::SegmentedLog</a>, <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#aec4f3bab89a66ba7d94713d70b9ed141">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71aa639443824a36d17b7bcfa6ca3a06">LogCabin::Storage::MemoryLog</a>.</p>
 
 </div>
 </div>
@@ -456,7 +460,7 @@ Friends</h2></td></tr>
 <div class="memdoc">
 
 <p>Delete the log entries before the given index. </p>
-<p>Once you truncate a prefix from the log, there's no way to undo this. </p>
+<p>Once you truncate a prefix from the log, there's no way to undo this. The entries may still be on disk when this returns and file descriptors and other resources may remain open; see <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html" title="An interface for flushing newly appended log entries to stable storage.">Sync</a>. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">firstIndex</td><td>After this call, the log will contain no entries indexed less than firstIndex. This can be any log index, including 0 and those past the end of the log. </td></tr>
@@ -464,7 +468,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a3db9d7ce06f0f16a77dc9117f191c819">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a1e79f8dda89fa1e1d6140e019095eb24">LogCabin::Storage::MemoryLog</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a06075f64815be30f9f3d56034d799f34">LogCabin::Storage::SegmentedLog</a>, <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a3db9d7ce06f0f16a77dc9117f191c819">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a1e79f8dda89fa1e1d6140e019095eb24">LogCabin::Storage::MemoryLog</a>.</p>
 
 </div>
 </div>
@@ -493,7 +497,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="warning"><dt><b>Warning:</b></dt><dd>Callers should wait() on all <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html" title="An interface for flushing newly appended log entries to stable storage.">Sync</a> object prior to calling <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a166833dce487be2a51f28ce2b0d03852" title="Delete the log entries past the given index.">truncateSuffix()</a>. This never happens on leaders, so it's not a real limitation, but things may go wonky otherwise. </dd></dl>
 
-<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a520a06bcf416a8584982c8192fa6c7f3">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ab1eac57a291ad80b2c5fe8566edd16c8">LogCabin::Storage::MemoryLog</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ab6e085a74854607aea7e8399d1f05f87">LogCabin::Storage::SegmentedLog</a>, <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a520a06bcf416a8584982c8192fa6c7f3">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ab1eac57a291ad80b2c5fe8566edd16c8">LogCabin::Storage::MemoryLog</a>.</p>
 
 </div>
 </div>
@@ -513,7 +517,31 @@ Friends</h2></td></tr>
 
 <p>Call this after changing <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a3044e83ee00115379349495937630463" title="Opaque metadata that the log keeps track of.">metadata</a>. </p>
 
-<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#ac0fe066ac9218c9afc0049db9d7475e5">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aa0f98d5650518eb17d1378c504238e30">LogCabin::Storage::MemoryLog</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a407a902bbab599d48cf4f83ab6fb41bb">LogCabin::Storage::SegmentedLog</a>, <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#ac0fe066ac9218c9afc0049db9d7475e5">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aa0f98d5650518eb17d1378c504238e30">LogCabin::Storage::MemoryLog</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3bdbcbd9789cfa2de387e7f8c0eb7f1e"></a><!-- doxytag: member="LogCabin::Storage::Log::updateServerStats" ref="a3bdbcbd9789cfa2de387e7f8c0eb7f1e" args="(Protocol::ServerStats &amp;serverStats) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a3bdbcbd9789cfa2de387e7f8c0eb7f1e">LogCabin::Storage::Log::updateServerStats</a> </td>
+          <td>(</td>
+          <td class="paramtype">Protocol::ServerStats &amp;&#160;</td>
+          <td class="paramname"><em>serverStats</em></td><td>)</td>
+          <td> const<code> [inline, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Add information about the log's state to the given structure. </p>
+<p>Used for diagnostics. </p>
+
+<p>Reimplemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#acf6f1ee375ee34d73adee605da59a584">LogCabin::Storage::SegmentedLog</a>.</p>
+
+<p>Definition at line <a class="el" href="Log_8h_source.html#l00186">186</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -580,9 +608,9 @@ Friends</h2></td></tr>
 
 <p>Opaque metadata that the log keeps track of. </p>
 
-<p>Reimplemented in <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a26ef7de4808ccc853b334682db9dcde8">LogCabin::Storage::SimpleFileLog</a>.</p>
+<p>Reimplemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a407704019cb95cc426ec03e78d26071e">LogCabin::Storage::SegmentedLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a26ef7de4808ccc853b334682db9dcde8">LogCabin::Storage::SimpleFileLog</a>.</p>
 
-<p>Definition at line <a class="el" href="Log_8h_source.html#l00179">179</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
+<p>Definition at line <a class="el" href="Log_8h_source.html#l00191">191</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>

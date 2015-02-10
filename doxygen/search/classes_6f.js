@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['op',['Op',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html',1,'LogCabin::Storage::SegmentedLog::Sync']]],
   ['opaqueclientrpc',['OpaqueClientRPC',['../classLogCabin_1_1RPC_1_1OpaqueClientRPC.html',1,'LogCabin::RPC']]],
   ['opaqueserver',['OpaqueServer',['../classLogCabin_1_1RPC_1_1OpaqueServer.html',1,'LogCabin::RPC']]],
   ['opaqueserverrpc',['OpaqueServerRPC',['../classLogCabin_1_1RPC_1_1OpaqueServerRPC.html',1,'LogCabin::RPC']]],

@@ -8,6 +8,8 @@ var searchData=
   ['peerthreadmain',['peerThreadMain',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac1f0d77d25c59e83ce7c446726292aaa',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['pidfile',['PidFile',['../classanonymous__namespace_02Main_8cc_03_1_1PidFile.html#a55863420948e957826f8f1efc435f064',1,'anonymous_namespace{Main.cc}::PidFile']]],
   ['poprequest',['popRequest',['../classLogCabin_1_1Client_1_1LeaderRPCMock.html#aeacd39bf1791b2dea3b177c1963e4e10',1,'LogCabin::Client::LeaderRPCMock']]],
+  ['preparedsegments',['PreparedSegments',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a16271ee544de5859188c1f9b61b50b88',1,'LogCabin::Storage::SegmentedLog::PreparedSegments']]],
+  ['preparenewsegment',['prepareNewSegment',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a428a4dd73370ddbff7dfe151c03f60fe',1,'LogCabin::Storage::SegmentedLog']]],
   ['printconfiguration',['printConfiguration',['../namespaceanonymous__namespace_02Reconfigure_8cc_03.html#a70637f1de77848fb53512c4f5fa2016f',1,'anonymous_namespace{Reconfigure.cc}']]],
   ['prototofile',['protoToFile',['../namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html#abe942c0a861f9651e547bdc3c92f6579',1,'LogCabin::Storage::anonymous_namespace{SimpleFileLog.cc}']]]
 ];

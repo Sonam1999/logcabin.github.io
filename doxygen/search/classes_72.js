@@ -5,6 +5,7 @@ var searchData=
   ['randomstate',['RandomState',['../classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html',1,'LogCabin::Core::Random::anonymous_namespace{Random.cc}']]],
   ['reader',['Reader',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html',1,'LogCabin::Storage::SnapshotFile']]],
   ['receivesocket',['ReceiveSocket',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html',1,'LogCabin::RPC::MessageSocket']]],
+  ['record',['Record',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record.html',1,'LogCabin::Storage::SegmentedLog::Segment']]],
   ['rejectinvalidrequest',['RejectInvalidRequest',['../classLogCabin_1_1RPC_1_1ServiceMock_1_1RejectInvalidRequest.html',1,'LogCabin::RPC::ServiceMock']]],
   ['reply',['Reply',['../classLogCabin_1_1RPC_1_1ServiceMock_1_1Reply.html',1,'LogCabin::RPC::ServiceMock']]],
   ['requestheaderprefix',['RequestHeaderPrefix',['../structLogCabin_1_1RPC_1_1Protocol_1_1RequestHeaderPrefix.html',1,'LogCabin::RPC::Protocol']]],

@@ -7,5 +7,6 @@ var searchData=
   ['invariants',['invariants',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aab7ec848b114993c356c22ba2574f7a6',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['is_5fmonotonic',['is_monotonic',['../structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html#a1ee2965262ac802a4314ee1b0d457f56',1,'LogCabin::Core::Time::CSystemClock::is_monotonic()'],['../structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#a1ca8cd86540feae184cbf1eaceadcdaf',1,'LogCabin::Core::Time::CSteadyClock::is_monotonic()']]],
   ['is_5fsteady',['is_steady',['../structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html#a7a715091394fc942bae20fa03ee50121',1,'LogCabin::Core::Time::CSystemClock::is_steady()'],['../structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#adc96c0781a8f555a304a38eb92400794',1,'LogCabin::Core::Time::CSteadyClock::is_steady()'],['../structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#ab4f4cd42e83e3568af0feffc206851e1',1,'LogCabin::Core::Time::MockableClock::is_steady()']]],
-  ['iscaughtup_5f',['isCaughtUp_',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aa35915b9016d63af612039b1eea9c9bf',1,'LogCabin::Server::RaftConsensusInternal::Peer']]]
+  ['iscaughtup_5f',['isCaughtUp_',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aa35915b9016d63af612039b1eea9c9bf',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
+  ['isopen',['isOpen',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb',1,'LogCabin::Storage::SegmentedLog::Segment']]]
 ];

@@ -28,6 +28,7 @@ var searchData=
   ['lockowner',['lockOwner',['../classLogCabin_1_1Event_1_1Loop.html#a2257b824bb17445bbe22854f4a9cc3be',1,'LogCabin::Event::Loop']]],
   ['log',['log',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['logleveltostring',['logLevelToString',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86',1,'LogCabin::Core::Debug::Internal']]],
+  ['logstartindex',['logStartIndex',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865',1,'LogCabin::Storage::SegmentedLog']]],
   ['logsyncqueued',['logSyncQueued',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a46a843f36c520797f45c92b64c37857c',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['lostandfound',['lostAndFound',['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#aa8f420a998b34012fc032eac8ab912c8',1,'LogCabin::Storage::SimpleFileLog']]]
 ];
