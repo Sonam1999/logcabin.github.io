@@ -149,6 +149,8 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A wrapper around write that retries interrupted calls.  <a href="#a1d406493cee7581bbaa129016c8ff06a"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a26b63e44c655c4428501edf54a521fe2">LogCabin::Storage::FilesystemUtil::skipFsync</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set to true in some unit tests to skip <a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">fsync()</a> and <a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#af05d08c9ab6e409c77d38ae6b51bd67a" title="Flush changes to a File to its underlying storage device, except for atime/mtime.">fdatasync()</a>, which can speeds up some tests significantly.  <a href="#a26b63e44c655c4428501edf54a521fe2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">ssize_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil_1_1System.html#a3ebc7fefc89fce3b44a00c635209a623">LogCabin::Storage::FilesystemUtil::System::writev</a> )(int fildes, const struct iovec *iov, int iovcnt)</td></tr>
 </table>
 </div><!-- contents -->

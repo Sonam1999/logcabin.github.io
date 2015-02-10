@@ -100,7 +100,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">LogCabin::Storage::FilesystemUtil Namespace Reference</div>  </div>
 </div><!--header-->
@@ -156,6 +157,10 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A wrapper around write that retries interrupted calls.  <a href="#af5574e380c93e72d0c6def88c390adf1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1d406493cee7581bbaa129016c8ff06a">write</a> (int fildes, std::initializer_list&lt; std::pair&lt; const void *, uint64_t &gt;&gt; data)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A wrapper around write that retries interrupted calls.  <a href="#a1d406493cee7581bbaa129016c8ff06a"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a26b63e44c655c4428501edf54a521fe2">skipFsync</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set to true in some unit tests to skip <a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">fsync()</a> and <a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#af05d08c9ab6e409c77d38ae6b51bd67a" title="Flush changes to a File to its underlying storage device, except for atime/mtime.">fdatasync()</a>, which can speeds up some tests significantly.  <a href="#a26b63e44c655c4428501edf54a521fe2"></a><br/></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
 <a class="anchor" id="affd3ec5456e7c264c3c7c4029c2435c3"></a><!-- doxytag: member="LogCabin::Storage::FilesystemUtil::allocate" ref="affd3ec5456e7c264c3c7c4029c2435c3" args="(const File &amp;file, uint64_t offset, uint64_t bytes)" -->
@@ -192,7 +197,7 @@ Functions</h2></td></tr>
 <p>Allocate a contiguous range of a file, padding with zeros if necessary. </p>
 <p>See man 3 posix_fallocate. Does not fsync the file. </p>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00091">91</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00093">93</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -221,7 +226,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A copy of 'file' with a new file descriptor. </dd></dl>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00101">101</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00103">103</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -241,6 +246,7 @@ Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Flush changes to a <a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">File</a> to its underlying storage device. </p>
+<p>See <a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a26b63e44c655c4428501edf54a521fe2" title="Set to true in some unit tests to skip fsync() and fdatasync(), which can speeds up some tests signif...">skipFsync</a>. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">file</td><td>An open file descriptor. </td></tr>
@@ -248,7 +254,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00112">112</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00114">114</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -271,12 +277,12 @@ Functions</h2></td></tr>
 <p>See fdatasync man page. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">file</td><td>An open file descriptor. </td></tr>
+    <tr><td class="paramname">file</td><td>An open file descriptor. See <a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a26b63e44c655c4428501edf54a521fe2" title="Set to true in some unit tests to skip fsync() and fdatasync(), which can speeds up some tests signif...">skipFsync</a>. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00121">121</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00125">125</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -297,7 +303,7 @@ Functions</h2></td></tr>
 
 <p>Returns the size of the file in bytes. </p>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00130">130</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00136">136</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -326,7 +332,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00141">141</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00147">147</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -355,7 +361,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The names of the directory entries in the order returned by readdir. The caller will often want to prepend 'path' and a slash to these to form a path. </dd></dl>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00178">178</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00184">184</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -384,7 +390,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The names of the directory entries in the order returned by readdir. </dd></dl>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00184">184</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00190">190</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -405,7 +411,7 @@ Functions</h2></td></tr>
 
 <p>Open a directory, creating it if it doesn't exist. </p>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00190">190</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00196">196</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -436,7 +442,7 @@ Functions</h2></td></tr>
 
 <p>Open a directory relative to an already open directory, creating it if it doesn't exist. </p>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00214">214</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00220">220</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -475,7 +481,7 @@ Functions</h2></td></tr>
 <p>See man 2 openat.</p>
 <p>Panics if the file could not be opened; see <a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a8c4e5186a5d9c353ec8484e0931a155f" title="Open a file.">tryOpenFile()</a> if this isn't what you want. </p>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00238">238</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00244">244</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -514,7 +520,7 @@ Functions</h2></td></tr>
 <p>See man 2 openat.</p>
 <p>Returns a default-constructed <a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">File</a> object if the file could not be opened due to EEXIST or ENOENT; see <a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1efbe54769377f1a078a38ae9513a260" title="Open a file.">openFile()</a> if this isn't what you want. </p>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00250">250</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00256">256</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -536,7 +542,7 @@ Functions</h2></td></tr>
 <p>Remove the file or directory at path. </p>
 <p>If path is a directory, its contents will also be removed. If path does not exist, this returns without an error. This operation is not atomic but is idempotent. </p>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00264">264</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00270">270</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -575,7 +581,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00283">283</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00289">289</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -619,7 +625,7 @@ Functions</h2></td></tr>
 <p>Rename a file. </p>
 <p>See man 2 renameat. This does not fsync the directories. </p>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00295">295</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00301">301</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -639,9 +645,9 @@ Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Open a directory, fsync it, and close it. </p>
-<p>This is useful to fsync a directory after creating a file or directory within it. </p>
+<p>This is useful to fsync a directory after creating a file or directory within it. See <a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a26b63e44c655c4428501edf54a521fe2" title="Set to true in some unit tests to skip fsync() and fdatasync(), which can speeds up some tests signif...">skipFsync</a>. </p>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00310">310</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00316">316</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -673,7 +679,7 @@ Functions</h2></td></tr>
 <p>Shrink or grow a file to the specified length, padding with zeros if necessary. </p>
 <p>See man 2 ftruncate. Does not fsync the file. </p>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00328">328</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00336">336</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -693,7 +699,7 @@ Functions</h2></td></tr>
 
 <p>Return a path to a temporary directory. </p>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00338">338</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00346">346</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -739,7 +745,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Either -1 with errno set, or the number of bytes requested to write. This wrapper will never return -1 with errno set to EINTR. </dd></dl>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00355">355</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00363">363</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -778,7 +784,25 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Either -1 with errno set, or the number of bytes requested to write. This wrapper will never return -1 with errno set to EINTR. </dd></dl>
 
-<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00361">361</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00369">369</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Variable Documentation</h2>
+<a class="anchor" id="a26b63e44c655c4428501edf54a521fe2"></a><!-- doxytag: member="LogCabin::Storage::FilesystemUtil::skipFsync" ref="a26b63e44c655c4428501edf54a521fe2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a26b63e44c655c4428501edf54a521fe2">LogCabin::Storage::FilesystemUtil::skipFsync</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set to true in some unit tests to skip <a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">fsync()</a> and <a class="el" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#af05d08c9ab6e409c77d38ae6b51bd67a" title="Flush changes to a File to its underlying storage device, except for atime/mtime.">fdatasync()</a>, which can speeds up some tests significantly. </p>
+
+<p>Definition at line <a class="el" href="FilesystemUtil_8cc_source.html#l00035">35</a> of file <a class="el" href="FilesystemUtil_8cc_source.html">FilesystemUtil.cc</a>.</p>
 
 </div>
 </div>

@@ -111,11 +111,52 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The thread could not complete its task because it was asked to exit.  <a href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65">memcpy</a> (void *dest, std::initializer_list&lt; std::pair&lt; const void *, size_t &gt;&gt; src)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy some noncontiguous chunks of data into a contiguous chunk.  <a href="#a6577de108423cf4d2ebfed2d7a60ad65"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename Small , typename Large &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">Small&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Util.html#a29cb10fe0137ff937a09ea6cd8103128">downCast</a> (const Large &amp;large)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast a bigger int down to a smaller one.  <a href="#a29cb10fe0137ff937a09ea6cd8103128"></a><br/></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a6577de108423cf4d2ebfed2d7a60ad65"></a><!-- doxytag: member="LogCabin::Core::Util::memcpy" ref="a6577de108423cf4d2ebfed2d7a60ad65" args="(void *dest, std::initializer_list&lt; std::pair&lt; const void *, size_t &gt;&gt; src)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * <a class="el" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65">LogCabin::Core::Util::memcpy</a> </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::initializer_list&lt; std::pair&lt; const void *, size_t &gt;&gt;&#160;</td>
+          <td class="paramname"><em>src</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Copy some noncontiguous chunks of data into a contiguous chunk. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dest</td><td>Where the new copy should be written. </td></tr>
+    <tr><td class="paramname">src</td><td>A list of (pointer, length) pairs describing where to copy from. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>dest (as in memcpy). </dd></dl>
+
+<p>Definition at line <a class="el" href="Util_8cc_source.html#l00025">25</a> of file <a class="el" href="Util_8cc_source.html">Util.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a29cb10fe0137ff937a09ea6cd8103128"></a><!-- doxytag: member="LogCabin::Core::Util::downCast" ref="a29cb10fe0137ff937a09ea6cd8103128" args="(const Large &amp;large)" -->
 <div class="memitem">
 <div class="memproto">
