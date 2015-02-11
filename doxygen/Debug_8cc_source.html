@@ -298,32 +298,55 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00216"></a>00216     <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>, ...)
 <a name="l00217"></a>00217 {
 <a name="l00218"></a>00218     va_list ap;
-<a name="l00219"></a>00219     <span class="keyword">struct </span>timespec now;
-<a name="l00220"></a>00220     clock_gettime(CLOCK_REALTIME, &amp;now);
-<a name="l00221"></a>00221 
-<a name="l00222"></a>00222     <span class="comment">// This ensures that output on stderr won&#39;t be interspersed with other</span>
-<a name="l00223"></a>00223     <span class="comment">// output. This normally happens automatically for a single call to</span>
-<a name="l00224"></a>00224     <span class="comment">// fprintf, but must be explicit since we&#39;re using two calls here.</span>
-<a name="l00225"></a>00225     flockfile(stream);
-<a name="l00226"></a>00226 
-<a name="l00227"></a>00227     fprintf(stream, <span class="stringliteral">&quot;%010lu.%06lu %s:%d in %s() %s[%s:%s]: &quot;</span>,
-<a name="l00228"></a>00228             now.tv_sec, now.tv_nsec / 1000,
-<a name="l00229"></a>00229             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#acc4bd70b5716f2725c218b0b7e552a38" title="Strip out the common prefix of a filename to get a path from the project&#39;s root directory.">relativeFileName</a>(fileName), lineNum, functionName,
-<a name="l00230"></a>00230             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86" title="Used to convert LogLevels into strings that will be printed.">logLevelToString</a>[uint32_t(level)],
-<a name="l00231"></a>00231             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae3a1029f050a61c1bb014d03486280a6" title="A short name to be used in log messages to identify this process.">processName</a>.c_str(), <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#aa4967ee656e33d34264341269ef8418f" title="Get the friendly name for the current thread.">ThreadId::getName</a>().c_str());
-<a name="l00232"></a>00232 
-<a name="l00233"></a>00233     va_start(ap, format);
-<a name="l00234"></a>00234     vfprintf(stream, format, ap);
-<a name="l00235"></a>00235     va_end(ap);
-<a name="l00236"></a>00236 
-<a name="l00237"></a>00237     funlockfile(stream);
-<a name="l00238"></a>00238 
-<a name="l00239"></a>00239     fflush(stream);
-<a name="l00240"></a>00240 }
-<a name="l00241"></a>00241 
-<a name="l00242"></a>00242 } <span class="comment">// namespace LogCabin::Core::Debug</span>
-<a name="l00243"></a>00243 } <span class="comment">// namespace LogCabin::Core</span>
-<a name="l00244"></a>00244 } <span class="comment">// namespace LogCabin</span>
+<a name="l00219"></a>00219 
+<a name="l00220"></a>00220     <span class="comment">// Don&#39;t use Core::Time here since it could potentially call PANIC.</span>
+<a name="l00221"></a>00221     <span class="keyword">struct </span>timespec now;
+<a name="l00222"></a>00222     clock_gettime(CLOCK_REALTIME, &amp;now);
+<a name="l00223"></a>00223 
+<a name="l00224"></a>00224     <span class="comment">// Failures are a little annoying here, since we can&#39;t exactly log</span>
+<a name="l00225"></a>00225     <span class="comment">// errors that come up.</span>
+<a name="l00226"></a>00226     <span class="keywordtype">char</span> formattedSeconds[64]; <span class="comment">// a human-readable string now.tv_sec</span>
+<a name="l00227"></a>00227     <span class="keywordtype">bool</span> ok = <span class="keyword">false</span>;
+<a name="l00228"></a>00228     { <span class="comment">// First, try gmtime and strftime.</span>
+<a name="l00229"></a>00229         <span class="keyword">struct </span>tm calendarTime;
+<a name="l00230"></a>00230         <span class="keywordflow">if</span> (gmtime_r(&amp;now.tv_sec, &amp;calendarTime) != NULL) {
+<a name="l00231"></a>00231             ok = (strftime(formattedSeconds,
+<a name="l00232"></a>00232                            <span class="keyword">sizeof</span>(formattedSeconds),
+<a name="l00233"></a>00233                            <span class="stringliteral">&quot;%F %T&quot;</span>,
+<a name="l00234"></a>00234                            &amp;calendarTime) &gt; 0);
+<a name="l00235"></a>00235         }
+<a name="l00236"></a>00236     }
+<a name="l00237"></a>00237     <span class="keywordflow">if</span> (!ok) { <span class="comment">// If that failed, use the raw number.</span>
+<a name="l00238"></a>00238         snprintf(formattedSeconds,
+<a name="l00239"></a>00239                  <span class="keyword">sizeof</span>(formattedSeconds),
+<a name="l00240"></a>00240                  <span class="stringliteral">&quot;%010lu&quot;</span>,
+<a name="l00241"></a>00241                  now.tv_sec);
+<a name="l00242"></a>00242         formattedSeconds[<span class="keyword">sizeof</span>(formattedSeconds) - 1] = <span class="charliteral">&#39;\0&#39;</span>;
+<a name="l00243"></a>00243     }
+<a name="l00244"></a>00244 
+<a name="l00245"></a>00245     <span class="comment">// This ensures that output on stderr won&#39;t be interspersed with other</span>
+<a name="l00246"></a>00246     <span class="comment">// output. This normally happens automatically for a single call to</span>
+<a name="l00247"></a>00247     <span class="comment">// fprintf, but must be explicit since we&#39;re using two calls here.</span>
+<a name="l00248"></a>00248     flockfile(stream);
+<a name="l00249"></a>00249 
+<a name="l00250"></a>00250     fprintf(stream, <span class="stringliteral">&quot;%s.%06lu %s:%d in %s() %s[%s:%s]: &quot;</span>,
+<a name="l00251"></a>00251             formattedSeconds, now.tv_nsec / 1000,
+<a name="l00252"></a>00252             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#acc4bd70b5716f2725c218b0b7e552a38" title="Strip out the common prefix of a filename to get a path from the project&#39;s root directory.">relativeFileName</a>(fileName), lineNum, functionName,
+<a name="l00253"></a>00253             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86" title="Used to convert LogLevels into strings that will be printed.">logLevelToString</a>[uint32_t(level)],
+<a name="l00254"></a>00254             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae3a1029f050a61c1bb014d03486280a6" title="A short name to be used in log messages to identify this process.">processName</a>.c_str(), <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#aa4967ee656e33d34264341269ef8418f" title="Get the friendly name for the current thread.">ThreadId::getName</a>().c_str());
+<a name="l00255"></a>00255 
+<a name="l00256"></a>00256     va_start(ap, format);
+<a name="l00257"></a>00257     vfprintf(stream, format, ap);
+<a name="l00258"></a>00258     va_end(ap);
+<a name="l00259"></a>00259 
+<a name="l00260"></a>00260     funlockfile(stream);
+<a name="l00261"></a>00261 
+<a name="l00262"></a>00262     fflush(stream);
+<a name="l00263"></a>00263 }
+<a name="l00264"></a>00264 
+<a name="l00265"></a>00265 } <span class="comment">// namespace LogCabin::Core::Debug</span>
+<a name="l00266"></a>00266 } <span class="comment">// namespace LogCabin::Core</span>
+<a name="l00267"></a>00267 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
