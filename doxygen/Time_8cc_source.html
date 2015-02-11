@@ -109,76 +109,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00027"></a>00027 <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html#a14d846b58dcb262d15ff5ea75e85ed65">CSystemClock::time_point</a>
 <a name="l00028"></a><a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html#a101a2a44aa077e88dfaae5893e5e8b3e">00028</a> <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html#a101a2a44aa077e88dfaae5893e5e8b3e">CSystemClock::now</a>()
 <a name="l00029"></a>00029 {
-<a name="l00030"></a>00030     <span class="keyword">struct </span>timespec now;
-<a name="l00031"></a>00031     <span class="keywordtype">int</span> r = clock_gettime(CLOCK_REALTIME, &amp;now);
-<a name="l00032"></a>00032     <span class="keywordflow">if</span> (r != 0) {
-<a name="l00033"></a>00033         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;clock_gettime(CLOCK_REALTIME) failed: %s&quot;</span>,
-<a name="l00034"></a>00034               strerror(errno));
-<a name="l00035"></a>00035     }
-<a name="l00036"></a>00036     <span class="keywordflow">return</span> <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html#a14d846b58dcb262d15ff5ea75e85ed65">time_point</a>(std::chrono::nanoseconds(
-<a name="l00037"></a>00037                 int64_t(now.tv_sec) * 1000 * 1000 * 1000 +
-<a name="l00038"></a>00038                 now.tv_nsec));
-<a name="l00039"></a>00039 }
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#a7f77a5a279915e6fe8ef8cd42f75d3d3">CSteadyClock::time_point</a>
-<a name="l00042"></a><a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#a37088be2a103ee1296e7714b5c4b6d46">00042</a> <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#a37088be2a103ee1296e7714b5c4b6d46">CSteadyClock::now</a>()
-<a name="l00043"></a>00043 {
-<a name="l00044"></a>00044     <span class="keyword">struct </span>timespec now;
-<a name="l00045"></a>00045     <span class="keywordtype">int</span> r = clock_gettime(<a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a2db038efcae56cca1ff9c9e0989b5f78" title="The clock used by CSteadyClock.">STEADY_CLOCK_ID</a>, &amp;now);
-<a name="l00046"></a>00046     <span class="keywordflow">if</span> (r != 0) {
-<a name="l00047"></a>00047         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;clock_gettime(STEADY_CLOCK_ID=%d) failed: %s&quot;</span>,
-<a name="l00048"></a>00048               <a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a2db038efcae56cca1ff9c9e0989b5f78" title="The clock used by CSteadyClock.">STEADY_CLOCK_ID</a>, strerror(errno));
-<a name="l00049"></a>00049     }
-<a name="l00050"></a>00050     <span class="keywordflow">return</span> <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#a7f77a5a279915e6fe8ef8cd42f75d3d3">time_point</a>(std::chrono::nanoseconds(
-<a name="l00051"></a>00051                 int64_t(now.tv_sec) * 1000 * 1000 * 1000 +
-<a name="l00052"></a>00052                 now.tv_nsec));
-<a name="l00053"></a>00053 }
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 <span class="keywordtype">void</span>
-<a name="l00056"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75">00056</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75" title="Block the calling thread until the given time.">sleep</a>(<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> wake)
-<a name="l00057"></a>00057 {
-<a name="l00058"></a>00058     <span class="keyword">struct </span>timespec wakeSpec = <a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#ab1f0bfec14cc5ca8578cf2ce2f2092d6" title="Convert a C++11 time point into a POSIX timespec.">makeTimeSpec</a>(wake);
-<a name="l00059"></a>00059     <span class="keywordflow">if</span> (wakeSpec.tv_sec &lt; 0)
-<a name="l00060"></a>00060         <span class="keywordflow">return</span>;
-<a name="l00061"></a>00061     <span class="keywordtype">int</span> r = clock_nanosleep(<a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a2db038efcae56cca1ff9c9e0989b5f78" title="The clock used by CSteadyClock.">STEADY_CLOCK_ID</a>,
-<a name="l00062"></a>00062                             TIMER_ABSTIME,
-<a name="l00063"></a>00063                             &amp;wakeSpec,
-<a name="l00064"></a>00064                             NULL);
-<a name="l00065"></a>00065     <span class="keywordflow">if</span> (r != 0) {
-<a name="l00066"></a>00066         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;clock_nanosleep(STEADY_CLOCK_ID=%d, %s) failed: %s&quot;</span>,
-<a name="l00067"></a>00067               <a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a2db038efcae56cca1ff9c9e0989b5f78" title="The clock used by CSteadyClock.">STEADY_CLOCK_ID</a>,
-<a name="l00068"></a>00068               <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0" title="Return a string returned from the given object&#39;s stream operator.">Core::StringUtil::toString</a>(wake).c_str(),
-<a name="l00069"></a>00069               strerror(r));
-<a name="l00070"></a>00070     }
-<a name="l00071"></a>00071 }
-<a name="l00072"></a>00072 
-<a name="l00073"></a><a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a0baa83d0340db016b628f6c5b69aacfc">00073</a> <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a0baa83d0340db016b628f6c5b69aacfc" title="Constructor.">SteadyTimeConverter::SteadyTimeConverter</a>()
-<a name="l00074"></a>00074     : steadyNow(<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html" title="Reads the current time.">SteadyClock</a>::now())
-<a name="l00075"></a>00075     , systemNow(<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html" title="Reads the current time.">SystemClock</a>::now())
-<a name="l00076"></a>00076 {
-<a name="l00077"></a>00077 }
-<a name="l00078"></a>00078 
-<a name="l00079"></a>00079 <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SystemClock::time_point</a>
-<a name="l00080"></a><a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#af3e1ab4770d3fab346fa6759858b2418">00080</a> <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#af3e1ab4770d3fab346fa6759858b2418" title="Return the given time according the system clock (assuming no time jumps).">SteadyTimeConverter::convert</a>(<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> when)
+<a name="l00030"></a>00030     <span class="keywordflow">return</span> <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html#a14d846b58dcb262d15ff5ea75e85ed65">time_point</a>(std::chrono::nanoseconds(<a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a0770208b7d69cde83a7d092be8e5c931" title="Return the system time since the Unix epoch in nanoseconds.">getTimeNanos</a>()));
+<a name="l00031"></a>00031 }
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 
+<a name="l00034"></a>00034 <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#a7f77a5a279915e6fe8ef8cd42f75d3d3">CSteadyClock::time_point</a>
+<a name="l00035"></a><a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#a37088be2a103ee1296e7714b5c4b6d46">00035</a> <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#a37088be2a103ee1296e7714b5c4b6d46">CSteadyClock::now</a>()
+<a name="l00036"></a>00036 {
+<a name="l00037"></a>00037     <span class="keyword">struct </span>timespec now;
+<a name="l00038"></a>00038     <span class="keywordtype">int</span> r = clock_gettime(<a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a2db038efcae56cca1ff9c9e0989b5f78" title="The clock used by CSteadyClock.">STEADY_CLOCK_ID</a>, &amp;now);
+<a name="l00039"></a>00039     <span class="keywordflow">if</span> (r != 0) {
+<a name="l00040"></a>00040         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;clock_gettime(STEADY_CLOCK_ID=%d) failed: %s&quot;</span>,
+<a name="l00041"></a>00041               <a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a2db038efcae56cca1ff9c9e0989b5f78" title="The clock used by CSteadyClock.">STEADY_CLOCK_ID</a>, strerror(errno));
+<a name="l00042"></a>00042     }
+<a name="l00043"></a>00043     <span class="keywordflow">return</span> <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#a7f77a5a279915e6fe8ef8cd42f75d3d3">time_point</a>(std::chrono::nanoseconds(
+<a name="l00044"></a>00044                 int64_t(now.tv_sec) * 1000 * 1000 * 1000 +
+<a name="l00045"></a>00045                 now.tv_nsec));
+<a name="l00046"></a>00046 }
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048 int64_t
+<a name="l00049"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a0770208b7d69cde83a7d092be8e5c931">00049</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a0770208b7d69cde83a7d092be8e5c931" title="Return the system time since the Unix epoch in nanoseconds.">getTimeNanos</a>()
+<a name="l00050"></a>00050 {
+<a name="l00051"></a>00051     <span class="keyword">struct </span>timespec now;
+<a name="l00052"></a>00052     <span class="keywordtype">int</span> r = clock_gettime(CLOCK_REALTIME, &amp;now);
+<a name="l00053"></a>00053     <span class="keywordflow">if</span> (r != 0) {
+<a name="l00054"></a>00054         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;clock_gettime(CLOCK_REALTIME) failed: %s&quot;</span>,
+<a name="l00055"></a>00055               strerror(errno));
+<a name="l00056"></a>00056     }
+<a name="l00057"></a>00057     <span class="keywordflow">return</span> int64_t(now.tv_sec) * 1000 * 1000 * 1000 + now.tv_nsec;
+<a name="l00058"></a>00058 }
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060 <span class="keywordtype">void</span>
+<a name="l00061"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75">00061</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75" title="Block the calling thread until the given time.">sleep</a>(<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> wake)
+<a name="l00062"></a>00062 {
+<a name="l00063"></a>00063     <span class="keyword">struct </span>timespec wakeSpec = <a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#ab1f0bfec14cc5ca8578cf2ce2f2092d6" title="Convert a C++11 time point into a POSIX timespec.">makeTimeSpec</a>(wake);
+<a name="l00064"></a>00064     <span class="keywordflow">if</span> (wakeSpec.tv_sec &lt; 0)
+<a name="l00065"></a>00065         <span class="keywordflow">return</span>;
+<a name="l00066"></a>00066     <span class="keywordtype">int</span> r = clock_nanosleep(<a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a2db038efcae56cca1ff9c9e0989b5f78" title="The clock used by CSteadyClock.">STEADY_CLOCK_ID</a>,
+<a name="l00067"></a>00067                             TIMER_ABSTIME,
+<a name="l00068"></a>00068                             &amp;wakeSpec,
+<a name="l00069"></a>00069                             NULL);
+<a name="l00070"></a>00070     <span class="keywordflow">if</span> (r != 0) {
+<a name="l00071"></a>00071         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;clock_nanosleep(STEADY_CLOCK_ID=%d, %s) failed: %s&quot;</span>,
+<a name="l00072"></a>00072               <a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#a2db038efcae56cca1ff9c9e0989b5f78" title="The clock used by CSteadyClock.">STEADY_CLOCK_ID</a>,
+<a name="l00073"></a>00073               <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0" title="Return a string returned from the given object&#39;s stream operator.">Core::StringUtil::toString</a>(wake).c_str(),
+<a name="l00074"></a>00074               strerror(r));
+<a name="l00075"></a>00075     }
+<a name="l00076"></a>00076 }
+<a name="l00077"></a>00077 
+<a name="l00078"></a><a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a0baa83d0340db016b628f6c5b69aacfc">00078</a> <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a0baa83d0340db016b628f6c5b69aacfc" title="Constructor.">SteadyTimeConverter::SteadyTimeConverter</a>()
+<a name="l00079"></a>00079     : steadyNow(<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html" title="Reads the current time.">SteadyClock</a>::now())
+<a name="l00080"></a>00080     , systemNow(<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html" title="Reads the current time.">SystemClock</a>::now())
 <a name="l00081"></a>00081 {
-<a name="l00082"></a>00082     std::chrono::nanoseconds diff = when - <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a53ec379672ab0d132ea80e9fe8fcfd80" title="Time this object was constructed according to the SteadyClock.">steadyNow</a>;
-<a name="l00083"></a>00083     <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SystemClock::time_point</a> then = <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a40e15dbc3f432b10a9d0968e15731604" title="Time this object was constructed according to the SystemClock.">systemNow</a> + diff;
-<a name="l00084"></a>00084     <span class="keywordflow">if</span> (when &gt; steadyNow &amp;&amp; then &lt; <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a40e15dbc3f432b10a9d0968e15731604" title="Time this object was constructed according to the SystemClock.">systemNow</a>) <span class="comment">// overflow</span>
-<a name="l00085"></a>00085         <span class="keywordflow">return</span> SystemClock::time_point::max();
-<a name="l00086"></a>00086     <span class="keywordflow">return</span> then;
-<a name="l00087"></a>00087 }
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089 int64_t
-<a name="l00090"></a><a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#aa967e929bf170e2fe251eb06ad8b3dd7">00090</a> <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#aa967e929bf170e2fe251eb06ad8b3dd7" title="Return the given time in nanoseconds since the Unix epoch according the system clock (assuming no tim...">SteadyTimeConverter::unixNanos</a>(<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> when)
-<a name="l00091"></a>00091 {
-<a name="l00092"></a>00092     <span class="keywordflow">return</span> std::chrono::nanoseconds(
-<a name="l00093"></a>00093         <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#af3e1ab4770d3fab346fa6759858b2418" title="Return the given time according the system clock (assuming no time jumps).">convert</a>(when).time_since_epoch()).count();
-<a name="l00094"></a>00094 }
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097 } <span class="comment">// namespace LogCabin::Core::Time</span>
-<a name="l00098"></a>00098 } <span class="comment">// namespace LogCabin::Core</span>
-<a name="l00099"></a>00099 } <span class="comment">// namespace LogCabin</span>
+<a name="l00082"></a>00082 }
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084 <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SystemClock::time_point</a>
+<a name="l00085"></a><a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#af3e1ab4770d3fab346fa6759858b2418">00085</a> <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#af3e1ab4770d3fab346fa6759858b2418" title="Return the given time according the system clock (assuming no time jumps).">SteadyTimeConverter::convert</a>(<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> when)
+<a name="l00086"></a>00086 {
+<a name="l00087"></a>00087     std::chrono::nanoseconds diff = when - <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a53ec379672ab0d132ea80e9fe8fcfd80" title="Time this object was constructed according to the SteadyClock.">steadyNow</a>;
+<a name="l00088"></a>00088     <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SystemClock::time_point</a> then = <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a40e15dbc3f432b10a9d0968e15731604" title="Time this object was constructed according to the SystemClock.">systemNow</a> + diff;
+<a name="l00089"></a>00089     <span class="keywordflow">if</span> (when &gt; steadyNow &amp;&amp; then &lt; <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a40e15dbc3f432b10a9d0968e15731604" title="Time this object was constructed according to the SystemClock.">systemNow</a>) <span class="comment">// overflow</span>
+<a name="l00090"></a>00090         <span class="keywordflow">return</span> SystemClock::time_point::max();
+<a name="l00091"></a>00091     <span class="keywordflow">return</span> then;
+<a name="l00092"></a>00092 }
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 int64_t
+<a name="l00095"></a><a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#aa967e929bf170e2fe251eb06ad8b3dd7">00095</a> <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#aa967e929bf170e2fe251eb06ad8b3dd7" title="Return the given time in nanoseconds since the Unix epoch according the system clock (assuming no tim...">SteadyTimeConverter::unixNanos</a>(<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> when)
+<a name="l00096"></a>00096 {
+<a name="l00097"></a>00097     <span class="keywordflow">return</span> std::chrono::nanoseconds(
+<a name="l00098"></a>00098         <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#af3e1ab4770d3fab346fa6759858b2418" title="Return the given time according the system clock (assuming no time jumps).">convert</a>(when).time_since_epoch()).count();
+<a name="l00099"></a>00099 }
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 } <span class="comment">// namespace LogCabin::Core::Time</span>
+<a name="l00103"></a>00103 } <span class="comment">// namespace LogCabin::Core</span>
+<a name="l00104"></a>00104 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -47,6 +47,7 @@ var searchData=
   ['getstatus',['getStatus',['../classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a35a3f47dcbdec15d44fcb18a916e014f',1,'LogCabin::RPC::OpaqueClientRPC']]],
   ['getstream',['getStream',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a09ec8a8e3e8ebae229739001edac0f00',1,'LogCabin::Storage::SnapshotFile::Reader::getStream()'],['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a12e1597037e9311fdac6bbe26da8db1f',1,'LogCabin::Storage::SnapshotFile::Writer::getStream()']]],
   ['getsupportedrpcversions',['getSupportedRPCVersions',['../classLogCabin_1_1Server_1_1ClientService.html#a6b23891e28fc5875013899dc8bf49864',1,'LogCabin::Server::ClientService']]],
+  ['gettimenanos',['getTimeNanos',['../namespaceLogCabin_1_1Core_1_1Time.html#a0770208b7d69cde83a7d092be8e5c931',1,'LogCabin::Core::Time']]],
   ['gettimeout',['getTimeout',['../classLogCabin_1_1Client_1_1Tree.html#a66fc90296aaa481069575394cbf5933b',1,'LogCabin::Client::Tree']]],
   ['gettree',['getTree',['../classLogCabin_1_1Client_1_1Cluster.html#ab04d52131d9ddb8c0aa140c359dc2841',1,'LogCabin::Client::Cluster']]],
   ['gettreedetails',['getTreeDetails',['../classLogCabin_1_1Client_1_1Tree.html#a08946f4a9011e8143ba4cf0147a77514',1,'LogCabin::Client::Tree']]],

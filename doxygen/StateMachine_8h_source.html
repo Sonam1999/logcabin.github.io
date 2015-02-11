@@ -129,205 +129,198 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00047"></a>00047 <span class="comment">     * the Tree.</span>
 <a name="l00048"></a>00048 <span class="comment">     * \warning</span>
 <a name="l00049"></a>00049 <span class="comment">     *      Be sure to wait() first!</span>
-<a name="l00050"></a>00050 <span class="comment">     * \param rpcInfo</span>
-<a name="l00051"></a>00051 <span class="comment">     *      Identifies client session, etc.</span>
-<a name="l00052"></a>00052 <span class="comment">     * \param[out] response</span>
-<a name="l00053"></a>00053 <span class="comment">     *      If the return value is true, the response will be filled in here.</span>
-<a name="l00054"></a>00054 <span class="comment">     *      Otherwise, this will be unmodified.</span>
-<a name="l00055"></a>00055 <span class="comment">     * \return</span>
-<a name="l00056"></a>00056 <span class="comment">     *      True if successful; false if the session expired.</span>
-<a name="l00057"></a>00057 <span class="comment">     */</span>
-<a name="l00058"></a>00058     <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a64059cbdf3fbf7e04243568bdadb67ff" title="Called by ClientService to get a response for a read-write operation on the Tree.">getResponse</a>(<span class="keyword">const</span> Protocol::Client::ExactlyOnceRPCInfo&amp; rpcInfo,
-<a name="l00059"></a>00059                      <a class="code" href="namespaceLogCabin_1_1Server.html#a26cb708a129ba0b48d9f4a0626de36df">Protocol::Client::CommandResponse</a>&amp; response) <span class="keyword">const</span>;
+<a name="l00050"></a>00050 <span class="comment">     */</span>
+<a name="l00051"></a>00051     <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a64059cbdf3fbf7e04243568bdadb67ff" title="Called by ClientService to get a response for a read-write operation on the Tree.">getResponse</a>(<span class="keyword">const</span> Protocol::Client::ExactlyOnceRPCInfo&amp; rpcInfo,
+<a name="l00052"></a>00052                      <a class="code" href="namespaceLogCabin_1_1Server.html#a26cb708a129ba0b48d9f4a0626de36df">Protocol::Client::CommandResponse</a>&amp; response) <span class="keyword">const</span>;
+<a name="l00053"></a>00053 <span class="comment"></span>
+<a name="l00054"></a>00054 <span class="comment">    /**</span>
+<a name="l00055"></a>00055 <span class="comment">     * Called by ClientService to execute read-only operations on the Tree.</span>
+<a name="l00056"></a>00056 <span class="comment">     */</span>
+<a name="l00057"></a>00057     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a86cda137b4cd5a31b269655500e960a4" title="Called by ClientService to execute read-only operations on the Tree.">readOnlyTreeRPC</a>(
+<a name="l00058"></a>00058                 <span class="keyword">const</span> Protocol::Client::ReadOnlyTree::Request&amp; request,
+<a name="l00059"></a>00059                 Protocol::Client::ReadOnlyTree::Response&amp; response) <span class="keyword">const</span>;
 <a name="l00060"></a>00060 <span class="comment"></span>
 <a name="l00061"></a>00061 <span class="comment">    /**</span>
-<a name="l00062"></a>00062 <span class="comment">     * Called by ClientService to execute read-only operations on the Tree.</span>
+<a name="l00062"></a>00062 <span class="comment">     * Return once the state machine has applied at least the given entry.</span>
 <a name="l00063"></a>00063 <span class="comment">     */</span>
-<a name="l00064"></a>00064     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a86cda137b4cd5a31b269655500e960a4" title="Called by ClientService to execute read-only operations on the Tree.">readOnlyTreeRPC</a>(
-<a name="l00065"></a>00065                 <span class="keyword">const</span> Protocol::Client::ReadOnlyTree::Request&amp; request,
-<a name="l00066"></a>00066                 Protocol::Client::ReadOnlyTree::Response&amp; response) <span class="keyword">const</span>;
-<a name="l00067"></a>00067 <span class="comment"></span>
-<a name="l00068"></a>00068 <span class="comment">    /**</span>
-<a name="l00069"></a>00069 <span class="comment">     * Return once the state machine has applied at least the given entry.</span>
-<a name="l00070"></a>00070 <span class="comment">     */</span>
-<a name="l00071"></a>00071     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a25de03c98a3d661656677ba23fd508d3" title="Return once the state machine has applied at least the given entry.">wait</a>(uint64_t entryId) <span class="keyword">const</span>;
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073   <span class="keyword">private</span>:
-<a name="l00074"></a>00074     <span class="comment">// forward declaration</span>
-<a name="l00075"></a>00075     <span class="keyword">struct </span><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>;
-<a name="l00076"></a>00076 <span class="comment"></span>
-<a name="l00077"></a>00077 <span class="comment">    /**</span>
-<a name="l00078"></a>00078 <span class="comment">     * Invoked once per committed entry from the Raft log.</span>
-<a name="l00079"></a>00079 <span class="comment">     */</span>
-<a name="l00080"></a>00080     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a186637559845a0d9ab74c9954f68f21b" title="Invoked once per committed entry from the Raft log.">apply</a>(uint64_t entryId, <span class="keyword">const</span> std::string&amp; data);
-<a name="l00081"></a>00081 <span class="comment"></span>
-<a name="l00082"></a>00082 <span class="comment">    /**</span>
-<a name="l00083"></a>00083 <span class="comment">     * Main function for thread that waits for new commands from Raft.</span>
-<a name="l00084"></a>00084 <span class="comment">     */</span>
-<a name="l00085"></a>00085     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a85315565676068d98d26b883a69ba8e6" title="Main function for thread that waits for new commands from Raft.">applyThreadMain</a>();
-<a name="l00086"></a>00086 <span class="comment"></span>
-<a name="l00087"></a>00087 <span class="comment">    /**</span>
-<a name="l00088"></a>00088 <span class="comment">     * Write the #sessions table to a snapshot file.</span>
-<a name="l00089"></a>00089 <span class="comment">     */</span>
-<a name="l00090"></a>00090     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a57ac9db3103bc781ed30f96085f46789" title="Write the sessions table to a snapshot file.">dumpSessionSnapshot</a>(
-<a name="l00091"></a>00091                 google::protobuf::io::CodedOutputStream&amp; stream) <span class="keyword">const</span>;
-<a name="l00092"></a>00092 <span class="comment"></span>
-<a name="l00093"></a>00093 <span class="comment">    /**</span>
-<a name="l00094"></a>00094 <span class="comment">     * Update the session and clean up unnecessary responses.</span>
-<a name="l00095"></a>00095 <span class="comment">     * \param session</span>
-<a name="l00096"></a>00096 <span class="comment">     *      Affected session.</span>
-<a name="l00097"></a>00097 <span class="comment">     * \param firstOutstandingRPC</span>
-<a name="l00098"></a>00098 <span class="comment">     *      New value for the first outstanding RPC for a session.</span>
-<a name="l00099"></a>00099 <span class="comment">     */</span>
-<a name="l00100"></a>00100     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1431a7e9a631e1fb03d668ba9a4bd16" title="Update the session and clean up unnecessary responses.">expireResponses</a>(<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>&amp; session, uint64_t firstOutstandingRPC);
-<a name="l00101"></a>00101 <span class="comment"></span>
-<a name="l00102"></a>00102 <span class="comment">    /**</span>
-<a name="l00103"></a>00103 <span class="comment">     * Remove old sessions.</span>
-<a name="l00104"></a>00104 <span class="comment">     * \param nanosecondsSinceEpoch</span>
-<a name="l00105"></a>00105 <span class="comment">     *      Sessions that have not been used since this (leader) time are</span>
-<a name="l00106"></a>00106 <span class="comment">     *      removed.</span>
-<a name="l00107"></a>00107 <span class="comment">     */</span>
-<a name="l00108"></a>00108     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a00bc7242ed3c8b28b72fab61545a386c" title="Remove old sessions.">expireSessions</a>(uint64_t nanosecondsSinceEpoch);
-<a name="l00109"></a>00109 <span class="comment"></span>
-<a name="l00110"></a>00110 <span class="comment">    /**</span>
-<a name="l00111"></a>00111 <span class="comment">     * Read the #sessions table from a snapshot file.</span>
-<a name="l00112"></a>00112 <span class="comment">     */</span>
-<a name="l00113"></a>00113     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a8dac16e695f643d54feeeaf074242217" title="Read the sessions table from a snapshot file.">loadSessionSnapshot</a>(
-<a name="l00114"></a>00114                 google::protobuf::io::CodedInputStream&amp; stream);
+<a name="l00064"></a>00064     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a25de03c98a3d661656677ba23fd508d3" title="Return once the state machine has applied at least the given entry.">wait</a>(uint64_t entryId) <span class="keyword">const</span>;
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066   <span class="keyword">private</span>:
+<a name="l00067"></a>00067     <span class="comment">// forward declaration</span>
+<a name="l00068"></a>00068     <span class="keyword">struct </span><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>;
+<a name="l00069"></a>00069 <span class="comment"></span>
+<a name="l00070"></a>00070 <span class="comment">    /**</span>
+<a name="l00071"></a>00071 <span class="comment">     * Invoked once per committed entry from the Raft log.</span>
+<a name="l00072"></a>00072 <span class="comment">     */</span>
+<a name="l00073"></a>00073     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a186637559845a0d9ab74c9954f68f21b" title="Invoked once per committed entry from the Raft log.">apply</a>(uint64_t entryId, <span class="keyword">const</span> std::string&amp; data);
+<a name="l00074"></a>00074 <span class="comment"></span>
+<a name="l00075"></a>00075 <span class="comment">    /**</span>
+<a name="l00076"></a>00076 <span class="comment">     * Main function for thread that waits for new commands from Raft.</span>
+<a name="l00077"></a>00077 <span class="comment">     */</span>
+<a name="l00078"></a>00078     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a85315565676068d98d26b883a69ba8e6" title="Main function for thread that waits for new commands from Raft.">applyThreadMain</a>();
+<a name="l00079"></a>00079 <span class="comment"></span>
+<a name="l00080"></a>00080 <span class="comment">    /**</span>
+<a name="l00081"></a>00081 <span class="comment">     * Write the #sessions table to a snapshot file.</span>
+<a name="l00082"></a>00082 <span class="comment">     */</span>
+<a name="l00083"></a>00083     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a57ac9db3103bc781ed30f96085f46789" title="Write the sessions table to a snapshot file.">dumpSessionSnapshot</a>(
+<a name="l00084"></a>00084                 google::protobuf::io::CodedOutputStream&amp; stream) <span class="keyword">const</span>;
+<a name="l00085"></a>00085 <span class="comment"></span>
+<a name="l00086"></a>00086 <span class="comment">    /**</span>
+<a name="l00087"></a>00087 <span class="comment">     * Update the session and clean up unnecessary responses.</span>
+<a name="l00088"></a>00088 <span class="comment">     * \param session</span>
+<a name="l00089"></a>00089 <span class="comment">     *      Affected session.</span>
+<a name="l00090"></a>00090 <span class="comment">     * \param firstOutstandingRPC</span>
+<a name="l00091"></a>00091 <span class="comment">     *      New value for the first outstanding RPC for a session.</span>
+<a name="l00092"></a>00092 <span class="comment">     */</span>
+<a name="l00093"></a>00093     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1431a7e9a631e1fb03d668ba9a4bd16" title="Update the session and clean up unnecessary responses.">expireResponses</a>(<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>&amp; session, uint64_t firstOutstandingRPC);
+<a name="l00094"></a>00094 <span class="comment"></span>
+<a name="l00095"></a>00095 <span class="comment">    /**</span>
+<a name="l00096"></a>00096 <span class="comment">     * Remove old sessions.</span>
+<a name="l00097"></a>00097 <span class="comment">     * \param nanosecondsSinceEpoch</span>
+<a name="l00098"></a>00098 <span class="comment">     *      Sessions that have not been used since this (leader) time are</span>
+<a name="l00099"></a>00099 <span class="comment">     *      removed.</span>
+<a name="l00100"></a>00100 <span class="comment">     */</span>
+<a name="l00101"></a>00101     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a00bc7242ed3c8b28b72fab61545a386c" title="Remove old sessions.">expireSessions</a>(uint64_t nanosecondsSinceEpoch);
+<a name="l00102"></a>00102 <span class="comment"></span>
+<a name="l00103"></a>00103 <span class="comment">    /**</span>
+<a name="l00104"></a>00104 <span class="comment">     * Read the #sessions table from a snapshot file.</span>
+<a name="l00105"></a>00105 <span class="comment">     */</span>
+<a name="l00106"></a>00106     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a8dac16e695f643d54feeeaf074242217" title="Read the sessions table from a snapshot file.">loadSessionSnapshot</a>(
+<a name="l00107"></a>00107                 google::protobuf::io::CodedInputStream&amp; stream);
+<a name="l00108"></a>00108 <span class="comment"></span>
+<a name="l00109"></a>00109 <span class="comment">    /**</span>
+<a name="l00110"></a>00110 <span class="comment">     * Return true if it is time to create a new snapshot.</span>
+<a name="l00111"></a>00111 <span class="comment">     * This is called by applyThread as an optimization to avoid waking up</span>
+<a name="l00112"></a>00112 <span class="comment">     * snapshotThread upon applying every single entry.</span>
+<a name="l00113"></a>00113 <span class="comment">     */</span>
+<a name="l00114"></a>00114     <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a92eaf624fcf2e18bf304a329b0c836f0" title="Return true if it is time to create a new snapshot.">shouldTakeSnapshot</a>(uint64_t lastIncludedIndex) <span class="keyword">const</span>;
 <a name="l00115"></a>00115 <span class="comment"></span>
 <a name="l00116"></a>00116 <span class="comment">    /**</span>
-<a name="l00117"></a>00117 <span class="comment">     * Return true if it is time to create a new snapshot.</span>
-<a name="l00118"></a>00118 <span class="comment">     * This is called by applyThread as an optimization to avoid waking up</span>
-<a name="l00119"></a>00119 <span class="comment">     * snapshotThread upon applying every single entry.</span>
-<a name="l00120"></a>00120 <span class="comment">     */</span>
-<a name="l00121"></a>00121     <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a92eaf624fcf2e18bf304a329b0c836f0" title="Return true if it is time to create a new snapshot.">shouldTakeSnapshot</a>(uint64_t lastIncludedIndex) <span class="keyword">const</span>;
-<a name="l00122"></a>00122 <span class="comment"></span>
-<a name="l00123"></a>00123 <span class="comment">    /**</span>
-<a name="l00124"></a>00124 <span class="comment">     * Main function for thread that calls takeSnapshot when appropriate.</span>
-<a name="l00125"></a>00125 <span class="comment">     */</span>
-<a name="l00126"></a>00126     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a6c2fd3f31f6b186194efa2741b4908f2" title="Main function for thread that calls takeSnapshot when appropriate.">snapshotThreadMain</a>();
-<a name="l00127"></a>00127 <span class="comment"></span>
-<a name="l00128"></a>00128 <span class="comment">    /**</span>
-<a name="l00129"></a>00129 <span class="comment">     * Called by snapshotThreadMain to actually take the snapshot.</span>
-<a name="l00130"></a>00130 <span class="comment">     */</span>
-<a name="l00131"></a>00131     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab79199c9f82bf4c897fb6147ca30315b" title="Called by snapshotThreadMain to actually take the snapshot.">takeSnapshot</a>(uint64_t lastIncludedIndex,
-<a name="l00132"></a>00132                       std::unique_lock&lt;std::mutex&gt;&amp; lockGuard);
-<a name="l00133"></a>00133 
-<a name="l00134"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">00134</a>     std::shared_ptr&lt;RaftConsensus&gt; <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>;
-<a name="l00135"></a>00135 <span class="comment"></span>
-<a name="l00136"></a>00136 <span class="comment">    /**</span>
-<a name="l00137"></a>00137 <span class="comment">     * Size in bytes of smallest log to snapshot.</span>
-<a name="l00138"></a>00138 <span class="comment">     */</span>
-<a name="l00139"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a4f131806d00456d018b8ea8b9e516f9d">00139</a>     uint64_t <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a4f131806d00456d018b8ea8b9e516f9d" title="Size in bytes of smallest log to snapshot.">snapshotMinLogSize</a>;
-<a name="l00140"></a>00140 <span class="comment"></span>
-<a name="l00141"></a>00141 <span class="comment">    /**</span>
-<a name="l00142"></a>00142 <span class="comment">     * Maximum log size as multiple of last snapshot size until server should</span>
-<a name="l00143"></a>00143 <span class="comment">     * snapshot.</span>
-<a name="l00144"></a>00144 <span class="comment">     */</span>
-<a name="l00145"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a516e894dfa8ec79d4e1d76a106ac94a5">00145</a>     uint64_t <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a516e894dfa8ec79d4e1d76a106ac94a5" title="Maximum log size as multiple of last snapshot size until server should snapshot.">snapshotRatio</a>;
-<a name="l00146"></a>00146 <span class="comment"></span>
-<a name="l00147"></a>00147 <span class="comment">    /**</span>
-<a name="l00148"></a>00148 <span class="comment">     * The time interval after which to remove an inactive client session, in</span>
-<a name="l00149"></a>00149 <span class="comment">     * nanoseconds of leader time.</span>
-<a name="l00150"></a>00150 <span class="comment">     */</span>
-<a name="l00151"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#add14d3c5856a100c00e47af58da99550">00151</a>     uint64_t <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#add14d3c5856a100c00e47af58da99550" title="The time interval after which to remove an inactive client session, in nanoseconds of leader time...">sessionTimeoutNanos</a>;
-<a name="l00152"></a>00152 <span class="comment"></span>
-<a name="l00153"></a>00153 <span class="comment">    /**</span>
-<a name="l00154"></a>00154 <span class="comment">     * Protects against concurrent access for all members of this class (except</span>
-<a name="l00155"></a>00155 <span class="comment">     * &#39;consensus&#39;, which is itself a monitor.</span>
+<a name="l00117"></a>00117 <span class="comment">     * Main function for thread that calls takeSnapshot when appropriate.</span>
+<a name="l00118"></a>00118 <span class="comment">     */</span>
+<a name="l00119"></a>00119     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a6c2fd3f31f6b186194efa2741b4908f2" title="Main function for thread that calls takeSnapshot when appropriate.">snapshotThreadMain</a>();
+<a name="l00120"></a>00120 <span class="comment"></span>
+<a name="l00121"></a>00121 <span class="comment">    /**</span>
+<a name="l00122"></a>00122 <span class="comment">     * Called by snapshotThreadMain to actually take the snapshot.</span>
+<a name="l00123"></a>00123 <span class="comment">     */</span>
+<a name="l00124"></a>00124     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab79199c9f82bf4c897fb6147ca30315b" title="Called by snapshotThreadMain to actually take the snapshot.">takeSnapshot</a>(uint64_t lastIncludedIndex,
+<a name="l00125"></a>00125                       std::unique_lock&lt;std::mutex&gt;&amp; lockGuard);
+<a name="l00126"></a>00126 
+<a name="l00127"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">00127</a>     std::shared_ptr&lt;RaftConsensus&gt; <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>;
+<a name="l00128"></a>00128 <span class="comment"></span>
+<a name="l00129"></a>00129 <span class="comment">    /**</span>
+<a name="l00130"></a>00130 <span class="comment">     * Size in bytes of smallest log to snapshot.</span>
+<a name="l00131"></a>00131 <span class="comment">     */</span>
+<a name="l00132"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a4f131806d00456d018b8ea8b9e516f9d">00132</a>     uint64_t <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a4f131806d00456d018b8ea8b9e516f9d" title="Size in bytes of smallest log to snapshot.">snapshotMinLogSize</a>;
+<a name="l00133"></a>00133 <span class="comment"></span>
+<a name="l00134"></a>00134 <span class="comment">    /**</span>
+<a name="l00135"></a>00135 <span class="comment">     * Maximum log size as multiple of last snapshot size until server should</span>
+<a name="l00136"></a>00136 <span class="comment">     * snapshot.</span>
+<a name="l00137"></a>00137 <span class="comment">     */</span>
+<a name="l00138"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a516e894dfa8ec79d4e1d76a106ac94a5">00138</a>     uint64_t <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a516e894dfa8ec79d4e1d76a106ac94a5" title="Maximum log size as multiple of last snapshot size until server should snapshot.">snapshotRatio</a>;
+<a name="l00139"></a>00139 <span class="comment"></span>
+<a name="l00140"></a>00140 <span class="comment">    /**</span>
+<a name="l00141"></a>00141 <span class="comment">     * The time interval after which to remove an inactive client session, in</span>
+<a name="l00142"></a>00142 <span class="comment">     * nanoseconds of leader time.</span>
+<a name="l00143"></a>00143 <span class="comment">     */</span>
+<a name="l00144"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#add14d3c5856a100c00e47af58da99550">00144</a>     uint64_t <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#add14d3c5856a100c00e47af58da99550" title="The time interval after which to remove an inactive client session, in nanoseconds of leader time...">sessionTimeoutNanos</a>;
+<a name="l00145"></a>00145 <span class="comment"></span>
+<a name="l00146"></a>00146 <span class="comment">    /**</span>
+<a name="l00147"></a>00147 <span class="comment">     * Protects against concurrent access for all members of this class (except</span>
+<a name="l00148"></a>00148 <span class="comment">     * &#39;consensus&#39;, which is itself a monitor.</span>
+<a name="l00149"></a>00149 <span class="comment">     */</span>
+<a name="l00150"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce">00150</a>     <span class="keyword">mutable</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">std::mutex</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>;
+<a name="l00151"></a>00151 <span class="comment"></span>
+<a name="l00152"></a>00152 <span class="comment">    /**</span>
+<a name="l00153"></a>00153 <span class="comment">     * Notified when lastEntryId changes after some entry got applied.</span>
+<a name="l00154"></a>00154 <span class="comment">     * Also notified upon exiting.</span>
+<a name="l00155"></a>00155 <span class="comment">     * This is used for client threads to wait; see wait().</span>
 <a name="l00156"></a>00156 <span class="comment">     */</span>
-<a name="l00157"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce">00157</a>     <span class="keyword">mutable</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">std::mutex</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>;
+<a name="l00157"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5">00157</a>     <span class="keyword">mutable</span> <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html" title="Similar to std::condition_variable but with improvements for testing, support for monotonic clocks...">Core::ConditionVariable</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5" title="Notified when lastEntryId changes after some entry got applied.">entriesApplied</a>;
 <a name="l00158"></a>00158 <span class="comment"></span>
 <a name="l00159"></a>00159 <span class="comment">    /**</span>
-<a name="l00160"></a>00160 <span class="comment">     * Notified when lastEntryId changes after some entry got applied.</span>
+<a name="l00160"></a>00160 <span class="comment">     * Notified when shouldTakeSnapshot(lastEntryId) becomes true.</span>
 <a name="l00161"></a>00161 <span class="comment">     * Also notified upon exiting.</span>
-<a name="l00162"></a>00162 <span class="comment">     * This is used for client threads to wait; see wait().</span>
+<a name="l00162"></a>00162 <span class="comment">     * This is used for snapshotThread to wake up only when necessary.</span>
 <a name="l00163"></a>00163 <span class="comment">     */</span>
-<a name="l00164"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5">00164</a>     <span class="keyword">mutable</span> <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html" title="Similar to std::condition_variable but with improvements for testing, support for monotonic clocks...">Core::ConditionVariable</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5" title="Notified when lastEntryId changes after some entry got applied.">entriesApplied</a>;
+<a name="l00164"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae">00164</a>     <span class="keyword">mutable</span> <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html" title="Similar to std::condition_variable but with improvements for testing, support for monotonic clocks...">Core::ConditionVariable</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae" title="Notified when shouldTakeSnapshot(lastEntryId) becomes true.">snapshotSuggested</a>;
 <a name="l00165"></a>00165 <span class="comment"></span>
 <a name="l00166"></a>00166 <span class="comment">    /**</span>
-<a name="l00167"></a>00167 <span class="comment">     * Notified when shouldTakeSnapshot(lastEntryId) becomes true.</span>
-<a name="l00168"></a>00168 <span class="comment">     * Also notified upon exiting.</span>
-<a name="l00169"></a>00169 <span class="comment">     * This is used for snapshotThread to wake up only when necessary.</span>
-<a name="l00170"></a>00170 <span class="comment">     */</span>
-<a name="l00171"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae">00171</a>     <span class="keyword">mutable</span> <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html" title="Similar to std::condition_variable but with improvements for testing, support for monotonic clocks...">Core::ConditionVariable</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae" title="Notified when shouldTakeSnapshot(lastEntryId) becomes true.">snapshotSuggested</a>;
-<a name="l00172"></a>00172 <span class="comment"></span>
-<a name="l00173"></a>00173 <span class="comment">    /**</span>
-<a name="l00174"></a>00174 <span class="comment">     * applyThread sets this to true to signal that the server is shutting</span>
-<a name="l00175"></a>00175 <span class="comment">     * down.</span>
+<a name="l00167"></a>00167 <span class="comment">     * applyThread sets this to true to signal that the server is shutting</span>
+<a name="l00168"></a>00168 <span class="comment">     * down.</span>
+<a name="l00169"></a>00169 <span class="comment">     */</span>
+<a name="l00170"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab4936b203196f899b5087cf2a05f79c7">00170</a>     <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab4936b203196f899b5087cf2a05f79c7" title="applyThread sets this to true to signal that the server is shutting down.">exiting</a>;
+<a name="l00171"></a>00171 <span class="comment"></span>
+<a name="l00172"></a>00172 <span class="comment">    /**</span>
+<a name="l00173"></a>00173 <span class="comment">     * The PID of snapshotThread&#39;s child process, if any. This is used by</span>
+<a name="l00174"></a>00174 <span class="comment">     * applyThread to signal exits: if applyThread is exiting, it sends SIGHUP</span>
+<a name="l00175"></a>00175 <span class="comment">     * to this child process.</span>
 <a name="l00176"></a>00176 <span class="comment">     */</span>
-<a name="l00177"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab4936b203196f899b5087cf2a05f79c7">00177</a>     <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab4936b203196f899b5087cf2a05f79c7" title="applyThread sets this to true to signal that the server is shutting down.">exiting</a>;
+<a name="l00177"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51">00177</a>     pid_t <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a>;
 <a name="l00178"></a>00178 <span class="comment"></span>
 <a name="l00179"></a>00179 <span class="comment">    /**</span>
-<a name="l00180"></a>00180 <span class="comment">     * The PID of snapshotThread&#39;s child process, if any. This is used by</span>
-<a name="l00181"></a>00181 <span class="comment">     * applyThread to signal exits: if applyThread is exiting, it sends SIGHUP</span>
-<a name="l00182"></a>00182 <span class="comment">     * to this child process.</span>
+<a name="l00180"></a>00180 <span class="comment">     * The index of the last log entry that this state machine has applied.</span>
+<a name="l00181"></a>00181 <span class="comment">     * This variable is only written to by applyThread, so applyThread is free</span>
+<a name="l00182"></a>00182 <span class="comment">     * to access this variable without holding &#39;mutex&#39;.</span>
 <a name="l00183"></a>00183 <span class="comment">     */</span>
-<a name="l00184"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51">00184</a>     pid_t <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a>;
+<a name="l00184"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a17c3a12dc6f39d4ff8b88a18dda89acc">00184</a>     uint64_t <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a17c3a12dc6f39d4ff8b88a18dda89acc" title="The index of the last log entry that this state machine has applied.">lastEntryId</a>;
 <a name="l00185"></a>00185 <span class="comment"></span>
 <a name="l00186"></a>00186 <span class="comment">    /**</span>
-<a name="l00187"></a>00187 <span class="comment">     * The index of the last log entry that this state machine has applied.</span>
-<a name="l00188"></a>00188 <span class="comment">     * This variable is only written to by applyThread, so applyThread is free</span>
-<a name="l00189"></a>00189 <span class="comment">     * to access this variable without holding &#39;mutex&#39;.</span>
-<a name="l00190"></a>00190 <span class="comment">     */</span>
-<a name="l00191"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a17c3a12dc6f39d4ff8b88a18dda89acc">00191</a>     uint64_t <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a17c3a12dc6f39d4ff8b88a18dda89acc" title="The index of the last log entry that this state machine has applied.">lastEntryId</a>;
-<a name="l00192"></a>00192 <span class="comment"></span>
-<a name="l00193"></a>00193 <span class="comment">    /**</span>
-<a name="l00194"></a>00194 <span class="comment">     * Tracks state for a particular client.</span>
-<a name="l00195"></a>00195 <span class="comment">     * Used to prevent duplicate processing of duplicate RPCs.</span>
-<a name="l00196"></a>00196 <span class="comment">     */</span>
-<a name="l00197"></a><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html">00197</a>     <span class="keyword">struct </span><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a> {
-<a name="l00198"></a><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ac66eafc103a7b67bad67d8dbfb73ff25">00198</a>         <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ac66eafc103a7b67bad67d8dbfb73ff25">Session</a>()
-<a name="l00199"></a>00199             : <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79" title="When the session was last active, measured in leader time nanoseconds since the Unix epoch...">lastModified</a>(0)
-<a name="l00200"></a>00200             , firstOutstandingRPC(0)
-<a name="l00201"></a>00201             , <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>()
-<a name="l00202"></a>00202         {
-<a name="l00203"></a>00203         }<span class="comment"></span>
-<a name="l00204"></a>00204 <span class="comment">        /**</span>
-<a name="l00205"></a>00205 <span class="comment">         * When the session was last active, measured in leader time</span>
-<a name="l00206"></a>00206 <span class="comment">         * nanoseconds since the Unix epoch.</span>
-<a name="l00207"></a>00207 <span class="comment">         */</span>
-<a name="l00208"></a><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79">00208</a>         uint64_t <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79" title="When the session was last active, measured in leader time nanoseconds since the Unix epoch...">lastModified</a>;<span class="comment"></span>
-<a name="l00209"></a>00209 <span class="comment">        /**</span>
-<a name="l00210"></a>00210 <span class="comment">         * Largest firstOutstandingRPC number processed from this client.</span>
-<a name="l00211"></a>00211 <span class="comment">         */</span>
-<a name="l00212"></a><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9">00212</a>         uint64_t <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9" title="Largest firstOutstandingRPC number processed from this client.">firstOutstandingRPC</a>;<span class="comment"></span>
-<a name="l00213"></a>00213 <span class="comment">        /**</span>
-<a name="l00214"></a>00214 <span class="comment">         * Maps from RPC numbers to responses.</span>
-<a name="l00215"></a>00215 <span class="comment">         * Responses for RPCs numbered less that firstOutstandingRPC are</span>
-<a name="l00216"></a>00216 <span class="comment">         * discarded from this map.</span>
-<a name="l00217"></a>00217 <span class="comment">         */</span>
-<a name="l00218"></a>00218         std::unordered_map&lt;uint64_t, Protocol::Client::CommandResponse&gt;
-<a name="l00219"></a><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d">00219</a>             <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>;
-<a name="l00220"></a>00220     };
-<a name="l00221"></a>00221 <span class="comment"></span>
-<a name="l00222"></a>00222 <span class="comment">    /**</span>
-<a name="l00223"></a>00223 <span class="comment">     * Client ID to Session map.</span>
-<a name="l00224"></a>00224 <span class="comment">     */</span>
-<a name="l00225"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4">00225</a>     std::unordered_map&lt;uint64_t, Session&gt; <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>;
-<a name="l00226"></a>00226 <span class="comment"></span>
-<a name="l00227"></a>00227 <span class="comment">    /**</span>
-<a name="l00228"></a>00228 <span class="comment">     * The hierarchical key-value store. Used in readOnlyTreeRPC and</span>
-<a name="l00229"></a>00229 <span class="comment">     * readWriteTreeRPC.</span>
-<a name="l00230"></a>00230 <span class="comment">     */</span>
-<a name="l00231"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981">00231</a>     <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree::Tree</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981" title="The hierarchical key-value store.">tree</a>;
-<a name="l00232"></a>00232 <span class="comment"></span>
-<a name="l00233"></a>00233 <span class="comment">    /**</span>
-<a name="l00234"></a>00234 <span class="comment">     * Repeatedly calls into the consensus module to get commands to process</span>
-<a name="l00235"></a>00235 <span class="comment">     * and applies them.</span>
-<a name="l00236"></a>00236 <span class="comment">     */</span>
-<a name="l00237"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a967a9bd6387baebf20fddcebd7318b92">00237</a>     std::thread <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a967a9bd6387baebf20fddcebd7318b92" title="Repeatedly calls into the consensus module to get commands to process and applies them...">applyThread</a>;
-<a name="l00238"></a>00238 <span class="comment"></span>
-<a name="l00239"></a>00239 <span class="comment">    /**</span>
-<a name="l00240"></a>00240 <span class="comment">     * Takes snapshots with the help of a child process.</span>
-<a name="l00241"></a>00241 <span class="comment">     */</span>
-<a name="l00242"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a25a6ea04409431e46288cf200fc41dd6">00242</a>     std::thread <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a25a6ea04409431e46288cf200fc41dd6" title="Takes snapshots with the help of a child process.">snapshotThread</a>;
-<a name="l00243"></a>00243 };
-<a name="l00244"></a>00244 
-<a name="l00245"></a>00245 } <span class="comment">// namespace LogCabin::Server</span>
-<a name="l00246"></a>00246 } <span class="comment">// namespace LogCabin</span>
-<a name="l00247"></a>00247 
-<a name="l00248"></a>00248 <span class="preprocessor">#endif // LOGCABIN_SERVER_STATEMACHINE_H</span>
+<a name="l00187"></a>00187 <span class="comment">     * Tracks state for a particular client.</span>
+<a name="l00188"></a>00188 <span class="comment">     * Used to prevent duplicate processing of duplicate RPCs.</span>
+<a name="l00189"></a>00189 <span class="comment">     */</span>
+<a name="l00190"></a><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html">00190</a>     <span class="keyword">struct </span><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a> {
+<a name="l00191"></a><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ac66eafc103a7b67bad67d8dbfb73ff25">00191</a>         <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ac66eafc103a7b67bad67d8dbfb73ff25">Session</a>()
+<a name="l00192"></a>00192             : <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79" title="When the session was last active, measured in leader time nanoseconds since the Unix epoch...">lastModified</a>(0)
+<a name="l00193"></a>00193             , firstOutstandingRPC(0)
+<a name="l00194"></a>00194             , <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>()
+<a name="l00195"></a>00195         {
+<a name="l00196"></a>00196         }<span class="comment"></span>
+<a name="l00197"></a>00197 <span class="comment">        /**</span>
+<a name="l00198"></a>00198 <span class="comment">         * When the session was last active, measured in leader time</span>
+<a name="l00199"></a>00199 <span class="comment">         * nanoseconds since the Unix epoch.</span>
+<a name="l00200"></a>00200 <span class="comment">         */</span>
+<a name="l00201"></a><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79">00201</a>         uint64_t <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79" title="When the session was last active, measured in leader time nanoseconds since the Unix epoch...">lastModified</a>;<span class="comment"></span>
+<a name="l00202"></a>00202 <span class="comment">        /**</span>
+<a name="l00203"></a>00203 <span class="comment">         * Largest firstOutstandingRPC number processed from this client.</span>
+<a name="l00204"></a>00204 <span class="comment">         */</span>
+<a name="l00205"></a><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9">00205</a>         uint64_t <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9" title="Largest firstOutstandingRPC number processed from this client.">firstOutstandingRPC</a>;<span class="comment"></span>
+<a name="l00206"></a>00206 <span class="comment">        /**</span>
+<a name="l00207"></a>00207 <span class="comment">         * Maps from RPC numbers to responses.</span>
+<a name="l00208"></a>00208 <span class="comment">         * Responses for RPCs numbered less that firstOutstandingRPC are</span>
+<a name="l00209"></a>00209 <span class="comment">         * discarded from this map.</span>
+<a name="l00210"></a>00210 <span class="comment">         */</span>
+<a name="l00211"></a>00211         std::unordered_map&lt;uint64_t, Protocol::Client::CommandResponse&gt;
+<a name="l00212"></a><a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d">00212</a>             <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>;
+<a name="l00213"></a>00213     };
+<a name="l00214"></a>00214 <span class="comment"></span>
+<a name="l00215"></a>00215 <span class="comment">    /**</span>
+<a name="l00216"></a>00216 <span class="comment">     * Client ID to Session map.</span>
+<a name="l00217"></a>00217 <span class="comment">     */</span>
+<a name="l00218"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4">00218</a>     std::unordered_map&lt;uint64_t, Session&gt; <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>;
+<a name="l00219"></a>00219 <span class="comment"></span>
+<a name="l00220"></a>00220 <span class="comment">    /**</span>
+<a name="l00221"></a>00221 <span class="comment">     * The hierarchical key-value store. Used in readOnlyTreeRPC and</span>
+<a name="l00222"></a>00222 <span class="comment">     * readWriteTreeRPC.</span>
+<a name="l00223"></a>00223 <span class="comment">     */</span>
+<a name="l00224"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981">00224</a>     <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree::Tree</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981" title="The hierarchical key-value store.">tree</a>;
+<a name="l00225"></a>00225 <span class="comment"></span>
+<a name="l00226"></a>00226 <span class="comment">    /**</span>
+<a name="l00227"></a>00227 <span class="comment">     * Repeatedly calls into the consensus module to get commands to process</span>
+<a name="l00228"></a>00228 <span class="comment">     * and applies them.</span>
+<a name="l00229"></a>00229 <span class="comment">     */</span>
+<a name="l00230"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a967a9bd6387baebf20fddcebd7318b92">00230</a>     std::thread <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a967a9bd6387baebf20fddcebd7318b92" title="Repeatedly calls into the consensus module to get commands to process and applies them...">applyThread</a>;
+<a name="l00231"></a>00231 <span class="comment"></span>
+<a name="l00232"></a>00232 <span class="comment">    /**</span>
+<a name="l00233"></a>00233 <span class="comment">     * Takes snapshots with the help of a child process.</span>
+<a name="l00234"></a>00234 <span class="comment">     */</span>
+<a name="l00235"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a25a6ea04409431e46288cf200fc41dd6">00235</a>     std::thread <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a25a6ea04409431e46288cf200fc41dd6" title="Takes snapshots with the help of a child process.">snapshotThread</a>;
+<a name="l00236"></a>00236 };
+<a name="l00237"></a>00237 
+<a name="l00238"></a>00238 } <span class="comment">// namespace LogCabin::Server</span>
+<a name="l00239"></a>00239 } <span class="comment">// namespace LogCabin</span>
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241 <span class="preprocessor">#endif // LOGCABIN_SERVER_STATEMACHINE_H</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
