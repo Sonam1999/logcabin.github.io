@@ -2,6 +2,7 @@ var searchData=
 [
   ['raftconsensus',['RaftConsensus',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html',1,'LogCabin::Server::RaftConsensusInternal']]],
   ['raftservice',['RaftService',['../classLogCabin_1_1Server_1_1RaftService.html',1,'LogCabin::Server']]],
+  ['raiiswap',['RAIISwap',['../structLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1RAIISwap.html',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}']]],
   ['randomstate',['RandomState',['../classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html',1,'LogCabin::Core::Random::anonymous_namespace{Random.cc}']]],
   ['reader',['Reader',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html',1,'LogCabin::Storage::SnapshotFile']]],
   ['receivesocket',['ReceiveSocket',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html',1,'LogCabin::RPC::MessageSocket']]],
@@ -13,7 +14,7 @@ var searchData=
   ['response',['Response',['../structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html',1,'LogCabin::RPC::ClientSession']]],
   ['responseheaderprefix',['ResponseHeaderPrefix',['../structLogCabin_1_1RPC_1_1Protocol_1_1ResponseHeaderPrefix.html',1,'LogCabin::RPC::Protocol']]],
   ['responseheaderversion1',['ResponseHeaderVersion1',['../structLogCabin_1_1RPC_1_1Protocol_1_1ResponseHeaderVersion1.html',1,'LogCabin::RPC::Protocol']]],
-  ['result',['Result',['../structLogCabin_1_1Client_1_1Result.html',1,'LogCabin::Client']]],
   ['result',['Result',['../structLogCabin_1_1Tree_1_1Result.html',1,'LogCabin::Tree']]],
+  ['result',['Result',['../structLogCabin_1_1Client_1_1Result.html',1,'LogCabin::Client']]],
   ['rpchandler',['RPCHandler',['../classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html',1,'LogCabin::RPC::Server']]]
 ];

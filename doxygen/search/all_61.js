@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['a',['a',['../structLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1RAIISwap.html#ab6ff5570335838f1861cfd634049360f',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::RAIISwap']]],
   ['abstimeout',['absTimeout',['../namespaceLogCabin_1_1Client_1_1Internal.html#a38158417b149708ba57013d66a85d09d',1,'LogCabin::Client::Internal']]],
   ['active',['active',['../classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21',1,'LogCabin::RPC::ServerRPC']]],
   ['activeping',['activePing',['../classLogCabin_1_1RPC_1_1ClientSession.html#a4b6c929e8c03c2aadb4e45f50f3c7ccd',1,'LogCabin::RPC::ClientSession']]],

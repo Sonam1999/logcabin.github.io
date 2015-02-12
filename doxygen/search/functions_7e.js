@@ -44,6 +44,7 @@ var searchData=
   ['_7epreparedsegments',['~PreparedSegments',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a3284ab72e8ecbf34fbb6f77730912cca',1,'LogCabin::Storage::SegmentedLog::PreparedSegments']]],
   ['_7eraftconsensus',['~RaftConsensus',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#abcb72ad818a70ce7dd87760c7a8581c1',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['_7eraftservice',['~RaftService',['../classLogCabin_1_1Server_1_1RaftService.html#a21e0404020af28abdb18105bcdf09747',1,'LogCabin::Server::RaftService']]],
+  ['_7eraiiswap',['~RAIISwap',['../structLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1RAIISwap.html#aedf41db6922c04951d0c4b3559d10c1b',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::RAIISwap']]],
   ['_7ereader',['~Reader',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a6120c7eac2cabc961ab9449a90cd565a',1,'LogCabin::Storage::SnapshotFile::Reader']]],
   ['_7ereceivesocket',['~ReceiveSocket',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#a406f4f4c6663bf1cdbe335d286b34b40',1,'LogCabin::RPC::MessageSocket::ReceiveSocket']]],
   ['_7erpchandler',['~RPCHandler',['../classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html#a91350a8820563d8339fba9dd19f026af',1,'LogCabin::RPC::Server::RPCHandler']]],
@@ -60,6 +61,7 @@ var searchData=
   ['_7esocketwithhandler',['~SocketWithHandler',['../structLogCabin_1_1RPC_1_1OpaqueServer_1_1SocketWithHandler.html#a3f461a1a90fa06e99270fadfa19db29e',1,'LogCabin::RPC::OpaqueServer::SocketWithHandler']]],
   ['_7estatemachine',['~StateMachine',['../classLogCabin_1_1Server_1_1StateMachine.html#a03e6875c4281a4d394e10bcf1657b7e2',1,'LogCabin::Server::StateMachine']]],
   ['_7esync',['~Sync',['../classLogCabin_1_1Storage_1_1Log_1_1Sync.html#a2fd5aebdbdf9dc6417fc55e1d2bb4326',1,'LogCabin::Storage::Log::Sync::~Sync()'],['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#acce08f5bd231ab28ee382512d5a86ce3',1,'LogCabin::Storage::SegmentedLog::Sync::~Sync()']]],
+  ['_7etestingcallbacks',['~TestingCallbacks',['../classLogCabin_1_1Client_1_1TestingCallbacks.html#a5b146fd7e64b684b0b4f847cc24ae8c5',1,'LogCabin::Client::TestingCallbacks']]],
   ['_7ethreaddispatchservice',['~ThreadDispatchService',['../classLogCabin_1_1RPC_1_1ThreadDispatchService.html#ade5e381daf3c13c0e2e07cd7ae4a0317',1,'LogCabin::RPC::ThreadDispatchService']]],
   ['_7etimer',['~Timer',['../classLogCabin_1_1Event_1_1Timer.html#a25d67efbc0686f397b49f8f5785fced3',1,'LogCabin::Event::Timer']]],
   ['_7ewriter',['~Writer',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a42dabc4f82c18c3ffd67f9ef577c694e',1,'LogCabin::Storage::SnapshotFile::Writer']]]

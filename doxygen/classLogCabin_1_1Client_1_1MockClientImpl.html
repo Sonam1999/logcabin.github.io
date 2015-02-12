@@ -101,6 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a>  </div>
   <div class="headertitle">
 <div class="title">LogCabin::Client::MockClientImpl Class Reference</div>  </div>
@@ -125,8 +126,8 @@ Inheritance diagram for LogCabin::Client::MockClientImpl:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#aae6cdb8790964eec0f28364b88e77adf">MockClientImpl</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#aae6cdb8790964eec0f28364b88e77adf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#a81ace5f927c82898dc86f97caa449599">MockClientImpl</a> (std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html">TestingCallbacks</a> &gt; <a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#aa1d60447023203804ddc35e369726bd3">callbacks</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a81ace5f927c82898dc86f97caa449599"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#a51b47236a18623118b7ad91981827faf">~MockClientImpl</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a51b47236a18623118b7ad91981827faf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#a685fb69c2b2100ea59a8c1c799b770b5">initDerived</a> ()</td></tr>
@@ -134,6 +135,9 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::pair&lt; uint64_t, <br class="typebreak"/>
 <a class="el" href="namespaceLogCabin_1_1Client.html#a63581e43a22ec4472d57c7b920d1d520">Configuration</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#a2ed44b7867fe705730755dbd1cbe0623">getConfiguration</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html">ConfigurationResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#aca24605490be047d90c2822d5c9aa973">setConfiguration</a> (uint64_t oldId, const <a class="el" href="namespaceLogCabin_1_1Client.html#a63581e43a22ec4472d57c7b920d1d520">Configuration</a> &amp;newConfiguration)</td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html">TestingCallbacks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#aa1d60447023203804ddc35e369726bd3">callbacks</a></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#a1210e9464ff3302895f2bfa1c74700c7">MockClientImpl</a> (const <a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html">MockClientImpl</a> &amp;)</td></tr>
@@ -142,17 +146,18 @@ Private Member Functions</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A mock implementation of the client library that operates against a temporary, local, in-memory implementation. </p>
 
-<p>Definition at line <a class="el" href="MockClientImpl_8h_source.html#l00033">33</a> of file <a class="el" href="MockClientImpl_8h_source.html">MockClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="MockClientImpl_8h_source.html#l00032">32</a> of file <a class="el" href="MockClientImpl_8h_source.html">MockClientImpl.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aae6cdb8790964eec0f28364b88e77adf"></a><!-- doxytag: member="LogCabin::Client::MockClientImpl::MockClientImpl" ref="aae6cdb8790964eec0f28364b88e77adf" args="()" -->
+<a class="anchor" id="a81ace5f927c82898dc86f97caa449599"></a><!-- doxytag: member="LogCabin::Client::MockClientImpl::MockClientImpl" ref="a81ace5f927c82898dc86f97caa449599" args="(std::shared_ptr&lt; TestingCallbacks &gt; callbacks)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#aae6cdb8790964eec0f28364b88e77adf">LogCabin::Client::MockClientImpl::MockClientImpl</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#a81ace5f927c82898dc86f97caa449599">LogCabin::Client::MockClientImpl::MockClientImpl</a> </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html">TestingCallbacks</a> &gt;&#160;</td>
+          <td class="paramname"><em>callbacks</em></td><td>)</td>
+          <td><code> [explicit]</code></td>
         </tr>
       </table>
 </div>
@@ -160,7 +165,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Constructor. </p>
 
-<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00107">107</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00151">151</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -180,7 +185,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00111">111</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00156">156</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -189,7 +194,7 @@ Private Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#aae6cdb8790964eec0f28364b88e77adf">LogCabin::Client::MockClientImpl::MockClientImpl</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#a81ace5f927c82898dc86f97caa449599">LogCabin::Client::MockClientImpl::MockClientImpl</a> </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html">MockClientImpl</a> &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -220,7 +225,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#aa1ca0b4f621d3d879b86c2d87fc687b4">LogCabin::Client::ClientImpl</a>.</p>
 
-<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00116">116</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00161">161</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -240,7 +245,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a9781b94ccb0302fdc4f500888c872a8f">LogCabin::Client::ClientImpl</a>.</p>
 
-<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00122">122</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00167">167</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -271,7 +276,7 @@ Private Member Functions</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a9d4819988fefe68440964646903f3e8f">LogCabin::Client::ClientImpl</a>.</p>
 
-<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00128">128</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00173">173</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -289,6 +294,22 @@ Private Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+
+</div>
+</div>
+<hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="aa1d60447023203804ddc35e369726bd3"></a><!-- doxytag: member="LogCabin::Client::MockClientImpl::callbacks" ref="aa1d60447023203804ddc35e369726bd3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html">TestingCallbacks</a>&gt; <a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#aa1d60447023203804ddc35e369726bd3">LogCabin::Client::MockClientImpl::callbacks</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="MockClientImpl_8h_source.html#l00048">48</a> of file <a class="el" href="MockClientImpl_8h_source.html">MockClientImpl.h</a>.</p>
 
 </div>
 </div>

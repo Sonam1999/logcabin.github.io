@@ -127,8 +127,6 @@ Typedefs</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A clock that reads wall time and is affected by NTP adjustments.  <a href="#a9edb96154f308f4284060230766da1f1"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a0770208b7d69cde83a7d092be8e5c931">getTimeNanos</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the system time since the Unix epoch in nanoseconds.  <a href="#a0770208b7d69cde83a7d092be8e5c931"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75">sleep</a> (<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> wake)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Block the calling thread until the given time.  <a href="#a8f257504e3a87c3f6fcafce6729c1f75"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename Clock , typename Duration &gt; </td></tr>
@@ -177,26 +175,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a0770208b7d69cde83a7d092be8e5c931"></a><!-- doxytag: member="LogCabin::Core::Time::getTimeNanos" ref="a0770208b7d69cde83a7d092be8e5c931" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int64_t <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a0770208b7d69cde83a7d092be8e5c931">LogCabin::Core::Time::getTimeNanos</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Return the system time since the Unix epoch in nanoseconds. </p>
-
-<p>Definition at line <a class="el" href="Time_8cc_source.html#l00049">49</a> of file <a class="el" href="Time_8cc_source.html">Time.cc</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a8f257504e3a87c3f6fcafce6729c1f75"></a><!-- doxytag: member="LogCabin::Core::Time::sleep" ref="a8f257504e3a87c3f6fcafce6729c1f75" args="(SteadyClock::time_point wake)" -->
 <div class="memitem">
 <div class="memproto">
@@ -214,7 +192,7 @@ Variables</h2></td></tr>
 
 <p>Block the calling thread until the given time. </p>
 
-<p>Definition at line <a class="el" href="Time_8cc_source.html#l00061">61</a> of file <a class="el" href="Time_8cc_source.html">Time.cc</a>.</p>
+<p>Definition at line <a class="el" href="Time_8cc_source.html#l00056">56</a> of file <a class="el" href="Time_8cc_source.html">Time.cc</a>.</p>
 
 </div>
 </div>
