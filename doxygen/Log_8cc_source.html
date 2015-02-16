@@ -134,20 +134,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00052"></a><a class="code" href="namespaceLogCabin_1_1Storage.html#a3af4e5d7c7d4f974fbad80dc98b8886d">00052</a> <a class="code" href="namespaceLogCabin_1_1Storage.html#a3af4e5d7c7d4f974fbad80dc98b8886d">operator&lt;&lt;</a>(std::ostream&amp; os, <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Log</a>&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ac6edb3bfbfca4fc5ae5a98a0c36ffdda" title="Unconditionally log the given message to stderr.">log</a>)
 <a name="l00053"></a>00053 {
 <a name="l00054"></a>00054     os &lt;&lt; <span class="stringliteral">&quot;Log:&quot;</span> &lt;&lt; std::endl;
-<a name="l00055"></a>00055     os &lt;&lt; <span class="stringliteral">&quot;metadata: &quot;</span> &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(log.<a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a3044e83ee00115379349495937630463" title="Opaque metadata that the log keeps track of.">metadata</a>);
-<a name="l00056"></a>00056     os &lt;&lt; <span class="stringliteral">&quot;startIndex: &quot;</span> &lt;&lt; log.<a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a5d995c35a5bf8ac1a28eadb83a04525e" title="Get the index of the first entry in the log (whether or not this entry exists).">getLogStartIndex</a>() &lt;&lt; std::endl;
-<a name="l00057"></a>00057     <span class="keywordflow">for</span> (uint64_t i = log.<a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a5d995c35a5bf8ac1a28eadb83a04525e" title="Get the index of the first entry in the log (whether or not this entry exists).">getLogStartIndex</a>();
-<a name="l00058"></a>00058          i &lt;= log.<a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a75616a93cbe7839f1ad6247b7e865a46" title="Get the index of the most recent entry in the log.">getLastLogIndex</a>();
-<a name="l00059"></a>00059          ++i) {
-<a name="l00060"></a>00060         os &lt;&lt; <span class="stringliteral">&quot;Entry &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;: &quot;</span>
-<a name="l00061"></a>00061            &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(log.<a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a8a7efeea930f2b56dd90e8796abf6c82" title="Look up an entry by its log index.">getEntry</a>(i));
-<a name="l00062"></a>00062     }
-<a name="l00063"></a>00063     os &lt;&lt; std::endl;
-<a name="l00064"></a>00064     <span class="keywordflow">return</span> os;
-<a name="l00065"></a>00065 }
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067 } <span class="comment">// namespace LogCabin::Storage</span>
-<a name="l00068"></a>00068 } <span class="comment">// namespace LogCabin</span>
+<a name="l00055"></a>00055     os &lt;&lt; <span class="stringliteral">&quot;metadata start: &quot;</span> &lt;&lt; std::endl;
+<a name="l00056"></a>00056     os &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(log.<a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a3044e83ee00115379349495937630463" title="Opaque metadata that the log keeps track of.">metadata</a>);
+<a name="l00057"></a>00057     os &lt;&lt; <span class="stringliteral">&quot;end of metadata&quot;</span> &lt;&lt; std::endl;
+<a name="l00058"></a>00058     os &lt;&lt; <span class="stringliteral">&quot;startIndex: &quot;</span> &lt;&lt; log.<a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a5d995c35a5bf8ac1a28eadb83a04525e" title="Get the index of the first entry in the log (whether or not this entry exists).">getLogStartIndex</a>() &lt;&lt; std::endl;
+<a name="l00059"></a>00059     <span class="keywordflow">for</span> (uint64_t i = log.<a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a5d995c35a5bf8ac1a28eadb83a04525e" title="Get the index of the first entry in the log (whether or not this entry exists).">getLogStartIndex</a>();
+<a name="l00060"></a>00060          i &lt;= log.<a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a75616a93cbe7839f1ad6247b7e865a46" title="Get the index of the most recent entry in the log.">getLastLogIndex</a>();
+<a name="l00061"></a>00061          ++i) {
+<a name="l00062"></a>00062         os &lt;&lt; <span class="stringliteral">&quot;Entry &quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot; start:&quot;</span> &lt;&lt; std::endl;
+<a name="l00063"></a>00063         os &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(log.<a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a8a7efeea930f2b56dd90e8796abf6c82" title="Look up an entry by its log index.">getEntry</a>(i));
+<a name="l00064"></a>00064         os &lt;&lt; <span class="stringliteral">&quot;end of entry &quot;</span> &lt;&lt; i &lt;&lt; std::endl;
+<a name="l00065"></a>00065     }
+<a name="l00066"></a>00066     os &lt;&lt; std::endl;
+<a name="l00067"></a>00067     <span class="keywordflow">return</span> os;
+<a name="l00068"></a>00068 }
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 } <span class="comment">// namespace LogCabin::Storage</span>
+<a name="l00071"></a>00071 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
