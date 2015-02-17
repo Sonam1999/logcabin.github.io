@@ -35,6 +35,7 @@ var searchData=
   ['_7ememorylog',['~MemoryLog',['../classLogCabin_1_1Storage_1_1MemoryLog.html#a868788e6c403fa4db697d3cbe7c04004',1,'LogCabin::Storage::MemoryLog']]],
   ['_7emessagesocket',['~MessageSocket',['../classLogCabin_1_1RPC_1_1MessageSocket.html#a2054b35ebb14567ba1d44ab27947098d',1,'LogCabin::RPC::MessageSocket']]],
   ['_7emockclientimpl',['~MockClientImpl',['../classLogCabin_1_1Client_1_1MockClientImpl.html#a51b47236a18623118b7ad91981827faf',1,'LogCabin::Client::MockClientImpl']]],
+  ['_7emocker',['~Mocker',['../structLogCabin_1_1Core_1_1Time_1_1MockableClock_1_1Mocker.html#a48f3a1d8c93118b911cfb9ecb46993f3',1,'LogCabin::Core::Time::MockableClock::Mocker']]],
   ['_7emonitor',['~Monitor',['../classLogCabin_1_1Event_1_1File_1_1Monitor.html#ad9a5d99d778bb88bf2fd4c9c4d21947e',1,'LogCabin::Event::File::Monitor::~Monitor()'],['../classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#a4229a866a1255f7ef3c8c391c209f8dc',1,'LogCabin::Event::Signal::Monitor::~Monitor()'],['../classLogCabin_1_1Event_1_1Timer_1_1Monitor.html#a7765f567782a55634e8fb75917c38e18',1,'LogCabin::Event::Timer::Monitor::~Monitor()']]],
   ['_7emutexunlock',['~MutexUnlock',['../classLogCabin_1_1Core_1_1MutexUnlock.html#af60ace399f7d5d4a5a2e1df76c0109bc',1,'LogCabin::Core::MutexUnlock']]],
   ['_7eopaqueclientrpc',['~OpaqueClientRPC',['../classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#aeabf61fe239d25fcf15849d2b6f219b8',1,'LogCabin::RPC::OpaqueClientRPC']]],

@@ -101,6 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a>  </div>
@@ -116,6 +117,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><a href="structLogCabin_1_1Core_1_1Time_1_1MockableClock-members.html">List of all members.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock_1_1Mocker.html">Mocker</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">RAII class to mock out the clock and then restore it.  <a href="structLogCabin_1_1Core_1_1Time_1_1MockableClock_1_1Mocker.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef _BaseClock&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#ac2c10dfa83c28fe1a1d83a5dfe51892a">BaseClock</a></td></tr>
@@ -139,33 +144,16 @@ struct LogCabin::Core::Time::MockableClock&lt; _BaseClock &gt;</h3>
 <p>Reads the current time. </p>
 <p>This time may not correspond to wall time, depending on the underlying BaseClock. This class gives unit tests a way to fake the current time. </p>
 
-<p>Definition at line <a class="el" href="Time_8h_source.html#l00115">115</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
+<p>Definition at line <a class="el" href="Time_8h_source.html#l00116">116</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="ac2c10dfa83c28fe1a1d83a5dfe51892a"></a><!-- doxytag: member="LogCabin::Core::Time::MockableClock::BaseClock" ref="ac2c10dfa83c28fe1a1d83a5dfe51892a" args="" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename _BaseClock&gt; </div>
+template&lt;typename _BaseClock &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">typedef _BaseClock <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; _BaseClock &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#ac2c10dfa83c28fe1a1d83a5dfe51892a">BaseClock</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="Time_8h_source.html#l00117">117</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a47b51df2c5844d317d1fb74b4723e4f4"></a><!-- doxytag: member="LogCabin::Core::Time::MockableClock::duration" ref="a47b51df2c5844d317d1fb74b4723e4f4" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename _BaseClock&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef BaseClock::duration <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; _BaseClock &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a47b51df2c5844d317d1fb74b4723e4f4">duration</a></td>
         </tr>
       </table>
 </div>
@@ -175,14 +163,14 @@ template&lt;typename _BaseClock&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a6992f38657c06cc0a3b4d7fd89dcbb22"></a><!-- doxytag: member="LogCabin::Core::Time::MockableClock::rep" ref="a6992f38657c06cc0a3b4d7fd89dcbb22" args="" -->
+<a class="anchor" id="a47b51df2c5844d317d1fb74b4723e4f4"></a><!-- doxytag: member="LogCabin::Core::Time::MockableClock::duration" ref="a47b51df2c5844d317d1fb74b4723e4f4" args="" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename _BaseClock&gt; </div>
+template&lt;typename _BaseClock &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef BaseClock::rep <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; _BaseClock &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a6992f38657c06cc0a3b4d7fd89dcbb22">rep</a></td>
+          <td class="memname">typedef BaseClock::duration <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; _BaseClock &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a47b51df2c5844d317d1fb74b4723e4f4">duration</a></td>
         </tr>
       </table>
 </div>
@@ -192,14 +180,14 @@ template&lt;typename _BaseClock&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a5ac02658b1e0b3f49c20337b7c72f715"></a><!-- doxytag: member="LogCabin::Core::Time::MockableClock::period" ref="a5ac02658b1e0b3f49c20337b7c72f715" args="" -->
+<a class="anchor" id="a6992f38657c06cc0a3b4d7fd89dcbb22"></a><!-- doxytag: member="LogCabin::Core::Time::MockableClock::rep" ref="a6992f38657c06cc0a3b4d7fd89dcbb22" args="" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename _BaseClock&gt; </div>
+template&lt;typename _BaseClock &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef BaseClock::period <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; _BaseClock &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a5ac02658b1e0b3f49c20337b7c72f715">period</a></td>
+          <td class="memname">typedef BaseClock::rep <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; _BaseClock &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a6992f38657c06cc0a3b4d7fd89dcbb22">rep</a></td>
         </tr>
       </table>
 </div>
@@ -209,14 +197,14 @@ template&lt;typename _BaseClock&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a25005848397dad2ae0d03826a755d7c8"></a><!-- doxytag: member="LogCabin::Core::Time::MockableClock::time_point" ref="a25005848397dad2ae0d03826a755d7c8" args="" -->
+<a class="anchor" id="a5ac02658b1e0b3f49c20337b7c72f715"></a><!-- doxytag: member="LogCabin::Core::Time::MockableClock::period" ref="a5ac02658b1e0b3f49c20337b7c72f715" args="" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename _BaseClock&gt; </div>
+template&lt;typename _BaseClock &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef BaseClock::time_point <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; _BaseClock &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">time_point</a></td>
+          <td class="memname">typedef BaseClock::period <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; _BaseClock &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a5ac02658b1e0b3f49c20337b7c72f715">period</a></td>
         </tr>
       </table>
 </div>
@@ -226,12 +214,29 @@ template&lt;typename _BaseClock&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a25005848397dad2ae0d03826a755d7c8"></a><!-- doxytag: member="LogCabin::Core::Time::MockableClock::time_point" ref="a25005848397dad2ae0d03826a755d7c8" args="" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename _BaseClock &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef BaseClock::time_point <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; _BaseClock &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">time_point</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Time_8h_source.html#l00122">122</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
+
+</div>
+</div>
 <hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a13f545c6020dd190e13d21e2577cc59b"></a><!-- doxytag: member="LogCabin::Core::Time::MockableClock::now" ref="a13f545c6020dd190e13d21e2577cc59b" args="()" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename _BaseClock&gt; </div>
+template&lt;typename _BaseClock &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">static <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">time_point</a> <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; _BaseClock &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">now</a> </td>
@@ -243,7 +248,7 @@ template&lt;typename _BaseClock&gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Time_8h_source.html#l00131">131</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
+<p>Definition at line <a class="el" href="Time_8h_source.html#l00132">132</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
 
 </div>
 </div>
@@ -252,7 +257,7 @@ template&lt;typename _BaseClock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename _BaseClock&gt; </div>
+template&lt;typename _BaseClock &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">const bool <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; _BaseClock &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#ab4f4cd42e83e3568af0feffc206851e1">is_steady</a><code> [static]</code></td>
@@ -261,7 +266,7 @@ template&lt;typename _BaseClock&gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Time_8h_source.html#l00128">128</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
+<p>Definition at line <a class="el" href="Time_8h_source.html#l00129">129</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
 
 </div>
 </div>
@@ -269,7 +274,7 @@ template&lt;typename _BaseClock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename _BaseClock&gt; </div>
+template&lt;typename _BaseClock &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">bool <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#ac2c10dfa83c28fe1a1d83a5dfe51892a">BaseClock</a> &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#aec40dbf9e041ae87a155796d8e8f4337">useMockValue</a><code> [static]</code></td>
@@ -278,7 +283,7 @@ template&lt;typename _BaseClock&gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Time_8h_source.html#l00138">138</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
+<p>Definition at line <a class="el" href="Time_8h_source.html#l00139">139</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
 
 </div>
 </div>
@@ -286,7 +291,7 @@ template&lt;typename _BaseClock&gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename _BaseClock&gt; </div>
+template&lt;typename _BaseClock &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">MockableClock</a>&lt; <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#ac2c10dfa83c28fe1a1d83a5dfe51892a">BaseClock</a> &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">time_point</a> <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock</a>&lt; <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#ac2c10dfa83c28fe1a1d83a5dfe51892a">BaseClock</a> &gt;::<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a38593d6c0fc6dabcd3942a160d525317">mockValue</a><code> [static]</code></td>
@@ -295,7 +300,7 @@ template&lt;typename _BaseClock&gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Time_8h_source.html#l00139">139</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
+<p>Definition at line <a class="el" href="Time_8h_source.html#l00140">140</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
 
 </div>
 </div>

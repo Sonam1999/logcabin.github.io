@@ -86,7 +86,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Core/Time.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;chrono&gt;</code><br/>
+<div class="textblock"><code>#include &lt;cassert&gt;</code><br/>
+<code>#include &lt;chrono&gt;</code><br/>
 <code>#include &lt;iostream&gt;</code><br/>
 <code>#include &lt;time.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="StringUtil_8h_source.html">Core/StringUtil.h</a>&quot;</code><br/>
@@ -101,6 +102,8 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Monotonic clock in nanosecond granularity.  <a href="structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html">LogCabin::Core::Time::MockableClock&lt; _BaseClock &gt;</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the current time.  <a href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock_1_1Mocker.html">LogCabin::Core::Time::MockableClock&lt; _BaseClock &gt;::Mocker</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">RAII class to mock out the clock and then restore it.  <a href="structLogCabin_1_1Core_1_1Time_1_1MockableClock_1_1Mocker.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html">LogCabin::Core::Time::SteadyTimeConverter</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to convert one or more <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> values into values of the SystemClock.  <a href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
