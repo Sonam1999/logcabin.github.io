@@ -1,7 +1,7 @@
 var searchData=
 [
   ['daemon',['daemon',['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#af0739fee4e519388ee65e82d66e0233d',1,'anonymous_namespace{Main.cc}::OptionParser']]],
-  ['data',['DATA',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#ad3faa7f9b282d60e8253185b09a88c5aa6d451f3ccae3822b3ec4e0df95282d71',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::DATA()'],['../classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e',1,'LogCabin::Core::Buffer::data()'],['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#aaeeb0cef565cc48eed0987d272ea65be',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::data()']]],
+  ['data',['DATA',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#ad3faa7f9b282d60e8253185b09a88c5aa6d451f3ccae3822b3ec4e0df95282d71',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::DATA()'],['../classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e',1,'LogCabin::Core::Buffer::data()']]],
   ['debug_2ecc',['Debug.cc',['../Debug_8cc.html',1,'']]],
   ['debug_2eh',['Debug.h',['../Debug_8h.html',1,'']]],
   ['debuglogfilename',['debugLogFilename',['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#a813286f4c03c4c3b973a917e74231ce2',1,'anonymous_namespace{Main.cc}::OptionParser']]],

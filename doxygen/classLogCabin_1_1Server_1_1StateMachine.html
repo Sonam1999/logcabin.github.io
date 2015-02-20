@@ -132,8 +132,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return once the state machine has applied at least the given entry.  <a href="#a25de03c98a3d661656677ba23fd508d3"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a186637559845a0d9ab74c9954f68f21b">apply</a> (uint64_t entryId, const std::string &amp;data)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoked once per committed entry from the Raft log.  <a href="#a186637559845a0d9ab74c9954f68f21b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a74ebb559ee2a59274f1fa829bc981bdd">apply</a> (uint64_t entryId, const <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> &amp;serializedCommand)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoked once per committed entry from the Raft log.  <a href="#a74ebb559ee2a59274f1fa829bc981bdd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a85315565676068d98d26b883a69ba8e6">applyThreadMain</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function for thread that waits for new commands from Raft.  <a href="#a85315565676068d98d26b883a69ba8e6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a57ac9db3103bc781ed30f96085f46789">dumpSessionSnapshot</a> (google::protobuf::io::CodedOutputStream &amp;stream) const </td></tr>
@@ -326,12 +326,12 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a186637559845a0d9ab74c9954f68f21b"></a><!-- doxytag: member="LogCabin::Server::StateMachine::apply" ref="a186637559845a0d9ab74c9954f68f21b" args="(uint64_t entryId, const std::string &amp;data)" -->
+<a class="anchor" id="a74ebb559ee2a59274f1fa829bc981bdd"></a><!-- doxytag: member="LogCabin::Server::StateMachine::apply" ref="a74ebb559ee2a59274f1fa829bc981bdd" args="(uint64_t entryId, const Core::Buffer &amp;serializedCommand)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a186637559845a0d9ab74c9954f68f21b">LogCabin::Server::StateMachine::apply</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a74ebb559ee2a59274f1fa829bc981bdd">LogCabin::Server::StateMachine::apply</a> </td>
           <td>(</td>
           <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>entryId</em>, </td>
@@ -339,8 +339,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>data</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> &amp;&#160;</td>
+          <td class="paramname"><em>serializedCommand</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -373,7 +373,7 @@ Private Attributes</h2></td></tr>
 
 <p>Main function for thread that waits for new commands from Raft. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00176">176</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00180">180</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -394,7 +394,7 @@ Private Attributes</h2></td></tr>
 
 <p>Write the <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a> table to a snapshot file. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00218">218</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00222">222</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -432,7 +432,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00244">244</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00248">248</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -459,7 +459,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00259">259</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00263">263</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -480,7 +480,7 @@ Private Attributes</h2></td></tr>
 
 <p>Read the <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a> table from a snapshot file. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00281">281</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00285">285</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -502,7 +502,7 @@ Private Attributes</h2></td></tr>
 <p>Return true if it is time to create a new snapshot. </p>
 <p>This is called by applyThread as an optimization to avoid waking up snapshotThread upon applying every single entry. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00315">315</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00319">319</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -522,7 +522,7 @@ Private Attributes</h2></td></tr>
 
 <p>Main function for thread that calls takeSnapshot when appropriate. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00330">330</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00334">334</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -553,7 +553,7 @@ Private Attributes</h2></td></tr>
 
 <p>Called by snapshotThreadMain to actually take the snapshot. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00345">345</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00349">349</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>

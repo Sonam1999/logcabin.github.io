@@ -912,7 +912,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00830"></a>00830 <span class="comment">        /**</span>
 <a name="l00831"></a>00831 <span class="comment">         * The client request for entries of type &#39;DATA&#39;.</span>
 <a name="l00832"></a>00832 <span class="comment">         */</span>
-<a name="l00833"></a><a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#aaeeb0cef565cc48eed0987d272ea65be">00833</a>         std::string <a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#aaeeb0cef565cc48eed0987d272ea65be" title="The client request for entries of type &#39;DATA&#39;.">data</a>;
+<a name="l00833"></a><a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a3a16a68813a01925791c7be44f65e5ce">00833</a>         <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> <a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a3a16a68813a01925791c7be44f65e5ce" title="The client request for entries of type &#39;DATA&#39;.">command</a>;
 <a name="l00834"></a>00834 <span class="comment"></span>
 <a name="l00835"></a>00835 <span class="comment">        /**</span>
 <a name="l00836"></a>00836 <span class="comment">         * A handle to the snapshot file for entries of type &#39;SNAPSHOT&#39;.</span>
@@ -1039,7 +1039,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00957"></a>00957 <span class="comment">     *      log index at which the entry has been committed to the replicated</span>
 <a name="l00958"></a>00958 <span class="comment">     *      log.</span>
 <a name="l00959"></a>00959 <span class="comment">     */</span>
-<a name="l00960"></a>00960     std::pair&lt;ClientResult, uint64_t&gt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a044adafc0636e0d51639c86dc24cedb7" title="Submit an operation to the replicated log.">replicate</a>(<span class="keyword">const</span> std::string&amp; operation);
+<a name="l00960"></a>00960     std::pair&lt;ClientResult, uint64_t&gt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab6e49a1c8062db6b4ef7c011b3ac42f7" title="Submit an operation to the replicated log.">replicate</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>&amp; operation);
 <a name="l00961"></a>00961 <span class="comment"></span>
 <a name="l00962"></a>00962 <span class="comment">    /**</span>
 <a name="l00963"></a>00963 <span class="comment">     * Change the cluster&#39;s configuration.</span>
