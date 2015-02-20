@@ -125,8 +125,8 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a852661fe15f359808cfad04825091b0b">Buffer</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a852661fe15f359808cfad04825091b0b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ac5c870558c4df683bbfe353cfe5ee546">Buffer</a> (void *<a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e">data</a>, uint32_t <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#aebce20f448a89421cdd80172da572493">length</a>, <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb">Deleter</a> <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238">deleter</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a non-empty buffer.  <a href="#ac5c870558c4df683bbfe353cfe5ee546"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#adabfb75a45b0ae5b7adee3490202b4b6">Buffer</a> (void *<a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e">data</a>, uint64_t <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ac183b72117495e0aeb578a79f62cbfec">length</a>, <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb">Deleter</a> <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238">deleter</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a non-empty buffer.  <a href="#adabfb75a45b0ae5b7adee3490202b4b6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ae5b7b351b4f896c987d24702ac74f671">Buffer</a> (<a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Buffer</a> &amp;&amp;other)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="#ae5b7b351b4f896c987d24702ac74f671"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a0e5bc4d1d42a1110457f9923156c3ec3">~Buffer</a> ()</td></tr>
@@ -137,10 +137,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to the first byte of data.  <a href="#a3b84e70fc6c1269fdd8f701ef2d9ab4e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#aa6e3a64e9ee54f5c87b1a62a138ca62f">getData</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a pointer to the first byte of data (const variant).  <a href="#aa6e3a64e9ee54f5c87b1a62a138ca62f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a9e80f0a14521d8d262ada6e1f1f5a44d">getLength</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of bytes that make up the data.  <a href="#a9e80f0a14521d8d262ada6e1f1f5a44d"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ab419c0c44d7372aaeb1a06ee2d252426">setData</a> (void *<a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e">data</a>, uint32_t <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#aebce20f448a89421cdd80172da572493">length</a>, <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb">Deleter</a> <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238">deleter</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace the data contained in this <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Buffer</a>.  <a href="#ab419c0c44d7372aaeb1a06ee2d252426"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148">getLength</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of bytes that make up the data.  <a href="#a08d97c0adafb53992122d2c38a072148"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a5c620e31ddbad599c21c8a221aa2c568">setData</a> (void *<a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e">data</a>, uint64_t <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ac183b72117495e0aeb578a79f62cbfec">length</a>, <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb">Deleter</a> <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238">deleter</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace the data contained in this <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Buffer</a>.  <a href="#a5c620e31ddbad599c21c8a221aa2c568"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ac30c5784872a33a2f39a399ec688e4b7">reset</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty the <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Buffer</a>.  <a href="#ac30c5784872a33a2f39a399ec688e4b7"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
@@ -159,8 +159,8 @@ Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e">data</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the data or NULL if none has been set.  <a href="#ad9687ac1794e05bc978b8e9f64b5912e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#aebce20f448a89421cdd80172da572493">length</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes that make up data or 0 if none has been set.  <a href="#aebce20f448a89421cdd80172da572493"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ac183b72117495e0aeb578a79f62cbfec">length</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes that make up data or 0 if none has been set.  <a href="#ac183b72117495e0aeb578a79f62cbfec"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb">Deleter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238">deleter</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes how to release the memory for 'data' when this <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Buffer</a> is destroyed or its data is replaced.  <a href="#abcd2853f2ec5b95b21b275ff060f1238"></a><br/></td></tr>
 </table>
@@ -215,7 +215,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac5c870558c4df683bbfe353cfe5ee546"></a><!-- doxytag: member="LogCabin::Core::Buffer::Buffer" ref="ac5c870558c4df683bbfe353cfe5ee546" args="(void *data, uint32_t length, Deleter deleter)" -->
+<a class="anchor" id="adabfb75a45b0ae5b7adee3490202b4b6"></a><!-- doxytag: member="LogCabin::Core::Buffer::Buffer" ref="adabfb75a45b0ae5b7adee3490202b4b6" args="(void *data, uint64_t length, Deleter deleter)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -228,7 +228,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>length</em>, </td>
         </tr>
         <tr>
@@ -247,7 +247,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Construct a non-empty buffer. </p>
-<p>This is equivalent to using the default constructor and then calling <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ab419c0c44d7372aaeb1a06ee2d252426" title="Replace the data contained in this Buffer.">setData()</a>. </p>
+<p>This is equivalent to using the default constructor and then calling <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a5c620e31ddbad599c21c8a221aa2c568" title="Replace the data contained in this Buffer.">setData()</a>. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>A pointer to the first byte of data to be contained in the <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Buffer</a>. </td></tr>
@@ -454,12 +454,12 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a9e80f0a14521d8d262ada6e1f1f5a44d"></a><!-- doxytag: member="LogCabin::Core::Buffer::getLength" ref="a9e80f0a14521d8d262ada6e1f1f5a44d" args="() const " -->
+<a class="anchor" id="a08d97c0adafb53992122d2c38a072148"></a><!-- doxytag: member="LogCabin::Core::Buffer::getLength" ref="a08d97c0adafb53992122d2c38a072148" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a9e80f0a14521d8d262ada6e1f1f5a44d">LogCabin::Core::Buffer::getLength</a> </td>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148">LogCabin::Core::Buffer::getLength</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const<code> [inline]</code></td>
@@ -474,12 +474,12 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="ab419c0c44d7372aaeb1a06ee2d252426"></a><!-- doxytag: member="LogCabin::Core::Buffer::setData" ref="ab419c0c44d7372aaeb1a06ee2d252426" args="(void *data, uint32_t length, Deleter deleter)" -->
+<a class="anchor" id="a5c620e31ddbad599c21c8a221aa2c568"></a><!-- doxytag: member="LogCabin::Core::Buffer::setData" ref="a5c620e31ddbad599c21c8a221aa2c568" args="(void *data, uint64_t length, Deleter deleter)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ab419c0c44d7372aaeb1a06ee2d252426">LogCabin::Core::Buffer::setData</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#a5c620e31ddbad599c21c8a221aa2c568">LogCabin::Core::Buffer::setData</a> </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>data</em>, </td>
@@ -487,7 +487,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>length</em>, </td>
         </tr>
         <tr>
@@ -576,12 +576,12 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="aebce20f448a89421cdd80172da572493"></a><!-- doxytag: member="LogCabin::Core::Buffer::length" ref="aebce20f448a89421cdd80172da572493" args="" -->
+<a class="anchor" id="ac183b72117495e0aeb578a79f62cbfec"></a><!-- doxytag: member="LogCabin::Core::Buffer::length" ref="ac183b72117495e0aeb578a79f62cbfec" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#aebce20f448a89421cdd80172da572493">LogCabin::Core::Buffer::length</a><code> [private]</code></td>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html#ac183b72117495e0aeb578a79f62cbfec">LogCabin::Core::Buffer::length</a><code> [private]</code></td>
         </tr>
       </table>
 </div>

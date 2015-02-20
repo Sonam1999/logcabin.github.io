@@ -107,7 +107,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00025"></a>00025 {
 <a name="l00026"></a>00026 }
 <a name="l00027"></a>00027 
-<a name="l00028"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ac5c870558c4df683bbfe353cfe5ee546">00028</a> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a852661fe15f359808cfad04825091b0b" title="Default constructor.">Buffer::Buffer</a>(<span class="keywordtype">void</span>* data, uint32_t <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca" title="Check to see if the checksum format looks plausible.">length</a>, Deleter deleter)
+<a name="l00028"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#adabfb75a45b0ae5b7adee3490202b4b6">00028</a> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a852661fe15f359808cfad04825091b0b" title="Default constructor.">Buffer::Buffer</a>(<span class="keywordtype">void</span>* data, uint64_t <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca" title="Check to see if the checksum format looks plausible.">length</a>, Deleter deleter)
 <a name="l00029"></a>00029     : data(data)
 <a name="l00030"></a>00030     , length(length)
 <a name="l00031"></a>00031     , deleter(deleter)
@@ -136,7 +136,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00054"></a>00054     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238" title="Describes how to release the memory for &#39;data&#39; when this Buffer is destroyed or its data is replaced...">deleter</a> != NULL)
 <a name="l00055"></a>00055         (*deleter)(<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>);
 <a name="l00056"></a>00056     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a> = other.data;
-<a name="l00057"></a>00057     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#aebce20f448a89421cdd80172da572493" title="The number of bytes that make up data or 0 if none has been set.">length</a> = other.length;
+<a name="l00057"></a>00057     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ac183b72117495e0aeb578a79f62cbfec" title="The number of bytes that make up data or 0 if none has been set.">length</a> = other.length;
 <a name="l00058"></a>00058     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238" title="Describes how to release the memory for &#39;data&#39; when this Buffer is destroyed or its data is replaced...">deleter</a> = other.deleter;
 <a name="l00059"></a>00059     other.data = NULL; <span class="comment">// Not strictly necessary, but may help</span>
 <a name="l00060"></a>00060     other.length = 0;  <span class="comment">// catch bugs in caller code.</span>
@@ -145,12 +145,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00063"></a>00063 }
 <a name="l00064"></a>00064 
 <a name="l00065"></a>00065 <span class="keywordtype">void</span>
-<a name="l00066"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ab419c0c44d7372aaeb1a06ee2d252426">00066</a> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ab419c0c44d7372aaeb1a06ee2d252426" title="Replace the data contained in this Buffer.">Buffer::setData</a>(<span class="keywordtype">void</span>* data, uint32_t <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca" title="Check to see if the checksum format looks plausible.">length</a>, Deleter deleter)
+<a name="l00066"></a><a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a5c620e31ddbad599c21c8a221aa2c568">00066</a> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a5c620e31ddbad599c21c8a221aa2c568" title="Replace the data contained in this Buffer.">Buffer::setData</a>(<span class="keywordtype">void</span>* data, uint64_t <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca" title="Check to see if the checksum format looks plausible.">length</a>, Deleter deleter)
 <a name="l00067"></a>00067 {
 <a name="l00068"></a>00068     <span class="keywordflow">if</span> (this-&gt;deleter != NULL)
 <a name="l00069"></a>00069         (*this-&gt;<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238" title="Describes how to release the memory for &#39;data&#39; when this Buffer is destroyed or its data is replaced...">deleter</a>)(this-&gt;data);
 <a name="l00070"></a>00070     this-&gt;data = <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>;
-<a name="l00071"></a>00071     this-&gt;length = <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#aebce20f448a89421cdd80172da572493" title="The number of bytes that make up data or 0 if none has been set.">length</a>;
+<a name="l00071"></a>00071     this-&gt;length = <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ac183b72117495e0aeb578a79f62cbfec" title="The number of bytes that make up data or 0 if none has been set.">length</a>;
 <a name="l00072"></a>00072     this-&gt;deleter = <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238" title="Describes how to release the memory for &#39;data&#39; when this Buffer is destroyed or its data is replaced...">deleter</a>;
 <a name="l00073"></a>00073 }
 <a name="l00074"></a>00074 
@@ -160,7 +160,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00078"></a>00078     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238" title="Describes how to release the memory for &#39;data&#39; when this Buffer is destroyed or its data is replaced...">deleter</a> != NULL)
 <a name="l00079"></a>00079         (*deleter)(<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a>);
 <a name="l00080"></a>00080     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e" title="A pointer to the data or NULL if none has been set.">data</a> = NULL;
-<a name="l00081"></a>00081     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#aebce20f448a89421cdd80172da572493" title="The number of bytes that make up data or 0 if none has been set.">length</a> = 0;
+<a name="l00081"></a>00081     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#ac183b72117495e0aeb578a79f62cbfec" title="The number of bytes that make up data or 0 if none has been set.">length</a> = 0;
 <a name="l00082"></a>00082     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238" title="Describes how to release the memory for &#39;data&#39; when this Buffer is destroyed or its data is replaced...">deleter</a> = NULL;
 <a name="l00083"></a>00083 }
 <a name="l00084"></a>00084 

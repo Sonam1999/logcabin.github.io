@@ -137,7 +137,7 @@ Public Types</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Type for absolute time values used for timeouts.  <a href="#a557327699a32d8a36f69bc063e67d47b"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#ad26729e09894bf68034723d5bcb469be">ClientRPC</a> (std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">RPC::ClientSession</a> &gt; session, uint16_t service, uint8_t serviceSpecificErrorVersion, uint16_t opCode, const google::protobuf::Message &amp;request)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#ad26729e09894bf68034723d5bcb469be">ClientRPC</a> (std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">RPC::ClientSession</a> &gt; session, uint16_t <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a573aa520a006ff8a14b8eb559e9b5a53">service</a>, uint8_t serviceSpecificErrorVersion, uint16_t <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a6fcfc8d2501ec0031ffa0feae14abf49">opCode</a>, const google::protobuf::Message &amp;request)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Issue an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> to a remote service.  <a href="#ad26729e09894bf68034723d5bcb469be"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a85ff8a4e92d1628b76d4924b7099591d">ClientRPC</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a85ff8a4e92d1628b76d4924b7099591d"></a><br/></td></tr>
@@ -161,6 +161,10 @@ Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html">ClientRPC</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a71ea16696cbbb36997bbdcef28a88d8c">operator=</a> (const <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html">ClientRPC</a> &amp;)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a573aa520a006ff8a14b8eb559e9b5a53">service</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies the service running on the server.  <a href="#a573aa520a006ff8a14b8eb559e9b5a53"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a6fcfc8d2501ec0031ffa0feae14abf49">opCode</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies the remote procedure within the <a class="el" href="classLogCabin_1_1RPC_1_1Service.html" title="Base class for RPC services.">Service</a> to execute.  <a href="#a6fcfc8d2501ec0031ffa0feae14abf49"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html">OpaqueClientRPC</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
@@ -323,7 +327,7 @@ Private Attributes</h2></td></tr>
 <p>Default constructor. </p>
 <p>This doesn't create a valid <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>, but it is useful as a placeholder. </p>
 
-<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00057">57</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00059">59</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -344,7 +348,7 @@ Private Attributes</h2></td></tr>
 
 <p>Move constructor. </p>
 
-<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00062">62</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00066">66</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -364,7 +368,7 @@ Private Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00067">67</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00073">73</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -403,7 +407,7 @@ Private Attributes</h2></td></tr>
 
 <p>Move assignment. </p>
 
-<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00072">72</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00078">78</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -424,7 +428,7 @@ Private Attributes</h2></td></tr>
 <p>Abort the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. </p>
 <p>The caller is no longer interested in its reply. </p>
 
-<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00079">79</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00087">87</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -445,7 +449,7 @@ Private Attributes</h2></td></tr>
 <p>Indicate whether a response or error has been received for the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True means the reply is ready or an error has occurred; false otherwise. </dd></dl>
 
-<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00085">85</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00093">93</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -492,7 +496,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>See the individual values of <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3" title="The return type of waitForReply().">Status</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00091">91</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00099">99</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -514,7 +518,7 @@ Private Attributes</h2></td></tr>
 <p>All errors indicate that it is unknown whether or not the server executed the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. Unless the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> was canceled with <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a70a114004ad27fac8bbc41dda1a27e1c" title="Abort the RPC.">cancel()</a>, the <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> has been disconnected and is no longer useful for initiating new RPCs.</p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>If an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> failure has occurred, a message describing that error. Otherwise, an empty string. </dd></dl>
 
-<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00189">189</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00208">208</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -536,6 +540,41 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a573aa520a006ff8a14b8eb559e9b5a53"></a><!-- doxytag: member="LogCabin::RPC::ClientRPC::service" ref="a573aa520a006ff8a14b8eb559e9b5a53" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a573aa520a006ff8a14b8eb559e9b5a53">LogCabin::RPC::ClientRPC::service</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Identifies the service running on the server. </p>
+<p>See <a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html">Protocol::Common::ServiceId</a>. </p>
+
+<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00179">179</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6fcfc8d2501ec0031ffa0feae14abf49"></a><!-- doxytag: member="LogCabin::RPC::ClientRPC::opCode" ref="a6fcfc8d2501ec0031ffa0feae14abf49" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a6fcfc8d2501ec0031ffa0feae14abf49">LogCabin::RPC::ClientRPC::opCode</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Identifies the remote procedure within the <a class="el" href="classLogCabin_1_1RPC_1_1Service.html" title="Base class for RPC services.">Service</a> to execute. </p>
+
+<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00184">184</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a7beeb2a4661b6d82263968d6d73e6c46"></a><!-- doxytag: member="LogCabin::RPC::ClientRPC::opaqueRPC" ref="a7beeb2a4661b6d82263968d6d73e6c46" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -547,7 +586,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00176">176</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00186">186</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
 
 </div>
 </div>
