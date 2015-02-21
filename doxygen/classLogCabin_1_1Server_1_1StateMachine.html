@@ -128,12 +128,12 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a> to get a response for a read-write operation on the <a class="el" href="namespaceLogCabin_1_1Tree.html">Tree</a>.  <a href="#a64059cbdf3fbf7e04243568bdadb67ff"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a84dbcf435d37778d44398ae6248c57d5">readOnlyTreeRPC</a> (const Protocol::Client::ReadOnlyTree_Request &amp;request, Protocol::Client::ReadOnlyTree_Response &amp;response) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a> to execute read-only operations on the <a class="el" href="namespaceLogCabin_1_1Tree.html">Tree</a>.  <a href="#a84dbcf435d37778d44398ae6248c57d5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a25de03c98a3d661656677ba23fd508d3">wait</a> (uint64_t entryId) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return once the state machine has applied at least the given entry.  <a href="#a25de03c98a3d661656677ba23fd508d3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a40792af98645b4d05e6ddcf10902044e">wait</a> (uint64_t index) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return once the state machine has applied at least the given entry.  <a href="#a40792af98645b4d05e6ddcf10902044e"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a74ebb559ee2a59274f1fa829bc981bdd">apply</a> (uint64_t entryId, const <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> &amp;serializedCommand)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoked once per committed entry from the Raft log.  <a href="#a74ebb559ee2a59274f1fa829bc981bdd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9eccab97b5b8aae893b6689d1fbc94af">apply</a> (uint64_t index, const <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> &amp;serializedCommand)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoked once per committed entry from the Raft log.  <a href="#a9eccab97b5b8aae893b6689d1fbc94af"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a85315565676068d98d26b883a69ba8e6">applyThreadMain</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function for thread that waits for new commands from Raft.  <a href="#a85315565676068d98d26b883a69ba8e6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a57ac9db3103bc781ed30f96085f46789">dumpSessionSnapshot</a> (google::protobuf::io::CodedOutputStream &amp;stream) const </td></tr>
@@ -162,15 +162,15 @@ Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce">mutex</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects against concurrent access for all members of this class (except 'consensus', which is itself a monitor.  <a href="#a0c9edd86fc09f8d0f4cdb4507abf57ce"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5">entriesApplied</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when lastEntryId changes after some entry got applied.  <a href="#a9d61e516ad4e5c6dfbe7fa27252aa4c5"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when lastIndex changes after some entry got applied.  <a href="#a9d61e516ad4e5c6dfbe7fa27252aa4c5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae">snapshotSuggested</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when shouldTakeSnapshot(lastEntryId) becomes true.  <a href="#a41836b3ab4c77d8549c8b4939100e8ae"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when shouldTakeSnapshot(lastIndex) becomes true.  <a href="#a41836b3ab4c77d8549c8b4939100e8ae"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#ab4936b203196f899b5087cf2a05f79c7">exiting</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">applyThread sets this to true to signal that the server is shutting down.  <a href="#ab4936b203196f899b5087cf2a05f79c7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">pid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51">childPid</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The PID of snapshotThread's child process, if any.  <a href="#a778aa31b9626283494099f4d2726aa51"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a17c3a12dc6f39d4ff8b88a18dda89acc">lastEntryId</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the last log entry that this state machine has applied.  <a href="#a17c3a12dc6f39d4ff8b88a18dda89acc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b">lastIndex</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the last log entry that this state machine has applied.  <a href="#aa47c94fbe0c206ce321636ff0fb9357b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; uint64_t, <br class="typebreak"/>
 <a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html">Session</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4">sessions</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceLogCabin_1_1Client.html">Client</a> ID to <a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a> map.  <a href="#af9ff58694b29d3f72aba84d52f8ad8b4"></a><br/></td></tr>
@@ -260,7 +260,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Called by <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a> to get a response for a read-write operation on the <a class="el" href="namespaceLogCabin_1_1Tree.html">Tree</a>. </p>
-<dl class="warning"><dt><b>Warning:</b></dt><dd>Be sure to <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a25de03c98a3d661656677ba23fd508d3" title="Return once the state machine has applied at least the given entry.">wait()</a> first! </dd></dl>
+<dl class="warning"><dt><b>Warning:</b></dt><dd>Be sure to <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a40792af98645b4d05e6ddcf10902044e" title="Return once the state machine has applied at least the given entry.">wait()</a> first! </dd></dl>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">rpcInfo</td><td>Identifies client session, etc. </td></tr>
@@ -305,15 +305,15 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a25de03c98a3d661656677ba23fd508d3"></a><!-- doxytag: member="LogCabin::Server::StateMachine::wait" ref="a25de03c98a3d661656677ba23fd508d3" args="(uint64_t entryId) const " -->
+<a class="anchor" id="a40792af98645b4d05e6ddcf10902044e"></a><!-- doxytag: member="LogCabin::Server::StateMachine::wait" ref="a40792af98645b4d05e6ddcf10902044e" args="(uint64_t index) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a25de03c98a3d661656677ba23fd508d3">LogCabin::Server::StateMachine::wait</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a40792af98645b4d05e6ddcf10902044e">LogCabin::Server::StateMachine::wait</a> </td>
           <td>(</td>
           <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>entryId</em></td><td>)</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -326,15 +326,15 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a74ebb559ee2a59274f1fa829bc981bdd"></a><!-- doxytag: member="LogCabin::Server::StateMachine::apply" ref="a74ebb559ee2a59274f1fa829bc981bdd" args="(uint64_t entryId, const Core::Buffer &amp;serializedCommand)" -->
+<a class="anchor" id="a9eccab97b5b8aae893b6689d1fbc94af"></a><!-- doxytag: member="LogCabin::Server::StateMachine::apply" ref="a9eccab97b5b8aae893b6689d1fbc94af" args="(uint64_t index, const Core::Buffer &amp;serializedCommand)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a74ebb559ee2a59274f1fa829bc981bdd">LogCabin::Server::StateMachine::apply</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9eccab97b5b8aae893b6689d1fbc94af">LogCabin::Server::StateMachine::apply</a> </td>
           <td>(</td>
           <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>entryId</em>, </td>
+          <td class="paramname"><em>index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -652,8 +652,8 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Notified when lastEntryId changes after some entry got applied. </p>
-<p>Also notified upon exiting. This is used for client threads to wait; see <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a25de03c98a3d661656677ba23fd508d3" title="Return once the state machine has applied at least the given entry.">wait()</a>. </p>
+<p>Notified when lastIndex changes after some entry got applied. </p>
+<p>Also notified upon exiting. This is used for client threads to wait; see <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a40792af98645b4d05e6ddcf10902044e" title="Return once the state machine has applied at least the given entry.">wait()</a>. </p>
 
 <p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00164">164</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
@@ -670,7 +670,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Notified when shouldTakeSnapshot(lastEntryId) becomes true. </p>
+<p>Notified when shouldTakeSnapshot(lastIndex) becomes true. </p>
 <p>Also notified upon exiting. This is used for snapshotThread to wake up only when necessary. </p>
 
 <p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00171">171</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
@@ -712,12 +712,12 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a17c3a12dc6f39d4ff8b88a18dda89acc"></a><!-- doxytag: member="LogCabin::Server::StateMachine::lastEntryId" ref="a17c3a12dc6f39d4ff8b88a18dda89acc" args="" -->
+<a class="anchor" id="aa47c94fbe0c206ce321636ff0fb9357b"></a><!-- doxytag: member="LogCabin::Server::StateMachine::lastIndex" ref="aa47c94fbe0c206ce321636ff0fb9357b" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a17c3a12dc6f39d4ff8b88a18dda89acc">LogCabin::Server::StateMachine::lastEntryId</a><code> [private]</code></td>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b">LogCabin::Server::StateMachine::lastIndex</a><code> [private]</code></td>
         </tr>
       </table>
 </div>

@@ -857,7 +857,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00775"></a>00775 <span class="comment">////////// RaftConsensus::Entry //////////</span>
 <a name="l00776"></a>00776 <span class="comment"></span>
 <a name="l00777"></a><a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#affafb6139effced1c43c18a96da18f6c">00777</a> <a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#affafb6139effced1c43c18a96da18f6c" title="Default constructor.">RaftConsensus::Entry::Entry</a>()
-<a name="l00778"></a>00778     : entryId()
+<a name="l00778"></a>00778     : index(0)
 <a name="l00779"></a>00779     , type(SKIP)
 <a name="l00780"></a>00780     , command()
 <a name="l00781"></a>00781     , snapshotReader()
@@ -865,7 +865,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00783"></a>00783 }
 <a name="l00784"></a>00784 
 <a name="l00785"></a><a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a7ef8e99504c6bb564f50c956ef15a8d3">00785</a> <a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#affafb6139effced1c43c18a96da18f6c" title="Default constructor.">RaftConsensus::Entry::Entry</a>(<a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html" title="This is returned by getNextEntry().">Entry</a>&amp;&amp; other)
-<a name="l00786"></a>00786     : entryId(other.entryId)
+<a name="l00786"></a>00786     : index(other.index)
 <a name="l00787"></a>00787     , type(other.type)
 <a name="l00788"></a>00788     , command(std::move(other.command))
 <a name="l00789"></a>00789     , <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a82c372a34409b4dae6eaf7ad559c65f6" title="If not NULL, this is a Storage::SnapshotFile::Reader that covers up through lastSnapshotIndex.">snapshotReader</a>(std::move(other.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a82c372a34409b4dae6eaf7ad559c65f6" title="If not NULL, this is a Storage::SnapshotFile::Reader that covers up through lastSnapshotIndex.">snapshotReader</a>))
@@ -908,7 +908,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00826"></a>00826     , <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#abd196740be4fee2d3067c6048420aa3d" title="The term of the last entry covered by the latest good snapshot, or 0 if we have no snapshot...">lastSnapshotTerm</a>(0)
 <a name="l00827"></a>00827     , <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a5afeca2ef4deadcb3e82acff01e81e69" title="The size of the latest good snapshot in bytes, or 0 if we have no snapshot.">lastSnapshotBytes</a>(0)
 <a name="l00828"></a>00828     , <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a82c372a34409b4dae6eaf7ad559c65f6" title="If not NULL, this is a Storage::SnapshotFile::Reader that covers up through lastSnapshotIndex.">snapshotReader</a>()
-<a name="l00829"></a>00829     , <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>()
+<a name="l00829"></a>00829     , <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>()
 <a name="l00830"></a>00830     , <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a>(0)
 <a name="l00831"></a>00831     , <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aaedf269f50f0727f072b8c399cb71f7e" title="The server ID of the leader for this term.">leaderId</a>(0)
 <a name="l00832"></a>00832     , <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a38f6032a9b1887bed430e873495190df" title="The server ID that this server voted for during this term&#39;s election, if any.">votedFor</a>(0)
@@ -969,12 +969,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00887"></a>00887     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>) { <span class="comment">// some unit tests pre-set the log; don&#39;t overwrite it</span>
 <a name="l00888"></a>00888         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a> = <a class="code" href="namespaceLogCabin_1_1Storage_1_1LogFactory.html#a0c0b522f7e4ae3f7a3ab20b0ed2727d8" title="Construct and return a Log object.">Storage::LogFactory::makeLog</a>(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a262bfee307ed43d8bd9230651307cfd8" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a0716780cdbc776d14d8e63f9b6cdce41" title="Global configuration options.">config</a>, <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6b94e5fc1b8b662f3d6ac00143425ffe" title="Where the files for the log and snapshots are stored.">storageDirectory</a>);
 <a name="l00889"></a>00889     }
-<a name="l00890"></a>00890     <span class="keywordflow">for</span> (uint64_t entryId = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLogStartIndex();
-<a name="l00891"></a>00891          entryId &lt;= <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLastLogIndex();
-<a name="l00892"></a>00892          ++entryId) {
-<a name="l00893"></a>00893         <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0" title="The type of a log entry (the same format that&#39;s used in AppendEntries).">Log::Entry</a>&amp; entry = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getEntry(entryId);
+<a name="l00890"></a>00890     <span class="keywordflow">for</span> (uint64_t index = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLogStartIndex();
+<a name="l00891"></a>00891          index &lt;= <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLastLogIndex();
+<a name="l00892"></a>00892          ++index) {
+<a name="l00893"></a>00893         <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0" title="The type of a log entry (the same format that&#39;s used in AppendEntries).">Log::Entry</a>&amp; entry = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getEntry(index);
 <a name="l00894"></a>00894         <span class="keywordflow">if</span> (entry.type() == Protocol::Raft::EntryType::CONFIGURATION) {
-<a name="l00895"></a>00895             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a21dc5a2ac45769b005c3eabd7db074f7" title="Ensures that &#39;configuration&#39; reflects the latest state of the log and snapshot.">configurationManager</a>-&gt;add(entryId, entry.configuration());
+<a name="l00895"></a>00895             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a21dc5a2ac45769b005c3eabd7db074f7" title="Ensures that &#39;configuration&#39; reflects the latest state of the log and snapshot.">configurationManager</a>-&gt;add(index, entry.configuration());
 <a name="l00896"></a>00896         }
 <a name="l00897"></a>00897     }
 <a name="l00898"></a>00898 
@@ -1062,7 +1062,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00980"></a>00980 }
 <a name="l00981"></a>00981 
 <a name="l00982"></a>00982 std::pair&lt;RaftConsensus::ClientResult, uint64_t&gt;
-<a name="l00983"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ae60e130c53287756889a2ad3d5468640">00983</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ae60e130c53287756889a2ad3d5468640" title="Return the most recent entry ID that has been externalized by the replicated log.">RaftConsensus::getLastCommittedId</a>()<span class="keyword"> const</span>
+<a name="l00983"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#acee38e2d72f9086d4164dda3db7d1cda">00983</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#acee38e2d72f9086d4164dda3db7d1cda" title="Return the most recent entry ID that has been externalized by the replicated log.">RaftConsensus::getLastCommitIndex</a>()<span class="keyword"> const</span>
 <a name="l00984"></a>00984 <span class="keyword"></span>{
 <a name="l00985"></a>00985     std::unique_lock&lt;Mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac19a9e103346ecdcfa7d06bf735880fe" title="This class behaves mostly like a monitor.">mutex</a>);
 <a name="l00986"></a>00986     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a93d3b1276a1ca640df1be05f205306c7" title="Return true if every entry that might have already been marked committed on any leader is marked comm...">upToDateLeader</a>(lockGuard))
@@ -1079,19 +1079,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00997"></a>00997 }
 <a name="l00998"></a>00998 
 <a name="l00999"></a>00999 <a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html" title="This is returned by getNextEntry().">RaftConsensus::Entry</a>
-<a name="l01000"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ae36b89c65e07d35661f82fc739ab4fb9">01000</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ae36b89c65e07d35661f82fc739ab4fb9" title="This returns the entry following lastEntryId in the replicated log.">RaftConsensus::getNextEntry</a>(uint64_t lastEntryId)<span class="keyword"> const</span>
+<a name="l01000"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac3e56421d4359aa2b4ff148b57dd1d76">01000</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac3e56421d4359aa2b4ff148b57dd1d76" title="This returns the entry following lastIndex in the replicated log.">RaftConsensus::getNextEntry</a>(uint64_t lastIndex)<span class="keyword"> const</span>
 <a name="l01001"></a>01001 <span class="keyword"></span>{
 <a name="l01002"></a>01002     std::unique_lock&lt;Mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac19a9e103346ecdcfa7d06bf735880fe" title="This class behaves mostly like a monitor.">mutex</a>);
-<a name="l01003"></a>01003     uint64_t nextEntryId = lastEntryId + 1;
+<a name="l01003"></a>01003     uint64_t nextIndex = lastIndex + 1;
 <a name="l01004"></a>01004     <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
 <a name="l01005"></a>01005         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac598c836150cf09441c10c1f9e25fee4" title="Set to true when this class is about to be destroyed.">exiting</a>)
 <a name="l01006"></a>01006             <span class="keywordflow">throw</span> <a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html" title="The thread could not complete its task because it was asked to exit.">Core::Util::ThreadInterruptedException</a>();
-<a name="l01007"></a>01007         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> &gt;= nextEntryId) {
+<a name="l01007"></a>01007         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> &gt;= nextIndex) {
 <a name="l01008"></a>01008             <a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html" title="This is returned by getNextEntry().">RaftConsensus::Entry</a> entry;
 <a name="l01009"></a>01009 
 <a name="l01010"></a>01010             <span class="comment">// Make the state machine load a snapshot if we don&#39;t have the next</span>
 <a name="l01011"></a>01011             <span class="comment">// entry it needs in the log.</span>
-<a name="l01012"></a>01012             <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLogStartIndex() &gt; nextEntryId) {
+<a name="l01012"></a>01012             <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLogStartIndex() &gt; nextIndex) {
 <a name="l01013"></a>01013                 entry.<a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#abec3ad1325d3eb29d41e959d82d15f75" title="The type of the entry.">type</a> = <a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#ad3faa7f9b282d60e8253185b09a88c5aaf3f50ec9afed10ac3c67d6032b9565ab" title="This is a snapshot: the state machine should clear its state and load in the snapshot.">Entry::SNAPSHOT</a>;
 <a name="l01014"></a>01014                 <span class="comment">// For well-behaved state machines, we expect &#39;snapshotReader&#39;</span>
 <a name="l01015"></a>01015                 <span class="comment">// to contain a SnapshotFile::Reader that we can return</span>
@@ -1109,11 +1109,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01027"></a>01027                     <span class="keyword">const_cast&lt;</span><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a>*<span class="keyword">&gt;</span>(<span class="keyword">this</span>)-&gt;<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aa6cab57eaa3a17298141e0a7d674701e" title="Try to read the latest good snapshot from disk.">readSnapshot</a>();
 <a name="l01028"></a>01028                     entry.<a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a29a98f7cd16a1b25a83d7179a019ce66" title="A handle to the snapshot file for entries of type &#39;SNAPSHOT&#39;.">snapshotReader</a> = std::move(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a82c372a34409b4dae6eaf7ad559c65f6" title="If not NULL, this is a Storage::SnapshotFile::Reader that covers up through lastSnapshotIndex.">snapshotReader</a>);
 <a name="l01029"></a>01029                 }
-<a name="l01030"></a>01030                 entry.<a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a20292de26b78738634519b22db6ccea6" title="The entry ID for this entry (or the last one a snapshot covers).">entryId</a> = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a68a556c556f81723b3eed67e6c3a7577" title="The latest good snapshot covers entries 1 through &#39;lastSnapshotIndex&#39; (inclusive).">lastSnapshotIndex</a>;
+<a name="l01030"></a>01030                 entry.<a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a0862e26326d36028f4679dd61ca40ddf" title="The Raft log index for this entry (or the last one a snapshot covers).">index</a> = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a68a556c556f81723b3eed67e6c3a7577" title="The latest good snapshot covers entries 1 through &#39;lastSnapshotIndex&#39; (inclusive).">lastSnapshotIndex</a>;
 <a name="l01031"></a>01031             } <span class="keywordflow">else</span> {
 <a name="l01032"></a>01032                 <span class="comment">// not a snapshot</span>
-<a name="l01033"></a>01033                 <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0" title="The type of a log entry (the same format that&#39;s used in AppendEntries).">Log::Entry</a>&amp; logEntry = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getEntry(nextEntryId);
-<a name="l01034"></a>01034                 entry.<a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a20292de26b78738634519b22db6ccea6" title="The entry ID for this entry (or the last one a snapshot covers).">entryId</a> = nextEntryId;
+<a name="l01033"></a>01033                 <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0" title="The type of a log entry (the same format that&#39;s used in AppendEntries).">Log::Entry</a>&amp; logEntry = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getEntry(nextIndex);
+<a name="l01034"></a>01034                 entry.<a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a0862e26326d36028f4679dd61ca40ddf" title="The Raft log index for this entry (or the last one a snapshot covers).">index</a> = nextIndex;
 <a name="l01035"></a>01035                 <span class="keywordflow">if</span> (logEntry.type() == Protocol::Raft::EntryType::DATA) {
 <a name="l01036"></a>01036                     entry.<a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#abec3ad1325d3eb29d41e959d82d15f75" title="The type of the entry.">type</a> = <a class="code" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#ad3faa7f9b282d60e8253185b09a88c5aa6d451f3ccae3822b3ec4e0df95282d71" title="This is a normal entry containing a client request for the state machine.">Entry::DATA</a>;
 <a name="l01037"></a>01037                     <span class="keyword">const</span> std::string&amp; s = logEntry.data();
@@ -1225,27 +1225,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01143"></a>01143     <span class="comment">// acknowledged data is safe. However, there is a window of vulnerability</span>
 <a name="l01144"></a>01144     <span class="comment">// on the follower&#39;s disk between the truncate and append operations (which</span>
 <a name="l01145"></a>01145     <span class="comment">// are not done atomically) when the follower processes the later request.</span>
-<a name="l01146"></a>01146     uint64_t entryId = request.prev_log_index();
+<a name="l01146"></a>01146     uint64_t index = request.prev_log_index();
 <a name="l01147"></a>01147     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = request.entries().begin();
 <a name="l01148"></a>01148          it != request.entries().end();
 <a name="l01149"></a>01149          ++it) {
-<a name="l01150"></a>01150         ++entryId;
+<a name="l01150"></a>01150         ++index;
 <a name="l01151"></a>01151         <span class="keyword">const</span> Protocol::Raft::Entry&amp; entry = *it;
-<a name="l01152"></a>01152         <span class="keywordflow">if</span> (entryId &lt; log-&gt;getLogStartIndex()) {
+<a name="l01152"></a>01152         <span class="keywordflow">if</span> (index &lt; log-&gt;getLogStartIndex()) {
 <a name="l01153"></a>01153             <span class="comment">// We already snapshotted and discarded this index, so presumably</span>
 <a name="l01154"></a>01154             <span class="comment">// we&#39;ve received a committed entry we once already had.</span>
 <a name="l01155"></a>01155             <span class="keywordflow">continue</span>;
 <a name="l01156"></a>01156         }
-<a name="l01157"></a>01157         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLastLogIndex() &gt;= entryId) {
-<a name="l01158"></a>01158             <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getEntry(entryId).term() == entry.term())
+<a name="l01157"></a>01157         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLastLogIndex() &gt;= index) {
+<a name="l01158"></a>01158             <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getEntry(index).term() == entry.term())
 <a name="l01159"></a>01159                 <span class="keywordflow">continue</span>;
 <a name="l01160"></a>01160             <span class="comment">// should never truncate committed entries:</span>
-<a name="l01161"></a>01161             assert(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> &lt; entryId);
+<a name="l01161"></a>01161             assert(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> &lt; index);
 <a name="l01162"></a>01162             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Truncating %lu entries after %lu from the log&quot;</span>,
-<a name="l01163"></a>01163                    <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLastLogIndex() - entryId + 1,
-<a name="l01164"></a>01164                    entryId - 1);
-<a name="l01165"></a>01165             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;truncateSuffix(entryId - 1);
-<a name="l01166"></a>01166             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a21dc5a2ac45769b005c3eabd7db074f7" title="Ensures that &#39;configuration&#39; reflects the latest state of the log and snapshot.">configurationManager</a>-&gt;truncateSuffix(entryId - 1);
+<a name="l01163"></a>01163                    <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLastLogIndex() - index + 1,
+<a name="l01164"></a>01164                    index - 1);
+<a name="l01165"></a>01165             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;truncateSuffix(index - 1);
+<a name="l01166"></a>01166             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a21dc5a2ac45769b005c3eabd7db074f7" title="Ensures that &#39;configuration&#39; reflects the latest state of the log and snapshot.">configurationManager</a>-&gt;truncateSuffix(index - 1);
 <a name="l01167"></a>01167         }
 <a name="l01168"></a>01168 
 <a name="l01169"></a>01169         <span class="comment">// Append this and all following entries.</span>
@@ -1272,9 +1272,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01190"></a>01190 }
 <a name="l01191"></a>01191 
 <a name="l01192"></a>01192 <span class="keywordtype">void</span>
-<a name="l01193"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac8483d7ab1cd2da07d25176af1b27541">01193</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac8483d7ab1cd2da07d25176af1b27541" title="Process an AppendSnapshotChunk RPC from another server.">RaftConsensus::handleAppendSnapshotChunk</a>(
-<a name="l01194"></a>01194         <span class="keyword">const</span> Protocol::Raft::AppendSnapshotChunk::Request&amp; request,
-<a name="l01195"></a>01195         Protocol::Raft::AppendSnapshotChunk::Response&amp; response)
+<a name="l01193"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a1ced645383d60733605521372372dcef">01193</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a1ced645383d60733605521372372dcef" title="Process an InstallSnapshot RPC from another server.">RaftConsensus::handleInstallSnapshot</a>(
+<a name="l01194"></a>01194         <span class="keyword">const</span> Protocol::Raft::InstallSnapshot::Request&amp; request,
+<a name="l01195"></a>01195         Protocol::Raft::InstallSnapshot::Response&amp; response)
 <a name="l01196"></a>01196 {
 <a name="l01197"></a>01197     std::unique_lock&lt;Mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac19a9e103346ecdcfa7d06bf735880fe" title="This class behaves mostly like a monitor.">mutex</a>);
 <a name="l01198"></a>01198     assert(!<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac598c836150cf09441c10c1f9e25fee4" title="Set to true when this class is about to be destroyed.">exiting</a>);
@@ -1288,7 +1288,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01206"></a>01206         <span class="keywordflow">return</span>;
 <a name="l01207"></a>01207     }
 <a name="l01208"></a>01208     <span class="keywordflow">if</span> (request.term() &gt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac77ce12e038db59e7e3a5543ffcb4e7c" title="The latest term this server has seen.">currentTerm</a>) {
-<a name="l01209"></a>01209         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Received AppendSnapshotChunk request from server %lu in &quot;</span>
+<a name="l01209"></a>01209         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Received InstallSnapshot request from server %lu in &quot;</span>
 <a name="l01210"></a>01210                <span class="stringliteral">&quot;term %lu (this server&#39;s term was %lu)&quot;</span>,
 <a name="l01211"></a>01211                 request.server_id(), request.term(), <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac77ce12e038db59e7e3a5543ffcb4e7c" title="The latest term this server has seen.">currentTerm</a>);
 <a name="l01212"></a>01212         <span class="comment">// We&#39;re about to bump our term in the stepDown below: update</span>
@@ -1310,26 +1310,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01228"></a>01228         assert(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aaedf269f50f0727f072b8c399cb71f7e" title="The server ID of the leader for this term.">leaderId</a> == request.server_id());
 <a name="l01229"></a>01229     }
 <a name="l01230"></a>01230 
-<a name="l01231"></a>01231     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>) {
-<a name="l01232"></a>01232         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>.reset(
+<a name="l01231"></a>01231     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>) {
+<a name="l01232"></a>01232         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>.reset(
 <a name="l01233"></a>01233             <span class="keyword">new</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html" title="Assists in writing snapshot files to the local filesystem.">Storage::SnapshotFile::Writer</a>(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6b94e5fc1b8b662f3d6ac00143425ffe" title="Where the files for the log and snapshots are stored.">storageDirectory</a>));
 <a name="l01234"></a>01234     }
 <a name="l01235"></a>01235     <span class="keywordflow">if</span> (request.byte_offset() &lt;
-<a name="l01236"></a>01236         uint64_t(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>-&gt;getStream().ByteCount())) {
+<a name="l01236"></a>01236         uint64_t(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>-&gt;getStream().ByteCount())) {
 <a name="l01237"></a>01237         <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Ignoring stale snapshot chunk for byte offset %lu when the &quot;</span>
 <a name="l01238"></a>01238                 <span class="stringliteral">&quot;next byte needed is %lu&quot;</span>,
 <a name="l01239"></a>01239                 request.byte_offset(),
-<a name="l01240"></a>01240                 uint64_t(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>-&gt;getStream().ByteCount()));
+<a name="l01240"></a>01240                 uint64_t(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>-&gt;getStream().ByteCount()));
 <a name="l01241"></a>01241         <span class="keywordflow">return</span>;
 <a name="l01242"></a>01242     }
 <a name="l01243"></a>01243     <span class="keywordflow">if</span> (request.byte_offset() &gt;
-<a name="l01244"></a>01244         uint64_t(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>-&gt;getStream().ByteCount())) {
+<a name="l01244"></a>01244         uint64_t(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>-&gt;getStream().ByteCount())) {
 <a name="l01245"></a>01245         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Leader tried to send snapshot chunk at byte offset %lu but the &quot;</span>
 <a name="l01246"></a>01246               <span class="stringliteral">&quot;next byte needed is %lu. It&#39;s supposed to send these in order.&quot;</span>,
 <a name="l01247"></a>01247               request.byte_offset(),
-<a name="l01248"></a>01248               uint64_t(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>-&gt;getStream().ByteCount()));
+<a name="l01248"></a>01248               uint64_t(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>-&gt;getStream().ByteCount()));
 <a name="l01249"></a>01249     }
-<a name="l01250"></a>01250     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>-&gt;getStream().WriteString(request.data());
+<a name="l01250"></a>01250     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>-&gt;getStream().WriteString(request.data());
 <a name="l01251"></a>01251 
 <a name="l01252"></a>01252     <span class="keywordflow">if</span> (request.done()) {
 <a name="l01253"></a>01253         <span class="keywordflow">if</span> (request.last_snapshot_index() &lt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a68a556c556f81723b3eed67e6c3a7577" title="The latest good snapshot covers entries 1 through &#39;lastSnapshotIndex&#39; (inclusive).">lastSnapshotIndex</a>) {
@@ -1339,13 +1339,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01257"></a>01257                     <span class="stringliteral">&quot;Discarding the snapshot.&quot;</span>,
 <a name="l01258"></a>01258                     request.last_snapshot_index(),
 <a name="l01259"></a>01259                     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a68a556c556f81723b3eed67e6c3a7577" title="The latest good snapshot covers entries 1 through &#39;lastSnapshotIndex&#39; (inclusive).">lastSnapshotIndex</a>);
-<a name="l01260"></a>01260             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>-&gt;discard();
-<a name="l01261"></a>01261             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>.reset();
+<a name="l01260"></a>01260             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>-&gt;discard();
+<a name="l01261"></a>01261             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>.reset();
 <a name="l01262"></a>01262             <span class="keywordflow">return</span>;
 <a name="l01263"></a>01263         }
 <a name="l01264"></a>01264         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Loading in new snapshot from leader&quot;</span>);
-<a name="l01265"></a>01265         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>-&gt;save();
-<a name="l01266"></a>01266         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>.reset();
+<a name="l01265"></a>01265         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>-&gt;save();
+<a name="l01266"></a>01266         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>.reset();
 <a name="l01267"></a>01267         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aa6cab57eaa3a17298141e0a7d674701e" title="Try to read the latest good snapshot from disk.">readSnapshot</a>();
 <a name="l01268"></a>01268         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6f93f73520a919d45b19e96968db9cca" title="Notified when basically anything changes.">stateChanged</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>();
 <a name="l01269"></a>01269     }
@@ -1698,7 +1698,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01616"></a>01616             }
 <a name="l01617"></a>01617             <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a34d943bf836bb3f45633f9ec7b7c667a" title="The server&#39;s current role in the cluster (follower, candidate, or leader).">state</a> == State::LEADER &amp;&amp; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac77ce12e038db59e7e3a5543ffcb4e7c" title="The latest term this server has seen.">currentTerm</a> == term) {
 <a name="l01618"></a>01618                 <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aab8ccee6bc732959896dd2549222d6b6" title="Defines the servers that are part of the cluster.">configuration</a>-&gt;localServer-&gt;lastSyncedIndex = sync-&gt;lastIndex;
-<a name="l01619"></a>01619                 <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ae21de65d37a249f16dee91d3d2e9015a" title="Move forward commitIndex if possible.">advanceCommittedId</a>();
+<a name="l01619"></a>01619                 <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0c81dd80a8a6cab3213437592b0027fc" title="Move forward commitIndex if possible.">advanceCommitIndex</a>();
 <a name="l01620"></a>01620             }
 <a name="l01621"></a>01621             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;syncComplete(std::move(sync));
 <a name="l01622"></a>01622             <span class="keywordflow">continue</span>;
@@ -1753,7 +1753,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01671"></a>01671                 <span class="keywordflow">case</span> State::LEADER:
 <a name="l01672"></a>01672                     <span class="keywordflow">if</span> (peer-&gt;getLastAgreeIndex() &lt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLastLogIndex() ||
 <a name="l01673"></a>01673                         peer-&gt;nextHeartbeatTime &lt; now) {
-<a name="l01674"></a>01674                         <span class="comment">// appendEntries delegates to appendSnapshotChunk if we</span>
+<a name="l01674"></a>01674                         <span class="comment">// appendEntries delegates to installSnapshot if we</span>
 <a name="l01675"></a>01675                         <span class="comment">// need to send a snapshot instead</span>
 <a name="l01676"></a>01676                         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a9aae8186ade26fc6138f993ba0ee5ddd" title="Send an AppendEntries RPC to the server (either a heartbeat or containing an entry to replicate)...">appendEntries</a>(lockGuard, *peer);
 <a name="l01677"></a>01677                     } <span class="keywordflow">else</span> {
@@ -1824,28 +1824,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01742"></a>01742 <span class="comment">//// RaftConsensus private methods that MUST NOT acquire the lock</span>
 <a name="l01743"></a>01743 <span class="comment"></span>
 <a name="l01744"></a>01744 <span class="keywordtype">void</span>
-<a name="l01745"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ae21de65d37a249f16dee91d3d2e9015a">01745</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ae21de65d37a249f16dee91d3d2e9015a" title="Move forward commitIndex if possible.">RaftConsensus::advanceCommittedId</a>()
+<a name="l01745"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0c81dd80a8a6cab3213437592b0027fc">01745</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0c81dd80a8a6cab3213437592b0027fc" title="Move forward commitIndex if possible.">RaftConsensus::advanceCommitIndex</a>()
 <a name="l01746"></a>01746 {
 <a name="l01747"></a>01747     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a34d943bf836bb3f45633f9ec7b7c667a" title="The server&#39;s current role in the cluster (follower, candidate, or leader).">state</a> != State::LEADER) {
 <a name="l01748"></a>01748         <span class="comment">// getLastAgreeIndex is undefined unless we&#39;re leader</span>
-<a name="l01749"></a>01749         <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;advanceCommittedId called as %s&quot;</span>,
+<a name="l01749"></a>01749         <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;advanceCommitIndex called as %s&quot;</span>,
 <a name="l01750"></a>01750                 <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0" title="Return a string returned from the given object&#39;s stream operator.">Core::StringUtil::toString</a>(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a34d943bf836bb3f45633f9ec7b7c667a" title="The server&#39;s current role in the cluster (follower, candidate, or leader).">state</a>).c_str());
 <a name="l01751"></a>01751         <span class="keywordflow">return</span>;
 <a name="l01752"></a>01752     }
 <a name="l01753"></a>01753 
 <a name="l01754"></a>01754     <span class="comment">// calculate the largest entry ID stored on a quorum of servers</span>
-<a name="l01755"></a>01755     uint64_t newCommittedId =
+<a name="l01755"></a>01755     uint64_t newCommitIndex =
 <a name="l01756"></a>01756         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aab8ccee6bc732959896dd2549222d6b6" title="Defines the servers that are part of the cluster.">configuration</a>-&gt;quorumMin(&amp;<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ab54a3a7c21b87f7d0b93babbbbc3d00a" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">Server::getLastAgreeIndex</a>);
-<a name="l01757"></a>01757     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> &gt;= newCommittedId)
+<a name="l01757"></a>01757     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> &gt;= newCommitIndex)
 <a name="l01758"></a>01758         <span class="keywordflow">return</span>;
 <a name="l01759"></a>01759     <span class="comment">// If we have discarded the entry, it&#39;s because we already knew it was</span>
 <a name="l01760"></a>01760     <span class="comment">// committed.</span>
-<a name="l01761"></a>01761     assert(newCommittedId &gt;= <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLogStartIndex());
+<a name="l01761"></a>01761     assert(newCommitIndex &gt;= <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLogStartIndex());
 <a name="l01762"></a>01762     <span class="comment">// At least one of these entries must also be from the current term to</span>
 <a name="l01763"></a>01763     <span class="comment">// guarantee that no server without them can be elected.</span>
-<a name="l01764"></a>01764     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getEntry(newCommittedId).term() != <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac77ce12e038db59e7e3a5543ffcb4e7c" title="The latest term this server has seen.">currentTerm</a>)
+<a name="l01764"></a>01764     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getEntry(newCommitIndex).term() != <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac77ce12e038db59e7e3a5543ffcb4e7c" title="The latest term this server has seen.">currentTerm</a>)
 <a name="l01765"></a>01765         <span class="keywordflow">return</span>;
-<a name="l01766"></a>01766     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> = newCommittedId;
+<a name="l01766"></a>01766     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> = newCommitIndex;
 <a name="l01767"></a>01767     <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;New commitIndex: %lu&quot;</span>, <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad714a3dca60ec6e0bf66f6107d05f7db" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a>);
 <a name="l01768"></a>01768     assert(commitIndex &lt;= log-&gt;getLastLogIndex());
 <a name="l01769"></a>01769     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6f93f73520a919d45b19e96968db9cca" title="Notified when basically anything changes.">stateChanged</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>();
@@ -1907,7 +1907,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01825"></a>01825 
 <a name="l01826"></a>01826     <span class="comment">// Don&#39;t have needed entry: send a snapshot instead.</span>
 <a name="l01827"></a>01827     <span class="keywordflow">if</span> (peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07" title="The index of the next entry to send to the follower.">nextIndex</a> &lt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getLogStartIndex()) {
-<a name="l01828"></a>01828         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a3e919b7ff6d2d38d83c0223ecde47691" title="Send an AppendSnapshotChunk RPC to the server (containing part of a snapshot file to replicate)...">appendSnapshotChunk</a>(lockGuard, peer);
+<a name="l01828"></a>01828         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6dda77c99754de8f504bc51426cb948a" title="Send an InstallSnapshot RPC to the server (containing part of a snapshot file to replicate).">installSnapshot</a>(lockGuard, peer);
 <a name="l01829"></a>01829         <span class="keywordflow">return</span>;
 <a name="l01830"></a>01830     }
 <a name="l01831"></a>01831 
@@ -1921,7 +1921,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01839"></a>01839         prevLogTerm = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#abd196740be4fee2d3067c6048420aa3d" title="The term of the last entry covered by the latest good snapshot, or 0 if we have no snapshot...">lastSnapshotTerm</a>;
 <a name="l01840"></a>01840     } <span class="keywordflow">else</span> {
 <a name="l01841"></a>01841         <span class="comment">// Don&#39;t have needed entry for prevLogTerm: send snapshot instead.</span>
-<a name="l01842"></a>01842         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a3e919b7ff6d2d38d83c0223ecde47691" title="Send an AppendSnapshotChunk RPC to the server (containing part of a snapshot file to replicate)...">appendSnapshotChunk</a>(lockGuard, peer);
+<a name="l01842"></a>01842         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6dda77c99754de8f504bc51426cb948a" title="Send an InstallSnapshot RPC to the server (containing part of a snapshot file to replicate).">installSnapshot</a>(lockGuard, peer);
 <a name="l01843"></a>01843         <span class="keywordflow">return</span>;
 <a name="l01844"></a>01844     }
 <a name="l01845"></a>01845 
@@ -1938,17 +1938,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01856"></a>01856     <span class="comment">// the last one out.</span>
 <a name="l01857"></a>01857     uint64_t numEntries = 0;
 <a name="l01858"></a>01858     <span class="keywordflow">if</span> (!peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a50d0b442ca40959e135e45107a8c6c76" title="Indicates that nextIndex is still a (poor) guess: the leader should send heartbeats to save bandwidth...">forceHeartbeat</a>) {
-<a name="l01859"></a>01859         <span class="keywordflow">for</span> (uint64_t entryId = peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07" title="The index of the next entry to send to the follower.">nextIndex</a>;
-<a name="l01860"></a>01860              entryId &lt;= lastLogIndex;
-<a name="l01861"></a>01861              ++entryId) {
-<a name="l01862"></a>01862             <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0" title="The type of a log entry (the same format that&#39;s used in AppendEntries).">Log::Entry</a>&amp; entry = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getEntry(entryId);
+<a name="l01859"></a>01859         <span class="keywordflow">for</span> (uint64_t index = peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07" title="The index of the next entry to send to the follower.">nextIndex</a>;
+<a name="l01860"></a>01860              index &lt;= lastLogIndex;
+<a name="l01861"></a>01861              ++index) {
+<a name="l01862"></a>01862             <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0" title="The type of a log entry (the same format that&#39;s used in AppendEntries).">Log::Entry</a>&amp; entry = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6" title="Provides all storage for this server.">log</a>-&gt;getEntry(index);
 <a name="l01863"></a>01863             *request.add_entries() = entry;
 <a name="l01864"></a>01864             uint64_t requestSize =
 <a name="l01865"></a>01865                 Core::Util::downCast&lt;uint64_t&gt;(request.ByteSize());
 <a name="l01866"></a>01866             <span class="keywordflow">if</span> (requestSize &lt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad708ed9c08b1e19230adee467408989e" title="Prefer to keep RPC requests under this size.">SOFT_RPC_SIZE_LIMIT</a> || numEntries == 0) {
 <a name="l01867"></a>01867                 <span class="comment">// this entry fits, send it</span>
-<a name="l01868"></a>01868                 <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;sending entry &lt;id=%lu,term=%lu&gt;&quot;</span>,
-<a name="l01869"></a>01869                         entryId, entry.term());
+<a name="l01868"></a>01868                 <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;sending entry &lt;index=%lu,term=%lu&gt;&quot;</span>,
+<a name="l01869"></a>01869                         index, entry.term());
 <a name="l01870"></a>01870                 ++numEntries;
 <a name="l01871"></a>01871             } <span class="keywordflow">else</span> {
 <a name="l01872"></a>01872                 <span class="comment">// this entry doesn&#39;t fit, discard it</span>
@@ -2000,7 +2000,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01918"></a>01918                         <span class="stringliteral">&quot;didn&#39;t.&quot;</span>);
 <a name="l01919"></a>01919             } <span class="keywordflow">else</span> {
 <a name="l01920"></a>01920                 peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21" title="See getLastAgreeIndex().">lastAgreeIndex</a> = prevLogIndex + numEntries;
-<a name="l01921"></a>01921                 <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ae21de65d37a249f16dee91d3d2e9015a" title="Move forward commitIndex if possible.">advanceCommittedId</a>();
+<a name="l01921"></a>01921                 <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0c81dd80a8a6cab3213437592b0027fc" title="Move forward commitIndex if possible.">advanceCommitIndex</a>();
 <a name="l01922"></a>01922             }
 <a name="l01923"></a>01923             peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07" title="The index of the next entry to send to the follower.">nextIndex</a> = peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21" title="See getLastAgreeIndex().">lastAgreeIndex</a> + 1;
 <a name="l01924"></a>01924             peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a50d0b442ca40959e135e45107a8c6c76" title="Indicates that nextIndex is still a (poor) guess: the leader should send heartbeats to save bandwidth...">forceHeartbeat</a> = <span class="keyword">false</span>;
@@ -2031,11 +2031,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01949"></a>01949 }
 <a name="l01950"></a>01950 
 <a name="l01951"></a>01951 <span class="keywordtype">void</span>
-<a name="l01952"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a3e919b7ff6d2d38d83c0223ecde47691">01952</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a3e919b7ff6d2d38d83c0223ecde47691" title="Send an AppendSnapshotChunk RPC to the server (containing part of a snapshot file to replicate)...">RaftConsensus::appendSnapshotChunk</a>(std::unique_lock&lt;Mutex&gt;&amp; lockGuard,
-<a name="l01953"></a>01953                                    <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html" title="Represents another server in the cluster.">Peer</a>&amp; peer)
+<a name="l01952"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6dda77c99754de8f504bc51426cb948a">01952</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a6dda77c99754de8f504bc51426cb948a" title="Send an InstallSnapshot RPC to the server (containing part of a snapshot file to replicate).">RaftConsensus::installSnapshot</a>(std::unique_lock&lt;Mutex&gt;&amp; lockGuard,
+<a name="l01953"></a>01953                                <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html" title="Represents another server in the cluster.">Peer</a>&amp; peer)
 <a name="l01954"></a>01954 {
 <a name="l01955"></a>01955     <span class="comment">// Build up request</span>
-<a name="l01956"></a>01956     Protocol::Raft::AppendSnapshotChunk::Request request;
+<a name="l01956"></a>01956     Protocol::Raft::InstallSnapshot::Request request;
 <a name="l01957"></a>01957     request.set_server_id(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a64a7ede4f71f04ec713486a84f1024de" title="This server&#39;s unique ID.">serverId</a>);
 <a name="l01958"></a>01958     request.set_recipient_id(peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ac1b2d6d134b4c41baf0220a0c6e587b7" title="The ID of this server.">serverId</a>);
 <a name="l01959"></a>01959     request.set_term(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac77ce12e038db59e7e3a5543ffcb4e7c" title="The latest term this server has seen.">currentTerm</a>);
@@ -2064,7 +2064,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01982"></a>01982                      peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad26b3c377e98b3ae5f0818b7b76908fd" title="A snapshot file to be sent to the follower, or NULL.">snapshotFile</a>-&gt;getFileLength());
 <a name="l01983"></a>01983 
 <a name="l01984"></a>01984     <span class="comment">// Execute RPC</span>
-<a name="l01985"></a>01985     Protocol::Raft::AppendSnapshotChunk::Response response;
+<a name="l01985"></a>01985     Protocol::Raft::InstallSnapshot::Response response;
 <a name="l01986"></a>01986     <a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a9b2ddcfb6434331d10e3ed84c66e14e3" title="Some point in time relative to the Clock&#39;s epoch.">TimePoint</a> start = <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Clock::now</a>();
 <a name="l01987"></a>01987     uint64_t epoch = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#af6468e2726cf9c29c7442c51148ab102" title="A logical clock used to confirm leadership and connectivity.">currentEpoch</a>;
 <a name="l01988"></a>01988     <span class="keywordtype">bool</span> ok = peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad7c0b6afed998a197d4a538e6a56e589" title="Execute a remote procedure call on the server&#39;s RaftService.">callRPC</a>(Protocol::Raft::OpCode::APPEND_SNAPSHOT_CHUNK,
@@ -2086,7 +2086,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02004"></a>02004     <span class="comment">// this term.</span>
 <a name="l02005"></a>02005     assert(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a34d943bf836bb3f45633f9ec7b7c667a" title="The server&#39;s current role in the cluster (follower, candidate, or leader).">state</a> == State::LEADER);
 <a name="l02006"></a>02006     <span class="keywordflow">if</span> (response.term() &gt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac77ce12e038db59e7e3a5543ffcb4e7c" title="The latest term this server has seen.">currentTerm</a>) {
-<a name="l02007"></a>02007         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Received AppendSnapshotChunk response from server %lu in &quot;</span>
+<a name="l02007"></a>02007         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Received InstallSnapshot response from server %lu in &quot;</span>
 <a name="l02008"></a>02008                <span class="stringliteral">&quot;term %lu (this server&#39;s term was %lu)&quot;</span>,
 <a name="l02009"></a>02009                 peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ac1b2d6d134b4c41baf0220a0c6e587b7" title="The ID of this server.">serverId</a>, response.term(), <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac77ce12e038db59e7e3a5543ffcb4e7c" title="The latest term this server has seen.">currentTerm</a>);
 <a name="l02010"></a>02010         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#af7d665fe39bb83a27a15d9fc1046c5e6" title="Transition to being a follower.">stepDown</a>(response.term());
@@ -2103,8 +2103,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02021"></a>02021             <span class="comment">// These entries are already committed if they&#39;re in a snapshot, so</span>
 <a name="l02022"></a>02022             <span class="comment">// the commitIndex shouldn&#39;t advance, but let&#39;s just follow the</span>
 <a name="l02023"></a>02023             <span class="comment">// simple rule that bumping lastAgreeIndex should always be</span>
-<a name="l02024"></a>02024             <span class="comment">// followed by a call to advanceCommittedId():</span>
-<a name="l02025"></a>02025             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ae21de65d37a249f16dee91d3d2e9015a" title="Move forward commitIndex if possible.">advanceCommittedId</a>();
+<a name="l02024"></a>02024             <span class="comment">// followed by a call to advanceCommitIndex():</span>
+<a name="l02025"></a>02025             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0c81dd80a8a6cab3213437592b0027fc" title="Move forward commitIndex if possible.">advanceCommitIndex</a>();
 <a name="l02026"></a>02026             peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad26b3c377e98b3ae5f0818b7b76908fd" title="A snapshot file to be sent to the follower, or NULL.">snapshotFile</a>.reset();
 <a name="l02027"></a>02027             peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a71e8fe01080a5c648184fcada409c56a" title="The number of bytes of &#39;snapshotFile&#39; that have been acknowledged by the follower already...">snapshotFileOffset</a> = 0;
 <a name="l02028"></a>02028             peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a4a814e3469c1609f999488037a01087c" title="The last log index that &#39;snapshotFile&#39; corresponds to.">lastSnapshotIndex</a> = 0;
@@ -2379,9 +2379,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02297"></a>02297     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a38f6032a9b1887bed430e873495190df" title="The server ID that this server voted for during this term&#39;s election, if any.">votedFor</a> = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a64a7ede4f71f04ec713486a84f1024de" title="This server&#39;s unique ID.">serverId</a>;
 <a name="l02298"></a>02298     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#adbd38c5696ef668968a55a6474e892f0" title="Set the timer to start a new election and notify stateChanged.">setElectionTimer</a>();
 <a name="l02299"></a>02299     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aab8ccee6bc732959896dd2549222d6b6" title="Defines the servers that are part of the cluster.">configuration</a>-&gt;forEach(&amp;<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#aab43402fe28b4fac77a2a53da7f7c779" title="Begin requesting the Server&#39;s vote in the current election.">Server::beginRequestVote</a>);
-<a name="l02300"></a>02300     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>) {
-<a name="l02301"></a>02301         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>-&gt;discard();
-<a name="l02302"></a>02302         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>.reset();
+<a name="l02300"></a>02300     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>) {
+<a name="l02301"></a>02301         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>-&gt;discard();
+<a name="l02302"></a>02302         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>.reset();
 <a name="l02303"></a>02303     }
 <a name="l02304"></a>02304     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad537af7eb29ec2cdee4df514a1c88062" title="Persist critical state, such as the term and the vote, to stable storage.">updateLogMetadata</a>();
 <a name="l02305"></a>02305     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#af4d97132c0851d8bd21ea515af0b3af1" title="Notify the stateChanged condition variable and cancel all current RPCs.">interruptAll</a>();
@@ -2402,9 +2402,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02320"></a>02320         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a38f6032a9b1887bed430e873495190df" title="The server ID that this server voted for during this term&#39;s election, if any.">votedFor</a> = 0;
 <a name="l02321"></a>02321         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ad537af7eb29ec2cdee4df514a1c88062" title="Persist critical state, such as the term and the vote, to stable storage.">updateLogMetadata</a>();
 <a name="l02322"></a>02322         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aab8ccee6bc732959896dd2549222d6b6" title="Defines the servers that are part of the cluster.">configuration</a>-&gt;resetStagingServers();
-<a name="l02323"></a>02323         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>) {
-<a name="l02324"></a>02324             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>-&gt;discard();
-<a name="l02325"></a>02325             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleAppendSnapshotChunk when receiving a snapshot from the current leader...">snapshotWriter</a>.reset();
+<a name="l02323"></a>02323         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>) {
+<a name="l02324"></a>02324             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>-&gt;discard();
+<a name="l02325"></a>02325             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ab3a1001dd35c85ee1e8f4e6c9564eae1" title="This is used in handleInstallSnapshot when receiving a snapshot from the current leader.">snapshotWriter</a>.reset();
 <a name="l02326"></a>02326         }
 <a name="l02327"></a>02327     }
 <a name="l02328"></a>02328     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a34d943bf836bb3f45633f9ec7b7c667a" title="The server&#39;s current role in the cluster (follower, candidate, or leader).">state</a> = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a14a6602e14d73dc067e2b9de50c1711cad442de331e163d23069b86bdc7140981" title="A follower does not initiate RPCs.">State::FOLLOWER</a>;

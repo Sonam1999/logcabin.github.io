@@ -147,7 +147,7 @@ Private Member Functions</h2></td></tr>
 &lt; RaftConsensus::ClientResult, <br class="typebreak"/>
 uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#ac9bce618f9cee058e948ff3a790d4264">submit</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> &amp;rpc, const google::protobuf::Message &amp;command)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">RaftConsensus::ClientResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a81685c734dc9adabf5b97bb5afa2e4b0">catchUpStateMachine</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> &amp;rpc)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a3b162136c7758566060247825ca42b59">getResponse</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> &amp;rpc, uint64_t entryId, const Protocol::Client::ExactlyOnceRPCInfo &amp;rpcInfo, Protocol::Client::CommandResponse &amp;response)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#aecd35ddfa97bb30a00355359a6ae213b">getResponse</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> &amp;rpc, uint64_t index, const Protocol::Client::ExactlyOnceRPCInfo &amp;rpcInfo, Protocol::Client::CommandResponse &amp;response)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a19942b154d09ee8a89b59b2ab002a113">ClientService</a> (const <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html">ClientService</a> &amp;)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html">ClientService</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#abde56b6883bf499bfdf0553866ba3cad">operator=</a> (const <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html">ClientService</a> &amp;)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
@@ -447,12 +447,12 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3b162136c7758566060247825ca42b59"></a><!-- doxytag: member="LogCabin::Server::ClientService::getResponse" ref="a3b162136c7758566060247825ca42b59" args="(RPC::ServerRPC &amp;rpc, uint64_t entryId, const Protocol::Client::ExactlyOnceRPCInfo &amp;rpcInfo, Protocol::Client::CommandResponse &amp;response)" -->
+<a class="anchor" id="aecd35ddfa97bb30a00355359a6ae213b"></a><!-- doxytag: member="LogCabin::Server::ClientService::getResponse" ref="aecd35ddfa97bb30a00355359a6ae213b" args="(RPC::ServerRPC &amp;rpc, uint64_t index, const Protocol::Client::ExactlyOnceRPCInfo &amp;rpcInfo, Protocol::Client::CommandResponse &amp;response)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a3b162136c7758566060247825ca42b59">LogCabin::Server::ClientService::getResponse</a> </td>
+          <td class="memname">bool <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#aecd35ddfa97bb30a00355359a6ae213b">LogCabin::Server::ClientService::getResponse</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> &amp;&#160;</td>
           <td class="paramname"><em>rpc</em>, </td>
@@ -461,7 +461,7 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>entryId</em>, </td>
+          <td class="paramname"><em>index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
