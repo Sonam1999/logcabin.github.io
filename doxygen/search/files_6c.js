@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['layout_2ecc',['Layout.cc',['../Layout_8cc.html',1,'']]],
+  ['layout_2eh',['Layout.h',['../Layout_8h.html',1,'']]],
   ['leaderrpc_2ecc',['LeaderRPC.cc',['../LeaderRPC_8cc.html',1,'']]],
   ['leaderrpc_2eh',['LeaderRPC.h',['../LeaderRPC_8h.html',1,'']]],
   ['leaderrpcmock_2ecc',['LeaderRPCMock.cc',['../LeaderRPCMock_8cc.html',1,'']]],

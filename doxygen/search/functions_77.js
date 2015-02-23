@@ -12,6 +12,6 @@ var searchData=
   ['writechecksumhelper',['writeChecksumHelper',['../namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html#ae47f6afd442b289d4e27741de1aa8ea9',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}']]],
   ['writeex',['writeEx',['../classLogCabin_1_1Client_1_1Tree.html#a7adc0dc51d075347f76fe28828d94c58',1,'LogCabin::Client::Tree']]],
   ['writepid',['writePid',['../classanonymous__namespace_02Main_8cc_03_1_1PidFile.html#a65f93cd4a820ea465bc71ff9fa746511',1,'anonymous_namespace{Main.cc}::PidFile']]],
-  ['writer',['Writer',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#ae436eea0f8def255ad24e27bf102ce23',1,'LogCabin::Storage::SnapshotFile::Writer']]],
+  ['writer',['Writer',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#aea7dc57d3c2912a3dd0de9b44a5158da',1,'LogCabin::Storage::SnapshotFile::Writer']]],
   ['writethreadmain',['writeThreadMain',['../namespaceanonymous__namespace_02Benchmark_8cc_03.html#a4c0ad58595a8a44ed60a227e9b95473b',1,'anonymous_namespace{Benchmark.cc}']]]
 ];

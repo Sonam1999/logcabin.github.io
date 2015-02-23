@@ -25,6 +25,7 @@ var searchData=
   ['_7ehandler',['~Handler',['../classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html#aa1fab1f5b971e48bed1af1d4bb3f123a',1,'LogCabin::RPC::MessageSocket::Handler::~Handler()'],['../classLogCabin_1_1RPC_1_1OpaqueServer_1_1Handler.html#a49207003396612555ee10982b918e0d4',1,'LogCabin::RPC::OpaqueServer::Handler::~Handler()'],['../classLogCabin_1_1RPC_1_1ServiceMock_1_1Handler.html#a552517280d2108b2e0a107b2dc5ed2d6',1,'LogCabin::RPC::ServiceMock::Handler::~Handler()']]],
   ['_7einvariants',['~Invariants',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Invariants.html#ae1e66b48a930103dac3f86d9e64ba1d2',1,'LogCabin::Server::RaftConsensusInternal::Invariants']]],
   ['_7ekeynotfound',['~KeyNotFound',['../structLogCabin_1_1Core_1_1Config_1_1KeyNotFound.html#af562ed8eb22cdbbbcd66230f0df1171e',1,'LogCabin::Core::Config::KeyNotFound']]],
+  ['_7elayout',['~Layout',['../classLogCabin_1_1Storage_1_1Layout.html#a6116e6d64953a33ca0993674f97cc50f',1,'LogCabin::Storage::Layout']]],
   ['_7eleaderrpc',['~LeaderRPC',['../classLogCabin_1_1Client_1_1LeaderRPC.html#a4e43fcbc01c0f4d32884c4e092a4569e',1,'LogCabin::Client::LeaderRPC']]],
   ['_7eleaderrpcbase',['~LeaderRPCBase',['../classLogCabin_1_1Client_1_1LeaderRPCBase.html#a551ad156d3c6a14ccfb707d28be37510',1,'LogCabin::Client::LeaderRPCBase']]],
   ['_7eleaderrpcmock',['~LeaderRPCMock',['../classLogCabin_1_1Client_1_1LeaderRPCMock.html#a22412a5d6a9012421c77fce0d066ce79',1,'LogCabin::Client::LeaderRPCMock']]],

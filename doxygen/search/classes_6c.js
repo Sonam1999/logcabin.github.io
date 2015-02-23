@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['layout',['Layout',['../classLogCabin_1_1Storage_1_1Layout.html',1,'LogCabin::Storage']]],
   ['leaderrpc',['LeaderRPC',['../classLogCabin_1_1Client_1_1LeaderRPC.html',1,'LogCabin::Client']]],
   ['leaderrpcbase',['LeaderRPCBase',['../classLogCabin_1_1Client_1_1LeaderRPCBase.html',1,'LogCabin::Client']]],
   ['leaderrpcmock',['LeaderRPCMock',['../classLogCabin_1_1Client_1_1LeaderRPCMock.html',1,'LogCabin::Client']]],

@@ -106,16 +106,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLogCabin_1_1Storage_1_1Log.html">Log</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Storage_1_1LogFactory.html#a0c0b522f7e4ae3f7a3ab20b0ed2727d8">makeLog</a> (const <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Core::Config</a> &amp;config, const <a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html">FilesystemUtil::File</a> &amp;parentDir)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct and return a <a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Log</a> object.  <a href="#a0c0b522f7e4ae3f7a3ab20b0ed2727d8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLogCabin_1_1Storage_1_1Log.html">Log</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Storage_1_1LogFactory.html#a6f87950142c86227bcfc09cde3dffcc6">makeLog</a> (const <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Core::Config</a> &amp;config, const <a class="el" href="classLogCabin_1_1Storage_1_1Layout.html">Storage::Layout</a> &amp;storageLayout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct and return a <a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Log</a> object.  <a href="#a6f87950142c86227bcfc09cde3dffcc6"></a><br/></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a0c0b522f7e4ae3f7a3ab20b0ed2727d8"></a><!-- doxytag: member="LogCabin::Storage::LogFactory::makeLog" ref="a0c0b522f7e4ae3f7a3ab20b0ed2727d8" args="(const Core::Config &amp;config, const FilesystemUtil::File &amp;parentDir)" -->
+<a class="anchor" id="a6f87950142c86227bcfc09cde3dffcc6"></a><!-- doxytag: member="LogCabin::Storage::LogFactory::makeLog" ref="a6f87950142c86227bcfc09cde3dffcc6" args="(const Core::Config &amp;config, const Storage::Layout &amp;storageLayout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt; <a class="el" href="classLogCabin_1_1Storage_1_1Log.html">Log</a> &gt; <a class="el" href="namespaceLogCabin_1_1Storage_1_1LogFactory.html#a0c0b522f7e4ae3f7a3ab20b0ed2727d8">LogCabin::Storage::LogFactory::makeLog</a> </td>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classLogCabin_1_1Storage_1_1Log.html">Log</a> &gt; <a class="el" href="namespaceLogCabin_1_1Storage_1_1LogFactory.html#a6f87950142c86227bcfc09cde3dffcc6">LogCabin::Storage::LogFactory::makeLog</a> </td>
           <td>(</td>
           <td class="paramtype">const Core::Config &amp;&#160;</td>
           <td class="paramname"><em>config</em>, </td>
@@ -123,8 +123,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const FilesystemUtil::File &amp;&#160;</td>
-          <td class="paramname"><em>parentDir</em>&#160;</td>
+          <td class="paramtype">const Storage::Layout &amp;&#160;</td>
+          <td class="paramname"><em>storageLayout</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -139,13 +139,13 @@ Functions</h2></td></tr>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">config</td><td>Determines which concrete type of <a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Log</a> to construct. PANICs if this is invalid. </td></tr>
-    <tr><td class="paramname">parentDir</td><td><a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Log</a> implementations that write to the filesystem should place their files within this directory. </td></tr>
+    <tr><td class="paramname">storageLayout</td><td><a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Log</a> implementations that write to the filesystem should place their files in here. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The newly constructed <a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Log</a> instance. </dd></dl>
 
-<p>Definition at line <a class="el" href="LogFactory_8cc_source.html#l00028">28</a> of file <a class="el" href="LogFactory_8cc_source.html">LogFactory.cc</a>.</p>
+<p>Definition at line <a class="el" href="LogFactory_8cc_source.html#l00030">30</a> of file <a class="el" href="LogFactory_8cc_source.html">LogFactory.cc</a>.</p>
 
 </div>
 </div>

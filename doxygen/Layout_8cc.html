@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: Storage/Tool.cc File Reference</title>
+<title>LogCabin: Storage/Layout.cc File Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -77,77 +77,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">Storage/Tool.cc File Reference</div>  </div>
+<div class="title">Storage/Layout.cc File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;getopt.h&gt;</code><br/>
-<code>#include &lt;sys/file.h&gt;</code><br/>
-<code>#include &lt;unistd.h&gt;</code><br/>
-<code>#include &lt;functional&gt;</code><br/>
-<code>#include &lt;iostream&gt;</code><br/>
-<code>#include &lt;string&gt;</code><br/>
-<code>#include &quot;build/Server/SnapshotMetadata.pb.h&quot;</code><br/>
-<code>#include &quot;build/Server/Sessions.pb.h&quot;</code><br/>
+<div class="textblock"><code>#include &lt;sys/types.h&gt;</code><br/>
+<code>#include &lt;sys/stat.h&gt;</code><br/>
+<code>#include &lt;fcntl.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="Config_8h_source.html">Core/Config.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Debug_8h_source.html">Core/Debug.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Core_2ProtoBuf_8h_source.html">Core/ProtoBuf.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="StringUtil_8h_source.html">Core/StringUtil.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="ThreadId_8h_source.html">Core/ThreadId.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Util_8h_source.html">Core/Util.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Layout_8h_source.html">Storage/Layout.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Log_8h_source.html">Storage/Log.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="LogFactory_8h_source.html">Storage/LogFactory.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="SnapshotFile_8h_source.html">Storage/SnapshotFile.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Tree_8h_source.html">Tree/Tree.h</a>&quot;</code><br/>
 </div>
-<p><a href="Tool_8cc_source.html">Go to the source code of this file.</a></p>
+<p><a href="Layout_8cc_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html">anonymous_namespace{Tool.cc}::OptionParser</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses argv for the main function.  <a href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02Tool_8cc_03.html">anonymous_namespace{Tool.cc}</a></td></tr>
-<tr><td colspan="2"><h2><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02Tool_8cc_03.html#ae256e6fe4febe75562bd5f7fb0cf3dcb">anonymous_namespace{Tool.cc}::dumpTree</a> (const <a class="el" href="classLogCabin_1_1Tree_1_1Tree.html">Tree::Tree</a> &amp;tree, const std::string &amp;path=&quot;/&quot;)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Tool_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Storage.html">LogCabin::Storage</a></td></tr>
 </table>
-<hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a><!-- doxytag: member="Tool.cc::main" ref="a3c04138a5bfe5d72780bb7e82a18e627" args="(int argc, char **argv)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="Tool_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>argc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>argv</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="Tool_8cc_source.html#l00135">135</a> of file <a class="el" href="Tool_8cc_source.html">Tool.cc</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

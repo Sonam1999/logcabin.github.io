@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: Storage/LogFactory.h Source File</title>
+<title>LogCabin: Storage/Layout.h Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -77,10 +77,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">Storage/LogFactory.h</div>  </div>
+<div class="title">Storage/Layout.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="LogFactory_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* Copyright (c) 2014 Stanford University</span>
+<a href="Layout_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* Copyright (c) 2015 Diego Ongaro</span>
 <a name="l00002"></a>00002 <span class="comment"> *</span>
 <a name="l00003"></a>00003 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
 <a name="l00004"></a>00004 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
@@ -95,11 +95,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00013"></a>00013 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
 <a name="l00014"></a>00014 <span class="comment"> */</span>
 <a name="l00015"></a>00015 
-<a name="l00016"></a>00016 <span class="preprocessor">#include &lt;memory&gt;</span>
-<a name="l00017"></a>00017 
-<a name="l00018"></a>00018 <span class="preprocessor">#ifndef LOGCABIN_STORAGE_LOGFACTORY_H</span>
-<a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#define LOGCABIN_STORAGE_LOGFACTORY_H</span>
-<a name="l00020"></a>00020 <span class="preprocessor"></span>
+<a name="l00016"></a>00016 <span class="preprocessor">#ifndef LOGCABIN_STORAGE_LAYOUT_H</span>
+<a name="l00017"></a>00017 <span class="preprocessor"></span><span class="preprocessor">#define LOGCABIN_STORAGE_LAYOUT_H</span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include &quot;<a class="code" href="FilesystemUtil_8h.html" title="Contains utilities for working with the filesystem.">Storage/FilesystemUtil.h</a>&quot;</span>
+<a name="l00020"></a>00020 
 <a name="l00021"></a>00021 <span class="keyword">namespace </span>LogCabin {
 <a name="l00022"></a>00022 
 <a name="l00023"></a>00023 <span class="comment">// forward declaration</span>
@@ -107,35 +107,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00025"></a>00025 <span class="keyword">class </span>Config;
 <a name="l00026"></a>00026 }
 <a name="l00027"></a>00027 
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029 <span class="keyword">namespace </span>Storage {
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031 <span class="comment">// forward declarations</span>
-<a name="l00032"></a>00032 <span class="keyword">class </span><a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a101f3d29675508b8beb5c8d1d4ea71e9">Log</a>;
-<a name="l00033"></a>00033 <span class="keyword">class </span>Layout;
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035 <span class="keyword">namespace </span>LogFactory {
-<a name="l00036"></a>00036 <span class="comment"></span>
-<a name="l00037"></a>00037 <span class="comment">/**</span>
-<a name="l00038"></a>00038 <span class="comment"> * Construct and return a Log object.</span>
-<a name="l00039"></a>00039 <span class="comment"> * \param config</span>
-<a name="l00040"></a>00040 <span class="comment"> *      Determines which concrete type of Log to construct.</span>
-<a name="l00041"></a>00041 <span class="comment"> *      PANICs if this is invalid.</span>
-<a name="l00042"></a>00042 <span class="comment"> * \param storageLayout</span>
-<a name="l00043"></a>00043 <span class="comment"> *      Log implementations that write to the filesystem should place their</span>
-<a name="l00044"></a>00044 <span class="comment"> *      files in here.</span>
-<a name="l00045"></a>00045 <span class="comment"> * \return</span>
-<a name="l00046"></a>00046 <span class="comment"> *      The newly constructed Log instance.</span>
-<a name="l00047"></a>00047 <span class="comment"> */</span>
-<a name="l00048"></a>00048 std::unique_ptr&lt;Log&gt;
-<a name="l00049"></a>00049 <a class="code" href="namespaceLogCabin_1_1Storage_1_1LogFactory.html#a6f87950142c86227bcfc09cde3dffcc6" title="Construct and return a Log object.">makeLog</a>(<span class="keyword">const</span> Core::Config&amp; config,
-<a name="l00050"></a>00050         <span class="keyword">const</span> Storage::Layout&amp; storageLayout);
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052 } <span class="comment">// namespace LogCabin::Storage::LogFactory</span>
-<a name="l00053"></a>00053 } <span class="comment">// namespace LogCabin::Storage</span>
-<a name="l00054"></a>00054 } <span class="comment">// namespace LogCabin</span>
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_STORAGE_LOGFACTORY_H */</span>
+<a name="l00028"></a>00028 <span class="keyword">namespace </span>Storage {
+<a name="l00029"></a>00029 
+<a name="l00030"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html">00030</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a> {
+<a name="l00031"></a>00031   <span class="keyword">public</span>:
+<a name="l00032"></a>00032     <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380">Layout</a>();
+<a name="l00033"></a>00033     <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380">Layout</a>(<a class="code" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a>&amp;&amp; other);
+<a name="l00034"></a>00034     <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a6116e6d64953a33ca0993674f97cc50f">~Layout</a>();
+<a name="l00035"></a>00035     <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a>&amp; <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#ad35b89f090e7cd2c9f530cee6de0934f">operator=</a>(<a class="code" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a>&amp;&amp; other);
+<a name="l00036"></a>00036     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a6dda2698cba322363883ff039c6ef3eb">init</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Core::Config</a>&amp; config, uint64_t serverId);
+<a name="l00037"></a>00037     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a6dda2698cba322363883ff039c6ef3eb">init</a>(<span class="keyword">const</span> std::string&amp; storagePath, uint64_t serverId);
+<a name="l00038"></a>00038     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a52a9da5994543b80d3e867420270c952">initTemporary</a>(uint64_t serverId = 1);
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a434a2c1d6230bd4dfc621e0ddfa382b0">00040</a>     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a434a2c1d6230bd4dfc621e0ddfa382b0">topDir</a>;
+<a name="l00041"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a7647c7b9c614df4aa5c5e1561dc6ad92">00041</a>     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a7647c7b9c614df4aa5c5e1561dc6ad92">serverDir</a>;
+<a name="l00042"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#ae0f3b216a0f364d1282d96c7c5d46011">00042</a>     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#ae0f3b216a0f364d1282d96c7c5d46011">lockFile</a>;
+<a name="l00043"></a>00043   <span class="keyword">private</span>:
+<a name="l00044"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a9069378ca7ca1a771537a6f10aed2544">00044</a>     <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a9069378ca7ca1a771537a6f10aed2544">removeAllFiles</a>;
+<a name="l00045"></a>00045 };
+<a name="l00046"></a>00046 
+<a name="l00047"></a>00047 } <span class="comment">// namespace LogCabin::Storage</span>
+<a name="l00048"></a>00048 } <span class="comment">// namespace LogCabin</span>
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_STORAGE_LAYOUT_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

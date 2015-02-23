@@ -23,6 +23,7 @@ var searchData=
   ['length',['length',['../classLogCabin_1_1Core_1_1Buffer.html#ac183b72117495e0aeb578a79f62cbfec',1,'LogCabin::Core::Buffer']]],
   ['lengthfileprefix',['lengthFilePrefix',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a136afb482ee2a2fa4d93983d2edb50fd',1,'LogCabin::Core::Debug::Internal']]],
   ['localserver',['localServer',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#ab4ddea6874ae1a4c7a6fe22fc752d6af',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
+  ['lockfile',['lockFile',['../classLogCabin_1_1Storage_1_1Layout.html#ae0f3b216a0f364d1282d96c7c5d46011',1,'LogCabin::Storage::Layout']]],
   ['lockguard',['lockGuard',['../classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a4e8ec46fc587cfce8409fe62522860a8',1,'LogCabin::Server::ServerStats::Lock']]],
   ['lockowner',['lockOwner',['../classLogCabin_1_1Event_1_1Loop.html#a2257b824bb17445bbe22854f4a9cc3be',1,'LogCabin::Event::Loop']]],
   ['log',['log',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
