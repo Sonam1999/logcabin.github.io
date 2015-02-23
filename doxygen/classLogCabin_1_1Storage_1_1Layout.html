@@ -102,12 +102,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">LogCabin::Storage::Layout Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="LogCabin::Storage::Layout" -->
+<p>Encapsulates how <a class="el" href="namespaceLogCabin.html">LogCabin</a> lays out the filesystem, and it handles locking of the storage directory.  
+ <a href="classLogCabin_1_1Storage_1_1Layout.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Layout_8h_source.html">Layout.h</a>&gt;</code></p>
 
 <p><a href="classLogCabin_1_1Storage_1_1Layout-members.html">List of all members.</a></p>
@@ -115,24 +119,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380">Layout</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor. Call some init method next.  <a href="#aeccf692c381450a3f3760b7eff6a6380"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#a4e164302f0b47f09c5df9cd95e42b9d8">Layout</a> (<a class="el" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a> &amp;&amp;other)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="#a4e164302f0b47f09c5df9cd95e42b9d8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#a6116e6d64953a33ca0993674f97cc50f">~Layout</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a6116e6d64953a33ca0993674f97cc50f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#ad35b89f090e7cd2c9f530cee6de0934f">operator=</a> (<a class="el" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a> &amp;&amp;other)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment.  <a href="#ad35b89f090e7cd2c9f530cee6de0934f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#a6dda2698cba322363883ff039c6ef3eb">init</a> (const <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Core::Config</a> &amp;config, uint64_t serverId)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize in the normal way for a <a class="el" href="namespaceLogCabin.html">LogCabin</a> server.  <a href="#a6dda2698cba322363883ff039c6ef3eb"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#a2c763fe3d565ef4cc090c45eb9cf26c0">init</a> (const std::string &amp;storagePath, uint64_t serverId)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize with a particular storagePath.  <a href="#a2c763fe3d565ef4cc090c45eb9cf26c0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#a52a9da5994543b80d3e867420270c952">initTemporary</a> (uint64_t serverId=1)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize for unit tests.  <a href="#a52a9da5994543b80d3e867420270c952"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html">FilesystemUtil::File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#a434a2c1d6230bd4dfc621e0ddfa382b0">topDir</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all files.  <a href="#a434a2c1d6230bd4dfc621e0ddfa382b0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html">FilesystemUtil::File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#a7647c7b9c614df4aa5c5e1561dc6ad92">serverDir</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all files for this particular server.  <a href="#a7647c7b9c614df4aa5c5e1561dc6ad92"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html">FilesystemUtil::File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#ae0f3b216a0f364d1282d96c7c5d46011">lockFile</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to ensure only one process accesses serverDir at a time.  <a href="#ae0f3b216a0f364d1282d96c7c5d46011"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#a9173eeff881b730d869c730e77ec8afb">Layout</a> (const <a class="el" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a> &amp;other)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#aa514bd994b97fcd4fcb7797f91a5fce7">operator=</a> (const <a class="el" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a> &amp;other)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#a9069378ca7ca1a771537a6f10aed2544">removeAllFiles</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, rm -rf topDir when destroying this class.  <a href="#a9069378ca7ca1a771537a6f10aed2544"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="Layout_8h_source.html#l00030">30</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
+<div class="textblock"><p>Encapsulates how <a class="el" href="namespaceLogCabin.html">LogCabin</a> lays out the filesystem, and it handles locking of the storage directory. </p>
+<p>The current filesystem layout looks like this:</p>
+<p>/ - topDir, defined by config option 'storagePath' "server%lu" % serverId/ - serverDir log/ - <a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Storage::Log</a> implementation-defined snapshot - last complete snapshot "partial.%010lu.%06lu" % (seconds, micro) - snapshot(s) in progress lock - lockFile, ensures only 1 process accesses serverDir a time </p>
+
+<p>Definition at line <a class="el" href="Layout_8h_source.html#l00043">43</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aeccf692c381450a3f3760b7eff6a6380"></a><!-- doxytag: member="LogCabin::Storage::Layout::Layout" ref="aeccf692c381450a3f3760b7eff6a6380" args="()" -->
 <div class="memitem">
@@ -147,6 +169,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Default constructor. Call some init method next. </p>
 
 <p>Definition at line <a class="el" href="Layout_8cc_source.html#l00030">30</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
 
@@ -167,6 +191,8 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Move constructor. </p>
+
 <p>Definition at line <a class="el" href="Layout_8cc_source.html#l00038">38</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
 
 </div>
@@ -185,7 +211,26 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Destructor. </p>
+
 <p>Definition at line <a class="el" href="Layout_8cc_source.html#l00047">47</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9173eeff881b730d869c730e77ec8afb"></a><!-- doxytag: member="LogCabin::Storage::Layout::Layout" ref="a9173eeff881b730d869c730e77ec8afb" args="(const Layout &amp;other)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380">LogCabin::Storage::Layout::Layout</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
 </div>
 </div>
@@ -204,6 +249,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Move assignment. </p>
 
 <p>Definition at line <a class="el" href="Layout_8cc_source.html#l00054">54</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
 
@@ -234,6 +281,15 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Initialize in the normal way for a <a class="el" href="namespaceLogCabin.html">LogCabin</a> server. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">config</td><td><a class="el" href="namespaceLogCabin_1_1Server.html">Server</a> settings: used to extract storage path. </td></tr>
+    <tr><td class="paramname">serverId</td><td>Unique ID for this server. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Definition at line <a class="el" href="Layout_8cc_source.html#l00069">69</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
 
 </div>
@@ -263,6 +319,15 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Initialize with a particular storagePath. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">storagePath</td><td>Path for 'topDir'. </td></tr>
+    <tr><td class="paramname">serverId</td><td>Unique ID for this server. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Definition at line <a class="el" href="Layout_8cc_source.html#l00076">76</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
 
 </div>
@@ -282,7 +347,33 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Initialize for unit tests. </p>
+<p>This will set up the layout in a temporary directory, and this class will remove all files in that directory when it is destroyed. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serverId</td><td>Unique ID for this server (in case it matters). </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Definition at line <a class="el" href="Layout_8cc_source.html#l00102">102</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa514bd994b97fcd4fcb7797f91a5fce7"></a><!-- doxytag: member="LogCabin::Storage::Layout::operator=" ref="aa514bd994b97fcd4fcb7797f91a5fce7" args="(const Layout &amp;other)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a>&amp; LogCabin::Storage::Layout::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
 </div>
 </div>
@@ -298,7 +389,10 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Layout_8h_source.html#l00040">40</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
+<p>Contains all files. </p>
+<p>Defined by config option 'storagePath'. </p>
+
+<p>Definition at line <a class="el" href="Layout_8h_source.html#l00089">89</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
 
 </div>
 </div>
@@ -313,7 +407,10 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Layout_8h_source.html#l00041">41</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
+<p>Contains all files for this particular server. </p>
+<p>Sits underneath topDir in a directory called "server%lu" % serverId. </p>
+
+<p>Definition at line <a class="el" href="Layout_8h_source.html#l00094">94</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
 
 </div>
 </div>
@@ -328,7 +425,10 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Layout_8h_source.html#l00042">42</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
+<p>Used to ensure only one process accesses serverDir at a time. </p>
+<p>Sits underneath serverDir in a file called "lock". </p>
+
+<p>Definition at line <a class="el" href="Layout_8h_source.html#l00099">99</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
 
 </div>
 </div>
@@ -343,7 +443,9 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Layout_8h_source.html#l00044">44</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
+<p>If true, rm -rf topDir when destroying this class. </p>
+
+<p>Definition at line <a class="el" href="Layout_8h_source.html#l00105">105</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
 
 </div>
 </div>

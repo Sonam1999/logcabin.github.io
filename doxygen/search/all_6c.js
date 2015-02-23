@@ -42,7 +42,7 @@ var searchData=
   ['lastsnapshotterm',['lastSnapshotTerm',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#abd196740be4fee2d3067c6048420aa3d',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['lastsyncedindex',['lastSyncedIndex',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#afb49b56a95bb00a9e51c40565ab57bf5',1,'LogCabin::Server::RaftConsensusInternal::LocalServer']]],
   ['lastwaituntiltimesinceepoch',['lastWaitUntilTimeSinceEpoch',['../classLogCabin_1_1Core_1_1ConditionVariable.html#a17f0e22cbcda874e6e8db66d3b09c9f7',1,'LogCabin::Core::ConditionVariable']]],
-  ['layout',['Layout',['../classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380',1,'LogCabin::Storage::Layout::Layout()'],['../classLogCabin_1_1Storage_1_1Layout.html#a4e164302f0b47f09c5df9cd95e42b9d8',1,'LogCabin::Storage::Layout::Layout(Layout &amp;&amp;other)']]],
+  ['layout',['Layout',['../classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380',1,'LogCabin::Storage::Layout::Layout()'],['../classLogCabin_1_1Storage_1_1Layout.html#a4e164302f0b47f09c5df9cd95e42b9d8',1,'LogCabin::Storage::Layout::Layout(Layout &amp;&amp;other)'],['../classLogCabin_1_1Storage_1_1Layout.html#a9173eeff881b730d869c730e77ec8afb',1,'LogCabin::Storage::Layout::Layout(const Layout &amp;other)']]],
   ['layout',['Layout',['../classLogCabin_1_1Storage_1_1Layout.html',1,'LogCabin::Storage']]],
   ['layout_2ecc',['Layout.cc',['../Layout_8cc.html',1,'']]],
   ['layout_2eh',['Layout.h',['../Layout_8h.html',1,'']]],
