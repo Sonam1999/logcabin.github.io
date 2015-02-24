@@ -9,7 +9,7 @@ var searchData=
   ['address',['Address',['../classLogCabin_1_1RPC_1_1Address.html',1,'LogCabin::RPC']]],
   ['address_2ecc',['Address.cc',['../Address_8cc.html',1,'']]],
   ['address_2eh',['Address.h',['../Address_8h.html',1,'']]],
-  ['addresses',['addresses',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a47cb3021d164ce1bbb1e9875591df632',1,'LogCabin::Server::RaftConsensusInternal::Server']]],
+  ['addresses',['addresses',['../structLogCabin_1_1Client_1_1Server.html#a266844a03f4e541ee8c27721bd401ed4',1,'LogCabin::Client::Server::addresses()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a47cb3021d164ce1bbb1e9875591df632',1,'LogCabin::Server::RaftConsensusInternal::Server::addresses()']]],
   ['advancecommitindex',['advanceCommitIndex',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0c81dd80a8a6cab3213437592b0027fc',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['algorithm',['Algorithm',['../namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html#a4e906598b7321f000f0362592445b860',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}']]],
   ['algorithms',['Algorithms',['../classLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03_1_1Algorithms.html#a728f98082fc7fa13b5a72ef3580f4631',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::Algorithms::Algorithms()'],['../namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html#a94acd59c9d2ca550250909fa5f0d2970',1,'LogCabin::Core::Checksum::anonymous_namespace{Checksum.cc}::algorithms()']]],

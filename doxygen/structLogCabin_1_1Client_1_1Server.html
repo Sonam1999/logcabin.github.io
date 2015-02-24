@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: LogCabin::Client::ConfigurationResult Struct Reference</title>
+<title>LogCabin: LogCabin::Client::Server Struct Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -94,89 +94,87 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
       <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Client.html">Client</a>      </li>
-      <li class="navelem"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html">ConfigurationResult</a>      </li>
+      <li class="navelem"><a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a>      </li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
-<div class="title">LogCabin::Client::ConfigurationResult Struct Reference</div>  </div>
+<div class="title">LogCabin::Client::Server Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="LogCabin::Client::ConfigurationResult" -->
-<p>Returned by <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#ad81d174f4a9fc07f2afe12713d8b379f" title="Change the cluster&#39;s configuration.">Cluster::setConfiguration</a>.  
- <a href="structLogCabin_1_1Client_1_1ConfigurationResult.html#details">More...</a></p>
+<!-- doxytag: class="LogCabin::Client::Server" -->
+<p>A member of the cluster Configuration.  
+ <a href="structLogCabin_1_1Client_1_1Server.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Client_8h_source.html">Client.h</a>&gt;</code></p>
 
-<p><a href="structLogCabin_1_1Client_1_1ConfigurationResult-members.html">List of all members.</a></p>
+<p><a href="structLogCabin_1_1Client_1_1Server-members.html">List of all members.</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a997b7222fc75f394453ecb7b303a58aa">Status</a> { <br/>
-&#160;&#160;<a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a997b7222fc75f394453ecb7b303a58aaa8532fdbd0378cdeb2090213d527a6ad1">OK</a>, 
-<br/>
-&#160;&#160;<a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a997b7222fc75f394453ecb7b303a58aaa1327ce122ef42b9841d8fed413e46921">CHANGED</a>, 
-<br/>
-&#160;&#160;<a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a997b7222fc75f394453ecb7b303a58aaa989284bc23bf7359711274159e74330a">BAD</a>
-<br/>
- }</td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a7efb43690f20fe919bec488d94d4cba8">ConfigurationResult</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#acfb9509c9c7c5f6aac2885715455f4e1">~ConfigurationResult</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Server.html#a0de3ca9a07b96748a0049c095d607029">Server</a> (uint64_t <a class="el" href="structLogCabin_1_1Client_1_1Server.html#adb5c1324aca64af66530ad032aab6894">serverId</a>, const std::string &amp;<a class="el" href="structLogCabin_1_1Client_1_1Server.html#a266844a03f4e541ee8c27721bd401ed4">addresses</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a0de3ca9a07b96748a0049c095d607029"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Server.html#a2727066575f1015a0bd6b10beeec850e">Server</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a2727066575f1015a0bd6b10beeec850e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Server.html#a23309074e245cd72bd392b048b84c80c">Server</a> (const <a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a> &amp;other)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="#a23309074e245cd72bd392b048b84c80c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Server.html#af3dab8d44ef0a9b90d74a47494fae3f0">~Server</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#af3dab8d44ef0a9b90d74a47494fae3f0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Server.html#a2f3b273e176dc57deaea6fc65c370ead">operator=</a> (const <a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a> &amp;other)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment.  <a href="#a2f3b273e176dc57deaea6fc65c370ead"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum <br class="typebreak"/>
-<a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a997b7222fc75f394453ecb7b303a58aa">LogCabin::Client::ConfigurationResult::Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a8d1359da3e668d4eaab3a4ac80478317">status</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2">Configuration</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a5b2c4d3eec9932176188567f47af1ac7">badServers</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If status is BAD, the servers that were unavailable to join the cluster.  <a href="#a5b2c4d3eec9932176188567f47af1ac7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Server.html#adb5c1324aca64af66530ad032aab6894">serverId</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The unique ID of the server.  <a href="#adb5c1324aca64af66530ad032aab6894"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Server.html#a266844a03f4e541ee8c27721bd401ed4">addresses</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The network addresses of the server (semicolon-delimited).  <a href="#a266844a03f4e541ee8c27721bd401ed4"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Returned by <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#ad81d174f4a9fc07f2afe12713d8b379f" title="Change the cluster&#39;s configuration.">Cluster::setConfiguration</a>. </p>
+<div class="textblock"><p>A member of the cluster Configuration. </p>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00085">85</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
-</div><hr/><h2>Member Enumeration Documentation</h2>
-<a class="anchor" id="a997b7222fc75f394453ecb7b303a58aa"></a><!-- doxytag: member="LogCabin::Client::ConfigurationResult::Status" ref="a997b7222fc75f394453ecb7b303a58aa" args="" -->
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00053">53</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a0de3ca9a07b96748a0049c095d607029"></a><!-- doxytag: member="LogCabin::Client::Server::Server" ref="a0de3ca9a07b96748a0049c095d607029" args="(uint64_t serverId, const std::string &amp;addresses)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a997b7222fc75f394453ecb7b303a58aa">LogCabin::Client::ConfigurationResult::Status</a></td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Server.html#a0de3ca9a07b96748a0049c095d607029">LogCabin::Client::Server::Server</a> </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>serverId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>addresses</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em><a class="anchor" id="a997b7222fc75f394453ecb7b303a58aaa8532fdbd0378cdeb2090213d527a6ad1"></a><!-- doxytag: member="OK" ref="a997b7222fc75f394453ecb7b303a58aaa8532fdbd0378cdeb2090213d527a6ad1" args="" -->OK</em>&nbsp;</td><td>
-<p>The operation succeeded. </p>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a997b7222fc75f394453ecb7b303a58aaa1327ce122ef42b9841d8fed413e46921"></a><!-- doxytag: member="CHANGED" ref="a997b7222fc75f394453ecb7b303a58aaa1327ce122ef42b9841d8fed413e46921" args="" -->CHANGED</em>&nbsp;</td><td>
-<p>The supplied 'oldId' is no longer current. </p>
-<p>Call GetConfiguration, re-apply your changes, and try again. </p>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a997b7222fc75f394453ecb7b303a58aaa989284bc23bf7359711274159e74330a"></a><!-- doxytag: member="BAD" ref="a997b7222fc75f394453ecb7b303a58aaa989284bc23bf7359711274159e74330a" args="" -->BAD</em>&nbsp;</td><td>
-<p>The reconfiguration was aborted because some servers are unavailable. </p>
-</td></tr>
-</table>
-</dd>
-</dl>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00088">88</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Constructor. </p>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00070">70</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
-<hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a7efb43690f20fe919bec488d94d4cba8"></a><!-- doxytag: member="LogCabin::Client::ConfigurationResult::ConfigurationResult" ref="a7efb43690f20fe919bec488d94d4cba8" args="()" -->
+<a class="anchor" id="a2727066575f1015a0bd6b10beeec850e"></a><!-- doxytag: member="LogCabin::Client::Server::Server" ref="a2727066575f1015a0bd6b10beeec850e" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a7efb43690f20fe919bec488d94d4cba8">LogCabin::Client::ConfigurationResult::ConfigurationResult</a> </td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Server.html#a0de3ca9a07b96748a0049c095d607029">LogCabin::Client::Server::Server</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -185,16 +183,39 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00102">102</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Default constructor. </p>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00076">76</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="acfb9509c9c7c5f6aac2885715455f4e1"></a><!-- doxytag: member="LogCabin::Client::ConfigurationResult::~ConfigurationResult" ref="acfb9509c9c7c5f6aac2885715455f4e1" args="()" -->
+<a class="anchor" id="a23309074e245cd72bd392b048b84c80c"></a><!-- doxytag: member="LogCabin::Client::Server::Server" ref="a23309074e245cd72bd392b048b84c80c" args="(const Server &amp;other)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#acfb9509c9c7c5f6aac2885715455f4e1">LogCabin::Client::ConfigurationResult::~ConfigurationResult</a> </td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Server.html#a0de3ca9a07b96748a0049c095d607029">LogCabin::Client::Server::Server</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Copy constructor. </p>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00082">82</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af3dab8d44ef0a9b90d74a47494fae3f0"></a><!-- doxytag: member="LogCabin::Client::Server::~Server" ref="af3dab8d44ef0a9b90d74a47494fae3f0" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Server.html#af3dab8d44ef0a9b90d74a47494fae3f0">LogCabin::Client::Server::~Server</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -203,38 +224,66 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00108">108</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Destructor. </p>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00088">88</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a2f3b273e176dc57deaea6fc65c370ead"></a><!-- doxytag: member="LogCabin::Client::Server::operator=" ref="a2f3b273e176dc57deaea6fc65c370ead" args="(const Server &amp;other)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a> &amp; LogCabin::Client::Server::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Copy assignment. </p>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00093">93</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a8d1359da3e668d4eaab3a4ac80478317"></a><!-- doxytag: member="LogCabin::Client::ConfigurationResult::status" ref="a8d1359da3e668d4eaab3a4ac80478317" args="" -->
+<a class="anchor" id="adb5c1324aca64af66530ad032aab6894"></a><!-- doxytag: member="LogCabin::Client::Server::serverId" ref="adb5c1324aca64af66530ad032aab6894" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a997b7222fc75f394453ecb7b303a58aa">LogCabin::Client::ConfigurationResult::Status</a>  <a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a8d1359da3e668d4eaab3a4ac80478317">LogCabin::Client::ConfigurationResult::status</a></td>
+          <td class="memname">uint64_t <a class="el" href="structLogCabin_1_1Client_1_1Server.html#adb5c1324aca64af66530ad032aab6894">LogCabin::Client::Server::serverId</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
+<p>The unique ID of the server. </p>
+
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00068">68</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+
 </div>
 </div>
-<a class="anchor" id="a5b2c4d3eec9932176188567f47af1ac7"></a><!-- doxytag: member="LogCabin::Client::ConfigurationResult::badServers" ref="a5b2c4d3eec9932176188567f47af1ac7" args="" -->
+<a class="anchor" id="a266844a03f4e541ee8c27721bd401ed4"></a><!-- doxytag: member="LogCabin::Client::Server::addresses" ref="a266844a03f4e541ee8c27721bd401ed4" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2">Configuration</a> <a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a5b2c4d3eec9932176188567f47af1ac7">LogCabin::Client::ConfigurationResult::badServers</a></td>
+          <td class="memname">std::string <a class="el" href="structLogCabin_1_1Client_1_1Server.html#a266844a03f4e541ee8c27721bd401ed4">LogCabin::Client::Server::addresses</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>If status is BAD, the servers that were unavailable to join the cluster. </p>
+<p>The network addresses of the server (semicolon-delimited). </p>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00108">108</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00073">73</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>

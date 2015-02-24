@@ -129,6 +129,8 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is used in unit testing to interpose when clients send RPCs to the leader of the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster.  <a href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html">MockClientImpl</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A mock implementation of the client library that operates against a temporary, local, in-memory implementation.  <a href="classLogCabin_1_1Client_1_1MockClientImpl.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A member of the cluster Configuration.  <a href="structLogCabin_1_1Client_1_1Server.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html">ConfigurationResult</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returned by <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#ad81d174f4a9fc07f2afe12713d8b379f" title="Change the cluster&#39;s configuration.">Cluster::setConfiguration</a>.  <a href="structLogCabin_1_1Client_1_1ConfigurationResult.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a></td></tr>
@@ -156,9 +158,8 @@ Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; std::string, <br class="typebreak"/>
 std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1">Condition</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A predicate on tree operations.  <a href="#a70decfcb5306a1841ca4a929bb7e54f1"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; std::pair<br class="typebreak"/>
-&lt; uint64_t, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client.html#a63581e43a22ec4472d57c7b920d1d520">Configuration</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of servers.  <a href="#a63581e43a22ec4472d57c7b920d1d520"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2">Configuration</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the members of the cluster.  <a href="#a99e2b7ff4ee9b74bcf9dec83b6565fa2"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4">Status</a> { <br/>
@@ -202,21 +203,21 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a63581e43a22ec4472d57c7b920d1d520"></a><!-- doxytag: member="LogCabin::Client::Configuration" ref="a63581e43a22ec4472d57c7b920d1d520" args="" -->
+<a class="anchor" id="a99e2b7ff4ee9b74bcf9dec83b6565fa2"></a><!-- doxytag: member="LogCabin::Client::Configuration" ref="a99e2b7ff4ee9b74bcf9dec83b6565fa2" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef std::vector&lt;std::pair&lt;uint64_t, std::string&gt; &gt; <a class="el" href="namespaceLogCabin_1_1Client.html#a63581e43a22ec4472d57c7b920d1d520">LogCabin::Client::Configuration</a></td>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a>&gt; <a class="el" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2">LogCabin::Client::Configuration</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>A list of servers. </p>
-<p>The first component is the server ID. The second component is the network addresses of the server (semicolon-delimited). Used in <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a51ac6fd68d84f3659f6b975cfba69e23" title="Get the current, stable cluster configuration.">Cluster::getConfiguration</a> and <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#ad81d174f4a9fc07f2afe12713d8b379f" title="Change the cluster&#39;s configuration.">Cluster::setConfiguration</a>. </p>
+<p>Defines the members of the cluster. </p>
+<p>Used in <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a51ac6fd68d84f3659f6b975cfba69e23" title="Get the current, stable cluster configuration.">Cluster::getConfiguration</a> and <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#ad81d174f4a9fc07f2afe12713d8b379f" title="Change the cluster&#39;s configuration.">Cluster::setConfiguration</a>. </p>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00048">48</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00080">80</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
@@ -257,7 +258,7 @@ Functions</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00091">91</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00114">114</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
@@ -289,7 +290,7 @@ Functions</h2></td></tr>
 
 <p>Print a status code to a stream. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00083">83</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00115">115</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>

@@ -53,7 +53,7 @@ var searchData=
   ['_7erpchandler',['~RPCHandler',['../classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html#a91350a8820563d8339fba9dd19f026af',1,'LogCabin::RPC::Server::RPCHandler']]],
   ['_7esegmentedlog',['~SegmentedLog',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a3665b28b42b618a022ab40ed88969345',1,'LogCabin::Storage::SegmentedLog']]],
   ['_7esendsocket',['~SendSocket',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html#a5aff4adff3e0542755fefa71371026a2',1,'LogCabin::RPC::MessageSocket::SendSocket']]],
-  ['_7eserver',['~Server',['../classLogCabin_1_1RPC_1_1Server.html#a73abc3bbeb93bfdfa820010b8deba75d',1,'LogCabin::RPC::Server::~Server()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ae9fd29479452761eeba68d7e577f34d8',1,'LogCabin::Server::RaftConsensusInternal::Server::~Server()']]],
+  ['_7eserver',['~Server',['../structLogCabin_1_1Client_1_1Server.html#af3dab8d44ef0a9b90d74a47494fae3f0',1,'LogCabin::Client::Server::~Server()'],['../classLogCabin_1_1RPC_1_1Server.html#a73abc3bbeb93bfdfa820010b8deba75d',1,'LogCabin::RPC::Server::~Server()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ae9fd29479452761eeba68d7e577f34d8',1,'LogCabin::Server::RaftConsensusInternal::Server::~Server()']]],
   ['_7eserverrpc',['~ServerRPC',['../classLogCabin_1_1RPC_1_1ServerRPC.html#a0d06eb3ee53045b52530b66b3a0073b5',1,'LogCabin::RPC::ServerRPC']]],
   ['_7eserverstats',['~ServerStats',['../classLogCabin_1_1Server_1_1ServerStats.html#ac7e9dcabf4d80db703a688785c7dc6b0',1,'LogCabin::Server::ServerStats']]],
   ['_7eservice',['~Service',['../classLogCabin_1_1RPC_1_1Service.html#a4c7fa691563d13f93ffd1a7f860ff93e',1,'LogCabin::RPC::Service']]],

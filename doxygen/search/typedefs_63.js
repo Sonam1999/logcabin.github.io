@@ -5,5 +5,5 @@ var searchData=
   ['command',['Command',['../namespaceLogCabin_1_1Server.html#ae8f9b22b20ae588668273a52eef301dc',1,'LogCabin::Server']]],
   ['commandresponse',['CommandResponse',['../namespaceLogCabin_1_1Server.html#a26cb708a129ba0b48d9f4a0626de36df',1,'LogCabin::Server']]],
   ['condition',['Condition',['../namespaceLogCabin_1_1Client.html#a70decfcb5306a1841ca4a929bb7e54f1',1,'LogCabin::Client']]],
-  ['configuration',['Configuration',['../namespaceLogCabin_1_1Client.html#a63581e43a22ec4472d57c7b920d1d520',1,'LogCabin::Client']]]
+  ['configuration',['Configuration',['../namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2',1,'LogCabin::Client']]]
 ];
