@@ -444,7 +444,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00362"></a>00362     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = response.servers().begin();
 <a name="l00363"></a>00363          it != response.servers().end();
 <a name="l00364"></a>00364          ++it) {
-<a name="l00365"></a>00365         configuration.emplace_back(it-&gt;server_id(), it-&gt;address());
+<a name="l00365"></a>00365         configuration.emplace_back(it-&gt;server_id(), it-&gt;addresses());
 <a name="l00366"></a>00366     }
 <a name="l00367"></a>00367     <span class="keywordflow">return</span> {response.id(), configuration};
 <a name="l00368"></a>00368 }
@@ -461,7 +461,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00379"></a>00379          ++it) {
 <a name="l00380"></a>00380         Protocol::Client::Server* s = request.add_new_servers();
 <a name="l00381"></a>00381         s-&gt;set_server_id(it-&gt;first);
-<a name="l00382"></a>00382         s-&gt;set_address(it-&gt;second);
+<a name="l00382"></a>00382         s-&gt;set_addresses(it-&gt;second);
 <a name="l00383"></a>00383     }
 <a name="l00384"></a>00384     Protocol::Client::SetConfiguration::Response response;
 <a name="l00385"></a>00385     <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#af161ca13e76e7df6cce5ae515b15da6f" title="Used to send RPCs to the leader of the LogCabin cluster.">leaderRPC</a>-&gt;call(OpCode::SET_CONFIGURATION, request, response,
@@ -479,7 +479,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00397"></a>00397         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = response.configuration_bad().bad_servers().begin();
 <a name="l00398"></a>00398              it != response.configuration_bad().bad_servers().end();
 <a name="l00399"></a>00399              ++it) {
-<a name="l00400"></a>00400             result.<a class="code" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a5b2c4d3eec9932176188567f47af1ac7" title="If status is BAD, the servers that were unavailable to join the cluster.">badServers</a>.emplace_back(it-&gt;server_id(), it-&gt;address());
+<a name="l00400"></a>00400             result.<a class="code" href="structLogCabin_1_1Client_1_1ConfigurationResult.html#a5b2c4d3eec9932176188567f47af1ac7" title="If status is BAD, the servers that were unavailable to join the cluster.">badServers</a>.emplace_back(it-&gt;server_id(), it-&gt;addresses());
 <a name="l00401"></a>00401         }
 <a name="l00402"></a>00402         <span class="keywordflow">return</span> result;
 <a name="l00403"></a>00403     }
