@@ -131,7 +131,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00049"></a>00049         : argc(argc)
 <a name="l00050"></a>00050         , argv(argv)
 <a name="l00051"></a>00051         , configFilename(<span class="stringliteral">&quot;logcabin.conf&quot;</span>)
-<a name="l00052"></a>00052         , serverId(0)
+<a name="l00052"></a>00052         , serverId(~0UL)
 <a name="l00053"></a>00053     {
 <a name="l00054"></a>00054         <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
 <a name="l00055"></a>00055             <span class="keyword">static</span> <span class="keyword">struct </span>option longOptions[] = {
@@ -165,138 +165,146 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00083"></a>00083         }
 <a name="l00084"></a>00084 
 <a name="l00085"></a>00085         <span class="comment">// We don&#39;t expect any additional command line arguments (not options).</span>
-<a name="l00086"></a>00086         <span class="keywordflow">if</span> (optind != argc || serverId == 0) {
+<a name="l00086"></a>00086         <span class="keywordflow">if</span> (optind != argc) {
 <a name="l00087"></a>00087             usage();
 <a name="l00088"></a>00088             exit(1);
 <a name="l00089"></a>00089         }
-<a name="l00090"></a>00090     }
-<a name="l00091"></a>00091 
-<a name="l00092"></a><a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a1b5cc52feeeb593c6625d16211a2bd0f">00092</a>     <span class="keywordtype">void</span> <a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a1b5cc52feeeb593c6625d16211a2bd0f">usage</a>() {
-<a name="l00093"></a>00093         std::cout &lt;&lt; <span class="stringliteral">&quot;Dumps out the contents of LogCabin&#39;s storage directory &quot;</span>
-<a name="l00094"></a>00094                   &lt;&lt; <span class="stringliteral">&quot;(the log and snapshot).&quot;</span> &lt;&lt; std::endl;
-<a name="l00095"></a>00095         std::cout &lt;&lt; std::endl;
-<a name="l00096"></a>00096         std::cout &lt;&lt; <span class="stringliteral">&quot;Usage: &quot;</span> &lt;&lt; argv[0] &lt;&lt; <span class="stringliteral">&quot; [options]&quot;</span> &lt;&lt; std::endl;
-<a name="l00097"></a>00097         std::cout &lt;&lt; <span class="stringliteral">&quot;Options: &quot;</span> &lt;&lt; std::endl;
-<a name="l00098"></a>00098         std::cout &lt;&lt; <span class="stringliteral">&quot;  -h, --help            &quot;</span>
-<a name="l00099"></a>00099                   &lt;&lt; <span class="stringliteral">&quot;Print this usage information&quot;</span> &lt;&lt; std::endl;
-<a name="l00100"></a>00100          std::cout &lt;&lt; <span class="stringliteral">&quot;  -c, --config &lt;file&gt;   &quot;</span>
-<a name="l00101"></a>00101                   &lt;&lt; <span class="stringliteral">&quot;Specify the configuration file &quot;</span>
-<a name="l00102"></a>00102                   &lt;&lt; <span class="stringliteral">&quot;(default: logcabin.conf)&quot;</span> &lt;&lt; std::endl;
-<a name="l00103"></a>00103         std::cout &lt;&lt; <span class="stringliteral">&quot;  -i, --id &lt;id&gt;         &quot;</span>
-<a name="l00104"></a>00104                   &lt;&lt; <span class="stringliteral">&quot;Set server id to &lt;id&gt; (required)&quot;</span> &lt;&lt; std::endl;
-<a name="l00105"></a>00105     }
-<a name="l00106"></a>00106 
-<a name="l00107"></a><a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a93fb92aeee3911e8247ca0ac4f97aae8">00107</a>     <span class="keywordtype">int</span>&amp; <a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a93fb92aeee3911e8247ca0ac4f97aae8">argc</a>;
-<a name="l00108"></a><a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#af7db458600a3539face36a1835bc9036">00108</a>     <span class="keywordtype">char</span>**&amp; <a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#af7db458600a3539face36a1835bc9036">argv</a>;
-<a name="l00109"></a><a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#ab029d4813683af849c79fb47c1a5dc22">00109</a>     std::string <a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#ab029d4813683af849c79fb47c1a5dc22">configFilename</a>;
-<a name="l00110"></a><a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a7b490ecbdfde4d060504713d18594e7c">00110</a>     uint64_t <a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a7b490ecbdfde4d060504713d18594e7c">serverId</a>;
-<a name="l00111"></a>00111 };
-<a name="l00112"></a>00112 
-<a name="l00113"></a>00113 <span class="keywordtype">void</span>
-<a name="l00114"></a><a class="code" href="namespaceanonymous__namespace_02Tool_8cc_03.html#ae256e6fe4febe75562bd5f7fb0cf3dcb">00114</a> <a class="code" href="namespaceanonymous__namespace_02DumpTree_8cc_03.html#a64cde78638aa6c39bfd1fffc5c5a8f21" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree::Tree</a>&amp; tree, <span class="keyword">const</span> std::string&amp; path = <span class="stringliteral">&quot;/&quot;</span>)
-<a name="l00115"></a>00115 {
-<a name="l00116"></a>00116     std::cout &lt;&lt; path &lt;&lt; std::endl;
-<a name="l00117"></a>00117     std::vector&lt;std::string&gt; children;
-<a name="l00118"></a>00118     tree.<a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#ae1b7cb5740d15dc4fb1d9d8164eabc2a" title="List the contents of a directory.">listDirectory</a>(path, children);
-<a name="l00119"></a>00119     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = children.begin();
-<a name="l00120"></a>00120          it != children.end();
-<a name="l00121"></a>00121          ++it) {
-<a name="l00122"></a>00122         <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ad6f1abf416c522d7518acff147a50bf7" title="Return true if haystack ends with needle.">Core::StringUtil::endsWith</a>(*it, <span class="stringliteral">&quot;/&quot;</span>)) {
-<a name="l00123"></a>00123             <a class="code" href="namespaceanonymous__namespace_02DumpTree_8cc_03.html#a64cde78638aa6c39bfd1fffc5c5a8f21" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree, path + *it);
-<a name="l00124"></a>00124         } <span class="keywordflow">else</span> {
-<a name="l00125"></a>00125             std::string contents;
-<a name="l00126"></a>00126             tree.<a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#a9e1783faf522088b1a3b1053ca6cd356" title="Get the value of a file.">read</a>(path + *it, contents);
-<a name="l00127"></a>00127             std::cout &lt;&lt; path &lt;&lt; *it &lt;&lt; <span class="stringliteral">&quot; : &quot;</span> &lt;&lt; contents &lt;&lt; std::endl;
-<a name="l00128"></a>00128         }
-<a name="l00129"></a>00129     }
-<a name="l00130"></a>00130 }
-<a name="l00131"></a>00131 
-<a name="l00132"></a>00132 } <span class="comment">// anonymous namespace</span>
-<a name="l00133"></a>00133 
-<a name="l00134"></a>00134 <span class="keywordtype">int</span>
-<a name="l00135"></a><a class="code" href="Tool_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">00135</a> <a class="code" href="Benchmark_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
-<a name="l00136"></a>00136 {
-<a name="l00137"></a>00137     <span class="keyword">using namespace </span>LogCabin;
-<a name="l00138"></a>00138     <a class="code" href="classLogCabin_1_1Core_1_1Util_1_1Finally.html" title="Calls a function when this object goes out of scope.">Core::Util::Finally</a> _(google::protobuf::ShutdownProtobufLibrary);
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091         <span class="comment">// server ID is required</span>
+<a name="l00092"></a>00092         <span class="keywordflow">if</span> (serverId == ~0UL) {
+<a name="l00093"></a>00093             std::cout &lt;&lt; <span class="stringliteral">&quot;Error: --id is required&quot;</span> &lt;&lt; std::endl;
+<a name="l00094"></a>00094             std::cout &lt;&lt; std::endl;
+<a name="l00095"></a>00095             usage();
+<a name="l00096"></a>00096             exit(1);
+<a name="l00097"></a>00097         }
+<a name="l00098"></a>00098     }
+<a name="l00099"></a>00099 
+<a name="l00100"></a><a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a1b5cc52feeeb593c6625d16211a2bd0f">00100</a>     <span class="keywordtype">void</span> <a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a1b5cc52feeeb593c6625d16211a2bd0f">usage</a>() {
+<a name="l00101"></a>00101         std::cout &lt;&lt; <span class="stringliteral">&quot;Dumps out the contents of LogCabin&#39;s storage directory &quot;</span>
+<a name="l00102"></a>00102                   &lt;&lt; <span class="stringliteral">&quot;(the log and snapshot).&quot;</span> &lt;&lt; std::endl;
+<a name="l00103"></a>00103         std::cout &lt;&lt; std::endl;
+<a name="l00104"></a>00104         std::cout &lt;&lt; <span class="stringliteral">&quot;Usage: &quot;</span> &lt;&lt; argv[0] &lt;&lt; <span class="stringliteral">&quot; [options]&quot;</span> &lt;&lt; std::endl;
+<a name="l00105"></a>00105         std::cout &lt;&lt; <span class="stringliteral">&quot;Options: &quot;</span> &lt;&lt; std::endl;
+<a name="l00106"></a>00106         std::cout &lt;&lt; <span class="stringliteral">&quot;  -h, --help            &quot;</span>
+<a name="l00107"></a>00107                   &lt;&lt; <span class="stringliteral">&quot;Print this usage information&quot;</span> &lt;&lt; std::endl;
+<a name="l00108"></a>00108          std::cout &lt;&lt; <span class="stringliteral">&quot;  -c, --config &lt;file&gt;   &quot;</span>
+<a name="l00109"></a>00109                   &lt;&lt; <span class="stringliteral">&quot;Specify the configuration file &quot;</span>
+<a name="l00110"></a>00110                   &lt;&lt; <span class="stringliteral">&quot;(default: logcabin.conf)&quot;</span> &lt;&lt; std::endl;
+<a name="l00111"></a>00111         std::cout &lt;&lt; <span class="stringliteral">&quot;  -i, --id &lt;id&gt;         &quot;</span>
+<a name="l00112"></a>00112                   &lt;&lt; <span class="stringliteral">&quot;Set server id to &lt;id&gt; (required)&quot;</span> &lt;&lt; std::endl;
+<a name="l00113"></a>00113     }
+<a name="l00114"></a>00114 
+<a name="l00115"></a><a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a93fb92aeee3911e8247ca0ac4f97aae8">00115</a>     <span class="keywordtype">int</span>&amp; <a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a93fb92aeee3911e8247ca0ac4f97aae8">argc</a>;
+<a name="l00116"></a><a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#af7db458600a3539face36a1835bc9036">00116</a>     <span class="keywordtype">char</span>**&amp; <a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#af7db458600a3539face36a1835bc9036">argv</a>;
+<a name="l00117"></a><a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#ab029d4813683af849c79fb47c1a5dc22">00117</a>     std::string <a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#ab029d4813683af849c79fb47c1a5dc22">configFilename</a>;
+<a name="l00118"></a><a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a7b490ecbdfde4d060504713d18594e7c">00118</a>     uint64_t <a class="code" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a7b490ecbdfde4d060504713d18594e7c">serverId</a>;
+<a name="l00119"></a>00119 };
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 <span class="keywordtype">void</span>
+<a name="l00122"></a><a class="code" href="namespaceanonymous__namespace_02Tool_8cc_03.html#ae256e6fe4febe75562bd5f7fb0cf3dcb">00122</a> <a class="code" href="namespaceanonymous__namespace_02DumpTree_8cc_03.html#a64cde78638aa6c39bfd1fffc5c5a8f21" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree::Tree</a>&amp; tree, <span class="keyword">const</span> std::string&amp; path = <span class="stringliteral">&quot;/&quot;</span>)
+<a name="l00123"></a>00123 {
+<a name="l00124"></a>00124     std::cout &lt;&lt; path &lt;&lt; std::endl;
+<a name="l00125"></a>00125     std::vector&lt;std::string&gt; children;
+<a name="l00126"></a>00126     tree.<a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#ae1b7cb5740d15dc4fb1d9d8164eabc2a" title="List the contents of a directory.">listDirectory</a>(path, children);
+<a name="l00127"></a>00127     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = children.begin();
+<a name="l00128"></a>00128          it != children.end();
+<a name="l00129"></a>00129          ++it) {
+<a name="l00130"></a>00130         <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ad6f1abf416c522d7518acff147a50bf7" title="Return true if haystack ends with needle.">Core::StringUtil::endsWith</a>(*it, <span class="stringliteral">&quot;/&quot;</span>)) {
+<a name="l00131"></a>00131             <a class="code" href="namespaceanonymous__namespace_02DumpTree_8cc_03.html#a64cde78638aa6c39bfd1fffc5c5a8f21" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree, path + *it);
+<a name="l00132"></a>00132         } <span class="keywordflow">else</span> {
+<a name="l00133"></a>00133             std::string contents;
+<a name="l00134"></a>00134             tree.<a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#a9e1783faf522088b1a3b1053ca6cd356" title="Get the value of a file.">read</a>(path + *it, contents);
+<a name="l00135"></a>00135             std::cout &lt;&lt; path &lt;&lt; *it &lt;&lt; <span class="stringliteral">&quot; : &quot;</span> &lt;&lt; contents &lt;&lt; std::endl;
+<a name="l00136"></a>00136         }
+<a name="l00137"></a>00137     }
+<a name="l00138"></a>00138 }
 <a name="l00139"></a>00139 
-<a name="l00140"></a>00140     <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#a4dbe9da59e37b2a282c41984be0ebdcb" title="Set the friendly name for the current thread.">Core::ThreadId::setName</a>(<span class="stringliteral">&quot;main&quot;</span>);
+<a name="l00140"></a>00140 } <span class="comment">// anonymous namespace</span>
 <a name="l00141"></a>00141 
-<a name="l00142"></a>00142     <span class="comment">// Parse command line args.</span>
-<a name="l00143"></a>00143     OptionParser options(argc, argv);
-<a name="l00144"></a>00144 
-<a name="l00145"></a>00145     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Using config file %s&quot;</span>, options.configFilename.c_str());
-<a name="l00146"></a>00146     <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Core::Config</a> config;
-<a name="l00147"></a>00147     config.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#ab00dd9529f6ae1d80bfd3d24831c8dad" title="Load a Config from a file.">readFile</a>(options.configFilename.c_str());
-<a name="l00148"></a>00148 
-<a name="l00149"></a>00149     <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Storage::Layout</a> storageLayout;
-<a name="l00150"></a>00150     storageLayout.<a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a6dda2698cba322363883ff039c6ef3eb" title="Initialize in the normal way for a LogCabin server.">init</a>(config, options.serverId);
-<a name="l00151"></a>00151 
-<a name="l00152"></a>00152     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Opening log at %s&quot;</span>, storageLayout.serverDir.path.c_str());
-<a name="l00153"></a>00153     {
-<a name="l00154"></a>00154         std::unique_ptr&lt;Storage::Log&gt; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ac6edb3bfbfca4fc5ae5a98a0c36ffdda" title="Unconditionally log the given message to stderr.">log</a> =
-<a name="l00155"></a>00155             <a class="code" href="namespaceLogCabin_1_1Storage_1_1LogFactory.html#a6f87950142c86227bcfc09cde3dffcc6" title="Construct and return a Log object.">Storage::LogFactory::makeLog</a>(config, storageLayout);
-<a name="l00156"></a>00156         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Log contents start&quot;</span>);
-<a name="l00157"></a>00157         std::cout &lt;&lt; *log &lt;&lt; std::endl;
-<a name="l00158"></a>00158         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Log contents end&quot;</span>);
-<a name="l00159"></a>00159     }
-<a name="l00160"></a>00160 
-<a name="l00161"></a>00161     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Reading snapshot at %s&quot;</span>, storageLayout.serverDir.path.c_str());
-<a name="l00162"></a>00162 
-<a name="l00163"></a>00163     std::unique_ptr&lt;Storage::SnapshotFile::Reader&gt; reader;
-<a name="l00164"></a>00164     <span class="keywordflow">try</span> {
-<a name="l00165"></a>00165         reader.reset(<span class="keyword">new</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html" title="Assists in reading snapshot files from the local filesystem.">Storage::SnapshotFile::Reader</a>(storageLayout));
-<a name="l00166"></a>00166     } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::runtime_error&amp; e) { <span class="comment">// file not found</span>
-<a name="l00167"></a>00167         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;%s&quot;</span>, e.what());
-<a name="l00168"></a>00168     }
-<a name="l00169"></a>00169     <span class="keywordflow">if</span> (reader) {
-<a name="l00170"></a>00170         google::protobuf::io::CodedInputStream&amp; stream =
-<a name="l00171"></a>00171             reader-&gt;getStream();
-<a name="l00172"></a>00172 
-<a name="l00173"></a>00173         { <span class="comment">// read header protobuf from stream</span>
-<a name="l00174"></a>00174             <span class="keywordtype">bool</span> ok = <span class="keyword">true</span>;
-<a name="l00175"></a>00175             uint32_t numBytes = 0;
-<a name="l00176"></a>00176             ok = stream.ReadLittleEndian32(&amp;numBytes);
-<a name="l00177"></a>00177             <span class="keywordflow">if</span> (!ok)
-<a name="l00178"></a>00178                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot header&quot;</span>);
-<a name="l00179"></a>00179             Server::SnapshotMetadata::Header header;
-<a name="l00180"></a>00180             <span class="keyword">auto</span> limit = stream.PushLimit(numBytes);
-<a name="l00181"></a>00181             ok = header.MergePartialFromCodedStream(&amp;stream);
-<a name="l00182"></a>00182             stream.PopLimit(limit);
-<a name="l00183"></a>00183             <span class="keywordflow">if</span> (!ok)
-<a name="l00184"></a>00184                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot header&quot;</span>);
-<a name="l00185"></a>00185             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot header start&quot;</span>);
-<a name="l00186"></a>00186             std::cout &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(header) &lt;&lt; std::endl;
-<a name="l00187"></a>00187             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot header end&quot;</span>);
-<a name="l00188"></a>00188         }
-<a name="l00189"></a>00189 
-<a name="l00190"></a>00190         { <span class="comment">// read StateMachine sessions from stream</span>
-<a name="l00191"></a>00191             <span class="keywordtype">bool</span> ok = <span class="keyword">true</span>;
-<a name="l00192"></a>00192             uint32_t numBytes = 0;
-<a name="l00193"></a>00193             ok = stream.ReadLittleEndian32(&amp;numBytes);
-<a name="l00194"></a>00194             <span class="keywordflow">if</span> (!ok)
-<a name="l00195"></a>00195                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot sessions&quot;</span>);
-<a name="l00196"></a>00196             Server::SessionsProto::Sessions sessions;
-<a name="l00197"></a>00197             <span class="keyword">auto</span> limit = stream.PushLimit(numBytes);
-<a name="l00198"></a>00198             ok = sessions.MergePartialFromCodedStream(&amp;stream);
-<a name="l00199"></a>00199             stream.PopLimit(limit);
-<a name="l00200"></a>00200             <span class="keywordflow">if</span> (!ok)
-<a name="l00201"></a>00201                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot sessions&quot;</span>);
-<a name="l00202"></a>00202             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot sessions start&quot;</span>);
-<a name="l00203"></a>00203             std::cout &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(sessions) &lt;&lt; std::endl;
-<a name="l00204"></a>00204             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot sessions end&quot;</span>);
-<a name="l00205"></a>00205         }
-<a name="l00206"></a>00206 
-<a name="l00207"></a>00207         { <span class="comment">// read Tree from stream</span>
-<a name="l00208"></a>00208             <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree::Tree</a> tree;
-<a name="l00209"></a>00209             tree.<a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#ae1f63dee476fd7b7497685ecb7f68f48" title="Load the tree from the given stream.">loadSnapshot</a>(stream);
-<a name="l00210"></a>00210             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot tree start&quot;</span>);
-<a name="l00211"></a>00211             <a class="code" href="namespaceanonymous__namespace_02DumpTree_8cc_03.html#a64cde78638aa6c39bfd1fffc5c5a8f21" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree);
-<a name="l00212"></a>00212             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot tree end&quot;</span>);
+<a name="l00142"></a>00142 <span class="keywordtype">int</span>
+<a name="l00143"></a><a class="code" href="Tool_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">00143</a> <a class="code" href="Benchmark_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
+<a name="l00144"></a>00144 {
+<a name="l00145"></a>00145     <span class="keyword">using namespace </span>LogCabin;
+<a name="l00146"></a>00146     <a class="code" href="classLogCabin_1_1Core_1_1Util_1_1Finally.html" title="Calls a function when this object goes out of scope.">Core::Util::Finally</a> _(google::protobuf::ShutdownProtobufLibrary);
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148     <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#a4dbe9da59e37b2a282c41984be0ebdcb" title="Set the friendly name for the current thread.">Core::ThreadId::setName</a>(<span class="stringliteral">&quot;main&quot;</span>);
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150     <span class="comment">// Parse command line args.</span>
+<a name="l00151"></a>00151     OptionParser options(argc, argv);
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Using config file %s&quot;</span>, options.configFilename.c_str());
+<a name="l00154"></a>00154     <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Core::Config</a> config;
+<a name="l00155"></a>00155     config.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#ab00dd9529f6ae1d80bfd3d24831c8dad" title="Load a Config from a file.">readFile</a>(options.configFilename.c_str());
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157     <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Storage::Layout</a> storageLayout;
+<a name="l00158"></a>00158     storageLayout.<a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a6dda2698cba322363883ff039c6ef3eb" title="Initialize in the normal way for a LogCabin server.">init</a>(config, options.serverId);
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Opening log at %s&quot;</span>, storageLayout.serverDir.path.c_str());
+<a name="l00161"></a>00161     {
+<a name="l00162"></a>00162         std::unique_ptr&lt;Storage::Log&gt; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ac6edb3bfbfca4fc5ae5a98a0c36ffdda" title="Unconditionally log the given message to stderr.">log</a> =
+<a name="l00163"></a>00163             <a class="code" href="namespaceLogCabin_1_1Storage_1_1LogFactory.html#a6f87950142c86227bcfc09cde3dffcc6" title="Construct and return a Log object.">Storage::LogFactory::makeLog</a>(config, storageLayout);
+<a name="l00164"></a>00164         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Log contents start&quot;</span>);
+<a name="l00165"></a>00165         std::cout &lt;&lt; *log &lt;&lt; std::endl;
+<a name="l00166"></a>00166         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Log contents end&quot;</span>);
+<a name="l00167"></a>00167     }
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Reading snapshot at %s&quot;</span>, storageLayout.serverDir.path.c_str());
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171     std::unique_ptr&lt;Storage::SnapshotFile::Reader&gt; reader;
+<a name="l00172"></a>00172     <span class="keywordflow">try</span> {
+<a name="l00173"></a>00173         reader.reset(<span class="keyword">new</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html" title="Assists in reading snapshot files from the local filesystem.">Storage::SnapshotFile::Reader</a>(storageLayout));
+<a name="l00174"></a>00174     } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::runtime_error&amp; e) { <span class="comment">// file not found</span>
+<a name="l00175"></a>00175         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;%s&quot;</span>, e.what());
+<a name="l00176"></a>00176     }
+<a name="l00177"></a>00177     <span class="keywordflow">if</span> (reader) {
+<a name="l00178"></a>00178         google::protobuf::io::CodedInputStream&amp; stream =
+<a name="l00179"></a>00179             reader-&gt;getStream();
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181         { <span class="comment">// read header protobuf from stream</span>
+<a name="l00182"></a>00182             <span class="keywordtype">bool</span> ok = <span class="keyword">true</span>;
+<a name="l00183"></a>00183             uint32_t numBytes = 0;
+<a name="l00184"></a>00184             ok = stream.ReadLittleEndian32(&amp;numBytes);
+<a name="l00185"></a>00185             <span class="keywordflow">if</span> (!ok)
+<a name="l00186"></a>00186                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot header&quot;</span>);
+<a name="l00187"></a>00187             Server::SnapshotMetadata::Header header;
+<a name="l00188"></a>00188             <span class="keyword">auto</span> limit = stream.PushLimit(numBytes);
+<a name="l00189"></a>00189             ok = header.MergePartialFromCodedStream(&amp;stream);
+<a name="l00190"></a>00190             stream.PopLimit(limit);
+<a name="l00191"></a>00191             <span class="keywordflow">if</span> (!ok)
+<a name="l00192"></a>00192                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot header&quot;</span>);
+<a name="l00193"></a>00193             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot header start&quot;</span>);
+<a name="l00194"></a>00194             std::cout &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(header) &lt;&lt; std::endl;
+<a name="l00195"></a>00195             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot header end&quot;</span>);
+<a name="l00196"></a>00196         }
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198         { <span class="comment">// read StateMachine sessions from stream</span>
+<a name="l00199"></a>00199             <span class="keywordtype">bool</span> ok = <span class="keyword">true</span>;
+<a name="l00200"></a>00200             uint32_t numBytes = 0;
+<a name="l00201"></a>00201             ok = stream.ReadLittleEndian32(&amp;numBytes);
+<a name="l00202"></a>00202             <span class="keywordflow">if</span> (!ok)
+<a name="l00203"></a>00203                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot sessions&quot;</span>);
+<a name="l00204"></a>00204             Server::SessionsProto::Sessions sessions;
+<a name="l00205"></a>00205             <span class="keyword">auto</span> limit = stream.PushLimit(numBytes);
+<a name="l00206"></a>00206             ok = sessions.MergePartialFromCodedStream(&amp;stream);
+<a name="l00207"></a>00207             stream.PopLimit(limit);
+<a name="l00208"></a>00208             <span class="keywordflow">if</span> (!ok)
+<a name="l00209"></a>00209                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot sessions&quot;</span>);
+<a name="l00210"></a>00210             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot sessions start&quot;</span>);
+<a name="l00211"></a>00211             std::cout &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(sessions) &lt;&lt; std::endl;
+<a name="l00212"></a>00212             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot sessions end&quot;</span>);
 <a name="l00213"></a>00213         }
-<a name="l00214"></a>00214     }
-<a name="l00215"></a>00215 
-<a name="l00216"></a>00216     <span class="keywordflow">return</span> 0;
-<a name="l00217"></a>00217 }
+<a name="l00214"></a>00214 
+<a name="l00215"></a>00215         { <span class="comment">// read Tree from stream</span>
+<a name="l00216"></a>00216             <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree::Tree</a> tree;
+<a name="l00217"></a>00217             tree.<a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#ae1f63dee476fd7b7497685ecb7f68f48" title="Load the tree from the given stream.">loadSnapshot</a>(stream);
+<a name="l00218"></a>00218             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot tree start&quot;</span>);
+<a name="l00219"></a>00219             <a class="code" href="namespaceanonymous__namespace_02DumpTree_8cc_03.html#a64cde78638aa6c39bfd1fffc5c5a8f21" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree);
+<a name="l00220"></a>00220             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot tree end&quot;</span>);
+<a name="l00221"></a>00221         }
+<a name="l00222"></a>00222     }
+<a name="l00223"></a>00223 
+<a name="l00224"></a>00224     <span class="keywordflow">return</span> 0;
+<a name="l00225"></a>00225 }
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
