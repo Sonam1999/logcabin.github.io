@@ -4,6 +4,7 @@ var searchData=
   ['native_5fhandle_5ftype',['native_handle_type',['../classLogCabin_1_1Core_1_1Mutex.html#a50c44eaee619ac7b7d2f62e7ee994706',1,'LogCabin::Core::Mutex']]],
   ['needsreply',['needsReply',['../classLogCabin_1_1RPC_1_1ServerRPC.html#a18eef351dce8b16ce44f358cb9acbbb6',1,'LogCabin::RPC::ServerRPC']]],
   ['negotiaterpcversion',['negotiateRPCVersion',['../classLogCabin_1_1Client_1_1ClientImpl.html#ad11a48bf53e0b42f9e66e26f483b862e',1,'LogCabin::Client::ClientImpl']]],
+  ['newepoch',['newEpoch',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ClusterClock.html#ad5adb9f0618aeb7a7a55e1524849a8bc',1,'LogCabin::Server::RaftConsensusInternal::ClusterClock']]],
   ['newservers',['newServers',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a0a131fa2c4a9aabc0186b1c2c91f8661',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
   ['nextheartbeattime',['nextHeartbeatTime',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#af3115d040af27bfe093f1881fd243716',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['nextid',['nextId',['../namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#a6909b5fc9c912849b9c7a696e97a4908',1,'LogCabin::Core::ThreadId::Internal']]],

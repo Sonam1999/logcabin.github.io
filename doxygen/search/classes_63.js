@@ -10,6 +10,7 @@ var searchData=
   ['clientsession',['ClientSession',['../classLogCabin_1_1RPC_1_1ClientSession.html',1,'LogCabin::RPC']]],
   ['closesession',['CloseSession',['../classLogCabin_1_1RPC_1_1ServiceMock_1_1CloseSession.html',1,'LogCabin::RPC::ServiceMock']]],
   ['cluster',['Cluster',['../classLogCabin_1_1Client_1_1Cluster.html',1,'LogCabin::Client']]],
+  ['clusterclock',['ClusterClock',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ClusterClock.html',1,'LogCabin::Server::RaftConsensusInternal']]],
   ['conditionnotmetexception',['ConditionNotMetException',['../classLogCabin_1_1Client_1_1ConditionNotMetException.html',1,'LogCabin::Client']]],
   ['conditionvariable',['ConditionVariable',['../classLogCabin_1_1Core_1_1ConditionVariable.html',1,'LogCabin::Core']]],
   ['config',['Config',['../classLogCabin_1_1Core_1_1Config.html',1,'LogCabin::Core']]],

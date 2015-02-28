@@ -132,16 +132,16 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return once the state machine has applied at least the given entry.  <a href="#a40792af98645b4d05e6ddcf10902044e"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9eccab97b5b8aae893b6689d1fbc94af">apply</a> (uint64_t index, const <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> &amp;serializedCommand)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoked once per committed entry from the Raft log.  <a href="#a9eccab97b5b8aae893b6689d1fbc94af"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#abf2f8983d83cb9a590fa62c8ce27c1a7">apply</a> (const RaftConsensus::Entry &amp;entry)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoked once per committed entry from the Raft log.  <a href="#abf2f8983d83cb9a590fa62c8ce27c1a7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a85315565676068d98d26b883a69ba8e6">applyThreadMain</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function for thread that waits for new commands from Raft.  <a href="#a85315565676068d98d26b883a69ba8e6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a57ac9db3103bc781ed30f96085f46789">dumpSessionSnapshot</a> (google::protobuf::io::CodedOutputStream &amp;stream) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a> table to a snapshot file.  <a href="#a57ac9db3103bc781ed30f96085f46789"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1431a7e9a631e1fb03d668ba9a4bd16">expireResponses</a> (<a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html">Session</a> &amp;session, uint64_t firstOutstandingRPC)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the session and clean up unnecessary responses.  <a href="#ab1431a7e9a631e1fb03d668ba9a4bd16"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a00bc7242ed3c8b28b72fab61545a386c">expireSessions</a> (uint64_t nanosecondsSinceEpoch)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove old sessions.  <a href="#a00bc7242ed3c8b28b72fab61545a386c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#ac75e6f249325635f59c2c2b0c446ca50">expireSessions</a> (uint64_t clusterTime)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove old sessions.  <a href="#ac75e6f249325635f59c2c2b0c446ca50"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a8dac16e695f643d54feeeaf074242217">loadSessionSnapshot</a> (google::protobuf::io::CodedInputStream &amp;stream)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a> table from a snapshot file.  <a href="#a8dac16e695f643d54feeeaf074242217"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a92eaf624fcf2e18bf304a329b0c836f0">shouldTakeSnapshot</a> (uint64_t lastIncludedIndex) const </td></tr>
@@ -158,7 +158,7 @@ Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a516e894dfa8ec79d4e1d76a106ac94a5">snapshotRatio</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum log size as multiple of last snapshot size until server should snapshot.  <a href="#a516e894dfa8ec79d4e1d76a106ac94a5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#add14d3c5856a100c00e47af58da99550">sessionTimeoutNanos</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The time interval after which to remove an inactive client session, in nanoseconds of leader time.  <a href="#add14d3c5856a100c00e47af58da99550"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The time interval after which to remove an inactive client session, in nanoseconds of cluster time.  <a href="#add14d3c5856a100c00e47af58da99550"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce">mutex</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects against concurrent access for all members of this class (except 'consensus', which is itself a monitor.  <a href="#a0c9edd86fc09f8d0f4cdb4507abf57ce"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5">entriesApplied</a></td></tr>
@@ -326,26 +326,16 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9eccab97b5b8aae893b6689d1fbc94af"></a><!-- doxytag: member="LogCabin::Server::StateMachine::apply" ref="a9eccab97b5b8aae893b6689d1fbc94af" args="(uint64_t index, const Core::Buffer &amp;serializedCommand)" -->
+<a class="anchor" id="abf2f8983d83cb9a590fa62c8ce27c1a7"></a><!-- doxytag: member="LogCabin::Server::StateMachine::apply" ref="abf2f8983d83cb9a590fa62c8ce27c1a7" args="(const RaftConsensus::Entry &amp;entry)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9eccab97b5b8aae893b6689d1fbc94af">LogCabin::Server::StateMachine::apply</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#abf2f8983d83cb9a590fa62c8ce27c1a7">LogCabin::Server::StateMachine::apply</a> </td>
           <td>(</td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> &amp;&#160;</td>
-          <td class="paramname"><em>serializedCommand</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [private]</code></td>
+          <td class="paramtype">const RaftConsensus::Entry &amp;&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td><code> [private]</code></td>
         </tr>
       </table>
 </div>
@@ -373,7 +363,7 @@ Private Attributes</h2></td></tr>
 
 <p>Main function for thread that waits for new commands from Raft. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00180">180</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00178">178</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -394,7 +384,7 @@ Private Attributes</h2></td></tr>
 
 <p>Write the <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a> table to a snapshot file. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00222">222</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00221">221</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -432,19 +422,19 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00248">248</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00247">247</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a00bc7242ed3c8b28b72fab61545a386c"></a><!-- doxytag: member="LogCabin::Server::StateMachine::expireSessions" ref="a00bc7242ed3c8b28b72fab61545a386c" args="(uint64_t nanosecondsSinceEpoch)" -->
+<a class="anchor" id="ac75e6f249325635f59c2c2b0c446ca50"></a><!-- doxytag: member="LogCabin::Server::StateMachine::expireSessions" ref="ac75e6f249325635f59c2c2b0c446ca50" args="(uint64_t clusterTime)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a00bc7242ed3c8b28b72fab61545a386c">LogCabin::Server::StateMachine::expireSessions</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#ac75e6f249325635f59c2c2b0c446ca50">LogCabin::Server::StateMachine::expireSessions</a> </td>
           <td>(</td>
           <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>nanosecondsSinceEpoch</em></td><td>)</td>
+          <td class="paramname"><em>clusterTime</em></td><td>)</td>
           <td><code> [private]</code></td>
         </tr>
       </table>
@@ -454,12 +444,12 @@ Private Attributes</h2></td></tr>
 <p>Remove old sessions. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">nanosecondsSinceEpoch</td><td>Sessions that have not been used since this (leader) time are removed. </td></tr>
+    <tr><td class="paramname">clusterTime</td><td>Sessions are kept if they have been modified during the last timeout period going backwards from the given time. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00263">263</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00262">262</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -480,7 +470,7 @@ Private Attributes</h2></td></tr>
 
 <p>Read the <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a> table from a snapshot file. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00285">285</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00284">284</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -502,7 +492,7 @@ Private Attributes</h2></td></tr>
 <p>Return true if it is time to create a new snapshot. </p>
 <p>This is called by applyThread as an optimization to avoid waking up snapshotThread upon applying every single entry. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00319">319</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00318">318</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -522,7 +512,7 @@ Private Attributes</h2></td></tr>
 
 <p>Main function for thread that calls takeSnapshot when appropriate. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00334">334</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00333">333</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -553,7 +543,7 @@ Private Attributes</h2></td></tr>
 
 <p>Called by snapshotThreadMain to actually take the snapshot. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00349">349</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00348">348</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -618,7 +608,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>The time interval after which to remove an inactive client session, in nanoseconds of leader time. </p>
+<p>The time interval after which to remove an inactive client session, in nanoseconds of cluster time. </p>
 
 <p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00151">151</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
@@ -743,7 +733,7 @@ Private Attributes</h2></td></tr>
 
 <p><a class="el" href="namespaceLogCabin_1_1Client.html">Client</a> ID to <a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a> map. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00225">225</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00226">226</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -761,7 +751,7 @@ Private Attributes</h2></td></tr>
 <p>The hierarchical key-value store. </p>
 <p>Used in readOnlyTreeRPC and readWriteTreeRPC. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00231">231</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00232">232</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -778,7 +768,7 @@ Private Attributes</h2></td></tr>
 
 <p>Repeatedly calls into the consensus module to get commands to process and applies them. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00237">237</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00238">238</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -795,7 +785,7 @@ Private Attributes</h2></td></tr>
 
 <p>Takes snapshots with the help of a child process. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00242">242</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00243">243</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>

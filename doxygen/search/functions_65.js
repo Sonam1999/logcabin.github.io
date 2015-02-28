@@ -10,5 +10,5 @@ var searchData=
   ['expect',['expect',['../classLogCabin_1_1Client_1_1LeaderRPCMock.html#ab2ead9f6fa29130123b727b656b5f177',1,'LogCabin::Client::LeaderRPCMock::expect()'],['../classLogCabin_1_1RPC_1_1ServiceMock.html#ac22fd95a701249be9a51a5cf7889beb7',1,'LogCabin::RPC::ServiceMock::expect()']]],
   ['expected',['Expected',['../structLogCabin_1_1RPC_1_1ServiceMock_1_1Expected.html#aa71f47909b25ff77fa62e2067f7b3171',1,'LogCabin::RPC::ServiceMock::Expected::Expected(uint16_t opCode, std::unique_ptr&lt; Message &gt; request, std::shared_ptr&lt; Handler &gt; response)'],['../structLogCabin_1_1RPC_1_1ServiceMock_1_1Expected.html#a0d7c20c8154bc4cd5e026f7fc61c642c',1,'LogCabin::RPC::ServiceMock::Expected::Expected(Expected &amp;&amp;other)']]],
   ['expireresponses',['expireResponses',['../classLogCabin_1_1Server_1_1StateMachine.html#ab1431a7e9a631e1fb03d668ba9a4bd16',1,'LogCabin::Server::StateMachine']]],
-  ['expiresessions',['expireSessions',['../classLogCabin_1_1Server_1_1StateMachine.html#a00bc7242ed3c8b28b72fab61545a386c',1,'LogCabin::Server::StateMachine']]]
+  ['expiresessions',['expireSessions',['../classLogCabin_1_1Server_1_1StateMachine.html#ac75e6f249325635f59c2c2b0c446ca50',1,'LogCabin::Server::StateMachine']]]
 ];

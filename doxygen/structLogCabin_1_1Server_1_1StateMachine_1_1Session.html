@@ -119,7 +119,7 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79">lastModified</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">When the session was last active, measured in leader time nanoseconds since the Unix epoch.  <a href="#ab43662ba674a41e71450a936b591ac79"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">When the session was last active, measured in cluster time (roughly the number of nanoseconds that the cluster has maintained a leader).  <a href="#ab43662ba674a41e71450a936b591ac79"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9">firstOutstandingRPC</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Largest firstOutstandingRPC number processed from this client.  <a href="#a4b710243372cf195e78b941b1cdd6be9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; uint64_t, <br class="typebreak"/>
@@ -162,9 +162,9 @@ Protocol::Client::CommandResponse &gt;&#160;</td><td class="memItemRight" valign
 </div>
 <div class="memdoc">
 
-<p>When the session was last active, measured in leader time nanoseconds since the Unix epoch. </p>
+<p>When the session was last active, measured in cluster time (roughly the number of nanoseconds that the cluster has maintained a leader). </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00208">208</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00209">209</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -181,7 +181,7 @@ Protocol::Client::CommandResponse &gt;&#160;</td><td class="memItemRight" valign
 
 <p>Largest firstOutstandingRPC number processed from this client. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00212">212</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00213">213</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -199,7 +199,7 @@ Protocol::Client::CommandResponse &gt;&#160;</td><td class="memItemRight" valign
 <p>Maps from <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> numbers to responses. </p>
 <p>Responses for RPCs numbered less that firstOutstandingRPC are discarded from this map. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00219">219</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00220">220</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>

@@ -5,6 +5,7 @@ var searchData=
   ['leaderrpc',['LeaderRPC',['../classLogCabin_1_1Client_1_1LeaderRPC.html#a722854832389775842a22fb6191bbe22',1,'LogCabin::Client::LeaderRPC']]],
   ['leaderrpcbase',['LeaderRPCBase',['../classLogCabin_1_1Client_1_1LeaderRPCBase.html#a2b7c9e50fbb14282380c4b613ad3c627',1,'LogCabin::Client::LeaderRPCBase::LeaderRPCBase()'],['../classLogCabin_1_1Client_1_1LeaderRPCBase.html#a6f124d2c0c076b336f95fd776552e7b3',1,'LogCabin::Client::LeaderRPCBase::LeaderRPCBase(const LeaderRPCBase &amp;)']]],
   ['leaderrpcmock',['LeaderRPCMock',['../classLogCabin_1_1Client_1_1LeaderRPCMock.html#a6da2c6de0f51fce4647c266408e8ff33',1,'LogCabin::Client::LeaderRPCMock']]],
+  ['leaderstamp',['leaderStamp',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ClusterClock.html#acfeeb3627de0308d4259324b78b7d84a',1,'LogCabin::Server::RaftConsensusInternal::ClusterClock']]],
   ['length',['length',['../namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca',1,'LogCabin::Core::Checksum']]],
   ['listalgorithms',['listAlgorithms',['../namespaceLogCabin_1_1Core_1_1Checksum.html#a11648bccbed4ed7af7cb5309da77e6a3',1,'LogCabin::Core::Checksum']]],
   ['listdirectory',['listDirectory',['../classLogCabin_1_1Client_1_1ClientImpl.html#a4e0fb9888cdb7f80db2d32d133aded28',1,'LogCabin::Client::ClientImpl::listDirectory()'],['../classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3',1,'LogCabin::Client::Tree::listDirectory()'],['../classLogCabin_1_1Tree_1_1Tree.html#ae1b7cb5740d15dc4fb1d9d8164eabc2a',1,'LogCabin::Tree::Tree::listDirectory()']]],
