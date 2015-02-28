@@ -133,6 +133,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current, stable cluster configuration.  <a href="#a51ac6fd68d84f3659f6b975cfba69e23"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html">ConfigurationResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#ad81d174f4a9fc07f2afe12713d8b379f">setConfiguration</a> (uint64_t oldId, const <a class="el" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2">Configuration</a> &amp;newConfiguration)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the cluster's configuration.  <a href="#ad81d174f4a9fc07f2afe12713d8b379f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a7ebf0a13c59ddbc790875c53baf89517">getServerInfo</a> (const std::string &amp;host, uint64_t timeoutNanoseconds, <a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a> &amp;info)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve basic information from the given server, like its ID and the addresses on which it is listening.  <a href="#a7ebf0a13c59ddbc790875c53baf89517"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a0c2b38e28157bad21b90250f97949d84">getServerInfoEx</a> (const std::string &amp;host, uint64_t timeoutNanoseconds)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Like getServerStats but throws exceptions upon errors.  <a href="#a0c2b38e28157bad21b90250f97949d84"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507">getServerStats</a> (const std::string &amp;host, uint64_t timeoutNanoseconds, Protocol::ServerStats &amp;stats)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve statistics from the given server, which are useful for diagnostics.  <a href="#a3d1821618e39b1ce3ca58dc6ad2a9507"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Protocol::ServerStats&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a883654b25aa346a5cf8d0b843be6595e">getServerStatsEx</a> (const std::string &amp;host, uint64_t timeoutNanoseconds)</td></tr>
@@ -328,6 +332,89 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a7ebf0a13c59ddbc790875c53baf89517"></a><!-- doxytag: member="LogCabin::Client::Cluster::getServerInfo" ref="a7ebf0a13c59ddbc790875c53baf89517" args="(const std::string &amp;host, uint64_t timeoutNanoseconds, Server &amp;info)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a> <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a7ebf0a13c59ddbc790875c53baf89517">LogCabin::Client::Cluster::getServerInfo</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>timeoutNanoseconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a> &amp;&#160;</td>
+          <td class="paramname"><em>info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Retrieve basic information from the given server, like its ID and the addresses on which it is listening. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host</td><td>The hostname or IP address of the server to retrieve stats from. It is recommended that you do not use a DNS name that resolves to multiple hosts here. </td></tr>
+    <tr><td class="paramname">timeoutNanoseconds</td><td>Abort the operation if it has not completed within the specified period of time. Time is specified in nanoseconds, and the special value of 0 indicates no timeout. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="warning"><dt><b>Warning:</b></dt><dd>The client library does not currently implement timeouts for DNS lookups. See <a href="https://github.com/logcabin/logcabin/issues/75">https://github.com/logcabin/logcabin/issues/75</a> </dd></dl>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">info</td><td><a class="el" href="namespaceLogCabin_1_1Protocol.html">Protocol</a> buffer of Stats as retrieved from the server. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Either OK or TIMEOUT. </dd></dl>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00533">533</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0c2b38e28157bad21b90250f97949d84"></a><!-- doxytag: member="LogCabin::Client::Cluster::getServerInfoEx" ref="a0c2b38e28157bad21b90250f97949d84" args="(const std::string &amp;host, uint64_t timeoutNanoseconds)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a> <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a0c2b38e28157bad21b90250f97949d84">LogCabin::Client::Cluster::getServerInfoEx</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>timeoutNanoseconds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Like getServerStats but throws exceptions upon errors. </p>
+
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00544">544</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a3d1821618e39b1ce3ca58dc6ad2a9507"></a><!-- doxytag: member="LogCabin::Client::Cluster::getServerStats" ref="a3d1821618e39b1ce3ca58dc6ad2a9507" args="(const std::string &amp;host, uint64_t timeoutNanoseconds, Protocol::ServerStats &amp;stats)" -->
 <div class="memitem">
 <div class="memproto">
@@ -376,7 +463,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Either OK or TIMEOUT. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00532">532</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00553">553</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -407,7 +494,7 @@ Private Attributes</h2></td></tr>
 
 <p>Like getServerStats but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00543">543</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00564">564</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -428,7 +515,7 @@ Private Attributes</h2></td></tr>
 <p>Return an object to access the hierarchical key-value store. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> object with the working directory of '/'. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00552">552</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00573">573</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -444,7 +531,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00659">659</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00689">689</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>

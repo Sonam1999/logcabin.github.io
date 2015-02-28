@@ -111,127 +111,161 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00029"></a>00029 <span class="keyword">using</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html" title="A handle to the LogCabin cluster.">LogCabin::Client::Cluster</a>;
 <a name="l00030"></a>00030 <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2" title="Defines the members of the cluster.">LogCabin::Client::Configuration</a>;
 <a name="l00031"></a>00031 <span class="keyword">using</span> <a class="code" href="structLogCabin_1_1Client_1_1ConfigurationResult.html" title="Returned by Cluster::setConfiguration.">LogCabin::Client::ConfigurationResult</a>;
-<a name="l00032"></a>00032 <span class="comment"></span>
-<a name="l00033"></a>00033 <span class="comment">/**</span>
-<a name="l00034"></a>00034 <span class="comment"> * Parses argv for the main function.</span>
-<a name="l00035"></a>00035 <span class="comment"> */</span>
-<a name="l00036"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html">00036</a> <span class="keyword">class </span><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html" title="Parses argv for the main function.">OptionParser</a> {
-<a name="l00037"></a>00037   <span class="keyword">public</span>:
-<a name="l00038"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#abec3f480e85e0427696a53b3de2df7bb">00038</a>     <a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html" title="Parses argv for the main function.">OptionParser</a>(<span class="keywordtype">int</span>&amp; argc, <span class="keywordtype">char</span>**&amp; argv)
-<a name="l00039"></a>00039         : argc(argc)
-<a name="l00040"></a>00040         , argv(argv)
-<a name="l00041"></a>00041         , cluster(<span class="stringliteral">&quot;logcabin:61023&quot;</span>)
-<a name="l00042"></a>00042         , servers()
-<a name="l00043"></a>00043     {
-<a name="l00044"></a>00044         <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
-<a name="l00045"></a>00045             <span class="keyword">static</span> <span class="keyword">struct </span>option longOptions[] = {
-<a name="l00046"></a>00046                {<span class="stringliteral">&quot;cluster&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;c&#39;</span>},
-<a name="l00047"></a>00047                {<span class="stringliteral">&quot;help&quot;</span>,  no_argument, NULL, <span class="charliteral">&#39;h&#39;</span>},
-<a name="l00048"></a>00048                {0, 0, 0, 0}
-<a name="l00049"></a>00049             };
-<a name="l00050"></a>00050             <span class="keywordtype">int</span> c = getopt_long(argc, argv, <span class="stringliteral">&quot;c:h&quot;</span>, longOptions, NULL);
-<a name="l00051"></a>00051 
-<a name="l00052"></a>00052             <span class="comment">// Detect the end of the options.</span>
-<a name="l00053"></a>00053             <span class="keywordflow">if</span> (c == -1)
-<a name="l00054"></a>00054                 <span class="keywordflow">break</span>;
-<a name="l00055"></a>00055 
-<a name="l00056"></a>00056             <span class="keywordflow">switch</span> (c) {
-<a name="l00057"></a>00057                 <span class="keywordflow">case</span> <span class="charliteral">&#39;c&#39;</span>:
-<a name="l00058"></a>00058                     cluster = optarg;
-<a name="l00059"></a>00059                     <span class="keywordflow">break</span>;
-<a name="l00060"></a>00060                 <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>:
-<a name="l00061"></a>00061                     usage();
-<a name="l00062"></a>00062                     exit(0);
-<a name="l00063"></a>00063                 <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span>:
-<a name="l00064"></a>00064                 <span class="keywordflow">default</span>:
-<a name="l00065"></a>00065                     <span class="comment">// getopt_long already printed an error message.</span>
-<a name="l00066"></a>00066                     usage();
-<a name="l00067"></a>00067                     exit(1);
-<a name="l00068"></a>00068             }
-<a name="l00069"></a>00069         }
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071         <span class="comment">// Additional command line arguments are required.</span>
-<a name="l00072"></a>00072         <span class="keywordflow">if</span> (optind == argc) {
-<a name="l00073"></a>00073             usage();
-<a name="l00074"></a>00074             exit(1);
-<a name="l00075"></a>00075         }
-<a name="l00076"></a>00076         <span class="keywordflow">while</span> (optind &lt; argc) {
-<a name="l00077"></a>00077             servers.push_back(argv[optind]);
-<a name="l00078"></a>00078             ++optind;
-<a name="l00079"></a>00079         }
-<a name="l00080"></a>00080     }
-<a name="l00081"></a>00081 
-<a name="l00082"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a59c9af1bbd1747291ee765dcf5ffab57">00082</a>     <span class="keywordtype">void</span> <a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a59c9af1bbd1747291ee765dcf5ffab57">usage</a>() {
-<a name="l00083"></a>00083         std::cout &lt;&lt; <span class="stringliteral">&quot;Usage: &quot;</span> &lt;&lt; argv[0] &lt;&lt; <span class="stringliteral">&quot; [options] &lt;servers&gt;&quot;</span>
-<a name="l00084"></a>00084                   &lt;&lt; std::endl;
-<a name="l00085"></a>00085         std::cout &lt;&lt; <span class="stringliteral">&quot;Options: &quot;</span> &lt;&lt; std::endl;
-<a name="l00086"></a>00086         std::cout &lt;&lt; <span class="stringliteral">&quot;  -c, --cluster &lt;address&gt; &quot;</span>
-<a name="l00087"></a>00087                   &lt;&lt; <span class="stringliteral">&quot;The network address of the LogCabin cluster &quot;</span>
-<a name="l00088"></a>00088                   &lt;&lt; <span class="stringliteral">&quot;(default: logcabin:61023)&quot;</span> &lt;&lt; std::endl;
-<a name="l00089"></a>00089         std::cout &lt;&lt; <span class="stringliteral">&quot;  -h, --help              &quot;</span>
-<a name="l00090"></a>00090                   &lt;&lt; <span class="stringliteral">&quot;Print this usage information&quot;</span> &lt;&lt; std::endl;
-<a name="l00091"></a>00091     }
-<a name="l00092"></a>00092 
-<a name="l00093"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#ab66bb99341b650abea7d59d868e722ca">00093</a>     <span class="keywordtype">int</span>&amp; <a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#ab66bb99341b650abea7d59d868e722ca">argc</a>;
-<a name="l00094"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a72d66760bd7a995ac5db6a9626a28e55">00094</a>     <span class="keywordtype">char</span>**&amp; <a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a72d66760bd7a995ac5db6a9626a28e55">argv</a>;
-<a name="l00095"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a051a7e6d5e1dae01300081eba993a322">00095</a>     std::string <a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a051a7e6d5e1dae01300081eba993a322">cluster</a>;
-<a name="l00096"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a6feb17b7dea89a9177f2b929691c0be0">00096</a>     std::vector&lt;std::string&gt; <a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a6feb17b7dea89a9177f2b929691c0be0">servers</a>;
-<a name="l00097"></a>00097 };
-<a name="l00098"></a>00098 
-<a name="l00099"></a>00099 <span class="keywordtype">void</span>
-<a name="l00100"></a><a class="code" href="namespaceanonymous__namespace_02Reconfigure_8cc_03.html#a70637f1de77848fb53512c4f5fa2016f">00100</a> <a class="code" href="namespaceanonymous__namespace_02Reconfigure_8cc_03.html#a70637f1de77848fb53512c4f5fa2016f">printConfiguration</a>(<span class="keyword">const</span> std::pair&lt;uint64_t, Configuration&gt;&amp; configuration)
-<a name="l00101"></a>00101 {
-<a name="l00102"></a>00102     std::cout &lt;&lt; <span class="stringliteral">&quot;Configuration &quot;</span> &lt;&lt; configuration.first &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; std::endl;
-<a name="l00103"></a>00103     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = configuration.second.begin();
-<a name="l00104"></a>00104          it != configuration.second.end();
-<a name="l00105"></a>00105          ++it) {
-<a name="l00106"></a>00106         std::cout &lt;&lt; <span class="stringliteral">&quot;- &quot;</span> &lt;&lt; it-&gt;serverId &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; it-&gt;addresses
-<a name="l00107"></a>00107                   &lt;&lt; std::endl;
-<a name="l00108"></a>00108     }
-<a name="l00109"></a>00109     std::cout &lt;&lt; std::endl;
-<a name="l00110"></a>00110 }
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112 
-<a name="l00113"></a>00113 } <span class="comment">// anonymous namespace</span>
+<a name="l00032"></a>00032 <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Server.html#aa7f412bdef4a54af3492ff48d1f6c36a">LogCabin::Client::Result</a>;
+<a name="l00033"></a>00033 <span class="keyword">using</span> <a class="code" href="structLogCabin_1_1Client_1_1Server.html" title="A member of the cluster Configuration.">LogCabin::Client::Server</a>;
+<a name="l00034"></a>00034 <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4" title="Status codes returned by Tree operations.">LogCabin::Client::Status</a>;
+<a name="l00035"></a>00035 <span class="comment"></span>
+<a name="l00036"></a>00036 <span class="comment">/**</span>
+<a name="l00037"></a>00037 <span class="comment"> * Parses argv for the main function.</span>
+<a name="l00038"></a>00038 <span class="comment"> */</span>
+<a name="l00039"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html">00039</a> <span class="keyword">class </span><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html" title="Parses argv for the main function.">OptionParser</a> {
+<a name="l00040"></a>00040   <span class="keyword">public</span>:
+<a name="l00041"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#abec3f480e85e0427696a53b3de2df7bb">00041</a>     <a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html" title="Parses argv for the main function.">OptionParser</a>(<span class="keywordtype">int</span>&amp; argc, <span class="keywordtype">char</span>**&amp; argv)
+<a name="l00042"></a>00042         : argc(argc)
+<a name="l00043"></a>00043         , argv(argv)
+<a name="l00044"></a>00044         , cluster(<span class="stringliteral">&quot;logcabin:61023&quot;</span>)
+<a name="l00045"></a>00045         , servers()
+<a name="l00046"></a>00046     {
+<a name="l00047"></a>00047         <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
+<a name="l00048"></a>00048             <span class="keyword">static</span> <span class="keyword">struct </span>option longOptions[] = {
+<a name="l00049"></a>00049                {<span class="stringliteral">&quot;cluster&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;c&#39;</span>},
+<a name="l00050"></a>00050                {<span class="stringliteral">&quot;help&quot;</span>,  no_argument, NULL, <span class="charliteral">&#39;h&#39;</span>},
+<a name="l00051"></a>00051                {0, 0, 0, 0}
+<a name="l00052"></a>00052             };
+<a name="l00053"></a>00053             <span class="keywordtype">int</span> c = getopt_long(argc, argv, <span class="stringliteral">&quot;c:h&quot;</span>, longOptions, NULL);
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055             <span class="comment">// Detect the end of the options.</span>
+<a name="l00056"></a>00056             <span class="keywordflow">if</span> (c == -1)
+<a name="l00057"></a>00057                 <span class="keywordflow">break</span>;
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059             <span class="keywordflow">switch</span> (c) {
+<a name="l00060"></a>00060                 <span class="keywordflow">case</span> <span class="charliteral">&#39;c&#39;</span>:
+<a name="l00061"></a>00061                     cluster = optarg;
+<a name="l00062"></a>00062                     <span class="keywordflow">break</span>;
+<a name="l00063"></a>00063                 <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>:
+<a name="l00064"></a>00064                     usage();
+<a name="l00065"></a>00065                     exit(0);
+<a name="l00066"></a>00066                 <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span>:
+<a name="l00067"></a>00067                 <span class="keywordflow">default</span>:
+<a name="l00068"></a>00068                     <span class="comment">// getopt_long already printed an error message.</span>
+<a name="l00069"></a>00069                     usage();
+<a name="l00070"></a>00070                     exit(1);
+<a name="l00071"></a>00071             }
+<a name="l00072"></a>00072         }
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074         <span class="comment">// Additional command line arguments are required.</span>
+<a name="l00075"></a>00075         <span class="keywordflow">if</span> (optind == argc) {
+<a name="l00076"></a>00076             usage();
+<a name="l00077"></a>00077             exit(1);
+<a name="l00078"></a>00078         }
+<a name="l00079"></a>00079         <span class="keywordflow">while</span> (optind &lt; argc) {
+<a name="l00080"></a>00080             servers.push_back(argv[optind]);
+<a name="l00081"></a>00081             ++optind;
+<a name="l00082"></a>00082         }
+<a name="l00083"></a>00083     }
+<a name="l00084"></a>00084 
+<a name="l00085"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a59c9af1bbd1747291ee765dcf5ffab57">00085</a>     <span class="keywordtype">void</span> <a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a59c9af1bbd1747291ee765dcf5ffab57">usage</a>() {
+<a name="l00086"></a>00086         std::cout &lt;&lt; <span class="stringliteral">&quot;Usage: &quot;</span> &lt;&lt; argv[0] &lt;&lt; <span class="stringliteral">&quot; [options] &lt;servers&gt;&quot;</span>
+<a name="l00087"></a>00087                   &lt;&lt; std::endl;
+<a name="l00088"></a>00088         std::cout &lt;&lt; <span class="stringliteral">&quot;Options: &quot;</span> &lt;&lt; std::endl;
+<a name="l00089"></a>00089         std::cout &lt;&lt; <span class="stringliteral">&quot;  -c, --cluster &lt;address&gt; &quot;</span>
+<a name="l00090"></a>00090                   &lt;&lt; <span class="stringliteral">&quot;The network address of the LogCabin cluster &quot;</span>
+<a name="l00091"></a>00091                   &lt;&lt; <span class="stringliteral">&quot;(default: logcabin:61023)&quot;</span> &lt;&lt; std::endl;
+<a name="l00092"></a>00092         std::cout &lt;&lt; <span class="stringliteral">&quot;  -h, --help              &quot;</span>
+<a name="l00093"></a>00093                   &lt;&lt; <span class="stringliteral">&quot;Print this usage information&quot;</span> &lt;&lt; std::endl;
+<a name="l00094"></a>00094     }
+<a name="l00095"></a>00095 
+<a name="l00096"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#ab66bb99341b650abea7d59d868e722ca">00096</a>     <span class="keywordtype">int</span>&amp; <a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#ab66bb99341b650abea7d59d868e722ca">argc</a>;
+<a name="l00097"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a72d66760bd7a995ac5db6a9626a28e55">00097</a>     <span class="keywordtype">char</span>**&amp; <a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a72d66760bd7a995ac5db6a9626a28e55">argv</a>;
+<a name="l00098"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a051a7e6d5e1dae01300081eba993a322">00098</a>     std::string <a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a051a7e6d5e1dae01300081eba993a322">cluster</a>;
+<a name="l00099"></a><a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a6feb17b7dea89a9177f2b929691c0be0">00099</a>     std::vector&lt;std::string&gt; <a class="code" href="classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a6feb17b7dea89a9177f2b929691c0be0">servers</a>;
+<a name="l00100"></a>00100 };
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 <span class="keywordtype">void</span>
+<a name="l00103"></a><a class="code" href="namespaceanonymous__namespace_02Reconfigure_8cc_03.html#a70637f1de77848fb53512c4f5fa2016f">00103</a> <a class="code" href="namespaceanonymous__namespace_02Reconfigure_8cc_03.html#a70637f1de77848fb53512c4f5fa2016f">printConfiguration</a>(<span class="keyword">const</span> std::pair&lt;uint64_t, Configuration&gt;&amp; configuration)
+<a name="l00104"></a>00104 {
+<a name="l00105"></a>00105     std::cout &lt;&lt; <span class="stringliteral">&quot;Configuration &quot;</span> &lt;&lt; configuration.first &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; std::endl;
+<a name="l00106"></a>00106     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = configuration.second.begin();
+<a name="l00107"></a>00107          it != configuration.second.end();
+<a name="l00108"></a>00108          ++it) {
+<a name="l00109"></a>00109         std::cout &lt;&lt; <span class="stringliteral">&quot;- &quot;</span> &lt;&lt; it-&gt;serverId &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; it-&gt;addresses
+<a name="l00110"></a>00110                   &lt;&lt; std::endl;
+<a name="l00111"></a>00111     }
+<a name="l00112"></a>00112     std::cout &lt;&lt; std::endl;
+<a name="l00113"></a>00113 }
 <a name="l00114"></a>00114 
-<a name="l00115"></a>00115 <span class="keywordtype">int</span>
-<a name="l00116"></a><a class="code" href="Reconfigure_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">00116</a> <a class="code" href="Benchmark_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
-<a name="l00117"></a>00117 {
-<a name="l00118"></a>00118     OptionParser options(argc, argv);
-<a name="l00119"></a>00119     Cluster cluster(options.cluster);
-<a name="l00120"></a>00120 
-<a name="l00121"></a>00121     std::pair&lt;uint64_t, Configuration&gt; configuration =
-<a name="l00122"></a>00122         cluster.getConfiguration();
-<a name="l00123"></a>00123     <a class="code" href="namespaceanonymous__namespace_02Reconfigure_8cc_03.html#a70637f1de77848fb53512c4f5fa2016f">printConfiguration</a>(configuration);
-<a name="l00124"></a>00124 
-<a name="l00125"></a>00125     uint64_t <span class="keywordtype">id</span> = configuration.first;
-<a name="l00126"></a>00126     <a class="code" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2" title="Defines the members of the cluster.">Configuration</a> servers;
-<a name="l00127"></a>00127     <span class="keywordflow">for</span> (uint64_t i = 0; i &lt; options.servers.size(); ++i)
-<a name="l00128"></a>00128         servers.emplace_back(i + 1, options.servers.at(i));
-<a name="l00129"></a>00129     ConfigurationResult result = cluster.setConfiguration(<span class="keywordtype">id</span>, servers);
-<a name="l00130"></a>00130 
-<a name="l00131"></a>00131     std::cout &lt;&lt; <span class="stringliteral">&quot;Reconfiguration &quot;</span>;
-<a name="l00132"></a>00132     <span class="keywordflow">if</span> (result.status == <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">ConfigurationResult::OK</a>) {
-<a name="l00133"></a>00133         std::cout &lt;&lt; <span class="stringliteral">&quot;OK&quot;</span> &lt;&lt; std::endl;
-<a name="l00134"></a>00134     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (result.status == ConfigurationResult::CHANGED) {
-<a name="l00135"></a>00135         std::cout &lt;&lt; <span class="stringliteral">&quot;CHANGED&quot;</span> &lt;&lt; std::endl;
-<a name="l00136"></a>00136     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (result.status == ConfigurationResult::BAD) {
-<a name="l00137"></a>00137         std::cout &lt;&lt; <span class="stringliteral">&quot;BAD SERVERS:&quot;</span> &lt;&lt; std::endl;
-<a name="l00138"></a>00138         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = result.badServers.begin();
-<a name="l00139"></a>00139              it != result.badServers.end();
-<a name="l00140"></a>00140              ++it) {
-<a name="l00141"></a>00141             std::cout &lt;&lt; <span class="stringliteral">&quot;- &quot;</span> &lt;&lt; it-&gt;serverId &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; it-&gt;addresses
-<a name="l00142"></a>00142                       &lt;&lt; std::endl;
-<a name="l00143"></a>00143         }
-<a name="l00144"></a>00144     }
-<a name="l00145"></a>00145 
-<a name="l00146"></a>00146     <a class="code" href="namespaceanonymous__namespace_02Reconfigure_8cc_03.html#a70637f1de77848fb53512c4f5fa2016f">printConfiguration</a>(cluster.getConfiguration());
-<a name="l00147"></a>00147 
-<a name="l00148"></a>00148     <span class="keywordflow">if</span> (result.status == <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">ConfigurationResult::OK</a>)
-<a name="l00149"></a>00149         <span class="keywordflow">return</span> 0;
-<a name="l00150"></a>00150     <span class="keywordflow">else</span>
-<a name="l00151"></a>00151         <span class="keywordflow">return</span> 1;
-<a name="l00152"></a>00152 }
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 } <span class="comment">// anonymous namespace</span>
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118 <span class="keywordtype">int</span>
+<a name="l00119"></a><a class="code" href="Reconfigure_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">00119</a> <a class="code" href="Benchmark_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
+<a name="l00120"></a>00120 {
+<a name="l00121"></a>00121     OptionParser options(argc, argv);
+<a name="l00122"></a>00122     Cluster cluster(options.cluster);
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124     std::pair&lt;uint64_t, Configuration&gt; configuration =
+<a name="l00125"></a>00125         cluster.getConfiguration();
+<a name="l00126"></a>00126     uint64_t <span class="keywordtype">id</span> = configuration.first;
+<a name="l00127"></a>00127     std::cout &lt;&lt; <span class="stringliteral">&quot;Current configuration:&quot;</span> &lt;&lt; std::endl;
+<a name="l00128"></a>00128     <a class="code" href="namespaceanonymous__namespace_02Reconfigure_8cc_03.html#a70637f1de77848fb53512c4f5fa2016f">printConfiguration</a>(configuration);
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130     std::cout &lt;&lt; <span class="stringliteral">&quot;Attempting to change cluster membership to the following:&quot;</span>
+<a name="l00131"></a>00131               &lt;&lt; std::endl;
+<a name="l00132"></a>00132     <a class="code" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2" title="Defines the members of the cluster.">Configuration</a> servers;
+<a name="l00133"></a>00133     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = options.servers.begin();
+<a name="l00134"></a>00134          it != options.servers.end();
+<a name="l00135"></a>00135          ++it) {
+<a name="l00136"></a>00136         Server info;
+<a name="l00137"></a>00137         <a class="code" href="namespaceLogCabin_1_1Server.html#aa7f412bdef4a54af3492ff48d1f6c36a">Result</a> result = cluster.getServerInfo(*it,
+<a name="l00138"></a>00138                                               <span class="comment">/* timeout = 2s */</span> 2000000000UL,
+<a name="l00139"></a>00139                                               info);
+<a name="l00140"></a>00140         <span class="keywordflow">switch</span> (result.status) {
+<a name="l00141"></a>00141             <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">Status::OK</a>:
+<a name="l00142"></a>00142                 std::cout &lt;&lt; info.serverId &lt;&lt; <span class="stringliteral">&quot;: &quot;</span>
+<a name="l00143"></a>00143                           &lt;&lt; info.addresses
+<a name="l00144"></a>00144                           &lt;&lt; <span class="stringliteral">&quot; (given as &quot;</span> &lt;&lt; *it &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>
+<a name="l00145"></a>00145                           &lt;&lt; std::endl;
+<a name="l00146"></a>00146                 servers.emplace_back(info.serverId, info.addresses);
+<a name="l00147"></a>00147                 <span class="keywordflow">break</span>;
+<a name="l00148"></a>00148             <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4ab990fd14d55b44d8753e7aa00a8575bf" title="A timeout specified by Tree::setTimeout() elapsed while waiting for an operation to complete...">Status::TIMEOUT</a>:
+<a name="l00149"></a>00149                 std::cout &lt;&lt; <span class="stringliteral">&quot;Could not fetch server info from &quot;</span>
+<a name="l00150"></a>00150                           &lt;&lt; *it &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; result.error &lt;&lt; <span class="stringliteral">&quot;). Aborting.&quot;</span>
+<a name="l00151"></a>00151                           &lt;&lt; std::endl;
+<a name="l00152"></a>00152                 <span class="keywordflow">return</span> 1;
+<a name="l00153"></a>00153             <span class="keywordflow">default</span>:
+<a name="l00154"></a>00154                 std::cout &lt;&lt; <span class="stringliteral">&quot;Unknown error from &quot;</span>
+<a name="l00155"></a>00155                           &lt;&lt; *it &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; result.error &lt;&lt; <span class="stringliteral">&quot;). Aborting.&quot;</span>
+<a name="l00156"></a>00156                           &lt;&lt; std::endl;
+<a name="l00157"></a>00157                 <span class="keywordflow">return</span> 1;
+<a name="l00158"></a>00158         }
+<a name="l00159"></a>00159     }
+<a name="l00160"></a>00160     std::cout &lt;&lt; std::endl;
+<a name="l00161"></a>00161 
+<a name="l00162"></a>00162     ConfigurationResult result = cluster.setConfiguration(<span class="keywordtype">id</span>, servers);
+<a name="l00163"></a>00163     std::cout &lt;&lt; <span class="stringliteral">&quot;Membership change result: &quot;</span>;
+<a name="l00164"></a>00164     <span class="keywordflow">if</span> (result.status == <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">ConfigurationResult::OK</a>) {
+<a name="l00165"></a>00165         std::cout &lt;&lt; <span class="stringliteral">&quot;OK&quot;</span> &lt;&lt; std::endl;
+<a name="l00166"></a>00166     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (result.status == ConfigurationResult::CHANGED) {
+<a name="l00167"></a>00167         std::cout &lt;&lt; <span class="stringliteral">&quot;CHANGED&quot;</span> &lt;&lt; std::endl;
+<a name="l00168"></a>00168     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (result.status == ConfigurationResult::BAD) {
+<a name="l00169"></a>00169         std::cout &lt;&lt; <span class="stringliteral">&quot;BAD SERVERS:&quot;</span> &lt;&lt; std::endl;
+<a name="l00170"></a>00170         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = result.badServers.begin();
+<a name="l00171"></a>00171              it != result.badServers.end();
+<a name="l00172"></a>00172              ++it) {
+<a name="l00173"></a>00173             std::cout &lt;&lt; <span class="stringliteral">&quot;- &quot;</span> &lt;&lt; it-&gt;serverId &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; it-&gt;addresses
+<a name="l00174"></a>00174                       &lt;&lt; std::endl;
+<a name="l00175"></a>00175         }
+<a name="l00176"></a>00176     }
+<a name="l00177"></a>00177     std::cout &lt;&lt; std::endl;
+<a name="l00178"></a>00178 
+<a name="l00179"></a>00179     std::cout &lt;&lt; <span class="stringliteral">&quot;Current configuration:&quot;</span> &lt;&lt; std::endl;
+<a name="l00180"></a>00180     <a class="code" href="namespaceanonymous__namespace_02Reconfigure_8cc_03.html#a70637f1de77848fb53512c4f5fa2016f">printConfiguration</a>(cluster.getConfiguration());
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182     <span class="keywordflow">if</span> (result.status == <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">ConfigurationResult::OK</a>)
+<a name="l00183"></a>00183         <span class="keywordflow">return</span> 0;
+<a name="l00184"></a>00184     <span class="keywordflow">else</span>
+<a name="l00185"></a>00185         <span class="keywordflow">return</span> 1;
+<a name="l00186"></a>00186 }
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

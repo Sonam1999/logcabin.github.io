@@ -701,8 +701,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00619"></a>00619                                 <span class="keyword">const</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2" title="Defines the members of the cluster.">Configuration</a>&amp; newConfiguration);
 <a name="l00620"></a>00620 <span class="comment"></span>
 <a name="l00621"></a>00621 <span class="comment">    /**</span>
-<a name="l00622"></a>00622 <span class="comment">     * Retrieve statistics from the given server, which are useful for</span>
-<a name="l00623"></a>00623 <span class="comment">     * diagnostics.</span>
+<a name="l00622"></a>00622 <span class="comment">     * Retrieve basic information from the given server, like its ID and the</span>
+<a name="l00623"></a>00623 <span class="comment">     * addresses on which it is listening.</span>
 <a name="l00624"></a>00624 <span class="comment">     * \param host</span>
 <a name="l00625"></a>00625 <span class="comment">     *      The hostname or IP address of the server to retrieve stats from. It</span>
 <a name="l00626"></a>00626 <span class="comment">     *      is recommended that you do not use a DNS name that resolves to</span>
@@ -714,37 +714,67 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00632"></a>00632 <span class="comment">     * \warning</span>
 <a name="l00633"></a>00633 <span class="comment">     *      The client library does not currently implement timeouts for DNS</span>
 <a name="l00634"></a>00634 <span class="comment">     *      lookups. See https://github.com/logcabin/logcabin/issues/75</span>
-<a name="l00635"></a>00635 <span class="comment">     * \param[out] stats</span>
+<a name="l00635"></a>00635 <span class="comment">     * \param[out] info</span>
 <a name="l00636"></a>00636 <span class="comment">     *      Protocol buffer of Stats as retrieved from the server.</span>
 <a name="l00637"></a>00637 <span class="comment">     * \return</span>
 <a name="l00638"></a>00638 <span class="comment">     *      Either OK or TIMEOUT.</span>
 <a name="l00639"></a>00639 <span class="comment">     */</span>
 <a name="l00640"></a>00640     <a class="code" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a>
-<a name="l00641"></a>00641     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507" title="Retrieve statistics from the given server, which are useful for diagnostics.">getServerStats</a>(<span class="keyword">const</span> std::string&amp; host,
-<a name="l00642"></a>00642                    uint64_t timeoutNanoseconds,
-<a name="l00643"></a>00643                    Protocol::ServerStats&amp; stats);<span class="comment"></span>
+<a name="l00641"></a>00641     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7ebf0a13c59ddbc790875c53baf89517" title="Retrieve basic information from the given server, like its ID and the addresses on which it is listen...">getServerInfo</a>(<span class="keyword">const</span> std::string&amp; host,
+<a name="l00642"></a>00642                   uint64_t timeoutNanoseconds,
+<a name="l00643"></a>00643                   <a class="code" href="structLogCabin_1_1Client_1_1Server.html" title="A member of the cluster Configuration.">Server</a>&amp; info);<span class="comment"></span>
 <a name="l00644"></a>00644 <span class="comment">    /**</span>
 <a name="l00645"></a>00645 <span class="comment">     * Like getServerStats but throws exceptions upon errors.</span>
 <a name="l00646"></a>00646 <span class="comment">     */</span>
-<a name="l00647"></a>00647     Protocol::ServerStats
-<a name="l00648"></a>00648     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a883654b25aa346a5cf8d0b843be6595e" title="Like getServerStats but throws exceptions upon errors.">getServerStatsEx</a>(<span class="keyword">const</span> std::string&amp; host,
-<a name="l00649"></a>00649                      uint64_t timeoutNanoseconds);
+<a name="l00647"></a>00647     <a class="code" href="structLogCabin_1_1Client_1_1Server.html" title="A member of the cluster Configuration.">Server</a>
+<a name="l00648"></a>00648     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a0c2b38e28157bad21b90250f97949d84" title="Like getServerStats but throws exceptions upon errors.">getServerInfoEx</a>(<span class="keyword">const</span> std::string&amp; host,
+<a name="l00649"></a>00649                     uint64_t timeoutNanoseconds);
 <a name="l00650"></a>00650 <span class="comment"></span>
 <a name="l00651"></a>00651 <span class="comment">    /**</span>
-<a name="l00652"></a>00652 <span class="comment">     * Return an object to access the hierarchical key-value store.</span>
-<a name="l00653"></a>00653 <span class="comment">     * \return</span>
-<a name="l00654"></a>00654 <span class="comment">     *      A Tree object with the working directory of &#39;/&#39;.</span>
-<a name="l00655"></a>00655 <span class="comment">     */</span>
-<a name="l00656"></a>00656     <a class="code" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#ab04d52131d9ddb8c0aa140c359dc2841" title="Return an object to access the hierarchical key-value store.">getTree</a>();
-<a name="l00657"></a>00657 
-<a name="l00658"></a>00658   <span class="keyword">private</span>:
-<a name="l00659"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">00659</a>     std::shared_ptr&lt;ClientImpl&gt; <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">clientImpl</a>;
-<a name="l00660"></a>00660 };
-<a name="l00661"></a>00661 
-<a name="l00662"></a>00662 } <span class="comment">// namespace LogCabin::Client</span>
-<a name="l00663"></a>00663 } <span class="comment">// namespace LogCabin</span>
-<a name="l00664"></a>00664 
-<a name="l00665"></a>00665 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_INCLUDE_LOGCABIN_CLIENT_H */</span>
+<a name="l00652"></a>00652 <span class="comment">     * Retrieve statistics from the given server, which are useful for</span>
+<a name="l00653"></a>00653 <span class="comment">     * diagnostics.</span>
+<a name="l00654"></a>00654 <span class="comment">     * \param host</span>
+<a name="l00655"></a>00655 <span class="comment">     *      The hostname or IP address of the server to retrieve stats from. It</span>
+<a name="l00656"></a>00656 <span class="comment">     *      is recommended that you do not use a DNS name that resolves to</span>
+<a name="l00657"></a>00657 <span class="comment">     *      multiple hosts here.</span>
+<a name="l00658"></a>00658 <span class="comment">     * \param timeoutNanoseconds</span>
+<a name="l00659"></a>00659 <span class="comment">     *      Abort the operation if it has not completed within the specified</span>
+<a name="l00660"></a>00660 <span class="comment">     *      period of time. Time is specified in nanoseconds, and the special</span>
+<a name="l00661"></a>00661 <span class="comment">     *      value of 0 indicates no timeout.</span>
+<a name="l00662"></a>00662 <span class="comment">     * \warning</span>
+<a name="l00663"></a>00663 <span class="comment">     *      The client library does not currently implement timeouts for DNS</span>
+<a name="l00664"></a>00664 <span class="comment">     *      lookups. See https://github.com/logcabin/logcabin/issues/75</span>
+<a name="l00665"></a>00665 <span class="comment">     * \param[out] stats</span>
+<a name="l00666"></a>00666 <span class="comment">     *      Protocol buffer of Stats as retrieved from the server.</span>
+<a name="l00667"></a>00667 <span class="comment">     * \return</span>
+<a name="l00668"></a>00668 <span class="comment">     *      Either OK or TIMEOUT.</span>
+<a name="l00669"></a>00669 <span class="comment">     */</span>
+<a name="l00670"></a>00670     <a class="code" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a>
+<a name="l00671"></a>00671     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507" title="Retrieve statistics from the given server, which are useful for diagnostics.">getServerStats</a>(<span class="keyword">const</span> std::string&amp; host,
+<a name="l00672"></a>00672                    uint64_t timeoutNanoseconds,
+<a name="l00673"></a>00673                    Protocol::ServerStats&amp; stats);<span class="comment"></span>
+<a name="l00674"></a>00674 <span class="comment">    /**</span>
+<a name="l00675"></a>00675 <span class="comment">     * Like getServerStats but throws exceptions upon errors.</span>
+<a name="l00676"></a>00676 <span class="comment">     */</span>
+<a name="l00677"></a>00677     Protocol::ServerStats
+<a name="l00678"></a>00678     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a883654b25aa346a5cf8d0b843be6595e" title="Like getServerStats but throws exceptions upon errors.">getServerStatsEx</a>(<span class="keyword">const</span> std::string&amp; host,
+<a name="l00679"></a>00679                      uint64_t timeoutNanoseconds);
+<a name="l00680"></a>00680 <span class="comment"></span>
+<a name="l00681"></a>00681 <span class="comment">    /**</span>
+<a name="l00682"></a>00682 <span class="comment">     * Return an object to access the hierarchical key-value store.</span>
+<a name="l00683"></a>00683 <span class="comment">     * \return</span>
+<a name="l00684"></a>00684 <span class="comment">     *      A Tree object with the working directory of &#39;/&#39;.</span>
+<a name="l00685"></a>00685 <span class="comment">     */</span>
+<a name="l00686"></a>00686     <a class="code" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#ab04d52131d9ddb8c0aa140c359dc2841" title="Return an object to access the hierarchical key-value store.">getTree</a>();
+<a name="l00687"></a>00687 
+<a name="l00688"></a>00688   <span class="keyword">private</span>:
+<a name="l00689"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">00689</a>     std::shared_ptr&lt;ClientImpl&gt; <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">clientImpl</a>;
+<a name="l00690"></a>00690 };
+<a name="l00691"></a>00691 
+<a name="l00692"></a>00692 } <span class="comment">// namespace LogCabin::Client</span>
+<a name="l00693"></a>00693 } <span class="comment">// namespace LogCabin</span>
+<a name="l00694"></a>00694 
+<a name="l00695"></a>00695 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_INCLUDE_LOGCABIN_CLIENT_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

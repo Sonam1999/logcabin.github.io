@@ -610,34 +610,55 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00528"></a>00528     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">clientImpl</a>-&gt;setConfiguration(oldId, newConfiguration);
 <a name="l00529"></a>00529 }
 <a name="l00530"></a>00530 
-<a name="l00531"></a>00531 <a class="code" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a>
-<a name="l00532"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507">00532</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507" title="Retrieve statistics from the given server, which are useful for diagnostics.">Cluster::getServerStats</a>(<span class="keyword">const</span> std::string&amp; host,
-<a name="l00533"></a>00533                         uint64_t timeoutNanoseconds,
-<a name="l00534"></a>00534                         Protocol::ServerStats&amp; stats)
-<a name="l00535"></a>00535 {
-<a name="l00536"></a>00536     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">clientImpl</a>-&gt;getServerStats(
-<a name="l00537"></a>00537                 host,
-<a name="l00538"></a>00538                 <a class="code" href="namespaceLogCabin_1_1Client_1_1Internal.html#a38158417b149708ba57013d66a85d09d" title="Return the absolute time when the calling operation should timeout.">absTimeout</a>(timeoutNanoseconds),
-<a name="l00539"></a>00539                 stats);
-<a name="l00540"></a>00540 }
-<a name="l00541"></a>00541 
-<a name="l00542"></a>00542 Protocol::ServerStats
-<a name="l00543"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a883654b25aa346a5cf8d0b843be6595e">00543</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a883654b25aa346a5cf8d0b843be6595e" title="Like getServerStats but throws exceptions upon errors.">Cluster::getServerStatsEx</a>(<span class="keyword">const</span> std::string&amp; host,
-<a name="l00544"></a>00544                           uint64_t timeoutNanoseconds)
-<a name="l00545"></a>00545 {
-<a name="l00546"></a>00546     Protocol::ServerStats stats;
-<a name="l00547"></a>00547     <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02Client_8cc_03.html#ad5dbaddf4e3146a1ea13111e3a28e527">throwException</a>(<a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507" title="Retrieve statistics from the given server, which are useful for diagnostics.">getServerStats</a>(host, timeoutNanoseconds, stats));
-<a name="l00548"></a>00548     <span class="keywordflow">return</span> stats;
-<a name="l00549"></a>00549 }
-<a name="l00550"></a>00550 
-<a name="l00551"></a>00551 <a class="code" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a>
-<a name="l00552"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#ab04d52131d9ddb8c0aa140c359dc2841">00552</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#ab04d52131d9ddb8c0aa140c359dc2841" title="Return an object to access the hierarchical key-value store.">Cluster::getTree</a>()
-<a name="l00553"></a>00553 {
-<a name="l00554"></a>00554     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a>(<a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">clientImpl</a>, <span class="stringliteral">&quot;/&quot;</span>);
-<a name="l00555"></a>00555 }
-<a name="l00556"></a>00556 
-<a name="l00557"></a>00557 } <span class="comment">// namespace LogCabin::Client</span>
-<a name="l00558"></a>00558 } <span class="comment">// namespace LogCabin</span>
+<a name="l00531"></a>00531 
+<a name="l00532"></a>00532 <a class="code" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a>
+<a name="l00533"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7ebf0a13c59ddbc790875c53baf89517">00533</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7ebf0a13c59ddbc790875c53baf89517" title="Retrieve basic information from the given server, like its ID and the addresses on which it is listen...">Cluster::getServerInfo</a>(<span class="keyword">const</span> std::string&amp; host,
+<a name="l00534"></a>00534                        uint64_t timeoutNanoseconds,
+<a name="l00535"></a>00535                        <a class="code" href="structLogCabin_1_1Client_1_1Server.html" title="A member of the cluster Configuration.">Server</a>&amp; info)
+<a name="l00536"></a>00536 {
+<a name="l00537"></a>00537     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">clientImpl</a>-&gt;getServerInfo(
+<a name="l00538"></a>00538                 host,
+<a name="l00539"></a>00539                 <a class="code" href="namespaceLogCabin_1_1Client_1_1Internal.html#a38158417b149708ba57013d66a85d09d" title="Return the absolute time when the calling operation should timeout.">absTimeout</a>(timeoutNanoseconds),
+<a name="l00540"></a>00540                 info);
+<a name="l00541"></a>00541 }
+<a name="l00542"></a>00542 
+<a name="l00543"></a>00543 <a class="code" href="structLogCabin_1_1Client_1_1Server.html" title="A member of the cluster Configuration.">Server</a>
+<a name="l00544"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a0c2b38e28157bad21b90250f97949d84">00544</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a0c2b38e28157bad21b90250f97949d84" title="Like getServerStats but throws exceptions upon errors.">Cluster::getServerInfoEx</a>(<span class="keyword">const</span> std::string&amp; host,
+<a name="l00545"></a>00545                          uint64_t timeoutNanoseconds)
+<a name="l00546"></a>00546 {
+<a name="l00547"></a>00547     <a class="code" href="structLogCabin_1_1Client_1_1Server.html" title="A member of the cluster Configuration.">Server</a> info;
+<a name="l00548"></a>00548     <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02Client_8cc_03.html#ad5dbaddf4e3146a1ea13111e3a28e527">throwException</a>(<a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7ebf0a13c59ddbc790875c53baf89517" title="Retrieve basic information from the given server, like its ID and the addresses on which it is listen...">getServerInfo</a>(host, timeoutNanoseconds, info));
+<a name="l00549"></a>00549     <span class="keywordflow">return</span> info;
+<a name="l00550"></a>00550 }
+<a name="l00551"></a>00551 
+<a name="l00552"></a>00552 <a class="code" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a>
+<a name="l00553"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507">00553</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507" title="Retrieve statistics from the given server, which are useful for diagnostics.">Cluster::getServerStats</a>(<span class="keyword">const</span> std::string&amp; host,
+<a name="l00554"></a>00554                         uint64_t timeoutNanoseconds,
+<a name="l00555"></a>00555                         Protocol::ServerStats&amp; stats)
+<a name="l00556"></a>00556 {
+<a name="l00557"></a>00557     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">clientImpl</a>-&gt;getServerStats(
+<a name="l00558"></a>00558                 host,
+<a name="l00559"></a>00559                 <a class="code" href="namespaceLogCabin_1_1Client_1_1Internal.html#a38158417b149708ba57013d66a85d09d" title="Return the absolute time when the calling operation should timeout.">absTimeout</a>(timeoutNanoseconds),
+<a name="l00560"></a>00560                 stats);
+<a name="l00561"></a>00561 }
+<a name="l00562"></a>00562 
+<a name="l00563"></a>00563 Protocol::ServerStats
+<a name="l00564"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a883654b25aa346a5cf8d0b843be6595e">00564</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a883654b25aa346a5cf8d0b843be6595e" title="Like getServerStats but throws exceptions upon errors.">Cluster::getServerStatsEx</a>(<span class="keyword">const</span> std::string&amp; host,
+<a name="l00565"></a>00565                           uint64_t timeoutNanoseconds)
+<a name="l00566"></a>00566 {
+<a name="l00567"></a>00567     Protocol::ServerStats stats;
+<a name="l00568"></a>00568     <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02Client_8cc_03.html#ad5dbaddf4e3146a1ea13111e3a28e527">throwException</a>(<a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507" title="Retrieve statistics from the given server, which are useful for diagnostics.">getServerStats</a>(host, timeoutNanoseconds, stats));
+<a name="l00569"></a>00569     <span class="keywordflow">return</span> stats;
+<a name="l00570"></a>00570 }
+<a name="l00571"></a>00571 
+<a name="l00572"></a>00572 <a class="code" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a>
+<a name="l00573"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#ab04d52131d9ddb8c0aa140c359dc2841">00573</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#ab04d52131d9ddb8c0aa140c359dc2841" title="Return an object to access the hierarchical key-value store.">Cluster::getTree</a>()
+<a name="l00574"></a>00574 {
+<a name="l00575"></a>00575     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a>(<a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">clientImpl</a>, <span class="stringliteral">&quot;/&quot;</span>);
+<a name="l00576"></a>00576 }
+<a name="l00577"></a>00577 
+<a name="l00578"></a>00578 } <span class="comment">// namespace LogCabin::Client</span>
+<a name="l00579"></a>00579 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

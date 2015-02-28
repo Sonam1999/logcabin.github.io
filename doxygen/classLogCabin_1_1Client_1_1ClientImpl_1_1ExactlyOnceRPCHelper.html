@@ -169,7 +169,7 @@ Private Attributes</h2></td></tr>
 <p>For example, it assigns sequence numbers to RPCs, which servers then use to prevent duplicate processing of duplicate requests.</p>
 <p>This class is implemented in a monitor style. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00191">191</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00196">196</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a369717ef5eb0b062fed7197d7bbe59f4"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::ExactlyOnceRPCHelper" ref="a369717ef5eb0b062fed7197d7bbe59f4" args="(ClientImpl *client)" -->
 <div class="memitem">
@@ -420,7 +420,7 @@ Private Attributes</h2></td></tr>
 <p>Used to open a session with the cluster. </p>
 <p>const and non-NULL except for unit tests. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00247">247</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00252">252</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -437,7 +437,7 @@ Private Attributes</h2></td></tr>
 
 <p>Protects all the members of this class. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00251">251</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00256">256</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -454,7 +454,7 @@ Private Attributes</h2></td></tr>
 
 <p>The numbers of the RPCs for which this client is still awaiting a response. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00256">256</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00261">261</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -471,7 +471,7 @@ Private Attributes</h2></td></tr>
 
 <p>The client's session ID as returned by the open session <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>, or 0 if one has not yet been assigned. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00261">261</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00266">266</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -488,7 +488,7 @@ Private Attributes</h2></td></tr>
 
 <p>The number to assign to the next <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00265">265</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00270">270</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -506,7 +506,7 @@ Private Attributes</h2></td></tr>
 <p>keepAliveThread blocks on this. </p>
 <p>Notified when lastKeepAliveStart, keepAliveIntervalMs, or exiting changes. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00270">270</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00275">275</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -523,7 +523,7 @@ Private Attributes</h2></td></tr>
 
 <p>Flag to keepAliveThread that it should shut down. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00274">274</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00279">279</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -541,7 +541,7 @@ Private Attributes</h2></td></tr>
 <p>Time just before the last keep-alive or read-write request to the cluster was made. </p>
 <p>The next keep-alive request will be invoked keepAliveIntervalMs after this, if no intervening requests are made. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00280">280</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00285">285</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -558,7 +558,7 @@ Private Attributes</h2></td></tr>
 
 <p>How often session keep-alive requests are sent during periods of inactivity, in milliseconds. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00285">285</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00290">290</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -576,7 +576,7 @@ Private Attributes</h2></td></tr>
 <p>If set, this is an ongoing keep-alive <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. </p>
 <p>This call is canceled to interrupt <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a28858c45dfad2f9abbad0db36170049d" title="Runs keepAliveThreadMain().">keepAliveThread</a> when exiting. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00291">291</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00296">296</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -594,7 +594,7 @@ Private Attributes</h2></td></tr>
 <p>Runs <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ab243c21fac88261b47a927af8beeb020" title="Main function for keep-alive thread.">keepAliveThreadMain()</a>. </p>
 <p>Since this thread would be unexpected/wasteful for clients that only issue read-only requests (or no requests at all), it is spawned lazily, if/when the client opens its session with the cluster (upon its first read-write request). </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00300">300</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00305">305</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
