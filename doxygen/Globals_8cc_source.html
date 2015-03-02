@@ -97,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 
 <a name="l00016"></a>00016 <span class="preprocessor">#include &lt;signal.h&gt;</span>
 <a name="l00017"></a>00017 
-<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Core/Debug.h</a>&quot;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="Core_2Debug_8h.html">Core/Debug.h</a>&quot;</span>
 <a name="l00019"></a>00019 <span class="preprocessor">#include &quot;<a class="code" href="StringUtil_8h.html">Core/StringUtil.h</a>&quot;</span>
 <a name="l00020"></a>00020 <span class="preprocessor">#include &quot;<a class="code" href="Common_8h.html" title="This file contains declarations useful to all LogCabin RPCs.">Protocol/Common.h</a>&quot;</span>
 <a name="l00021"></a>00021 <span class="preprocessor">#include &quot;<a class="code" href="Server_8h.html">RPC/Server.h</a>&quot;</span>
@@ -121,7 +121,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00039"></a>00039 <span class="keywordtype">void</span>
 <a name="l00040"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html#a06b80a41f9dda5cf5722a3d41b032760">00040</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html#a06b80a41f9dda5cf5722a3d41b032760" title="This method is overridden by a subclass and invoked when the signal is received.">Globals::ExitHandler::handleSignalEvent</a>()
 <a name="l00041"></a>00041 {
-<a name="l00042"></a>00042     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;%s: shutting down&quot;</span>, strsignal(signalNumber));
+<a name="l00042"></a>00042     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;%s: shutting down&quot;</span>, strsignal(signalNumber));
 <a name="l00043"></a>00043     <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa79e668d84e1c96ce5d39d1ae3b35200" title="The event loop that runs the RPC system.">eventLoop</a>.<a class="code" href="classLogCabin_1_1Event_1_1Loop.html#adce1d647680489aeae87a0a6dfc0b1a9" title="Exit the main event loop, if one is running.">exit</a>();
 <a name="l00044"></a>00044 }
 <a name="l00045"></a>00045 <span class="comment"></span>
@@ -198,7 +198,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00116"></a>00116         std::vector&lt;std::string&gt; listenAddresses =
 <a name="l00117"></a>00117             <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#a15ab146660ab9503819c1b88fd4925c5" title="Split a path into its components.">Core::StringUtil::split</a>(listenAddressesStr, <span class="charliteral">&#39;;&#39;</span>);
 <a name="l00118"></a>00118         <span class="keywordflow">if</span> (listenAddresses.empty()) {
-<a name="l00119"></a>00119             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;No server addresses specified to listen on&quot;</span>);
+<a name="l00119"></a>00119             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;No server addresses specified to listen on&quot;</span>);
 <a name="l00120"></a>00120         }
 <a name="l00121"></a>00121         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = listenAddresses.begin();
 <a name="l00122"></a>00122              it != listenAddresses.end();
@@ -207,11 +207,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00125"></a>00125             address.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#a862df7c77ff8748a64dfde7696df9b76" title="Convert (a random one of) the host(s) and port(s) to a sockaddr.">refresh</a>(RPC::Address::TimePoint::max());
 <a name="l00126"></a>00126             std::string error = <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa5ca9e0cf49a42c74813f2614fea84d7" title="Listens for inbound RPCs and passes them off to the services.">rpcServer</a>-&gt;bind(address);
 <a name="l00127"></a>00127             <span class="keywordflow">if</span> (!error.empty()) {
-<a name="l00128"></a>00128                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not listen on address %s: %s&quot;</span>,
+<a name="l00128"></a>00128                 <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not listen on address %s: %s&quot;</span>,
 <a name="l00129"></a>00129                       address.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#ab6a0a36311326ceb780aa3a9bad3ac83" title="Return a string describing this Address.">toString</a>().c_str(),
 <a name="l00130"></a>00130                       error.c_str());
 <a name="l00131"></a>00131             }
-<a name="l00132"></a>00132             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Serving on %s&quot;</span>,
+<a name="l00132"></a>00132             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Serving on %s&quot;</span>,
 <a name="l00133"></a>00133                    address.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#ab6a0a36311326ceb780aa3a9bad3ac83" title="Return a string describing this Address.">toString</a>().c_str());
 <a name="l00134"></a>00134         }
 <a name="l00135"></a>00135         <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;serverAddresses = listenAddressesStr;

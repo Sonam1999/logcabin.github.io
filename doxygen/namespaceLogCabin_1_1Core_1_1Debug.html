@@ -99,6 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
@@ -110,6 +111,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html">Internal</a></td></tr>
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html">DebugMessage</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">When <a class="el" href="namespaceLogCabin.html">LogCabin</a> wants to print a log message, this is the information that gets included.  <a href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5">LogLevel</a> { <br/>
@@ -129,9 +134,12 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a221c605df65625a7bcb91990af0986d3">setLogFile</a> (FILE *newFile)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the file on which debug log messages are written.  <a href="#a221c605df65625a7bcb91990af0986d3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::function&lt; void(<a class="el" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html">DebugMessage</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae229e11e9f1413bc265c12f8fe39cf6f">setLogHandler</a> (std::function&lt; void(<a class="el" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html">DebugMessage</a>)&gt; newHandler)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Accept log messages on the given callback instead of writing them to a file.  <a href="#ae229e11e9f1413bc265c12f8fe39cf6f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0">setLogPolicy</a> (const std::vector&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;newPolicy)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Specify the log messages that should be displayed for each filename.  <a href="#a5624f934c72b6c028ab5a2f4c45948b0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#af6b81483d297545dd73523bc1243b3a8">setLogPolicy</a> (const std::initializer_list&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;newPolicy)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See setLogPolicy.  <a href="#af6b81483d297545dd73523bc1243b3a8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a2a8a29aaac86e7894abfb09d095b1b36">operator&lt;&lt;</a> (std::ostream &amp;ostream, <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5">LogLevel</a> level)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Output a LogLevel to a stream.  <a href="#a2a8a29aaac86e7894abfb09d095b1b36"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a6fb17a6ff9a81e892702560656d691a2">isLogging</a> (<a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5">LogLevel</a> level, const char *fileName)</td></tr>
@@ -163,25 +171,22 @@ Variables</h2></td></tr>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="adc065d555e423169e3f74efa3f13b8e5ac6e589d903fd29648ef0f7e76c12988f"></a><!-- doxytag: member="ERROR" ref="adc065d555e423169e3f74efa3f13b8e5ac6e589d903fd29648ef0f7e76c12988f" args="" -->ERROR</em>&nbsp;</td><td>
 <p>Bad stuff that shouldn't happen. </p>
-<p>The system broke its contract to users in some way or some major assumption was violated. See the ERROR macro below. </p>
+<p>The system broke its contract to users in some way or some major assumption was violated. </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="adc065d555e423169e3f74efa3f13b8e5abcea37a7b9592bfb5b86386937ddfb71"></a><!-- doxytag: member="WARNING" ref="adc065d555e423169e3f74efa3f13b8e5abcea37a7b9592bfb5b86386937ddfb71" args="" -->WARNING</em>&nbsp;</td><td>
 <p>Messages at the WARNING level indicate that, although something went wrong or something unexpected happened, it was transient and recoverable. </p>
-<p>See WARNING macro below. </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="adc065d555e423169e3f74efa3f13b8e5a6038e5887d28d4c66e7da74e206046b1"></a><!-- doxytag: member="NOTICE" ref="adc065d555e423169e3f74efa3f13b8e5a6038e5887d28d4c66e7da74e206046b1" args="" -->NOTICE</em>&nbsp;</td><td>
 <p>A system message that might be useful for administrators and developers. </p>
-<p>See NOTICE macro below. </p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="adc065d555e423169e3f74efa3f13b8e5a09d470c772e8f8487c2092a1e1495a63"></a><!-- doxytag: member="VERBOSE" ref="adc065d555e423169e3f74efa3f13b8e5a09d470c772e8f8487c2092a1e1495a63" args="" -->VERBOSE</em>&nbsp;</td><td>
 <p>Messages at the VERBOSE level don't necessarily indicate that anything went wrong, but they could be useful in diagnosing problems. </p>
-<p>See VERBOSE macro below. </p>
 </td></tr>
 </table>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Debug_8h_source.html#l00062">62</a> of file <a class="el" href="Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00034">34</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>
@@ -202,6 +207,7 @@ Variables</h2></td></tr>
 <div class="memdoc">
 
 <p>Change the file on which debug log messages are written. </p>
+<p>Note that if a handler is set with setLogHandler, this file will not be used. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">newFile</td><td>Handle to open file where log messages will be written. </td></tr>
@@ -210,7 +216,36 @@ Variables</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Handle to previous log file (initialized to stderr on process start). </dd></dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00166">166</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00244">244</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae229e11e9f1413bc265c12f8fe39cf6f"></a><!-- doxytag: member="LogCabin::Core::Debug::setLogHandler" ref="ae229e11e9f1413bc265c12f8fe39cf6f" args="(std::function&lt; void(DebugMessage)&gt; newHandler)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt; void(<a class="el" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html">DebugMessage</a>)&gt; <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae229e11e9f1413bc265c12f8fe39cf6f">LogCabin::Core::Debug::setLogHandler</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(DebugMessage)&gt;&#160;</td>
+          <td class="paramname"><em>newHandler</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Accept log messages on the given callback instead of writing them to a file. </p>
+<p>Call this again with an empty std::function() to clear it. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newHandler</td><td>Callback invoked once per log message, possibly concurrently. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Previous callback (initialized to empty std::function on process start). </dd></dl>
+
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00253">253</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -232,7 +267,7 @@ Variables</h2></td></tr>
 <p>Specify the log messages that should be displayed for each filename. </p>
 <p>This first component is a pattern; the second is a log level. A filename is matched against each pattern in order: if the filename starts with or ends with the pattern, the corresponding log level defines the most verbose messages that are to be displayed for the file. If a filename matches no pattern, its log level will default to NOTICE. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00175">175</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00262">262</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -250,11 +285,10 @@ Variables</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Specify the log messages that should be displayed for each filename. </p>
-<p>This first component is a pattern; the second is a log level. A filename is matched against each pattern in order: if the filename starts with or ends with the pattern, the corresponding log level defines the most verbose messages that are to be displayed for the file. If a filename matches no pattern, its log level will default to NOTICE. </p>
-. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00184">184</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>See setLogPolicy. </p>
+
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00271">271</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -284,9 +318,9 @@ Variables</h2></td></tr>
 <div class="memdoc">
 
 <p>Output a LogLevel to a stream. </p>
-<p>This improves gtest error messages. </p>
+<p>Having this improves gtest error messages. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00192">192</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00279">279</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -316,7 +350,7 @@ Variables</h2></td></tr>
 <div class="memdoc">
 
 <p>Return whether the current logging configuration includes messages of the given level for the given filename. </p>
-<p>This is normally called by <a class="el" href="Debug_8h.html#a2d871a9bb0ec3ed46f6450ab2c20a18e" title="Unconditionally log the given message to stderr.">LOG()</a>. </p>
+<p>This is normally called by <a class="el" href="Core_2Debug_8h.html#a2d871a9bb0ec3ed46f6450ab2c20a18e" title="Unconditionally log the given message to stderr.">LOG()</a>. </p>
 <dl class="warning"><dt><b>Warning:</b></dt><dd>fileName must be a string literal! </dd></dl>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
@@ -326,7 +360,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00199">199</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00286">286</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -380,7 +414,7 @@ Variables</h2></td></tr>
 <div class="memdoc">
 
 <p>Unconditionally log the given message to stderr. </p>
-<p>This is normally called by <a class="el" href="Debug_8h.html#a2d871a9bb0ec3ed46f6450ab2c20a18e" title="Unconditionally log the given message to stderr.">LOG()</a>. </p>
+<p>This is normally called by <a class="el" href="Core_2Debug_8h.html#a2d871a9bb0ec3ed46f6450ab2c20a18e" title="Unconditionally log the given message to stderr.">LOG()</a>. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">level</td><td>The level of importance of the message. </td></tr>
@@ -393,7 +427,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00214">214</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00301">301</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -412,7 +446,7 @@ Variables</h2></td></tr>
 <p>A short name to be used in log messages to identify this process. </p>
 <p>This defaults to the UNIX process ID. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00035">35</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00106">106</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>

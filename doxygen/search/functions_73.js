@@ -29,6 +29,7 @@ var searchData=
   ['setevents',['setEvents',['../classLogCabin_1_1Event_1_1File_1_1Monitor.html#a37ab4c08d28e255cb465060007163083',1,'LogCabin::Event::File::Monitor']]],
   ['setgcflag',['setGCFlag',['../namespaceLogCabin_1_1Server_1_1RaftConsensusInternal_1_1anonymous__namespace_02RaftConsensus_8cc_03.html#acfb4213b394e2e0181747be3fba62726',1,'LogCabin::Server::RaftConsensusInternal::anonymous_namespace{RaftConsensus.cc}']]],
   ['setlogfile',['setLogFile',['../namespaceLogCabin_1_1Core_1_1Debug.html#a221c605df65625a7bcb91990af0986d3',1,'LogCabin::Core::Debug']]],
+  ['setloghandler',['setLogHandler',['../namespaceLogCabin_1_1Core_1_1Debug.html#ae229e11e9f1413bc265c12f8fe39cf6f',1,'LogCabin::Core::Debug']]],
   ['setlogpolicy',['setLogPolicy',['../namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0',1,'LogCabin::Core::Debug::setLogPolicy(const std::vector&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;newPolicy)'],['../namespaceLogCabin_1_1Core_1_1Debug.html#af6b81483d297545dd73523bc1243b3a8',1,'LogCabin::Core::Debug::setLogPolicy(const std::initializer_list&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;newPolicy)']]],
   ['setname',['setName',['../namespaceLogCabin_1_1Core_1_1ThreadId.html#a4dbe9da59e37b2a282c41984be0ebdcb',1,'LogCabin::Core::ThreadId']]],
   ['setsnapshot',['setSnapshot',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#a9f2af8ae5b725e85ec6bccd788538ab9',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],

@@ -142,7 +142,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00060"></a>00060 <span class="keywordtype">void</span>
 <a name="l00061"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a28a413785db2a27eb7be9a376de9caca">00061</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#a28a413785db2a27eb7be9a376de9caca" title="Fires when SIGUSR1 is received. Prints the stats to the log.">ServerStats::SignalHandler::handleSignalEvent</a>()
 <a name="l00062"></a>00062 {
-<a name="l00063"></a>00063     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Received %s: ServerStats:\n%s&quot;</span>, strsignal(signalNumber),
+<a name="l00063"></a>00063     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Received %s: ServerStats:\n%s&quot;</span>, strsignal(signalNumber),
 <a name="l00064"></a>00064            <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(serverStats.getCurrent()).c_str());
 <a name="l00065"></a>00065 }
 <a name="l00066"></a>00066 <span class="comment"></span>
@@ -162,7 +162,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00080"></a>00080 <span class="keywordtype">void</span>
 <a name="l00081"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#abb7c8179ddb03f00b42da7363477f0af">00081</a> <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#abb7c8179ddb03f00b42da7363477f0af" title="Fires when timer expires. Prints the stats to the log.">ServerStats::TimerHandler::handleTimerEvent</a>()
 <a name="l00082"></a>00082 {
-<a name="l00083"></a>00083     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Periodic dump of ServerStats:\n%s&quot;</span>,
+<a name="l00083"></a>00083     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Periodic dump of ServerStats:\n%s&quot;</span>,
 <a name="l00084"></a>00084            <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(serverStats.getCurrent()).c_str());
 <a name="l00085"></a>00085     <span class="keywordflow">if</span> (intervalNanos != 0)
 <a name="l00086"></a>00086         schedule(intervalNanos);

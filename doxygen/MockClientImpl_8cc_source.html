@@ -96,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
 <a name="l00015"></a>00015 <span class="comment"> */</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Core/Debug.h</a>&quot;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="Core_2Debug_8h.html">Core/Debug.h</a>&quot;</span>
 <a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="Core_2ProtoBuf_8h.html" title="Utilities for dealing with protocol buffers.">Core/ProtoBuf.h</a>&quot;</span>
 <a name="l00019"></a>00019 <span class="preprocessor">#include &quot;<a class="code" href="STLUtil_8h.html">Core/STLUtil.h</a>&quot;</span>
 <a name="l00020"></a>00020 <span class="preprocessor">#include &quot;<a class="code" href="MockClientImpl_8h.html">Client/MockClientImpl.h</a>&quot;</span>
@@ -135,7 +135,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00053"></a>00053   <span class="keyword">public</span>:
 <a name="l00054"></a><a class="code" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a4e17ae8375320cbe1d8f631ff27f37c9">00054</a>     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html" title="This class intercepts LeaderRPC calls from ClientImpl.">TreeLeaderRPC</a>(<a class="code" href="classLogCabin_1_1Client_1_1MockClientImpl.html" title="A mock implementation of the client library that operates against a temporary, local, in-memory implementation.">MockClientImpl</a>&amp; mockClientImpl)
 <a name="l00055"></a>00055         : mockClientImpl(mockClientImpl)
-<a name="l00056"></a>00056         , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>()
+<a name="l00056"></a>00056         , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>()
 <a name="l00057"></a>00057         , tree()
 <a name="l00058"></a>00058     {
 <a name="l00059"></a>00059     }
@@ -148,7 +148,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00066"></a>00066                 <span class="keyword">static_cast&lt;</span>PC::OpenSession::Response&amp;<span class="keyword">&gt;</span>(response);
 <a name="l00067"></a>00067             openSessionResponse.set_client_id(1);
 <a name="l00068"></a>00068         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (opCode == OpCode::READ_ONLY_TREE) {
-<a name="l00069"></a>00069             std::unique_lock&lt;std::recursive_mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>);
+<a name="l00069"></a>00069             std::unique_lock&lt;std::recursive_mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00070"></a>00070             PC::ReadOnlyTree::Request trequest;
 <a name="l00071"></a>00071             trequest.CopyFrom(request);
 <a name="l00072"></a>00072             <span class="keyword">auto</span>&amp; tresponse =
@@ -162,7 +162,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00080"></a>00080                     tree, trequest, tresponse);
 <a name="l00081"></a>00081             }
 <a name="l00082"></a>00082         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (opCode == OpCode::READ_WRITE_TREE) {
-<a name="l00083"></a>00083             std::unique_lock&lt;std::recursive_mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>);
+<a name="l00083"></a>00083             std::unique_lock&lt;std::recursive_mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00084"></a>00084             PC::ReadWriteTree::Request trequest;
 <a name="l00085"></a>00085             trequest.CopyFrom(request);
 <a name="l00086"></a>00086             <span class="keyword">auto</span>&amp; tresponse =
@@ -176,7 +176,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00094"></a>00094                     tree, trequest, tresponse);
 <a name="l00095"></a>00095             }
 <a name="l00096"></a>00096         } <span class="keywordflow">else</span> {
-<a name="l00097"></a>00097             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Unexpected request: %d %s&quot;</span>,
+<a name="l00097"></a>00097             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Unexpected request: %d %s&quot;</span>,
 <a name="l00098"></a>00098                   opCode,
 <a name="l00099"></a>00099                   <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(request).c_str());
 <a name="l00100"></a>00100         }

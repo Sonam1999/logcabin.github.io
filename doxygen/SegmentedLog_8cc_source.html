@@ -106,7 +106,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00024"></a>00024 
 <a name="l00025"></a>00025 <span class="preprocessor">#include &quot;build/Protocol/Raft.pb.h&quot;</span>
 <a name="l00026"></a>00026 <span class="preprocessor">#include &quot;<a class="code" href="Checksum_8h.html" title="Contains checksum utilities.">Core/Checksum.h</a>&quot;</span>
-<a name="l00027"></a>00027 <span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Core/Debug.h</a>&quot;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &quot;<a class="code" href="Core_2Debug_8h.html">Core/Debug.h</a>&quot;</span>
 <a name="l00028"></a>00028 <span class="preprocessor">#include &quot;<a class="code" href="Core_2ProtoBuf_8h.html" title="Utilities for dealing with protocol buffers.">Core/ProtoBuf.h</a>&quot;</span>
 <a name="l00029"></a>00029 <span class="preprocessor">#include &quot;<a class="code" href="StringUtil_8h.html">Core/StringUtil.h</a>&quot;</span>
 <a name="l00030"></a>00030 <span class="preprocessor">#include &quot;<a class="code" href="ThreadId_8h.html">Core/ThreadId.h</a>&quot;</span>
@@ -159,7 +159,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00077"></a>00077 
 <a name="l00078"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a16271ee544de5859188c1f9b61b50b88">00078</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a16271ee544de5859188c1f9b61b50b88" title="Constructor.">SegmentedLog::PreparedSegments::PreparedSegments</a>(uint64_t queueSize)
 <a name="l00079"></a>00079     : quietForUnitTests(false)
-<a name="l00080"></a>00080     , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>()
+<a name="l00080"></a>00080     , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>()
 <a name="l00081"></a>00081     , consumed()
 <a name="l00082"></a>00082     , produced()
 <a name="l00083"></a>00083     , exiting(false)
@@ -176,7 +176,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00094"></a>00094 <span class="keywordtype">void</span>
 <a name="l00095"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a5f162dd14c8c2015fcaf89136a005d7c">00095</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a5f162dd14c8c2015fcaf89136a005d7c" title="Do not block any more waiting threads, and return immediately.">SegmentedLog::PreparedSegments::exit</a>()
 <a name="l00096"></a>00096 {
-<a name="l00097"></a>00097     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>);
+<a name="l00097"></a>00097     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00098"></a>00098     exiting = <span class="keyword">true</span>;
 <a name="l00099"></a>00099     consumed.notify_all();
 <a name="l00100"></a>00100     produced.notify_all();
@@ -185,7 +185,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00103"></a>00103 <span class="keywordtype">void</span>
 <a name="l00104"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#abd71cd3d4a9c565daeece49bcba028c5">00104</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#abd71cd3d4a9c565daeece49bcba028c5" title="Ensure that future filenames will be larger than this one.">SegmentedLog::PreparedSegments::foundFile</a>(uint64_t fileId)
 <a name="l00105"></a>00105 {
-<a name="l00106"></a>00106     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>);
+<a name="l00106"></a>00106     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00107"></a>00107     <span class="keywordflow">if</span> (filenameCounter &lt; fileId)
 <a name="l00108"></a>00108         filenameCounter = fileId;
 <a name="l00109"></a>00109 }
@@ -193,7 +193,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00111"></a>00111 std::deque&lt;SegmentedLog::PreparedSegments::OpenSegment&gt;
 <a name="l00112"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a15760282a6b5028d7f614f3a927fa889">00112</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a15760282a6b5028d7f614f3a927fa889" title="Immediately return all currently prepared segments.">SegmentedLog::PreparedSegments::releaseAll</a>()
 <a name="l00113"></a>00113 {
-<a name="l00114"></a>00114     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>);
+<a name="l00114"></a>00114     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00115"></a>00115     std::deque&lt;OpenSegment&gt; ret;
 <a name="l00116"></a>00116     std::swap(openSegments, ret);
 <a name="l00117"></a>00117     <span class="keywordflow">return</span> ret;
@@ -202,7 +202,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00120"></a>00120 <span class="keywordtype">void</span>
 <a name="l00121"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#afd8a7596509da88d86ca924bf8a8988f">00121</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#afd8a7596509da88d86ca924bf8a8988f" title="Producers call this when they&#39;re done creating a new file.">SegmentedLog::PreparedSegments::submitOpenSegment</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#aec714ffb196312acf7cdd2a5867ddce2" title="The type of element that is queued in openSegments.">OpenSegment</a> segment)
 <a name="l00122"></a>00122 {
-<a name="l00123"></a>00123     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>);
+<a name="l00123"></a>00123     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00124"></a>00124     openSegments.push_back(std::move(segment));
 <a name="l00125"></a>00125     produced.notify_one();
 <a name="l00126"></a>00126 }
@@ -210,7 +210,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00128"></a>00128 uint64_t
 <a name="l00129"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a403047fd918948feff565db7a0e6c9d3">00129</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a403047fd918948feff565db7a0e6c9d3" title="Producers call this first to block until work becomes needed.">SegmentedLog::PreparedSegments::waitForDemand</a>()
 <a name="l00130"></a>00130 {
-<a name="l00131"></a>00131     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>);
+<a name="l00131"></a>00131     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00132"></a>00132     <span class="keywordflow">while</span> (!exiting) {
 <a name="l00133"></a>00133         <span class="keywordflow">if</span> (demanded &gt; 0) {
 <a name="l00134"></a>00134             --demanded;
@@ -225,18 +225,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00143"></a>00143 <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#aec714ffb196312acf7cdd2a5867ddce2" title="The type of element that is queued in openSegments.">SegmentedLog::PreparedSegments::OpenSegment</a>
 <a name="l00144"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#ac1ad3bdbede3bc25c6a755bbadae9b4e">00144</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#ac1ad3bdbede3bc25c6a755bbadae9b4e" title="Consumers call this when they need a prepared segment file.">SegmentedLog::PreparedSegments::waitForOpenSegment</a>()
 <a name="l00145"></a>00145 {
-<a name="l00146"></a>00146     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects #policy and #isLoggingCache.">mutex</a>);
+<a name="l00146"></a>00146     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00147"></a>00147     uint64_t numWaits = 0;
 <a name="l00148"></a>00148     <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
 <a name="l00149"></a>00149         <span class="keywordflow">if</span> (exiting) {
-<a name="l00150"></a>00150             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Exiting&quot;</span>);
+<a name="l00150"></a>00150             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Exiting&quot;</span>);
 <a name="l00151"></a>00151             <span class="keywordflow">throw</span> <a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html" title="The thread could not complete its task because it was asked to exit.">Core::Util::ThreadInterruptedException</a>();
 <a name="l00152"></a>00152         }
 <a name="l00153"></a>00153         <span class="keywordflow">if</span> (!openSegments.empty()) {
 <a name="l00154"></a>00154             <span class="keywordflow">break</span>;
 <a name="l00155"></a>00155         }
 <a name="l00156"></a>00156         <span class="keywordflow">if</span> (numWaits == 0 &amp;&amp; !quietForUnitTests) {
-<a name="l00157"></a>00157             <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Prepared segment not ready, having to wait on it. &quot;</span>
+<a name="l00157"></a>00157             <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Prepared segment not ready, having to wait on it. &quot;</span>
 <a name="l00158"></a>00158                     <span class="stringliteral">&quot;This is perfectly safe but bad for performance. &quot;</span>
 <a name="l00159"></a>00159                     <span class="stringliteral">&quot;Consider increasing storageOpenSegments in the config.&quot;</span>);
 <a name="l00160"></a>00160         }
@@ -244,7 +244,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00162"></a>00162         produced.wait(lockGuard);
 <a name="l00163"></a>00163     }
 <a name="l00164"></a>00164     <span class="keywordflow">if</span> (numWaits &gt; 0 &amp;&amp; !quietForUnitTests) {
-<a name="l00165"></a>00165         <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Done waiting: prepared segment now ready&quot;</span>);
+<a name="l00165"></a>00165         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Done waiting: prepared segment now ready&quot;</span>);
 <a name="l00166"></a>00166     }
 <a name="l00167"></a>00167     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#aec714ffb196312acf7cdd2a5867ddce2" title="The type of element that is queued in openSegments.">OpenSegment</a> r = std::move(openSegments.front());
 <a name="l00168"></a>00168     openSegments.pop_front();
@@ -282,7 +282,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00200"></a>00200                         op.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a9c4b95cc38515a6cf7eb3816b023a909">writeData</a>.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>(),
 <a name="l00201"></a>00201                         op.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a9c4b95cc38515a6cf7eb3816b023a909">writeData</a>.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>());
 <a name="l00202"></a>00202                 <span class="keywordflow">if</span> (written &lt; 0) {
-<a name="l00203"></a>00203                     <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Failed to write to fd %d: %s&quot;</span>,
+<a name="l00203"></a>00203                     <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Failed to write to fd %d: %s&quot;</span>,
 <a name="l00204"></a>00204                           op.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a66e52c154e31871ddd182a3cf22c0fac">fd</a>,
 <a name="l00205"></a>00205                           strerror(errno));
 <a name="l00206"></a>00206                 }
@@ -392,7 +392,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00310"></a>00310     } <span class="keywordflow">else</span> {
 <a name="l00311"></a>00311         <span class="comment">// Brand new servers won&#39;t have metadata, and that&#39;s ok.</span>
 <a name="l00312"></a>00312         <span class="keywordflow">if</span> (!segments.empty()) {
-<a name="l00313"></a>00313             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;No readable metadata file but found segments in %s&quot;</span>,
+<a name="l00313"></a>00313             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;No readable metadata file but found segments in %s&quot;</span>,
 <a name="l00314"></a>00314                   <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str());
 <a name="l00315"></a>00315         }
 <a name="l00316"></a>00316         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a407704019cb95cc426ec03e78d26071e" title="The metadata this class mintains.">metadata</a>.set_entries_start(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a>);
@@ -419,7 +419,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00337"></a>00337                                                        std::move(segment)});
 <a name="l00338"></a>00338             <span class="keywordflow">if</span> (!result.second) {
 <a name="l00339"></a>00339                 <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">Segment</a>&amp; other = result.first-&gt;second;
-<a name="l00340"></a>00340                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Two segments contain entry %lu: %s and %s&quot;</span>,
+<a name="l00340"></a>00340                 <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Two segments contain entry %lu: %s and %s&quot;</span>,
 <a name="l00341"></a>00341                       startIndex,
 <a name="l00342"></a>00342                       other.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
 <a name="l00343"></a>00343                       filename.c_str());
@@ -436,11 +436,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00354"></a>00354              ++it) {
 <a name="l00355"></a>00355             <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">Segment</a>&amp; segment = it-&gt;second;
 <a name="l00356"></a>00356             <span class="keywordflow">if</span> (nextIndex &lt; segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>) {
-<a name="l00357"></a>00357                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Did not find segment containing entries &quot;</span>
+<a name="l00357"></a>00357                 <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Did not find segment containing entries &quot;</span>
 <a name="l00358"></a>00358                       <span class="stringliteral">&quot;%lu to %lu (inclusive)&quot;</span>,
 <a name="l00359"></a>00359                       nextIndex, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> - 1);
 <a name="l00360"></a>00360             } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> &lt; nextIndex) {
-<a name="l00361"></a>00361                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Segment %s contains duplicate entries &quot;</span>
+<a name="l00361"></a>00361                 <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Segment %s contains duplicate entries &quot;</span>
 <a name="l00362"></a>00362                       <span class="stringliteral">&quot;%lu to %lu (inclusive)&quot;</span>,
 <a name="l00363"></a>00363                       segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
 <a name="l00364"></a>00364                       segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>,
@@ -466,7 +466,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00384"></a>00384 
 <a name="l00385"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3665b28b42b618a022ab40ed88969345">00385</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3665b28b42b618a022ab40ed88969345">SegmentedLog::~SegmentedLog</a>()
 <a name="l00386"></a>00386 {
-<a name="l00387"></a>00387     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Closing open segment&quot;</span>);
+<a name="l00387"></a>00387     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Closing open segment&quot;</span>);
 <a name="l00388"></a>00388     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a09027cf6c7aa1869f1a24837b4494eb7" title="Close the open segment if one is open.">closeSegment</a>();
 <a name="l00389"></a>00389 
 <a name="l00390"></a>00390     <span class="comment">// Stop preparing segments and delete the extras.</span>
@@ -476,7 +476,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00394"></a>00394     <span class="keyword">auto</span> prepared = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a82ace8371782747c371bdadb29d41741" title="See PreparedSegments.">preparedSegments</a>.<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a15760282a6b5028d7f614f3a927fa889" title="Immediately return all currently prepared segments.">releaseAll</a>();
 <a name="l00395"></a>00395     <span class="keywordflow">while</span> (!prepared.empty()) {
 <a name="l00396"></a>00396         std::string filename = prepared.front().first;
-<a name="l00397"></a>00397         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing unused open segment: %s&quot;</span>,
+<a name="l00397"></a>00397         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing unused open segment: %s&quot;</span>,
 <a name="l00398"></a>00398                filename.c_str());
 <a name="l00399"></a>00399         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a8cac431f693d92baf63191b2b86e0357" title="Remove the file relative to an open directory.">FS::removeFile</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, filename);
 <a name="l00400"></a>00400         prepared.pop_front();
@@ -508,7 +508,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00426"></a>00426         <span class="comment">// but queues up the operations into &#39;currentSync&#39;.</span>
 <a name="l00427"></a>00427         <span class="keywordflow">if</span> (openSegment-&gt;<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file.">bytes</a> &gt; 0 &amp;&amp;
 <a name="l00428"></a>00428             openSegment-&gt;<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file.">bytes</a> + buf.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>() &gt; <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad45c8da67feb145bf972bbc7c1f15136" title="The maximum size in bytes for newly written segments.">MAX_SEGMENT_SIZE</a>) {
-<a name="l00429"></a>00429             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Rolling over to new head segment: trying to append new &quot;</span>
+<a name="l00429"></a>00429             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Rolling over to new head segment: trying to append new &quot;</span>
 <a name="l00430"></a>00430                    <span class="stringliteral">&quot;entry that is %lu bytes long, but open segment is already &quot;</span>
 <a name="l00431"></a>00431                    <span class="stringliteral">&quot;%lu of %lu bytes large&quot;</span>,
 <a name="l00432"></a>00432                    buf.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>(),
@@ -527,7 +527,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00445"></a>00445 
 <a name="l00446"></a>00446             <span class="comment">// Rename the file.</span>
 <a name="l00447"></a>00447             std::string newFilename = openSegment-&gt;<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#afda58081b67d779178aef03e48d05503" title="Return a filename of the right form for a closed segment.">makeClosedFilename</a>();
-<a name="l00448"></a>00448             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Closing full segment (was %s, renaming to %s)&quot;</span>,
+<a name="l00448"></a>00448             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Closing full segment (was %s, renaming to %s)&quot;</span>,
 <a name="l00449"></a>00449                    openSegment-&gt;<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
 <a name="l00450"></a>00450                    newFilename.c_str());
 <a name="l00451"></a>00451             <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a18dac48574a56e1edc5f6702bdd08f64" title="Accumulates deferred filesystem operations for append() and truncatePrefix().">currentSync</a>-&gt;ops.emplace_back(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092" title="The open file descriptor, or -1 otherwise.">fd</a>, <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a2dc118e94239a6a5cb97476357f35361ac6f87ac7142a8bc2da03b4843d02a29b">Sync::Op::RENAME</a>);
@@ -547,7 +547,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00465"></a>00465         }
 <a name="l00466"></a>00466 
 <a name="l00467"></a>00467         <span class="keywordflow">if</span> (buf.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>() &gt; <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad45c8da67feb145bf972bbc7c1f15136" title="The maximum size in bytes for newly written segments.">MAX_SEGMENT_SIZE</a>) {
-<a name="l00468"></a>00468             <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Trying to append an entry of %lu bytes when the maximum &quot;</span>
+<a name="l00468"></a>00468             <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Trying to append an entry of %lu bytes when the maximum &quot;</span>
 <a name="l00469"></a>00469                     <span class="stringliteral">&quot;segment size is %lu bytes. Placing this entry in its own &quot;</span>
 <a name="l00470"></a>00470                     <span class="stringliteral">&quot;segment. Consider adjusting &#39;storageSegmentBytes&#39; in the &quot;</span>
 <a name="l00471"></a>00471                     <span class="stringliteral">&quot;config.&quot;</span>,
@@ -574,7 +574,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00492"></a>00492 <span class="keyword"></span>{
 <a name="l00493"></a>00493     <span class="keywordflow">if</span> (index &lt; <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad729715c9512554255bb0670f6c385a2" title="Get the index of the first entry in the log (whether or not this entry exists).">getLogStartIndex</a>() ||
 <a name="l00494"></a>00494         index &gt; <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a45c575000cfd56c3d77d6efa7a6286de" title="Get the index of the most recent entry in the log.">getLastLogIndex</a>()) {
-<a name="l00495"></a>00495         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Attempted to access entry %lu outside of log &quot;</span>
+<a name="l00495"></a>00495         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Attempted to access entry %lu outside of log &quot;</span>
 <a name="l00496"></a>00496               <span class="stringliteral">&quot;(start index is %lu, last index is %lu)&quot;</span>,
 <a name="l00497"></a>00497               index, <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad729715c9512554255bb0670f6c385a2" title="Get the index of the first entry in the log (whether or not this entry exists).">getLogStartIndex</a>(), <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a45c575000cfd56c3d77d6efa7a6286de" title="Get the index of the most recent entry in the log.">getLastLogIndex</a>());
 <a name="l00498"></a>00498     }
@@ -625,7 +625,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00543"></a>00543     <span class="keywordflow">if</span> (newStartIndex &lt;= <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a>)
 <a name="l00544"></a>00544         <span class="keywordflow">return</span>;
 <a name="l00545"></a>00545 
-<a name="l00546"></a>00546     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Truncating log to start at index %lu (was %lu)&quot;</span>,
+<a name="l00546"></a>00546     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Truncating log to start at index %lu (was %lu)&quot;</span>,
 <a name="l00547"></a>00547            newStartIndex, <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a>);
 <a name="l00548"></a>00548     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a> = newStartIndex;
 <a name="l00549"></a>00549     <span class="comment">// update metadata before removing files in case of interruption</span>
@@ -635,7 +635,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00553"></a>00553         <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">Segment</a>&amp; segment = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.begin()-&gt;second;
 <a name="l00554"></a>00554         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a> &lt;= segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a>)
 <a name="l00555"></a>00555             <span class="keywordflow">break</span>;
-<a name="l00556"></a>00556         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Deleting unneeded segment %s (its end index is %lu)&quot;</span>,
+<a name="l00556"></a>00556         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Deleting unneeded segment %s (its end index is %lu)&quot;</span>,
 <a name="l00557"></a>00557                segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
 <a name="l00558"></a>00558                segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a>);
 <a name="l00559"></a>00559         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a18dac48574a56e1edc5f6702bdd08f64" title="Accumulates deferred filesystem operations for append() and truncatePrefix().">currentSync</a>-&gt;ops.emplace_back(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092" title="The open file descriptor, or -1 otherwise.">fd</a>, <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a2dc118e94239a6a5cb97476357f35361abb2ae8d9275409296ab025abdf235623">Sync::Op::UNLINKAT</a>);
@@ -662,7 +662,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00580"></a>00580     <span class="keywordflow">if</span> (newEndIndex &gt;= <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a45c575000cfd56c3d77d6efa7a6286de" title="Get the index of the most recent entry in the log.">getLastLogIndex</a>())
 <a name="l00581"></a>00581         <span class="keywordflow">return</span>;
 <a name="l00582"></a>00582 
-<a name="l00583"></a>00583     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Truncating log to end at index %lu (was %lu)&quot;</span>,
+<a name="l00583"></a>00583     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Truncating log to end at index %lu (was %lu)&quot;</span>,
 <a name="l00584"></a>00584            newEndIndex, <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a45c575000cfd56c3d77d6efa7a6286de" title="Get the index of the most recent entry in the log.">getLastLogIndex</a>());
 <a name="l00585"></a>00585     { <span class="comment">// Check if the open segment has some entries we need. If so,</span>
 <a name="l00586"></a>00586       <span class="comment">// just truncate that segment, open a new one, and return.</span>
@@ -697,7 +697,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00615"></a>00615         <span class="keywordflow">if</span> (segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> == newEndIndex)
 <a name="l00616"></a>00616             <span class="keywordflow">break</span>;
 <a name="l00617"></a>00617         <span class="keywordflow">if</span> (segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> &gt; newEndIndex) { <span class="comment">// remove segment</span>
-<a name="l00618"></a>00618             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing closed segment %s&quot;</span>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str());
+<a name="l00618"></a>00618             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing closed segment %s&quot;</span>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str());
 <a name="l00619"></a>00619             <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a8cac431f693d92baf63191b2b86e0357" title="Remove the file relative to an open directory.">FS::removeFile</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>);
 <a name="l00620"></a>00620             <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>);
 <a name="l00621"></a>00621             <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ae1ab06082b556d977f44610e9fb50693" title="The total number of bytes occupied by the closed segments on disk.">totalClosedSegmentBytes</a> -= segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file.">bytes</a>;
@@ -715,7 +715,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00633"></a>00633 
 <a name="l00634"></a>00634             <span class="comment">// Rename the file</span>
 <a name="l00635"></a>00635             std::string newFilename = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#afda58081b67d779178aef03e48d05503" title="Return a filename of the right form for a closed segment.">makeClosedFilename</a>();
-<a name="l00636"></a>00636             <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Truncating closed segment (was %s, renaming to %s)&quot;</span>,
+<a name="l00636"></a>00636             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Truncating closed segment (was %s, renaming to %s)&quot;</span>,
 <a name="l00637"></a>00637                    segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
 <a name="l00638"></a>00638                    newFilename.c_str());
 <a name="l00639"></a>00639             <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#ab11e8bf05a2bedd53c76d56c812d3148" title="Rename a file.">FS::rename</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>,
@@ -752,7 +752,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00670"></a>00670         filename = <span class="stringliteral">&quot;metadata2&quot;</span>;
 <a name="l00671"></a>00671     }
 <a name="l00672"></a>00672 
-<a name="l00673"></a>00673     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Writing new storage metadata (version %lu) to %s&quot;</span>,
+<a name="l00673"></a>00673     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Writing new storage metadata (version %lu) to %s&quot;</span>,
 <a name="l00674"></a>00674            <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a407704019cb95cc426ec03e78d26071e" title="The metadata this class mintains.">metadata</a>.version(),
 <a name="l00675"></a>00675            filename.c_str());
 <a name="l00676"></a>00676     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FS::File</a> file = <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1efbe54769377f1a078a38ae9513a260" title="Open a file.">FS::openFile</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, filename, O_CREAT|O_WRONLY|O_TRUNC);
@@ -761,7 +761,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00679"></a>00679                                 record.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>(),
 <a name="l00680"></a>00680                                 record.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>());
 <a name="l00681"></a>00681     <span class="keywordflow">if</span> (written == -1) {
-<a name="l00682"></a>00682         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Failed to write to %s: %s&quot;</span>,
+<a name="l00682"></a>00682         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Failed to write to %s: %s&quot;</span>,
 <a name="l00683"></a>00683               file.path.c_str(), strerror(errno));
 <a name="l00684"></a>00684     }
 <a name="l00685"></a>00685     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(file);
@@ -831,7 +831,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00749"></a>00749         }
 <a name="l00750"></a>00750 
 <a name="l00751"></a>00751         <span class="comment">// Neither</span>
-<a name="l00752"></a>00752         <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;%s doesn&#39;t look like a valid segment filename (from %s)&quot;</span>,
+<a name="l00752"></a>00752         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;%s doesn&#39;t look like a valid segment filename (from %s)&quot;</span>,
 <a name="l00753"></a>00753                 filename.c_str(),
 <a name="l00754"></a>00754                 (<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a> + <span class="stringliteral">&quot;/&quot;</span> + filename).c_str());
 <a name="l00755"></a>00755     }
@@ -855,17 +855,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00773"></a>00773     }
 <a name="l00774"></a>00774     <span class="keywordflow">if</span> (error.empty()) {
 <a name="l00775"></a>00775         <span class="keywordflow">if</span> (metadata.format_version() &gt; 1) {
-<a name="l00776"></a>00776             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The format version found in %s is %lu but this code &quot;</span>
+<a name="l00776"></a>00776             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The format version found in %s is %lu but this code &quot;</span>
 <a name="l00777"></a>00777                   <span class="stringliteral">&quot;only understands version 1&quot;</span>,
 <a name="l00778"></a>00778                   filename.c_str(),
 <a name="l00779"></a>00779                   metadata.format_version());
 <a name="l00780"></a>00780         }
-<a name="l00781"></a>00781         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Read metadata version %lu from %s&quot;</span>,
+<a name="l00781"></a>00781         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Read metadata version %lu from %s&quot;</span>,
 <a name="l00782"></a>00782                metadata.version(), filename.c_str());
 <a name="l00783"></a>00783         <span class="keywordflow">return</span> <span class="keyword">true</span>;
 <a name="l00784"></a>00784     } <span class="keywordflow">else</span> {
 <a name="l00785"></a>00785         <span class="keywordflow">if</span> (!quiet) {
-<a name="l00786"></a>00786             <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Error reading metadata from %s: %s&quot;</span>,
+<a name="l00786"></a>00786             <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Error reading metadata from %s: %s&quot;</span>,
 <a name="l00787"></a>00787                     filename.c_str(), error.c_str());
 <a name="l00788"></a>00788         }
 <a name="l00789"></a>00789         <span class="keywordflow">return</span> <span class="keyword">false</span>;
@@ -880,7 +880,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00798"></a>00798     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html" title="Provides random access to a file.">FS::FileContents</a> reader(file);
 <a name="l00799"></a>00799     uint64_t offset = 0;
 <a name="l00800"></a>00800     <span class="keywordflow">if</span> (segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> &lt; logStartIndex) {
-<a name="l00801"></a>00801         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing closed segment whose entries are no longer &quot;</span>
+<a name="l00801"></a>00801         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing closed segment whose entries are no longer &quot;</span>
 <a name="l00802"></a>00802                <span class="stringliteral">&quot;needed (last index is %lu but log start index is %lu): %s&quot;</span>,
 <a name="l00803"></a>00803                segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a>,
 <a name="l00804"></a>00804                logStartIndex,
@@ -901,7 +901,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00819"></a>00819                                       &amp;segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry);
 <a name="l00820"></a>00820         }
 <a name="l00821"></a>00821         <span class="keywordflow">if</span> (!error.empty()) {
-<a name="l00822"></a>00822             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not read entry %lu in log segment %s &quot;</span>
+<a name="l00822"></a>00822             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not read entry %lu in log segment %s &quot;</span>
 <a name="l00823"></a>00823                   <span class="stringliteral">&quot;(offset %lu bytes). This indicates the file was &quot;</span>
 <a name="l00824"></a>00824                   <span class="stringliteral">&quot;somehow corrupted. Error was: %s&quot;</span>,
 <a name="l00825"></a>00825                   index,
@@ -911,7 +911,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00829"></a>00829         }
 <a name="l00830"></a>00830     }
 <a name="l00831"></a>00831     <span class="keywordflow">if</span> (offset &lt; reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>()) {
-<a name="l00832"></a>00832         <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Found an extra %lu bytes at the end of closed segment &quot;</span>
+<a name="l00832"></a>00832         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Found an extra %lu bytes at the end of closed segment &quot;</span>
 <a name="l00833"></a>00833                 <span class="stringliteral">&quot;%s. This can happen if the server crashed while &quot;</span>
 <a name="l00834"></a>00834                 <span class="stringliteral">&quot;truncating the segment. Truncating these now.&quot;</span>,
 <a name="l00835"></a>00835                 reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>() - offset,
@@ -945,7 +945,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00863"></a>00863             uint64_t remainingBytes = reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>() - offset;
 <a name="l00864"></a>00864             <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SegmentedLog_8cc_03.html#ae57e24c4edde24702aadd043fdd37f22" title="Return true if all the bytes in range [start, start + length) are zero.">isAllZeros</a>(reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a9d72e8e623b3b64feac1c58079bad1c5" title="Get a pointer to a region of the file.">get</a>(offset, remainingBytes),
 <a name="l00865"></a>00865                            remainingBytes)) {
-<a name="l00866"></a>00866                 <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Truncating %lu zero bytes at the end of log &quot;</span>
+<a name="l00866"></a>00866                 <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Truncating %lu zero bytes at the end of log &quot;</span>
 <a name="l00867"></a>00867                         <span class="stringliteral">&quot;segment %s (%lu bytes into the segment, &quot;</span>
 <a name="l00868"></a>00868                         <span class="stringliteral">&quot;following  entry %lu). This is most likely &quot;</span>
 <a name="l00869"></a>00869                         <span class="stringliteral">&quot;because the server shutdown uncleanly.&quot;</span>,
@@ -955,7 +955,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00873"></a>00873                         lastIndex);
 <a name="l00874"></a>00874             } <span class="keywordflow">else</span> {
 <a name="l00875"></a>00875                 <span class="comment">// TODO(ongaro): do we want to save these bytes somewhere?</span>
-<a name="l00876"></a>00876                 <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Could not read entry in log segment %s &quot;</span>
+<a name="l00876"></a>00876                 <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Could not read entry in log segment %s &quot;</span>
 <a name="l00877"></a>00877                         <span class="stringliteral">&quot;(%lu bytes into the segment, following &quot;</span>
 <a name="l00878"></a>00878                         <span class="stringliteral">&quot;entry %lu), probably because it was being &quot;</span>
 <a name="l00879"></a>00879                         <span class="stringliteral">&quot;written when the server crashed. Discarding the &quot;</span>
@@ -974,10 +974,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00892"></a>00892     }
 <a name="l00893"></a>00893     <span class="keywordtype">bool</span> <span class="keyword">remove</span> = <span class="keyword">false</span>;
 <a name="l00894"></a>00894     <span class="keywordflow">if</span> (segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.empty()) {
-<a name="l00895"></a>00895         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing empty segment: %s&quot;</span>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str());
+<a name="l00895"></a>00895         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing empty segment: %s&quot;</span>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str());
 <a name="l00896"></a>00896         <span class="keyword">remove</span> = <span class="keyword">true</span>;
 <a name="l00897"></a>00897     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry.index() &lt; <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a>) {
-<a name="l00898"></a>00898         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing open segment whose entries are no longer &quot;</span>
+<a name="l00898"></a>00898         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing open segment whose entries are no longer &quot;</span>
 <a name="l00899"></a>00899                <span class="stringliteral">&quot;needed (last index is %lu but log start index is %lu): %s&quot;</span>,
 <a name="l00900"></a>00900                segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry.index(),
 <a name="l00901"></a>00901                <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a>,
@@ -995,7 +995,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00913"></a>00913         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.front().entry.index();
 <a name="l00914"></a>00914         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry.index();
 <a name="l00915"></a>00915         std::string newFilename = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#afda58081b67d779178aef03e48d05503" title="Return a filename of the right form for a closed segment.">makeClosedFilename</a>();
-<a name="l00916"></a>00916         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Closing open segment %s, renaming to %s&quot;</span>,
+<a name="l00916"></a>00916         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Closing open segment %s, renaming to %s&quot;</span>,
 <a name="l00917"></a>00917                 segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
 <a name="l00918"></a>00918                 newFilename.c_str());
 <a name="l00919"></a>00919         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#ab11e8bf05a2bedd53c76d56c812d3148" title="Rename a file.">FS::rename</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>,
@@ -1067,7 +1067,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00985"></a>00985     <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">Segment</a>&amp; openSegment = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a2ff5aade1f854285b605fcefbe8d2a13" title="Return a reference to the current open segment (the one that new writes should go into)...">getOpenSegment</a>();
 <a name="l00986"></a>00986     <span class="keywordflow">if</span> (openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> &gt; openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a>) {
 <a name="l00987"></a>00987         <span class="comment">// Segment is empty; just remove it.</span>
-<a name="l00988"></a>00988         <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing empty open segment (start index %lu): %s&quot;</span>,
+<a name="l00988"></a>00988         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing empty open segment (start index %lu): %s&quot;</span>,
 <a name="l00989"></a>00989                openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>,
 <a name="l00990"></a>00990                openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str());
 <a name="l00991"></a>00991         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#abcc14d47d566079ecc536ca5c064d99a" title="Close the file.">close</a>();
@@ -1086,7 +1086,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01004"></a>01004 
 <a name="l01005"></a>01005     <span class="comment">// Rename the file.</span>
 <a name="l01006"></a>01006     std::string newFilename = openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#afda58081b67d779178aef03e48d05503" title="Return a filename of the right form for a closed segment.">makeClosedFilename</a>();
-<a name="l01007"></a>01007     <a class="code" href="Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Closing segment (was %s, renaming to %s)&quot;</span>,
+<a name="l01007"></a>01007     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Closing segment (was %s, renaming to %s)&quot;</span>,
 <a name="l01008"></a>01008            openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
 <a name="l01009"></a>01009            newFilename.c_str());
 <a name="l01010"></a>01010     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#ab11e8bf05a2bedd53c76d56c812d3148" title="Rename a file.">FS::rename</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>,
@@ -1261,7 +1261,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01179"></a>01179         <span class="keywordflow">try</span> {
 <a name="l01180"></a>01180             fileId = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a82ace8371782747c371bdadb29d41741" title="See PreparedSegments.">preparedSegments</a>.<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a403047fd918948feff565db7a0e6c9d3" title="Producers call this first to block until work becomes needed.">waitForDemand</a>();
 <a name="l01181"></a>01181         } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html" title="The thread could not complete its task because it was asked to exit.">Core::Util::ThreadInterruptedException</a>&amp; e) {
-<a name="l01182"></a>01182             <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Exiting&quot;</span>);
+<a name="l01182"></a>01182             <a class="code" href="Core_2Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Exiting&quot;</span>);
 <a name="l01183"></a>01183             <span class="keywordflow">break</span>;
 <a name="l01184"></a>01184         }
 <a name="l01185"></a>01185         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a82ace8371782747c371bdadb29d41741" title="See PreparedSegments.">preparedSegments</a>.<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#afd8a7596509da88d86ca924bf8a8988f" title="Producers call this when they&#39;re done creating a new file.">submitOpenSegment</a>(

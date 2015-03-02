@@ -103,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00021"></a>00021 <span class="preprocessor">#include &lt;sys/types.h&gt;</span>
 <a name="l00022"></a>00022 <span class="preprocessor">#include &lt;unistd.h&gt;</span>
 <a name="l00023"></a>00023 
-<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Core/Debug.h</a>&quot;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="Core_2Debug_8h.html">Core/Debug.h</a>&quot;</span>
 <a name="l00025"></a>00025 <span class="preprocessor">#include &quot;<a class="code" href="Loop_8h.html">Event/Loop.h</a>&quot;</span>
 <a name="l00026"></a>00026 <span class="preprocessor">#include &quot;<a class="code" href="Common_8h.html" title="This file contains declarations useful to all LogCabin RPCs.">Protocol/Common.h</a>&quot;</span>
 <a name="l00027"></a>00027 <span class="preprocessor">#include &quot;<a class="code" href="Address_8h.html">RPC/Address.h</a>&quot;</span>
@@ -132,12 +132,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00050"></a>00050     <span class="keywordflow">if</span> (messageId == <a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a">Protocol::Common::PING_MESSAGE_ID</a>) { <span class="comment">// ping request</span>
 <a name="l00051"></a>00051         std::shared_ptr&lt;SocketWithHandler&gt; socketRef = <span class="keyword">self</span>.lock();
 <a name="l00052"></a>00052         <span class="keywordflow">if</span> (socketRef) { <span class="comment">// expect so, since we&#39;re receiving messages</span>
-<a name="l00053"></a>00053             <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Responding to ping&quot;</span>);
+<a name="l00053"></a>00053             <a class="code" href="Core_2Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Responding to ping&quot;</span>);
 <a name="l00054"></a>00054             socketRef-&gt;monitor.sendMessage(<a class="code" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a">Protocol::Common::PING_MESSAGE_ID</a>,
 <a name="l00055"></a>00055                                            <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>());
 <a name="l00056"></a>00056         }
 <a name="l00057"></a>00057     } <span class="keywordflow">else</span> { <span class="comment">// normal RPC request</span>
-<a name="l00058"></a>00058         <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Handling RPC&quot;</span>);
+<a name="l00058"></a>00058         <a class="code" href="Core_2Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Handling RPC&quot;</span>);
 <a name="l00059"></a>00059         <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a> rpc(<span class="keyword">self</span>, messageId, std::move(message));
 <a name="l00060"></a>00060         server-&gt;rpcHandler.handleRPC(std::move(rpc));
 <a name="l00061"></a>00061     }
@@ -146,7 +146,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00064"></a>00064 <span class="keywordtype">void</span>
 <a name="l00065"></a><a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#af50b59a7b36db295a48b9b13e7316dd5">00065</a> <a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#af50b59a7b36db295a48b9b13e7316dd5" title="This method is overridden by a subclass and invoked when the socket has been disconnected and will be...">OpaqueServer::MessageSocketHandler::handleDisconnect</a>()
 <a name="l00066"></a>00066 {
-<a name="l00067"></a>00067     <a class="code" href="Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Disconnected from client&quot;</span>);
+<a name="l00067"></a>00067     <a class="code" href="Core_2Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Disconnected from client&quot;</span>);
 <a name="l00068"></a>00068     std::shared_ptr&lt;SocketWithHandler&gt; socketRef = <span class="keyword">self</span>.lock();
 <a name="l00069"></a>00069     <span class="keywordflow">if</span> (server != NULL &amp;&amp; socketRef) {
 <a name="l00070"></a>00070         <span class="comment">// This drops the reference count on the socket. It may cause the</span>
@@ -200,7 +200,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00118"></a>00118 {
 <a name="l00119"></a>00119     <span class="keywordtype">int</span> clientfd = accept4(fd, NULL, NULL, SOCK_NONBLOCK|SOCK_CLOEXEC);
 <a name="l00120"></a>00120     <span class="keywordflow">if</span> (clientfd &lt; 0) {
-<a name="l00121"></a>00121         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not accept connection on fd %d: %s&quot;</span>,
+<a name="l00121"></a>00121         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not accept connection on fd %d: %s&quot;</span>,
 <a name="l00122"></a>00122               fd, strerror(errno));
 <a name="l00123"></a>00123     }
 <a name="l00124"></a>00124 
@@ -271,13 +271,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00189"></a>00189 
 <a name="l00190"></a>00190     <span class="keywordtype">int</span> fd = socket(AF_INET, SOCK_STREAM|SOCK_CLOEXEC, 0);
 <a name="l00191"></a>00191     <span class="keywordflow">if</span> (fd &lt; 0)
-<a name="l00192"></a>00192         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not create new TCP socket&quot;</span>);
+<a name="l00192"></a>00192         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not create new TCP socket&quot;</span>);
 <a name="l00193"></a>00193 
 <a name="l00194"></a>00194     <span class="keywordtype">int</span> flag = 1;
 <a name="l00195"></a>00195     <span class="keywordtype">int</span> r = setsockopt(fd, SOL_SOCKET, SO_REUSEADDR,
 <a name="l00196"></a>00196                        &amp;flag, <span class="keyword">sizeof</span>(flag));
 <a name="l00197"></a>00197     <span class="keywordflow">if</span> (r &lt; 0) {
-<a name="l00198"></a>00198         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not set SO_REUSEADDR on socket: %s&quot;</span>,
+<a name="l00198"></a>00198         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not set SO_REUSEADDR on socket: %s&quot;</span>,
 <a name="l00199"></a>00199               strerror(errno));
 <a name="l00200"></a>00200     }
 <a name="l00201"></a>00201 
@@ -292,7 +292,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00210"></a>00210                    errno == EINVAL ? <span class="stringliteral">&quot; (is the port in use?)&quot;</span> : <span class="stringliteral">&quot;&quot;</span>);
 <a name="l00211"></a>00211         r = close(fd);
 <a name="l00212"></a>00212         <span class="keywordflow">if</span> (r != 0) {
-<a name="l00213"></a>00213             <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Could not close socket that failed to bind: %s&quot;</span>,
+<a name="l00213"></a>00213             <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Could not close socket that failed to bind: %s&quot;</span>,
 <a name="l00214"></a>00214                     strerror(errno));
 <a name="l00215"></a>00215         }
 <a name="l00216"></a>00216         <span class="keywordflow">return</span> msg;
@@ -301,7 +301,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00219"></a>00219     <span class="comment">// Why 128? No clue. It&#39;s what libevent was setting it to.</span>
 <a name="l00220"></a>00220     r = listen(fd, 128);
 <a name="l00221"></a>00221     <span class="keywordflow">if</span> (r != 0) {
-<a name="l00222"></a>00222         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not invoke listen() on address %s: %s&quot;</span>,
+<a name="l00222"></a>00222         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not invoke listen() on address %s: %s&quot;</span>,
 <a name="l00223"></a>00223               listenAddress.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#ab6a0a36311326ceb780aa3a9bad3ac83" title="Return a string describing this Address.">toString</a>().c_str(),
 <a name="l00224"></a>00224               strerror(errno));
 <a name="l00225"></a>00225     }

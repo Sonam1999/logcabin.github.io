@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: Storage/MemoryLog.cc File Reference</title>
+<title>LogCabin: include/LogCabin/Debug.h File Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -77,28 +77,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Storage/MemoryLog.cc File Reference</div>  </div>
+<div class="title">include/LogCabin/Debug.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;algorithm&gt;</code><br/>
-<code>#include &lt;fcntl.h&gt;</code><br/>
-<code>#include &lt;sys/stat.h&gt;</code><br/>
-<code>#include &lt;unistd.h&gt;</code><br/>
-<code>#include &quot;build/Protocol/Raft.pb.h&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Buffer_8h_source.html">Core/Buffer.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Core_2Debug_8h_source.html">Core/Debug.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Core_2ProtoBuf_8h_source.html">Core/ProtoBuf.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="StringUtil_8h_source.html">Core/StringUtil.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="MemoryLog_8h_source.html">Storage/MemoryLog.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;cstdio&gt;</code><br/>
+<code>#include &lt;initializer_list&gt;</code><br/>
+<code>#include &lt;functional&gt;</code><br/>
+<code>#include &lt;ostream&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;utility&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
 </div>
-<p><a href="MemoryLog_8cc_source.html">Go to the source code of this file.</a></p>
+<p><a href="include_2LogCabin_2Debug_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html">LogCabin::Core::Debug::DebugMessage</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">When <a class="el" href="namespaceLogCabin.html">LogCabin</a> wants to print a log message, this is the information that gets included.  <a href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Storage.html">LogCabin::Storage</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core.html">LogCabin::Core</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html">LogCabin::Core::Debug</a></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a221c605df65625a7bcb91990af0986d3">LogCabin::Core::Debug::setLogFile</a> (FILE *newFile)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the file on which debug log messages are written.  <a href="#a221c605df65625a7bcb91990af0986d3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::function&lt; void(DebugMessage)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae229e11e9f1413bc265c12f8fe39cf6f">LogCabin::Core::Debug::setLogHandler</a> (std::function&lt; void(DebugMessage)&gt; newHandler)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Accept log messages on the given callback instead of writing them to a file.  <a href="#ae229e11e9f1413bc265c12f8fe39cf6f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0">LogCabin::Core::Debug::setLogPolicy</a> (const std::vector&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;newPolicy)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Specify the log messages that should be displayed for each filename.  <a href="#a5624f934c72b6c028ab5a2f4c45948b0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#af6b81483d297545dd73523bc1243b3a8">LogCabin::Core::Debug::setLogPolicy</a> (const std::initializer_list&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;newPolicy)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See setLogPolicy.  <a href="#af6b81483d297545dd73523bc1243b3a8"></a><br/></td></tr>
 </table>
 </div><!-- contents -->
 <!-- window showing the filter options -->

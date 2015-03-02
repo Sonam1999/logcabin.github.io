@@ -103,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00021"></a>00021 <span class="preprocessor">#include &quot;build/Protocol/Raft.pb.h&quot;</span>
 <a name="l00022"></a>00022 <span class="preprocessor">#include &quot;<a class="code" href="Buffer_8h.html">Core/Buffer.h</a>&quot;</span>
 <a name="l00023"></a>00023 <span class="preprocessor">#include &quot;<a class="code" href="Checksum_8h.html" title="Contains checksum utilities.">Core/Checksum.h</a>&quot;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Core/Debug.h</a>&quot;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="Core_2Debug_8h.html">Core/Debug.h</a>&quot;</span>
 <a name="l00025"></a>00025 <span class="preprocessor">#include &quot;<a class="code" href="Core_2ProtoBuf_8h.html" title="Utilities for dealing with protocol buffers.">Core/ProtoBuf.h</a>&quot;</span>
 <a name="l00026"></a>00026 <span class="preprocessor">#include &quot;<a class="code" href="StringUtil_8h.html">Core/StringUtil.h</a>&quot;</span>
 <a name="l00027"></a>00027 <span class="preprocessor">#include &quot;<a class="code" href="Time_8h.html">Core/Time.h</a>&quot;</span>
@@ -185,7 +185,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00103"></a>00103         {data, len},
 <a name="l00104"></a>00104     });
 <a name="l00105"></a>00105     <span class="keywordflow">if</span> (written == -1) {
-<a name="l00106"></a>00106         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Failed to write to %s: %s&quot;</span>,
+<a name="l00106"></a>00106         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Failed to write to %s: %s&quot;</span>,
 <a name="l00107"></a>00107               file.path.c_str(), strerror(errno));
 <a name="l00108"></a>00108     }
 <a name="l00109"></a>00109 
@@ -249,10 +249,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00167"></a>00167         <a class="code" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a26ef7de4808ccc853b334682db9dcde8" title="Opaque metadata that the log keeps track of.">metadata</a> = metadata2;
 <a name="l00168"></a>00168     } <span class="keywordflow">else</span> {
 <a name="l00169"></a>00169         <span class="comment">// Brand new servers won&#39;t have metadata.</span>
-<a name="l00170"></a>00170         <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Error reading metadata1: %s&quot;</span>, error1.c_str());
-<a name="l00171"></a>00171         <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Error reading metadata2: %s&quot;</span>, error2.c_str());
+<a name="l00170"></a>00170         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Error reading metadata1: %s&quot;</span>, error1.c_str());
+<a name="l00171"></a>00171         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Error reading metadata2: %s&quot;</span>, error2.c_str());
 <a name="l00172"></a>00172         <span class="keywordflow">if</span> (!fsEntryIds.empty()) {
-<a name="l00173"></a>00173             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;No readable metadata file but found entries in %s&quot;</span>,
+<a name="l00173"></a>00173             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;No readable metadata file but found entries in %s&quot;</span>,
 <a name="l00174"></a>00174                   <a class="code" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#ab890d1502e17b40cf3f8877a06df703f">dir</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str());
 <a name="l00175"></a>00175         }
 <a name="l00176"></a>00176         <a class="code" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a26ef7de4808ccc853b334682db9dcde8" title="Opaque metadata that the log keeps track of.">metadata</a>.set_entries_start(1);
@@ -275,7 +275,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00193"></a>00193         uint64_t entryId = *it;
 <a name="l00194"></a>00194         std::string oldName = <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;%016lx&quot;</span>, entryId);
 <a name="l00195"></a>00195         std::string newName = <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;%s-%016lx&quot;</span>, time.c_str(), entryId);
-<a name="l00196"></a>00196         <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Moving extraneous file %s/%s to %s/%s&quot;</span>,
+<a name="l00196"></a>00196         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Moving extraneous file %s/%s to %s/%s&quot;</span>,
 <a name="l00197"></a>00197                 <a class="code" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#ab890d1502e17b40cf3f8877a06df703f">dir</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str(), oldName.c_str(),
 <a name="l00198"></a>00198                 <a class="code" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#aa8f420a998b34012fc032eac8ab912c8">lostAndFound</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str(), newName.c_str());
 <a name="l00199"></a>00199         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#ab11e8bf05a2bedd53c76d56c812d3148" title="Rename a file.">FilesystemUtil::rename</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#ab890d1502e17b40cf3f8877a06df703f">dir</a>, oldName,
@@ -416,7 +416,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00334"></a>00334         <span class="keywordtype">int</span> matched = sscanf(filename.c_str(), <span class="stringliteral">&quot;%016lx%n&quot;</span>, <span class="comment">// NOLINT</span>
 <a name="l00335"></a>00335                              &amp;entryId, &amp;bytesConsumed);
 <a name="l00336"></a>00336         <span class="keywordflow">if</span> (matched != 1 || bytesConsumed != filename.length()) {
-<a name="l00337"></a>00337             <a class="code" href="Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;%s doesn&#39;t look like a valid entry ID (from %s)&quot;</span>,
+<a name="l00337"></a>00337             <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;%s doesn&#39;t look like a valid entry ID (from %s)&quot;</span>,
 <a name="l00338"></a>00338                     filename.c_str(),
 <a name="l00339"></a>00339                     (<a class="code" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#ab890d1502e17b40cf3f8877a06df703f">dir</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a> + <span class="stringliteral">&quot;/&quot;</span> + filename).c_str());
 <a name="l00340"></a>00340             <span class="keywordflow">continue</span>;
@@ -432,7 +432,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00350"></a>00350     Protocol::Raft::Entry entry;
 <a name="l00351"></a>00351     std::string error = <a class="code" href="namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html#afc9613681322d6febf64d33e12d83b45">fileToProto</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#ab890d1502e17b40cf3f8877a06df703f">dir</a>, entryPath, entry);
 <a name="l00352"></a>00352     <span class="keywordflow">if</span> (!error.empty())
-<a name="l00353"></a>00353         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not parse file: %s&quot;</span>, error.c_str());
+<a name="l00353"></a>00353         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not parse file: %s&quot;</span>, error.c_str());
 <a name="l00354"></a>00354     <span class="keywordflow">return</span> entry;
 <a name="l00355"></a>00355 }
 <a name="l00356"></a>00356 

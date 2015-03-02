@@ -99,7 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00017"></a>00017 <span class="preprocessor">#include &lt;cassert&gt;</span>
 <a name="l00018"></a>00018 
 <a name="l00019"></a>00019 <span class="preprocessor">#include &quot;build/Tree/Snapshot.pb.h&quot;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Core/Debug.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include &quot;<a class="code" href="Core_2Debug_8h.html">Core/Debug.h</a>&quot;</span>
 <a name="l00021"></a>00021 <span class="preprocessor">#include &quot;<a class="code" href="StringUtil_8h.html">Core/StringUtil.h</a>&quot;</span>
 <a name="l00022"></a>00022 <span class="preprocessor">#include &quot;<a class="code" href="Tree_8h.html">Tree/Tree.h</a>&quot;</span>
 <a name="l00023"></a>00023 
@@ -152,7 +152,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00070"></a>00070 }
 <a name="l00071"></a>00071 
 <a name="l00072"></a>00072 <span class="keywordtype">void</span>
-<a name="l00073"></a><a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a570a458c8c224af0bb75b1ae0e5c0b12">00073</a> <a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a570a458c8c224af0bb75b1ae0e5c0b12" title="Write the file to the stream.">File::dumpSnapshot</a>(google::protobuf::io::CodedOutputStream&amp; stream)<span class="keyword"> const</span>
+<a name="l00073"></a><a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a570a458c8c224af0bb75b1ae0e5c0b12">00073</a> <a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a570a458c8c224af0bb75b1ae0e5c0b12" title="Write the file to the stream.">File::dumpSnapshot</a>(google::protobuf::io::CodedOutputStream&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>)<span class="keyword"> const</span>
 <a name="l00074"></a>00074 <span class="keyword"></span>{
 <a name="l00075"></a>00075     <span class="comment">// create protobuf of this file</span>
 <a name="l00076"></a>00076     Snapshot::File file;
@@ -165,20 +165,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00083"></a>00083 }
 <a name="l00084"></a>00084 
 <a name="l00085"></a>00085 <span class="keywordtype">void</span>
-<a name="l00086"></a><a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a1ad667506ff06f9be52f9f737d308028">00086</a> <a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a1ad667506ff06f9be52f9f737d308028" title="Load the file from the stream.">File::loadSnapshot</a>(google::protobuf::io::CodedInputStream&amp; stream)
+<a name="l00086"></a><a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a1ad667506ff06f9be52f9f737d308028">00086</a> <a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a1ad667506ff06f9be52f9f737d308028" title="Load the file from the stream.">File::loadSnapshot</a>(google::protobuf::io::CodedInputStream&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>)
 <a name="l00087"></a>00087 {
 <a name="l00088"></a>00088     <span class="comment">// read protobuf from stream</span>
 <a name="l00089"></a>00089     <span class="keywordtype">bool</span> ok = <span class="keyword">true</span>;
 <a name="l00090"></a>00090     uint32_t numBytes = 0;
 <a name="l00091"></a>00091     ok = stream.ReadLittleEndian32(&amp;numBytes);
 <a name="l00092"></a>00092     <span class="keywordflow">if</span> (!ok)
-<a name="l00093"></a>00093         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot&quot;</span>);
+<a name="l00093"></a>00093         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot&quot;</span>);
 <a name="l00094"></a>00094     Snapshot::File node;
 <a name="l00095"></a>00095     <span class="keyword">auto</span> limit = stream.PushLimit(numBytes);
 <a name="l00096"></a>00096     ok = node.MergePartialFromCodedStream(&amp;stream);
 <a name="l00097"></a>00097     stream.PopLimit(limit);
 <a name="l00098"></a>00098     <span class="keywordflow">if</span> (!ok)
-<a name="l00099"></a>00099         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot&quot;</span>);
+<a name="l00099"></a>00099         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot&quot;</span>);
 <a name="l00100"></a>00100 
 <a name="l00101"></a>00101     <span class="comment">// load content</span>
 <a name="l00102"></a>00102     <a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#ad170261ab6d6aace08542d7be6e8e24b" title="Opaque data stored in the File.">contents</a> = node.contents();
@@ -277,7 +277,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00195"></a>00195 }
 <a name="l00196"></a>00196 
 <a name="l00197"></a>00197 <span class="keywordtype">void</span>
-<a name="l00198"></a><a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a8da664c00436dd00144d0d1c9d59425b">00198</a> <a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a8da664c00436dd00144d0d1c9d59425b" title="Write the directory and its children to the stream.">Directory::dumpSnapshot</a>(google::protobuf::io::CodedOutputStream&amp; stream)<span class="keyword"> const</span>
+<a name="l00198"></a><a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a8da664c00436dd00144d0d1c9d59425b">00198</a> <a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a8da664c00436dd00144d0d1c9d59425b" title="Write the directory and its children to the stream.">Directory::dumpSnapshot</a>(google::protobuf::io::CodedOutputStream&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>)<span class="keyword"> const</span>
 <a name="l00199"></a>00199 <span class="keyword"></span>{
 <a name="l00200"></a>00200     <span class="comment">// create protobuf of this dir, listing all children</span>
 <a name="l00201"></a>00201     Snapshot::Directory dir;
@@ -299,20 +299,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00217"></a>00217 }
 <a name="l00218"></a>00218 
 <a name="l00219"></a>00219 <span class="keywordtype">void</span>
-<a name="l00220"></a><a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a2c8a6fd24778c60c949e7fdc5abf5978">00220</a> <a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a2c8a6fd24778c60c949e7fdc5abf5978" title="Load the directory and its children from the stream.">Directory::loadSnapshot</a>(google::protobuf::io::CodedInputStream&amp; stream)
+<a name="l00220"></a><a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a2c8a6fd24778c60c949e7fdc5abf5978">00220</a> <a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a2c8a6fd24778c60c949e7fdc5abf5978" title="Load the directory and its children from the stream.">Directory::loadSnapshot</a>(google::protobuf::io::CodedInputStream&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>)
 <a name="l00221"></a>00221 {
 <a name="l00222"></a>00222     <span class="comment">// read protobuf from stream</span>
 <a name="l00223"></a>00223     <span class="keywordtype">bool</span> ok = <span class="keyword">true</span>;
 <a name="l00224"></a>00224     uint32_t numBytes = 0;
 <a name="l00225"></a>00225     ok = stream.ReadLittleEndian32(&amp;numBytes);
 <a name="l00226"></a>00226     <span class="keywordflow">if</span> (!ok)
-<a name="l00227"></a>00227         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot&quot;</span>);
+<a name="l00227"></a>00227         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot&quot;</span>);
 <a name="l00228"></a>00228     Snapshot::Directory dir;
 <a name="l00229"></a>00229     <span class="keyword">auto</span> limit = stream.PushLimit(numBytes);
 <a name="l00230"></a>00230     ok = dir.MergePartialFromCodedStream(&amp;stream);
 <a name="l00231"></a>00231     stream.PopLimit(limit);
 <a name="l00232"></a>00232     <span class="keywordflow">if</span> (!ok)
-<a name="l00233"></a>00233         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot&quot;</span>);
+<a name="l00233"></a>00233         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot&quot;</span>);
 <a name="l00234"></a>00234 
 <a name="l00235"></a>00235     <span class="comment">// load children</span>
 <a name="l00236"></a>00236     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = dir.directories().begin();
@@ -448,7 +448,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00366"></a>00366 }
 <a name="l00367"></a>00367 
 <a name="l00368"></a>00368 <span class="keywordtype">void</span>
-<a name="l00369"></a><a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#aa49940755a23219782972a1065a6a0e4">00369</a> <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#aa49940755a23219782972a1065a6a0e4" title="Write the tree to the given stream.">Tree::dumpSnapshot</a>(google::protobuf::io::CodedOutputStream&amp; stream)<span class="keyword"> const</span>
+<a name="l00369"></a><a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#aa49940755a23219782972a1065a6a0e4">00369</a> <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#aa49940755a23219782972a1065a6a0e4" title="Write the tree to the given stream.">Tree::dumpSnapshot</a>(google::protobuf::io::CodedOutputStream&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>)<span class="keyword"> const</span>
 <a name="l00370"></a>00370 <span class="keyword"></span>{
 <a name="l00371"></a>00371     <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#a37a4968f520bac82d6bca93dca54a6a0" title="This directory contains the root directory.">superRoot</a>.<a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a8da664c00436dd00144d0d1c9d59425b" title="Write the directory and its children to the stream.">dumpSnapshot</a>(stream);
 <a name="l00372"></a>00372 }
@@ -457,7 +457,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00375"></a>00375 <span class="comment"> * Load the tree from the given stream.</span>
 <a name="l00376"></a>00376 <span class="comment"> */</span>
 <a name="l00377"></a>00377 <span class="keywordtype">void</span>
-<a name="l00378"></a><a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#ae1f63dee476fd7b7497685ecb7f68f48">00378</a> <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#ae1f63dee476fd7b7497685ecb7f68f48" title="Load the tree from the given stream.">Tree::loadSnapshot</a>(google::protobuf::io::CodedInputStream&amp; stream)
+<a name="l00378"></a><a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#ae1f63dee476fd7b7497685ecb7f68f48">00378</a> <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#ae1f63dee476fd7b7497685ecb7f68f48" title="Load the tree from the given stream.">Tree::loadSnapshot</a>(google::protobuf::io::CodedInputStream&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>)
 <a name="l00379"></a>00379 {
 <a name="l00380"></a>00380     <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#a37a4968f520bac82d6bca93dca54a6a0" title="This directory contains the root directory.">superRoot</a> = <a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html" title="An interior object in the Tree; stores other Directories and Files.">Directory</a>();
 <a name="l00381"></a>00381     <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#a37a4968f520bac82d6bca93dca54a6a0" title="This directory contains the root directory.">superRoot</a>.<a class="code" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a2c8a6fd24778c60c949e7fdc5abf5978" title="Load the directory and its children from the stream.">loadSnapshot</a>(stream);

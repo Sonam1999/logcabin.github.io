@@ -1,7 +1,6 @@
 var searchData=
 [
   ['safetolock',['safeToLock',['../classLogCabin_1_1Event_1_1Loop.html#a1c5d24cf0a22aae6451482d8d2d28dfd',1,'LogCabin::Event::Loop']]],
-  ['second',['second',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aceff49dd80528e758a53050e6c762685',1,'LogCabin::Core::Debug::Internal']]],
   ['segmentpreparer',['segmentPreparer',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#aa0118a6fca6d83903ac7f5cc5f6b35e1',1,'LogCabin::Storage::SegmentedLog']]],
   ['segmentsbystartindex',['segmentsByStartIndex',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6',1,'LogCabin::Storage::SegmentedLog']]],
   ['self',['self',['../classLogCabin_1_1RPC_1_1ClientSession.html#af5f20f631eedc7dfed6815749d73c006',1,'LogCabin::RPC::ClientSession::self()'],['../classLogCabin_1_1RPC_1_1OpaqueServer_1_1MessageSocketHandler.html#a119717d01d4388ac366728825e02de84',1,'LogCabin::RPC::OpaqueServer::MessageSocketHandler::self()']]],
@@ -65,6 +64,7 @@ var searchData=
   ['stepdownthread',['stepDownThread',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ae9b0677ddf3e389d250cec7c1dc231f1',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['storage',['storage',['../classLogCabin_1_1RPC_1_1Address.html#a7a2b3ccec4525ac7d85762ec0e72b67a',1,'LogCabin::RPC::Address']]],
   ['storagelayout',['storageLayout',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a366d4585c66269d9542bffd068e3582e',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
+  ['stream',['stream',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2',1,'LogCabin::Core::Debug::Internal']]],
   ['superroot',['superRoot',['../classLogCabin_1_1Tree_1_1Tree.html#a37a4968f520bac82d6bca93dca54a6a0',1,'LogCabin::Tree::Tree']]],
   ['symbolic',['symbolic',['../classLogCabin_1_1Tree_1_1Internal_1_1Path.html#aad803aef043e2a9a9107673fd8a9ba00',1,'LogCabin::Tree::Internal::Path']]],
   ['systemnow',['systemNow',['../classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a40e15dbc3f432b10a9d0968e15731604',1,'LogCabin::Core::Time::SteadyTimeConverter']]]

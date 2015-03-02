@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['debugmessage',['DebugMessage',['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#abd67d2ff1b5b82301a014d0bb9216e89',1,'LogCabin::Core::Debug::DebugMessage::DebugMessage()'],['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#aba37f5c81014bc05cd6a563030c5a104',1,'LogCabin::Core::Debug::DebugMessage::DebugMessage(const DebugMessage &amp;other)'],['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#ac4f0e2b94d575c6c3254dd806ebef841',1,'LogCabin::Core::Debug::DebugMessage::DebugMessage(DebugMessage &amp;&amp;other)']]],
   ['deferred',['Deferred',['../structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#afc8952c46778acefaea54245e0520c02',1,'LogCabin::Server::ServerStats::Deferred']]],
   ['delayandbegin',['delayAndBegin',['../classLogCabin_1_1Client_1_1Backoff.html#a1695d3da40aaa2e2acbab1c4add0634e',1,'LogCabin::Client::Backoff']]],
   ['deletearrayfn',['deleteArrayFn',['../classLogCabin_1_1Core_1_1Buffer.html#a54dbf730ff52a8c948d571fad110136c',1,'LogCabin::Core::Buffer']]],

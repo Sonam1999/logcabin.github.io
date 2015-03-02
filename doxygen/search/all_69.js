@@ -1,7 +1,6 @@
 var searchData=
 [
   ['id',['id',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a5f68072bd5c041c6dc836d1a17bd15f3',1,'LogCabin::Server::RaftConsensusInternal::Configuration::id()'],['../namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#a13e21e5d70af9c7b61e14fc1ee8b2e2f',1,'LogCabin::Core::ThreadId::Internal::id()']]],
-  ['if',['if',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a30ae4e28a445eb00f21a464352cbd9e8',1,'LogCabin::Core::Debug::Internal']]],
   ['inbound',['Inbound',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1Inbound.html',1,'LogCabin::RPC::MessageSocket']]],
   ['inbound',['Inbound',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1Inbound.html#a6c426dac9e301bfc09cfb9c61fab7266',1,'LogCabin::RPC::MessageSocket::Inbound::Inbound()'],['../classLogCabin_1_1RPC_1_1MessageSocket.html#aa9723a90aa0df6884e1ccfc32a24b232',1,'LogCabin::RPC::MessageSocket::inbound()']]],
   ['index',['index',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a0862e26326d36028f4679dd61ca40ddf',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry']]],
@@ -27,6 +26,7 @@ var searchData=
   ['iscaughtup',['isCaughtUp',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#abaabd1bf45eefc51e4d99548a2c71eb1',1,'LogCabin::Server::RaftConsensusInternal::Server::isCaughtUp()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a4a30d84e679c9df0e57b61ee404dd766',1,'LogCabin::Server::RaftConsensusInternal::LocalServer::isCaughtUp()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a81973f60b1302672c5d0c582a4638f4b',1,'LogCabin::Server::RaftConsensusInternal::Peer::isCaughtUp()']]],
   ['iscaughtup_5f',['isCaughtUp_',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aa35915b9016d63af612039b1eea9c9bf',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['islogging',['isLogging',['../namespaceLogCabin_1_1Core_1_1Debug.html#a6fb17a6ff9a81e892702560656d691a2',1,'LogCabin::Core::Debug']]],
+  ['isloggingcache',['isLoggingCache',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb',1,'LogCabin::Core::Debug::Internal']]],
   ['isopen',['isOpen',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb',1,'LogCabin::Storage::SegmentedLog::Segment']]],
   ['isprintable',['isPrintable',['../namespaceLogCabin_1_1Core_1_1StringUtil.html#a31b6a7f1a7a00fd1c52a264124b0697d',1,'LogCabin::Core::StringUtil::isPrintable(const char *str)'],['../namespaceLogCabin_1_1Core_1_1StringUtil.html#aa4338bbde590dee745cee6019a3a6cf5',1,'LogCabin::Core::StringUtil::isPrintable(const void *data, size_t length)']]],
   ['isready',['isReady',['../classLogCabin_1_1RPC_1_1ClientRPC.html#a692623fa366a7e5180350a6f16b9c077',1,'LogCabin::RPC::ClientRPC']]],

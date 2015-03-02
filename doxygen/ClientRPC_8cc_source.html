@@ -96,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00014"></a>00014 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
 <a name="l00015"></a>00015 <span class="comment"> */</span>
 <a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="Debug_8h.html">Core/Debug.h</a>&quot;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="Core_2Debug_8h.html">Core/Debug.h</a>&quot;</span>
 <a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="Core_2ProtoBuf_8h.html" title="Utilities for dealing with protocol buffers.">Core/ProtoBuf.h</a>&quot;</span>
 <a name="l00019"></a>00019 <span class="preprocessor">#include &quot;<a class="code" href="Protocol_8h.html" title="This file contains the headers used in all high-level RPCs.">RPC/Protocol.h</a>&quot;</span>
 <a name="l00020"></a>00020 <span class="preprocessor">#include &quot;<a class="code" href="ClientRPC_8h.html">RPC/ClientRPC.h</a>&quot;</span>
@@ -188,14 +188,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00106"></a>00106             <span class="keywordflow">if</span> (<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Clock::now</a>() &gt; timeout) {
 <a name="l00107"></a>00107                 <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3aa7111d3791fe1764a9d55ad9907a47f0" title="The RPC did not complete before the given timeout elapsed.">Status::TIMEOUT</a>;
 <a name="l00108"></a>00108             } <span class="keywordflow">else</span> {
-<a name="l00109"></a>00109                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Waited for RPC but not ready and &quot;</span>
+<a name="l00109"></a>00109                 <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Waited for RPC but not ready and &quot;</span>
 <a name="l00110"></a>00110                       <span class="stringliteral">&quot;timeout hasn&#39;t elapsed (timeout=%s, now=%s)&quot;</span>,
 <a name="l00111"></a>00111                       <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0" title="Return a string returned from the given object&#39;s stream operator.">Core::StringUtil::toString</a>(timeout).c_str(),
 <a name="l00112"></a>00112                       <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0" title="Return a string returned from the given object&#39;s stream operator.">Core::StringUtil::toString</a>(<a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Clock::now</a>()).c_str());
 <a name="l00113"></a>00113             }
 <a name="l00114"></a>00114         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">OpaqueClientRPC::Status::OK</a>:
 <a name="l00115"></a>00115             <span class="keywordflow">break</span>;
-<a name="l00116"></a>00116         <span class="keywordflow">case</span> <a class="code" href="Debug_8h.html#a78e40dfd87f516e322340d249027aea1" title="Log an ERROR message.">OpaqueClientRPC::Status::ERROR</a>:
+<a name="l00116"></a>00116         <span class="keywordflow">case</span> <a class="code" href="Core_2Debug_8h.html#a78e40dfd87f516e322340d249027aea1" title="Log an ERROR message.">OpaqueClientRPC::Status::ERROR</a>:
 <a name="l00117"></a>00117             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a84d6b56092fd63176bc098a714953144" title="The server could not be contacted or did not reply.">Status::RPC_FAILED</a>;
 <a name="l00118"></a>00118         <span class="keywordflow">case</span> OpaqueClientRPC::Status::CANCELED:
 <a name="l00119"></a>00119             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a48a78577b16fe1d628e0b66e5afb7909" title="The RPC was aborted using cancel().">Status::RPC_CANCELED</a>;
@@ -204,7 +204,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00122"></a>00122 
 <a name="l00123"></a>00123     <span class="comment">// Extract the response&#39;s status field.</span>
 <a name="l00124"></a>00124     <span class="keywordflow">if</span> (responseBuffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(ResponseHeaderPrefix)) {
-<a name="l00125"></a>00125         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The response from the server for RPC to service %u, opcode &quot;</span>
+<a name="l00125"></a>00125         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The response from the server for RPC to service %u, opcode &quot;</span>
 <a name="l00126"></a>00126               <span class="stringliteral">&quot;%u was too short to be valid (%lu bytes). This probably &quot;</span>
 <a name="l00127"></a>00127               <span class="stringliteral">&quot;indicates network or memory corruption.&quot;</span>,
 <a name="l00128"></a>00128               <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a573aa520a006ff8a14b8eb559e9b5a53" title="Identifies the service running on the server.">service</a>, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a6fcfc8d2501ec0031ffa0feae14abf49" title="Identifies the remote procedure within the Service to execute.">opCode</a>, responseBuffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>());
@@ -217,12 +217,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00135"></a>00135         <span class="comment">// protocol. Since this library only runs version 1 of the</span>
 <a name="l00136"></a>00136         <span class="comment">// protocol, this shouldn&#39;t happen if servers continue supporting</span>
 <a name="l00137"></a>00137         <span class="comment">// version 1.</span>
-<a name="l00138"></a>00138         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;This client is too old to talk to the server. &quot;</span>
+<a name="l00138"></a>00138         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;This client is too old to talk to the server. &quot;</span>
 <a name="l00139"></a>00139               <span class="stringliteral">&quot;You&#39;ll need to update your client library.&quot;</span>);
 <a name="l00140"></a>00140     }
 <a name="l00141"></a>00141 
 <a name="l00142"></a>00142     <span class="keywordflow">if</span> (responseBuffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(ResponseHeaderVersion1)) {
-<a name="l00143"></a>00143         <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The response from the server for RPC to service %u, opcode &quot;</span>
+<a name="l00143"></a>00143         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The response from the server for RPC to service %u, opcode &quot;</span>
 <a name="l00144"></a>00144               <span class="stringliteral">&quot;%u was too short to be valid. This probably indicates &quot;</span>
 <a name="l00145"></a>00145               <span class="stringliteral">&quot;network or memory corruption.&quot;</span>,
 <a name="l00146"></a>00146               <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a573aa520a006ff8a14b8eb559e9b5a53" title="Identifies the service running on the server.">service</a>, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a6fcfc8d2501ec0031ffa0feae14abf49" title="Identifies the remote procedure within the Service to execute.">opCode</a>);
@@ -238,7 +238,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00156"></a>00156             <span class="keywordflow">if</span> (response != NULL &amp;&amp;
 <a name="l00157"></a>00157                 !<a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c" title="Parse a protocol buffer message out of a Core::Buffer.">Core::ProtoBuf::parse</a>(responseBuffer, *response,
 <a name="l00158"></a>00158                                        <span class="keyword">sizeof</span>(responseHeader))) {
-<a name="l00159"></a>00159                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not parse the protocol buffer out of the server &quot;</span>
+<a name="l00159"></a>00159                 <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not parse the protocol buffer out of the server &quot;</span>
 <a name="l00160"></a>00160                       <span class="stringliteral">&quot;response for RPC to service %u, opcode %u&quot;</span>,
 <a name="l00161"></a>00161                       <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a573aa520a006ff8a14b8eb559e9b5a53" title="Identifies the service running on the server.">service</a>, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a6fcfc8d2501ec0031ffa0feae14abf49" title="Identifies the remote procedure within the Service to execute.">opCode</a>);
 <a name="l00162"></a>00162             }
@@ -250,7 +250,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00168"></a>00168             <span class="keywordflow">if</span> (serviceSpecificError != NULL &amp;&amp;
 <a name="l00169"></a>00169                 !<a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c" title="Parse a protocol buffer message out of a Core::Buffer.">Core::ProtoBuf::parse</a>(responseBuffer, *serviceSpecificError,
 <a name="l00170"></a>00170                                        <span class="keyword">sizeof</span>(responseHeader))) {
-<a name="l00171"></a>00171                 <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not parse the protocol buffer out of the &quot;</span>
+<a name="l00171"></a>00171                 <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not parse the protocol buffer out of the &quot;</span>
 <a name="l00172"></a>00172                       <span class="stringliteral">&quot;service-specific error details for RPC to service &quot;</span>
 <a name="l00173"></a>00173                       <span class="stringliteral">&quot;%u, opcode %u&quot;</span>,
 <a name="l00174"></a>00174                       <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a573aa520a006ff8a14b8eb559e9b5a53" title="Identifies the service running on the server.">service</a>, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a6fcfc8d2501ec0031ffa0feae14abf49" title="Identifies the remote procedure within the Service to execute.">opCode</a>);
@@ -259,7 +259,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00177"></a>00177 
 <a name="l00178"></a>00178         <span class="comment">// The server does not have the requested service.</span>
 <a name="l00179"></a>00179         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a57b3feada853764683c0dda7595cbac5" title="The server does not have the requested service.">ProtocolStatus::INVALID_SERVICE</a>:
-<a name="l00180"></a>00180             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The server is not running the requested service (tried &quot;</span>
+<a name="l00180"></a>00180             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The server is not running the requested service (tried &quot;</span>
 <a name="l00181"></a>00181                   <span class="stringliteral">&quot;service %u, opcode %u)&quot;</span>,
 <a name="l00182"></a>00182                   <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a573aa520a006ff8a14b8eb559e9b5a53" title="Identifies the service running on the server.">service</a>, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a6fcfc8d2501ec0031ffa0feae14abf49" title="Identifies the remote procedure within the Service to execute.">opCode</a>);
 <a name="l00183"></a>00183 
@@ -267,7 +267,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00185"></a>00185         <span class="comment">// the higher layers of software were supposed to negotiate an RPC</span>
 <a name="l00186"></a>00186         <span class="comment">// protocol version.</span>
 <a name="l00187"></a>00187         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694aff3e9fbb7614ab1714ea489e399f19ea" title="The server did not like the RPC request.">ProtocolStatus::INVALID_REQUEST</a>:
-<a name="l00188"></a>00188             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The server found the request to service %u, opcode %u to &quot;</span>
+<a name="l00188"></a>00188             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The server found the request to service %u, opcode %u to &quot;</span>
 <a name="l00189"></a>00189                   <span class="stringliteral">&quot;be invalid. This indicates a bug in the client or server &quot;</span>
 <a name="l00190"></a>00190                   <span class="stringliteral">&quot;in negotiating which RPCs the client may legally send to &quot;</span>
 <a name="l00191"></a>00191                   <span class="stringliteral">&quot;the server.&quot;</span>,
@@ -277,7 +277,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00195"></a>00195             <span class="comment">// The server shouldn&#39;t reply back with status codes we don&#39;t</span>
 <a name="l00196"></a>00196             <span class="comment">// understand. That&#39;s why we gave it a version number in the</span>
 <a name="l00197"></a>00197             <span class="comment">// request header.</span>
-<a name="l00198"></a>00198             <a class="code" href="Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Unknown status %u returned from server after sending it &quot;</span>
+<a name="l00198"></a>00198             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Unknown status %u returned from server after sending it &quot;</span>
 <a name="l00199"></a>00199                   <span class="stringliteral">&quot;protocol version 1 in the request header for RPC to &quot;</span>
 <a name="l00200"></a>00200                   <span class="stringliteral">&quot;service %u, opcode %u. This probably indicates a bug in &quot;</span>
 <a name="l00201"></a>00201                   <span class="stringliteral">&quot;the server.&quot;</span>,

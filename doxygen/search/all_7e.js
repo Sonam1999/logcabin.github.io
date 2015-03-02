@@ -15,6 +15,7 @@ var searchData=
   ['_7econfigurationmanager',['~ConfigurationManager',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#abb9e78257346313f89d479aad1cf360f',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],
   ['_7econfigurationresult',['~ConfigurationResult',['../structLogCabin_1_1Client_1_1ConfigurationResult.html#acfb9509c9c7c5f6aac2885715455f4e1',1,'LogCabin::Client::ConfigurationResult']]],
   ['_7econversionerror',['~ConversionError',['../structLogCabin_1_1Core_1_1Config_1_1ConversionError.html#a7f0948bda3855a940d76123e2616668e',1,'LogCabin::Core::Config::ConversionError']]],
+  ['_7edebugmessage',['~DebugMessage',['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a71979c9db8ed236750b47d94c91bd993',1,'LogCabin::Core::Debug::DebugMessage']]],
   ['_7eentry',['~Entry',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a5af27475be55a39c930916709a5d2c3c',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry']]],
   ['_7eexactlyoncerpchelper',['~ExactlyOnceRPCHelper',['../classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ad36f3448a815fcf55e0295aeefa36b5a',1,'LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper']]],
   ['_7efile',['~File',['../classLogCabin_1_1Event_1_1File.html#a0e19f03631cf782015d39bbb98ec8365',1,'LogCabin::Event::File::~File()'],['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad6e1ec036aae278762999fc8827cf911',1,'LogCabin::Storage::FilesystemUtil::File::~File()']]],
