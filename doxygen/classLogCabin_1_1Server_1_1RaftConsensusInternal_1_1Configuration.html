@@ -153,7 +153,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a812356fdf9362a25b19b8d0af2b0ccc9">hasVote</a> (<a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#aa59cb8c3759ba19620d16bd6a71bdb02">ServerRef</a> server) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the given server may be part of a quorum, false otherwise.  <a href="#a812356fdf9362a25b19b8d0af2b0ccc9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a15c982d387f546a202b016f724dcdc56">lookupAddress</a> (uint64_t serverId) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lookup the network addresses for a particular server (semicolon-delimited).  <a href="#a15c982d387f546a202b016f724dcdc56"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Lookup the network addresses for a particular server (comma-delimited).  <a href="#a15c982d387f546a202b016f724dcdc56"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a326d5cbde57c0c09fa0ae8fe8f23cbad">quorumAll</a> (const <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#ab03a45ca76847baf9dd1f673a1d4a0bf">Predicate</a> &amp;predicate) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if there exists a quorum for which every server satisfies the predicate, false otherwise.  <a href="#a326d5cbde57c0c09fa0ae8fe8f23cbad"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a4e76f11b8478114a4309b6565d9c62d0">quorumMin</a> (const <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#ab6e3815e59f806e23768ae2750a0fd73">GetValue</a> &amp;getValue) const </td></tr>
@@ -417,7 +417,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Lookup the network addresses for a particular server (semicolon-delimited). </p>
+<p>Lookup the network addresses for a particular server (comma-delimited). </p>
 <p>Returns empty string if not found. </p>
 
 <p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00474">474</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
