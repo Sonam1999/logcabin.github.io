@@ -9,6 +9,6 @@ var searchData=
   ['demanded',['demanded',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a98746a877bda6e6566244de983a2acdd',1,'LogCabin::Storage::SegmentedLog::PreparedSegments']]],
   ['description',['description',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a18b5ea1ff0070a8f98260947f420a838',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
   ['descriptions',['descriptions',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#a1b0e9174e1e054fdb2f6ec398575900b',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],
-  ['dir',['dir',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446',1,'LogCabin::Storage::SegmentedLog::dir()'],['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#ab890d1502e17b40cf3f8877a06df703f',1,'LogCabin::Storage::SimpleFileLog::dir()']]],
+  ['dir',['dir',['../classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#ae72d6e5ca1465cf26840a55a17a471d4',1,'anonymous_namespace{TreeOps.cc}::OptionParser::dir()'],['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446',1,'LogCabin::Storage::SegmentedLog::dir()'],['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#ab890d1502e17b40cf3f8877a06df703f',1,'LogCabin::Storage::SimpleFileLog::dir()']]],
   ['directories',['directories',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a280d1d212295450b804935d32b5692af',1,'LogCabin::Tree::Internal::Directory']]]
 ];

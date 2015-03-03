@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: Examples/DumpTree.cc File Reference</title>
+<title>LogCabin: Examples/TreeOps.cc File Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -79,33 +79,56 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Examples/DumpTree.cc File Reference</div>  </div>
+<div class="title">Examples/TreeOps.cc File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;cassert&gt;</code><br/>
 <code>#include &lt;getopt.h&gt;</code><br/>
 <code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;iterator&gt;</code><br/>
+<code>#include &lt;sstream&gt;</code><br/>
 <code>#include &lt;<a class="el" href="Client_8h_source.html">LogCabin/Client.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="include_2LogCabin_2Debug_8h_source.html">LogCabin/Debug.h</a>&gt;</code><br/>
 </div>
-<p><a href="DumpTree_8cc_source.html">Go to the source code of this file.</a></p>
+<p><a href="TreeOps_8cc_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanonymous__namespace_02DumpTree_8cc_03_1_1OptionParser.html">anonymous_namespace{DumpTree.cc}::OptionParser</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses argv for the main function.  <a href="classanonymous__namespace_02DumpTree_8cc_03_1_1OptionParser.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html">anonymous_namespace{TreeOps.cc}::OptionParser</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses argv for the main function.  <a href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02DumpTree_8cc_03.html">anonymous_namespace{DumpTree.cc}</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html">anonymous_namespace{TreeOps.cc}</a></td></tr>
+<tr><td colspan="2"><h2><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4">anonymous_namespace{TreeOps.cc}::Command</a> { <br/>
+&#160;&#160;<a class="el" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4aa24e9a4fc425d45ffd90d35fc2b203fc">anonymous_namespace{TreeOps.cc}::MKDIR</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4acc14ae9d521053c8309bd2b6e3c969bc">anonymous_namespace{TreeOps.cc}::LIST</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a76cbf13d3e31dcfbd4e5f15ea632eeeb">anonymous_namespace{TreeOps.cc}::DUMP</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a89432fb320d95262a41a1ec3ac44dba2">anonymous_namespace{TreeOps.cc}::RMDIR</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4afc14db0d9cbb712a69cde39327c8e944">anonymous_namespace{TreeOps.cc}::WRITE</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a57389fcf76b4316dcc20bf27216c5a52">anonymous_namespace{TreeOps.cc}::READ</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493">anonymous_namespace{TreeOps.cc}::REMOVE</a>
+<br/>
+ }</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02DumpTree_8cc_03.html#a64cde78638aa6c39bfd1fffc5c5a8f21">anonymous_namespace{DumpTree.cc}::dumpTree</a> (const Tree &amp;tree, std::string path)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Depth-first search tree traversal, dumping out contents of all files.  <a href="#a64cde78638aa6c39bfd1fffc5c5a8f21"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="DumpTree_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2">anonymous_namespace{TreeOps.cc}::dumpTree</a> (const Tree &amp;tree, std::string path)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Depth-first search tree traversal, dumping out contents of all files.  <a href="#a6653f08b94129f37a3e18d73965796d2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a75c3fa6e4e9a575c7ee511b1bb4659a8">anonymous_namespace{TreeOps.cc}::readStdin</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TreeOps_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a><!-- doxytag: member="DumpTree.cc::main" ref="a3c04138a5bfe5d72780bb7e82a18e627" args="(int argc, char **argv)" -->
+<a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a><!-- doxytag: member="TreeOps.cc::main" ref="a3c04138a5bfe5d72780bb7e82a18e627" args="(int argc, char **argv)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -130,7 +153,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="DumpTree_8cc_source.html#l00116">116</a> of file <a class="el" href="DumpTree_8cc_source.html">DumpTree.cc</a>.</p>
+<p>Definition at line <a class="el" href="TreeOps_8cc_source.html#l00258">258</a> of file <a class="el" href="TreeOps_8cc_source.html">TreeOps.cc</a>.</p>
 
 </div>
 </div>

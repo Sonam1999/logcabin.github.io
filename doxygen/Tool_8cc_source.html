@@ -188,7 +188,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00106"></a>00106 };
 <a name="l00107"></a>00107 
 <a name="l00108"></a>00108 <span class="keywordtype">void</span>
-<a name="l00109"></a><a class="code" href="namespaceanonymous__namespace_02Tool_8cc_03.html#ae256e6fe4febe75562bd5f7fb0cf3dcb">00109</a> <a class="code" href="namespaceanonymous__namespace_02DumpTree_8cc_03.html#a64cde78638aa6c39bfd1fffc5c5a8f21" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree::Tree</a>&amp; tree, <span class="keyword">const</span> std::string&amp; path = <span class="stringliteral">&quot;/&quot;</span>)
+<a name="l00109"></a><a class="code" href="namespaceanonymous__namespace_02Tool_8cc_03.html#ae256e6fe4febe75562bd5f7fb0cf3dcb">00109</a> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree::Tree</a>&amp; tree, <span class="keyword">const</span> std::string&amp; path = <span class="stringliteral">&quot;/&quot;</span>)
 <a name="l00110"></a>00110 {
 <a name="l00111"></a>00111     std::cout &lt;&lt; path &lt;&lt; std::endl;
 <a name="l00112"></a>00112     std::vector&lt;std::string&gt; children;
@@ -197,7 +197,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00115"></a>00115          it != children.end();
 <a name="l00116"></a>00116          ++it) {
 <a name="l00117"></a>00117         <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ad6f1abf416c522d7518acff147a50bf7" title="Return true if haystack ends with needle.">Core::StringUtil::endsWith</a>(*it, <span class="stringliteral">&quot;/&quot;</span>)) {
-<a name="l00118"></a>00118             <a class="code" href="namespaceanonymous__namespace_02DumpTree_8cc_03.html#a64cde78638aa6c39bfd1fffc5c5a8f21" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree, path + *it);
+<a name="l00118"></a>00118             <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree, path + *it);
 <a name="l00119"></a>00119         } <span class="keywordflow">else</span> {
 <a name="l00120"></a>00120             std::string contents;
 <a name="l00121"></a>00121             tree.<a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#a9e1783faf522088b1a3b1053ca6cd356" title="Get the value of a file.">read</a>(path + *it, contents);
@@ -288,7 +288,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00206"></a>00206             <a class="code" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree::Tree</a> tree;
 <a name="l00207"></a>00207             tree.<a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#ae1f63dee476fd7b7497685ecb7f68f48" title="Load the tree from the given stream.">loadSnapshot</a>(stream);
 <a name="l00208"></a>00208             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot tree start&quot;</span>);
-<a name="l00209"></a>00209             <a class="code" href="namespaceanonymous__namespace_02DumpTree_8cc_03.html#a64cde78638aa6c39bfd1fffc5c5a8f21" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree);
+<a name="l00209"></a>00209             <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree);
 <a name="l00210"></a>00210             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Snapshot tree end&quot;</span>);
 <a name="l00211"></a>00211         }
 <a name="l00212"></a>00212     }

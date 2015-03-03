@@ -10,5 +10,6 @@ var searchData=
   ['timer_2eh',['Timer.h',['../Timer_8h.html',1,'']]],
   ['tool_2ecc',['Tool.cc',['../Tool_8cc.html',1,'']]],
   ['tree_2ecc',['Tree.cc',['../Tree_8cc.html',1,'']]],
-  ['tree_2eh',['Tree.h',['../Tree_8h.html',1,'']]]
+  ['tree_2eh',['Tree.h',['../Tree_8h.html',1,'']]],
+  ['treeops_2ecc',['TreeOps.cc',['../TreeOps_8cc.html',1,'']]]
 ];
