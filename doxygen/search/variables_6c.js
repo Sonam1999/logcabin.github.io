@@ -30,6 +30,7 @@ var searchData=
   ['lockguard',['lockGuard',['../classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a4e8ec46fc587cfce8409fe62522860a8',1,'LogCabin::Server::ServerStats::Lock']]],
   ['lockowner',['lockOwner',['../classLogCabin_1_1Event_1_1Loop.html#a2257b824bb17445bbe22854f4a9cc3be',1,'LogCabin::Event::Loop']]],
   ['log',['log',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
+  ['logdir',['logDir',['../classLogCabin_1_1Storage_1_1Layout.html#af9a506ff61ab69d00d228b6a949189aa',1,'LogCabin::Storage::Layout']]],
   ['loghandler',['logHandler',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a9b1b7da5221b8fb784234b34fab553a0',1,'LogCabin::Core::Debug::Internal']]],
   ['loglevel',['logLevel',['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a6d04ae99f78881c253afffb741bad9ff',1,'LogCabin::Core::Debug::DebugMessage']]],
   ['loglevelstring',['logLevelString',['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a306adbdcbb237f8f4efe7044697faa81',1,'LogCabin::Core::Debug::DebugMessage']]],

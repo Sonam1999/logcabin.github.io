@@ -117,85 +117,96 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00035"></a>00035 <span class="comment"> *</span>
 <a name="l00036"></a>00036 <span class="comment"> * / - topDir, defined by config option &#39;storagePath&#39;</span>
 <a name="l00037"></a>00037 <span class="comment"> *     &quot;server%lu&quot; % serverId/ - serverDir</span>
-<a name="l00038"></a>00038 <span class="comment"> *         log/ - Storage::Log implementation-defined</span>
-<a name="l00039"></a>00039 <span class="comment"> *         snapshot -  last complete snapshot</span>
-<a name="l00040"></a>00040 <span class="comment"> *         &quot;partial.%010lu.%06lu&quot; % (seconds, micro) - snapshot(s) in progress</span>
-<a name="l00041"></a>00041 <span class="comment"> *         lock - lockFile, ensures only 1 process accesses serverDir a time</span>
-<a name="l00042"></a>00042 <span class="comment"> */</span>
-<a name="l00043"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html">00043</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a> {
-<a name="l00044"></a>00044   <span class="keyword">public</span>:
-<a name="l00045"></a>00045 <span class="comment"></span>
-<a name="l00046"></a>00046 <span class="comment">    /// Default constructor. Call some init method next.</span>
-<a name="l00047"></a>00047 <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380" title="Default constructor. Call some init method next.">Layout</a>();
-<a name="l00048"></a>00048 <span class="comment"></span>
-<a name="l00049"></a>00049 <span class="comment">    /// Move constructor.</span>
-<a name="l00050"></a>00050 <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380" title="Default constructor. Call some init method next.">Layout</a>(<a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a>&amp;&amp; other);
-<a name="l00051"></a>00051 <span class="comment"></span>
-<a name="l00052"></a>00052 <span class="comment">    /// Destructor.</span>
-<a name="l00053"></a>00053 <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a6116e6d64953a33ca0993674f97cc50f" title="Destructor.">~Layout</a>();
-<a name="l00054"></a>00054 <span class="comment"></span>
-<a name="l00055"></a>00055 <span class="comment">    /// Move assignment.</span>
-<a name="l00056"></a>00056 <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a>&amp; <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#ad35b89f090e7cd2c9f530cee6de0934f" title="Move assignment.">operator=</a>(<a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a>&amp;&amp; other);
-<a name="l00057"></a>00057 <span class="comment"></span>
-<a name="l00058"></a>00058 <span class="comment">    /**</span>
-<a name="l00059"></a>00059 <span class="comment">     * Initialize in the normal way for a LogCabin server.</span>
-<a name="l00060"></a>00060 <span class="comment">     * \param config</span>
-<a name="l00061"></a>00061 <span class="comment">     *      Server settings: used to extract storage path.</span>
-<a name="l00062"></a>00062 <span class="comment">     * \param serverId</span>
-<a name="l00063"></a>00063 <span class="comment">     *      Unique ID for this server.</span>
-<a name="l00064"></a>00064 <span class="comment">     */</span>
-<a name="l00065"></a>00065     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a6dda2698cba322363883ff039c6ef3eb" title="Initialize in the normal way for a LogCabin server.">init</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Core::Config</a>&amp; config, uint64_t serverId);
-<a name="l00066"></a>00066 <span class="comment"></span>
-<a name="l00067"></a>00067 <span class="comment">    /**</span>
-<a name="l00068"></a>00068 <span class="comment">     * Initialize with a particular storagePath.</span>
-<a name="l00069"></a>00069 <span class="comment">     * \param storagePath</span>
-<a name="l00070"></a>00070 <span class="comment">     *      Path for &#39;topDir&#39;.</span>
-<a name="l00071"></a>00071 <span class="comment">     * \param serverId</span>
-<a name="l00072"></a>00072 <span class="comment">     *      Unique ID for this server.</span>
-<a name="l00073"></a>00073 <span class="comment">     */</span>
-<a name="l00074"></a>00074     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a6dda2698cba322363883ff039c6ef3eb" title="Initialize in the normal way for a LogCabin server.">init</a>(<span class="keyword">const</span> std::string&amp; storagePath, uint64_t serverId);
-<a name="l00075"></a>00075 <span class="comment"></span>
-<a name="l00076"></a>00076 <span class="comment">    /**</span>
-<a name="l00077"></a>00077 <span class="comment">     * Initialize for unit tests. This will set up the layout in a temporary</span>
-<a name="l00078"></a>00078 <span class="comment">     * directory, and this class will remove all files in that directory when</span>
-<a name="l00079"></a>00079 <span class="comment">     * it is destroyed.</span>
-<a name="l00080"></a>00080 <span class="comment">     * \param serverId</span>
-<a name="l00081"></a>00081 <span class="comment">     *      Unique ID for this server (in case it matters).</span>
-<a name="l00082"></a>00082 <span class="comment">     */</span>
-<a name="l00083"></a>00083     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a52a9da5994543b80d3e867420270c952" title="Initialize for unit tests.">initTemporary</a>(uint64_t serverId = 1);
-<a name="l00084"></a>00084 <span class="comment"></span>
-<a name="l00085"></a>00085 <span class="comment">    /**</span>
-<a name="l00086"></a>00086 <span class="comment">     * Contains all files.</span>
-<a name="l00087"></a>00087 <span class="comment">     * Defined by config option &#39;storagePath&#39;.</span>
-<a name="l00088"></a>00088 <span class="comment">     */</span>
-<a name="l00089"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a434a2c1d6230bd4dfc621e0ddfa382b0">00089</a>     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a434a2c1d6230bd4dfc621e0ddfa382b0" title="Contains all files.">topDir</a>;<span class="comment"></span>
-<a name="l00090"></a>00090 <span class="comment">    /**</span>
-<a name="l00091"></a>00091 <span class="comment">     * Contains all files for this particular server.</span>
-<a name="l00092"></a>00092 <span class="comment">     * Sits underneath topDir in a directory called &quot;server%lu&quot; % serverId.</span>
-<a name="l00093"></a>00093 <span class="comment">     */</span>
-<a name="l00094"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a7647c7b9c614df4aa5c5e1561dc6ad92">00094</a>     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a7647c7b9c614df4aa5c5e1561dc6ad92" title="Contains all files for this particular server.">serverDir</a>;<span class="comment"></span>
-<a name="l00095"></a>00095 <span class="comment">    /**</span>
-<a name="l00096"></a>00096 <span class="comment">     * Used to ensure only one process accesses serverDir at a time.</span>
-<a name="l00097"></a>00097 <span class="comment">     * Sits underneath serverDir in a file called &quot;lock&quot;.</span>
-<a name="l00098"></a>00098 <span class="comment">     */</span>
-<a name="l00099"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#ae0f3b216a0f364d1282d96c7c5d46011">00099</a>     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#ae0f3b216a0f364d1282d96c7c5d46011" title="Used to ensure only one process accesses serverDir at a time.">lockFile</a>;
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101   <span class="keyword">private</span>:<span class="comment"></span>
-<a name="l00102"></a>00102 <span class="comment">    /**</span>
-<a name="l00103"></a>00103 <span class="comment">     * If true, rm -rf topDir when destroying this class.</span>
+<a name="l00038"></a>00038 <span class="comment"> *         log/ - logDir, Storage::Log implementation-defined</span>
+<a name="l00039"></a>00039 <span class="comment"> *         snapshot/ -  snapshotDir, contains snapshots</span>
+<a name="l00040"></a>00040 <span class="comment"> *             snapshot - latest complete snapshot</span>
+<a name="l00041"></a>00041 <span class="comment"> *             &quot;partial.%010lu.%06lu&quot; % (seconds, micro) - in progress</span>
+<a name="l00042"></a>00042 <span class="comment"> *         lock - lockFile, ensures only 1 process accesses serverDir a time</span>
+<a name="l00043"></a>00043 <span class="comment"> */</span>
+<a name="l00044"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html">00044</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a> {
+<a name="l00045"></a>00045   <span class="keyword">public</span>:
+<a name="l00046"></a>00046 <span class="comment"></span>
+<a name="l00047"></a>00047 <span class="comment">    /// Default constructor. Call some init method next.</span>
+<a name="l00048"></a>00048 <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380" title="Default constructor. Call some init method next.">Layout</a>();
+<a name="l00049"></a>00049 <span class="comment"></span>
+<a name="l00050"></a>00050 <span class="comment">    /// Move constructor.</span>
+<a name="l00051"></a>00051 <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380" title="Default constructor. Call some init method next.">Layout</a>(<a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a>&amp;&amp; other);
+<a name="l00052"></a>00052 <span class="comment"></span>
+<a name="l00053"></a>00053 <span class="comment">    /// Destructor.</span>
+<a name="l00054"></a>00054 <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a6116e6d64953a33ca0993674f97cc50f" title="Destructor.">~Layout</a>();
+<a name="l00055"></a>00055 <span class="comment"></span>
+<a name="l00056"></a>00056 <span class="comment">    /// Move assignment.</span>
+<a name="l00057"></a>00057 <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a>&amp; <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#ad35b89f090e7cd2c9f530cee6de0934f" title="Move assignment.">operator=</a>(<a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a>&amp;&amp; other);
+<a name="l00058"></a>00058 <span class="comment"></span>
+<a name="l00059"></a>00059 <span class="comment">    /**</span>
+<a name="l00060"></a>00060 <span class="comment">     * Initialize in the normal way for a LogCabin server.</span>
+<a name="l00061"></a>00061 <span class="comment">     * \param config</span>
+<a name="l00062"></a>00062 <span class="comment">     *      Server settings: used to extract storage path.</span>
+<a name="l00063"></a>00063 <span class="comment">     * \param serverId</span>
+<a name="l00064"></a>00064 <span class="comment">     *      Unique ID for this server.</span>
+<a name="l00065"></a>00065 <span class="comment">     */</span>
+<a name="l00066"></a>00066     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a6dda2698cba322363883ff039c6ef3eb" title="Initialize in the normal way for a LogCabin server.">init</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Core::Config</a>&amp; config, uint64_t serverId);
+<a name="l00067"></a>00067 <span class="comment"></span>
+<a name="l00068"></a>00068 <span class="comment">    /**</span>
+<a name="l00069"></a>00069 <span class="comment">     * Initialize with a particular storagePath.</span>
+<a name="l00070"></a>00070 <span class="comment">     * \param storagePath</span>
+<a name="l00071"></a>00071 <span class="comment">     *      Path for &#39;topDir&#39;.</span>
+<a name="l00072"></a>00072 <span class="comment">     * \param serverId</span>
+<a name="l00073"></a>00073 <span class="comment">     *      Unique ID for this server.</span>
+<a name="l00074"></a>00074 <span class="comment">     */</span>
+<a name="l00075"></a>00075     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a6dda2698cba322363883ff039c6ef3eb" title="Initialize in the normal way for a LogCabin server.">init</a>(<span class="keyword">const</span> std::string&amp; storagePath, uint64_t serverId);
+<a name="l00076"></a>00076 <span class="comment"></span>
+<a name="l00077"></a>00077 <span class="comment">    /**</span>
+<a name="l00078"></a>00078 <span class="comment">     * Initialize for unit tests. This will set up the layout in a temporary</span>
+<a name="l00079"></a>00079 <span class="comment">     * directory, and this class will remove all files in that directory when</span>
+<a name="l00080"></a>00080 <span class="comment">     * it is destroyed.</span>
+<a name="l00081"></a>00081 <span class="comment">     * \param serverId</span>
+<a name="l00082"></a>00082 <span class="comment">     *      Unique ID for this server (in case it matters).</span>
+<a name="l00083"></a>00083 <span class="comment">     */</span>
+<a name="l00084"></a>00084     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a52a9da5994543b80d3e867420270c952" title="Initialize for unit tests.">initTemporary</a>(uint64_t serverId = 1);
+<a name="l00085"></a>00085 <span class="comment"></span>
+<a name="l00086"></a>00086 <span class="comment">    /**</span>
+<a name="l00087"></a>00087 <span class="comment">     * Contains all files.</span>
+<a name="l00088"></a>00088 <span class="comment">     * Defined by config option &#39;storagePath&#39;.</span>
+<a name="l00089"></a>00089 <span class="comment">     */</span>
+<a name="l00090"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a434a2c1d6230bd4dfc621e0ddfa382b0">00090</a>     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a434a2c1d6230bd4dfc621e0ddfa382b0" title="Contains all files.">topDir</a>;<span class="comment"></span>
+<a name="l00091"></a>00091 <span class="comment">    /**</span>
+<a name="l00092"></a>00092 <span class="comment">     * Contains all files for this particular server.</span>
+<a name="l00093"></a>00093 <span class="comment">     * Sits underneath topDir in a directory called &quot;server%lu&quot; % serverId.</span>
+<a name="l00094"></a>00094 <span class="comment">     */</span>
+<a name="l00095"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a7647c7b9c614df4aa5c5e1561dc6ad92">00095</a>     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a7647c7b9c614df4aa5c5e1561dc6ad92" title="Contains all files for this particular server.">serverDir</a>;<span class="comment"></span>
+<a name="l00096"></a>00096 <span class="comment">    /**</span>
+<a name="l00097"></a>00097 <span class="comment">     * Used to ensure only one process accesses serverDir at a time.</span>
+<a name="l00098"></a>00098 <span class="comment">     * Sits underneath serverDir in a file called &quot;lock&quot;.</span>
+<a name="l00099"></a>00099 <span class="comment">     */</span>
+<a name="l00100"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#ae0f3b216a0f364d1282d96c7c5d46011">00100</a>     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#ae0f3b216a0f364d1282d96c7c5d46011" title="Used to ensure only one process accesses serverDir at a time.">lockFile</a>;<span class="comment"></span>
+<a name="l00101"></a>00101 <span class="comment">    /**</span>
+<a name="l00102"></a>00102 <span class="comment">     * Contains all log files for this particular server.</span>
+<a name="l00103"></a>00103 <span class="comment">     * Sits underneath serverDir in a directory called &quot;log&quot;.</span>
 <a name="l00104"></a>00104 <span class="comment">     */</span>
-<a name="l00105"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a9069378ca7ca1a771537a6f10aed2544">00105</a>     <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a9069378ca7ca1a771537a6f10aed2544" title="If true, rm -rf topDir when destroying this class.">removeAllFiles</a>;
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107     <span class="comment">// Layout is movable but not coypable (the semantics around removeAllFiles</span>
-<a name="l00108"></a>00108     <span class="comment">// would be tricky).</span>
-<a name="l00109"></a>00109     <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380" title="Default constructor. Call some init method next.">Layout</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a>&amp; other) = <span class="keyword">delete</span>;
-<a name="l00110"></a>00110     <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a>&amp; <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#ad35b89f090e7cd2c9f530cee6de0934f" title="Move assignment.">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a>&amp; other) = <span class="keyword">delete</span>;
-<a name="l00111"></a>00111 };
-<a name="l00112"></a>00112 
-<a name="l00113"></a>00113 } <span class="comment">// namespace LogCabin::Storage</span>
-<a name="l00114"></a>00114 } <span class="comment">// namespace LogCabin</span>
-<a name="l00115"></a>00115 
-<a name="l00116"></a>00116 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_STORAGE_LAYOUT_H */</span>
+<a name="l00105"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#af9a506ff61ab69d00d228b6a949189aa">00105</a>     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#af9a506ff61ab69d00d228b6a949189aa" title="Contains all log files for this particular server.">logDir</a>;<span class="comment"></span>
+<a name="l00106"></a>00106 <span class="comment">    /**</span>
+<a name="l00107"></a>00107 <span class="comment">     * Contains all snapshot files for this particular server.</span>
+<a name="l00108"></a>00108 <span class="comment">     * Sits underneath serverDir in a directory called &quot;snapshot&quot;.</span>
+<a name="l00109"></a>00109 <span class="comment">     */</span>
+<a name="l00110"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a8dc98b30f53f5468d051623f04207aed">00110</a>     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a8dc98b30f53f5468d051623f04207aed" title="Contains all snapshot files for this particular server.">snapshotDir</a>;
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112   <span class="keyword">private</span>:<span class="comment"></span>
+<a name="l00113"></a>00113 <span class="comment">    /**</span>
+<a name="l00114"></a>00114 <span class="comment">     * If true, rm -rf topDir when destroying this class.</span>
+<a name="l00115"></a>00115 <span class="comment">     */</span>
+<a name="l00116"></a><a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a9069378ca7ca1a771537a6f10aed2544">00116</a>     <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#a9069378ca7ca1a771537a6f10aed2544" title="If true, rm -rf topDir when destroying this class.">removeAllFiles</a>;
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118     <span class="comment">// Layout is movable but not coypable (the semantics around removeAllFiles</span>
+<a name="l00119"></a>00119     <span class="comment">// would be tricky).</span>
+<a name="l00120"></a>00120     <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380" title="Default constructor. Call some init method next.">Layout</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a>&amp; other) = <span class="keyword">delete</span>;
+<a name="l00121"></a>00121     <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a>&amp; <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#ad35b89f090e7cd2c9f530cee6de0934f" title="Move assignment.">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Layout</a>&amp; other) = <span class="keyword">delete</span>;
+<a name="l00122"></a>00122 };
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 } <span class="comment">// namespace LogCabin::Storage</span>
+<a name="l00125"></a>00125 } <span class="comment">// namespace LogCabin</span>
+<a name="l00126"></a>00126 
+<a name="l00127"></a>00127 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_STORAGE_LAYOUT_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

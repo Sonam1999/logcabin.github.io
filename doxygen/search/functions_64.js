@@ -10,6 +10,7 @@ var searchData=
   ['directory',['Directory',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a4eb07d7b9f07af7f3095c5afc39d43b3',1,'LogCabin::Tree::Internal::Directory']]],
   ['disableforever',['disableForever',['../classLogCabin_1_1Event_1_1File_1_1Monitor.html#a2b38fde47fcf4ac96b59d7835ad3b26d',1,'LogCabin::Event::File::Monitor']]],
   ['discard',['discard',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#adff750be580dd1545f6232792220f2c5',1,'LogCabin::Storage::SnapshotFile::Writer']]],
+  ['discardpartialsnapshots',['discardPartialSnapshots',['../namespaceLogCabin_1_1Storage_1_1SnapshotFile.html#a2852e12ee900d5a5fc91c1410995cba5',1,'LogCabin::Storage::SnapshotFile']]],
   ['discardunneededentries',['discardUnneededEntries',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac1a7962c0e417508be477e49e9506acb',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['disconnect',['disconnect',['../classLogCabin_1_1RPC_1_1MessageSocket.html#af6f6db4ae752670c8c758b40b39a74ab',1,'LogCabin::RPC::MessageSocket']]],
   ['display',['display',['../namespaceLogCabin_1_1Core_1_1StringUtil_1_1anonymous__namespace_02StringUtil_8cc_03.html#a056bc02fa0b0eba6c967c64120cfbb4e',1,'LogCabin::Core::StringUtil::anonymous_namespace{StringUtil.cc}']]],

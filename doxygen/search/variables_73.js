@@ -34,6 +34,7 @@ var searchData=
   ['size',['size',['../classanonymous__namespace_02Benchmark_8cc_03_1_1OptionParser.html#aec0936844382137633316a181b3829f9',1,'anonymous_namespace{Benchmark.cc}::OptionParser::size()'],['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a8ef0d2cf638d976da604802ea50edce0',1,'LogCabin::Storage::SegmentedLog::Sync::Op::size()']]],
   ['skipfsync',['skipFsync',['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a26b63e44c655c4428501edf54a521fe2',1,'LogCabin::Storage::FilesystemUtil']]],
   ['snapshot',['snapshot',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#a0219706f5f3f19733f82f6330ad49383',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],
+  ['snapshotdir',['snapshotDir',['../classLogCabin_1_1Storage_1_1Layout.html#a8dc98b30f53f5468d051623f04207aed',1,'LogCabin::Storage::Layout']]],
   ['snapshotfile',['snapshotFile',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad26b3c377e98b3ae5f0818b7b76908fd',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['snapshotfileoffset',['snapshotFileOffset',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a71e8fe01080a5c648184fcada409c56a',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['snapshotminlogsize',['snapshotMinLogSize',['../classLogCabin_1_1Server_1_1StateMachine.html#a4f131806d00456d018b8ea8b9e516f9d',1,'LogCabin::Server::StateMachine']]],

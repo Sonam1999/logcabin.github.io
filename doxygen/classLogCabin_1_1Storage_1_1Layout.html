@@ -140,6 +140,10 @@ Public Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all files for this particular server.  <a href="#a7647c7b9c614df4aa5c5e1561dc6ad92"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html">FilesystemUtil::File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#ae0f3b216a0f364d1282d96c7c5d46011">lockFile</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to ensure only one process accesses serverDir at a time.  <a href="#ae0f3b216a0f364d1282d96c7c5d46011"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html">FilesystemUtil::File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#af9a506ff61ab69d00d228b6a949189aa">logDir</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all log files for this particular server.  <a href="#af9a506ff61ab69d00d228b6a949189aa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html">FilesystemUtil::File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#a8dc98b30f53f5468d051623f04207aed">snapshotDir</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all snapshot files for this particular server.  <a href="#a8dc98b30f53f5468d051623f04207aed"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#a9173eeff881b730d869c730e77ec8afb">Layout</a> (const <a class="el" href="classLogCabin_1_1Storage_1_1Layout.html">Layout</a> &amp;other)</td></tr>
@@ -152,9 +156,9 @@ Private Attributes</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Encapsulates how <a class="el" href="namespaceLogCabin.html">LogCabin</a> lays out the filesystem, and it handles locking of the storage directory. </p>
 <p>The current filesystem layout looks like this:</p>
-<p>/ - topDir, defined by config option 'storagePath' "server%lu" % serverId/ - serverDir log/ - <a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Storage::Log</a> implementation-defined snapshot - last complete snapshot "partial.%010lu.%06lu" % (seconds, micro) - snapshot(s) in progress lock - lockFile, ensures only 1 process accesses serverDir a time </p>
+<p>/ - topDir, defined by config option 'storagePath' "server%lu" % serverId/ - serverDir log/ - logDir, <a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Storage::Log</a> implementation-defined snapshot/ - snapshotDir, contains snapshots snapshot - latest complete snapshot "partial.%010lu.%06lu" % (seconds, micro) - in progress lock - lockFile, ensures only 1 process accesses serverDir a time </p>
 
-<p>Definition at line <a class="el" href="Layout_8h_source.html#l00043">43</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
+<p>Definition at line <a class="el" href="Layout_8h_source.html#l00044">44</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aeccf692c381450a3f3760b7eff6a6380"></a><!-- doxytag: member="LogCabin::Storage::Layout::Layout" ref="aeccf692c381450a3f3760b7eff6a6380" args="()" -->
 <div class="memitem">
@@ -193,7 +197,7 @@ Private Attributes</h2></td></tr>
 
 <p>Move constructor. </p>
 
-<p>Definition at line <a class="el" href="Layout_8cc_source.html#l00038">38</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
+<p>Definition at line <a class="el" href="Layout_8cc_source.html#l00040">40</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
 
 </div>
 </div>
@@ -213,7 +217,7 @@ Private Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="Layout_8cc_source.html#l00047">47</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
+<p>Definition at line <a class="el" href="Layout_8cc_source.html#l00051">51</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
 
 </div>
 </div>
@@ -252,7 +256,7 @@ Private Attributes</h2></td></tr>
 
 <p>Move assignment. </p>
 
-<p>Definition at line <a class="el" href="Layout_8cc_source.html#l00054">54</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
+<p>Definition at line <a class="el" href="Layout_8cc_source.html#l00058">58</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
 
 </div>
 </div>
@@ -290,7 +294,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Layout_8cc_source.html#l00069">69</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
+<p>Definition at line <a class="el" href="Layout_8cc_source.html#l00075">75</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
 
 </div>
 </div>
@@ -328,7 +332,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Layout_8cc_source.html#l00076">76</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
+<p>Definition at line <a class="el" href="Layout_8cc_source.html#l00082">82</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
 
 </div>
 </div>
@@ -356,7 +360,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Layout_8cc_source.html#l00102">102</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
+<p>Definition at line <a class="el" href="Layout_8cc_source.html#l00110">110</a> of file <a class="el" href="Layout_8cc_source.html">Layout.cc</a>.</p>
 
 </div>
 </div>
@@ -392,7 +396,7 @@ Private Attributes</h2></td></tr>
 <p>Contains all files. </p>
 <p>Defined by config option 'storagePath'. </p>
 
-<p>Definition at line <a class="el" href="Layout_8h_source.html#l00089">89</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
+<p>Definition at line <a class="el" href="Layout_8h_source.html#l00090">90</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
 
 </div>
 </div>
@@ -410,7 +414,7 @@ Private Attributes</h2></td></tr>
 <p>Contains all files for this particular server. </p>
 <p>Sits underneath topDir in a directory called "server%lu" % serverId. </p>
 
-<p>Definition at line <a class="el" href="Layout_8h_source.html#l00094">94</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
+<p>Definition at line <a class="el" href="Layout_8h_source.html#l00095">95</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
 
 </div>
 </div>
@@ -428,7 +432,43 @@ Private Attributes</h2></td></tr>
 <p>Used to ensure only one process accesses serverDir at a time. </p>
 <p>Sits underneath serverDir in a file called "lock". </p>
 
-<p>Definition at line <a class="el" href="Layout_8h_source.html#l00099">99</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
+<p>Definition at line <a class="el" href="Layout_8h_source.html#l00100">100</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af9a506ff61ab69d00d228b6a949189aa"></a><!-- doxytag: member="LogCabin::Storage::Layout::logDir" ref="af9a506ff61ab69d00d228b6a949189aa" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html">FilesystemUtil::File</a> <a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#af9a506ff61ab69d00d228b6a949189aa">LogCabin::Storage::Layout::logDir</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Contains all log files for this particular server. </p>
+<p>Sits underneath serverDir in a directory called "log". </p>
+
+<p>Definition at line <a class="el" href="Layout_8h_source.html#l00105">105</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8dc98b30f53f5468d051623f04207aed"></a><!-- doxytag: member="LogCabin::Storage::Layout::snapshotDir" ref="a8dc98b30f53f5468d051623f04207aed" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html">FilesystemUtil::File</a> <a class="el" href="classLogCabin_1_1Storage_1_1Layout.html#a8dc98b30f53f5468d051623f04207aed">LogCabin::Storage::Layout::snapshotDir</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Contains all snapshot files for this particular server. </p>
+<p>Sits underneath serverDir in a directory called "snapshot". </p>
+
+<p>Definition at line <a class="el" href="Layout_8h_source.html#l00110">110</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
 
 </div>
 </div>
@@ -445,7 +485,7 @@ Private Attributes</h2></td></tr>
 
 <p>If true, rm -rf topDir when destroying this class. </p>
 
-<p>Definition at line <a class="el" href="Layout_8h_source.html#l00105">105</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
+<p>Definition at line <a class="el" href="Layout_8h_source.html#l00116">116</a> of file <a class="el" href="Layout_8h_source.html">Layout.h</a>.</p>
 
 </div>
 </div>
