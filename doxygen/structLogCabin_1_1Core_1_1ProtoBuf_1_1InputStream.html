@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: LogCabin::Tree::Internal::File Class Reference</title>
+<title>LogCabin: LogCabin::Core::ProtoBuf::InputStream Struct Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -93,130 +93,149 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
-      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Tree.html">Tree</a>      </li>
-      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Tree_1_1Internal.html">Internal</a>      </li>
-      <li class="navelem"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html">File</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Core.html">Core</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html">ProtoBuf</a>      </li>
+      <li class="navelem"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html">InputStream</a>      </li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a>  </div>
+<a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<div class="title">LogCabin::Tree::Internal::File Class Reference</div>  </div>
+<div class="title">LogCabin::Core::ProtoBuf::InputStream Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="LogCabin::Tree::Internal::File" -->
-<p>A leaf object in the <a class="el" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree</a>; stores an opaque blob of data.  
- <a href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#details">More...</a></p>
+<!-- doxytag: class="LogCabin::Core::ProtoBuf::InputStream" -->
+<p>An abstract stream from which ProtoBufs may be read.  
+ <a href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Tree_8h_source.html">Tree.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Core_2ProtoBuf_8h_source.html">ProtoBuf.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for LogCabin::Core::ProtoBuf::InputStream:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.png" usemap="#LogCabin::Core::ProtoBuf::InputStream_map" alt=""/>
+  <map id="LogCabin::Core::ProtoBuf::InputStream_map" name="LogCabin::Core::ProtoBuf::InputStream_map">
+<area href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html" title="Assists in reading snapshot files from the local filesystem." alt="LogCabin::Storage::SnapshotFile::Reader" shape="rect" coords="0,56,242,80"/>
+</map>
+ </div></div>
 
-<p><a href="classLogCabin_1_1Tree_1_1Internal_1_1File-members.html">List of all members.</a></p>
+<p><a href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#aeb02f7a00ec654e8ece0b73a374a2892">File</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#aeb02f7a00ec654e8ece0b73a374a2892"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a5690855f6a0556ac3293aba3efa4e4e2">dumpSnapshot</a> (<a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html">Core::ProtoBuf::OutputStream</a> &amp;stream) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the file to the stream.  <a href="#a5690855f6a0556ac3293aba3efa4e4e2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a812b8915049286c61dda54330e97d2a7">loadSnapshot</a> (<a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html">Core::ProtoBuf::InputStream</a> &amp;stream)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the file from the stream.  <a href="#a812b8915049286c61dda54330e97d2a7"></a><br/></td></tr>
-<tr><td colspan="2"><h2><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#ad170261ab6d6aace08542d7be6e8e24b">contents</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque data stored in the <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html" title="A leaf object in the Tree; stores an opaque blob of data.">File</a>.  <a href="#ad170261ab6d6aace08542d7be6e8e24b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#ae9da92a5988aa9b6a3eddf6813820702">~InputStream</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#ae9da92a5988aa9b6a3eddf6813820702"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#a89ad3e978fedc477fbc6bc62915d8d2b">getBytesRead</a> () const =0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of bytes read so far.  <a href="#a89ad3e978fedc477fbc6bc62915d8d2b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#aac1f152527b091f84038f19ed07c662d">readMessage</a> (google::protobuf::Message &amp;message)=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a <a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html">ProtoBuf</a> message from the stream.  <a href="#aac1f152527b091f84038f19ed07c662d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#ae624a454f9511acdf87dbb09f6f6f5ba">readRaw</a> (void *data, uint64_t length)=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read some raw bytes from the stream.  <a href="#ae624a454f9511acdf87dbb09f6f6f5ba"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>A leaf object in the <a class="el" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree</a>; stores an opaque blob of data. </p>
+<div class="textblock"><p>An abstract stream from which ProtoBufs may be read. </p>
 
-<p>Definition at line <a class="el" href="Tree_8h_source.html#l00094">94</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2ProtoBuf_8h_source.html#l00153">153</a> of file <a class="el" href="Core_2ProtoBuf_8h_source.html">ProtoBuf.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aeb02f7a00ec654e8ece0b73a374a2892"></a><!-- doxytag: member="LogCabin::Tree::Internal::File::File" ref="aeb02f7a00ec654e8ece0b73a374a2892" args="()" -->
+<a class="anchor" id="ae9da92a5988aa9b6a3eddf6813820702"></a><!-- doxytag: member="LogCabin::Core::ProtoBuf::InputStream::~InputStream" ref="ae9da92a5988aa9b6a3eddf6813820702" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#aeb02f7a00ec654e8ece0b73a374a2892">LogCabin::Tree::Internal::File::File</a> </td>
+          <td class="memname">virtual <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#ae9da92a5988aa9b6a3eddf6813820702">LogCabin::Core::ProtoBuf::InputStream::~InputStream</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td><code> [inline, virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Default constructor. </p>
+<p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00067">67</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Core_2ProtoBuf_8h_source.html#l00157">157</a> of file <a class="el" href="Core_2ProtoBuf_8h_source.html">ProtoBuf.h</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a5690855f6a0556ac3293aba3efa4e4e2"></a><!-- doxytag: member="LogCabin::Tree::Internal::File::dumpSnapshot" ref="a5690855f6a0556ac3293aba3efa4e4e2" args="(Core::ProtoBuf::OutputStream &amp;stream) const " -->
+<a class="anchor" id="a89ad3e978fedc477fbc6bc62915d8d2b"></a><!-- doxytag: member="LogCabin::Core::ProtoBuf::InputStream::getBytesRead" ref="a89ad3e978fedc477fbc6bc62915d8d2b" args="() const =0" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a5690855f6a0556ac3293aba3efa4e4e2">LogCabin::Tree::Internal::File::dumpSnapshot</a> </td>
+          <td class="memname">virtual uint64_t <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#a89ad3e978fedc477fbc6bc62915d8d2b">LogCabin::Core::ProtoBuf::InputStream::getBytesRead</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html">Core::ProtoBuf::OutputStream</a> &amp;&#160;</td>
-          <td class="paramname"><em>stream</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [pure virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Write the file to the stream. </p>
+<p>Return the number of bytes read so far. </p>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00073">73</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a5032fca095b73bbdce485140d86dccba">LogCabin::Storage::SnapshotFile::Reader</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a812b8915049286c61dda54330e97d2a7"></a><!-- doxytag: member="LogCabin::Tree::Internal::File::loadSnapshot" ref="a812b8915049286c61dda54330e97d2a7" args="(Core::ProtoBuf::InputStream &amp;stream)" -->
+<a class="anchor" id="aac1f152527b091f84038f19ed07c662d"></a><!-- doxytag: member="LogCabin::Core::ProtoBuf::InputStream::readMessage" ref="aac1f152527b091f84038f19ed07c662d" args="(google::protobuf::Message &amp;message)=0" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a812b8915049286c61dda54330e97d2a7">LogCabin::Tree::Internal::File::loadSnapshot</a> </td>
+          <td class="memname">virtual std::string <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#aac1f152527b091f84038f19ed07c662d">LogCabin::Core::ProtoBuf::InputStream::readMessage</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html">Core::ProtoBuf::InputStream</a> &amp;&#160;</td>
-          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td class="paramtype">google::protobuf::Message &amp;&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Read a <a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html">ProtoBuf</a> message from the stream. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Empty string if successful, otherwise an error message if an error occurred. The stream is probably no longer usable after an error. </dd></dl>
+
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a034c8b3425d610ac9fe5c24046462413">LogCabin::Storage::SnapshotFile::Reader</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae624a454f9511acdf87dbb09f6f6f5ba"></a><!-- doxytag: member="LogCabin::Core::ProtoBuf::InputStream::readRaw" ref="ae624a454f9511acdf87dbb09f6f6f5ba" args="(void *data, uint64_t length)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual uint64_t <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#ae624a454f9511acdf87dbb09f6f6f5ba">LogCabin::Core::ProtoBuf::InputStream::readRaw</a> </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
         </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Load the file from the stream. </p>
-
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00081">81</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
-
-</div>
-</div>
-<hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="ad170261ab6d6aace08542d7be6e8e24b"></a><!-- doxytag: member="LogCabin::Tree::Internal::File::contents" ref="ad170261ab6d6aace08542d7be6e8e24b" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">std::string <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#ad170261ab6d6aace08542d7be6e8e24b">LogCabin::Tree::Internal::File::contents</a></td>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [pure virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Opaque data stored in the <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html" title="A leaf object in the Tree; stores an opaque blob of data.">File</a>. </p>
+<p>Read some raw bytes from the stream. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The number of bytes read before the end of the stream was reached, up to 'length'. </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8h_source.html#l00109">109</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a359268e105c1c7abc6329b798e8b560d">LogCabin::Storage::SnapshotFile::Reader</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>Tree/<a class="el" href="Tree_8h_source.html">Tree.h</a></li>
-<li>Tree/<a class="el" href="Tree_8cc_source.html">Tree.cc</a></li>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>Core/<a class="el" href="Core_2ProtoBuf_8h_source.html">ProtoBuf.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->

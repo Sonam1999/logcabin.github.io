@@ -22,7 +22,6 @@ var searchData=
   ['filenotifier',['FileNotifier',['../structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html',1,'LogCabin::RPC::anonymous_namespace{ClientSession.cc}']]],
   ['filenotifier',['FileNotifier',['../structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#a1a8b5316d55cd83969ba57dfa1d3ee0d',1,'LogCabin::RPC::anonymous_namespace{ClientSession.cc}::FileNotifier']]],
   ['files',['files',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#ad9f05832405dc31e5a6b854a33b9a8c6',1,'LogCabin::Tree::Internal::Directory']]],
-  ['filestream',['fileStream',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a4a59250b1a4b98c4d7299fad4e66ad80',1,'LogCabin::Storage::SnapshotFile::Reader::fileStream()'],['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a1910ad644a054e0afe4c187e74476f70',1,'LogCabin::Storage::SnapshotFile::Writer::fileStream()']]],
   ['filesystemutil_2ecc',['FilesystemUtil.cc',['../FilesystemUtil_8cc.html',1,'']]],
   ['filesystemutil_2eh',['FilesystemUtil.h',['../FilesystemUtil_8h.html',1,'']]],
   ['filetoproto',['fileToProto',['../namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html#afc9613681322d6febf64d33e12d83b45',1,'LogCabin::Storage::anonymous_namespace{SimpleFileLog.cc}']]],

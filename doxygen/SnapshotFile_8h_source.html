@@ -81,105 +81,105 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="SnapshotFile_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* Copyright (c) 2013 Stanford University</span>
-<a name="l00002"></a>00002 <span class="comment"> *</span>
-<a name="l00003"></a>00003 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
-<a name="l00004"></a>00004 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
-<a name="l00005"></a>00005 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
-<a name="l00006"></a>00006 <span class="comment"> *</span>
-<a name="l00007"></a>00007 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
-<a name="l00008"></a>00008 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
-<a name="l00009"></a>00009 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
-<a name="l00010"></a>00010 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
-<a name="l00011"></a>00011 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
-<a name="l00012"></a>00012 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
-<a name="l00013"></a>00013 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
-<a name="l00014"></a>00014 <span class="comment"> */</span>
-<a name="l00015"></a>00015 
-<a name="l00016"></a>00016 <span class="preprocessor">#include &lt;google/protobuf/io/coded_stream.h&gt;</span>
-<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;google/protobuf/io/zero_copy_stream_impl.h&gt;</span>
+<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2015 Diego Ongaro</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
+<a name="l00005"></a>00005 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
+<a name="l00006"></a>00006 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
+<a name="l00007"></a>00007 <span class="comment"> *</span>
+<a name="l00008"></a>00008 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
+<a name="l00009"></a>00009 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
+<a name="l00010"></a>00010 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
+<a name="l00011"></a>00011 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
+<a name="l00012"></a>00012 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
+<a name="l00013"></a>00013 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
+<a name="l00014"></a>00014 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
+<a name="l00015"></a>00015 <span class="comment"> */</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;google/protobuf/message.h&gt;</span>
 <a name="l00018"></a>00018 <span class="preprocessor">#include &lt;memory&gt;</span>
 <a name="l00019"></a>00019 <span class="preprocessor">#include &lt;stdexcept&gt;</span>
 <a name="l00020"></a>00020 <span class="preprocessor">#include &lt;string&gt;</span>
 <a name="l00021"></a>00021 
-<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;<a class="code" href="FilesystemUtil_8h.html" title="Contains utilities for working with the filesystem.">Storage/FilesystemUtil.h</a>&quot;</span>
-<a name="l00023"></a>00023 
-<a name="l00024"></a>00024 <span class="preprocessor">#ifndef LOGCABIN_STORAGE_SNAPSHOTFILE_H</span>
-<a name="l00025"></a>00025 <span class="preprocessor"></span><span class="preprocessor">#define LOGCABIN_STORAGE_SNAPSHOTFILE_H</span>
-<a name="l00026"></a>00026 <span class="preprocessor"></span>
-<a name="l00027"></a>00027 <span class="keyword">namespace </span>LogCabin {
-<a name="l00028"></a>00028 <span class="keyword">namespace </span>Storage {
-<a name="l00029"></a>00029 
-<a name="l00030"></a>00030 <span class="keyword">class </span>Layout; <span class="comment">// forward declaration</span>
-<a name="l00031"></a>00031 
-<a name="l00032"></a>00032 <span class="keyword">namespace </span>SnapshotFile {
-<a name="l00033"></a>00033 
-<a name="l00034"></a>00034 <span class="comment">// TODO(ongaro): protobuf::io uses 32-bit integer file offsets, but snapshots</span>
-<a name="l00035"></a>00035 <span class="comment">// can be larger than that. A lot of this is going to break for files larger</span>
-<a name="l00036"></a>00036 <span class="comment">// than 2 or 4GB.</span>
-<a name="l00037"></a>00037 <span class="comment"></span>
-<a name="l00038"></a>00038 <span class="comment">/**</span>
-<a name="l00039"></a>00039 <span class="comment"> * Remove any partial snapshots found on disk. This is normally called when the</span>
-<a name="l00040"></a>00040 <span class="comment"> * server boots up.</span>
-<a name="l00041"></a>00041 <span class="comment"> */</span>
-<a name="l00042"></a>00042 <span class="keywordtype">void</span> <a class="code" href="namespaceLogCabin_1_1Storage_1_1SnapshotFile.html#a2852e12ee900d5a5fc91c1410995cba5" title="Remove any partial snapshots found on disk.">discardPartialSnapshots</a>(<span class="keyword">const</span> Storage::Layout&amp; storageLayout);
-<a name="l00043"></a>00043 <span class="comment"></span>
-<a name="l00044"></a>00044 <span class="comment">/**</span>
-<a name="l00045"></a>00045 <span class="comment"> * Assists in reading snapshot files from the local filesystem.</span>
-<a name="l00046"></a>00046 <span class="comment"> */</span>
-<a name="l00047"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html">00047</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html" title="Assists in reading snapshot files from the local filesystem.">Reader</a> {
-<a name="l00048"></a>00048   <span class="keyword">public</span>:<span class="comment"></span>
-<a name="l00049"></a>00049 <span class="comment">    /**</span>
-<a name="l00050"></a>00050 <span class="comment">     * Constructor.</span>
-<a name="l00051"></a>00051 <span class="comment">     * \param storageLayout</span>
-<a name="l00052"></a>00052 <span class="comment">     *      The directories in which to find the snapshot (in a file called</span>
-<a name="l00053"></a>00053 <span class="comment">     *      &quot;snapshot&quot; in the serverDir).</span>
-<a name="l00054"></a>00054 <span class="comment">     * \throw std::runtime_error</span>
-<a name="l00055"></a>00055 <span class="comment">     *      If the file can&#39;t be found.</span>
-<a name="l00056"></a>00056 <span class="comment">     */</span>
-<a name="l00057"></a>00057     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a3dd5d52332ad441e01b47c49e16e8f9e" title="Constructor.">Reader</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Storage::Layout</a>&amp; storageLayout);<span class="comment"></span>
-<a name="l00058"></a>00058 <span class="comment">    /// Destructor.</span>
-<a name="l00059"></a>00059 <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a6120c7eac2cabc961ab9449a90cd565a" title="Destructor.">~Reader</a>();<span class="comment"></span>
-<a name="l00060"></a>00060 <span class="comment">    /// Return the size in bytes for the file.</span>
-<a name="l00061"></a>00061 <span class="comment"></span>    uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#ac2aab0b5b80aa592bdfcc90d4608c241" title="Return the size in bytes for the file.">getSizeBytes</a>();<span class="comment"></span>
-<a name="l00062"></a>00062 <span class="comment">    /// Returns the input stream to read from.</span>
-<a name="l00063"></a>00063 <span class="comment"></span>    google::protobuf::io::CodedInputStream&amp; <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a09ec8a8e3e8ebae229739001edac0f00" title="Returns the input stream to read from.">getStream</a>();
-<a name="l00064"></a>00064   <span class="keyword">private</span>:<span class="comment"></span>
-<a name="l00065"></a>00065 <span class="comment">    /// Wraps the raw file descriptor; in charge of closing it when done.</span>
-<a name="l00066"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a13421a209c0b85a3b2a0a6737ee71cf5">00066</a> <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">Storage::FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a13421a209c0b85a3b2a0a6737ee71cf5" title="Wraps the raw file descriptor; in charge of closing it when done.">file</a>;<span class="comment"></span>
-<a name="l00067"></a>00067 <span class="comment">    /// Actually reads the file from disk.</span>
-<a name="l00068"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a4a59250b1a4b98c4d7299fad4e66ad80">00068</a> <span class="comment"></span>    std::unique_ptr&lt;google::protobuf::io::FileInputStream&gt; <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a4a59250b1a4b98c4d7299fad4e66ad80" title="Actually reads the file from disk.">fileStream</a>;<span class="comment"></span>
-<a name="l00069"></a>00069 <span class="comment">    /// Interprets the raw bytes from the &#39;fileStream&#39;.</span>
-<a name="l00070"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a3133e1abc6095261fc9674d5c78dda9a">00070</a> <span class="comment"></span>    std::unique_ptr&lt;google::protobuf::io::CodedInputStream&gt; <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a3133e1abc6095261fc9674d5c78dda9a" title="Interprets the raw bytes from the &#39;fileStream&#39;.">codedStream</a>;
-<a name="l00071"></a>00071 };
-<a name="l00072"></a>00072 <span class="comment"></span>
-<a name="l00073"></a>00073 <span class="comment">/**</span>
-<a name="l00074"></a>00074 <span class="comment"> * Assists in writing snapshot files to the local filesystem.</span>
-<a name="l00075"></a>00075 <span class="comment"> */</span>
-<a name="l00076"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html">00076</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html" title="Assists in writing snapshot files to the local filesystem.">Writer</a> {
-<a name="l00077"></a>00077   <span class="keyword">public</span>:<span class="comment"></span>
-<a name="l00078"></a>00078 <span class="comment">    /**</span>
-<a name="l00079"></a>00079 <span class="comment">     * Constructor.</span>
-<a name="l00080"></a>00080 <span class="comment">     * \param storageLayout</span>
-<a name="l00081"></a>00081 <span class="comment">     *      The directories in which to create the snapshot (in a file called</span>
-<a name="l00082"></a>00082 <span class="comment">     *      &quot;snapshot&quot; in the serverDir).</span>
-<a name="l00083"></a>00083 <span class="comment">     * TODO(ongaro): what if it can&#39;t be written?</span>
-<a name="l00084"></a>00084 <span class="comment">     */</span>
-<a name="l00085"></a>00085     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#aea7dc57d3c2912a3dd0de9b44a5158da" title="Constructor.">Writer</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Storage::Layout</a>&amp; storageLayout);<span class="comment"></span>
-<a name="l00086"></a>00086 <span class="comment">    /**</span>
-<a name="l00087"></a>00087 <span class="comment">     * Destructor.</span>
-<a name="l00088"></a>00088 <span class="comment">     * If the file hasn&#39;t been explicitly saved or discarded, prints a warning</span>
-<a name="l00089"></a>00089 <span class="comment">     * and leaves the file around for manual inspection.</span>
-<a name="l00090"></a>00090 <span class="comment">     */</span>
-<a name="l00091"></a>00091     <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a42dabc4f82c18c3ffd67f9ef577c694e" title="Destructor.">~Writer</a>();<span class="comment"></span>
-<a name="l00092"></a>00092 <span class="comment">    /**</span>
-<a name="l00093"></a>00093 <span class="comment">     * Throw away the file.</span>
-<a name="l00094"></a>00094 <span class="comment">     * If you call this after the file has been closed, it will PANIC.</span>
-<a name="l00095"></a>00095 <span class="comment">     */</span>
-<a name="l00096"></a>00096     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#adff750be580dd1545f6232792220f2c5" title="Throw away the file.">discard</a>();<span class="comment"></span>
-<a name="l00097"></a>00097 <span class="comment">    /**</span>
-<a name="l00098"></a>00098 <span class="comment">     * Flush changes just down to the operating system&#39;s buffer cache.</span>
-<a name="l00099"></a>00099 <span class="comment">     * Leave the file open for additional writes.</span>
-<a name="l00100"></a>00100 <span class="comment">     * If you call this after the file has been closed, it will PANIC.</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;<a class="code" href="Core_2ProtoBuf_8h.html" title="Utilities for dealing with protocol buffers.">Core/ProtoBuf.h</a>&quot;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &quot;<a class="code" href="FilesystemUtil_8h.html" title="Contains utilities for working with the filesystem.">Storage/FilesystemUtil.h</a>&quot;</span>
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="preprocessor">#ifndef LOGCABIN_STORAGE_SNAPSHOTFILE_H</span>
+<a name="l00026"></a>00026 <span class="preprocessor"></span><span class="preprocessor">#define LOGCABIN_STORAGE_SNAPSHOTFILE_H</span>
+<a name="l00027"></a>00027 <span class="preprocessor"></span>
+<a name="l00028"></a>00028 <span class="keyword">namespace </span>LogCabin {
+<a name="l00029"></a>00029 <span class="keyword">namespace </span>Storage {
+<a name="l00030"></a>00030 
+<a name="l00031"></a>00031 <span class="keyword">class </span>Layout; <span class="comment">// forward declaration</span>
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="keyword">namespace </span>SnapshotFile {
+<a name="l00034"></a>00034 <span class="comment"></span>
+<a name="l00035"></a>00035 <span class="comment">/**</span>
+<a name="l00036"></a>00036 <span class="comment"> * Remove any partial snapshots found on disk. This is normally called when the</span>
+<a name="l00037"></a>00037 <span class="comment"> * server boots up.</span>
+<a name="l00038"></a>00038 <span class="comment"> */</span>
+<a name="l00039"></a>00039 <span class="keywordtype">void</span> <a class="code" href="namespaceLogCabin_1_1Storage_1_1SnapshotFile.html#a2852e12ee900d5a5fc91c1410995cba5" title="Remove any partial snapshots found on disk.">discardPartialSnapshots</a>(<span class="keyword">const</span> Storage::Layout&amp; storageLayout);
+<a name="l00040"></a>00040 <span class="comment"></span>
+<a name="l00041"></a>00041 <span class="comment">/**</span>
+<a name="l00042"></a>00042 <span class="comment"> * Assists in reading snapshot files from the local filesystem.</span>
+<a name="l00043"></a>00043 <span class="comment"> */</span>
+<a name="l00044"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html">00044</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html" title="Assists in reading snapshot files from the local filesystem.">Reader</a> : <span class="keyword">public</span> Core::ProtoBuf::InputStream {
+<a name="l00045"></a>00045   <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00046"></a>00046 <span class="comment">    /**</span>
+<a name="l00047"></a>00047 <span class="comment">     * Constructor.</span>
+<a name="l00048"></a>00048 <span class="comment">     * \param storageLayout</span>
+<a name="l00049"></a>00049 <span class="comment">     *      The directories in which to find the snapshot (in a file called</span>
+<a name="l00050"></a>00050 <span class="comment">     *      &quot;snapshot&quot; in the snapshotDir).</span>
+<a name="l00051"></a>00051 <span class="comment">     * \throw std::runtime_error</span>
+<a name="l00052"></a>00052 <span class="comment">     *      If the file can&#39;t be found.</span>
+<a name="l00053"></a>00053 <span class="comment">     */</span>
+<a name="l00054"></a>00054     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a3dd5d52332ad441e01b47c49e16e8f9e" title="Constructor.">Reader</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Storage::Layout</a>&amp; storageLayout);<span class="comment"></span>
+<a name="l00055"></a>00055 <span class="comment">    /// Destructor.</span>
+<a name="l00056"></a>00056 <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a6120c7eac2cabc961ab9449a90cd565a" title="Destructor.">~Reader</a>();<span class="comment"></span>
+<a name="l00057"></a>00057 <span class="comment">    /// Return the size in bytes for the file.</span>
+<a name="l00058"></a>00058 <span class="comment"></span>    uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#ac2aab0b5b80aa592bdfcc90d4608c241" title="Return the size in bytes for the file.">getSizeBytes</a>();
+<a name="l00059"></a>00059     <span class="comment">// See Core::ProtoBuf::InputStream.</span>
+<a name="l00060"></a>00060     uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a5032fca095b73bbdce485140d86dccba" title="Return the number of bytes read so far.">getBytesRead</a>() <span class="keyword">const</span>;
+<a name="l00061"></a>00061     <span class="comment">// See Core::ProtoBuf::InputStream.</span>
+<a name="l00062"></a>00062     std::string <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a034c8b3425d610ac9fe5c24046462413" title="Read a ProtoBuf message from the stream.">readMessage</a>(google::protobuf::Message&amp; message);
+<a name="l00063"></a>00063     <span class="comment">// See Core::ProtoBuf::InputStream.</span>
+<a name="l00064"></a>00064     uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a359268e105c1c7abc6329b798e8b560d" title="Read some raw bytes from the stream.">readRaw</a>(<span class="keywordtype">void</span>* data, uint64_t <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca" title="Check to see if the checksum format looks plausible.">length</a>);
+<a name="l00065"></a>00065   <span class="keyword">private</span>:<span class="comment"></span>
+<a name="l00066"></a>00066 <span class="comment">    /// Wraps the raw file descriptor; in charge of closing it when done.</span>
+<a name="l00067"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a13421a209c0b85a3b2a0a6737ee71cf5">00067</a> <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">Storage::FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a13421a209c0b85a3b2a0a6737ee71cf5" title="Wraps the raw file descriptor; in charge of closing it when done.">file</a>;<span class="comment"></span>
+<a name="l00068"></a>00068 <span class="comment">    /// Maps the file into memory for reading.</span>
+<a name="l00069"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a08d62782feb8a301ed61dfea73575981">00069</a> <span class="comment"></span>    std::unique_ptr&lt;Storage::FilesystemUtil::FileContents&gt; <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a08d62782feb8a301ed61dfea73575981" title="Maps the file into memory for reading.">contents</a>;<span class="comment"></span>
+<a name="l00070"></a>00070 <span class="comment">    /// The number of bytes read from the file.</span>
+<a name="l00071"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#aa71441d7e454bef8e2d587a838df792c">00071</a> <span class="comment"></span>    uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#aa71441d7e454bef8e2d587a838df792c" title="The number of bytes read from the file.">bytesRead</a>;
+<a name="l00072"></a>00072 };
+<a name="l00073"></a>00073 <span class="comment"></span>
+<a name="l00074"></a>00074 <span class="comment">/**</span>
+<a name="l00075"></a>00075 <span class="comment"> * Assists in writing snapshot files to the local filesystem.</span>
+<a name="l00076"></a>00076 <span class="comment"> */</span>
+<a name="l00077"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html">00077</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html" title="Assists in writing snapshot files to the local filesystem.">Writer</a> : <span class="keyword">public</span> Core::ProtoBuf::OutputStream {
+<a name="l00078"></a>00078   <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00079"></a>00079 <span class="comment">    /**</span>
+<a name="l00080"></a>00080 <span class="comment">     * Constructor.</span>
+<a name="l00081"></a>00081 <span class="comment">     * \param storageLayout</span>
+<a name="l00082"></a>00082 <span class="comment">     *      The directories in which to create the snapshot (in a file called</span>
+<a name="l00083"></a>00083 <span class="comment">     *      &quot;snapshot&quot; in the snapshotDir).</span>
+<a name="l00084"></a>00084 <span class="comment">     * TODO(ongaro): what if it can&#39;t be written?</span>
+<a name="l00085"></a>00085 <span class="comment">     */</span>
+<a name="l00086"></a>00086     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#aea7dc57d3c2912a3dd0de9b44a5158da" title="Constructor.">Writer</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Layout.html" title="Encapsulates how LogCabin lays out the filesystem, and it handles locking of the storage directory...">Storage::Layout</a>&amp; storageLayout);<span class="comment"></span>
+<a name="l00087"></a>00087 <span class="comment">    /**</span>
+<a name="l00088"></a>00088 <span class="comment">     * Destructor.</span>
+<a name="l00089"></a>00089 <span class="comment">     * If the file hasn&#39;t been explicitly saved or discarded, prints a warning</span>
+<a name="l00090"></a>00090 <span class="comment">     * and discards the file.</span>
+<a name="l00091"></a>00091 <span class="comment">     */</span>
+<a name="l00092"></a>00092     <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a42dabc4f82c18c3ffd67f9ef577c694e" title="Destructor.">~Writer</a>();<span class="comment"></span>
+<a name="l00093"></a>00093 <span class="comment">    /**</span>
+<a name="l00094"></a>00094 <span class="comment">     * Throw away the file.</span>
+<a name="l00095"></a>00095 <span class="comment">     * If you call this after the file has been closed, it will PANIC.</span>
+<a name="l00096"></a>00096 <span class="comment">     */</span>
+<a name="l00097"></a>00097     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#adff750be580dd1545f6232792220f2c5" title="Throw away the file.">discard</a>();<span class="comment"></span>
+<a name="l00098"></a>00098 <span class="comment">    /**</span>
+<a name="l00099"></a>00099 <span class="comment">     * Flush changes just down to the operating system&#39;s buffer cache.</span>
+<a name="l00100"></a>00100 <span class="comment">     * Leave the file open for additional writes.</span>
 <a name="l00101"></a>00101 <span class="comment">     *</span>
 <a name="l00102"></a>00102 <span class="comment">     * This is useful when forking child processes to write to the file.</span>
 <a name="l00103"></a>00103 <span class="comment">     * The correct procedure for that is:</span>
@@ -189,38 +189,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00107"></a>00107 <span class="comment">     *  3. child process: write stuff</span>
 <a name="l00108"></a>00108 <span class="comment">     *  4. child process: call flushToOS()</span>
 <a name="l00109"></a>00109 <span class="comment">     *  5. child process: call _exit()</span>
-<a name="l00110"></a>00110 <span class="comment">     *  6. parent process: write stuff</span>
-<a name="l00111"></a>00111 <span class="comment">     *  7. parent process: call save()</span>
-<a name="l00112"></a>00112 <span class="comment">     */</span>
-<a name="l00113"></a>00113     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a5acdfa8012bd95341a898946e624bc2b" title="Flush changes just down to the operating system&#39;s buffer cache.">flushToOS</a>();<span class="comment"></span>
-<a name="l00114"></a>00114 <span class="comment">    /**</span>
-<a name="l00115"></a>00115 <span class="comment">     * Flush changes all the way down to the disk and close the file.</span>
-<a name="l00116"></a>00116 <span class="comment">     * If you call this after the file has been closed, it will PANIC.</span>
-<a name="l00117"></a>00117 <span class="comment">     * \return</span>
-<a name="l00118"></a>00118 <span class="comment">     *      Size in bytes of the file</span>
+<a name="l00110"></a>00110 <span class="comment">     *  6. parent process: call seekToEnd()</span>
+<a name="l00111"></a>00111 <span class="comment">     *  7. parent process: write stuff</span>
+<a name="l00112"></a>00112 <span class="comment">     *  8. parent process: call save()</span>
+<a name="l00113"></a>00113 <span class="comment">     */</span>
+<a name="l00114"></a>00114     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a5acdfa8012bd95341a898946e624bc2b" title="Flush changes just down to the operating system&#39;s buffer cache.">flushToOS</a>();<span class="comment"></span>
+<a name="l00115"></a>00115 <span class="comment">    /**</span>
+<a name="l00116"></a>00116 <span class="comment">     * Seek to the end of the file, in case another process has written to it.</span>
+<a name="l00117"></a>00117 <span class="comment">     * Subsequent calls to getBytesWritten() will include data written by other</span>
+<a name="l00118"></a>00118 <span class="comment">     * processes.</span>
 <a name="l00119"></a>00119 <span class="comment">     */</span>
-<a name="l00120"></a>00120     uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#acd9deb7c50b661b287003896961c7138" title="Flush changes all the way down to the disk and close the file.">save</a>();<span class="comment"></span>
-<a name="l00121"></a>00121 <span class="comment">    /// Returns the output stream to write into.</span>
-<a name="l00122"></a>00122 <span class="comment"></span>    google::protobuf::io::CodedOutputStream&amp; <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a12e1597037e9311fdac6bbe26da8db1f" title="Returns the output stream to write into.">getStream</a>();
-<a name="l00123"></a>00123   <span class="keyword">private</span>:<span class="comment"></span>
-<a name="l00124"></a>00124 <span class="comment">    /// A handle to the directory containing the snapshot. Used for renameat on</span>
-<a name="l00125"></a>00125 <span class="comment">    /// close.</span>
-<a name="l00126"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#ab12d289a1319ddf19e65af0d22c64ab4">00126</a> <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">Storage::FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#ab12d289a1319ddf19e65af0d22c64ab4" title="A handle to the directory containing the snapshot.">parentDir</a>;<span class="comment"></span>
-<a name="l00127"></a>00127 <span class="comment">    /// The temporary name of &#39;file&#39; before it is closed.</span>
-<a name="l00128"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#aeb407e25f37b691bf104ed20c76fd46b">00128</a> <span class="comment"></span>    std::string <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#aeb407e25f37b691bf104ed20c76fd46b" title="The temporary name of &#39;file&#39; before it is closed.">stagingName</a>;<span class="comment"></span>
-<a name="l00129"></a>00129 <span class="comment">    /// Wraps the raw file descriptor; in charge of closing it when done.</span>
-<a name="l00130"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a54069497c515d54d46db54addca9021e">00130</a> <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">Storage::FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a54069497c515d54d46db54addca9021e" title="Wraps the raw file descriptor; in charge of closing it when done.">file</a>;<span class="comment"></span>
-<a name="l00131"></a>00131 <span class="comment">    /// Actually writes the file to disk.</span>
-<a name="l00132"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a1910ad644a054e0afe4c187e74476f70">00132</a> <span class="comment"></span>    std::unique_ptr&lt;google::protobuf::io::FileOutputStream&gt; <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a1910ad644a054e0afe4c187e74476f70" title="Actually writes the file to disk.">fileStream</a>;<span class="comment"></span>
-<a name="l00133"></a>00133 <span class="comment">    /// Generates the raw bytes for the &#39;fileStream&#39;.</span>
-<a name="l00134"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a33e3afe943f816b9f30833c63551ea0b">00134</a> <span class="comment"></span>    std::unique_ptr&lt;google::protobuf::io::CodedOutputStream&gt; <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a33e3afe943f816b9f30833c63551ea0b" title="Generates the raw bytes for the &#39;fileStream&#39;.">codedStream</a>;
-<a name="l00135"></a>00135 };
-<a name="l00136"></a>00136 
-<a name="l00137"></a>00137 } <span class="comment">// namespace LogCabin::Storage::SnapshotFile</span>
-<a name="l00138"></a>00138 } <span class="comment">// namespace LogCabin::Storage</span>
-<a name="l00139"></a>00139 } <span class="comment">// namespace LogCabin</span>
-<a name="l00140"></a>00140 
-<a name="l00141"></a>00141 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_STORAGE_SNAPSHOTFILE_H */</span>
+<a name="l00120"></a>00120     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#af2f1dc2ba7157b9e1f87837c3482ebd7" title="Seek to the end of the file, in case another process has written to it.">seekToEnd</a>();<span class="comment"></span>
+<a name="l00121"></a>00121 <span class="comment">    /**</span>
+<a name="l00122"></a>00122 <span class="comment">     * Flush changes all the way down to the disk and close the file.</span>
+<a name="l00123"></a>00123 <span class="comment">     * If you call this after the file has been closed, it will PANIC.</span>
+<a name="l00124"></a>00124 <span class="comment">     * \return</span>
+<a name="l00125"></a>00125 <span class="comment">     *      Size in bytes of the file</span>
+<a name="l00126"></a>00126 <span class="comment">     */</span>
+<a name="l00127"></a>00127     uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#acd9deb7c50b661b287003896961c7138" title="Flush changes all the way down to the disk and close the file.">save</a>();
+<a name="l00128"></a>00128     <span class="comment">// See Core::ProtoBuf::OutputStream.</span>
+<a name="l00129"></a>00129     uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#abfc3d5956bbcda8e3e4b6270198008b4" title="Return the number of bytes written so far.">getBytesWritten</a>() <span class="keyword">const</span>;
+<a name="l00130"></a>00130     <span class="comment">// See Core::ProtoBuf::OutputStream.</span>
+<a name="l00131"></a>00131     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#af6feb36e544029bfb6d834173a3f5617" title="Write the given ProtoBuf message to the stream.">writeMessage</a>(<span class="keyword">const</span> google::protobuf::Message&amp; message);
+<a name="l00132"></a>00132     <span class="comment">// See Core::ProtoBuf::OutputStream.</span>
+<a name="l00133"></a>00133     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#aecb33b33d6aec0b0aecfec11f884e09f" title="Write some raw bytes to the stream.">writeRaw</a>(<span class="keyword">const</span> <span class="keywordtype">void</span>* data, uint64_t <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca" title="Check to see if the checksum format looks plausible.">length</a>);
+<a name="l00134"></a>00134   <span class="keyword">private</span>:<span class="comment"></span>
+<a name="l00135"></a>00135 <span class="comment">    /// A handle to the directory containing the snapshot. Used for renameat on</span>
+<a name="l00136"></a>00136 <span class="comment">    /// close.</span>
+<a name="l00137"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#ab12d289a1319ddf19e65af0d22c64ab4">00137</a> <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">Storage::FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#ab12d289a1319ddf19e65af0d22c64ab4" title="A handle to the directory containing the snapshot.">parentDir</a>;<span class="comment"></span>
+<a name="l00138"></a>00138 <span class="comment">    /// The temporary name of &#39;file&#39; before it is closed.</span>
+<a name="l00139"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#aeb407e25f37b691bf104ed20c76fd46b">00139</a> <span class="comment"></span>    std::string <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#aeb407e25f37b691bf104ed20c76fd46b" title="The temporary name of &#39;file&#39; before it is closed.">stagingName</a>;<span class="comment"></span>
+<a name="l00140"></a>00140 <span class="comment">    /// Wraps the raw file descriptor; in charge of closing it when done.</span>
+<a name="l00141"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a54069497c515d54d46db54addca9021e">00141</a> <span class="comment"></span>    <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">Storage::FilesystemUtil::File</a> <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a54069497c515d54d46db54addca9021e" title="Wraps the raw file descriptor; in charge of closing it when done.">file</a>;<span class="comment"></span>
+<a name="l00142"></a>00142 <span class="comment">    /// The number of bytes accumulated in the file so far.</span>
+<a name="l00143"></a><a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a48a3619625a929d3ea82145a189b888e">00143</a> <span class="comment"></span>    uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a48a3619625a929d3ea82145a189b888e" title="The number of bytes accumulated in the file so far.">bytesWritten</a>;
+<a name="l00144"></a>00144 };
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 } <span class="comment">// namespace LogCabin::Storage::SnapshotFile</span>
+<a name="l00147"></a>00147 } <span class="comment">// namespace LogCabin::Storage</span>
+<a name="l00148"></a>00148 } <span class="comment">// namespace LogCabin</span>
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_STORAGE_SNAPSHOTFILE_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

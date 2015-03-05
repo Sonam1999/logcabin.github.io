@@ -9,7 +9,6 @@ var searchData=
   ['filename2',['filename2',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a6d8d55d4003695d4fb7d7585cb2809d5',1,'LogCabin::Storage::SegmentedLog::Sync::Op']]],
   ['filenamecounter',['filenameCounter',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a77befe83464268e8b645f89e6f9e962a',1,'LogCabin::Storage::SegmentedLog::PreparedSegments']]],
   ['files',['files',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#ad9f05832405dc31e5a6b854a33b9a8c6',1,'LogCabin::Tree::Internal::Directory']]],
-  ['filestream',['fileStream',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a4a59250b1a4b98c4d7299fad4e66ad80',1,'LogCabin::Storage::SnapshotFile::Reader::fileStream()'],['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a1910ad644a054e0afe4c187e74476f70',1,'LogCabin::Storage::SnapshotFile::Writer::fileStream()']]],
   ['firstoutstandingrpc',['firstOutstandingRPC',['../structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9',1,'LogCabin::Server::StateMachine::Session']]],
   ['forceheartbeat',['forceHeartbeat',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a50d0b442ca40959e135e45107a8c6c76',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['function',['function',['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a8a097a4bf5c8830274408091cad057b6',1,'LogCabin::Core::Debug::DebugMessage']]]

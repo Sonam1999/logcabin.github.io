@@ -119,10 +119,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Tree.html#ae4920d2c28718f0a0849eeb122294d87">Tree</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ae4920d2c28718f0a0849eeb122294d87"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Tree.html#aa49940755a23219782972a1065a6a0e4">dumpSnapshot</a> (google::protobuf::io::CodedOutputStream &amp;stream) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the tree to the given stream.  <a href="#aa49940755a23219782972a1065a6a0e4"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Tree.html#ae1f63dee476fd7b7497685ecb7f68f48">loadSnapshot</a> (google::protobuf::io::CodedInputStream &amp;stream)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the tree from the given stream.  <a href="#ae1f63dee476fd7b7497685ecb7f68f48"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Tree.html#ab3537d9141a00c48e4d8f147abbebf55">dumpSnapshot</a> (<a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html">Core::ProtoBuf::OutputStream</a> &amp;stream) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the tree to the given stream.  <a href="#ab3537d9141a00c48e4d8f147abbebf55"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Tree.html#acce5baeb3c8da987ddafe9f49d87ef49">loadSnapshot</a> (<a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html">Core::ProtoBuf::InputStream</a> &amp;stream)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the tree from the given stream.  <a href="#acce5baeb3c8da987ddafe9f49d87ef49"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Tree_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Tree.html#a2b5a15e79385b3a6b9a7e5ae56f669f7">checkCondition</a> (const std::string &amp;path, const std::string &amp;contents) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify that the file at path has the given contents.  <a href="#a2b5a15e79385b3a6b9a7e5ae56f669f7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Tree_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Tree.html#a8ad0192e15ad2e48b54d34027508d8df">makeDirectory</a> (const std::string &amp;path)</td></tr>
@@ -154,7 +154,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>This is an in-memory, hierarchical key-value store. </p>
 <p>TODO(ongaro): Document how this fits into the rest of the system. </p>
 
-<p>Definition at line <a class="el" href="Tree_8h_source.html#l00277">277</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8h_source.html#l00278">278</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ae4920d2c28718f0a0849eeb122294d87"></a><!-- doxytag: member="LogCabin::Tree::Tree::Tree" ref="ae4920d2c28718f0a0849eeb122294d87" args="()" -->
 <div class="memitem">
@@ -172,19 +172,19 @@ Private Attributes</h2></td></tr>
 
 <p>Constructor. </p>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00304">304</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00279">279</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="aa49940755a23219782972a1065a6a0e4"></a><!-- doxytag: member="LogCabin::Tree::Tree::dumpSnapshot" ref="aa49940755a23219782972a1065a6a0e4" args="(google::protobuf::io::CodedOutputStream &amp;stream) const " -->
+<a class="anchor" id="ab3537d9141a00c48e4d8f147abbebf55"></a><!-- doxytag: member="LogCabin::Tree::Tree::dumpSnapshot" ref="ab3537d9141a00c48e4d8f147abbebf55" args="(Core::ProtoBuf::OutputStream &amp;stream) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Tree_1_1Tree.html#aa49940755a23219782972a1065a6a0e4">LogCabin::Tree::Tree::dumpSnapshot</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Tree_1_1Tree.html#ab3537d9141a00c48e4d8f147abbebf55">LogCabin::Tree::Tree::dumpSnapshot</a> </td>
           <td>(</td>
-          <td class="paramtype">google::protobuf::io::CodedOutputStream &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html">Core::ProtoBuf::OutputStream</a> &amp;&#160;</td>
           <td class="paramname"><em>stream</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -194,18 +194,18 @@ Private Attributes</h2></td></tr>
 
 <p>Write the tree to the given stream. </p>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00369">369</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00344">344</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ae1f63dee476fd7b7497685ecb7f68f48"></a><!-- doxytag: member="LogCabin::Tree::Tree::loadSnapshot" ref="ae1f63dee476fd7b7497685ecb7f68f48" args="(google::protobuf::io::CodedInputStream &amp;stream)" -->
+<a class="anchor" id="acce5baeb3c8da987ddafe9f49d87ef49"></a><!-- doxytag: member="LogCabin::Tree::Tree::loadSnapshot" ref="acce5baeb3c8da987ddafe9f49d87ef49" args="(Core::ProtoBuf::InputStream &amp;stream)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Tree_1_1Tree.html#ae1f63dee476fd7b7497685ecb7f68f48">LogCabin::Tree::Tree::loadSnapshot</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Tree_1_1Tree.html#acce5baeb3c8da987ddafe9f49d87ef49">LogCabin::Tree::Tree::loadSnapshot</a> </td>
           <td>(</td>
-          <td class="paramtype">google::protobuf::io::CodedInputStream &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html">Core::ProtoBuf::InputStream</a> &amp;&#160;</td>
           <td class="paramname"><em>stream</em></td><td>)</td>
           <td></td>
         </tr>
@@ -216,7 +216,7 @@ Private Attributes</h2></td></tr>
 <p>Load the tree from the given stream. </p>
 <dl class="warning"><dt><b>Warning:</b></dt><dd>This will blow away any existing files and directories. </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00378">378</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00353">353</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -258,7 +258,7 @@ Private Attributes</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00386">386</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00361">361</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -292,7 +292,7 @@ Private Attributes</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00416">416</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00391">391</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -338,7 +338,7 @@ Private Attributes</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00435">435</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00410">410</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -373,7 +373,7 @@ Private Attributes</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00464">464</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00439">439</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -419,7 +419,7 @@ Private Attributes</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00500">500</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00475">475</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -465,7 +465,7 @@ Private Attributes</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00521">521</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00496">496</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -498,7 +498,7 @@ Private Attributes</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00549">549</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00524">524</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -541,7 +541,7 @@ Private Attributes</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00313">313</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00288">288</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -584,7 +584,7 @@ Private Attributes</h2></td></tr>
 </ul>
 </dd></dl>
  
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00320">320</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00295">295</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -626,7 +626,7 @@ Private Attributes</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00348">348</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00323">323</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -646,7 +646,7 @@ Private Attributes</h2></td></tr>
 <p>The super root has a single child directory named "root", and the rest of the tree lies below "root". This is just an implementation detail; this class prepends "/root" to every path provided by the caller.</p>
 <p>This removes a lot of special-case branches because every operation now has a name of a target within a parent directory -- even those operating on the root directory. </p>
 
-<p>Definition at line <a class="el" href="Tree_8h_source.html#l00464">464</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8h_source.html#l00465">465</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
 
 </div>
 </div>

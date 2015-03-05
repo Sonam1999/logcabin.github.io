@@ -4,6 +4,7 @@ var searchData=
   ['schedule',['schedule',['../classLogCabin_1_1Event_1_1Timer.html#a69fef683c8212f3e83840d4cfb96065e',1,'LogCabin::Event::Timer']]],
   ['scheduleabsolute',['scheduleAbsolute',['../classLogCabin_1_1Event_1_1Timer.html#a3df17755d7222f95e61fa2645c74490f',1,'LogCabin::Event::Timer']]],
   ['scheduleheartbeat',['scheduleHeartbeat',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a33c58fbb1b5f1b39cfd9cd941ab2b153',1,'LogCabin::Server::RaftConsensusInternal::Server::scheduleHeartbeat()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a3ce146d3470eac69cfc9baf9ca378df8',1,'LogCabin::Server::RaftConsensusInternal::LocalServer::scheduleHeartbeat()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a8cf12a4c6290d1ea99c3e4074fced205',1,'LogCabin::Server::RaftConsensusInternal::Peer::scheduleHeartbeat()']]],
+  ['seektoend',['seekToEnd',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#af2f1dc2ba7157b9e1f87837c3482ebd7',1,'LogCabin::Storage::SnapshotFile::Writer']]],
   ['segment',['Segment',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#aacd883e2fd4accf7fb8ddcf670a8d821',1,'LogCabin::Storage::SegmentedLog::Segment']]],
   ['segmentedlog',['SegmentedLog',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#ab667337be23393a649a61ca8f515af7b',1,'LogCabin::Storage::SegmentedLog']]],
   ['segmentpreparermain',['segmentPreparerMain',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a7f579c84b2363ff95de91ced5bd041e2',1,'LogCabin::Storage::SegmentedLog']]],

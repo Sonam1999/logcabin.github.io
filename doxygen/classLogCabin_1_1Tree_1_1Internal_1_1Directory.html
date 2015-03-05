@@ -137,10 +137,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the child file by the given name, or create it if it doesn't exist.  <a href="#a5c4e729b2d218b465c5dfed34890793c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#ae704585d86b211fedba19853ca669c41">removeFile</a> (const std::string &amp;name)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove the child file by the given name, if any.  <a href="#ae704585d86b211fedba19853ca669c41"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a8da664c00436dd00144d0d1c9d59425b">dumpSnapshot</a> (google::protobuf::io::CodedOutputStream &amp;stream) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the directory and its children to the stream.  <a href="#a8da664c00436dd00144d0d1c9d59425b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a2c8a6fd24778c60c949e7fdc5abf5978">loadSnapshot</a> (google::protobuf::io::CodedInputStream &amp;stream)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the directory and its children from the stream.  <a href="#a2c8a6fd24778c60c949e7fdc5abf5978"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#af00a8c6fa158ce8c1ddf3e8a969bdeda">dumpSnapshot</a> (<a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html">Core::ProtoBuf::OutputStream</a> &amp;stream) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the directory and its children to the stream.  <a href="#af00a8c6fa158ce8c1ddf3e8a969bdeda"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a4eb032e7ed3c256fb4d019a2e4ad1bb2">loadSnapshot</a> (<a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html">Core::ProtoBuf::InputStream</a> &amp;stream)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the directory and its children from the stream.  <a href="#a4eb032e7ed3c256fb4d019a2e4ad1bb2"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html">Directory</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a280d1d212295450b804935d32b5692af">directories</a></td></tr>
@@ -152,7 +152,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>An interior object in the <a class="el" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree</a>; stores other Directories and Files. </p>
 <p>Pointers returned by this class are valid until the <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html" title="A leaf object in the Tree; stores an opaque blob of data.">File</a> or <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html" title="An interior object in the Tree; stores other Directories and Files.">Directory</a> they refer to is removed. </p>
 
-<p>Definition at line <a class="el" href="Tree_8h_source.html#l00116">116</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8h_source.html#l00117">117</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a4eb07d7b9f07af7f3095c5afc39d43b3"></a><!-- doxytag: member="LogCabin::Tree::Internal::Directory::Directory" ref="a4eb07d7b9f07af7f3095c5afc39d43b3" args="()" -->
 <div class="memitem">
@@ -170,7 +170,7 @@ Private Attributes</h2></td></tr>
 
 <p>Default constructor. </p>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00107">107</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00093">93</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -192,7 +192,7 @@ Private Attributes</h2></td></tr>
 <p>List the contents of the directory. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The names of the directories and files that this directory immediately contains. The names of directories in this listing will have a trailing slash. The order is first directories (sorted lexicographically), then files (sorted lexicographically). </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00114">114</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00100">100</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -220,7 +220,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The directory by the given name, or NULL if it is not found or a file exists by that name. </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00125">125</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00111">111</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -248,7 +248,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The directory by the given name, or NULL if it is not found or a file exists by that name. </dd></dl>
  
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00132">132</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00118">118</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -276,7 +276,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The directory by the given name, or NULL if a file exists by that name. </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00144">144</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00130">130</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -304,7 +304,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00154">154</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00140">140</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -332,7 +332,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The file by the given name, or NULL if it is not found or a directory exists by that name. </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00162">162</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00148">148</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -360,7 +360,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The file by the given name, or NULL if it is not found or a directory exists by that name. </dd></dl>
  
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00169">169</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00155">155</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -388,7 +388,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The file by the given name, or NULL if a directory exists by that name. </dd></dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00180">180</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00166">166</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -415,18 +415,18 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00190">190</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00176">176</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a8da664c00436dd00144d0d1c9d59425b"></a><!-- doxytag: member="LogCabin::Tree::Internal::Directory::dumpSnapshot" ref="a8da664c00436dd00144d0d1c9d59425b" args="(google::protobuf::io::CodedOutputStream &amp;stream) const " -->
+<a class="anchor" id="af00a8c6fa158ce8c1ddf3e8a969bdeda"></a><!-- doxytag: member="LogCabin::Tree::Internal::Directory::dumpSnapshot" ref="af00a8c6fa158ce8c1ddf3e8a969bdeda" args="(Core::ProtoBuf::OutputStream &amp;stream) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a8da664c00436dd00144d0d1c9d59425b">LogCabin::Tree::Internal::Directory::dumpSnapshot</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#af00a8c6fa158ce8c1ddf3e8a969bdeda">LogCabin::Tree::Internal::Directory::dumpSnapshot</a> </td>
           <td>(</td>
-          <td class="paramtype">google::protobuf::io::CodedOutputStream &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html">Core::ProtoBuf::OutputStream</a> &amp;&#160;</td>
           <td class="paramname"><em>stream</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -436,18 +436,18 @@ Private Attributes</h2></td></tr>
 
 <p>Write the directory and its children to the stream. </p>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00198">198</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00184">184</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a2c8a6fd24778c60c949e7fdc5abf5978"></a><!-- doxytag: member="LogCabin::Tree::Internal::Directory::loadSnapshot" ref="a2c8a6fd24778c60c949e7fdc5abf5978" args="(google::protobuf::io::CodedInputStream &amp;stream)" -->
+<a class="anchor" id="a4eb032e7ed3c256fb4d019a2e4ad1bb2"></a><!-- doxytag: member="LogCabin::Tree::Internal::Directory::loadSnapshot" ref="a4eb032e7ed3c256fb4d019a2e4ad1bb2" args="(Core::ProtoBuf::InputStream &amp;stream)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a2c8a6fd24778c60c949e7fdc5abf5978">LogCabin::Tree::Internal::Directory::loadSnapshot</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a4eb032e7ed3c256fb4d019a2e4ad1bb2">LogCabin::Tree::Internal::Directory::loadSnapshot</a> </td>
           <td>(</td>
-          <td class="paramtype">google::protobuf::io::CodedInputStream &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html">Core::ProtoBuf::InputStream</a> &amp;&#160;</td>
           <td class="paramname"><em>stream</em></td><td>)</td>
           <td></td>
         </tr>
@@ -457,7 +457,7 @@ Private Attributes</h2></td></tr>
 
 <p>Load the directory and its children from the stream. </p>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00220">220</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00204">204</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
 
 </div>
 </div>
@@ -475,7 +475,7 @@ Private Attributes</h2></td></tr>
 
 <p>Map from names of child directories (without trailing slashes) to the <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1Directory.html" title="An interior object in the Tree; stores other Directories and Files.">Directory</a> objects. </p>
 
-<p>Definition at line <a class="el" href="Tree_8h_source.html#l00207">207</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8h_source.html#l00208">208</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
 
 </div>
 </div>
@@ -492,7 +492,7 @@ Private Attributes</h2></td></tr>
 
 <p>Map from names of child files to the <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html" title="A leaf object in the Tree; stores an opaque blob of data.">File</a> objects. </p>
 
-<p>Definition at line <a class="el" href="Tree_8h_source.html#l00211">211</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
+<p>Definition at line <a class="el" href="Tree_8h_source.html#l00212">212</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
 
 </div>
 </div>

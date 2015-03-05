@@ -107,11 +107,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">LogCabin::Storage::SnapshotFile::Reader Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="LogCabin::Storage::SnapshotFile::Reader" -->
+<!-- doxytag: class="LogCabin::Storage::SnapshotFile::Reader" --><!-- doxytag: inherits="LogCabin::Core::ProtoBuf::InputStream" -->
 <p>Assists in reading snapshot files from the local filesystem.  
  <a href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for LogCabin::Storage::SnapshotFile::Reader:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.png" usemap="#LogCabin::Storage::SnapshotFile::Reader_map" alt=""/>
+  <map id="LogCabin::Storage::SnapshotFile::Reader_map" name="LogCabin::Storage::SnapshotFile::Reader_map">
+<area href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html" title="An abstract stream from which ProtoBufs may be read." alt="LogCabin::Core::ProtoBuf::InputStream" shape="rect" coords="0,0,242,24"/>
+</map>
+ </div></div>
 
 <p><a href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader-members.html">List of all members.</a></p>
 <table class="memberdecls">
@@ -123,23 +132,26 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a6120c7eac2cabc961ab9449a90cd565a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#ac2aab0b5b80aa592bdfcc90d4608c241">getSizeBytes</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the size in bytes for the file.  <a href="#ac2aab0b5b80aa592bdfcc90d4608c241"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">google::protobuf::io::CodedInputStream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a09ec8a8e3e8ebae229739001edac0f00">getStream</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the input stream to read from.  <a href="#a09ec8a8e3e8ebae229739001edac0f00"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a5032fca095b73bbdce485140d86dccba">getBytesRead</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of bytes read so far.  <a href="#a5032fca095b73bbdce485140d86dccba"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a034c8b3425d610ac9fe5c24046462413">readMessage</a> (google::protobuf::Message &amp;message)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a ProtoBuf message from the stream.  <a href="#a034c8b3425d610ac9fe5c24046462413"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a359268e105c1c7abc6329b798e8b560d">readRaw</a> (void *data, uint64_t length)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Read some raw bytes from the stream.  <a href="#a359268e105c1c7abc6329b798e8b560d"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html">Storage::FilesystemUtil::File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a13421a209c0b85a3b2a0a6737ee71cf5">file</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wraps the raw file descriptor; in charge of closing it when done.  <a href="#a13421a209c0b85a3b2a0a6737ee71cf5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr<br class="typebreak"/>
-&lt; google::protobuf::io::FileInputStream &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a4a59250b1a4b98c4d7299fad4e66ad80">fileStream</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Actually reads the file from disk.  <a href="#a4a59250b1a4b98c4d7299fad4e66ad80"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr<br class="typebreak"/>
-&lt; google::protobuf::io::CodedInputStream &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a3133e1abc6095261fc9674d5c78dda9a">codedStream</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Interprets the raw bytes from the 'fileStream'.  <a href="#a3133e1abc6095261fc9674d5c78dda9a"></a><br/></td></tr>
+&lt; <a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html">Storage::FilesystemUtil::FileContents</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a08d62782feb8a301ed61dfea73575981">contents</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps the file into memory for reading.  <a href="#a08d62782feb8a301ed61dfea73575981"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#aa71441d7e454bef8e2d587a838df792c">bytesRead</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes read from the file.  <a href="#aa71441d7e454bef8e2d587a838df792c"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Assists in reading snapshot files from the local filesystem. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00047">47</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00044">44</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a3dd5d52332ad441e01b47c49e16e8f9e"></a><!-- doxytag: member="LogCabin::Storage::SnapshotFile::Reader::Reader" ref="a3dd5d52332ad441e01b47c49e16e8f9e" args="(const Storage::Layout &amp;storageLayout)" -->
 <div class="memitem">
@@ -159,7 +171,7 @@ Private Attributes</h2></td></tr>
 <p>Constructor. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">storageLayout</td><td>The directories in which to find the snapshot (in a file called "snapshot" in the serverDir). </td></tr>
+    <tr><td class="paramname">storageLayout</td><td>The directories in which to find the snapshot (in a file called "snapshot" in the snapshotDir). </td></tr>
   </table>
   </dd>
 </dl>
@@ -170,7 +182,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00047">47</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00049">49</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -215,23 +227,83 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a09ec8a8e3e8ebae229739001edac0f00"></a><!-- doxytag: member="LogCabin::Storage::SnapshotFile::Reader::getStream" ref="a09ec8a8e3e8ebae229739001edac0f00" args="()" -->
+<a class="anchor" id="a5032fca095b73bbdce485140d86dccba"></a><!-- doxytag: member="LogCabin::Storage::SnapshotFile::Reader::getBytesRead" ref="a5032fca095b73bbdce485140d86dccba" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">google::protobuf::io::CodedInputStream &amp; <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a09ec8a8e3e8ebae229739001edac0f00">LogCabin::Storage::SnapshotFile::Reader::getStream</a> </td>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a5032fca095b73bbdce485140d86dccba">LogCabin::Storage::SnapshotFile::Reader::getBytesRead</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const<code> [virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Returns the input stream to read from. </p>
+<p>Return the number of bytes read so far. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00076">76</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Implements <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#a89ad3e978fedc477fbc6bc62915d8d2b">LogCabin::Core::ProtoBuf::InputStream</a>.</p>
+
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00077">77</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a034c8b3425d610ac9fe5c24046462413"></a><!-- doxytag: member="LogCabin::Storage::SnapshotFile::Reader::readMessage" ref="a034c8b3425d610ac9fe5c24046462413" args="(google::protobuf::Message &amp;message)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a034c8b3425d610ac9fe5c24046462413">LogCabin::Storage::SnapshotFile::Reader::readMessage</a> </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::Message &amp;&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Read a ProtoBuf message from the stream. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Empty string if successful, otherwise an error message if an error occurred. The stream is probably no longer usable after an error. </dd></dl>
+
+<p>Implements <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#aac1f152527b091f84038f19ed07c662d">LogCabin::Core::ProtoBuf::InputStream</a>.</p>
+
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00083">83</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a359268e105c1c7abc6329b798e8b560d"></a><!-- doxytag: member="LogCabin::Storage::SnapshotFile::Reader::readRaw" ref="a359268e105c1c7abc6329b798e8b560d" args="(void *data, uint64_t length)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a359268e105c1c7abc6329b798e8b560d">LogCabin::Storage::SnapshotFile::Reader::readRaw</a> </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Read some raw bytes from the stream. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The number of bytes read before the end of the stream was reached, up to 'length'. </dd></dl>
+
+<p>Implements <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#ae624a454f9511acdf87dbb09f6f6f5ba">LogCabin::Core::ProtoBuf::InputStream</a>.</p>
+
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00127">127</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -249,41 +321,41 @@ Private Attributes</h2></td></tr>
 
 <p>Wraps the raw file descriptor; in charge of closing it when done. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00066">66</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00067">67</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a4a59250b1a4b98c4d7299fad4e66ad80"></a><!-- doxytag: member="LogCabin::Storage::SnapshotFile::Reader::fileStream" ref="a4a59250b1a4b98c4d7299fad4e66ad80" args="" -->
+<a class="anchor" id="a08d62782feb8a301ed61dfea73575981"></a><!-- doxytag: member="LogCabin::Storage::SnapshotFile::Reader::contents" ref="a08d62782feb8a301ed61dfea73575981" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;google::protobuf::io::FileInputStream&gt; <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a4a59250b1a4b98c4d7299fad4e66ad80">LogCabin::Storage::SnapshotFile::Reader::fileStream</a><code> [private]</code></td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html">Storage::FilesystemUtil::FileContents</a>&gt; <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a08d62782feb8a301ed61dfea73575981">LogCabin::Storage::SnapshotFile::Reader::contents</a><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Actually reads the file from disk. </p>
+<p>Maps the file into memory for reading. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00068">68</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00069">69</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a3133e1abc6095261fc9674d5c78dda9a"></a><!-- doxytag: member="LogCabin::Storage::SnapshotFile::Reader::codedStream" ref="a3133e1abc6095261fc9674d5c78dda9a" args="" -->
+<a class="anchor" id="aa71441d7e454bef8e2d587a838df792c"></a><!-- doxytag: member="LogCabin::Storage::SnapshotFile::Reader::bytesRead" ref="aa71441d7e454bef8e2d587a838df792c" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;google::protobuf::io::CodedInputStream&gt; <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a3133e1abc6095261fc9674d5c78dda9a">LogCabin::Storage::SnapshotFile::Reader::codedStream</a><code> [private]</code></td>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#aa71441d7e454bef8e2d587a838df792c">LogCabin::Storage::SnapshotFile::Reader::bytesRead</a><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Interprets the raw bytes from the 'fileStream'. </p>
+<p>The number of bytes read from the file. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00070">70</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00071">71</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
 
 </div>
 </div>

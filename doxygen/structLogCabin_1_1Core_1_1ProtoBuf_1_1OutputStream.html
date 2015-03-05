@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: LogCabin::Tree::Internal::File Class Reference</title>
+<title>LogCabin: LogCabin::Core::ProtoBuf::OutputStream Struct Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -93,130 +93,147 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
-      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Tree.html">Tree</a>      </li>
-      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Tree_1_1Internal.html">Internal</a>      </li>
-      <li class="navelem"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html">File</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Core.html">Core</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html">ProtoBuf</a>      </li>
+      <li class="navelem"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html">OutputStream</a>      </li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a>  </div>
+<a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<div class="title">LogCabin::Tree::Internal::File Class Reference</div>  </div>
+<div class="title">LogCabin::Core::ProtoBuf::OutputStream Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="LogCabin::Tree::Internal::File" -->
-<p>A leaf object in the <a class="el" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree</a>; stores an opaque blob of data.  
- <a href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#details">More...</a></p>
+<!-- doxytag: class="LogCabin::Core::ProtoBuf::OutputStream" -->
+<p>An abstract stream to which ProtoBufs may be written.  
+ <a href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Tree_8h_source.html">Tree.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Core_2ProtoBuf_8h_source.html">ProtoBuf.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for LogCabin::Core::ProtoBuf::OutputStream:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.png" usemap="#LogCabin::Core::ProtoBuf::OutputStream_map" alt=""/>
+  <map id="LogCabin::Core::ProtoBuf::OutputStream_map" name="LogCabin::Core::ProtoBuf::OutputStream_map">
+<area href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html" title="Assists in writing snapshot files to the local filesystem." alt="LogCabin::Storage::SnapshotFile::Writer" shape="rect" coords="0,56,237,80"/>
+</map>
+ </div></div>
 
-<p><a href="classLogCabin_1_1Tree_1_1Internal_1_1File-members.html">List of all members.</a></p>
+<p><a href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#aeb02f7a00ec654e8ece0b73a374a2892">File</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#aeb02f7a00ec654e8ece0b73a374a2892"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a5690855f6a0556ac3293aba3efa4e4e2">dumpSnapshot</a> (<a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html">Core::ProtoBuf::OutputStream</a> &amp;stream) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the file to the stream.  <a href="#a5690855f6a0556ac3293aba3efa4e4e2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a812b8915049286c61dda54330e97d2a7">loadSnapshot</a> (<a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html">Core::ProtoBuf::InputStream</a> &amp;stream)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the file from the stream.  <a href="#a812b8915049286c61dda54330e97d2a7"></a><br/></td></tr>
-<tr><td colspan="2"><h2><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#ad170261ab6d6aace08542d7be6e8e24b">contents</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Opaque data stored in the <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html" title="A leaf object in the Tree; stores an opaque blob of data.">File</a>.  <a href="#ad170261ab6d6aace08542d7be6e8e24b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a9b49604dc2896255f275c189d8b4472f">~OutputStream</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a9b49604dc2896255f275c189d8b4472f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a71dfd7d52ead85d327b38d6ef6010a9b">getBytesWritten</a> () const =0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of bytes written so far.  <a href="#a71dfd7d52ead85d327b38d6ef6010a9b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a68f978815ed884d081ea742ab8fbd250">writeMessage</a> (const google::protobuf::Message &amp;message)=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the given <a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html">ProtoBuf</a> message to the stream.  <a href="#a68f978815ed884d081ea742ab8fbd250"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a28fe58d86a77d1f9dc7583fb55488acd">writeRaw</a> (const void *data, uint64_t length)=0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write some raw bytes to the stream.  <a href="#a28fe58d86a77d1f9dc7583fb55488acd"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>A leaf object in the <a class="el" href="classLogCabin_1_1Tree_1_1Tree.html" title="This is an in-memory, hierarchical key-value store.">Tree</a>; stores an opaque blob of data. </p>
+<div class="textblock"><p>An abstract stream to which ProtoBufs may be written. </p>
 
-<p>Definition at line <a class="el" href="Tree_8h_source.html#l00094">94</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2ProtoBuf_8h_source.html#l00181">181</a> of file <a class="el" href="Core_2ProtoBuf_8h_source.html">ProtoBuf.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aeb02f7a00ec654e8ece0b73a374a2892"></a><!-- doxytag: member="LogCabin::Tree::Internal::File::File" ref="aeb02f7a00ec654e8ece0b73a374a2892" args="()" -->
+<a class="anchor" id="a9b49604dc2896255f275c189d8b4472f"></a><!-- doxytag: member="LogCabin::Core::ProtoBuf::OutputStream::~OutputStream" ref="a9b49604dc2896255f275c189d8b4472f" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#aeb02f7a00ec654e8ece0b73a374a2892">LogCabin::Tree::Internal::File::File</a> </td>
+          <td class="memname">virtual <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a9b49604dc2896255f275c189d8b4472f">LogCabin::Core::ProtoBuf::OutputStream::~OutputStream</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td><code> [inline, virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Default constructor. </p>
+<p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00067">67</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Definition at line <a class="el" href="Core_2ProtoBuf_8h_source.html#l00185">185</a> of file <a class="el" href="Core_2ProtoBuf_8h_source.html">ProtoBuf.h</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a5690855f6a0556ac3293aba3efa4e4e2"></a><!-- doxytag: member="LogCabin::Tree::Internal::File::dumpSnapshot" ref="a5690855f6a0556ac3293aba3efa4e4e2" args="(Core::ProtoBuf::OutputStream &amp;stream) const " -->
+<a class="anchor" id="a71dfd7d52ead85d327b38d6ef6010a9b"></a><!-- doxytag: member="LogCabin::Core::ProtoBuf::OutputStream::getBytesWritten" ref="a71dfd7d52ead85d327b38d6ef6010a9b" args="() const =0" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a5690855f6a0556ac3293aba3efa4e4e2">LogCabin::Tree::Internal::File::dumpSnapshot</a> </td>
+          <td class="memname">virtual uint64_t <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a71dfd7d52ead85d327b38d6ef6010a9b">LogCabin::Core::ProtoBuf::OutputStream::getBytesWritten</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html">Core::ProtoBuf::OutputStream</a> &amp;&#160;</td>
-          <td class="paramname"><em>stream</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [pure virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Write the file to the stream. </p>
+<p>Return the number of bytes written so far. </p>
 
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00073">73</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#abfc3d5956bbcda8e3e4b6270198008b4">LogCabin::Storage::SnapshotFile::Writer</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a812b8915049286c61dda54330e97d2a7"></a><!-- doxytag: member="LogCabin::Tree::Internal::File::loadSnapshot" ref="a812b8915049286c61dda54330e97d2a7" args="(Core::ProtoBuf::InputStream &amp;stream)" -->
+<a class="anchor" id="a68f978815ed884d081ea742ab8fbd250"></a><!-- doxytag: member="LogCabin::Core::ProtoBuf::OutputStream::writeMessage" ref="a68f978815ed884d081ea742ab8fbd250" args="(const google::protobuf::Message &amp;message)=0" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#a812b8915049286c61dda54330e97d2a7">LogCabin::Tree::Internal::File::loadSnapshot</a> </td>
+          <td class="memname">virtual void <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a68f978815ed884d081ea742ab8fbd250">LogCabin::Core::ProtoBuf::OutputStream::writeMessage</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html">Core::ProtoBuf::InputStream</a> &amp;&#160;</td>
-          <td class="paramname"><em>stream</em></td><td>)</td>
+          <td class="paramtype">const google::protobuf::Message &amp;&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Write the given <a class="el" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html">ProtoBuf</a> message to the stream. </p>
+
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#af6feb36e544029bfb6d834173a3f5617">LogCabin::Storage::SnapshotFile::Writer</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a28fe58d86a77d1f9dc7583fb55488acd"></a><!-- doxytag: member="LogCabin::Core::ProtoBuf::OutputStream::writeRaw" ref="a28fe58d86a77d1f9dc7583fb55488acd" args="(const void *data, uint64_t length)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a28fe58d86a77d1f9dc7583fb55488acd">LogCabin::Core::ProtoBuf::OutputStream::writeRaw</a> </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
         </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Load the file from the stream. </p>
-
-<p>Definition at line <a class="el" href="Tree_8cc_source.html#l00081">81</a> of file <a class="el" href="Tree_8cc_source.html">Tree.cc</a>.</p>
-
-</div>
-</div>
-<hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="ad170261ab6d6aace08542d7be6e8e24b"></a><!-- doxytag: member="LogCabin::Tree::Internal::File::contents" ref="ad170261ab6d6aace08542d7be6e8e24b" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">std::string <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html#ad170261ab6d6aace08542d7be6e8e24b">LogCabin::Tree::Internal::File::contents</a></td>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [pure virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Opaque data stored in the <a class="el" href="classLogCabin_1_1Tree_1_1Internal_1_1File.html" title="A leaf object in the Tree; stores an opaque blob of data.">File</a>. </p>
+<p>Write some raw bytes to the stream. </p>
 
-<p>Definition at line <a class="el" href="Tree_8h_source.html#l00109">109</a> of file <a class="el" href="Tree_8h_source.html">Tree.h</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#aecb33b33d6aec0b0aecfec11f884e09f">LogCabin::Storage::SnapshotFile::Writer</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>Tree/<a class="el" href="Tree_8h_source.html">Tree.h</a></li>
-<li>Tree/<a class="el" href="Tree_8cc_source.html">Tree.cc</a></li>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>Core/<a class="el" href="Core_2ProtoBuf_8h_source.html">ProtoBuf.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
