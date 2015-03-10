@@ -157,120 +157,107 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00075"></a>00075 
 <a name="l00076"></a>00076 <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a93fbbed8769a31a464c1d9f8633d8402" title="For strings, replace all occurrences of &#39;needle&#39; in &#39;haystack&#39; with &#39;replacement&#39;.">Core::StringUtil::replaceAll</a>;
 <a name="l00077"></a>00077 
-<a name="l00078"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1anonymous__namespace_02ProtoBuf_8cc_03.html">00078</a> <span class="keyword">namespace </span>{
-<a name="l00079"></a>00079 <span class="comment"></span>
-<a name="l00080"></a>00080 <span class="comment">/// Remove the last character from the end of a string.</span>
-<a name="l00081"></a>00081 <span class="comment"></span>std::string
-<a name="l00082"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1anonymous__namespace_02ProtoBuf_8cc_03.html#a5e87e0b95a5966528fb77793c1f56d8b">00082</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1anonymous__namespace_02ProtoBuf_8cc_03.html#a5e87e0b95a5966528fb77793c1f56d8b" title="Remove the last character from the end of a string.">truncateEnd</a>(std::string str)
-<a name="l00083"></a>00083 {
-<a name="l00084"></a>00084     <span class="keywordflow">if</span> (!str.empty())
-<a name="l00085"></a>00085         str.resize(str.length() - 1, 0);
-<a name="l00086"></a>00086     <span class="keywordflow">return</span> str;
-<a name="l00087"></a>00087 }
+<a name="l00078"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1Internal.html">00078</a> <span class="keyword">namespace </span>Internal {
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080 <span class="keywordtype">void</span>
+<a name="l00081"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1Internal.html#a67f3b802a148d2f315e888b7de7b8748">00081</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1Internal.html#a67f3b802a148d2f315e888b7de7b8748" title="Helper for fromString template.">fromString</a>(<span class="keyword">const</span> std::string&amp; str, google::protobuf::Message&amp; protoBuf)
+<a name="l00082"></a>00082 {
+<a name="l00083"></a>00083     google::protobuf::LogSilencer _;
+<a name="l00084"></a>00084     google::protobuf::TextFormat::ParseFromString(str, &amp;protoBuf);
+<a name="l00085"></a>00085 }
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 } <span class="comment">// namespace LogCabin::ProtoBuf::Internal</span>
 <a name="l00088"></a>00088 
-<a name="l00089"></a>00089 } <span class="comment">// anonymous namespace</span>
-<a name="l00090"></a>00090 
-<a name="l00091"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1Internal.html">00091</a> <span class="keyword">namespace </span>Internal {
-<a name="l00092"></a>00092 
-<a name="l00093"></a>00093 <span class="keywordtype">void</span>
-<a name="l00094"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1Internal.html#a67f3b802a148d2f315e888b7de7b8748">00094</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1Internal.html#a67f3b802a148d2f315e888b7de7b8748" title="Helper for fromString template.">fromString</a>(<span class="keyword">const</span> std::string&amp; str, google::protobuf::Message&amp; protoBuf)
-<a name="l00095"></a>00095 {
-<a name="l00096"></a>00096     google::protobuf::LogSilencer _;
-<a name="l00097"></a>00097     google::protobuf::TextFormat::ParseFromString(str, &amp;protoBuf);
-<a name="l00098"></a>00098 }
-<a name="l00099"></a>00099 
-<a name="l00100"></a>00100 } <span class="comment">// namespace LogCabin::ProtoBuf::Internal</span>
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102 std::string
-<a name="l00103"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34">00103</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">dumpString</a>(<span class="keyword">const</span> google::protobuf::Message&amp; protoBuf,
-<a name="l00104"></a>00104            <span class="keywordtype">bool</span> forCopyingIntoTest)
-<a name="l00105"></a>00105 {
-<a name="l00106"></a>00106     std::string output;
-<a name="l00107"></a>00107     google::protobuf::TextFormat::Printer printer;
+<a name="l00089"></a>00089 std::string
+<a name="l00090"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34">00090</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">dumpString</a>(<span class="keyword">const</span> google::protobuf::Message&amp; protoBuf,
+<a name="l00091"></a>00091            <span class="keywordtype">bool</span> forCopyingIntoTest)
+<a name="l00092"></a>00092 {
+<a name="l00093"></a>00093     std::string output;
+<a name="l00094"></a>00094     google::protobuf::TextFormat::Printer printer;
+<a name="l00095"></a>00095     <span class="keywordflow">if</span> (forCopyingIntoTest) {
+<a name="l00096"></a>00096         <span class="comment">// Most lines that use these strings will look like this:</span>
+<a name="l00097"></a>00097         <span class="comment">// ^    EXPECT_EQ(...,$</span>
+<a name="l00098"></a>00098         <span class="comment">// ^              &quot;...&quot;</span>
+<a name="l00099"></a>00099         <span class="comment">// ^              &quot;...&quot;);</span>
+<a name="l00100"></a>00100         <span class="comment">//  12345678901234</span>
+<a name="l00101"></a>00101         <span class="comment">// Therefore, we want 14 leading spaces. Tell gtest we want 16, though,</span>
+<a name="l00102"></a>00102         <span class="comment">// so that when we add in the surrounding quotes later, lines won&#39;t</span>
+<a name="l00103"></a>00103         <span class="comment">// wrap.</span>
+<a name="l00104"></a>00104         printer.SetInitialIndentLevel(8);
+<a name="l00105"></a>00105     }
+<a name="l00106"></a>00106     printer.SetUseShortRepeatedPrimitives(<span class="keyword">true</span>);
+<a name="l00107"></a>00107     printer.PrintToString(protoBuf, &amp;output);
 <a name="l00108"></a>00108     <span class="keywordflow">if</span> (forCopyingIntoTest) {
-<a name="l00109"></a>00109         <span class="comment">// Most lines that use these strings will look like this:</span>
-<a name="l00110"></a>00110         <span class="comment">// ^    EXPECT_EQ(...,$</span>
-<a name="l00111"></a>00111         <span class="comment">// ^              &quot;...&quot;</span>
-<a name="l00112"></a>00112         <span class="comment">// ^              &quot;...&quot;);</span>
-<a name="l00113"></a>00113         <span class="comment">//  12345678901234</span>
-<a name="l00114"></a>00114         <span class="comment">// Therefore, we want 14 leading spaces. Tell gtest we want 16, though,</span>
-<a name="l00115"></a>00115         <span class="comment">// so that when we add in the surrounding quotes later, lines won&#39;t</span>
-<a name="l00116"></a>00116         <span class="comment">// wrap.</span>
-<a name="l00117"></a>00117         printer.SetInitialIndentLevel(8);
-<a name="l00118"></a>00118     }
-<a name="l00119"></a>00119     printer.SetUseShortRepeatedPrimitives(<span class="keyword">true</span>);
-<a name="l00120"></a>00120     printer.PrintToString(protoBuf, &amp;output);
-<a name="l00121"></a>00121     <span class="keywordflow">if</span> (forCopyingIntoTest) {
-<a name="l00122"></a>00122         <span class="comment">// TextFormat::Printer escapes &#39; already.</span>
-<a name="l00123"></a>00123         <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a93fbbed8769a31a464c1d9f8633d8402" title="For strings, replace all occurrences of &#39;needle&#39; in &#39;haystack&#39; with &#39;replacement&#39;.">replaceAll</a>(output, <span class="stringliteral">&quot;\&quot;&quot;</span>, <span class="stringliteral">&quot;&#39;&quot;</span>);
-<a name="l00124"></a>00124         <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a93fbbed8769a31a464c1d9f8633d8402" title="For strings, replace all occurrences of &#39;needle&#39; in &#39;haystack&#39; with &#39;replacement&#39;.">replaceAll</a>(output, <span class="stringliteral">&quot;                &quot;</span>, <span class="stringliteral">&quot;              \&quot;&quot;</span>);
-<a name="l00125"></a>00125         <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a93fbbed8769a31a464c1d9f8633d8402" title="For strings, replace all occurrences of &#39;needle&#39; in &#39;haystack&#39; with &#39;replacement&#39;.">replaceAll</a>(output, <span class="stringliteral">&quot;\n&quot;</span>, <span class="stringliteral">&quot;\&quot;\n&quot;</span>);
-<a name="l00126"></a>00126     }
-<a name="l00127"></a>00127     <span class="keywordflow">if</span> (!protoBuf.IsInitialized()) {
-<a name="l00128"></a>00128         std::vector&lt;std::string&gt; errors;
-<a name="l00129"></a>00129         protoBuf.FindInitializationErrors(&amp;errors);
-<a name="l00130"></a>00130         std::ostringstream outputBuf;
-<a name="l00131"></a>00131         outputBuf &lt;&lt; output;
-<a name="l00132"></a>00132         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = errors.begin(); it != errors.end(); ++it) {
-<a name="l00133"></a>00133             <span class="keywordflow">if</span> (forCopyingIntoTest) {
-<a name="l00134"></a>00134                  outputBuf &lt;&lt; <span class="stringliteral">&quot;              \&quot;&quot;</span> &lt;&lt; *it &lt;&lt; <span class="stringliteral">&quot;: UNDEFINED\&quot;\n&quot;</span>;
-<a name="l00135"></a>00135             } <span class="keywordflow">else</span> {
-<a name="l00136"></a>00136                  outputBuf &lt;&lt; *it &lt;&lt; <span class="stringliteral">&quot;: UNDEFINED\n&quot;</span>;
-<a name="l00137"></a>00137             }
-<a name="l00138"></a>00138         }
-<a name="l00139"></a>00139         <span class="keywordflow">return</span> output + outputBuf.str();
-<a name="l00140"></a>00140     }
-<a name="l00141"></a>00141     <span class="keywordflow">return</span> output;
-<a name="l00142"></a>00142 }
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144 std::unique_ptr&lt;google::protobuf::Message&gt;
-<a name="l00145"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6">00145</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6" title="Copy the contents of a protocol buffer into a new one.">copy</a>(<span class="keyword">const</span> google::protobuf::Message&amp; protoBuf)
-<a name="l00146"></a>00146 {
-<a name="l00147"></a>00147     std::unique_ptr&lt;google::protobuf::Message&gt; ret(protoBuf.New());
-<a name="l00148"></a>00148     ret-&gt;CopyFrom(protoBuf);
-<a name="l00149"></a>00149     <span class="keywordflow">return</span> ret;
-<a name="l00150"></a>00150 }
-<a name="l00151"></a>00151 
-<a name="l00152"></a>00152 <span class="keywordtype">bool</span>
-<a name="l00153"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c">00153</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c" title="Parse a protocol buffer message out of a Core::Buffer.">parse</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>&amp; from,
-<a name="l00154"></a>00154       google::protobuf::Message&amp; to,
-<a name="l00155"></a>00155       uint32_t skipBytes)
-<a name="l00156"></a>00156 {
-<a name="l00157"></a>00157     google::protobuf::LogSilencer logSilencer;
-<a name="l00158"></a>00158     <span class="keywordflow">if</span> (!to.ParseFromArray(
-<a name="l00159"></a>00159                         static_cast&lt;const char*&gt;(from.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>()) + skipBytes,
-<a name="l00160"></a>00160                         Util::downCast&lt;int&gt;(from.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>() - skipBytes))) {
-<a name="l00161"></a>00161         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Missing fields in protocol buffer of type %s: %s&quot;</span>,
-<a name="l00162"></a>00162                 to.GetTypeName().c_str(),
-<a name="l00163"></a>00163                 to.InitializationErrorString().c_str());
-<a name="l00164"></a>00164         <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00165"></a>00165     }
-<a name="l00166"></a>00166     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00167"></a>00167 }
-<a name="l00168"></a>00168 
-<a name="l00169"></a>00169 <span class="keywordtype">void</span>
-<a name="l00170"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956">00170</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956" title="Serialize a protocol buffer message into a Core::Buffer.">serialize</a>(<span class="keyword">const</span> google::protobuf::Message&amp; from,
-<a name="l00171"></a>00171           <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>&amp; to,
-<a name="l00172"></a>00172           uint32_t skipBytes)
-<a name="l00173"></a>00173 {
-<a name="l00174"></a>00174     <span class="comment">// SerializeToArray seems to always return true, so we explicitly check</span>
-<a name="l00175"></a>00175     <span class="comment">// IsInitialized to make sure all required fields are set.</span>
-<a name="l00176"></a>00176     <span class="keywordflow">if</span> (!from.IsInitialized()) {
-<a name="l00177"></a>00177         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Missing fields in protocol buffer of type %s: %s (have %s)&quot;</span>,
-<a name="l00178"></a>00178               from.GetTypeName().c_str(),
-<a name="l00179"></a>00179               from.InitializationErrorString().c_str(),
-<a name="l00180"></a>00180               <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">dumpString</a>(from).c_str());
-<a name="l00181"></a>00181     }
-<a name="l00182"></a>00182     uint32_t <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca" title="Check to see if the checksum format looks plausible.">length</a> = from.ByteSize();
-<a name="l00183"></a>00183     <span class="keywordtype">char</span>* data = <span class="keyword">new</span> <span class="keywordtype">char</span>[skipBytes + <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca" title="Check to see if the checksum format looks plausible.">length</a>];
-<a name="l00184"></a>00184     from.SerializeToArray(data + skipBytes, length);
-<a name="l00185"></a>00185     to.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a5c620e31ddbad599c21c8a221aa2c568" title="Replace the data contained in this Buffer.">setData</a>(data, skipBytes + length, Core::Buffer::deleteArrayFn&lt;char&gt;);
-<a name="l00186"></a>00186 }
-<a name="l00187"></a>00187 
-<a name="l00188"></a>00188 
-<a name="l00189"></a>00189 } <span class="comment">// namespace LogCabin::Core::ProtoBuf</span>
-<a name="l00190"></a>00190 } <span class="comment">// namespace LogCabin::Core</span>
-<a name="l00191"></a>00191 } <span class="comment">// namespace LogCabin</span>
+<a name="l00109"></a>00109         <span class="comment">// TextFormat::Printer escapes &#39; already.</span>
+<a name="l00110"></a>00110         <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a93fbbed8769a31a464c1d9f8633d8402" title="For strings, replace all occurrences of &#39;needle&#39; in &#39;haystack&#39; with &#39;replacement&#39;.">replaceAll</a>(output, <span class="stringliteral">&quot;\&quot;&quot;</span>, <span class="stringliteral">&quot;&#39;&quot;</span>);
+<a name="l00111"></a>00111         <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a93fbbed8769a31a464c1d9f8633d8402" title="For strings, replace all occurrences of &#39;needle&#39; in &#39;haystack&#39; with &#39;replacement&#39;.">replaceAll</a>(output, <span class="stringliteral">&quot;                &quot;</span>, <span class="stringliteral">&quot;              \&quot;&quot;</span>);
+<a name="l00112"></a>00112         <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a93fbbed8769a31a464c1d9f8633d8402" title="For strings, replace all occurrences of &#39;needle&#39; in &#39;haystack&#39; with &#39;replacement&#39;.">replaceAll</a>(output, <span class="stringliteral">&quot;\n&quot;</span>, <span class="stringliteral">&quot;\&quot;\n&quot;</span>);
+<a name="l00113"></a>00113     }
+<a name="l00114"></a>00114     <span class="keywordflow">if</span> (!protoBuf.IsInitialized()) {
+<a name="l00115"></a>00115         std::vector&lt;std::string&gt; errors;
+<a name="l00116"></a>00116         protoBuf.FindInitializationErrors(&amp;errors);
+<a name="l00117"></a>00117         std::ostringstream outputBuf;
+<a name="l00118"></a>00118         outputBuf &lt;&lt; output;
+<a name="l00119"></a>00119         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = errors.begin(); it != errors.end(); ++it) {
+<a name="l00120"></a>00120             <span class="keywordflow">if</span> (forCopyingIntoTest) {
+<a name="l00121"></a>00121                  outputBuf &lt;&lt; <span class="stringliteral">&quot;              \&quot;&quot;</span> &lt;&lt; *it &lt;&lt; <span class="stringliteral">&quot;: UNDEFINED\&quot;\n&quot;</span>;
+<a name="l00122"></a>00122             } <span class="keywordflow">else</span> {
+<a name="l00123"></a>00123                  outputBuf &lt;&lt; *it &lt;&lt; <span class="stringliteral">&quot;: UNDEFINED\n&quot;</span>;
+<a name="l00124"></a>00124             }
+<a name="l00125"></a>00125         }
+<a name="l00126"></a>00126         <span class="keywordflow">return</span> output + outputBuf.str();
+<a name="l00127"></a>00127     }
+<a name="l00128"></a>00128     <span class="keywordflow">return</span> output;
+<a name="l00129"></a>00129 }
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131 std::unique_ptr&lt;google::protobuf::Message&gt;
+<a name="l00132"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6">00132</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6" title="Copy the contents of a protocol buffer into a new one.">copy</a>(<span class="keyword">const</span> google::protobuf::Message&amp; protoBuf)
+<a name="l00133"></a>00133 {
+<a name="l00134"></a>00134     std::unique_ptr&lt;google::protobuf::Message&gt; ret(protoBuf.New());
+<a name="l00135"></a>00135     ret-&gt;CopyFrom(protoBuf);
+<a name="l00136"></a>00136     <span class="keywordflow">return</span> ret;
+<a name="l00137"></a>00137 }
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 <span class="keywordtype">bool</span>
+<a name="l00140"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c">00140</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c" title="Parse a protocol buffer message out of a Core::Buffer.">parse</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>&amp; from,
+<a name="l00141"></a>00141       google::protobuf::Message&amp; to,
+<a name="l00142"></a>00142       uint32_t skipBytes)
+<a name="l00143"></a>00143 {
+<a name="l00144"></a>00144     google::protobuf::LogSilencer logSilencer;
+<a name="l00145"></a>00145     <span class="keywordflow">if</span> (!to.ParseFromArray(
+<a name="l00146"></a>00146                         static_cast&lt;const char*&gt;(from.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>()) + skipBytes,
+<a name="l00147"></a>00147                         Util::downCast&lt;int&gt;(from.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>() - skipBytes))) {
+<a name="l00148"></a>00148         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Missing fields in protocol buffer of type %s: %s&quot;</span>,
+<a name="l00149"></a>00149                 to.GetTypeName().c_str(),
+<a name="l00150"></a>00150                 to.InitializationErrorString().c_str());
+<a name="l00151"></a>00151         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00152"></a>00152     }
+<a name="l00153"></a>00153     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00154"></a>00154 }
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156 <span class="keywordtype">void</span>
+<a name="l00157"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956">00157</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956" title="Serialize a protocol buffer message into a Core::Buffer.">serialize</a>(<span class="keyword">const</span> google::protobuf::Message&amp; from,
+<a name="l00158"></a>00158           <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>&amp; to,
+<a name="l00159"></a>00159           uint32_t skipBytes)
+<a name="l00160"></a>00160 {
+<a name="l00161"></a>00161     <span class="comment">// SerializeToArray seems to always return true, so we explicitly check</span>
+<a name="l00162"></a>00162     <span class="comment">// IsInitialized to make sure all required fields are set.</span>
+<a name="l00163"></a>00163     <span class="keywordflow">if</span> (!from.IsInitialized()) {
+<a name="l00164"></a>00164         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Missing fields in protocol buffer of type %s: %s (have %s)&quot;</span>,
+<a name="l00165"></a>00165               from.GetTypeName().c_str(),
+<a name="l00166"></a>00166               from.InitializationErrorString().c_str(),
+<a name="l00167"></a>00167               <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">dumpString</a>(from).c_str());
+<a name="l00168"></a>00168     }
+<a name="l00169"></a>00169     uint32_t <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca" title="Check to see if the checksum format looks plausible.">length</a> = from.ByteSize();
+<a name="l00170"></a>00170     <span class="keywordtype">char</span>* data = <span class="keyword">new</span> <span class="keywordtype">char</span>[skipBytes + <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca" title="Check to see if the checksum format looks plausible.">length</a>];
+<a name="l00171"></a>00171     from.SerializeToArray(data + skipBytes, length);
+<a name="l00172"></a>00172     to.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a5c620e31ddbad599c21c8a221aa2c568" title="Replace the data contained in this Buffer.">setData</a>(data, skipBytes + length, Core::Buffer::deleteArrayFn&lt;char&gt;);
+<a name="l00173"></a>00173 }
+<a name="l00174"></a>00174 
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176 } <span class="comment">// namespace LogCabin::Core::ProtoBuf</span>
+<a name="l00177"></a>00177 } <span class="comment">// namespace LogCabin::Core</span>
+<a name="l00178"></a>00178 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
