@@ -151,7 +151,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>A handle to the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster. </p>
 <p>If the client requests changes to the cluster's replicated state machine (for example, by writing a value), the client library will first open a session with the cluster. It will thereafter periodically send keep-alive requests to the cluster during periods of inactivity to maintain this session. If communication to the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster is lost for an extended period of time, the client's session will expire, and this library will force the client to crash. </p>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00570">570</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00576">576</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="a2b6a1f4ea0bcfc15f5425101c702b6fb"></a><!-- doxytag: member="LogCabin::Client::Cluster::Options" ref="a2b6a1f4ea0bcfc15f5425101c702b6fb" args="" -->
 <div class="memitem">
@@ -170,7 +170,7 @@ Private Attributes</h2></td></tr>
 <li>tcpHeartbeatTimeoutMilliseconds (see sample.conf) </li>
 </ul>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00578">578</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00584">584</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
@@ -210,7 +210,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00494">494</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00495">495</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -248,7 +248,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00503">503</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00504">504</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -268,7 +268,7 @@ Private Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00514">514</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00515">515</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -290,7 +290,7 @@ Private Attributes</h2></td></tr>
 <p>Get the current, stable cluster configuration. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>first: configurationId: Identifies the configuration. Pass this to setConfiguration later. second: The list of servers in the configuration. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00519">519</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00520">520</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -328,7 +328,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00525">525</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00526">526</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -380,7 +380,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Either OK or TIMEOUT. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00533">533</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00534">534</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -411,7 +411,7 @@ Private Attributes</h2></td></tr>
 
 <p>Like getServerStats but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00544">544</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00545">545</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -463,7 +463,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Either OK or TIMEOUT. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00553">553</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00554">554</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -494,7 +494,7 @@ Private Attributes</h2></td></tr>
 
 <p>Like getServerStats but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00564">564</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00565">565</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -515,7 +515,7 @@ Private Attributes</h2></td></tr>
 <p>Return an object to access the hierarchical key-value store. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> object with the working directory of '/'. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00573">573</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00574">574</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -531,7 +531,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00701">701</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00707">707</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>

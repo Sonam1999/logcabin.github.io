@@ -165,7 +165,7 @@ Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2a7df5ec0a4db59fb8c0f0c462fd89ea">eventLoop</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to the server's event loop, needed to construct new sessions.  <a href="#a2a7df5ec0a4db59fb8c0f0c462fd89ea"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#afcc06ccb9c33a32eee1503aa5b1ee205">exiting</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set to true when <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a45d9389965055a93871c27c0fa00817f" title="A thread that is used to send RPCs to the follower.">thread</a> should exit.  <a href="#afcc06ccb9c33a32eee1503aa5b1ee205"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set to true when thread should exit.  <a href="#afcc06ccb9c33a32eee1503aa5b1ee205"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ac4a82cf70a21989f2f59505281647c3f">requestVoteDone</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set to true if the server has responded to our RequestVote request in the current term, false otherwise.  <a href="#ac4a82cf70a21989f2f59505281647c3f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a57b21af23dcbefa804c9c962591e5025">haveVote_</a></td></tr>
@@ -210,15 +210,13 @@ Private Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Caches the result of <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a3e688557bfc2d99836ae83fe7ccd8145" title="Get the current session for this server.">getSession()</a>.  <a href="#a16744a8ac76825923b7bd86625aa26c8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html">RPC::ClientRPC</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a6152a1441ad8d36900beae23b8adb231">rpc</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad7c0b6afed998a197d4a538e6a56e589" title="Execute a remote procedure call on the server&#39;s RaftService.">callRPC()</a> places its <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> here so that <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a5daf374d78d59b74c639acef42f8b1e5" title="Cancel any outstanding RPCs to this Server.">interrupt()</a> may cancel it.  <a href="#a6152a1441ad8d36900beae23b8adb231"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a45d9389965055a93871c27c0fa00817f">thread</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A thread that is used to send RPCs to the follower.  <a href="#a45d9389965055a93871c27c0fa00817f"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Represents another server in the cluster. </p>
 <p>One of these exists for each other server. In addition to tracking state for each other server, this class provides a thread that executes <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac1f0d77d25c59e83ce7c446726292aaa" title="Initiate RPCs to a specific server as necessary.">RaftConsensus::peerThreadMain()</a>.</p>
 <p>This class has no internal locking: in general, the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> lock should be held when accessing this class, but there are some exceptions noted below. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00244">244</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00245">245</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ab658a5a52b9183a271843a5279d31ac9"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Peer::Peer" ref="ab658a5a52b9183a271843a5279d31ac9" args="(uint64_t serverId, RaftConsensus &amp;consensus)" -->
 <div class="memitem">
@@ -267,7 +265,7 @@ Private Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00182">182</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00181">181</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -308,7 +306,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#aab43402fe28b4fac77a2a53da7f7c779">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00187">187</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00186">186</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -331,7 +329,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ad03f113b797b25406325dde9bcf78fb2">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00194">194</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00193">193</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -354,7 +352,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ae4af8d452636e4d3fada9eb686416143">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00205">205</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00204">204</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -687,7 +685,7 @@ Private Attributes</h2></td></tr>
 <p>Used in startThread. </p>
 <p>TODO(ongaro): reconsider </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00318">318</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00319">319</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -704,7 +702,7 @@ Private Attributes</h2></td></tr>
 
 <p>A reference to the server's event loop, needed to construct new sessions. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00324">324</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00325">325</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -719,9 +717,9 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Set to true when <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a45d9389965055a93871c27c0fa00817f" title="A thread that is used to send RPCs to the follower.">thread</a> should exit. </p>
+<p>Set to true when thread should exit. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00329">329</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00330">330</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -738,7 +736,7 @@ Private Attributes</h2></td></tr>
 
 <p>Set to true if the server has responded to our RequestVote request in the current term, false otherwise. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00335">335</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00336">336</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -755,7 +753,7 @@ Private Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a31e4de7206ec311e2bd8e9f912a284d0" title="Return true if this Server has awarded us its vote for this term.">haveVote()</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00340">340</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00341">341</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -773,7 +771,7 @@ Private Attributes</h2></td></tr>
 <p>Indicates that nextIndex is still a (poor) guess: the leader should send heartbeats to save bandwidth until it finds where the follower's log diverges from its own. </p>
 <p>Only used when leader. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00347">347</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00348">348</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -791,7 +789,7 @@ Private Attributes</h2></td></tr>
 <p>The index of the next entry to send to the follower. </p>
 <p>Only used when leader. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00353">353</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00354">354</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -808,7 +806,7 @@ Private Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a74f6a5c2c9950c94cf61c1c302f9d84f" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">getLastAgreeIndex()</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00358">358</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00359">359</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -825,7 +823,7 @@ Private Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2a60ec5adc78780464eff2eaaf625d86" title="Return the latest time this Server acknowledged our current term.">getLastAckEpoch()</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00363">363</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00364">364</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -844,7 +842,7 @@ Private Attributes</h2></td></tr>
 <p>Only valid while we're leader. The leader sends heartbeats periodically if it has no new data to send, to stop the follower from starting a new election. </p>
 <dl class="invariant"><dt><b>Invariant:</b></dt><dd>This is never more than HEARTBEAT_PERIOD_MS in the future, since new leaders don't reset it. </dd></dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00374">374</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00375">375</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -862,7 +860,7 @@ Private Attributes</h2></td></tr>
 <p>The minimum time at which the next <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> should be sent. </p>
 <p>Only valid while we're a candidate or leader. This is set when an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> fails so as to not overwhelm the network with retries (some RPCs fail without timing out, for example if the remote kernel rejects the connection). </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00383">383</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00384">384</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -880,7 +878,7 @@ Private Attributes</h2></td></tr>
 <p>Counts <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> failures to issue fewer warnings. </p>
 <p>Accessed only from <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad7c0b6afed998a197d4a538e6a56e589" title="Execute a remote procedure call on the server&#39;s RaftService.">callRPC()</a> without holding the lock. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00389">389</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00390">390</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -895,7 +893,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00392">392</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00393">393</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -910,7 +908,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00393">393</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00394">394</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -925,7 +923,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00394">394</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00395">395</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -942,7 +940,7 @@ Private Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a81973f60b1302672c5d0c582a4638f4b" title="Return true once this Server is ready to be added to the cluster.">isCaughtUp()</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00399">399</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00400">400</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -960,7 +958,7 @@ Private Attributes</h2></td></tr>
 <p>A snapshot file to be sent to the follower, or NULL. </p>
 <p>TODO(ongaro): It'd be better to destroy this as soon as this server steps down, but peers don't have a hook for that right now. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00406">406</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00407">407</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -978,7 +976,7 @@ Private Attributes</h2></td></tr>
 <p>The number of bytes of 'snapshotFile' that have been acknowledged by the follower already. </p>
 <p>Send starting here next time. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00411">411</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00412">412</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -996,7 +994,7 @@ Private Attributes</h2></td></tr>
 <p>The last log index that 'snapshotFile' corresponds to. </p>
 <p>This is used to set the follower's <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07" title="The index of the next entry to send to the follower.">nextIndex</a> accordingly after we're done sending it the snapshot. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00417">417</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00418">418</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1013,7 +1011,7 @@ Private Attributes</h2></td></tr>
 
 <p>Caches the result of <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a3e688557bfc2d99836ae83fe7ccd8145" title="Get the current session for this server.">getSession()</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00424">424</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00425">425</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1031,24 +1029,7 @@ Private Attributes</h2></td></tr>
 <p><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad7c0b6afed998a197d4a538e6a56e589" title="Execute a remote procedure call on the server&#39;s RaftService.">callRPC()</a> places its <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> here so that <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a5daf374d78d59b74c639acef42f8b1e5" title="Cancel any outstanding RPCs to this Server.">interrupt()</a> may cancel it. </p>
 <p>Setting this member and canceling the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> must be done while holding the Raft lock; waiting on the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> is done without holding that lock. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00431">431</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a45d9389965055a93871c27c0fa00817f"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Peer::thread" ref="a45d9389965055a93871c27c0fa00817f" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::thread <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a45d9389965055a93871c27c0fa00817f">LogCabin::Server::RaftConsensusInternal::Peer::thread</a><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>A thread that is used to send RPCs to the follower. </p>
-
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00436">436</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00432">432</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>

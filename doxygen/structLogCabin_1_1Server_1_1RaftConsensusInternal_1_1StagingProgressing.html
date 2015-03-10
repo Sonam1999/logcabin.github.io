@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: LogCabin::Client::Result Struct Reference</title>
+<title>LogCabin: LogCabin::Server::RaftConsensusInternal::StagingProgressing Struct Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -93,8 +93,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
-      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Client.html">Client</a>      </li>
-      <li class="navelem"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Server.html">Server</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html">RaftConsensusInternal</a>      </li>
+      <li class="navelem"><a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1StagingProgressing.html">StagingProgressing</a>      </li>
     </ul>
   </div>
 </div>
@@ -103,93 +104,107 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
-<div class="title">LogCabin::Client::Result Struct Reference</div>  </div>
+<div class="title">LogCabin::Server::RaftConsensusInternal::StagingProgressing Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="LogCabin::Client::Result" -->
-<p>Returned by <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> operations; contain a status code and an error message.  
- <a href="structLogCabin_1_1Client_1_1Result.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="Client_8h_source.html">Client.h</a>&gt;</code></p>
-
-<p><a href="structLogCabin_1_1Client_1_1Result-members.html">List of all members.</a></p>
+<!-- doxytag: class="LogCabin::Server::RaftConsensusInternal::StagingProgressing" -->
+<p><a href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1StagingProgressing-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Result.html#ac461a26211eb5bf8317c18846094b161">Result</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#ac461a26211eb5bf8317c18846094b161"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1StagingProgressing.html#ae099bdf9b5416beed6b23f181f5ac5be">StagingProgressing</a> (uint64_t <a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1StagingProgressing.html#ab52b25105f8ae6236a2e0339039737a3">epoch</a>, Protocol::Client::SetConfiguration::Response &amp;<a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1StagingProgressing.html#aab7a1d57998ac30506e5bc8463a26ac0">response</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1StagingProgressing.html#ab5eb3d0f2682dd99e2613be1c3fc2067">operator()</a> (<a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html">Server</a> &amp;server)</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Result.html#afe2a6a0e2b5b95983b6541d95f36d384">status</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A code for whether an operation succeeded or why it did not.  <a href="#afe2a6a0e2b5b95983b6541d95f36d384"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Result.html#a87f803b070b9490347beed0dd0c07512">error</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If status is not OK, this is a human-readable message describing what went wrong.  <a href="#a87f803b070b9490347beed0dd0c07512"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1StagingProgressing.html#ab52b25105f8ae6236a2e0339039737a3">epoch</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Protocol::Client::SetConfiguration::Response &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1StagingProgressing.html#aab7a1d57998ac30506e5bc8463a26ac0">response</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Returned by <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> operations; contain a status code and an error message. </p>
-
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00181">181</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<div class="textblock">
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01400">1400</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ac461a26211eb5bf8317c18846094b161"></a><!-- doxytag: member="LogCabin::Client::Result::Result" ref="ac461a26211eb5bf8317c18846094b161" args="()" -->
+<a class="anchor" id="ae099bdf9b5416beed6b23f181f5ac5be"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::StagingProgressing::StagingProgressing" ref="ae099bdf9b5416beed6b23f181f5ac5be" args="(uint64_t epoch, Protocol::Client::SetConfiguration::Response &amp;response)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1Result.html#ac461a26211eb5bf8317c18846094b161">LogCabin::Client::Result::Result</a> </td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1StagingProgressing.html#ae099bdf9b5416beed6b23f181f5ac5be">LogCabin::Server::RaftConsensusInternal::StagingProgressing::StagingProgressing</a> </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>epoch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">Protocol::Client::SetConfiguration::Response &amp;&#160;</td>
+          <td class="paramname"><em>response</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Default constructor. </p>
-<p>Sets status to OK and error to the empty string. </p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01401">1401</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00143">143</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ab5eb3d0f2682dd99e2613be1c3fc2067"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::StagingProgressing::operator()" ref="ab5eb3d0f2682dd99e2613be1c3fc2067" args="(Server &amp;server)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LogCabin::Server::RaftConsensusInternal::StagingProgressing::operator() </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html">Server</a> &amp;&#160;</td>
+          <td class="paramname"><em>server</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01407">1407</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="afe2a6a0e2b5b95983b6541d95f36d384"></a><!-- doxytag: member="LogCabin::Client::Result::status" ref="afe2a6a0e2b5b95983b6541d95f36d384" args="" -->
+<a class="anchor" id="ab52b25105f8ae6236a2e0339039737a3"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::StagingProgressing::epoch" ref="ab52b25105f8ae6236a2e0339039737a3" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4">Status</a> <a class="el" href="structLogCabin_1_1Client_1_1Result.html#afe2a6a0e2b5b95983b6541d95f36d384">LogCabin::Client::Result::status</a></td>
+          <td class="memname">const uint64_t <a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1StagingProgressing.html#ab52b25105f8ae6236a2e0339039737a3">LogCabin::Server::RaftConsensusInternal::StagingProgressing::epoch</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>A code for whether an operation succeeded or why it did not. </p>
-<p>This is meant to be used programmatically. </p>
-
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00190">190</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01417">1417</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a87f803b070b9490347beed0dd0c07512"></a><!-- doxytag: member="LogCabin::Client::Result::error" ref="a87f803b070b9490347beed0dd0c07512" args="" -->
+<a class="anchor" id="aab7a1d57998ac30506e5bc8463a26ac0"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::StagingProgressing::response" ref="aab7a1d57998ac30506e5bc8463a26ac0" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string <a class="el" href="structLogCabin_1_1Client_1_1Result.html#a87f803b070b9490347beed0dd0c07512">LogCabin::Client::Result::error</a></td>
+          <td class="memname">Protocol::Client::SetConfiguration::Response&amp; <a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1StagingProgressing.html#aab7a1d57998ac30506e5bc8463a26ac0">LogCabin::Server::RaftConsensusInternal::StagingProgressing::response</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>If status is not OK, this is a human-readable message describing what went wrong. </p>
-
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00195">195</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01418">1418</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following files:<ul>
-<li>include/LogCabin/<a class="el" href="Client_8h_source.html">Client.h</a></li>
-<li>Client/<a class="el" href="Client_8cc_source.html">Client.cc</a></li>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>Server/<a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a></li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->

@@ -209,7 +209,7 @@ Friends</h2></td></tr>
 <div class="textblock"><p>A configuration defines the servers that are part of the cluster. </p>
 <p>This class does not do any internal locking; it should be accessed only while holding the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> lock. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00448">448</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00444">444</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="aa59cb8c3759ba19620d16bd6a71bdb02"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Configuration::ServerRef" ref="aa59cb8c3759ba19620d16bd6a71bdb02" args="" -->
 <div class="memitem">
@@ -222,7 +222,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00450">450</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00446">446</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -237,7 +237,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00451">451</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00447">447</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -252,7 +252,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00452">452</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00448">448</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -267,7 +267,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00453">453</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00449">449</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -302,7 +302,7 @@ Friends</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00475">475</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00471">471</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -543,7 +543,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00534">534</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00537">537</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -565,7 +565,7 @@ Friends</h2></td></tr>
 <p>Add servers that are to mirror the log but that may not have a vote (listeners). </p>
 <p>This can only be called on a STABLE configuration and makes it STAGING. TODO(ongaro): that might be a sign of a poor interface. descriptions should probably have three sets, as john said. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00586">586</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00589">589</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -586,7 +586,7 @@ Friends</h2></td></tr>
 
 <p>Return true if every server in the staging set satisfies the predicate, false otherwise. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00601">601</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00604">604</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -608,7 +608,7 @@ Friends</h2></td></tr>
 <p>Return the smallest value of any server in the staging set. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Minimum value on any server in the staging set, or 0 if the staging set is empty. </dd></dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00610">610</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00613">613</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -640,7 +640,7 @@ Friends</h2></td></tr>
 <p>Write the configuration servers' state into the given structure. </p>
 <p>Used for diagnostics. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00619">619</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00622">622</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -662,7 +662,7 @@ Friends</h2></td></tr>
 <p>If no server by the given ID is known, construct a new one. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Return the existing or new server. TODO(ongaro): this name and signature is misleading </dd></dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00681">681</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00684">684</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -678,7 +678,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00667">667</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00663">663</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -709,7 +709,7 @@ Friends</h2></td></tr>
 
 <p>Print out a State for debugging purposes. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00640">640</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00643">643</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -740,7 +740,7 @@ Friends</h2></td></tr>
 
 <p>Print out a <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html" title="A configuration defines the servers that are part of the cluster.">Configuration</a> for debugging purposes. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00661">661</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00664">664</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -758,7 +758,7 @@ Friends</h2></td></tr>
 
 <p>Used for constructing <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> instances. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00622">622</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00618">618</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -775,7 +775,7 @@ Friends</h2></td></tr>
 
 <p>A map from server ID to <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> of every server, including the local, previous, new, and staging servers. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00628">628</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00624">624</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -792,7 +792,7 @@ Friends</h2></td></tr>
 
 <p>This server. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00634">634</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00630">630</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -809,7 +809,7 @@ Friends</h2></td></tr>
 
 <p>Specifies the meaning of <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#ae498d5d3cf04ad0141941ad8d3e86bbb" title="A majority of these servers are necessary for a quorum under STABLE, STAGING, and TRANSITIONAL config...">oldServers</a> and <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a0a131fa2c4a9aabc0186b1c2c91f8661" title="A majority of these servers are necessary for a quorum under TRANSITIONAL configurations.">newServers</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00639">639</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00635">635</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -827,7 +827,7 @@ Friends</h2></td></tr>
 <p>The ID of the current configuration. </p>
 <p>This is the same as the entry ID in which this configuration's description is written to the log. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00645">645</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00641">641</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -844,7 +844,7 @@ Friends</h2></td></tr>
 
 <p>A description of the current configuration. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00650">650</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00646">646</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -862,7 +862,7 @@ Friends</h2></td></tr>
 <p>A majority of these servers are necessary for a quorum under STABLE, STAGING, and TRANSITIONAL configurations. </p>
 <p>(Under TRANSITIONAL, a majority of newServers is also needed.) </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00658">658</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00654">654</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -880,7 +880,7 @@ Friends</h2></td></tr>
 <p>A majority of these servers are necessary for a quorum under TRANSITIONAL configurations. </p>
 <p>Under STAGING configurations, these servers receive log entries but do not participate in elections. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00665">665</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00661">661</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>

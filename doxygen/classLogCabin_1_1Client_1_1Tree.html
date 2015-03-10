@@ -187,7 +187,7 @@ Friends</h2></td></tr>
 <p>A <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> has a working directory from which all relative paths (those that do not begin with a '/' are resolved). This allows different applications and modules to conveniently access their own subtrees -- they can have their own <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> instances and set their working directories accordingly.</p>
 <p>Methods that can fail come in two flavors. The first flavor returns <a class="el" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a> values with error codes and messages; the second throws exceptions upon errors. These can be distinguished by the "Ex" suffix in the names of methods that throw exceptions. </p>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00255">255</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00261">261</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a9c11695109d32373d099470ba38b0f2b"></a><!-- doxytag: member="LogCabin::Client::Tree::Tree" ref="a9c11695109d32373d099470ba38b0f2b" args="(std::shared_ptr&lt; ClientImpl &gt; clientImpl, const std::string &amp;workingDirectory)" -->
 <div class="memitem">
@@ -216,7 +216,7 @@ Friends</h2></td></tr>
 
 <p>Constructor. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00217">217</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00218">218</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -237,7 +237,7 @@ Friends</h2></td></tr>
 
 <p>Copy constructor. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00224">224</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00225">225</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -259,7 +259,7 @@ Friends</h2></td></tr>
 
 <p>Assignment operator. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00231">231</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00232">232</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -293,7 +293,7 @@ Friends</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00242">242</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00243">243</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -314,7 +314,7 @@ Friends</h2></td></tr>
 
 <p>Like setWorkingDirectory but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00275">275</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00276">276</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -335,7 +335,7 @@ Friends</h2></td></tr>
 <p>Return the working directory for this object. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>An absolute path that is the prefix for relative paths used with this <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> object. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00281">281</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00282">282</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -356,7 +356,7 @@ Friends</h2></td></tr>
 <p>Return the condition set by a previous call to <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a>. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>First component: the absolute path corresponding to the 'path' argument of <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a>. Second component: the file contents given as the 'value' argument of <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00325">325</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00326">326</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -399,7 +399,7 @@ Friends</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00288">288</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00289">289</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -430,7 +430,7 @@ Friends</h2></td></tr>
 
 <p>Like setCondition but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00319">319</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00320">320</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -451,7 +451,7 @@ Friends</h2></td></tr>
 <p>Return the timeout set by a previous call to <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#ac0f658f32b73a9daba01889040180ca7" title="Abort each future operation if it may not have completed within the specified period of time...">setTimeout()</a>. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The maximum duration of each operation (in nanoseconds), or 0 for no timeout. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00332">332</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00333">333</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -479,7 +479,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00339">339</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00340">340</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -513,7 +513,7 @@ Friends</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00348">348</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00349">349</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -534,7 +534,7 @@ Friends</h2></td></tr>
 
 <p>Like makeDirectory but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00359">359</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00360">360</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -580,7 +580,7 @@ Friends</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00365">365</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00366">366</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -601,7 +601,7 @@ Friends</h2></td></tr>
 
 <p>Like listDirectory but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00378">378</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00379">379</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -636,7 +636,7 @@ Friends</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00386">386</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00387">387</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -657,7 +657,7 @@ Friends</h2></td></tr>
 
 <p>Like removeDirectory but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00397">397</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00398">398</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -703,7 +703,7 @@ Friends</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00403">403</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00404">404</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -734,7 +734,7 @@ Friends</h2></td></tr>
 
 <p>Like write but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00415">415</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00416">416</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -780,7 +780,7 @@ Friends</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00421">421</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00422">422</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -801,7 +801,7 @@ Friends</h2></td></tr>
 
 <p>Like read but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00433">433</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00434">434</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -834,7 +834,7 @@ Friends</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00441">441</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00442">442</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -855,7 +855,7 @@ Friends</h2></td></tr>
 
 <p>Like removeFile but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00452">452</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00453">453</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -875,7 +875,7 @@ Friends</h2></td></tr>
 
 <p>Get a reference to the implementation-specific members of this class. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00458">458</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00459">459</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -891,7 +891,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00502">502</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00508">508</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
@@ -909,7 +909,7 @@ Friends</h2></td></tr>
 
 <p>Provides mutual exclusion to treeDetails pointer. </p>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00495">495</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00501">501</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
@@ -927,7 +927,7 @@ Friends</h2></td></tr>
 <p>Reference-counted pointer to implementation-specific members. </p>
 <p>This is copy-on-write, so 'mutex' need not be held after taking a reference to treeDetails. </p>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00501">501</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00507">507</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>

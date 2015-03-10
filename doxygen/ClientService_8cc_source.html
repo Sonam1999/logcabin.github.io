@@ -309,65 +309,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00227"></a><a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a0b6f56d7cad75f38f0fc2a6ce24a8b93">00227</a> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a0b6f56d7cad75f38f0fc2a6ce24a8b93">ClientService::setConfiguration</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
 <a name="l00228"></a>00228 {
 <a name="l00229"></a>00229     <a class="code" href="ClientService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(SetConfiguration);
-<a name="l00230"></a>00230     Protocol::Raft::SimpleConfiguration newConfiguration;
-<a name="l00231"></a>00231     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = request.new_servers().begin();
-<a name="l00232"></a>00232          it != request.new_servers().end();
-<a name="l00233"></a>00233          ++it) {
-<a name="l00234"></a>00234         Protocol::Raft::Server* s = newConfiguration.add_servers();
-<a name="l00235"></a>00235         s-&gt;set_server_id(it-&gt;server_id());
-<a name="l00236"></a>00236         s-&gt;set_addresses(it-&gt;addresses());
-<a name="l00237"></a>00237     }
-<a name="l00238"></a>00238     <a class="code" href="namespaceLogCabin_1_1Server.html#aa7f412bdef4a54af3492ff48d1f6c36a">Result</a> result = <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a5f6e9275b2850acaa8a5ff7adb0b7ca4" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;setConfiguration(
-<a name="l00239"></a>00239                         request.old_id(),
-<a name="l00240"></a>00240                         newConfiguration);
-<a name="l00241"></a>00241     <span class="keywordflow">if</span> (result == Result::SUCCESS) {
-<a name="l00242"></a>00242         response.mutable_ok();
-<a name="l00243"></a>00243     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (result == Result::RETRY || result == Result::NOT_LEADER) {
-<a name="l00244"></a>00244         Protocol::Client::Error error;
-<a name="l00245"></a>00245         error.set_error_code(Protocol::Client::Error::NOT_LEADER);
-<a name="l00246"></a>00246         std::string leaderHint = <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a5f6e9275b2850acaa8a5ff7adb0b7ca4" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;getLeaderHint();
-<a name="l00247"></a>00247         <span class="keywordflow">if</span> (!leaderHint.empty())
-<a name="l00248"></a>00248             error.set_leader_hint(leaderHint);
-<a name="l00249"></a>00249         rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac817a925ce3cbd81f4d856586906555b" title="Send a service-specific error back to the client.">returnError</a>(error);
-<a name="l00250"></a>00250         <span class="keywordflow">return</span>;
-<a name="l00251"></a>00251     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (result == Result::FAIL) {
-<a name="l00252"></a>00252         <span class="comment">// TODO(ongaro): can&#39;t distinguish changed from bad</span>
-<a name="l00253"></a>00253         response.mutable_configuration_changed();
-<a name="l00254"></a>00254     }
-<a name="l00255"></a>00255     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
-<a name="l00256"></a>00256 }
-<a name="l00257"></a>00257 
-<a name="l00258"></a>00258 <span class="keywordtype">void</span>
-<a name="l00259"></a><a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a4573a6e1f770c65c9cdaab4cbc04c650">00259</a> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a4573a6e1f770c65c9cdaab4cbc04c650">ClientService::readOnlyTreeRPC</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
-<a name="l00260"></a>00260 {
-<a name="l00261"></a>00261     <a class="code" href="ClientService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(ReadOnlyTree);
-<a name="l00262"></a>00262     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a81685c734dc9adabf5b97bb5afa2e4b0">catchUpStateMachine</a>(rpc) != Result::SUCCESS)
-<a name="l00263"></a>00263         <span class="keywordflow">return</span>;
-<a name="l00264"></a>00264     <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a5f6e9275b2850acaa8a5ff7adb0b7ca4" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a66960263fe3c257aa81737c6786d9cb3" title="State machine used to process client requests.">stateMachine</a>-&gt;readOnlyTreeRPC(request, response);
-<a name="l00265"></a>00265     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
-<a name="l00266"></a>00266 }
-<a name="l00267"></a>00267 
-<a name="l00268"></a>00268 <span class="keywordtype">void</span>
-<a name="l00269"></a><a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a10792f147d08370ddea54ce7f42d8ee0">00269</a> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a10792f147d08370ddea54ce7f42d8ee0">ClientService::readWriteTreeRPC</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
-<a name="l00270"></a>00270 {
-<a name="l00271"></a>00271     <a class="code" href="ClientService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(ReadWriteTree);
-<a name="l00272"></a>00272     <a class="code" href="namespaceLogCabin_1_1Server.html#ae8f9b22b20ae588668273a52eef301dc">Command</a> command;
-<a name="l00273"></a>00273     *command.mutable_tree() = request;
-<a name="l00274"></a>00274     std::pair&lt;Result, uint64_t&gt; result = <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#ac9bce618f9cee058e948ff3a790d4264">submit</a>(rpc, command);
-<a name="l00275"></a>00275     <span class="keywordflow">if</span> (result.first != Result::SUCCESS)
-<a name="l00276"></a>00276         <span class="keywordflow">return</span>;
-<a name="l00277"></a>00277     <a class="code" href="namespaceLogCabin_1_1Server.html#a26cb708a129ba0b48d9f4a0626de36df">CommandResponse</a> commandResponse;
-<a name="l00278"></a>00278     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#aecd35ddfa97bb30a00355359a6ae213b">getResponse</a>(rpc, result.second, request.exactly_once(),
-<a name="l00279"></a>00279                      commandResponse)) {
-<a name="l00280"></a>00280         <span class="keywordflow">return</span>;
-<a name="l00281"></a>00281     }
-<a name="l00282"></a>00282     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(commandResponse.tree());
-<a name="l00283"></a>00283 }
-<a name="l00284"></a>00284 
-<a name="l00285"></a>00285 
-<a name="l00286"></a>00286 
-<a name="l00287"></a>00287 } <span class="comment">// namespace LogCabin::Server</span>
-<a name="l00288"></a>00288 } <span class="comment">// namespace LogCabin</span>
+<a name="l00230"></a>00230     <a class="code" href="namespaceLogCabin_1_1Server.html#aa7f412bdef4a54af3492ff48d1f6c36a">Result</a> result = <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a5f6e9275b2850acaa8a5ff7adb0b7ca4" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;setConfiguration(request, response);
+<a name="l00231"></a>00231     <span class="keywordflow">if</span> (result == Result::RETRY || result == Result::NOT_LEADER) {
+<a name="l00232"></a>00232         Protocol::Client::Error error;
+<a name="l00233"></a>00233         error.set_error_code(Protocol::Client::Error::NOT_LEADER);
+<a name="l00234"></a>00234         std::string leaderHint = <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a5f6e9275b2850acaa8a5ff7adb0b7ca4" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;getLeaderHint();
+<a name="l00235"></a>00235         <span class="keywordflow">if</span> (!leaderHint.empty())
+<a name="l00236"></a>00236             error.set_leader_hint(leaderHint);
+<a name="l00237"></a>00237         rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac817a925ce3cbd81f4d856586906555b" title="Send a service-specific error back to the client.">returnError</a>(error);
+<a name="l00238"></a>00238         <span class="keywordflow">return</span>;
+<a name="l00239"></a>00239     }
+<a name="l00240"></a>00240     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
+<a name="l00241"></a>00241 }
+<a name="l00242"></a>00242 
+<a name="l00243"></a>00243 <span class="keywordtype">void</span>
+<a name="l00244"></a><a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a4573a6e1f770c65c9cdaab4cbc04c650">00244</a> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a4573a6e1f770c65c9cdaab4cbc04c650">ClientService::readOnlyTreeRPC</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
+<a name="l00245"></a>00245 {
+<a name="l00246"></a>00246     <a class="code" href="ClientService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(ReadOnlyTree);
+<a name="l00247"></a>00247     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a81685c734dc9adabf5b97bb5afa2e4b0">catchUpStateMachine</a>(rpc) != Result::SUCCESS)
+<a name="l00248"></a>00248         <span class="keywordflow">return</span>;
+<a name="l00249"></a>00249     <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a5f6e9275b2850acaa8a5ff7adb0b7ca4" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a66960263fe3c257aa81737c6786d9cb3" title="State machine used to process client requests.">stateMachine</a>-&gt;readOnlyTreeRPC(request, response);
+<a name="l00250"></a>00250     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
+<a name="l00251"></a>00251 }
+<a name="l00252"></a>00252 
+<a name="l00253"></a>00253 <span class="keywordtype">void</span>
+<a name="l00254"></a><a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a10792f147d08370ddea54ce7f42d8ee0">00254</a> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a10792f147d08370ddea54ce7f42d8ee0">ClientService::readWriteTreeRPC</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
+<a name="l00255"></a>00255 {
+<a name="l00256"></a>00256     <a class="code" href="ClientService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(ReadWriteTree);
+<a name="l00257"></a>00257     <a class="code" href="namespaceLogCabin_1_1Server.html#ae8f9b22b20ae588668273a52eef301dc">Command</a> command;
+<a name="l00258"></a>00258     *command.mutable_tree() = request;
+<a name="l00259"></a>00259     std::pair&lt;Result, uint64_t&gt; result = <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#ac9bce618f9cee058e948ff3a790d4264">submit</a>(rpc, command);
+<a name="l00260"></a>00260     <span class="keywordflow">if</span> (result.first != Result::SUCCESS)
+<a name="l00261"></a>00261         <span class="keywordflow">return</span>;
+<a name="l00262"></a>00262     <a class="code" href="namespaceLogCabin_1_1Server.html#a26cb708a129ba0b48d9f4a0626de36df">CommandResponse</a> commandResponse;
+<a name="l00263"></a>00263     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#aecd35ddfa97bb30a00355359a6ae213b">getResponse</a>(rpc, result.second, request.exactly_once(),
+<a name="l00264"></a>00264                      commandResponse)) {
+<a name="l00265"></a>00265         <span class="keywordflow">return</span>;
+<a name="l00266"></a>00266     }
+<a name="l00267"></a>00267     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(commandResponse.tree());
+<a name="l00268"></a>00268 }
+<a name="l00269"></a>00269 
+<a name="l00270"></a>00270 
+<a name="l00271"></a>00271 
+<a name="l00272"></a>00272 } <span class="comment">// namespace LogCabin::Server</span>
+<a name="l00273"></a>00273 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
