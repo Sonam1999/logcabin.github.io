@@ -183,7 +183,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00135">135</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00136">136</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -204,7 +204,7 @@ Private Attributes</h2></td></tr>
 <p>Destructor. </p>
 <p>If the file hasn't been explicitly saved or discarded, prints a warning and discards the file. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00149">149</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00150">150</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -226,7 +226,7 @@ Private Attributes</h2></td></tr>
 <p>Throw away the file. </p>
 <p>If you call this after the file has been closed, it will PANIC. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00158">158</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00159">159</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -248,7 +248,7 @@ Private Attributes</h2></td></tr>
 <p>Leave the file open for additional writes.</p>
 <p>This is useful when forking child processes to write to the file. The correct procedure for that is: 0. write stuff 1. call <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a5acdfa8012bd95341a898946e624bc2b" title="Flush changes just down to the operating system&#39;s buffer cache.">flushToOS()</a> 2. fork 3. child process: write stuff 4. child process: call <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a5acdfa8012bd95341a898946e624bc2b" title="Flush changes just down to the operating system&#39;s buffer cache.">flushToOS()</a> 5. child process: call _exit() 6. parent process: call <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#af2f1dc2ba7157b9e1f87837c3482ebd7" title="Seek to the end of the file, in case another process has written to it.">seekToEnd()</a> 7. parent process: write stuff 8. parent process: call <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#acd9deb7c50b661b287003896961c7138" title="Flush changes all the way down to the disk and close the file.">save()</a> </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00167">167</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00168">168</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -269,7 +269,7 @@ Private Attributes</h2></td></tr>
 <p>Seek to the end of the file, in case another process has written to it. </p>
 <p>Subsequent calls to <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#abfc3d5956bbcda8e3e4b6270198008b4" title="Return the number of bytes written so far.">getBytesWritten()</a> will include data written by other processes. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00173">173</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00174">174</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -291,7 +291,7 @@ Private Attributes</h2></td></tr>
 <p>If you call this after the file has been closed, it will PANIC. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Size in bytes of the file </dd></dl>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00182">182</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00183">183</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -313,7 +313,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a71dfd7d52ead85d327b38d6ef6010a9b">LogCabin::Core::ProtoBuf::OutputStream</a>.</p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00196">196</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00197">197</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -336,7 +336,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a68f978815ed884d081ea742ab8fbd250">LogCabin::Core::ProtoBuf::OutputStream</a>.</p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00202">202</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00203">203</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -369,7 +369,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a28fe58d86a77d1f9dc7583fb55488acd">LogCabin::Core::ProtoBuf::OutputStream</a>.</p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00220">220</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00221">221</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
