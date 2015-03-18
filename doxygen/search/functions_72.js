@@ -61,6 +61,5 @@ var searchData=
   ['rtrim',['rtrim',['../namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a2389e943ca00d0e4d022f160acbeceba',1,'LogCabin::Core::anonymous_namespace{Config.cc}']]],
   ['run',['run',['../classLogCabin_1_1Server_1_1Globals.html#a7110e6c745d942fddad758a7c9a42e9f',1,'LogCabin::Server::Globals']]],
   ['runarbitrarycode',['runArbitraryCode',['../classLogCabin_1_1RPC_1_1ServiceMock.html#af49ab45fb99f1f437fff31972b032832',1,'LogCabin::RPC::ServiceMock']]],
-  ['runforever',['runForever',['../classLogCabin_1_1Event_1_1Loop.html#a945d446d55bb84f4772c45dc13203bd6',1,'LogCabin::Event::Loop']]],
-  ['runserver',['runServer',['../namespaceanonymous__namespace_02Main_8cc_03.html#a4b7a7052d24b95e473f435dc80d11dda',1,'anonymous_namespace{Main.cc}']]]
+  ['runforever',['runForever',['../classLogCabin_1_1Event_1_1Loop.html#a945d446d55bb84f4772c45dc13203bd6',1,'LogCabin::Event::Loop']]]
 ];

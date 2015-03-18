@@ -59,7 +59,7 @@ var searchData=
   ['relativefilename',['relativeFileName',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#acc4bd70b5716f2725c218b0b7e552a38',1,'LogCabin::Core::Debug::Internal']]],
   ['release',['release',['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#acf89582a7c8d778e95b309d9626cae9c',1,'LogCabin::Storage::FilesystemUtil::File']]],
   ['releaseall',['releaseAll',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a15760282a6b5028d7f614f3a927fa889',1,'LogCabin::Storage::SegmentedLog::PreparedSegments']]],
-  ['remove',['remove',['../classLogCabin_1_1Core_1_1Config.html#aa55080921ff76e4a1622b287b226389b',1,'LogCabin::Core::Config::remove()'],['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#afd098682adc032d611cb61a1a45ac32e',1,'LogCabin::Storage::FilesystemUtil::remove()'],['../namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493',1,'anonymous_namespace{TreeOps.cc}::REMOVE()']]],
+  ['remove',['remove',['../classLogCabin_1_1Core_1_1Config.html#aa55080921ff76e4a1622b287b226389b',1,'LogCabin::Core::Config::remove()'],['../namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493',1,'anonymous_namespace{TreeOps.cc}::REMOVE()'],['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#afd098682adc032d611cb61a1a45ac32e',1,'LogCabin::Storage::FilesystemUtil::remove()']]],
   ['removeallfiles',['removeAllFiles',['../classLogCabin_1_1Storage_1_1Layout.html#a9069378ca7ca1a771537a6f10aed2544',1,'LogCabin::Storage::Layout']]],
   ['removedirectory',['removeDirectory',['../classLogCabin_1_1Client_1_1ClientImpl.html#aa7bf0afd6cc2ad8ce102f7eac1b10c7e',1,'LogCabin::Client::ClientImpl::removeDirectory()'],['../classLogCabin_1_1Client_1_1Tree.html#adab277ed481a6c60219ba14816235566',1,'LogCabin::Client::Tree::removeDirectory()'],['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#aeaa41c74ebd6fb5e419888bc3b802cde',1,'LogCabin::Tree::Internal::Directory::removeDirectory()'],['../classLogCabin_1_1Tree_1_1Tree.html#ac6c6d96d5d915f58f8440bda1bd24f46',1,'LogCabin::Tree::Tree::removeDirectory()']]],
   ['removedirectoryex',['removeDirectoryEx',['../classLogCabin_1_1Client_1_1Tree.html#a2fadcb7b360a472d2976136d0e1648a9',1,'LogCabin::Client::Tree']]],
@@ -102,8 +102,8 @@ var searchData=
   ['rpc_5ffailed',['RPC_FAILED',['../classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a84d6b56092fd63176bc098a714953144',1,'LogCabin::RPC::ClientRPC']]],
   ['rpc_5ffailure_5fbackoff_5fms',['RPC_FAILURE_BACKOFF_MS',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a2f6b8c578a37bbf9ab24fa1bca6efdfd',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['rpcfailuressincelastwarning',['rpcFailuresSinceLastWarning',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#af384128771f7e60f485b837114f56788',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
-  ['rpchandler',['RPCHandler',['../classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html',1,'LogCabin::RPC::Server']]],
   ['rpchandler',['RPCHandler',['../classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html#a20e1a2fc2d8dd1d673748e5ef8471dbf',1,'LogCabin::RPC::Server::RPCHandler::RPCHandler()'],['../classLogCabin_1_1RPC_1_1OpaqueServer.html#a43457466d16027aeb7bab822cc468107',1,'LogCabin::RPC::OpaqueServer::rpcHandler()'],['../classLogCabin_1_1RPC_1_1Server.html#ab14da95e44bc36465a4dcc2463162917',1,'LogCabin::RPC::Server::rpcHandler()']]],
+  ['rpchandler',['RPCHandler',['../classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html',1,'LogCabin::RPC::Server']]],
   ['rpcprotocolversion',['rpcProtocolVersion',['../classLogCabin_1_1Client_1_1ClientImpl.html#adb4ad6145d875b81cd94cff9bb1d74dc',1,'LogCabin::Client::ClientImpl']]],
   ['rpcqueue',['rpcQueue',['../classLogCabin_1_1RPC_1_1ThreadDispatchService.html#abb72ac16deb083c8124f3fbc29cba0e5',1,'LogCabin::RPC::ThreadDispatchService']]],
   ['rpcserver',['rpcServer',['../classLogCabin_1_1Server_1_1Globals.html#aa5ca9e0cf49a42c74813f2614fea84d7',1,'LogCabin::Server::Globals']]],
@@ -111,6 +111,5 @@ var searchData=
   ['run',['run',['../classLogCabin_1_1Server_1_1Globals.html#a7110e6c745d942fddad758a7c9a42e9f',1,'LogCabin::Server::Globals']]],
   ['runarbitrarycode',['runArbitraryCode',['../classLogCabin_1_1RPC_1_1ServiceMock.html#af49ab45fb99f1f437fff31972b032832',1,'LogCabin::RPC::ServiceMock']]],
   ['runforever',['runForever',['../classLogCabin_1_1Event_1_1Loop.html#a945d446d55bb84f4772c45dc13203bd6',1,'LogCabin::Event::Loop']]],
-  ['runningthread',['runningThread',['../classLogCabin_1_1Event_1_1Loop.html#a3665d236c88d9c8a0de5da4f09a51b74',1,'LogCabin::Event::Loop']]],
-  ['runserver',['runServer',['../namespaceanonymous__namespace_02Main_8cc_03.html#a4b7a7052d24b95e473f435dc80d11dda',1,'anonymous_namespace{Main.cc}']]]
+  ['runningthread',['runningThread',['../classLogCabin_1_1Event_1_1Loop.html#a3665d236c88d9c8a0de5da4f09a51b74',1,'LogCabin::Event::Loop']]]
 ];
