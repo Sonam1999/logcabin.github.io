@@ -113,378 +113,388 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00031"></a>00031 <span class="keyword">namespace </span>LogCabin {
 <a name="l00032"></a>00032 <span class="keyword">namespace </span>Server {
 <a name="l00033"></a>00033 
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035 <span class="keyword">namespace </span>PC = LogCabin::Protocol::Client;
-<a name="l00036"></a><a class="code" href="namespaceLogCabin_1_1Server.html#a9185925cb5b0b4026e6f668c51360db7">00036</a> <span class="keyword">static</span> <span class="keyword">const</span> uint64_t <a class="code" href="namespaceLogCabin_1_1Server.html#a9185925cb5b0b4026e6f668c51360db7">NO_ENTRY_ID</a> = ~0UL;
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038 <span class="comment">// for testing purposes</span>
-<a name="l00039"></a><a class="code" href="namespaceLogCabin_1_1Server.html#ade46c73b90b6acb3fd060b45a0a7de60">00039</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceLogCabin_1_1Server.html#ade46c73b90b6acb3fd060b45a0a7de60">stateMachineSuppressThreads</a> = <span class="keyword">false</span>;
-<a name="l00040"></a><a class="code" href="namespaceLogCabin_1_1Server.html#a5f405827d99a36f2fb5a0fb7706cbded">00040</a> uint32_t <a class="code" href="namespaceLogCabin_1_1Server.html#a5f405827d99a36f2fb5a0fb7706cbded">stateMachineChildSleepMs</a> = 0;
-<a name="l00041"></a>00041 
-<a name="l00042"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a5e86d370aa16f915148689c8ee188477">00042</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a5e86d370aa16f915148689c8ee188477">StateMachine::StateMachine</a>(std::shared_ptr&lt;RaftConsensus&gt; consensus,
-<a name="l00043"></a>00043                            <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Core::Config</a>&amp; config)
-<a name="l00044"></a>00044     : consensus(consensus)
-<a name="l00045"></a>00045     , snapshotMinLogSize(config.read&lt;uint64_t&gt;(<span class="stringliteral">&quot;snapshotMinLogSize&quot;</span>, 1024))
-<a name="l00046"></a>00046     , snapshotRatio(config.read&lt;uint64_t&gt;(<span class="stringliteral">&quot;snapshotRatio&quot;</span>, 10))
-<a name="l00047"></a>00047       <span class="comment">// TODO(ongaro): This should be configurable, but it must be the same for</span>
-<a name="l00048"></a>00048       <span class="comment">// every server, so it&#39;s dangerous to put it in the config file. Need to</span>
-<a name="l00049"></a>00049       <span class="comment">// use the Raft log to agree on this value. Also need to inform clients</span>
-<a name="l00050"></a>00050       <span class="comment">// of the value and its changes, so that they can send keep-alives at</span>
-<a name="l00051"></a>00051       <span class="comment">// appropriate intervals. For now, servers time out after about an hour,</span>
-<a name="l00052"></a>00052       <span class="comment">// and clients send keep-alives every minute.</span>
-<a name="l00053"></a>00053     , sessionTimeoutNanos(1000UL * 1000 * 1000 * 60 * 60)
-<a name="l00054"></a>00054     , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>()
-<a name="l00055"></a>00055     , entriesApplied()
-<a name="l00056"></a>00056     , snapshotSuggested()
-<a name="l00057"></a>00057     , exiting(false)
-<a name="l00058"></a>00058     , childPid(0)
-<a name="l00059"></a>00059     , lastIndex(0)
-<a name="l00060"></a>00060     , sessions()
-<a name="l00061"></a>00061     , tree()
-<a name="l00062"></a>00062     , applyThread()
-<a name="l00063"></a>00063     , snapshotThread()
-<a name="l00064"></a>00064 {
-<a name="l00065"></a>00065     <span class="keywordflow">if</span> (!<a class="code" href="namespaceLogCabin_1_1Server.html#ade46c73b90b6acb3fd060b45a0a7de60">stateMachineSuppressThreads</a>) {
-<a name="l00066"></a>00066         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a967a9bd6387baebf20fddcebd7318b92" title="Repeatedly calls into the consensus module to get commands to process and applies them...">applyThread</a> = std::thread(&amp;<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a85315565676068d98d26b883a69ba8e6" title="Main function for thread that waits for new commands from Raft.">StateMachine::applyThreadMain</a>, <span class="keyword">this</span>);
-<a name="l00067"></a>00067         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a25a6ea04409431e46288cf200fc41dd6" title="Takes snapshots with the help of a child process.">snapshotThread</a> = std::thread(&amp;<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a6c2fd3f31f6b186194efa2741b4908f2" title="Main function for thread that calls takeSnapshot when appropriate.">StateMachine::snapshotThreadMain</a>, <span class="keyword">this</span>);
-<a name="l00068"></a>00068     }
-<a name="l00069"></a>00069 }
-<a name="l00070"></a>00070 
-<a name="l00071"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a03e6875c4281a4d394e10bcf1657b7e2">00071</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a03e6875c4281a4d394e10bcf1657b7e2">StateMachine::~StateMachine</a>()
-<a name="l00072"></a>00072 {
-<a name="l00073"></a>00073     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Shutting down&quot;</span>);
-<a name="l00074"></a>00074     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>) <span class="comment">// sometimes missing for testing</span>
-<a name="l00075"></a>00075         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>-&gt;exit();
-<a name="l00076"></a>00076     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a967a9bd6387baebf20fddcebd7318b92" title="Repeatedly calls into the consensus module to get commands to process and applies them...">applyThread</a>.joinable())
-<a name="l00077"></a>00077         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a967a9bd6387baebf20fddcebd7318b92" title="Repeatedly calls into the consensus module to get commands to process and applies them...">applyThread</a>.join();
-<a name="l00078"></a>00078     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a25a6ea04409431e46288cf200fc41dd6" title="Takes snapshots with the help of a child process.">snapshotThread</a>.joinable())
-<a name="l00079"></a>00079         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a25a6ea04409431e46288cf200fc41dd6" title="Takes snapshots with the help of a child process.">snapshotThread</a>.join();
-<a name="l00080"></a>00080     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Joined with threads&quot;</span>);
-<a name="l00081"></a>00081 }
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083 <span class="keywordtype">bool</span>
-<a name="l00084"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a64059cbdf3fbf7e04243568bdadb67ff">00084</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a64059cbdf3fbf7e04243568bdadb67ff" title="Called by ClientService to get a response for a read-write operation on the Tree.">StateMachine::getResponse</a>(<span class="keyword">const</span> PC::ExactlyOnceRPCInfo&amp; rpcInfo,
-<a name="l00085"></a>00085                           <a class="code" href="namespaceLogCabin_1_1Server.html#a26cb708a129ba0b48d9f4a0626de36df">PC::CommandResponse</a>&amp; response)<span class="keyword"> const</span>
-<a name="l00086"></a>00086 <span class="keyword"></span>{
-<a name="l00087"></a>00087     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
-<a name="l00088"></a>00088     <span class="keyword">auto</span> sessionIt = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.find(rpcInfo.client_id());
-<a name="l00089"></a>00089     <span class="keywordflow">if</span> (sessionIt == <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.end()) {
-<a name="l00090"></a>00090         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Client %lu session expired but client still active&quot;</span>,
-<a name="l00091"></a>00091                 rpcInfo.client_id());
-<a name="l00092"></a>00092         <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00093"></a>00093     }
-<a name="l00094"></a>00094     <span class="keyword">const</span> <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>&amp; session = sessionIt-&gt;second;
-<a name="l00095"></a>00095     <span class="keyword">auto</span> responseIt = session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.find(rpcInfo.rpc_number());
-<a name="l00096"></a>00096     <span class="keywordflow">if</span> (responseIt == session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.end()) {
-<a name="l00097"></a>00097         <span class="comment">// The response for this RPC has already been removed: the client is</span>
-<a name="l00098"></a>00098         <span class="comment">// not waiting for it. This request is just a duplicate that is safe to</span>
-<a name="l00099"></a>00099         <span class="comment">// drop.</span>
-<a name="l00100"></a>00100         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Client %lu asking for discarded response to RPC %lu&quot;</span>,
-<a name="l00101"></a>00101                 rpcInfo.client_id(), rpcInfo.rpc_number());
-<a name="l00102"></a>00102         <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00103"></a>00103     }
-<a name="l00104"></a>00104     response = responseIt-&gt;second;
-<a name="l00105"></a>00105     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00106"></a>00106 }
-<a name="l00107"></a>00107 
-<a name="l00108"></a>00108 <span class="keywordtype">void</span>
-<a name="l00109"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a84dbcf435d37778d44398ae6248c57d5">00109</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a84dbcf435d37778d44398ae6248c57d5" title="Called by ClientService to execute read-only operations on the Tree.">StateMachine::readOnlyTreeRPC</a>(<span class="keyword">const</span> PC::ReadOnlyTree::Request&amp; request,
-<a name="l00110"></a>00110                               PC::ReadOnlyTree::Response&amp; response)<span class="keyword"> const</span>
-<a name="l00111"></a>00111 <span class="keyword"></span>{
-<a name="l00112"></a>00112     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
-<a name="l00113"></a>00113     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a84dbcf435d37778d44398ae6248c57d5" title="Called by ClientService to execute read-only operations on the Tree.">Tree::ProtoBuf::readOnlyTreeRPC</a>(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981" title="The hierarchical key-value store.">tree</a>, request, response);
-<a name="l00114"></a>00114 }
-<a name="l00115"></a>00115 
-<a name="l00116"></a>00116 <span class="keywordtype">void</span>
-<a name="l00117"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a40792af98645b4d05e6ddcf10902044e">00117</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a40792af98645b4d05e6ddcf10902044e" title="Return once the state machine has applied at least the given entry.">StateMachine::wait</a>(uint64_t index)<span class="keyword"> const</span>
-<a name="l00118"></a>00118 <span class="keyword"></span>{
-<a name="l00119"></a>00119     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
-<a name="l00120"></a>00120     <span class="keywordflow">while</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a> &lt; index)
-<a name="l00121"></a>00121         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5" title="Notified when lastIndex changes after some entry got applied.">entriesApplied</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">wait</a>(lockGuard);
-<a name="l00122"></a>00122 }
-<a name="l00123"></a>00123 
-<a name="l00124"></a>00124 <span class="comment"></span>
-<a name="l00125"></a>00125 <span class="comment">////////// StateMachine private methods //////////</span>
-<a name="l00126"></a>00126 <span class="comment"></span>
-<a name="l00127"></a>00127 <span class="keywordtype">void</span>
-<a name="l00128"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#abf2f8983d83cb9a590fa62c8ce27c1a7">00128</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#abf2f8983d83cb9a590fa62c8ce27c1a7" title="Invoked once per committed entry from the Raft log.">StateMachine::apply</a>(<span class="keyword">const</span> RaftConsensus::Entry&amp; entry)
-<a name="l00129"></a>00129 {
-<a name="l00130"></a>00130     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4">PC::Command</a> command;
-<a name="l00131"></a>00131     <span class="keywordflow">if</span> (!<a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c" title="Parse a protocol buffer message out of a Core::Buffer.">Core::ProtoBuf::parse</a>(entry.command, command)) {
-<a name="l00132"></a>00132         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Failed to parse protobuf for entry %lu&quot;</span>,
-<a name="l00133"></a>00133               entry.index);
-<a name="l00134"></a>00134     }
-<a name="l00135"></a>00135     <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>* session = NULL;
-<a name="l00136"></a>00136     <span class="keywordflow">if</span> (command.has_tree()) {
-<a name="l00137"></a>00137         PC::ExactlyOnceRPCInfo rpcInfo = command.tree().exactly_once();
-<a name="l00138"></a>00138         <span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.find(rpcInfo.client_id());
-<a name="l00139"></a>00139         <span class="keywordflow">if</span> (it == <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.end()) {
-<a name="l00140"></a>00140             <span class="comment">// session does not exist</span>
-<a name="l00141"></a>00141         } <span class="keywordflow">else</span> {
-<a name="l00142"></a>00142             <span class="comment">// session exists</span>
-<a name="l00143"></a>00143             session = &amp;it-&gt;second;
-<a name="l00144"></a>00144             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1431a7e9a631e1fb03d668ba9a4bd16" title="Update the session and clean up unnecessary responses.">expireResponses</a>(*session, rpcInfo.first_outstanding_rpc());
-<a name="l00145"></a>00145             <span class="keywordflow">if</span> (rpcInfo.rpc_number() &lt; session-&gt;<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9" title="Largest firstOutstandingRPC number processed from this client.">firstOutstandingRPC</a>) {
-<a name="l00146"></a>00146                 <span class="comment">// response already discarded, do not re-apply</span>
-<a name="l00147"></a>00147             } <span class="keywordflow">else</span> {
-<a name="l00148"></a>00148                 <span class="keyword">auto</span> inserted = session-&gt;<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.insert(
-<a name="l00149"></a>00149                                                 {rpcInfo.rpc_number(), {}});
-<a name="l00150"></a>00150                 <span class="keywordflow">if</span> (inserted.second) {
-<a name="l00151"></a>00151                     <span class="comment">// response not found, apply and save it</span>
-<a name="l00152"></a>00152                     <a class="code" href="namespaceLogCabin_1_1Tree_1_1ProtoBuf.html#a4f2d935cbe9c5304dac131503c63954d">Tree::ProtoBuf::readWriteTreeRPC</a>(
-<a name="l00153"></a>00153                         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981" title="The hierarchical key-value store.">tree</a>,
-<a name="l00154"></a>00154                         command.tree(),
-<a name="l00155"></a>00155                         *inserted.first-&gt;second.mutable_tree());
-<a name="l00156"></a>00156                 } <span class="keywordflow">else</span> {
-<a name="l00157"></a>00157                     <span class="comment">// response exists, do not re-apply</span>
-<a name="l00158"></a>00158                 }
-<a name="l00159"></a>00159             }
-<a name="l00160"></a>00160         }
-<a name="l00161"></a>00161     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (command.has_open_session()) {
-<a name="l00162"></a>00162         uint64_t clientId = entry.index;
-<a name="l00163"></a>00163         session = &amp;<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.insert({clientId, {}}).first-&gt;second;
-<a name="l00164"></a>00164     } <span class="keywordflow">else</span> {
-<a name="l00165"></a>00165         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;unknown command at %lu: %s&quot;</span>,
-<a name="l00166"></a>00166               entry.index,
-<a name="l00167"></a>00167               <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(command).c_str());
-<a name="l00168"></a>00168     }
-<a name="l00169"></a>00169 
-<a name="l00170"></a>00170     <span class="comment">// update based on entry.clusterTime</span>
-<a name="l00171"></a>00171     <span class="keywordflow">if</span> (session != NULL) {
-<a name="l00172"></a>00172         session-&gt;<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79" title="When the session was last active, measured in cluster time (roughly the number of nanoseconds that th...">lastModified</a> = entry.clusterTime;
-<a name="l00173"></a>00173         session = NULL; <span class="comment">// pointer invalidated by expireSessions()</span>
-<a name="l00174"></a>00174     }
-<a name="l00175"></a>00175 }
-<a name="l00176"></a>00176 
-<a name="l00177"></a>00177 <span class="keywordtype">void</span>
-<a name="l00178"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a85315565676068d98d26b883a69ba8e6">00178</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a85315565676068d98d26b883a69ba8e6" title="Main function for thread that waits for new commands from Raft.">StateMachine::applyThreadMain</a>()
-<a name="l00179"></a>00179 {
-<a name="l00180"></a>00180     <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#a4dbe9da59e37b2a282c41984be0ebdcb" title="Set the friendly name for the current thread.">Core::ThreadId::setName</a>(<span class="stringliteral">&quot;StateMachine&quot;</span>);
-<a name="l00181"></a>00181     <span class="keywordflow">try</span> {
-<a name="l00182"></a>00182         <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
-<a name="l00183"></a>00183             RaftConsensus::Entry entry = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>-&gt;getNextEntry(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a>);
-<a name="l00184"></a>00184             std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
-<a name="l00185"></a>00185             <span class="keywordflow">switch</span> (entry.type) {
-<a name="l00186"></a>00186                 <span class="keywordflow">case</span> RaftConsensus::Entry::SKIP:
-<a name="l00187"></a>00187                     <span class="keywordflow">break</span>;
-<a name="l00188"></a>00188                 <span class="keywordflow">case</span> RaftConsensus::Entry::DATA:
-<a name="l00189"></a>00189                     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#abf2f8983d83cb9a590fa62c8ce27c1a7" title="Invoked once per committed entry from the Raft log.">apply</a>(entry);
-<a name="l00190"></a>00190                     <span class="keywordflow">break</span>;
-<a name="l00191"></a>00191                 <span class="keywordflow">case</span> RaftConsensus::Entry::SNAPSHOT:
-<a name="l00192"></a>00192                     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Loading snapshot through entry %lu into &quot;</span>
-<a name="l00193"></a>00193                            <span class="stringliteral">&quot;state machine&quot;</span>, entry.index);
-<a name="l00194"></a>00194                     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1e6c83bef8257b4c8f6dd4f2c2ab1ff" title="Read the sessions table from a snapshot file.">loadSessionSnapshot</a>(*entry.snapshotReader);
-<a name="l00195"></a>00195                     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981" title="The hierarchical key-value store.">tree</a>.<a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#acce5baeb3c8da987ddafe9f49d87ef49" title="Load the tree from the given stream.">loadSnapshot</a>(*entry.snapshotReader);
-<a name="l00196"></a>00196                     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Done loading snapshot&quot;</span>);
+<a name="l00034"></a>00034 <span class="keyword">namespace </span>PC = LogCabin::Protocol::Client;
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="comment">// for testing purposes</span>
+<a name="l00037"></a><a class="code" href="namespaceLogCabin_1_1Server.html#ade46c73b90b6acb3fd060b45a0a7de60">00037</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceLogCabin_1_1Server.html#ade46c73b90b6acb3fd060b45a0a7de60">stateMachineSuppressThreads</a> = <span class="keyword">false</span>;
+<a name="l00038"></a><a class="code" href="namespaceLogCabin_1_1Server.html#a5f405827d99a36f2fb5a0fb7706cbded">00038</a> uint32_t <a class="code" href="namespaceLogCabin_1_1Server.html#a5f405827d99a36f2fb5a0fb7706cbded">stateMachineChildSleepMs</a> = 0;
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a5e86d370aa16f915148689c8ee188477">00040</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a5e86d370aa16f915148689c8ee188477">StateMachine::StateMachine</a>(std::shared_ptr&lt;RaftConsensus&gt; consensus,
+<a name="l00041"></a>00041                            <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Core::Config</a>&amp; config)
+<a name="l00042"></a>00042     : consensus(consensus)
+<a name="l00043"></a>00043     , snapshotMinLogSize(config.read&lt;uint64_t&gt;(<span class="stringliteral">&quot;snapshotMinLogSize&quot;</span>, 1024))
+<a name="l00044"></a>00044     , snapshotRatio(config.read&lt;uint64_t&gt;(<span class="stringliteral">&quot;snapshotRatio&quot;</span>, 10))
+<a name="l00045"></a>00045       <span class="comment">// TODO(ongaro): This should be configurable, but it must be the same for</span>
+<a name="l00046"></a>00046       <span class="comment">// every server, so it&#39;s dangerous to put it in the config file. Need to</span>
+<a name="l00047"></a>00047       <span class="comment">// use the Raft log to agree on this value. Also need to inform clients</span>
+<a name="l00048"></a>00048       <span class="comment">// of the value and its changes, so that they can send keep-alives at</span>
+<a name="l00049"></a>00049       <span class="comment">// appropriate intervals. For now, servers time out after about an hour,</span>
+<a name="l00050"></a>00050       <span class="comment">// and clients send keep-alives every minute.</span>
+<a name="l00051"></a>00051     , sessionTimeoutNanos(1000UL * 1000 * 1000 * 60 * 60)
+<a name="l00052"></a>00052     , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>()
+<a name="l00053"></a>00053     , entriesApplied()
+<a name="l00054"></a>00054     , snapshotSuggested()
+<a name="l00055"></a>00055     , exiting(false)
+<a name="l00056"></a>00056     , childPid(0)
+<a name="l00057"></a>00057     , lastIndex(0)
+<a name="l00058"></a>00058     , sessions()
+<a name="l00059"></a>00059     , tree()
+<a name="l00060"></a>00060     , applyThread()
+<a name="l00061"></a>00061     , snapshotThread()
+<a name="l00062"></a>00062 {
+<a name="l00063"></a>00063     <span class="keywordflow">if</span> (!<a class="code" href="namespaceLogCabin_1_1Server.html#ade46c73b90b6acb3fd060b45a0a7de60">stateMachineSuppressThreads</a>) {
+<a name="l00064"></a>00064         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a967a9bd6387baebf20fddcebd7318b92" title="Repeatedly calls into the consensus module to get commands to process and applies them...">applyThread</a> = std::thread(&amp;<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a85315565676068d98d26b883a69ba8e6" title="Main function for thread that waits for new commands from Raft.">StateMachine::applyThreadMain</a>, <span class="keyword">this</span>);
+<a name="l00065"></a>00065         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a25a6ea04409431e46288cf200fc41dd6" title="Takes snapshots with the help of a child process.">snapshotThread</a> = std::thread(&amp;<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a6c2fd3f31f6b186194efa2741b4908f2" title="Main function for thread that calls takeSnapshot when appropriate.">StateMachine::snapshotThreadMain</a>, <span class="keyword">this</span>);
+<a name="l00066"></a>00066     }
+<a name="l00067"></a>00067 }
+<a name="l00068"></a>00068 
+<a name="l00069"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a03e6875c4281a4d394e10bcf1657b7e2">00069</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a03e6875c4281a4d394e10bcf1657b7e2">StateMachine::~StateMachine</a>()
+<a name="l00070"></a>00070 {
+<a name="l00071"></a>00071     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Shutting down&quot;</span>);
+<a name="l00072"></a>00072     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>) <span class="comment">// sometimes missing for testing</span>
+<a name="l00073"></a>00073         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>-&gt;exit();
+<a name="l00074"></a>00074     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a967a9bd6387baebf20fddcebd7318b92" title="Repeatedly calls into the consensus module to get commands to process and applies them...">applyThread</a>.joinable())
+<a name="l00075"></a>00075         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a967a9bd6387baebf20fddcebd7318b92" title="Repeatedly calls into the consensus module to get commands to process and applies them...">applyThread</a>.join();
+<a name="l00076"></a>00076     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a25a6ea04409431e46288cf200fc41dd6" title="Takes snapshots with the help of a child process.">snapshotThread</a>.joinable())
+<a name="l00077"></a>00077         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a25a6ea04409431e46288cf200fc41dd6" title="Takes snapshots with the help of a child process.">snapshotThread</a>.join();
+<a name="l00078"></a>00078     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Joined with threads&quot;</span>);
+<a name="l00079"></a>00079 }
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 <span class="keywordtype">bool</span>
+<a name="l00082"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a64059cbdf3fbf7e04243568bdadb67ff">00082</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a64059cbdf3fbf7e04243568bdadb67ff" title="Called by ClientService to get a response for a read-write operation on the Tree.">StateMachine::getResponse</a>(<span class="keyword">const</span> PC::ExactlyOnceRPCInfo&amp; rpcInfo,
+<a name="l00083"></a>00083                           <a class="code" href="namespaceLogCabin_1_1Server.html#a26cb708a129ba0b48d9f4a0626de36df">PC::CommandResponse</a>&amp; response)<span class="keyword"> const</span>
+<a name="l00084"></a>00084 <span class="keyword"></span>{
+<a name="l00085"></a>00085     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
+<a name="l00086"></a>00086     <span class="keyword">auto</span> sessionIt = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.find(rpcInfo.client_id());
+<a name="l00087"></a>00087     <span class="keywordflow">if</span> (sessionIt == <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.end()) {
+<a name="l00088"></a>00088         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Client %lu session expired but client still active&quot;</span>,
+<a name="l00089"></a>00089                 rpcInfo.client_id());
+<a name="l00090"></a>00090         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00091"></a>00091     }
+<a name="l00092"></a>00092     <span class="keyword">const</span> <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>&amp; session = sessionIt-&gt;second;
+<a name="l00093"></a>00093     <span class="keyword">auto</span> responseIt = session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.find(rpcInfo.rpc_number());
+<a name="l00094"></a>00094     <span class="keywordflow">if</span> (responseIt == session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.end()) {
+<a name="l00095"></a>00095         <span class="comment">// The response for this RPC has already been removed: the client is</span>
+<a name="l00096"></a>00096         <span class="comment">// not waiting for it. This request is just a duplicate that is safe to</span>
+<a name="l00097"></a>00097         <span class="comment">// drop.</span>
+<a name="l00098"></a>00098         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Client %lu asking for discarded response to RPC %lu&quot;</span>,
+<a name="l00099"></a>00099                 rpcInfo.client_id(), rpcInfo.rpc_number());
+<a name="l00100"></a>00100         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00101"></a>00101     }
+<a name="l00102"></a>00102     response = responseIt-&gt;second;
+<a name="l00103"></a>00103     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00104"></a>00104 }
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 <span class="keywordtype">void</span>
+<a name="l00107"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a84dbcf435d37778d44398ae6248c57d5">00107</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a84dbcf435d37778d44398ae6248c57d5" title="Called by ClientService to execute read-only operations on the Tree.">StateMachine::readOnlyTreeRPC</a>(<span class="keyword">const</span> PC::ReadOnlyTree::Request&amp; request,
+<a name="l00108"></a>00108                               PC::ReadOnlyTree::Response&amp; response)<span class="keyword"> const</span>
+<a name="l00109"></a>00109 <span class="keyword"></span>{
+<a name="l00110"></a>00110     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
+<a name="l00111"></a>00111     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a84dbcf435d37778d44398ae6248c57d5" title="Called by ClientService to execute read-only operations on the Tree.">Tree::ProtoBuf::readOnlyTreeRPC</a>(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981" title="The hierarchical key-value store.">tree</a>, request, response);
+<a name="l00112"></a>00112 }
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114 <span class="keywordtype">void</span>
+<a name="l00115"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a215fc404fa309d4e36530e400898f080">00115</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a215fc404fa309d4e36530e400898f080" title="Add information about the state machine state to the given structure.">StateMachine::updateServerStats</a>(Protocol::ServerStats&amp; serverStats)<span class="keyword"> const</span>
+<a name="l00116"></a>00116 <span class="keyword"></span>{
+<a name="l00117"></a>00117     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
+<a name="l00118"></a>00118     serverStats.clear_state_machine();
+<a name="l00119"></a>00119     Protocol::ServerStats::StateMachine&amp; smStats =
+<a name="l00120"></a>00120         *serverStats.mutable_state_machine();
+<a name="l00121"></a>00121     smStats.set_snapshotting(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a> != 0);
+<a name="l00122"></a>00122     smStats.set_last_applied(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a>);
+<a name="l00123"></a>00123     smStats.set_num_sessions(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.size());
+<a name="l00124"></a>00124 }
+<a name="l00125"></a>00125 
+<a name="l00126"></a>00126 <span class="keywordtype">void</span>
+<a name="l00127"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a40792af98645b4d05e6ddcf10902044e">00127</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a40792af98645b4d05e6ddcf10902044e" title="Return once the state machine has applied at least the given entry.">StateMachine::wait</a>(uint64_t index)<span class="keyword"> const</span>
+<a name="l00128"></a>00128 <span class="keyword"></span>{
+<a name="l00129"></a>00129     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
+<a name="l00130"></a>00130     <span class="keywordflow">while</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a> &lt; index)
+<a name="l00131"></a>00131         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5" title="Notified when lastIndex changes after some entry got applied.">entriesApplied</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">wait</a>(lockGuard);
+<a name="l00132"></a>00132 }
+<a name="l00133"></a>00133 
+<a name="l00134"></a>00134 <span class="comment"></span>
+<a name="l00135"></a>00135 <span class="comment">////////// StateMachine private methods //////////</span>
+<a name="l00136"></a>00136 <span class="comment"></span>
+<a name="l00137"></a>00137 <span class="keywordtype">void</span>
+<a name="l00138"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#abf2f8983d83cb9a590fa62c8ce27c1a7">00138</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#abf2f8983d83cb9a590fa62c8ce27c1a7" title="Invoked once per committed entry from the Raft log.">StateMachine::apply</a>(<span class="keyword">const</span> RaftConsensus::Entry&amp; entry)
+<a name="l00139"></a>00139 {
+<a name="l00140"></a>00140     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4">PC::Command</a> command;
+<a name="l00141"></a>00141     <span class="keywordflow">if</span> (!<a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c" title="Parse a protocol buffer message out of a Core::Buffer.">Core::ProtoBuf::parse</a>(entry.command, command)) {
+<a name="l00142"></a>00142         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Failed to parse protobuf for entry %lu&quot;</span>,
+<a name="l00143"></a>00143               entry.index);
+<a name="l00144"></a>00144     }
+<a name="l00145"></a>00145     <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>* session = NULL;
+<a name="l00146"></a>00146     <span class="keywordflow">if</span> (command.has_tree()) {
+<a name="l00147"></a>00147         PC::ExactlyOnceRPCInfo rpcInfo = command.tree().exactly_once();
+<a name="l00148"></a>00148         <span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.find(rpcInfo.client_id());
+<a name="l00149"></a>00149         <span class="keywordflow">if</span> (it == <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.end()) {
+<a name="l00150"></a>00150             <span class="comment">// session does not exist</span>
+<a name="l00151"></a>00151         } <span class="keywordflow">else</span> {
+<a name="l00152"></a>00152             <span class="comment">// session exists</span>
+<a name="l00153"></a>00153             session = &amp;it-&gt;second;
+<a name="l00154"></a>00154             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1431a7e9a631e1fb03d668ba9a4bd16" title="Update the session and clean up unnecessary responses.">expireResponses</a>(*session, rpcInfo.first_outstanding_rpc());
+<a name="l00155"></a>00155             <span class="keywordflow">if</span> (rpcInfo.rpc_number() &lt; session-&gt;<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9" title="Largest firstOutstandingRPC number processed from this client.">firstOutstandingRPC</a>) {
+<a name="l00156"></a>00156                 <span class="comment">// response already discarded, do not re-apply</span>
+<a name="l00157"></a>00157             } <span class="keywordflow">else</span> {
+<a name="l00158"></a>00158                 <span class="keyword">auto</span> inserted = session-&gt;<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.insert(
+<a name="l00159"></a>00159                                                 {rpcInfo.rpc_number(), {}});
+<a name="l00160"></a>00160                 <span class="keywordflow">if</span> (inserted.second) {
+<a name="l00161"></a>00161                     <span class="comment">// response not found, apply and save it</span>
+<a name="l00162"></a>00162                     <a class="code" href="namespaceLogCabin_1_1Tree_1_1ProtoBuf.html#a4f2d935cbe9c5304dac131503c63954d">Tree::ProtoBuf::readWriteTreeRPC</a>(
+<a name="l00163"></a>00163                         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981" title="The hierarchical key-value store.">tree</a>,
+<a name="l00164"></a>00164                         command.tree(),
+<a name="l00165"></a>00165                         *inserted.first-&gt;second.mutable_tree());
+<a name="l00166"></a>00166                 } <span class="keywordflow">else</span> {
+<a name="l00167"></a>00167                     <span class="comment">// response exists, do not re-apply</span>
+<a name="l00168"></a>00168                 }
+<a name="l00169"></a>00169             }
+<a name="l00170"></a>00170         }
+<a name="l00171"></a>00171     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (command.has_open_session()) {
+<a name="l00172"></a>00172         uint64_t clientId = entry.index;
+<a name="l00173"></a>00173         session = &amp;<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.insert({clientId, {}}).first-&gt;second;
+<a name="l00174"></a>00174     } <span class="keywordflow">else</span> {
+<a name="l00175"></a>00175         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;unknown command at %lu: %s&quot;</span>,
+<a name="l00176"></a>00176               entry.index,
+<a name="l00177"></a>00177               <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(command).c_str());
+<a name="l00178"></a>00178     }
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180     <span class="comment">// update based on entry.clusterTime</span>
+<a name="l00181"></a>00181     <span class="keywordflow">if</span> (session != NULL) {
+<a name="l00182"></a>00182         session-&gt;<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79" title="When the session was last active, measured in cluster time (roughly the number of nanoseconds that th...">lastModified</a> = entry.clusterTime;
+<a name="l00183"></a>00183         session = NULL; <span class="comment">// pointer invalidated by expireSessions()</span>
+<a name="l00184"></a>00184     }
+<a name="l00185"></a>00185 }
+<a name="l00186"></a>00186 
+<a name="l00187"></a>00187 <span class="keywordtype">void</span>
+<a name="l00188"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a85315565676068d98d26b883a69ba8e6">00188</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a85315565676068d98d26b883a69ba8e6" title="Main function for thread that waits for new commands from Raft.">StateMachine::applyThreadMain</a>()
+<a name="l00189"></a>00189 {
+<a name="l00190"></a>00190     <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#a4dbe9da59e37b2a282c41984be0ebdcb" title="Set the friendly name for the current thread.">Core::ThreadId::setName</a>(<span class="stringliteral">&quot;StateMachine&quot;</span>);
+<a name="l00191"></a>00191     <span class="keywordflow">try</span> {
+<a name="l00192"></a>00192         <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
+<a name="l00193"></a>00193             RaftConsensus::Entry entry = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>-&gt;getNextEntry(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a>);
+<a name="l00194"></a>00194             std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
+<a name="l00195"></a>00195             <span class="keywordflow">switch</span> (entry.type) {
+<a name="l00196"></a>00196                 <span class="keywordflow">case</span> RaftConsensus::Entry::SKIP:
 <a name="l00197"></a>00197                     <span class="keywordflow">break</span>;
-<a name="l00198"></a>00198             }
-<a name="l00199"></a>00199             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac75e6f249325635f59c2c2b0c446ca50" title="Remove old sessions.">expireSessions</a>(entry.clusterTime);
-<a name="l00200"></a>00200             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a> = entry.index;
-<a name="l00201"></a>00201             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5" title="Notified when lastIndex changes after some entry got applied.">entriesApplied</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>();
-<a name="l00202"></a>00202             <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a92eaf624fcf2e18bf304a329b0c836f0" title="Return true if it is time to create a new snapshot.">shouldTakeSnapshot</a>(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a>))
-<a name="l00203"></a>00203                 <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae" title="Notified when shouldTakeSnapshot(lastIndex) becomes true.">snapshotSuggested</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>();
-<a name="l00204"></a>00204         }
-<a name="l00205"></a>00205     } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html" title="The thread could not complete its task because it was asked to exit.">Core::Util::ThreadInterruptedException</a>&amp; e) {
-<a name="l00206"></a>00206         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;exiting&quot;</span>);
-<a name="l00207"></a>00207         std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
-<a name="l00208"></a>00208         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab4936b203196f899b5087cf2a05f79c7" title="applyThread sets this to true to signal that the server is shutting down.">exiting</a> = <span class="keyword">true</span>;
-<a name="l00209"></a>00209         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5" title="Notified when lastIndex changes after some entry got applied.">entriesApplied</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>();
-<a name="l00210"></a>00210         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae" title="Notified when shouldTakeSnapshot(lastIndex) becomes true.">snapshotSuggested</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>();
-<a name="l00211"></a>00211         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a> != 0) {
-<a name="l00212"></a>00212             <span class="keywordtype">int</span> r = kill(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a>, SIGHUP);
-<a name="l00213"></a>00213             <span class="keywordflow">if</span> (r != 0) {
-<a name="l00214"></a>00214                 <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Could not send SIGHUP to child process: %s&quot;</span>,
-<a name="l00215"></a>00215                         strerror(errno));
-<a name="l00216"></a>00216             }
-<a name="l00217"></a>00217         }
-<a name="l00218"></a>00218     }
-<a name="l00219"></a>00219 }
-<a name="l00220"></a>00220 
-<a name="l00221"></a>00221 <span class="keywordtype">void</span>
-<a name="l00222"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a802595ecbd03c0dca23672ef4626a5dc">00222</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a802595ecbd03c0dca23672ef4626a5dc" title="Write the sessions table to a snapshot file.">StateMachine::dumpSessionSnapshot</a>(<a class="code" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html" title="An abstract stream to which ProtoBufs may be written.">Core::ProtoBuf::OutputStream</a>&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>)<span class="keyword"> const</span>
-<a name="l00223"></a>00223 <span class="keyword"></span>{
-<a name="l00224"></a>00224     <span class="comment">// dump into protobuf</span>
-<a name="l00225"></a>00225     SessionsProto::Sessions sessionsProto;
-<a name="l00226"></a>00226     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.begin(); it != <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.end(); ++it) {
-<a name="l00227"></a>00227         SessionsProto::Session&amp; session = *sessionsProto.add_session();
-<a name="l00228"></a>00228         session.set_client_id(it-&gt;first);
-<a name="l00229"></a>00229         session.set_last_modified(it-&gt;second.lastModified);
-<a name="l00230"></a>00230         session.set_first_outstanding_rpc(it-&gt;second.firstOutstandingRPC);
-<a name="l00231"></a>00231         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it2 = it-&gt;second.responses.begin();
-<a name="l00232"></a>00232              it2 != it-&gt;second.responses.end();
-<a name="l00233"></a>00233              ++it2) {
-<a name="l00234"></a>00234             SessionsProto::Response&amp; response = *session.add_rpc_response();
-<a name="l00235"></a>00235             response.set_rpc_number(it2-&gt;first);
-<a name="l00236"></a>00236             *response.mutable_response() = it2-&gt;second;
-<a name="l00237"></a>00237         }
-<a name="l00238"></a>00238     }
-<a name="l00239"></a>00239 
-<a name="l00240"></a>00240     <span class="comment">// write protobuf to stream</span>
-<a name="l00241"></a>00241     stream.<a class="code" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a68f978815ed884d081ea742ab8fbd250" title="Write the given ProtoBuf message to the stream.">writeMessage</a>(sessionsProto);
-<a name="l00242"></a>00242 }
-<a name="l00243"></a>00243 
-<a name="l00244"></a>00244 <span class="keywordtype">void</span>
-<a name="l00245"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1431a7e9a631e1fb03d668ba9a4bd16">00245</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1431a7e9a631e1fb03d668ba9a4bd16" title="Update the session and clean up unnecessary responses.">StateMachine::expireResponses</a>(<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>&amp; session, uint64_t firstOutstandingRPC)
-<a name="l00246"></a>00246 {
-<a name="l00247"></a>00247     <span class="keywordflow">if</span> (session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9" title="Largest firstOutstandingRPC number processed from this client.">firstOutstandingRPC</a> &gt;= firstOutstandingRPC)
-<a name="l00248"></a>00248         <span class="keywordflow">return</span>;
-<a name="l00249"></a>00249     session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9" title="Largest firstOutstandingRPC number processed from this client.">firstOutstandingRPC</a> = firstOutstandingRPC;
-<a name="l00250"></a>00250     <span class="keyword">auto</span> it = session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.begin();
-<a name="l00251"></a>00251     <span class="keywordflow">while</span> (it != session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.end()) {
-<a name="l00252"></a>00252         <span class="keywordflow">if</span> (it-&gt;first &lt; session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9" title="Largest firstOutstandingRPC number processed from this client.">firstOutstandingRPC</a>)
-<a name="l00253"></a>00253             it = session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.erase(it);
-<a name="l00254"></a>00254         <span class="keywordflow">else</span>
-<a name="l00255"></a>00255             ++it;
-<a name="l00256"></a>00256     }
-<a name="l00257"></a>00257 }
-<a name="l00258"></a>00258 
-<a name="l00259"></a>00259 <span class="keywordtype">void</span>
-<a name="l00260"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac75e6f249325635f59c2c2b0c446ca50">00260</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac75e6f249325635f59c2c2b0c446ca50" title="Remove old sessions.">StateMachine::expireSessions</a>(uint64_t clusterTime)
-<a name="l00261"></a>00261 {
-<a name="l00262"></a>00262     <span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.begin();
-<a name="l00263"></a>00263     <span class="keywordflow">while</span> (it != <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.end()) {
-<a name="l00264"></a>00264         <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>&amp; session = it-&gt;second;
-<a name="l00265"></a>00265         uint64_t expireTime = session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79" title="When the session was last active, measured in cluster time (roughly the number of nanoseconds that th...">lastModified</a> + <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#add14d3c5856a100c00e47af58da99550" title="The time interval after which to remove an inactive client session, in nanoseconds of cluster time...">sessionTimeoutNanos</a>;
-<a name="l00266"></a>00266         <span class="keywordflow">if</span> (expireTime &lt; clusterTime) {
-<a name="l00267"></a>00267             uint64_t diffNanos = clusterTime - session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79" title="When the session was last active, measured in cluster time (roughly the number of nanoseconds that th...">lastModified</a>;
-<a name="l00268"></a>00268             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Expiring client %lu&#39;s session after %lu.%09lu seconds &quot;</span>
-<a name="l00269"></a>00269                    <span class="stringliteral">&quot;of cluster time due to inactivity&quot;</span>,
-<a name="l00270"></a>00270                    it-&gt;first,
-<a name="l00271"></a>00271                    diffNanos / (1000 * 1000 * 1000UL),
-<a name="l00272"></a>00272                    diffNanos % (1000 * 1000 * 1000UL));
-<a name="l00273"></a>00273             it = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.erase(it);
-<a name="l00274"></a>00274         } <span class="keywordflow">else</span> {
-<a name="l00275"></a>00275             ++it;
-<a name="l00276"></a>00276         }
-<a name="l00277"></a>00277     }
-<a name="l00278"></a>00278 }
-<a name="l00279"></a>00279 
-<a name="l00280"></a>00280 
-<a name="l00281"></a>00281 <span class="keywordtype">void</span>
-<a name="l00282"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1e6c83bef8257b4c8f6dd4f2c2ab1ff">00282</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1e6c83bef8257b4c8f6dd4f2c2ab1ff" title="Read the sessions table from a snapshot file.">StateMachine::loadSessionSnapshot</a>(<a class="code" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html" title="An abstract stream from which ProtoBufs may be read.">Core::ProtoBuf::InputStream</a>&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>)
-<a name="l00283"></a>00283 {
-<a name="l00284"></a>00284     SessionsProto::Sessions sessionsProto;
-<a name="l00285"></a>00285     std::string error = stream.<a class="code" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#aac1f152527b091f84038f19ed07c662d" title="Read a ProtoBuf message from the stream.">readMessage</a>(sessionsProto);
-<a name="l00286"></a>00286     <span class="keywordflow">if</span> (!error.empty()) {
-<a name="l00287"></a>00287         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot: %s&quot;</span>, error.c_str());
-<a name="l00288"></a>00288     }
+<a name="l00198"></a>00198                 <span class="keywordflow">case</span> RaftConsensus::Entry::DATA:
+<a name="l00199"></a>00199                     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#abf2f8983d83cb9a590fa62c8ce27c1a7" title="Invoked once per committed entry from the Raft log.">apply</a>(entry);
+<a name="l00200"></a>00200                     <span class="keywordflow">break</span>;
+<a name="l00201"></a>00201                 <span class="keywordflow">case</span> RaftConsensus::Entry::SNAPSHOT:
+<a name="l00202"></a>00202                     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Loading snapshot through entry %lu into &quot;</span>
+<a name="l00203"></a>00203                            <span class="stringliteral">&quot;state machine&quot;</span>, entry.index);
+<a name="l00204"></a>00204                     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1e6c83bef8257b4c8f6dd4f2c2ab1ff" title="Read the sessions table from a snapshot file.">loadSessionSnapshot</a>(*entry.snapshotReader);
+<a name="l00205"></a>00205                     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981" title="The hierarchical key-value store.">tree</a>.<a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#acce5baeb3c8da987ddafe9f49d87ef49" title="Load the tree from the given stream.">loadSnapshot</a>(*entry.snapshotReader);
+<a name="l00206"></a>00206                     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Done loading snapshot&quot;</span>);
+<a name="l00207"></a>00207                     <span class="keywordflow">break</span>;
+<a name="l00208"></a>00208             }
+<a name="l00209"></a>00209             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac75e6f249325635f59c2c2b0c446ca50" title="Remove old sessions.">expireSessions</a>(entry.clusterTime);
+<a name="l00210"></a>00210             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a> = entry.index;
+<a name="l00211"></a>00211             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5" title="Notified when lastIndex changes after some entry got applied.">entriesApplied</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>();
+<a name="l00212"></a>00212             <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a92eaf624fcf2e18bf304a329b0c836f0" title="Return true if it is time to create a new snapshot.">shouldTakeSnapshot</a>(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a>))
+<a name="l00213"></a>00213                 <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae" title="Notified when shouldTakeSnapshot(lastIndex) becomes true.">snapshotSuggested</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>();
+<a name="l00214"></a>00214         }
+<a name="l00215"></a>00215     } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html" title="The thread could not complete its task because it was asked to exit.">Core::Util::ThreadInterruptedException</a>&amp; e) {
+<a name="l00216"></a>00216         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;exiting&quot;</span>);
+<a name="l00217"></a>00217         std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
+<a name="l00218"></a>00218         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab4936b203196f899b5087cf2a05f79c7" title="applyThread sets this to true to signal that the server is shutting down.">exiting</a> = <span class="keyword">true</span>;
+<a name="l00219"></a>00219         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5" title="Notified when lastIndex changes after some entry got applied.">entriesApplied</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>();
+<a name="l00220"></a>00220         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae" title="Notified when shouldTakeSnapshot(lastIndex) becomes true.">snapshotSuggested</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a66990e7e4f8fd459a7311ce86800e5e7">notify_all</a>();
+<a name="l00221"></a>00221         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a> != 0) {
+<a name="l00222"></a>00222             <span class="keywordtype">int</span> r = kill(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a>, SIGHUP);
+<a name="l00223"></a>00223             <span class="keywordflow">if</span> (r != 0) {
+<a name="l00224"></a>00224                 <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Could not send SIGHUP to child process: %s&quot;</span>,
+<a name="l00225"></a>00225                         strerror(errno));
+<a name="l00226"></a>00226             }
+<a name="l00227"></a>00227         }
+<a name="l00228"></a>00228     }
+<a name="l00229"></a>00229 }
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 <span class="keywordtype">void</span>
+<a name="l00232"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a802595ecbd03c0dca23672ef4626a5dc">00232</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a802595ecbd03c0dca23672ef4626a5dc" title="Write the sessions table to a snapshot file.">StateMachine::dumpSessionSnapshot</a>(<a class="code" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html" title="An abstract stream to which ProtoBufs may be written.">Core::ProtoBuf::OutputStream</a>&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>)<span class="keyword"> const</span>
+<a name="l00233"></a>00233 <span class="keyword"></span>{
+<a name="l00234"></a>00234     <span class="comment">// dump into protobuf</span>
+<a name="l00235"></a>00235     SessionsProto::Sessions sessionsProto;
+<a name="l00236"></a>00236     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.begin(); it != <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.end(); ++it) {
+<a name="l00237"></a>00237         SessionsProto::Session&amp; session = *sessionsProto.add_session();
+<a name="l00238"></a>00238         session.set_client_id(it-&gt;first);
+<a name="l00239"></a>00239         session.set_last_modified(it-&gt;second.lastModified);
+<a name="l00240"></a>00240         session.set_first_outstanding_rpc(it-&gt;second.firstOutstandingRPC);
+<a name="l00241"></a>00241         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it2 = it-&gt;second.responses.begin();
+<a name="l00242"></a>00242              it2 != it-&gt;second.responses.end();
+<a name="l00243"></a>00243              ++it2) {
+<a name="l00244"></a>00244             SessionsProto::Response&amp; response = *session.add_rpc_response();
+<a name="l00245"></a>00245             response.set_rpc_number(it2-&gt;first);
+<a name="l00246"></a>00246             *response.mutable_response() = it2-&gt;second;
+<a name="l00247"></a>00247         }
+<a name="l00248"></a>00248     }
+<a name="l00249"></a>00249 
+<a name="l00250"></a>00250     <span class="comment">// write protobuf to stream</span>
+<a name="l00251"></a>00251     stream.<a class="code" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a68f978815ed884d081ea742ab8fbd250" title="Write the given ProtoBuf message to the stream.">writeMessage</a>(sessionsProto);
+<a name="l00252"></a>00252 }
+<a name="l00253"></a>00253 
+<a name="l00254"></a>00254 <span class="keywordtype">void</span>
+<a name="l00255"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1431a7e9a631e1fb03d668ba9a4bd16">00255</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1431a7e9a631e1fb03d668ba9a4bd16" title="Update the session and clean up unnecessary responses.">StateMachine::expireResponses</a>(<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>&amp; session, uint64_t firstOutstandingRPC)
+<a name="l00256"></a>00256 {
+<a name="l00257"></a>00257     <span class="keywordflow">if</span> (session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9" title="Largest firstOutstandingRPC number processed from this client.">firstOutstandingRPC</a> &gt;= firstOutstandingRPC)
+<a name="l00258"></a>00258         <span class="keywordflow">return</span>;
+<a name="l00259"></a>00259     session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9" title="Largest firstOutstandingRPC number processed from this client.">firstOutstandingRPC</a> = firstOutstandingRPC;
+<a name="l00260"></a>00260     <span class="keyword">auto</span> it = session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.begin();
+<a name="l00261"></a>00261     <span class="keywordflow">while</span> (it != session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.end()) {
+<a name="l00262"></a>00262         <span class="keywordflow">if</span> (it-&gt;first &lt; session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9" title="Largest firstOutstandingRPC number processed from this client.">firstOutstandingRPC</a>)
+<a name="l00263"></a>00263             it = session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.erase(it);
+<a name="l00264"></a>00264         <span class="keywordflow">else</span>
+<a name="l00265"></a>00265             ++it;
+<a name="l00266"></a>00266     }
+<a name="l00267"></a>00267 }
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269 <span class="keywordtype">void</span>
+<a name="l00270"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac75e6f249325635f59c2c2b0c446ca50">00270</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac75e6f249325635f59c2c2b0c446ca50" title="Remove old sessions.">StateMachine::expireSessions</a>(uint64_t clusterTime)
+<a name="l00271"></a>00271 {
+<a name="l00272"></a>00272     <span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.begin();
+<a name="l00273"></a>00273     <span class="keywordflow">while</span> (it != <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.end()) {
+<a name="l00274"></a>00274         <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>&amp; session = it-&gt;second;
+<a name="l00275"></a>00275         uint64_t expireTime = session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79" title="When the session was last active, measured in cluster time (roughly the number of nanoseconds that th...">lastModified</a> + <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#add14d3c5856a100c00e47af58da99550" title="The time interval after which to remove an inactive client session, in nanoseconds of cluster time...">sessionTimeoutNanos</a>;
+<a name="l00276"></a>00276         <span class="keywordflow">if</span> (expireTime &lt; clusterTime) {
+<a name="l00277"></a>00277             uint64_t diffNanos = clusterTime - session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79" title="When the session was last active, measured in cluster time (roughly the number of nanoseconds that th...">lastModified</a>;
+<a name="l00278"></a>00278             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Expiring client %lu&#39;s session after %lu.%09lu seconds &quot;</span>
+<a name="l00279"></a>00279                    <span class="stringliteral">&quot;of cluster time due to inactivity&quot;</span>,
+<a name="l00280"></a>00280                    it-&gt;first,
+<a name="l00281"></a>00281                    diffNanos / (1000 * 1000 * 1000UL),
+<a name="l00282"></a>00282                    diffNanos % (1000 * 1000 * 1000UL));
+<a name="l00283"></a>00283             it = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.erase(it);
+<a name="l00284"></a>00284         } <span class="keywordflow">else</span> {
+<a name="l00285"></a>00285             ++it;
+<a name="l00286"></a>00286         }
+<a name="l00287"></a>00287     }
+<a name="l00288"></a>00288 }
 <a name="l00289"></a>00289 
-<a name="l00290"></a>00290     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.clear();
-<a name="l00291"></a>00291     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = sessionsProto.session().begin();
-<a name="l00292"></a>00292          it != sessionsProto.session().end();
-<a name="l00293"></a>00293          ++it) {
-<a name="l00294"></a>00294         <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>&amp; session = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.insert({it-&gt;client_id(), {}})
-<a name="l00295"></a>00295                                                         .first-&gt;second;
-<a name="l00296"></a>00296         session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79" title="When the session was last active, measured in cluster time (roughly the number of nanoseconds that th...">lastModified</a> = it-&gt;last_modified();
-<a name="l00297"></a>00297         session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9" title="Largest firstOutstandingRPC number processed from this client.">firstOutstandingRPC</a> = it-&gt;first_outstanding_rpc();
-<a name="l00298"></a>00298         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it2 = it-&gt;rpc_response().begin();
-<a name="l00299"></a>00299              it2 != it-&gt;rpc_response().end();
-<a name="l00300"></a>00300              ++it2) {
-<a name="l00301"></a>00301             session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.insert({it2-&gt;rpc_number(), it2-&gt;response()});
-<a name="l00302"></a>00302         }
-<a name="l00303"></a>00303     }
-<a name="l00304"></a>00304 }
-<a name="l00305"></a>00305 
-<a name="l00306"></a>00306 <span class="keywordtype">bool</span>
-<a name="l00307"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a92eaf624fcf2e18bf304a329b0c836f0">00307</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a92eaf624fcf2e18bf304a329b0c836f0" title="Return true if it is time to create a new snapshot.">StateMachine::shouldTakeSnapshot</a>(uint64_t lastIncludedIndex)<span class="keyword"> const</span>
-<a name="l00308"></a>00308 <span class="keyword"></span>{
-<a name="l00309"></a>00309     SnapshotStats::SnapshotStats stats = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>-&gt;getSnapshotStats();
-<a name="l00310"></a>00310 
-<a name="l00311"></a>00311     <span class="comment">// print every 10% but not at 100% because then we&#39;d be printing all the</span>
-<a name="l00312"></a>00312     <span class="comment">// time</span>
-<a name="l00313"></a>00313     uint64_t curr = 0;
-<a name="l00314"></a>00314     <span class="keywordflow">if</span> (lastIncludedIndex &gt; stats.last_snapshot_index())
-<a name="l00315"></a>00315         curr = lastIncludedIndex - stats.last_snapshot_index();
-<a name="l00316"></a>00316     uint64_t prev = curr - 1;
-<a name="l00317"></a>00317     uint64_t logEntries = stats.last_log_index() - stats.last_snapshot_index();
-<a name="l00318"></a>00318     <span class="keywordflow">if</span> (curr != logEntries &amp;&amp;
-<a name="l00319"></a>00319         10 * prev / logEntries != 10 * curr / logEntries) {
-<a name="l00320"></a>00320         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Have applied %lu%% of the %lu total log entries&quot;</span>,
-<a name="l00321"></a>00321                100 * curr / logEntries,
-<a name="l00322"></a>00322                logEntries);
-<a name="l00323"></a>00323     }
-<a name="l00324"></a>00324 
-<a name="l00325"></a>00325     <span class="keywordflow">if</span> (stats.log_bytes() &lt; <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a4f131806d00456d018b8ea8b9e516f9d" title="Size in bytes of smallest log to snapshot.">snapshotMinLogSize</a>)
-<a name="l00326"></a>00326         <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00327"></a>00327     <span class="keywordflow">if</span> (stats.log_bytes() &lt; stats.last_snapshot_bytes() * <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a516e894dfa8ec79d4e1d76a106ac94a5" title="Maximum log size as multiple of last snapshot size until server should snapshot.">snapshotRatio</a>)
-<a name="l00328"></a>00328         <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00329"></a>00329     <span class="keywordflow">if</span> (lastIncludedIndex &lt; stats.last_snapshot_index())
-<a name="l00330"></a>00330         <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00331"></a>00331     <span class="keywordflow">if</span> (lastIncludedIndex &lt; stats.last_log_index() * 3 / 4)
-<a name="l00332"></a>00332         <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00333"></a>00333     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00334"></a>00334 }
-<a name="l00335"></a>00335 
-<a name="l00336"></a>00336 <span class="keywordtype">void</span>
-<a name="l00337"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a6c2fd3f31f6b186194efa2741b4908f2">00337</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a6c2fd3f31f6b186194efa2741b4908f2" title="Main function for thread that calls takeSnapshot when appropriate.">StateMachine::snapshotThreadMain</a>()
-<a name="l00338"></a>00338 {
-<a name="l00339"></a>00339     <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#a4dbe9da59e37b2a282c41984be0ebdcb" title="Set the friendly name for the current thread.">Core::ThreadId::setName</a>(<span class="stringliteral">&quot;SnapshotStateMachine&quot;</span>);
-<a name="l00340"></a>00340     <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
-<a name="l00341"></a>00341         std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
-<a name="l00342"></a>00342         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab4936b203196f899b5087cf2a05f79c7" title="applyThread sets this to true to signal that the server is shutting down.">exiting</a>)
-<a name="l00343"></a>00343             <span class="keywordflow">return</span>;
-<a name="l00344"></a>00344         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a92eaf624fcf2e18bf304a329b0c836f0" title="Return true if it is time to create a new snapshot.">shouldTakeSnapshot</a>(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a>))
-<a name="l00345"></a>00345             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab79199c9f82bf4c897fb6147ca30315b" title="Called by snapshotThreadMain to actually take the snapshot.">takeSnapshot</a>(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a>, lockGuard);
-<a name="l00346"></a>00346         <span class="keywordflow">else</span>
-<a name="l00347"></a>00347             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae" title="Notified when shouldTakeSnapshot(lastIndex) becomes true.">snapshotSuggested</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">wait</a>(lockGuard);
-<a name="l00348"></a>00348     }
-<a name="l00349"></a>00349 }
-<a name="l00350"></a>00350 
-<a name="l00351"></a>00351 <span class="keywordtype">void</span>
-<a name="l00352"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab79199c9f82bf4c897fb6147ca30315b">00352</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab79199c9f82bf4c897fb6147ca30315b" title="Called by snapshotThreadMain to actually take the snapshot.">StateMachine::takeSnapshot</a>(uint64_t lastIncludedIndex,
-<a name="l00353"></a>00353                            std::unique_lock&lt;std::mutex&gt;&amp; lockGuard)
-<a name="l00354"></a>00354 {
-<a name="l00355"></a>00355     <span class="comment">// Open a snapshot file, then fork a child to write a consistent view of</span>
-<a name="l00356"></a>00356     <span class="comment">// the state machine to the snapshot file while this process continues</span>
-<a name="l00357"></a>00357     <span class="comment">// accepting requests.</span>
-<a name="l00358"></a>00358     std::unique_ptr&lt;Storage::SnapshotFile::Writer&gt; writer =
-<a name="l00359"></a>00359         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>-&gt;beginSnapshot(lastIncludedIndex);
-<a name="l00360"></a>00360     <span class="comment">// Flush the outstanding changes to the snapshot now so that they</span>
-<a name="l00361"></a>00361     <span class="comment">// aren&#39;t somehow double-flushed later.</span>
-<a name="l00362"></a>00362     writer-&gt;flushToOS();
-<a name="l00363"></a>00363     pid_t pid = fork();
-<a name="l00364"></a>00364     <span class="keywordflow">if</span> (pid == -1) { <span class="comment">// error</span>
-<a name="l00365"></a>00365         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Couldn&#39;t fork: %s&quot;</span>, strerror(errno));
-<a name="l00366"></a>00366     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pid == 0) { <span class="comment">// child</span>
-<a name="l00367"></a>00367         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae3a1029f050a61c1bb014d03486280a6" title="A short name to be used in log messages to identify this process.">Core::Debug::processName</a> += <span class="stringliteral">&quot;-child&quot;</span>;
-<a name="l00368"></a>00368         usleep(<a class="code" href="namespaceLogCabin_1_1Server.html#a5f405827d99a36f2fb5a0fb7706cbded">stateMachineChildSleepMs</a> * 1000); <span class="comment">// for testing purposes</span>
-<a name="l00369"></a>00369         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a802595ecbd03c0dca23672ef4626a5dc" title="Write the sessions table to a snapshot file.">dumpSessionSnapshot</a>(*writer);
-<a name="l00370"></a>00370         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981" title="The hierarchical key-value store.">tree</a>.<a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#ab3537d9141a00c48e4d8f147abbebf55" title="Write the tree to the given stream.">dumpSnapshot</a>(*writer);
-<a name="l00371"></a>00371         <span class="comment">// Flush the changes to the snapshot file before exiting.</span>
-<a name="l00372"></a>00372         writer-&gt;flushToOS();
-<a name="l00373"></a>00373         _exit(0);
-<a name="l00374"></a>00374     } <span class="keywordflow">else</span> { <span class="comment">// parent</span>
-<a name="l00375"></a>00375         assert(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a> == 0);
-<a name="l00376"></a>00376         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a> = pid;
-<a name="l00377"></a>00377         <span class="keywordtype">int</span> status = 0;
-<a name="l00378"></a>00378         {
-<a name="l00379"></a>00379             <span class="comment">// release the lock while blocking on the child to allow</span>
-<a name="l00380"></a>00380             <span class="comment">// parallelism</span>
-<a name="l00381"></a>00381             <a class="code" href="classLogCabin_1_1Core_1_1MutexUnlock.html" title="Release a mutex upon construction, reacquires it upon destruction.">Core::MutexUnlock&lt;std::mutex&gt;</a> unlockGuard(lockGuard);
-<a name="l00382"></a>00382             pid = waitpid(pid, &amp;status, 0);
-<a name="l00383"></a>00383         }
-<a name="l00384"></a>00384         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a> = 0;
-<a name="l00385"></a>00385         <span class="keywordflow">if</span> (pid == -1)
-<a name="l00386"></a>00386             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Couldn&#39;t waitpid: %s&quot;</span>, strerror(errno));
-<a name="l00387"></a>00387         <span class="keywordflow">if</span> (WIFEXITED(status) &amp;&amp; WEXITSTATUS(status) == 0) {
-<a name="l00388"></a>00388             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Child completed writing state machine contents to &quot;</span>
-<a name="l00389"></a>00389                    <span class="stringliteral">&quot;snapshot staging file&quot;</span>);
-<a name="l00390"></a>00390             writer-&gt;seekToEnd();
-<a name="l00391"></a>00391             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>-&gt;snapshotDone(lastIncludedIndex, std::move(writer));
-<a name="l00392"></a>00392         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab4936b203196f899b5087cf2a05f79c7" title="applyThread sets this to true to signal that the server is shutting down.">exiting</a> &amp;&amp;
-<a name="l00393"></a>00393                    WIFSIGNALED(status) &amp;&amp; WTERMSIG(status) == SIGHUP) {
-<a name="l00394"></a>00394             writer-&gt;discard();
-<a name="l00395"></a>00395             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Child exited from SIGHUP since this process is &quot;</span>
-<a name="l00396"></a>00396                    <span class="stringliteral">&quot;exiting&quot;</span>);
-<a name="l00397"></a>00397         } <span class="keywordflow">else</span> {
-<a name="l00398"></a>00398             writer-&gt;discard();
-<a name="l00399"></a>00399             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Snapshot creation failed with status %d&quot;</span>, status);
-<a name="l00400"></a>00400         }
-<a name="l00401"></a>00401     }
-<a name="l00402"></a>00402 }
-<a name="l00403"></a>00403 
-<a name="l00404"></a>00404 } <span class="comment">// namespace LogCabin::Server</span>
-<a name="l00405"></a>00405 } <span class="comment">// namespace LogCabin</span>
+<a name="l00290"></a>00290 
+<a name="l00291"></a>00291 <span class="keywordtype">void</span>
+<a name="l00292"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1e6c83bef8257b4c8f6dd4f2c2ab1ff">00292</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab1e6c83bef8257b4c8f6dd4f2c2ab1ff" title="Read the sessions table from a snapshot file.">StateMachine::loadSessionSnapshot</a>(<a class="code" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html" title="An abstract stream from which ProtoBufs may be read.">Core::ProtoBuf::InputStream</a>&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>)
+<a name="l00293"></a>00293 {
+<a name="l00294"></a>00294     SessionsProto::Sessions sessionsProto;
+<a name="l00295"></a>00295     std::string error = stream.<a class="code" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#aac1f152527b091f84038f19ed07c662d" title="Read a ProtoBuf message from the stream.">readMessage</a>(sessionsProto);
+<a name="l00296"></a>00296     <span class="keywordflow">if</span> (!error.empty()) {
+<a name="l00297"></a>00297         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;couldn&#39;t read snapshot: %s&quot;</span>, error.c_str());
+<a name="l00298"></a>00298     }
+<a name="l00299"></a>00299 
+<a name="l00300"></a>00300     <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.clear();
+<a name="l00301"></a>00301     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = sessionsProto.session().begin();
+<a name="l00302"></a>00302          it != sessionsProto.session().end();
+<a name="l00303"></a>00303          ++it) {
+<a name="l00304"></a>00304         <a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a>&amp; session = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a>.insert({it-&gt;client_id(), {}})
+<a name="l00305"></a>00305                                                         .first-&gt;second;
+<a name="l00306"></a>00306         session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#ab43662ba674a41e71450a936b591ac79" title="When the session was last active, measured in cluster time (roughly the number of nanoseconds that th...">lastModified</a> = it-&gt;last_modified();
+<a name="l00307"></a>00307         session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9" title="Largest firstOutstandingRPC number processed from this client.">firstOutstandingRPC</a> = it-&gt;first_outstanding_rpc();
+<a name="l00308"></a>00308         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it2 = it-&gt;rpc_response().begin();
+<a name="l00309"></a>00309              it2 != it-&gt;rpc_response().end();
+<a name="l00310"></a>00310              ++it2) {
+<a name="l00311"></a>00311             session.<a class="code" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d" title="Maps from RPC numbers to responses.">responses</a>.insert({it2-&gt;rpc_number(), it2-&gt;response()});
+<a name="l00312"></a>00312         }
+<a name="l00313"></a>00313     }
+<a name="l00314"></a>00314 }
+<a name="l00315"></a>00315 
+<a name="l00316"></a>00316 <span class="keywordtype">bool</span>
+<a name="l00317"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a92eaf624fcf2e18bf304a329b0c836f0">00317</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a92eaf624fcf2e18bf304a329b0c836f0" title="Return true if it is time to create a new snapshot.">StateMachine::shouldTakeSnapshot</a>(uint64_t lastIncludedIndex)<span class="keyword"> const</span>
+<a name="l00318"></a>00318 <span class="keyword"></span>{
+<a name="l00319"></a>00319     SnapshotStats::SnapshotStats stats = <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>-&gt;getSnapshotStats();
+<a name="l00320"></a>00320 
+<a name="l00321"></a>00321     <span class="comment">// print every 10% but not at 100% because then we&#39;d be printing all the</span>
+<a name="l00322"></a>00322     <span class="comment">// time</span>
+<a name="l00323"></a>00323     uint64_t curr = 0;
+<a name="l00324"></a>00324     <span class="keywordflow">if</span> (lastIncludedIndex &gt; stats.last_snapshot_index())
+<a name="l00325"></a>00325         curr = lastIncludedIndex - stats.last_snapshot_index();
+<a name="l00326"></a>00326     uint64_t prev = curr - 1;
+<a name="l00327"></a>00327     uint64_t logEntries = stats.last_log_index() - stats.last_snapshot_index();
+<a name="l00328"></a>00328     <span class="keywordflow">if</span> (curr != logEntries &amp;&amp;
+<a name="l00329"></a>00329         10 * prev / logEntries != 10 * curr / logEntries) {
+<a name="l00330"></a>00330         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Have applied %lu%% of the %lu total log entries&quot;</span>,
+<a name="l00331"></a>00331                100 * curr / logEntries,
+<a name="l00332"></a>00332                logEntries);
+<a name="l00333"></a>00333     }
+<a name="l00334"></a>00334 
+<a name="l00335"></a>00335     <span class="keywordflow">if</span> (stats.log_bytes() &lt; <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a4f131806d00456d018b8ea8b9e516f9d" title="Size in bytes of smallest log to snapshot.">snapshotMinLogSize</a>)
+<a name="l00336"></a>00336         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00337"></a>00337     <span class="keywordflow">if</span> (stats.log_bytes() &lt; stats.last_snapshot_bytes() * <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a516e894dfa8ec79d4e1d76a106ac94a5" title="Maximum log size as multiple of last snapshot size until server should snapshot.">snapshotRatio</a>)
+<a name="l00338"></a>00338         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00339"></a>00339     <span class="keywordflow">if</span> (lastIncludedIndex &lt; stats.last_snapshot_index())
+<a name="l00340"></a>00340         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00341"></a>00341     <span class="keywordflow">if</span> (lastIncludedIndex &lt; stats.last_log_index() * 3 / 4)
+<a name="l00342"></a>00342         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00343"></a>00343     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00344"></a>00344 }
+<a name="l00345"></a>00345 
+<a name="l00346"></a>00346 <span class="keywordtype">void</span>
+<a name="l00347"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a6c2fd3f31f6b186194efa2741b4908f2">00347</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a6c2fd3f31f6b186194efa2741b4908f2" title="Main function for thread that calls takeSnapshot when appropriate.">StateMachine::snapshotThreadMain</a>()
+<a name="l00348"></a>00348 {
+<a name="l00349"></a>00349     <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#a4dbe9da59e37b2a282c41984be0ebdcb" title="Set the friendly name for the current thread.">Core::ThreadId::setName</a>(<span class="stringliteral">&quot;SnapshotStateMachine&quot;</span>);
+<a name="l00350"></a>00350     <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
+<a name="l00351"></a>00351         std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce" title="Protects against concurrent access for all members of this class (except &#39;consensus&#39;, which is itself a monitor.">mutex</a>);
+<a name="l00352"></a>00352         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab4936b203196f899b5087cf2a05f79c7" title="applyThread sets this to true to signal that the server is shutting down.">exiting</a>)
+<a name="l00353"></a>00353             <span class="keywordflow">return</span>;
+<a name="l00354"></a>00354         <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a92eaf624fcf2e18bf304a329b0c836f0" title="Return true if it is time to create a new snapshot.">shouldTakeSnapshot</a>(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a>))
+<a name="l00355"></a>00355             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab79199c9f82bf4c897fb6147ca30315b" title="Called by snapshotThreadMain to actually take the snapshot.">takeSnapshot</a>(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b" title="The index of the last log entry that this state machine has applied.">lastIndex</a>, lockGuard);
+<a name="l00356"></a>00356         <span class="keywordflow">else</span>
+<a name="l00357"></a>00357             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae" title="Notified when shouldTakeSnapshot(lastIndex) becomes true.">snapshotSuggested</a>.<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">wait</a>(lockGuard);
+<a name="l00358"></a>00358     }
+<a name="l00359"></a>00359 }
+<a name="l00360"></a>00360 
+<a name="l00361"></a>00361 <span class="keywordtype">void</span>
+<a name="l00362"></a><a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab79199c9f82bf4c897fb6147ca30315b">00362</a> <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab79199c9f82bf4c897fb6147ca30315b" title="Called by snapshotThreadMain to actually take the snapshot.">StateMachine::takeSnapshot</a>(uint64_t lastIncludedIndex,
+<a name="l00363"></a>00363                            std::unique_lock&lt;std::mutex&gt;&amp; lockGuard)
+<a name="l00364"></a>00364 {
+<a name="l00365"></a>00365     <span class="comment">// Open a snapshot file, then fork a child to write a consistent view of</span>
+<a name="l00366"></a>00366     <span class="comment">// the state machine to the snapshot file while this process continues</span>
+<a name="l00367"></a>00367     <span class="comment">// accepting requests.</span>
+<a name="l00368"></a>00368     std::unique_ptr&lt;Storage::SnapshotFile::Writer&gt; writer =
+<a name="l00369"></a>00369         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>-&gt;beginSnapshot(lastIncludedIndex);
+<a name="l00370"></a>00370     <span class="comment">// Flush the outstanding changes to the snapshot now so that they</span>
+<a name="l00371"></a>00371     <span class="comment">// aren&#39;t somehow double-flushed later.</span>
+<a name="l00372"></a>00372     writer-&gt;flushToOS();
+<a name="l00373"></a>00373     pid_t pid = fork();
+<a name="l00374"></a>00374     <span class="keywordflow">if</span> (pid == -1) { <span class="comment">// error</span>
+<a name="l00375"></a>00375         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Couldn&#39;t fork: %s&quot;</span>, strerror(errno));
+<a name="l00376"></a>00376     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pid == 0) { <span class="comment">// child</span>
+<a name="l00377"></a>00377         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae3a1029f050a61c1bb014d03486280a6" title="A short name to be used in log messages to identify this process.">Core::Debug::processName</a> += <span class="stringliteral">&quot;-child&quot;</span>;
+<a name="l00378"></a>00378         usleep(<a class="code" href="namespaceLogCabin_1_1Server.html#a5f405827d99a36f2fb5a0fb7706cbded">stateMachineChildSleepMs</a> * 1000); <span class="comment">// for testing purposes</span>
+<a name="l00379"></a>00379         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a802595ecbd03c0dca23672ef4626a5dc" title="Write the sessions table to a snapshot file.">dumpSessionSnapshot</a>(*writer);
+<a name="l00380"></a>00380         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ac4b3fd14cdbb23844867d749e3626981" title="The hierarchical key-value store.">tree</a>.<a class="code" href="classLogCabin_1_1Tree_1_1Tree.html#ab3537d9141a00c48e4d8f147abbebf55" title="Write the tree to the given stream.">dumpSnapshot</a>(*writer);
+<a name="l00381"></a>00381         <span class="comment">// Flush the changes to the snapshot file before exiting.</span>
+<a name="l00382"></a>00382         writer-&gt;flushToOS();
+<a name="l00383"></a>00383         _exit(0);
+<a name="l00384"></a>00384     } <span class="keywordflow">else</span> { <span class="comment">// parent</span>
+<a name="l00385"></a>00385         assert(<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a> == 0);
+<a name="l00386"></a>00386         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a> = pid;
+<a name="l00387"></a>00387         <span class="keywordtype">int</span> status = 0;
+<a name="l00388"></a>00388         {
+<a name="l00389"></a>00389             <span class="comment">// release the lock while blocking on the child to allow</span>
+<a name="l00390"></a>00390             <span class="comment">// parallelism</span>
+<a name="l00391"></a>00391             <a class="code" href="classLogCabin_1_1Core_1_1MutexUnlock.html" title="Release a mutex upon construction, reacquires it upon destruction.">Core::MutexUnlock&lt;std::mutex&gt;</a> unlockGuard(lockGuard);
+<a name="l00392"></a>00392             pid = waitpid(pid, &amp;status, 0);
+<a name="l00393"></a>00393         }
+<a name="l00394"></a>00394         <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51" title="The PID of snapshotThread&#39;s child process, if any.">childPid</a> = 0;
+<a name="l00395"></a>00395         <span class="keywordflow">if</span> (pid == -1)
+<a name="l00396"></a>00396             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Couldn&#39;t waitpid: %s&quot;</span>, strerror(errno));
+<a name="l00397"></a>00397         <span class="keywordflow">if</span> (WIFEXITED(status) &amp;&amp; WEXITSTATUS(status) == 0) {
+<a name="l00398"></a>00398             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Child completed writing state machine contents to &quot;</span>
+<a name="l00399"></a>00399                    <span class="stringliteral">&quot;snapshot staging file&quot;</span>);
+<a name="l00400"></a>00400             writer-&gt;seekToEnd();
+<a name="l00401"></a>00401             <a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#accaa5dfed378d3e5b03b6c082aed25d6">consensus</a>-&gt;snapshotDone(lastIncludedIndex, std::move(writer));
+<a name="l00402"></a>00402         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1StateMachine.html#ab4936b203196f899b5087cf2a05f79c7" title="applyThread sets this to true to signal that the server is shutting down.">exiting</a> &amp;&amp;
+<a name="l00403"></a>00403                    WIFSIGNALED(status) &amp;&amp; WTERMSIG(status) == SIGHUP) {
+<a name="l00404"></a>00404             writer-&gt;discard();
+<a name="l00405"></a>00405             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Child exited from SIGHUP since this process is &quot;</span>
+<a name="l00406"></a>00406                    <span class="stringliteral">&quot;exiting&quot;</span>);
+<a name="l00407"></a>00407         } <span class="keywordflow">else</span> {
+<a name="l00408"></a>00408             writer-&gt;discard();
+<a name="l00409"></a>00409             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Snapshot creation failed with status %d&quot;</span>, status);
+<a name="l00410"></a>00410         }
+<a name="l00411"></a>00411     }
+<a name="l00412"></a>00412 }
+<a name="l00413"></a>00413 
+<a name="l00414"></a>00414 } <span class="comment">// namespace LogCabin::Server</span>
+<a name="l00415"></a>00415 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

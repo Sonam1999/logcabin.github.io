@@ -151,7 +151,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>A handle to the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster. </p>
 <p>If the client requests changes to the cluster's replicated state machine (for example, by writing a value), the client library will first open a session with the cluster. It will thereafter periodically send keep-alive requests to the cluster during periods of inactivity to maintain this session. If communication to the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster is lost for an extended period of time, the client's session will expire, and this library will force the client to crash. </p>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00576">576</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00578">578</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="a2b6a1f4ea0bcfc15f5425101c702b6fb"></a><!-- doxytag: member="LogCabin::Client::Cluster::Options" ref="a2b6a1f4ea0bcfc15f5425101c702b6fb" args="" -->
 <div class="memitem">
@@ -171,7 +171,7 @@ Private Attributes</h2></td></tr>
 <li>tcpConnectTimeoutMilliseconds (see sample.conf) </li>
 </ul>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00585">585</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00587">587</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
@@ -202,11 +202,12 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Construct a <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html" title="A handle to the LogCabin cluster.">Cluster</a> object for testing purposes only. </p>
-<p>Instead of connecting to a <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster, it will keep all state locally in memory. </p>
+<p>Instead of connecting to a <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster, it will keep all state locally in memory.</p>
+<p>This is experimental and is not part of <a class="el" href="namespaceLogCabin.html">LogCabin</a>'s public API.</p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">testingCallbacks</td><td>These allow the application to interpose on requests. A default-constructed <a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html" title="When running in testing mode, these callbacks serve as a way for the application to interpose on requ...">TestingCallbacks</a> will execute requests against an in-memory structure. Applications can pass in classes derived from <a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html" title="When running in testing mode, these callbacks serve as a way for the application to interpose on requ...">TestingCallbacks</a> to model failures and more dynamic scenarios. </td></tr>
-    <tr><td class="paramname">options</td><td>Settings for the client library. </td></tr>
+    <tr><td class="paramname">options</td><td>Settings for the client library (see <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb" title="Settings for the client library.">Options</a>). </td></tr>
   </table>
   </dd>
 </dl>
@@ -244,7 +245,7 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">hosts</td><td>A string describing the hosts in the cluster. This should be of the form host:port, where host is usually a DNS name that resolves to multiple IP addresses. Alternatively, you can pass a list of hosts as host1:port1,host2:port2,host3:port3. </td></tr>
-    <tr><td class="paramname">options</td><td>Settings for the client library. </td></tr>
+    <tr><td class="paramname">options</td><td>Settings for the client library (see <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb" title="Settings for the client library.">Options</a>). </td></tr>
   </table>
   </dd>
 </dl>
@@ -532,7 +533,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00708">708</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00713">713</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>

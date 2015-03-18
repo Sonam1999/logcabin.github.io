@@ -84,6 +84,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">include/LogCabin/Debug.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file is used to control how <a class="el" href="namespaceLogCabin.html">LogCabin</a>'s debug log (event log) messages are handled.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdio&gt;</code><br/>
 <code>#include &lt;initializer_list&gt;</code><br/>
 <code>#include &lt;functional&gt;</code><br/>
@@ -114,7 +117,12 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#af6b81483d297545dd73523bc1243b3a8">LogCabin::Core::Debug::setLogPolicy</a> (const std::initializer_list&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;newPolicy)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See setLogPolicy.  <a href="#af6b81483d297545dd73523bc1243b3a8"></a><br/></td></tr>
 </table>
-</div><!-- contents -->
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>This file is used to control how <a class="el" href="namespaceLogCabin.html">LogCabin</a>'s debug log (event log) messages are handled. </p>
+<p>When used by client applications, this should be accessed as LogCabin::Client::Debug (the <a class="el" href="namespaceLogCabin_1_1Core.html">LogCabin::Core</a> namespace is used internally in <a class="el" href="namespaceLogCabin.html">LogCabin</a>). </p>
+
+<p>Definition in file <a class="el" href="include_2LogCabin_2Debug_8h_source.html">Debug.h</a>.</p>
+</div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
