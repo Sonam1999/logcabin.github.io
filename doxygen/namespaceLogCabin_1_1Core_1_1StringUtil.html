@@ -127,6 +127,8 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if haystack begins with needle.  <a href="#abd5665712d4706d4b2189d3a182f4316"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ad6f1abf416c522d7518acff147a50bf7">endsWith</a> (const std::string &amp;haystack, const std::string &amp;needle)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if haystack ends with needle.  <a href="#ad6f1abf416c522d7518acff147a50bf7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#abd2106c35b062f3a8322ea7725170dfe">trim</a> (const std::string &amp;s)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a copy of the given string except with no leading or trailing whitespace.  <a href="#abd2106c35b062f3a8322ea7725170dfe"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0">toString</a> (const T &amp;t)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a string returned from the given object's stream operator.  <a href="#ac524b54525b06c9cf044d38746e3d0f0"></a><br/></td></tr>
@@ -167,7 +169,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>String such as "FOO|BAR". </dd></dl>
 
-<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00048">48</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00051">51</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -198,7 +200,7 @@ Functions</h2></td></tr>
 
 <p>A safe version of sprintf. </p>
 
-<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00067">67</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00070">70</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -226,7 +228,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if all the bytes of str before its null terminator are nice to display in a single line of text. </dd></dl>
 
-<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00095">95</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00098">98</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -265,7 +267,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if the last byte of data is a null terminator and all the bytes of data before that are nice to display in a single line of text. </dd></dl>
 
-<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00101">101</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00104">104</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -294,7 +296,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00111">111</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00114">114</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -332,7 +334,7 @@ Functions</h2></td></tr>
 <p>For strings, replace all occurrences of 'needle' in 'haystack' with 'replacement'. </p>
 <p>If this isn't what you're looking for, the standard algorithm std::replace might help you. </p>
 
-<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00123">123</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00126">126</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -376,7 +378,7 @@ Functions</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00138">138</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00141">141</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -407,7 +409,7 @@ Functions</h2></td></tr>
 
 <p>Return true if haystack begins with needle. </p>
 
-<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00149">149</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00152">152</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
 
 </div>
 </div>
@@ -438,7 +440,28 @@ Functions</h2></td></tr>
 
 <p>Return true if haystack ends with needle. </p>
 
-<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00155">155</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
+<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00158">158</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abd2106c35b062f3a8322ea7725170dfe"></a><!-- doxytag: member="LogCabin::Core::StringUtil::trim" ref="abd2106c35b062f3a8322ea7725170dfe" args="(const std::string &amp;s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#abd2106c35b062f3a8322ea7725170dfe">LogCabin::Core::StringUtil::trim</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>original</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return a copy of the given string except with no leading or trailing whitespace. </p>
+
+<p>Definition at line <a class="el" href="StringUtil_8cc_source.html#l00167">167</a> of file <a class="el" href="StringUtil_8cc_source.html">StringUtil.cc</a>.</p>
 
 </div>
 </div>

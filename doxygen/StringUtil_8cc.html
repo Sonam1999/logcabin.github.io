@@ -85,8 +85,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br/>
 <code>#include &lt;cassert&gt;</code><br/>
+<code>#include &lt;cctype&gt;</code><br/>
 <code>#include &lt;cstdarg&gt;</code><br/>
 <code>#include &lt;cstring&gt;</code><br/>
+<code>#include &lt;functional&gt;</code><br/>
+<code>#include &lt;locale&gt;</code><br/>
 <code>#include &lt;sstream&gt;</code><br/>
 <code>#include &quot;<a class="el" href="StringUtil_8h_source.html">Core/StringUtil.h</a>&quot;</code><br/>
 </div>
@@ -119,6 +122,8 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if haystack begins with needle.  <a href="#abd5665712d4706d4b2189d3a182f4316"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ad6f1abf416c522d7518acff147a50bf7">LogCabin::Core::StringUtil::endsWith</a> (const std::string &amp;haystack, const std::string &amp;needle)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if haystack ends with needle.  <a href="#ad6f1abf416c522d7518acff147a50bf7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#abd2106c35b062f3a8322ea7725170dfe">LogCabin::Core::StringUtil::trim</a> (const std::string &amp;s)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a copy of the given string except with no leading or trailing whitespace.  <a href="#abd2106c35b062f3a8322ea7725170dfe"></a><br/></td></tr>
 </table>
 </div><!-- contents -->
 <!-- window showing the filter options -->
