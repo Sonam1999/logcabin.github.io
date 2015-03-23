@@ -12,5 +12,6 @@ var searchData=
   ['preparedsegments',['PreparedSegments',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a16271ee544de5859188c1f9b61b50b88',1,'LogCabin::Storage::SegmentedLog::PreparedSegments']]],
   ['preparenewsegment',['prepareNewSegment',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a428a4dd73370ddbff7dfe151c03f60fe',1,'LogCabin::Storage::SegmentedLog']]],
   ['printconfiguration',['printConfiguration',['../namespaceanonymous__namespace_02Reconfigure_8cc_03.html#a70637f1de77848fb53512c4f5fa2016f',1,'anonymous_namespace{Reconfigure.cc}']]],
+  ['printelectionstate',['printElectionState',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a078cf5cea7de5f0eb17cc3716c89d695',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['prototofile',['protoToFile',['../namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html#abe942c0a861f9651e547bdc3c92f6579',1,'LogCabin::Storage::anonymous_namespace{SimpleFileLog.cc}']]]
 ];
