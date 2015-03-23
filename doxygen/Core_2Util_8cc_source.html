@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: Storage/SimpleFileLog.cc File Reference</title>
+<title>LogCabin: Core/Util.cc Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -76,41 +76,54 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <div class="header">
-  <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Storage/SimpleFileLog.cc File Reference</div>  </div>
+<div class="title">Core/Util.cc</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;algorithm&gt;</code><br/>
-<code>#include &lt;fcntl.h&gt;</code><br/>
-<code>#include &lt;sys/stat.h&gt;</code><br/>
-<code>#include &lt;unistd.h&gt;</code><br/>
-<code>#include &quot;build/Protocol/Raft.pb.h&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Buffer_8h_source.html">Core/Buffer.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Checksum_8h_source.html">Core/Checksum.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Core_2Debug_8h_source.html">Core/Debug.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Core_2ProtoBuf_8h_source.html">Core/ProtoBuf.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="StringUtil_8h_source.html">Core/StringUtil.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Time_8h_source.html">Core/Time.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Core_2Util_8h_source.html">Core/Util.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="FilesystemUtil_8h_source.html">Storage/FilesystemUtil.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="SimpleFileLog_8h_source.html">Storage/SimpleFileLog.h</a>&quot;</code><br/>
-</div>
-<p><a href="SimpleFileLog_8cc_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr><td colspan="2"><h2><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Storage.html">LogCabin::Storage</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html">LogCabin::Storage::anonymous_namespace{SimpleFileLog.cc}</a></td></tr>
-<tr><td colspan="2"><h2><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html#afc9613681322d6febf64d33e12d83b45">LogCabin::Storage::anonymous_namespace{SimpleFileLog.cc}::fileToProto</a> (const File &amp;dir, const std::string &amp;path, google::protobuf::Message &amp;out)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">FilesystemUtil::File&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html#abe942c0a861f9651e547bdc3c92f6579">LogCabin::Storage::anonymous_namespace{SimpleFileLog.cc}::protoToFile</a> (const google::protobuf::Message &amp;in, const File &amp;dir, const std::string &amp;path)</td></tr>
-</table>
-</div><!-- contents -->
+<a href="Core_2Util_8cc.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* Copyright (c) 2011-2012 Stanford University</span>
+<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2015 Diego Ongaro</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
+<a name="l00005"></a>00005 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
+<a name="l00006"></a>00006 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
+<a name="l00007"></a>00007 <span class="comment"> *</span>
+<a name="l00008"></a>00008 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
+<a name="l00009"></a>00009 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
+<a name="l00010"></a>00010 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
+<a name="l00011"></a>00011 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
+<a name="l00012"></a>00012 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
+<a name="l00013"></a>00013 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
+<a name="l00014"></a>00014 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
+<a name="l00015"></a>00015 <span class="comment"> */</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;cstring&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="Core_2Util_8h.html" title="Common utilities and definitions.">Core/Util.h</a>&quot;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="keyword">namespace </span>LogCabin {
+<a name="l00021"></a>00021 <span class="keyword">namespace </span>Core {
+<a name="l00022"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html">00022</a> <span class="keyword">namespace </span>Util {
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="keywordtype">void</span>*
+<a name="l00025"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65">00025</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65" title="Copy some noncontiguous chunks of data into a contiguous chunk.">memcpy</a>(<span class="keywordtype">void</span>* dest,
+<a name="l00026"></a>00026        std::initializer_list&lt;std::pair&lt;const void*, size_t&gt;&gt; src)
+<a name="l00027"></a>00027 {
+<a name="l00028"></a>00028     uint8_t* target = <span class="keyword">static_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(dest);
+<a name="l00029"></a>00029     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = src.begin(); it != src.end(); ++it) {
+<a name="l00030"></a>00030         <a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65" title="Copy some noncontiguous chunks of data into a contiguous chunk.">::memcpy</a>(target, it-&gt;first, it-&gt;second);
+<a name="l00031"></a>00031         target += it-&gt;second;
+<a name="l00032"></a>00032     }
+<a name="l00033"></a>00033     <span class="keywordflow">return</span> dest;
+<a name="l00034"></a>00034 }
+<a name="l00035"></a>00035 
+<a name="l00036"></a><a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html#a39ec6633169bd02835a8adad3f447e87">00036</a> <a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html#a39ec6633169bd02835a8adad3f447e87">ThreadInterruptedException::ThreadInterruptedException</a>()
+<a name="l00037"></a>00037     : std::runtime_error(<span class="stringliteral">&quot;Thread was interrupted&quot;</span>)
+<a name="l00038"></a>00038 {
+<a name="l00039"></a>00039 }
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 } <span class="comment">// namespace LogCabin::Core::Util</span>
+<a name="l00042"></a>00042 } <span class="comment">// namespace LogCabin::Core</span>
+<a name="l00043"></a>00043 } <span class="comment">// namespace LogCabin</span>
+</pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"

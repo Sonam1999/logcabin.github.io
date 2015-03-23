@@ -22,9 +22,10 @@ var searchData=
   ['core',['Core',['../namespaceLogCabin_1_1Core.html',1,'LogCabin']]],
   ['debug',['Debug',['../namespaceLogCabin_1_1Core_1_1Debug.html',1,'LogCabin::Core']]],
   ['event',['Event',['../namespaceLogCabin_1_1Event.html',1,'LogCabin']]],
+  ['examples',['Examples',['../namespaceLogCabin_1_1Examples.html',1,'LogCabin']]],
   ['filesystemutil',['FilesystemUtil',['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html',1,'LogCabin::Storage']]],
-  ['internal',['Internal',['../namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html',1,'LogCabin::Core::ThreadId']]],
   ['internal',['Internal',['../namespaceLogCabin_1_1Tree_1_1Internal.html',1,'LogCabin::Tree']]],
+  ['internal',['Internal',['../namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html',1,'LogCabin::Core::ThreadId']]],
   ['internal',['Internal',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html',1,'LogCabin::Core::Debug']]],
   ['internal',['Internal',['../namespaceLogCabin_1_1Client_1_1Internal.html',1,'LogCabin::Client']]],
   ['internal',['Internal',['../namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1Internal.html',1,'LogCabin::Core::ProtoBuf']]],
@@ -47,5 +48,6 @@ var searchData=
   ['threadid',['ThreadId',['../namespaceLogCabin_1_1Core_1_1ThreadId.html',1,'LogCabin::Core']]],
   ['time',['Time',['../namespaceLogCabin_1_1Core_1_1Time.html',1,'LogCabin::Core']]],
   ['tree',['Tree',['../namespaceLogCabin_1_1Tree.html',1,'LogCabin']]],
-  ['util',['Util',['../namespaceLogCabin_1_1Core_1_1Util.html',1,'LogCabin::Core']]]
+  ['util',['Util',['../namespaceLogCabin_1_1Core_1_1Util.html',1,'LogCabin::Core']]],
+  ['util',['Util',['../namespaceLogCabin_1_1Examples_1_1Util.html',1,'LogCabin::Examples']]]
 ];

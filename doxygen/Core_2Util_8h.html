@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: anonymous_namespace{Tool.cc} Namespace Reference</title>
+<title>LogCabin: Core/Util.h File Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -47,9 +47,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -70,55 +70,78 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
-      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Defines</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">anonymous_namespace{Tool.cc} Namespace Reference</div>  </div>
+<div class="title">Core/Util.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Common utilities and definitions.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;cassert&gt;</code><br/>
+<code>#include &lt;cinttypes&gt;</code><br/>
+<code>#include &lt;functional&gt;</code><br/>
+<code>#include &lt;stdexcept&gt;</code><br/>
+</div>
+<p><a href="Core_2Util_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html">OptionParser</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses argv for the main function.  <a href="classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Util_1_1Finally.html">LogCabin::Core::Util::Finally</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls a function when this object goes out of scope.  <a href="classLogCabin_1_1Core_1_1Util_1_1Finally.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html">LogCabin::Core::Util::ThreadInterruptedException</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The thread could not complete its task because it was asked to exit.  <a href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html#details">More...</a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core.html">LogCabin::Core</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Util.html">LogCabin::Core::Util</a></td></tr>
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Defines</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_2Util_8h.html#a73d4d29b9f4252a48157c75d1807d252">sizeof32</a>(x)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Like sizeof but returns a uint32_t.  <a href="#a73d4d29b9f4252a48157c75d1807d252"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceanonymous__namespace_02Tool_8cc_03.html#ae256e6fe4febe75562bd5f7fb0cf3dcb">dumpTree</a> (const <a class="el" href="classLogCabin_1_1Tree_1_1Tree.html">Tree::Tree</a> &amp;tree, const std::string &amp;path=&quot;/&quot;)</td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename Small , typename Large &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">Small&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Util.html#a29cb10fe0137ff937a09ea6cd8103128">LogCabin::Core::Util::downCast</a> (const Large &amp;large)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast a bigger int down to a smaller one.  <a href="#a29cb10fe0137ff937a09ea6cd8103128"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65">LogCabin::Core::Util::memcpy</a> (void *dest, std::initializer_list&lt; std::pair&lt; const void *, size_t &gt;&gt; src)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy some noncontiguous chunks of data into a contiguous chunk.  <a href="#a6577de108423cf4d2ebfed2d7a60ad65"></a><br/></td></tr>
 </table>
-<hr/><h2>Function Documentation</h2>
-<a class="anchor" id="ae256e6fe4febe75562bd5f7fb0cf3dcb"></a><!-- doxytag: member="anonymous_namespace{Tool.cc}::dumpTree" ref="ae256e6fe4febe75562bd5f7fb0cf3dcb" args="(const Tree::Tree &amp;tree, const std::string &amp;path=&quot;/&quot;)" -->
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Common utilities and definitions. </p>
+<p>See also Core::STLUtil and Core::StringUtil. </p>
+
+<p>Definition in file <a class="el" href="Core_2Util_8h_source.html">Util.h</a>.</p>
+</div><hr/><h2>Define Documentation</h2>
+<a class="anchor" id="a73d4d29b9f4252a48157c75d1807d252"></a><!-- doxytag: member="Util.h::sizeof32" ref="a73d4d29b9f4252a48157c75d1807d252" args="(x)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void anonymous_namespace{Tool.cc}::<a class="el" href="namespaceanonymous__namespace_02Tool_8cc_03.html#ae256e6fe4febe75562bd5f7fb0cf3dcb">dumpTree</a> </td>
+          <td class="memname">#define <a class="el" href="Core_2Util_8h.html#a73d4d29b9f4252a48157c75d1807d252">sizeof32</a></td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classLogCabin_1_1Tree_1_1Tree.html">Tree::Tree</a> &amp;&#160;</td>
-          <td class="paramname"><em>tree</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em> = <code>&quot;/&quot;</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Tool_8cc_source.html#l00124">124</a> of file <a class="el" href="Tool_8cc_source.html">Tool.cc</a>.</p>
+<p>Like sizeof but returns a uint32_t. </p>
+
+<p>Definition at line <a class="el" href="Core_2Util_8h_source.html#l00052">52</a> of file <a class="el" href="Core_2Util_8h_source.html">Util.h</a>.</p>
 
 </div>
 </div>

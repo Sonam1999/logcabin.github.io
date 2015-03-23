@@ -105,7 +105,7 @@ var searchData=
   ['simplefilelog_2ecc',['SimpleFileLog.cc',['../SimpleFileLog_8cc.html',1,'']]],
   ['simplefilelog_2eh',['SimpleFileLog.h',['../SimpleFileLog_8h.html',1,'']]],
   ['size',['size',['../classanonymous__namespace_02Benchmark_8cc_03_1_1OptionParser.html#aec0936844382137633316a181b3829f9',1,'anonymous_namespace{Benchmark.cc}::OptionParser::size()'],['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a8ef0d2cf638d976da604802ea50edce0',1,'LogCabin::Storage::SegmentedLog::Sync::Op::size()']]],
-  ['sizeof32',['sizeof32',['../Util_8h.html#a73d4d29b9f4252a48157c75d1807d252',1,'Util.h']]],
+  ['sizeof32',['sizeof32',['../Core_2Util_8h.html#a73d4d29b9f4252a48157c75d1807d252',1,'Util.h']]],
   ['skip',['SKIP',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#ad3faa7f9b282d60e8253185b09a88c5aa751b77ffc11b8c19113ec47153d18ade',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry']]],
   ['skipfsync',['skipFsync',['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a26b63e44c655c4428501edf54a521fe2',1,'LogCabin::Storage::FilesystemUtil']]],
   ['sleep',['sleep',['../namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75',1,'LogCabin::Core::Time']]],

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: Core/Util.h File Reference</title>
+<title>LogCabin: LogCabin::Examples::Util Namespace Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -47,9 +47,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -70,78 +70,77 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
+      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Defines</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+  <div id="nav-path" class="navpath">
+    <ul>
+      <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Examples.html">Examples</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Examples_1_1Util.html">Util</a>      </li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Defines</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Core/Util.h File Reference</div>  </div>
+<div class="title">LogCabin::Examples::Util Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Common utilities and definitions.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;cassert&gt;</code><br/>
-<code>#include &lt;cinttypes&gt;</code><br/>
-<code>#include &lt;functional&gt;</code><br/>
-<code>#include &lt;stdexcept&gt;</code><br/>
-</div>
-<p><a href="Util_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Util_1_1Finally.html">LogCabin::Core::Util::Finally</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Calls a function when this object goes out of scope.  <a href="classLogCabin_1_1Core_1_1Util_1_1Finally.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html">LogCabin::Core::Util::ThreadInterruptedException</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The thread could not complete its task because it was asked to exit.  <a href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html#details">More...</a><br/></td></tr>
-<tr><td colspan="2"><h2><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core.html">LogCabin::Core</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Util.html">LogCabin::Core::Util</a></td></tr>
-<tr><td colspan="2"><h2><a name="define-members"></a>
-Defines</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Util_8h.html#a73d4d29b9f4252a48157c75d1807d252">sizeof32</a>(x)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Like sizeof but returns a uint32_t.  <a href="#a73d4d29b9f4252a48157c75d1807d252"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memTemplParams" colspan="2">template&lt;typename Small , typename Large &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">Small&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Util.html#a29cb10fe0137ff937a09ea6cd8103128">LogCabin::Core::Util::downCast</a> (const Large &amp;large)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast a bigger int down to a smaller one.  <a href="#a29cb10fe0137ff937a09ea6cd8103128"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65">LogCabin::Core::Util::memcpy</a> (void *dest, std::initializer_list&lt; std::pair&lt; const void *, size_t &gt;&gt; src)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy some noncontiguous chunks of data into a contiguous chunk.  <a href="#a6577de108423cf4d2ebfed2d7a60ad65"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Examples_1_1Util.html#a8a2f344cd7d14a34e41d69297edd5423">parseTime</a> (const std::string &amp;description)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a human-readable description of a time duration into a number of nanoseconds.  <a href="#a8a2f344cd7d14a34e41d69297edd5423"></a><br/></td></tr>
 </table>
-<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Common utilities and definitions. </p>
-<p>See also Core::STLUtil and Core::StringUtil. </p>
-
-<p>Definition in file <a class="el" href="Util_8h_source.html">Util.h</a>.</p>
-</div><hr/><h2>Define Documentation</h2>
-<a class="anchor" id="a73d4d29b9f4252a48157c75d1807d252"></a><!-- doxytag: member="Util.h::sizeof32" ref="a73d4d29b9f4252a48157c75d1807d252" args="(x)" -->
+<hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a8a2f344cd7d14a34e41d69297edd5423"></a><!-- doxytag: member="LogCabin::Examples::Util::parseTime" ref="a8a2f344cd7d14a34e41d69297edd5423" args="(const std::string &amp;description)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define <a class="el" href="Util_8h.html#a73d4d29b9f4252a48157c75d1807d252">sizeof32</a></td>
+          <td class="memname">uint64_t <a class="el" href="namespaceLogCabin_1_1Examples_1_1Util.html#a8a2f344cd7d14a34e41d69297edd5423">LogCabin::Examples::Util::parseTime</a> </td>
           <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">x</td><td>)</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>description</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Like sizeof but returns a uint32_t. </p>
+<p>Convert a human-readable description of a time duration into a number of nanoseconds. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">description</td><td>Something like 10, 10s, 200ms, 3us, or 999ns. With no units, defaults to seconds. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Number of nanoseconds. </dd></dl>
+<dl class="exception"><dt><b>Exceptions:</b></dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>If description could not be parsed successfully. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="Util_8h_source.html#l00052">52</a> of file <a class="el" href="Util_8h_source.html">Util.h</a>.</p>
+<p>Definition at line <a class="el" href="Examples_2Util_8cc_source.html#l00029">29</a> of file <a class="el" href="Examples_2Util_8cc_source.html">Util.cc</a>.</p>
 
 </div>
 </div>
