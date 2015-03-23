@@ -121,15 +121,19 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the contents to big endian (how this header should be transferred on the network) from host order.  <a href="#a541af8230a65c636ed9161c3d935c510"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#a1eb3e3c23397e8275619584a545ab00e">messageId</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A unique message ID assigned by the sender.  <a href="#a1eb3e3c23397e8275619584a545ab00e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#a9b958c82f08b662a2661b4f2bb08b289">fixed</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The value 0xdaf4 encoded in big endian.  <a href="#a9b958c82f08b662a2661b4f2bb08b289"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#afbebecf8dc6765c067f1d964807dbbb6">version</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Currently only version 1 is defined and supported.  <a href="#afbebecf8dc6765c067f1d964807dbbb6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#a7b97669600ee6ae238ce1d11827020d5">payloadLength</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The length in bytes of the contents of the message, not including this header.  <a href="#a7b97669600ee6ae238ce1d11827020d5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#a1eb3e3c23397e8275619584a545ab00e">messageId</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A unique message ID assigned by the sender.  <a href="#a1eb3e3c23397e8275619584a545ab00e"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This is the header that precedes every message across the TCP socket. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00181">181</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00175">175</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 </div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="abf518f4889941c2e702830cdc5915cda"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::Header::fromBigEndian" ref="abf518f4889941c2e702830cdc5915cda" args="()" -->
 <div class="memitem">
@@ -167,25 +171,43 @@ Public Attributes</h2></td></tr>
 
 <p>Convert the contents to big endian (how this header should be transferred on the network) from host order. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8cc_source.html#l00115">115</a> of file <a class="el" href="MessageSocket_8cc_source.html">MessageSocket.cc</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8cc_source.html#l00117">117</a> of file <a class="el" href="MessageSocket_8cc_source.html">MessageSocket.cc</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a1eb3e3c23397e8275619584a545ab00e"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::Header::messageId" ref="a1eb3e3c23397e8275619584a545ab00e" args="" -->
+<a class="anchor" id="a9b958c82f08b662a2661b4f2bb08b289"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::Header::fixed" ref="a9b958c82f08b662a2661b4f2bb08b289" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#a1eb3e3c23397e8275619584a545ab00e">LogCabin::RPC::MessageSocket::Header::messageId</a></td>
+          <td class="memname">uint16_t <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#a9b958c82f08b662a2661b4f2bb08b289">LogCabin::RPC::MessageSocket::Header::fixed</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>A unique message ID assigned by the sender. </p>
+<p>The value 0xdaf4 encoded in big endian. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00196">196</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00190">190</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afbebecf8dc6765c067f1d964807dbbb6"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::Header::version" ref="afbebecf8dc6765c067f1d964807dbbb6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#afbebecf8dc6765c067f1d964807dbbb6">LogCabin::RPC::MessageSocket::Header::version</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Currently only version 1 is defined and supported. </p>
+<p>Big endian. </p>
+
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00195">195</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>
@@ -201,8 +223,27 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>The length in bytes of the contents of the message, not including this header. </p>
+<p>Big endian. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00202">202</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00201">201</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1eb3e3c23397e8275619584a545ab00e"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::Header::messageId" ref="a1eb3e3c23397e8275619584a545ab00e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#a1eb3e3c23397e8275619584a545ab00e">LogCabin::RPC::MessageSocket::Header::messageId</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>A unique message ID assigned by the sender. </p>
+<p>Big endian. </p>
+
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00206">206</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>

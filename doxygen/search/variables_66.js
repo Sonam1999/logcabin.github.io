@@ -10,6 +10,7 @@ var searchData=
   ['filenamecounter',['filenameCounter',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a77befe83464268e8b645f89e6f9e962a',1,'LogCabin::Storage::SegmentedLog::PreparedSegments']]],
   ['files',['files',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#ad9f05832405dc31e5a6b854a33b9a8c6',1,'LogCabin::Tree::Internal::Directory']]],
   ['firstoutstandingrpc',['firstOutstandingRPC',['../structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9',1,'LogCabin::Server::StateMachine::Session']]],
+  ['fixed',['fixed',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#a9b958c82f08b662a2661b4f2bb08b289',1,'LogCabin::RPC::MessageSocket::Header']]],
   ['forceheartbeat',['forceHeartbeat',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a50d0b442ca40959e135e45107a8c6c76',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['function',['function',['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a8a097a4bf5c8830274408091cad057b6',1,'LogCabin::Core::Debug::DebugMessage']]]
 ];

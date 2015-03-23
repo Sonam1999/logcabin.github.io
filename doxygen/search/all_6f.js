@@ -12,7 +12,7 @@ var searchData=
   ['opaqueclientrpc_2eh',['OpaqueClientRPC.h',['../OpaqueClientRPC_8h.html',1,'']]],
   ['opaquerpc',['opaqueRPC',['../classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46',1,'LogCabin::RPC::ClientRPC::opaqueRPC()'],['../classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb',1,'LogCabin::RPC::ServerRPC::opaqueRPC()']]],
   ['opaqueserver',['OpaqueServer',['../classLogCabin_1_1RPC_1_1OpaqueServer.html',1,'LogCabin::RPC']]],
-  ['opaqueserver',['opaqueServer',['../classLogCabin_1_1RPC_1_1Server.html#a5495888ce730c6f455c3c5b79c6faabe',1,'LogCabin::RPC::Server::opaqueServer()'],['../classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a42d594913ac8975bc4feb951f288f7a8',1,'LogCabin::RPC::OpaqueServerRPC::OpaqueServer()'],['../classLogCabin_1_1RPC_1_1OpaqueServer.html#a70b3a545f635ffe31a5e06aa31f379a6',1,'LogCabin::RPC::OpaqueServer::OpaqueServer(Handler &amp;handler, Event::Loop &amp;eventLoop, uint32_t maxMessageLength)'],['../classLogCabin_1_1RPC_1_1OpaqueServer.html#af6a420209e0b12e45ace3b5bd05cc387',1,'LogCabin::RPC::OpaqueServer::OpaqueServer(const OpaqueServer &amp;)']]],
+  ['opaqueserver',['OpaqueServer',['../classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a42d594913ac8975bc4feb951f288f7a8',1,'LogCabin::RPC::OpaqueServerRPC::OpaqueServer()'],['../classLogCabin_1_1RPC_1_1OpaqueServer.html#a70b3a545f635ffe31a5e06aa31f379a6',1,'LogCabin::RPC::OpaqueServer::OpaqueServer(Handler &amp;handler, Event::Loop &amp;eventLoop, uint32_t maxMessageLength)'],['../classLogCabin_1_1RPC_1_1OpaqueServer.html#af6a420209e0b12e45ace3b5bd05cc387',1,'LogCabin::RPC::OpaqueServer::OpaqueServer(const OpaqueServer &amp;)'],['../classLogCabin_1_1RPC_1_1Server.html#a5495888ce730c6f455c3c5b79c6faabe',1,'LogCabin::RPC::Server::opaqueServer()']]],
   ['opaqueserver_2ecc',['OpaqueServer.cc',['../OpaqueServer_8cc.html',1,'']]],
   ['opaqueserver_2eh',['OpaqueServer.h',['../OpaqueServer_8h.html',1,'']]],
   ['opaqueserverrpc',['OpaqueServerRPC',['../classLogCabin_1_1RPC_1_1OpaqueServerRPC.html',1,'LogCabin::RPC']]],
@@ -53,5 +53,5 @@ var searchData=
   ['outboundqueuemutex',['outboundQueueMutex',['../classLogCabin_1_1RPC_1_1MessageSocket.html#af0786d1f0f2169feb5d8ca39f48f1048',1,'LogCabin::RPC::MessageSocket']]],
   ['outputstream',['OutputStream',['../structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html',1,'LogCabin::Core::ProtoBuf']]],
   ['outstandingrpcnumbers',['outstandingRPCNumbers',['../classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a04f2d3fd5ef5e6c529dc7d0976fd8306',1,'LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper']]],
-  ['ownership',['Ownership',['../classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25',1,'LogCabin::Event::File::Ownership()'],['../classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139',1,'LogCabin::Event::File::ownership()']]]
+  ['ownership',['ownership',['../classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139',1,'LogCabin::Event::File::ownership()'],['../classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25',1,'LogCabin::Event::File::Ownership()']]]
 ];
