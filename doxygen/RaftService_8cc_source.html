@@ -125,8 +125,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00043"></a>00043         <span class="keywordflow">case</span> OpCode::APPEND_ENTRIES:
 <a name="l00044"></a>00044             <a class="code" href="classLogCabin_1_1Server_1_1RaftService.html#ac6cee7aed6b04e935b8ef43ac3c8df69">appendEntries</a>(std::move(rpc));
 <a name="l00045"></a>00045             <span class="keywordflow">break</span>;
-<a name="l00046"></a>00046         <span class="keywordflow">case</span> OpCode::APPEND_SNAPSHOT_CHUNK:
-<a name="l00047"></a>00047             <a class="code" href="classLogCabin_1_1Server_1_1RaftService.html#aa863d49b71c87ce0c0ce9e5c44167c05">appendSnapshotChunk</a>(std::move(rpc));
+<a name="l00046"></a>00046         <span class="keywordflow">case</span> OpCode::INSTALL_SNAPSHOT:
+<a name="l00047"></a>00047             <a class="code" href="classLogCabin_1_1Server_1_1RaftService.html#a135f3bfffe5f5c116bc88f8eb24ce6f8">installSnapshot</a>(std::move(rpc));
 <a name="l00048"></a>00048             <span class="keywordflow">break</span>;
 <a name="l00049"></a>00049         <span class="keywordflow">case</span> OpCode::REQUEST_VOTE:
 <a name="l00050"></a>00050             <a class="code" href="classLogCabin_1_1Server_1_1RaftService.html#a06d97d77db0eda9328f5f8d0d0306c0b">requestVote</a>(std::move(rpc));
@@ -175,7 +175,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00093"></a>00093 }
 <a name="l00094"></a>00094 
 <a name="l00095"></a>00095 <span class="keywordtype">void</span>
-<a name="l00096"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftService.html#aa863d49b71c87ce0c0ce9e5c44167c05">00096</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftService.html#aa863d49b71c87ce0c0ce9e5c44167c05">RaftService::appendSnapshotChunk</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
+<a name="l00096"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftService.html#a135f3bfffe5f5c116bc88f8eb24ce6f8">00096</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftService.html#a135f3bfffe5f5c116bc88f8eb24ce6f8">RaftService::installSnapshot</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
 <a name="l00097"></a>00097 {
 <a name="l00098"></a>00098     <a class="code" href="RaftService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(InstallSnapshot);
 <a name="l00099"></a>00099     <span class="comment">//VERBOSE(&quot;InstallSnapshot:\n%s&quot;,</span>

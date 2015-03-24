@@ -20,7 +20,7 @@ var searchData=
   ['sendreply',['sendReply',['../classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a4e3fa8ab515370f7cc2830c65e62d8aa',1,'LogCabin::RPC::OpaqueServerRPC']]],
   ['sendrequest',['sendRequest',['../classLogCabin_1_1RPC_1_1ClientSession.html#aa3d551942de3875b7b16cb7789945a7a',1,'LogCabin::RPC::ClientSession']]],
   ['sendsocket',['SendSocket',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html',1,'LogCabin::RPC::MessageSocket']]],
-  ['sendsocket',['SendSocket',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html#ab58f56abce131642a177f1acae73ce80',1,'LogCabin::RPC::MessageSocket::SendSocket::SendSocket()'],['../classLogCabin_1_1RPC_1_1MessageSocket.html#a6b0b0f248f03624e5e7873b4ebf43970',1,'LogCabin::RPC::MessageSocket::sendSocket()']]],
+  ['sendsocket',['sendSocket',['../classLogCabin_1_1RPC_1_1MessageSocket.html#a6b0b0f248f03624e5e7873b4ebf43970',1,'LogCabin::RPC::MessageSocket::sendSocket()'],['../structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html#ab58f56abce131642a177f1acae73ce80',1,'LogCabin::RPC::MessageSocket::SendSocket::SendSocket()']]],
   ['sendsocketmonitor',['sendSocketMonitor',['../classLogCabin_1_1RPC_1_1MessageSocket.html#a7ed2f3fbc5e2815b1e34065f50778945',1,'LogCabin::RPC::MessageSocket']]],
   ['serialize',['serialize',['../namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956',1,'LogCabin::Core::ProtoBuf']]],
   ['serializeproto',['serializeProto',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#aa855cdc3f98b40e3b1ad09118cbd8db3',1,'LogCabin::Storage::SegmentedLog']]],

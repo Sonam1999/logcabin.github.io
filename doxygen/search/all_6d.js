@@ -20,7 +20,7 @@ var searchData=
   ['maxmessagelength',['maxMessageLength',['../classLogCabin_1_1RPC_1_1MessageSocket.html#a2ba7a53974229080136ff86a3c62dee8',1,'LogCabin::RPC::MessageSocket::maxMessageLength()'],['../classLogCabin_1_1RPC_1_1OpaqueServer.html#acb2edeca2b4c9adaeb9c2d12f78e70d7',1,'LogCabin::RPC::OpaqueServer::maxMessageLength()']]],
   ['maxthreads',['maxThreads',['../classLogCabin_1_1RPC_1_1ThreadDispatchService.html#a5ddef036b6197070377fbc76952e103b',1,'LogCabin::RPC::ThreadDispatchService']]],
   ['memcpy',['memcpy',['../namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65',1,'LogCabin::Core::Util']]],
-  ['memorylog',['MemoryLog',['../classLogCabin_1_1Storage_1_1MemoryLog.html#ae844aa88d58adfb71662f2a2f67df647',1,'LogCabin::Storage::MemoryLog::MemoryLog()'],['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#a96a735a99e6814d48cee0837a240ffd2',1,'LogCabin::Storage::SimpleFileLog::memoryLog()']]],
+  ['memorylog',['memoryLog',['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#a96a735a99e6814d48cee0837a240ffd2',1,'LogCabin::Storage::SimpleFileLog::memoryLog()'],['../classLogCabin_1_1Storage_1_1MemoryLog.html#ae844aa88d58adfb71662f2a2f67df647',1,'LogCabin::Storage::MemoryLog::MemoryLog()']]],
   ['memorylog',['MemoryLog',['../classLogCabin_1_1Storage_1_1MemoryLog.html',1,'LogCabin::Storage']]],
   ['memorylog_2ecc',['MemoryLog.cc',['../MemoryLog_8cc.html',1,'']]],
   ['memorylog_2eh',['MemoryLog.h',['../MemoryLog_8h.html',1,'']]],
