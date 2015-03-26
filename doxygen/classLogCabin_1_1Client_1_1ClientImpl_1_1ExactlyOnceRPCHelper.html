@@ -130,10 +130,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Call this after receiving an RPCs response.  <a href="#a1a440dca3e1b2606e4e94a40e4e30211"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">Protocol::Client::ExactlyOnceRPCInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a27d031351b825651272b84f9cbc6325a">getRPCInfo</a> (std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;lockGuard, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceLogCabin_1_1Client_1_1Internal.html">Internal</a> version of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#aa693f873f6e691557dad654a51bd1a52" title="Call this before sending an RPC.">getRPCInfo()</a> to avoid deadlock with self.  <a href="#a27d031351b825651272b84f9cbc6325a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a37aad562f8e0b663e8ee45d9b81554e4">doneWithRPC</a> (const Protocol::Client::ExactlyOnceRPCInfo &amp;, std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;lockGuard)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceLogCabin_1_1Client_1_1Internal.html">Internal</a> version of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a1a440dca3e1b2606e4e94a40e4e30211" title="Call this after receiving an RPCs response.">doneWithRPC()</a> to avoid deadlock with self.  <a href="#a37aad562f8e0b663e8ee45d9b81554e4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Protocol::Client::ExactlyOnceRPCInfo&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a0db1c108690e06375b9aca2a2ca414d9">getRPCInfo</a> (<a class="el" href="classLogCabin_1_1Core_1_1HoldingMutex.html">Core::HoldingMutex</a> holdingMutex, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceLogCabin_1_1Client_1_1Internal.html">Internal</a> version of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#aa693f873f6e691557dad654a51bd1a52" title="Call this before sending an RPC.">getRPCInfo()</a> to avoid deadlock with self.  <a href="#a0db1c108690e06375b9aca2a2ca414d9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a19cc2ce7619597307907f9e5c58fbcbe">doneWithRPC</a> (const Protocol::Client::ExactlyOnceRPCInfo &amp;, <a class="el" href="classLogCabin_1_1Core_1_1HoldingMutex.html">Core::HoldingMutex</a> holdingMutex)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceLogCabin_1_1Client_1_1Internal.html">Internal</a> version of <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a1a440dca3e1b2606e4e94a40e4e30211" title="Call this after receiving an RPCs response.">doneWithRPC()</a> to avoid deadlock with self.  <a href="#a19cc2ce7619597307907f9e5c58fbcbe"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#ab243c21fac88261b47a927af8beeb020">keepAliveThreadMain</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function for keep-alive thread.  <a href="#ab243c21fac88261b47a927af8beeb020"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#af9a34b8019e9416cc1cf0b133ba9aa88">ExactlyOnceRPCHelper</a> (const <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html">ExactlyOnceRPCHelper</a> &amp;)</td></tr>
@@ -305,15 +305,15 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a27d031351b825651272b84f9cbc6325a"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::getRPCInfo" ref="a27d031351b825651272b84f9cbc6325a" args="(std::unique_lock&lt; Core::Mutex &gt; &amp;lockGuard, TimePoint timeout)" -->
+<a class="anchor" id="a0db1c108690e06375b9aca2a2ca414d9"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::getRPCInfo" ref="a0db1c108690e06375b9aca2a2ca414d9" args="(Core::HoldingMutex holdingMutex, TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Protocol::Client::ExactlyOnceRPCInfo <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#aa693f873f6e691557dad654a51bd1a52">LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::getRPCInfo</a> </td>
           <td>(</td>
-          <td class="paramtype">std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>lockGuard</em>, </td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Core_1_1HoldingMutex.html">Core::HoldingMutex</a>&#160;</td>
+          <td class="paramname"><em>holdingMutex</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -336,7 +336,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a37aad562f8e0b663e8ee45d9b81554e4"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::doneWithRPC" ref="a37aad562f8e0b663e8ee45d9b81554e4" args="(const Protocol::Client::ExactlyOnceRPCInfo &amp;, std::unique_lock&lt; Core::Mutex &gt; &amp;lockGuard)" -->
+<a class="anchor" id="a19cc2ce7619597307907f9e5c58fbcbe"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::doneWithRPC" ref="a19cc2ce7619597307907f9e5c58fbcbe" args="(const Protocol::Client::ExactlyOnceRPCInfo &amp;, Core::HoldingMutex holdingMutex)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -349,8 +349,8 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>lockGuard</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Core_1_1HoldingMutex.html">Core::HoldingMutex</a>&#160;</td>
+          <td class="paramname"><em>holdingMutex</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

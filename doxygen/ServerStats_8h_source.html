@@ -159,7 +159,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00077"></a>00077 <span class="comment">        /// Handle to containing class.</span>
 <a name="l00078"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#afbbaeab843b4efbec6b46c0d95be1452">00078</a> <span class="comment"></span>        <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html" title="Manages creation of server statistics, which are used for diagnostics.">ServerStats</a>&amp; <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#afbbaeab843b4efbec6b46c0d95be1452" title="Handle to containing class.">wrapper</a>;<span class="comment"></span>
 <a name="l00079"></a>00079 <span class="comment">        /// Locks #mutex for the lifetime of this object.</span>
-<a name="l00080"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a4e8ec46fc587cfce8409fe62522860a8">00080</a> <span class="comment"></span>        std::unique_lock&lt;Core::Mutex&gt; <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a4e8ec46fc587cfce8409fe62522860a8" title="Locks mutex for the lifetime of this object.">lockGuard</a>;
+<a name="l00080"></a><a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a6a2c1639bb7c4b8326ee126573aa4f66">00080</a> <span class="comment"></span>        std::lock_guard&lt;Core::Mutex&gt; <a class="code" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a6a2c1639bb7c4b8326ee126573aa4f66" title="Locks mutex for the lifetime of this object.">lockGuard</a>;
 <a name="l00081"></a>00081     };
 <a name="l00082"></a>00082 
 <a name="l00083"></a>00083   <span class="keyword">private</span>:<span class="comment"></span>

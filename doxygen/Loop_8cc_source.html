@@ -154,7 +154,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00072"></a><a class="code" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html#a4785179f4eb1dc91c1cb97dae6133707">00072</a> <a class="code" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html#a4785179f4eb1dc91c1cb97dae6133707" title="Destructor. Release the lock.">Loop::Lock::~Lock</a>()
 <a name="l00073"></a>00073 {
 <a name="l00074"></a>00074     eventLoop.extraMutexToSatisfyRaceDetector.unlock();
-<a name="l00075"></a>00075     std::unique_lock&lt;std::mutex&gt; lockGuard(eventLoop.mutex);
+<a name="l00075"></a>00075     std::lock_guard&lt;std::mutex&gt; lockGuard(eventLoop.mutex);
 <a name="l00076"></a>00076     --eventLoop.numLocks;
 <a name="l00077"></a>00077     --eventLoop.numActiveLocks;
 <a name="l00078"></a>00078     <span class="keywordflow">if</span> (eventLoop.numActiveLocks == 0) {

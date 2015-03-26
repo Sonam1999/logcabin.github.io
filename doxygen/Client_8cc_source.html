@@ -316,7 +316,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00234"></a>00234     <span class="comment">// Hold one lock at a time to avoid deadlock and handle self-assignment.</span>
 <a name="l00235"></a>00235     std::shared_ptr&lt;const TreeDetails&gt; otherTreeDetails =
 <a name="l00236"></a>00236                                             other.<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a08946f4a9011e8143ba4cf0147a77514" title="Get a reference to the implementation-specific members of this class.">getTreeDetails</a>();
-<a name="l00237"></a>00237     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d" title="Provides mutual exclusion to treeDetails pointer.">mutex</a>);
+<a name="l00237"></a>00237     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d" title="Provides mutual exclusion to treeDetails pointer.">mutex</a>);
 <a name="l00238"></a>00238     <a class="code" href="classLogCabin_1_1Client_1_1Tree.html#aa226e2ed8ef8fd4ac53467fb88826646" title="Reference-counted pointer to implementation-specific members.">treeDetails</a> = otherTreeDetails;
 <a name="l00239"></a>00239     <span class="keywordflow">return</span> *<span class="keyword">this</span>;
 <a name="l00240"></a>00240 }
@@ -331,7 +331,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00249"></a>00249 
 <a name="l00250"></a>00250     <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c" title="Type for absolute time values used for timeouts.">ClientImpl::TimePoint</a> timeout = <a class="code" href="namespaceLogCabin_1_1Client_1_1Internal.html#a38158417b149708ba57013d66a85d09d" title="Return the absolute time when the calling operation should timeout.">absTimeout</a>(<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#aa226e2ed8ef8fd4ac53467fb88826646" title="Reference-counted pointer to implementation-specific members.">treeDetails</a>-&gt;timeoutNanos);
 <a name="l00251"></a>00251 
-<a name="l00252"></a>00252     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d" title="Provides mutual exclusion to treeDetails pointer.">mutex</a>);
+<a name="l00252"></a>00252     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d" title="Provides mutual exclusion to treeDetails pointer.">mutex</a>);
 <a name="l00253"></a>00253     std::string realPath;
 <a name="l00254"></a>00254     <a class="code" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a> result = <a class="code" href="classLogCabin_1_1Client_1_1Tree.html#aa226e2ed8ef8fd4ac53467fb88826646" title="Reference-counted pointer to implementation-specific members.">treeDetails</a>-&gt;clientImpl-&gt;canonicalize(
 <a name="l00255"></a>00255                                 newWorkingDirectory,
@@ -374,7 +374,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00292"></a>00292     <span class="comment">// way if it doesn&#39;t, future calls on this Tree will result in errors</span>
 <a name="l00293"></a>00293     <span class="comment">// instead of operating on the prior condition.</span>
 <a name="l00294"></a>00294 
-<a name="l00295"></a>00295     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d" title="Provides mutual exclusion to treeDetails pointer.">mutex</a>);
+<a name="l00295"></a>00295     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d" title="Provides mutual exclusion to treeDetails pointer.">mutex</a>);
 <a name="l00296"></a>00296     std::string realPath;
 <a name="l00297"></a>00297     <a class="code" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a> result = <a class="code" href="classLogCabin_1_1Client_1_1Tree.html#aa226e2ed8ef8fd4ac53467fb88826646" title="Reference-counted pointer to implementation-specific members.">treeDetails</a>-&gt;clientImpl-&gt;canonicalize(
 <a name="l00298"></a>00298                                 path,
@@ -421,7 +421,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00339"></a>00339 <span class="keywordtype">void</span>
 <a name="l00340"></a><a class="code" href="classLogCabin_1_1Client_1_1Tree.html#ac0f658f32b73a9daba01889040180ca7">00340</a> <a class="code" href="classLogCabin_1_1Client_1_1Tree.html#ac0f658f32b73a9daba01889040180ca7" title="Abort each future operation if it may not have completed within the specified period of time...">Tree::setTimeout</a>(uint64_t nanoseconds)
 <a name="l00341"></a>00341 {
-<a name="l00342"></a>00342     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d" title="Provides mutual exclusion to treeDetails pointer.">mutex</a>);
+<a name="l00342"></a>00342     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d" title="Provides mutual exclusion to treeDetails pointer.">mutex</a>);
 <a name="l00343"></a>00343     std::shared_ptr&lt;TreeDetails&gt; newTreeDetails(<span class="keyword">new</span> <a class="code" href="classLogCabin_1_1Client_1_1TreeDetails.html" title="Implementation-specific members of Client::Tree.">TreeDetails</a>(*<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#aa226e2ed8ef8fd4ac53467fb88826646" title="Reference-counted pointer to implementation-specific members.">treeDetails</a>));
 <a name="l00344"></a>00344     newTreeDetails-&gt;timeoutNanos = nanoseconds;
 <a name="l00345"></a>00345     <a class="code" href="classLogCabin_1_1Client_1_1Tree.html#aa226e2ed8ef8fd4ac53467fb88826646" title="Reference-counted pointer to implementation-specific members.">treeDetails</a> = newTreeDetails;
@@ -541,7 +541,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00459"></a><a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a08946f4a9011e8143ba4cf0147a77514">00459</a> <a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a08946f4a9011e8143ba4cf0147a77514" title="Get a reference to the implementation-specific members of this class.">Tree::getTreeDetails</a>()<span class="keyword"> const</span>
 <a name="l00460"></a>00460 <span class="keyword"></span>{
 <a name="l00461"></a>00461     std::shared_ptr&lt;const TreeDetails&gt; ret;
-<a name="l00462"></a>00462     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d" title="Provides mutual exclusion to treeDetails pointer.">mutex</a>);
+<a name="l00462"></a>00462     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d" title="Provides mutual exclusion to treeDetails pointer.">mutex</a>);
 <a name="l00463"></a>00463     ret = <a class="code" href="classLogCabin_1_1Client_1_1Tree.html#aa226e2ed8ef8fd4ac53467fb88826646" title="Reference-counted pointer to implementation-specific members.">treeDetails</a>;
 <a name="l00464"></a>00464     <span class="keywordflow">return</span> ret;
 <a name="l00465"></a>00465 }

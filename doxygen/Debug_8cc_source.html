@@ -325,7 +325,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00243"></a>00243 FILE*
 <a name="l00244"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a221c605df65625a7bcb91990af0986d3">00244</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a221c605df65625a7bcb91990af0986d3" title="Change the file on which debug log messages are written.">setLogFile</a>(FILE* newFile)
 <a name="l00245"></a>00245 {
-<a name="l00246"></a>00246     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
+<a name="l00246"></a>00246     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00247"></a>00247     FILE* old = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>;
 <a name="l00248"></a>00248     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a> = newFile;
 <a name="l00249"></a>00249     <span class="keywordflow">return</span> old;
@@ -334,7 +334,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00252"></a>00252 std::function&lt;void(DebugMessage)&gt;
 <a name="l00253"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae229e11e9f1413bc265c12f8fe39cf6f">00253</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae229e11e9f1413bc265c12f8fe39cf6f" title="Accept log messages on the given callback instead of writing them to a file.">setLogHandler</a>(std::function&lt;<span class="keywordtype">void</span>(<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html" title="When LogCabin wants to print a log message, this is the information that gets included.">DebugMessage</a>)&gt; handler)
 <a name="l00254"></a>00254 {
-<a name="l00255"></a>00255     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
+<a name="l00255"></a>00255     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00256"></a>00256     std::function&lt;void(DebugMessage)&gt; old = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a9b1b7da5221b8fb784234b34fab553a0" title="If set, a callback that takes log messages instead of the normal log file (stream).">logHandler</a>;
 <a name="l00257"></a>00257     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a9b1b7da5221b8fb784234b34fab553a0" title="If set, a callback that takes log messages instead of the normal log file (stream).">logHandler</a> = handler;
 <a name="l00258"></a>00258     <span class="keywordflow">return</span> old;
@@ -344,7 +344,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00262"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0">00262</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">setLogPolicy</a>(<span class="keyword">const</span> std::vector&lt;std::pair&lt;std::string,
 <a name="l00263"></a>00263                                          std::string&gt;&gt;&amp; newPolicy)
 <a name="l00264"></a>00264 {
-<a name="l00265"></a>00265     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
+<a name="l00265"></a>00265     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00266"></a>00266     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aefa22d74a958dcc8c0a60502347781d9" title="Specifies the log messages that should be displayed for each filename.">policy</a> = newPolicy;
 <a name="l00267"></a>00267     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>.clear();
 <a name="l00268"></a>00268 }
@@ -367,7 +367,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00285"></a>00285 <span class="keywordtype">bool</span>
 <a name="l00286"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a6fb17a6ff9a81e892702560656d691a2">00286</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a6fb17a6ff9a81e892702560656d691a2" title="Return whether the current logging configuration includes messages of the given level for the given f...">isLogging</a>(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5" title="The levels of verbosity for log messages.">LogLevel</a> level, <span class="keyword">const</span> <span class="keywordtype">char</span>* fileName)
 <a name="l00287"></a>00287 {
-<a name="l00288"></a>00288     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
+<a name="l00288"></a>00288     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00289"></a>00289     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5" title="The levels of verbosity for log messages.">LogLevel</a> verbosity;
 <a name="l00290"></a>00290     <span class="keyword">auto</span> it = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>.find(fileName);
 <a name="l00291"></a>00291     <span class="keywordflow">if</span> (it == <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>.end()) {

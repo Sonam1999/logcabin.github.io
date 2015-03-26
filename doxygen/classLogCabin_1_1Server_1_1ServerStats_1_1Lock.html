@@ -129,8 +129,8 @@ Public Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html">ServerStats</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#afbbaeab843b4efbec6b46c0d95be1452">wrapper</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to containing class.  <a href="#afbbaeab843b4efbec6b46c0d95be1452"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a4e8ec46fc587cfce8409fe62522860a8">lockGuard</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#ab68f32865d3fb5fe202582e2554319fd" title="Protects all of the following members of this class.">mutex</a> for the lifetime of this object.  <a href="#a4e8ec46fc587cfce8409fe62522860a8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::lock_guard&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a6a2c1639bb7c4b8326ee126573aa4f66">lockGuard</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Locks <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#ab68f32865d3fb5fe202582e2554319fd" title="Protects all of the following members of this class.">mutex</a> for the lifetime of this object.  <a href="#a6a2c1639bb7c4b8326ee126573aa4f66"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Provides read/write access to <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a1bba9f0d46774de2eeceb8e06d792367" title="Partially filled-in structure that is copied as the basis of all calls to getCurrent().">stats</a>, protected against concurrent access. </p>
@@ -237,12 +237,12 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4e8ec46fc587cfce8409fe62522860a8"></a><!-- doxytag: member="LogCabin::Server::ServerStats::Lock::lockGuard" ref="a4e8ec46fc587cfce8409fe62522860a8" args="" -->
+<a class="anchor" id="a6a2c1639bb7c4b8326ee126573aa4f66"></a><!-- doxytag: member="LogCabin::Server::ServerStats::Lock::lockGuard" ref="a6a2c1639bb7c4b8326ee126573aa4f66" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_lock&lt;<a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a>&gt; <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a4e8ec46fc587cfce8409fe62522860a8">LogCabin::Server::ServerStats::Lock::lockGuard</a><code> [private]</code></td>
+          <td class="memname">std::lock_guard&lt;<a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a>&gt; <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a6a2c1639bb7c4b8326ee126573aa4f66">LogCabin::Server::ServerStats::Lock::lockGuard</a><code> [private]</code></td>
         </tr>
       </table>
 </div>

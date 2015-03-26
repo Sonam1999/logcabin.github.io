@@ -136,7 +136,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00054"></a>00054 <span class="keywordtype">void</span>
 <a name="l00055"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#a2ee71c405a048a097064ab3ae4b87031">00055</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#a2ee71c405a048a097064ab3ae4b87031" title="Pick a unique value to use as the thread identifier for the current thread.">assign</a>()
 <a name="l00056"></a>00056 {
-<a name="l00057"></a>00057     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#afd7489473d1ff5e01a317f3a5b1fae1b" title="Used to serialize access to nextId.">mutex</a>);
+<a name="l00057"></a>00057     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#afd7489473d1ff5e01a317f3a5b1fae1b" title="Used to serialize access to nextId.">mutex</a>);
 <a name="l00058"></a>00058     <span class="keywordtype">id</span> = <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#a6909b5fc9c912849b9c7a696e97a4908" title="The next thread identifier that has not already been used.">nextId</a>;
 <a name="l00059"></a>00059     ++<a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#a6909b5fc9c912849b9c7a696e97a4908" title="The next thread identifier that has not already been used.">nextId</a>;
 <a name="l00060"></a>00060 }
@@ -163,7 +163,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00081"></a>00081 {
 <a name="l00082"></a>00082     <span class="comment">// get the thread ID before locking to avoid deadlock</span>
 <a name="l00083"></a>00083     uint64_t <span class="keywordtype">id</span> = <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#a30fee27beb13289e3a52ec480236e8af" title="Return a unique identifier associated with this thread.">getId</a>();
-<a name="l00084"></a>00084     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#afd7489473d1ff5e01a317f3a5b1fae1b" title="Used to serialize access to nextId.">Internal::mutex</a>);
+<a name="l00084"></a>00084     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#afd7489473d1ff5e01a317f3a5b1fae1b" title="Used to serialize access to nextId.">Internal::mutex</a>);
 <a name="l00085"></a>00085     <span class="keywordflow">if</span> (name.empty())
 <a name="l00086"></a>00086         <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#ad5d361c1433d5b81c92aaeaf81120c8d" title="A map from thread ID to thread name.">Internal::threadNames</a>.erase(<span class="keywordtype">id</span>);
 <a name="l00087"></a>00087     <span class="keywordflow">else</span>
@@ -175,7 +175,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00093"></a>00093 {
 <a name="l00094"></a>00094     <span class="comment">// get the thread ID before locking to avoid deadlock</span>
 <a name="l00095"></a>00095     uint64_t <span class="keywordtype">id</span> = <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#a30fee27beb13289e3a52ec480236e8af" title="Return a unique identifier associated with this thread.">getId</a>();
-<a name="l00096"></a>00096     std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#afd7489473d1ff5e01a317f3a5b1fae1b" title="Used to serialize access to nextId.">Internal::mutex</a>);
+<a name="l00096"></a>00096     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#afd7489473d1ff5e01a317f3a5b1fae1b" title="Used to serialize access to nextId.">Internal::mutex</a>);
 <a name="l00097"></a>00097     <span class="keyword">auto</span> it = <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#ad5d361c1433d5b81c92aaeaf81120c8d" title="A map from thread ID to thread name.">Internal::threadNames</a>.find(<span class="keywordtype">id</span>);
 <a name="l00098"></a>00098     <span class="keywordflow">if</span> (it == <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#ad5d361c1433d5b81c92aaeaf81120c8d" title="A map from thread ID to thread name.">Internal::threadNames</a>.end())
 <a name="l00099"></a>00099         <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">StringUtil::format</a>(<span class="stringliteral">&quot;thread %lu&quot;</span>, <span class="keywordtype">id</span>);

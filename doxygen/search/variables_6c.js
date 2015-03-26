@@ -27,7 +27,7 @@ var searchData=
   ['localserver',['localServer',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#ab4ddea6874ae1a4c7a6fe22fc752d6af',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
   ['localtimeatepoch',['localTimeAtEpoch',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ClusterClock.html#ad39b718a9463f3d114da58deb290065f',1,'LogCabin::Server::RaftConsensusInternal::ClusterClock']]],
   ['lockfile',['lockFile',['../classLogCabin_1_1Storage_1_1Layout.html#ae0f3b216a0f364d1282d96c7c5d46011',1,'LogCabin::Storage::Layout']]],
-  ['lockguard',['lockGuard',['../classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a4e8ec46fc587cfce8409fe62522860a8',1,'LogCabin::Server::ServerStats::Lock']]],
+  ['lockguard',['lockGuard',['../classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a6a2c1639bb7c4b8326ee126573aa4f66',1,'LogCabin::Server::ServerStats::Lock']]],
   ['lockowner',['lockOwner',['../classLogCabin_1_1Event_1_1Loop.html#a2257b824bb17445bbe22854f4a9cc3be',1,'LogCabin::Event::Loop']]],
   ['log',['log',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#aad49b9bc289bd6431319aef813f7cef6',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['logdir',['logDir',['../classLogCabin_1_1Storage_1_1Layout.html#af9a506ff61ab69d00d228b6a949189aa',1,'LogCabin::Storage::Layout']]],

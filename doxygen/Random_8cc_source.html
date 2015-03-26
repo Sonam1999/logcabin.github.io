@@ -150,7 +150,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00068"></a>00068     }
 <a name="l00069"></a>00069 
 <a name="l00070"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a0732b5071370617f8cee66b0bd6c184d">00070</a>     uint64_t <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a0732b5071370617f8cee66b0bd6c184d">random64</a>() {
-<a name="l00071"></a>00071         std::unique_lock&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
+<a name="l00071"></a>00071         std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
 <a name="l00072"></a>00072         <span class="keywordflow">if</span> (!init) {
 <a name="l00073"></a>00073             <span class="comment">// probably too early to call PANIC in here</span>
 <a name="l00074"></a>00074             fprintf(stderr, <span class="stringliteral">&quot;Looks like you hit the so-called static &quot;</span>
