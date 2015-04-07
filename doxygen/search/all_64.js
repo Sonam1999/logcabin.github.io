@@ -1,7 +1,7 @@
 var searchData=
 [
   ['daemon',['daemon',['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#af0739fee4e519388ee65e82d66e0233d',1,'anonymous_namespace{Main.cc}::OptionParser']]],
-  ['data',['DATA',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#ad3faa7f9b282d60e8253185b09a88c5aa6d451f3ccae3822b3ec4e0df95282d71',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::DATA()'],['../classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e',1,'LogCabin::Core::Buffer::data()']]],
+  ['data',['DATA',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a55578f18915148f4af5a6e2414520084a6d451f3ccae3822b3ec4e0df95282d71',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::DATA()'],['../classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e',1,'LogCabin::Core::Buffer::data()']]],
   ['debug_2ecc',['Debug.cc',['../Debug_8cc.html',1,'']]],
   ['debug_2eh',['Debug.h',['../Core_2Debug_8h.html',1,'']]],
   ['debug_2eh',['Debug.h',['../include_2LogCabin_2Debug_8h.html',1,'']]],
@@ -14,7 +14,7 @@ var searchData=
   ['delayandbegin',['delayAndBegin',['../classLogCabin_1_1Client_1_1Backoff.html#a1695d3da40aaa2e2acbab1c4add0634e',1,'LogCabin::Client::Backoff']]],
   ['deletearrayfn',['deleteArrayFn',['../classLogCabin_1_1Core_1_1Buffer.html#a54dbf730ff52a8c948d571fad110136c',1,'LogCabin::Core::Buffer']]],
   ['deleteobjectfn',['deleteObjectFn',['../classLogCabin_1_1Core_1_1Buffer.html#a7b60260d551b949f9620c2a6c0b7996c',1,'LogCabin::Core::Buffer']]],
-  ['deleter',['deleter',['../classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238',1,'LogCabin::Core::Buffer::deleter()'],['../classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb',1,'LogCabin::Core::Buffer::Deleter()']]],
+  ['deleter',['Deleter',['../classLogCabin_1_1Core_1_1Buffer.html#a3e191a34c4b1c14c52e91a3202d39fbb',1,'LogCabin::Core::Buffer::Deleter()'],['../classLogCabin_1_1Core_1_1Buffer.html#abcd2853f2ec5b95b21b275ff060f1238',1,'LogCabin::Core::Buffer::deleter()']]],
   ['delimiter',['delimiter',['../classLogCabin_1_1Core_1_1Config.html#a6a68eb2bc7cc74d868a5b8d501172377',1,'LogCabin::Core::Config']]],
   ['demanded',['demanded',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a98746a877bda6e6566244de983a2acdd',1,'LogCabin::Storage::SegmentedLog::PreparedSegments']]],
   ['demangle',['demangle',['../namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a5766c3478ce808eee34e819527a4ec78',1,'LogCabin::Core::anonymous_namespace{Config.cc}']]],

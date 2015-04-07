@@ -149,6 +149,9 @@ Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static std::shared_ptr<br class="typebreak"/>
 &lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ae31d3bbbaabcebd4d74f98e9bec63d04">makeSession</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a11b5031d1bcbf4fb6d04d053661ce56d">eventLoop</a>, const <a class="el" href="classLogCabin_1_1RPC_1_1Address.html">Address</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#acf97ad99f351ca09b0eb405eb4acdd49">address</a>, uint32_t maxMessageLength, <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ae699938d467520e3dc9672bffd5e5e8f">TimePoint</a> timeout, const <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Core::Config</a> &amp;config)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a new <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> object.  <a href="#ae31d3bbbaabcebd4d74f98e9bec63d04"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static std::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a6b4dd88a42a593e3b75118106124298b">makeErrorSession</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a11b5031d1bcbf4fb6d04d053661ce56d">eventLoop</a>, const std::string &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#af172e57ace94978917bc48d962ca61bc">errorMessage</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> object that's already in an error state.  <a href="#a6b4dd88a42a593e3b75118106124298b"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a6420cf4c43c0c716d766f404321d2518">ClientSession</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a11b5031d1bcbf4fb6d04d053661ce56d">eventLoop</a>, const <a class="el" href="classLogCabin_1_1RPC_1_1Address.html">Address</a> &amp;<a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#acf97ad99f351ca09b0eb405eb4acdd49">address</a>, uint32_t maxMessageLength, <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#ae699938d467520e3dc9672bffd5e5e8f">TimePoint</a> timeout, const <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Core::Config</a> &amp;config)</td></tr>
@@ -310,7 +313,7 @@ Friends</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00350">350</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00364">364</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
@@ -389,7 +392,46 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00333">333</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00330">330</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6b4dd88a42a593e3b75118106124298b"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::makeErrorSession" ref="a6b4dd88a42a593e3b75118106124298b" args="(Event::Loop &amp;eventLoop, const std::string &amp;errorMessage)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a> &gt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a6b4dd88a42a593e3b75118106124298b">LogCabin::RPC::ClientSession::makeErrorSession</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td>
+          <td class="paramname"><em>eventLoop</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>errorMessage</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return a <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> object that's already in an error state. </p>
+<p>This can be useful for delaying errors until an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> is waited on. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">eventLoop</td><td>Ignored but usually readily available to callers and needed to satisfy type requirements. </td></tr>
+    <tr><td class="paramname">errorMessage</td><td>Description of the error, as will be returned by <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a6bea779cf79841aa1483f48f8ce3e897" title="If the socket has been disconnected, return a descriptive message.">getErrorMessage()</a> later. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00347">347</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
@@ -418,7 +460,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>This is be used to wait for and retrieve the reply to the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00359">359</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00373">373</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
@@ -441,7 +483,7 @@ Friends</h2></td></tr>
 <p>This method is safe to call from any thread.</p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>If an error has occurred, a message describing that error. Otherwise, an empty string. </dd></dl>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00386">386</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00400">400</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
@@ -462,7 +504,7 @@ Friends</h2></td></tr>
 <p>Return a string describing this session. </p>
 <p>It will include the address of the server and, if the session has an error, the error message. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00393">393</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00407">407</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
@@ -485,7 +527,7 @@ Friends</h2></td></tr>
 <p>This may be called while holding the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>'s lock.</p>
 <p>TODO(ongaro): It'd be nice to cancel sending the request if it hasn't already gone out, but I guess that's going to be a pretty rare case. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00405">405</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00421">421</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
@@ -507,7 +549,7 @@ Friends</h2></td></tr>
 <p>Called by the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> when it wants to be learn of its response (non-blocking). </p>
 <p>This must be called while holding the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>'s lock. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00438">438</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00454">454</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
@@ -547,7 +589,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00472">472</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8cc_source.html#l00488">488</a> of file <a class="el" href="ClientSession_8cc_source.html">ClientSession.cc</a>.</p>
 
 </div>
 </div>
@@ -580,7 +622,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00203">203</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00217">217</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -598,7 +640,7 @@ Friends</h2></td></tr>
 
 <p>This is used to keep this object alive while there are outstanding RPCs. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00239">239</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00253">253</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -618,7 +660,7 @@ Friends</h2></td></tr>
 <p>TODO(ongaro): How should this value be chosen? Ideally, you probably want this to be set to something like the 99-th percentile of your <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> latency.</p>
 <p>TODO(ongaro): How does this interact with TCP? </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00253">253</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00267">267</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -635,7 +677,7 @@ Friends</h2></td></tr>
 
 <p>The event loop that is used for non-blocking I/O. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00258">258</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00272">272</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -652,7 +694,7 @@ Friends</h2></td></tr>
 
 <p>The <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> server address provided to the constructor. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00263">263</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00277">277</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -669,7 +711,7 @@ Friends</h2></td></tr>
 
 <p>Receives events from <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a875675503cca4e62bff93b60079a5751" title="The MessageSocket used to send RPC requests and receive RPC responses.">messageSocket</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00268">268</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00282">282</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -687,7 +729,7 @@ Friends</h2></td></tr>
 <p>This is used to time out RPCs and sessions when the server is no longer responding. </p>
 <p>See <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession_1_1Timer.html" title="This is used to time out RPCs and sessions when the server is no longer responding.">Timer</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00274">274</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00288">288</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -711,7 +753,7 @@ Friends</h2></td></tr>
 <li><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a4b6c929e8c03c2aadb4e45f50f3c7ccd" title="When numActiveRPCs is &gt; 0, this field indicates that we are waiting for a ping response as evidence t...">activePing</a> </li>
 </ul>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00284">284</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00298">298</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -727,9 +769,9 @@ Friends</h2></td></tr>
 <div class="memdoc">
 
 <p>The message ID to assign to the next <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. </p>
-<p>These start at 1 and increment from there; the value 0 is reserved for ping messages to check server liveness. </p>
+<p>These start at 0 and increment from there. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00291">291</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00304">304</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -747,7 +789,7 @@ Friends</h2></td></tr>
 <p>A map from MessageId to <a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html" title="This contains an expected response for a OpaqueClientRPC object.">Response</a> objects that is used to store the response to RPCs and look it up for <a class="el" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html" title="This class represents an asynchronous remote procedure call.">OpaqueClientRPC</a> objects. </p>
 <p>The <a class="el" href="structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html" title="This contains an expected response for a OpaqueClientRPC object.">Response</a> objects mapped to must be deleted manually when removed from this map (gcc 4.4 doesn't support mapping to non-copyable objects). </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00299">299</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00312">312</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -765,7 +807,7 @@ Friends</h2></td></tr>
 <p>If this session is disconnected then this holds the error message. </p>
 <p>All new RPCs will be immediately 'ready' with this error message. Otherwise, this is the empty string. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00306">306</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00319">319</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -783,7 +825,7 @@ Friends</h2></td></tr>
 <p>The number of outstanding <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> requests that have been sent but whose responses have not yet been received. </p>
 <p>This does not include ping requests sent by the <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a9cc8af6b05cde66b0af5bb8da5ceade8" title="This is used to time out RPCs and sessions when the server is no longer responding.">timer</a> (which aren't real RPCs). This is used to determine when to schedule the timer: the timer is scheduled if numActiveRPCs is non-zero. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00315">315</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00328">328</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -801,7 +843,7 @@ Friends</h2></td></tr>
 <p>When numActiveRPCs is &gt; 0, this field indicates that we are waiting for a ping response as evidence that the server is still alive. </p>
 <p>When numActiveRPCs = 0, this field is undefined. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00322">322</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00335">335</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -819,7 +861,7 @@ Friends</h2></td></tr>
 <p>The <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html" title="A MessageSocket is a message-oriented layer on top of a TCP connection.">MessageSocket</a> used to send <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> requests and receive <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> responses. </p>
 <p>This may be NULL if the socket was never created. In this case, <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#af172e57ace94978917bc48d962ca61bc" title="If this session is disconnected then this holds the error message.">errorMessage</a> will be set. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00329">329</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00342">342</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -836,7 +878,7 @@ Friends</h2></td></tr>
 
 <p>Registers timer with the event loop. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00334">334</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00347">347</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>
@@ -853,7 +895,7 @@ Friends</h2></td></tr>
 
 <p>Usually set to connect() but mocked out in some unit tests. </p>
 
-<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00342">342</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientSession_8h_source.html#l00355">355</a> of file <a class="el" href="ClientSession_8h_source.html">ClientSession.h</a>.</p>
 
 </div>
 </div>

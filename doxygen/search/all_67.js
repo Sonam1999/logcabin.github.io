@@ -1,7 +1,7 @@
 var searchData=
 [
   ['gcflag',['gcFlag',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a9208d78c7fa30913a15d27fd58a57c54',1,'LogCabin::Server::RaftConsensusInternal::Server']]],
-  ['get',['get',['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a9d72e8e623b3b64feac1c58079bad1c5',1,'LogCabin::Storage::FilesystemUtil::FileContents']]],
+  ['get',['get',['../classLogCabin_1_1Client_1_1SessionManager_1_1LockedAssignment.html#a8c9a7b988d5f5e25435131a7e17e7b7e',1,'LogCabin::Client::SessionManager::LockedAssignment::get()'],['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a9d72e8e623b3b64feac1c58079bad1c5',1,'LogCabin::Storage::FilesystemUtil::FileContents::get()']]],
   ['getbytesread',['getBytesRead',['../structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#a89ad3e978fedc477fbc6bc62915d8d2b',1,'LogCabin::Core::ProtoBuf::InputStream::getBytesRead()'],['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a5032fca095b73bbdce485140d86dccba',1,'LogCabin::Storage::SnapshotFile::Reader::getBytesRead()']]],
   ['getbyteswritten',['getBytesWritten',['../structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a71dfd7d52ead85d327b38d6ef6010a9b',1,'LogCabin::Core::ProtoBuf::OutputStream::getBytesWritten()'],['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#abfc3d5956bbcda8e3e4b6270198008b4',1,'LogCabin::Storage::SnapshotFile::Writer::getBytesWritten()']]],
   ['getchildren',['getChildren',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#afb3252b65c8a80eddc4b90e1630ba48b',1,'LogCabin::Tree::Internal::Directory']]],
@@ -31,6 +31,7 @@ var searchData=
   ['getnextentry',['getNextEntry',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac3e56421d4359aa2b4ff148b57dd1d76',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['getopcode',['getOpCode',['../classLogCabin_1_1RPC_1_1ServerRPC.html#a21962c2b329e32e595d87210cc7ab9b3',1,'LogCabin::RPC::ServerRPC']]],
   ['getopensegment',['getOpenSegment',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a2ff5aade1f854285b605fcefbe8d2a13',1,'LogCabin::Storage::SegmentedLog::getOpenSegment()'],['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a4ebf746ec25f37c00b636d707115beb5',1,'LogCabin::Storage::SegmentedLog::getOpenSegment() const ']]],
+  ['getordefault',['getOrDefault',['../classLogCabin_1_1Client_1_1SessionManager_1_1LockedAssignment.html#a4a9c6079029071d85e8ca886a961fa48',1,'LogCabin::Client::SessionManager::LockedAssignment']]],
   ['getrandombytes',['getRandomBytes',['../namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ac8535276bfdb0565dbb16455a03a8aea',1,'LogCabin::Core::Random::anonymous_namespace{Random.cc}']]],
   ['getrequest',['getRequest',['../classLogCabin_1_1RPC_1_1ServerRPC.html#a9372e93d64d70ec04a2e3ecdc9ef1477',1,'LogCabin::RPC::ServerRPC']]],
   ['getresolvedstring',['getResolvedString',['../classLogCabin_1_1RPC_1_1Address.html#a1da8f1d9e5d82eb253be520f1be3316d',1,'LogCabin::RPC::Address']]],
@@ -57,8 +58,8 @@ var searchData=
   ['getvalue',['GetValue',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#ab6e3815e59f806e23768ae2750a0fd73',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
   ['getvalues',['getValues',['../namespaceLogCabin_1_1Core_1_1STLUtil.html#ab6118a9aa7e210e69f0713b0a681b23b',1,'LogCabin::Core::STLUtil']]],
   ['getworkingdirectory',['getWorkingDirectory',['../classLogCabin_1_1Client_1_1Tree.html#a0c9326ee756d5a1f242536787fbeb248',1,'LogCabin::Client::Tree']]],
-  ['globals',['Globals',['../classLogCabin_1_1Server_1_1Globals.html',1,'LogCabin::Server']]],
   ['globals',['Globals',['../classLogCabin_1_1Server_1_1Globals.html#ada14aa5c23214f0208a24ee74ae8997b',1,'LogCabin::Server::Globals::Globals()'],['../classLogCabin_1_1Server_1_1Globals.html#a92914115d8fd1609fd20134e0f7a1357',1,'LogCabin::Server::Globals::Globals(const Globals &amp;)'],['../classLogCabin_1_1Server_1_1ClientService.html#a5f6e9275b2850acaa8a5ff7adb0b7ca4',1,'LogCabin::Server::ClientService::globals()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a262bfee307ed43d8bd9230651307cfd8',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::globals()'],['../classLogCabin_1_1Server_1_1RaftService.html#ae289310353ae8fbd116d69a052bccbab',1,'LogCabin::Server::RaftService::globals()'],['../classLogCabin_1_1Server_1_1ServerStats.html#a8b0e6aebf49f1e883b8abd82bf9f78f2',1,'LogCabin::Server::ServerStats::globals()']]],
+  ['globals',['Globals',['../classLogCabin_1_1Server_1_1Globals.html',1,'LogCabin::Server']]],
   ['globals_2ecc',['Globals.cc',['../Globals_8cc.html',1,'']]],
   ['globals_2eh',['Globals.h',['../Globals_8h.html',1,'']]],
   ['google',['google',['../namespacegoogle.html',1,'']]],

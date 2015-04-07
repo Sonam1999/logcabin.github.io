@@ -48,6 +48,7 @@ var searchData=
   ['threadid',['ThreadId',['../namespaceLogCabin_1_1Core_1_1ThreadId.html',1,'LogCabin::Core']]],
   ['time',['Time',['../namespaceLogCabin_1_1Core_1_1Time.html',1,'LogCabin::Core']]],
   ['tree',['Tree',['../namespaceLogCabin_1_1Tree.html',1,'LogCabin']]],
+  ['util',['Util',['../namespaceLogCabin_1_1Examples_1_1Util.html',1,'LogCabin::Examples']]],
   ['util',['Util',['../namespaceLogCabin_1_1Core_1_1Util.html',1,'LogCabin::Core']]],
-  ['util',['Util',['../namespaceLogCabin_1_1Examples_1_1Util.html',1,'LogCabin::Examples']]]
+  ['versionmessage',['VersionMessage',['../namespaceLogCabin_1_1Protocol_1_1Common_1_1VersionMessage.html',1,'LogCabin::Protocol::Common']]]
 ];

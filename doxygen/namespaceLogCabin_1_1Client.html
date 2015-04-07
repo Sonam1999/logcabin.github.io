@@ -129,6 +129,8 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is used in unit testing to interpose when clients send RPCs to the leader of the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster.  <a href="classLogCabin_1_1Client_1_1LeaderRPCMock.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html">MockClientImpl</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A mock implementation of the client library that operates against a temporary, local, in-memory implementation.  <a href="classLogCabin_1_1Client_1_1MockClientImpl.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1SessionManager.html">SessionManager</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to create <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">RPC::ClientSession</a> objects and then immediately call VerifyRecipient RPCs on them.  <a href="classLogCabin_1_1Client_1_1SessionManager.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A member of the cluster Configuration.  <a href="structLogCabin_1_1Client_1_1Server.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html">ConfigurationResult</a></td></tr>
@@ -199,7 +201,7 @@ Functions</h2></td></tr>
 <p>A predicate on tree operations. </p>
 <p>First component: the absolute path corresponding to the 'path' argument of <a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#ad55137c5880d77899191748af133a082" title="If the client has specified a condition for the operation, serialize it into the request message...">setCondition()</a>, or empty if no condition is set. Second component: the file contents given as the 'value' argument of <a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#ad55137c5880d77899191748af133a082" title="If the client has specified a condition for the operation, serialize it into the request message...">setCondition()</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00044">44</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00045">45</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>

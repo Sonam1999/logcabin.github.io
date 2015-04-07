@@ -107,15 +107,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1VersionMessage.html">VersionMessage</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>Defines request and response types for messages sent using ID VERSION_MESSAGE_ID, used to check which versions of the MessageSocket framing protocol the server supports. </p>
+<br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html">ServiceId</a></td></tr>
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#a22c6438e512e84fa30d19c2fad7eba9caa9728f693e5b04009f08df50d73e9662">DEFAULT_PORT</a>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The default TCP port on which <a class="el" href="namespaceLogCabin.html">LogCabin</a> servers serve RPCs.  <a href="namespaceLogCabin_1_1Protocol_1_1Common.html#a22c6438e512e84fa30d19c2fad7eba9c">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a">PING_MESSAGE_ID</a>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br/>
+&#160;&#160;<a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a">PING_MESSAGE_ID</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1af7801e2db2d8799c1bea9ee928a1e39b">VERSION_MESSAGE_ID</a>
+<br/>
  }</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A MessageSocket::MessageID reserved for ping messages that are used to check the server's liveness.  <a href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserved MessageSocket::MessageID values.  <a href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa6228f646abedfa36fd7716cb7228570a04fad61d856722e9a6d32f23980b332f">MAX_MESSAGE_LENGTH</a>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of bytes per RPC request or response, including these headers.  <a href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa6228f646abedfa36fd7716cb7228570">More...</a><br/></td></tr>
@@ -140,7 +147,7 @@ Enumerations</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Common_8h_source.html#l00031">31</a> of file <a class="el" href="Common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="Common_8h_source.html#l00033">33</a> of file <a class="el" href="Common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -155,16 +162,20 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>A MessageSocket::MessageID reserved for ping messages that are used to check the server's liveness. </p>
-<p>No real <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> will ever be assigned this ID. </p>
+<p>Reserved MessageSocket::MessageID values. </p>
+<p>No application-level RPCs will ever be assigned these IDs. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a"></a><!-- doxytag: member="PING_MESSAGE_ID" ref="aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a" args="" -->PING_MESSAGE_ID</em>&nbsp;</td><td>
+<p>Messages that are used to check the server's liveness. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="aa710500562524493a074bb752b28d5d1af7801e2db2d8799c1bea9ee928a1e39b"></a><!-- doxytag: member="VERSION_MESSAGE_ID" ref="aa710500562524493a074bb752b28d5d1af7801e2db2d8799c1bea9ee928a1e39b" args="" -->VERSION_MESSAGE_ID</em>&nbsp;</td><td>
+<p>Messages used to check which versions of the MessageSocket framing protocol the server supports. </p>
 </td></tr>
 </table>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Common_8h_source.html#l00037">37</a> of file <a class="el" href="Common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="Common_8h_source.html#l00039">39</a> of file <a class="el" href="Common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>
@@ -188,7 +199,7 @@ Enumerations</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Common_8h_source.html#l00044">44</a> of file <a class="el" href="Common_8h_source.html">Common.h</a>.</p>
+<p>Definition at line <a class="el" href="Common_8h_source.html#l00077">77</a> of file <a class="el" href="Common_8h_source.html">Common.h</a>.</p>
 
 </div>
 </div>

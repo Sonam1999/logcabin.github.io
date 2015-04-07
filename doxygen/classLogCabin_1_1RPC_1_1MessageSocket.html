@@ -133,6 +133,9 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is an <a class="el" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">Event::File</a> monitor that calls <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#ad22f31466c137cb6793902a03f0dac62" title="Called when the socket may be written to without blocking.">writable()</a> when the socket can be written to without blocking.  <a href="structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#af8688c35c09df658f21b4a3f7d5c8397ae56e3a2cd8a0b1bb06f9966051680914">MAX_VERSION_SUPPORTED</a>
+ }</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Largest version of the framing protocol supported by this code.  <a href="classLogCabin_1_1RPC_1_1MessageSocket.html#af8688c35c09df658f21b4a3f7d5c8397">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#abef3021a3d11c0dd0ff037b567d3e686">MessageId</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">An opaque identifier for a message.  <a href="#abef3021a3d11c0dd0ff037b567d3e686"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
@@ -202,6 +205,30 @@ Private Attributes</h2></td></tr>
 <p>For RPCs, clients can use this to pair up a response with its request, and servers will want to reply with the same ID as the matching request. </p>
 
 <p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00054">54</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Member Enumeration Documentation</h2>
+<a class="anchor" id="af8688c35c09df658f21b4a3f7d5c8397"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::@7" ref="af8688c35c09df658f21b4a3f7d5c8397" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Largest version of the framing protocol supported by this code. </p>
+<dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="af8688c35c09df658f21b4a3f7d5c8397ae56e3a2cd8a0b1bb06f9966051680914"></a><!-- doxytag: member="MAX_VERSION_SUPPORTED" ref="af8688c35c09df658f21b4a3f7d5c8397ae56e3a2cd8a0b1bb06f9966051680914" args="" -->MAX_VERSION_SUPPORTED</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00059">59</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>
@@ -488,7 +515,7 @@ Private Attributes</h2></td></tr>
 <p>The maximum number of bytes of payload to allow per message. </p>
 <p>This exists to limit the amount of buffer space a single socket can use. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00292">292</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00297">297</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>
@@ -505,7 +532,7 @@ Private Attributes</h2></td></tr>
 
 <p>Deals with received messages and disconnects. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00297">297</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00302">302</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>
@@ -522,7 +549,7 @@ Private Attributes</h2></td></tr>
 
 <p>Used to find out when the socket is readable or writable. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00302">302</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00307">307</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>
@@ -539,7 +566,7 @@ Private Attributes</h2></td></tr>
 
 <p>The current message that is being received. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00307">307</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00312">312</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>
@@ -556,7 +583,7 @@ Private Attributes</h2></td></tr>
 
 <p>Protects <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a6f40d25e40b88fa0d1eb1e8fd9936e8e" title="A queue of messages waiting to be sent.">outboundQueue</a> only from concurrent modification. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00312">312</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00317">317</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>
@@ -575,7 +602,7 @@ Private Attributes</h2></td></tr>
 <p>The first one may be in the middle of transmission, while the others have not yet started. This queue is protected from concurrent modifications by <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#af0786d1f0f2169feb5d8ca39f48f1048" title="Protects outboundQueue only from concurrent modification.">outboundQueueMutex</a>.</p>
 <p>It's important that this remains a std::deque (or std::queue) because <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#ad22f31466c137cb6793902a03f0dac62" title="Called when the socket may be written to without blocking.">writable()</a> holds a pointer to the first element without the lock, while <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a01b688aa8e4b7b05c63584b1f802f007" title="Queue a message to be sent to the other side of this socket.">sendMessage()</a> may concurrently push onto the queue. std::deques are guaranteed not to invalidate pointers while elements are pushed and popped from the ends. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00325">325</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00330">330</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>
@@ -592,7 +619,7 @@ Private Attributes</h2></td></tr>
 
 <p>Notifies <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html" title="A MessageSocket is a message-oriented layer on top of a TCP connection.">MessageSocket</a> when the socket can be read from without blocking. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00331">331</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00336">336</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>
@@ -609,7 +636,7 @@ Private Attributes</h2></td></tr>
 
 <p>Notifies <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html" title="A MessageSocket is a message-oriented layer on top of a TCP connection.">MessageSocket</a> when the socket can be transmitted on without blocking. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00337">337</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00342">342</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>
@@ -626,7 +653,7 @@ Private Attributes</h2></td></tr>
 
 <p>Registers receiveSocket with the event loop. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00342">342</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00347">347</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>
@@ -643,7 +670,7 @@ Private Attributes</h2></td></tr>
 
 <p>Registers sendSocket with the event loop. </p>
 
-<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00347">347</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
+<p>Definition at line <a class="el" href="MessageSocket_8h_source.html#l00352">352</a> of file <a class="el" href="MessageSocket_8h_source.html">MessageSocket.h</a>.</p>
 
 </div>
 </div>

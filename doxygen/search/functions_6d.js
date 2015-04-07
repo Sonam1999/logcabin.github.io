@@ -6,6 +6,7 @@ var searchData=
   ['makeclosedfilename',['makeClosedFilename',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#afda58081b67d779178aef03e48d05503',1,'LogCabin::Storage::SegmentedLog::Segment']]],
   ['makedirectory',['makeDirectory',['../classLogCabin_1_1Client_1_1ClientImpl.html#a9fda786871ae56faf724a5212d040dd1',1,'LogCabin::Client::ClientImpl::makeDirectory()'],['../classLogCabin_1_1Client_1_1Tree.html#a2bd59073257f11c2f458bd05d7aa9cc3',1,'LogCabin::Client::Tree::makeDirectory()'],['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a6f47e9664358c461faa14176ec37e0ac',1,'LogCabin::Tree::Internal::Directory::makeDirectory()'],['../classLogCabin_1_1Tree_1_1Tree.html#a8ad0192e15ad2e48b54d34027508d8df',1,'LogCabin::Tree::Tree::makeDirectory()']]],
   ['makedirectoryex',['makeDirectoryEx',['../classLogCabin_1_1Client_1_1Tree.html#aa5a402128a5beb6cb29206cea7e747a1',1,'LogCabin::Client::Tree']]],
+  ['makeerrorsession',['makeErrorSession',['../classLogCabin_1_1RPC_1_1ClientSession.html#a6b4dd88a42a593e3b75118106124298b',1,'LogCabin::RPC::ClientSession']]],
   ['makefile',['makeFile',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a5c4e729b2d218b465c5dfed34890793c',1,'LogCabin::Tree::Internal::Directory']]],
   ['makelog',['makeLog',['../namespaceLogCabin_1_1Storage_1_1LogFactory.html#a6f87950142c86227bcfc09cde3dffcc6',1,'LogCabin::Storage::LogFactory']]],
   ['makesession',['makeSession',['../classLogCabin_1_1RPC_1_1ClientSession.html#ae31d3bbbaabcebd4d74f98e9bec63d04',1,'LogCabin::RPC::ClientSession']]],

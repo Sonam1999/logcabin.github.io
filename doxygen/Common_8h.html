@@ -77,6 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
@@ -86,23 +87,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This file contains declarations useful to all <a class="el" href="namespaceLogCabin.html">LogCabin</a> RPCs.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &lt;cstdint&gt;</code><br/>
+</div>
 <p><a href="Common_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Protocol_1_1Common_1_1VersionMessage_1_1Request.html">LogCabin::Protocol::Common::VersionMessage::Request</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Protocol_1_1Common_1_1VersionMessage_1_1Response.html">LogCabin::Protocol::Common::VersionMessage::Response</a></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Protocol.html">LogCabin::Protocol</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html">LogCabin::Protocol::Common</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1VersionMessage.html">LogCabin::Protocol::Common::VersionMessage</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>Defines request and response types for messages sent using ID VERSION_MESSAGE_ID, used to check which versions of the MessageSocket framing protocol the server supports. </p>
+<br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html">LogCabin::Protocol::Common::ServiceId</a></td></tr>
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#a22c6438e512e84fa30d19c2fad7eba9caa9728f693e5b04009f08df50d73e9662">LogCabin::Protocol::Common::DEFAULT_PORT</a>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The default TCP port on which <a class="el" href="namespaceLogCabin.html">LogCabin</a> servers serve RPCs.  <a href="namespaceLogCabin_1_1Protocol_1_1Common.html#a22c6438e512e84fa30d19c2fad7eba9c">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a">LogCabin::Protocol::Common::PING_MESSAGE_ID</a>
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br/>
+&#160;&#160;<a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a">LogCabin::Protocol::Common::PING_MESSAGE_ID</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1af7801e2db2d8799c1bea9ee928a1e39b">LogCabin::Protocol::Common::VERSION_MESSAGE_ID</a>
+<br/>
  }</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A MessageSocket::MessageID reserved for ping messages that are used to check the server's liveness.  <a href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserved MessageSocket::MessageID values.  <a href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa6228f646abedfa36fd7716cb7228570a04fad61d856722e9a6d32f23980b332f">LogCabin::Protocol::Common::MAX_MESSAGE_LENGTH</a>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of bytes per RPC request or response, including these headers.  <a href="namespaceLogCabin_1_1Protocol_1_1Common.html#aa6228f646abedfa36fd7716cb7228570">More...</a><br/></td></tr>

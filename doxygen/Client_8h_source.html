@@ -663,142 +663,143 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00581"></a>00581 <span class="comment">    /**</span>
 <a name="l00582"></a>00582 <span class="comment">     * Settings for the client library. These are all optional.</span>
 <a name="l00583"></a>00583 <span class="comment">     * Currently supported options:</span>
-<a name="l00584"></a>00584 <span class="comment">     * - tcpHeartbeatTimeoutMilliseconds (see sample.conf)</span>
-<a name="l00585"></a>00585 <span class="comment">     * - tcpConnectTimeoutMilliseconds (see sample.conf)</span>
-<a name="l00586"></a>00586 <span class="comment">     */</span>
-<a name="l00587"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb">00587</a>     <span class="keyword">typedef</span> std::map&lt;std::string, std::string&gt; <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb" title="Settings for the client library.">Options</a>;
-<a name="l00588"></a>00588 <span class="comment"></span>
-<a name="l00589"></a>00589 <span class="comment">    /**</span>
-<a name="l00590"></a>00590 <span class="comment">     * Construct a Cluster object for testing purposes only. Instead of</span>
-<a name="l00591"></a>00591 <span class="comment">     * connecting to a LogCabin cluster, it will keep all state locally in</span>
-<a name="l00592"></a>00592 <span class="comment">     * memory.</span>
-<a name="l00593"></a>00593 <span class="comment">     *</span>
-<a name="l00594"></a>00594 <span class="comment">     * This is experimental and is not part of LogCabin&#39;s public API.</span>
-<a name="l00595"></a>00595 <span class="comment">     *</span>
-<a name="l00596"></a>00596 <span class="comment">     * \param testingCallbacks</span>
-<a name="l00597"></a>00597 <span class="comment">     *      These allow the application to interpose on requests. A</span>
-<a name="l00598"></a>00598 <span class="comment">     *      default-constructed TestingCallbacks will execute requests against</span>
-<a name="l00599"></a>00599 <span class="comment">     *      an in-memory structure. Applications can pass in classes derived</span>
-<a name="l00600"></a>00600 <span class="comment">     *      from TestingCallbacks to model failures and more dynamic scenarios.</span>
-<a name="l00601"></a>00601 <span class="comment">     * \param options</span>
-<a name="l00602"></a>00602 <span class="comment">     *      Settings for the client library (see #Options).</span>
-<a name="l00603"></a>00603 <span class="comment">     */</span>
-<a name="l00604"></a>00604     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a79ec00656796213bedf85e19e5dbb32d" title="Construct a Cluster object for testing purposes only.">Cluster</a>(std::shared_ptr&lt;TestingCallbacks&gt; testingCallbacks,
-<a name="l00605"></a>00605                      <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb" title="Settings for the client library.">Options</a>&amp; options = <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb" title="Settings for the client library.">Options</a>());
-<a name="l00606"></a>00606 <span class="comment"></span>
-<a name="l00607"></a>00607 <span class="comment">    /**</span>
-<a name="l00608"></a>00608 <span class="comment">     * Constructor.</span>
-<a name="l00609"></a>00609 <span class="comment">     * \param hosts</span>
-<a name="l00610"></a>00610 <span class="comment">     *      A string describing the hosts in the cluster. This should be of the</span>
-<a name="l00611"></a>00611 <span class="comment">     *      form host:port, where host is usually a DNS name that resolves to</span>
-<a name="l00612"></a>00612 <span class="comment">     *      multiple IP addresses. Alternatively, you can pass a list of hosts</span>
-<a name="l00613"></a>00613 <span class="comment">     *      as host1:port1,host2:port2,host3:port3.</span>
-<a name="l00614"></a>00614 <span class="comment">     * \param options</span>
-<a name="l00615"></a>00615 <span class="comment">     *      Settings for the client library (see #Options).</span>
-<a name="l00616"></a>00616 <span class="comment">     */</span>
-<a name="l00617"></a>00617     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a79ec00656796213bedf85e19e5dbb32d" title="Construct a Cluster object for testing purposes only.">Cluster</a>(<span class="keyword">const</span> std::string&amp; hosts,
-<a name="l00618"></a>00618                      <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb" title="Settings for the client library.">Options</a>&amp; options = <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb" title="Settings for the client library.">Options</a>());
-<a name="l00619"></a>00619 <span class="comment"></span>
-<a name="l00620"></a>00620 <span class="comment">    /**</span>
-<a name="l00621"></a>00621 <span class="comment">     * Destructor.</span>
-<a name="l00622"></a>00622 <span class="comment">     */</span>
-<a name="l00623"></a>00623     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a1f69768e6df8502e765ada146e785bcf" title="Destructor.">~Cluster</a>();
-<a name="l00624"></a>00624 <span class="comment"></span>
-<a name="l00625"></a>00625 <span class="comment">    /**</span>
-<a name="l00626"></a>00626 <span class="comment">     * Get the current, stable cluster configuration.</span>
-<a name="l00627"></a>00627 <span class="comment">     * \return</span>
-<a name="l00628"></a>00628 <span class="comment">     *      first: configurationId: Identifies the configuration.</span>
-<a name="l00629"></a>00629 <span class="comment">     *             Pass this to setConfiguration later.</span>
-<a name="l00630"></a>00630 <span class="comment">     *      second: The list of servers in the configuration.</span>
-<a name="l00631"></a>00631 <span class="comment">     */</span>
-<a name="l00632"></a>00632     std::pair&lt;uint64_t, Configuration&gt; <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a51ac6fd68d84f3659f6b975cfba69e23" title="Get the current, stable cluster configuration.">getConfiguration</a>() <span class="keyword">const</span>;
-<a name="l00633"></a>00633 <span class="comment"></span>
-<a name="l00634"></a>00634 <span class="comment">    /**</span>
-<a name="l00635"></a>00635 <span class="comment">     * Change the cluster&#39;s configuration.</span>
-<a name="l00636"></a>00636 <span class="comment">     * \param oldId</span>
-<a name="l00637"></a>00637 <span class="comment">     *      The ID of the cluster&#39;s current configuration.</span>
-<a name="l00638"></a>00638 <span class="comment">     * \param newConfiguration</span>
-<a name="l00639"></a>00639 <span class="comment">     *      The list of servers in the new configuration.</span>
-<a name="l00640"></a>00640 <span class="comment">     */</span>
-<a name="l00641"></a>00641     <a class="code" href="structLogCabin_1_1Client_1_1ConfigurationResult.html" title="Returned by Cluster::setConfiguration.">ConfigurationResult</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#ad81d174f4a9fc07f2afe12713d8b379f" title="Change the cluster&#39;s configuration.">setConfiguration</a>(
-<a name="l00642"></a>00642                                 uint64_t oldId,
-<a name="l00643"></a>00643                                 <span class="keyword">const</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2" title="Defines the members of the cluster.">Configuration</a>&amp; newConfiguration);
-<a name="l00644"></a>00644 <span class="comment"></span>
-<a name="l00645"></a>00645 <span class="comment">    /**</span>
-<a name="l00646"></a>00646 <span class="comment">     * Retrieve basic information from the given server, like its ID and the</span>
-<a name="l00647"></a>00647 <span class="comment">     * addresses on which it is listening.</span>
-<a name="l00648"></a>00648 <span class="comment">     * \param host</span>
-<a name="l00649"></a>00649 <span class="comment">     *      The hostname or IP address of the server to retrieve stats from. It</span>
-<a name="l00650"></a>00650 <span class="comment">     *      is recommended that you do not use a DNS name that resolves to</span>
-<a name="l00651"></a>00651 <span class="comment">     *      multiple hosts here.</span>
-<a name="l00652"></a>00652 <span class="comment">     * \param timeoutNanoseconds</span>
-<a name="l00653"></a>00653 <span class="comment">     *      Abort the operation if it has not completed within the specified</span>
-<a name="l00654"></a>00654 <span class="comment">     *      period of time. Time is specified in nanoseconds, and the special</span>
-<a name="l00655"></a>00655 <span class="comment">     *      value of 0 indicates no timeout.</span>
-<a name="l00656"></a>00656 <span class="comment">     * \warning</span>
-<a name="l00657"></a>00657 <span class="comment">     *      The client library does not currently implement timeouts for DNS</span>
-<a name="l00658"></a>00658 <span class="comment">     *      lookups. See https://github.com/logcabin/logcabin/issues/75</span>
-<a name="l00659"></a>00659 <span class="comment">     * \param[out] info</span>
-<a name="l00660"></a>00660 <span class="comment">     *      Protocol buffer of Stats as retrieved from the server.</span>
-<a name="l00661"></a>00661 <span class="comment">     * \return</span>
-<a name="l00662"></a>00662 <span class="comment">     *      Either OK or TIMEOUT.</span>
-<a name="l00663"></a>00663 <span class="comment">     */</span>
-<a name="l00664"></a>00664     <a class="code" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a>
-<a name="l00665"></a>00665     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7ebf0a13c59ddbc790875c53baf89517" title="Retrieve basic information from the given server, like its ID and the addresses on which it is listen...">getServerInfo</a>(<span class="keyword">const</span> std::string&amp; host,
-<a name="l00666"></a>00666                   uint64_t timeoutNanoseconds,
-<a name="l00667"></a>00667                   <a class="code" href="structLogCabin_1_1Client_1_1Server.html" title="A member of the cluster Configuration.">Server</a>&amp; info);<span class="comment"></span>
-<a name="l00668"></a>00668 <span class="comment">    /**</span>
-<a name="l00669"></a>00669 <span class="comment">     * Like getServerStats but throws exceptions upon errors.</span>
-<a name="l00670"></a>00670 <span class="comment">     */</span>
-<a name="l00671"></a>00671     <a class="code" href="structLogCabin_1_1Client_1_1Server.html" title="A member of the cluster Configuration.">Server</a>
-<a name="l00672"></a>00672     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a0c2b38e28157bad21b90250f97949d84" title="Like getServerStats but throws exceptions upon errors.">getServerInfoEx</a>(<span class="keyword">const</span> std::string&amp; host,
-<a name="l00673"></a>00673                     uint64_t timeoutNanoseconds);
-<a name="l00674"></a>00674 <span class="comment"></span>
-<a name="l00675"></a>00675 <span class="comment">    /**</span>
-<a name="l00676"></a>00676 <span class="comment">     * Retrieve statistics from the given server, which are useful for</span>
-<a name="l00677"></a>00677 <span class="comment">     * diagnostics.</span>
-<a name="l00678"></a>00678 <span class="comment">     * \param host</span>
-<a name="l00679"></a>00679 <span class="comment">     *      The hostname or IP address of the server to retrieve stats from. It</span>
-<a name="l00680"></a>00680 <span class="comment">     *      is recommended that you do not use a DNS name that resolves to</span>
-<a name="l00681"></a>00681 <span class="comment">     *      multiple hosts here.</span>
-<a name="l00682"></a>00682 <span class="comment">     * \param timeoutNanoseconds</span>
-<a name="l00683"></a>00683 <span class="comment">     *      Abort the operation if it has not completed within the specified</span>
-<a name="l00684"></a>00684 <span class="comment">     *      period of time. Time is specified in nanoseconds, and the special</span>
-<a name="l00685"></a>00685 <span class="comment">     *      value of 0 indicates no timeout.</span>
-<a name="l00686"></a>00686 <span class="comment">     * \warning</span>
-<a name="l00687"></a>00687 <span class="comment">     *      The client library does not currently implement timeouts for DNS</span>
-<a name="l00688"></a>00688 <span class="comment">     *      lookups. See https://github.com/logcabin/logcabin/issues/75</span>
-<a name="l00689"></a>00689 <span class="comment">     * \param[out] stats</span>
-<a name="l00690"></a>00690 <span class="comment">     *      Protocol buffer of Stats as retrieved from the server.</span>
-<a name="l00691"></a>00691 <span class="comment">     * \return</span>
-<a name="l00692"></a>00692 <span class="comment">     *      Either OK or TIMEOUT.</span>
-<a name="l00693"></a>00693 <span class="comment">     */</span>
-<a name="l00694"></a>00694     <a class="code" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a>
-<a name="l00695"></a>00695     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507" title="Retrieve statistics from the given server, which are useful for diagnostics.">getServerStats</a>(<span class="keyword">const</span> std::string&amp; host,
-<a name="l00696"></a>00696                    uint64_t timeoutNanoseconds,
-<a name="l00697"></a>00697                    Protocol::ServerStats&amp; stats);<span class="comment"></span>
-<a name="l00698"></a>00698 <span class="comment">    /**</span>
-<a name="l00699"></a>00699 <span class="comment">     * Like getServerStats but throws exceptions upon errors.</span>
-<a name="l00700"></a>00700 <span class="comment">     */</span>
-<a name="l00701"></a>00701     Protocol::ServerStats
-<a name="l00702"></a>00702     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a883654b25aa346a5cf8d0b843be6595e" title="Like getServerStats but throws exceptions upon errors.">getServerStatsEx</a>(<span class="keyword">const</span> std::string&amp; host,
-<a name="l00703"></a>00703                      uint64_t timeoutNanoseconds);
-<a name="l00704"></a>00704 <span class="comment"></span>
-<a name="l00705"></a>00705 <span class="comment">    /**</span>
-<a name="l00706"></a>00706 <span class="comment">     * Return an object to access the hierarchical key-value store.</span>
-<a name="l00707"></a>00707 <span class="comment">     * \return</span>
-<a name="l00708"></a>00708 <span class="comment">     *      A Tree object with the working directory of &#39;/&#39;.</span>
-<a name="l00709"></a>00709 <span class="comment">     */</span>
-<a name="l00710"></a>00710     <a class="code" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#ab04d52131d9ddb8c0aa140c359dc2841" title="Return an object to access the hierarchical key-value store.">getTree</a>();
-<a name="l00711"></a>00711 
-<a name="l00712"></a>00712   <span class="keyword">private</span>:
-<a name="l00713"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">00713</a>     std::shared_ptr&lt;ClientImpl&gt; <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">clientImpl</a>;
-<a name="l00714"></a>00714 };
-<a name="l00715"></a>00715 
-<a name="l00716"></a>00716 } <span class="comment">// namespace LogCabin::Client</span>
-<a name="l00717"></a>00717 } <span class="comment">// namespace LogCabin</span>
-<a name="l00718"></a>00718 
-<a name="l00719"></a>00719 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_INCLUDE_LOGCABIN_CLIENT_H */</span>
+<a name="l00584"></a>00584 <span class="comment">     * - clusterUUID (see sample.conf)</span>
+<a name="l00585"></a>00585 <span class="comment">     * - tcpHeartbeatTimeoutMilliseconds (see sample.conf)</span>
+<a name="l00586"></a>00586 <span class="comment">     * - tcpConnectTimeoutMilliseconds (see sample.conf)</span>
+<a name="l00587"></a>00587 <span class="comment">     */</span>
+<a name="l00588"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb">00588</a>     <span class="keyword">typedef</span> std::map&lt;std::string, std::string&gt; <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb" title="Settings for the client library.">Options</a>;
+<a name="l00589"></a>00589 <span class="comment"></span>
+<a name="l00590"></a>00590 <span class="comment">    /**</span>
+<a name="l00591"></a>00591 <span class="comment">     * Construct a Cluster object for testing purposes only. Instead of</span>
+<a name="l00592"></a>00592 <span class="comment">     * connecting to a LogCabin cluster, it will keep all state locally in</span>
+<a name="l00593"></a>00593 <span class="comment">     * memory.</span>
+<a name="l00594"></a>00594 <span class="comment">     *</span>
+<a name="l00595"></a>00595 <span class="comment">     * This is experimental and is not part of LogCabin&#39;s public API.</span>
+<a name="l00596"></a>00596 <span class="comment">     *</span>
+<a name="l00597"></a>00597 <span class="comment">     * \param testingCallbacks</span>
+<a name="l00598"></a>00598 <span class="comment">     *      These allow the application to interpose on requests. A</span>
+<a name="l00599"></a>00599 <span class="comment">     *      default-constructed TestingCallbacks will execute requests against</span>
+<a name="l00600"></a>00600 <span class="comment">     *      an in-memory structure. Applications can pass in classes derived</span>
+<a name="l00601"></a>00601 <span class="comment">     *      from TestingCallbacks to model failures and more dynamic scenarios.</span>
+<a name="l00602"></a>00602 <span class="comment">     * \param options</span>
+<a name="l00603"></a>00603 <span class="comment">     *      Settings for the client library (see #Options).</span>
+<a name="l00604"></a>00604 <span class="comment">     */</span>
+<a name="l00605"></a>00605     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a79ec00656796213bedf85e19e5dbb32d" title="Construct a Cluster object for testing purposes only.">Cluster</a>(std::shared_ptr&lt;TestingCallbacks&gt; testingCallbacks,
+<a name="l00606"></a>00606                      <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb" title="Settings for the client library.">Options</a>&amp; options = <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb" title="Settings for the client library.">Options</a>());
+<a name="l00607"></a>00607 <span class="comment"></span>
+<a name="l00608"></a>00608 <span class="comment">    /**</span>
+<a name="l00609"></a>00609 <span class="comment">     * Constructor.</span>
+<a name="l00610"></a>00610 <span class="comment">     * \param hosts</span>
+<a name="l00611"></a>00611 <span class="comment">     *      A string describing the hosts in the cluster. This should be of the</span>
+<a name="l00612"></a>00612 <span class="comment">     *      form host:port, where host is usually a DNS name that resolves to</span>
+<a name="l00613"></a>00613 <span class="comment">     *      multiple IP addresses. Alternatively, you can pass a list of hosts</span>
+<a name="l00614"></a>00614 <span class="comment">     *      as host1:port1,host2:port2,host3:port3.</span>
+<a name="l00615"></a>00615 <span class="comment">     * \param options</span>
+<a name="l00616"></a>00616 <span class="comment">     *      Settings for the client library (see #Options).</span>
+<a name="l00617"></a>00617 <span class="comment">     */</span>
+<a name="l00618"></a>00618     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a79ec00656796213bedf85e19e5dbb32d" title="Construct a Cluster object for testing purposes only.">Cluster</a>(<span class="keyword">const</span> std::string&amp; hosts,
+<a name="l00619"></a>00619                      <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb" title="Settings for the client library.">Options</a>&amp; options = <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a2b6a1f4ea0bcfc15f5425101c702b6fb" title="Settings for the client library.">Options</a>());
+<a name="l00620"></a>00620 <span class="comment"></span>
+<a name="l00621"></a>00621 <span class="comment">    /**</span>
+<a name="l00622"></a>00622 <span class="comment">     * Destructor.</span>
+<a name="l00623"></a>00623 <span class="comment">     */</span>
+<a name="l00624"></a>00624     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a1f69768e6df8502e765ada146e785bcf" title="Destructor.">~Cluster</a>();
+<a name="l00625"></a>00625 <span class="comment"></span>
+<a name="l00626"></a>00626 <span class="comment">    /**</span>
+<a name="l00627"></a>00627 <span class="comment">     * Get the current, stable cluster configuration.</span>
+<a name="l00628"></a>00628 <span class="comment">     * \return</span>
+<a name="l00629"></a>00629 <span class="comment">     *      first: configurationId: Identifies the configuration.</span>
+<a name="l00630"></a>00630 <span class="comment">     *             Pass this to setConfiguration later.</span>
+<a name="l00631"></a>00631 <span class="comment">     *      second: The list of servers in the configuration.</span>
+<a name="l00632"></a>00632 <span class="comment">     */</span>
+<a name="l00633"></a>00633     std::pair&lt;uint64_t, Configuration&gt; <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a51ac6fd68d84f3659f6b975cfba69e23" title="Get the current, stable cluster configuration.">getConfiguration</a>() <span class="keyword">const</span>;
+<a name="l00634"></a>00634 <span class="comment"></span>
+<a name="l00635"></a>00635 <span class="comment">    /**</span>
+<a name="l00636"></a>00636 <span class="comment">     * Change the cluster&#39;s configuration.</span>
+<a name="l00637"></a>00637 <span class="comment">     * \param oldId</span>
+<a name="l00638"></a>00638 <span class="comment">     *      The ID of the cluster&#39;s current configuration.</span>
+<a name="l00639"></a>00639 <span class="comment">     * \param newConfiguration</span>
+<a name="l00640"></a>00640 <span class="comment">     *      The list of servers in the new configuration.</span>
+<a name="l00641"></a>00641 <span class="comment">     */</span>
+<a name="l00642"></a>00642     <a class="code" href="structLogCabin_1_1Client_1_1ConfigurationResult.html" title="Returned by Cluster::setConfiguration.">ConfigurationResult</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#ad81d174f4a9fc07f2afe12713d8b379f" title="Change the cluster&#39;s configuration.">setConfiguration</a>(
+<a name="l00643"></a>00643                                 uint64_t oldId,
+<a name="l00644"></a>00644                                 <span class="keyword">const</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2" title="Defines the members of the cluster.">Configuration</a>&amp; newConfiguration);
+<a name="l00645"></a>00645 <span class="comment"></span>
+<a name="l00646"></a>00646 <span class="comment">    /**</span>
+<a name="l00647"></a>00647 <span class="comment">     * Retrieve basic information from the given server, like its ID and the</span>
+<a name="l00648"></a>00648 <span class="comment">     * addresses on which it is listening.</span>
+<a name="l00649"></a>00649 <span class="comment">     * \param host</span>
+<a name="l00650"></a>00650 <span class="comment">     *      The hostname or IP address of the server to retrieve stats from. It</span>
+<a name="l00651"></a>00651 <span class="comment">     *      is recommended that you do not use a DNS name that resolves to</span>
+<a name="l00652"></a>00652 <span class="comment">     *      multiple hosts here.</span>
+<a name="l00653"></a>00653 <span class="comment">     * \param timeoutNanoseconds</span>
+<a name="l00654"></a>00654 <span class="comment">     *      Abort the operation if it has not completed within the specified</span>
+<a name="l00655"></a>00655 <span class="comment">     *      period of time. Time is specified in nanoseconds, and the special</span>
+<a name="l00656"></a>00656 <span class="comment">     *      value of 0 indicates no timeout.</span>
+<a name="l00657"></a>00657 <span class="comment">     * \warning</span>
+<a name="l00658"></a>00658 <span class="comment">     *      The client library does not currently implement timeouts for DNS</span>
+<a name="l00659"></a>00659 <span class="comment">     *      lookups. See https://github.com/logcabin/logcabin/issues/75</span>
+<a name="l00660"></a>00660 <span class="comment">     * \param[out] info</span>
+<a name="l00661"></a>00661 <span class="comment">     *      Protocol buffer of Stats as retrieved from the server.</span>
+<a name="l00662"></a>00662 <span class="comment">     * \return</span>
+<a name="l00663"></a>00663 <span class="comment">     *      Either OK or TIMEOUT.</span>
+<a name="l00664"></a>00664 <span class="comment">     */</span>
+<a name="l00665"></a>00665     <a class="code" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a>
+<a name="l00666"></a>00666     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7ebf0a13c59ddbc790875c53baf89517" title="Retrieve basic information from the given server, like its ID and the addresses on which it is listen...">getServerInfo</a>(<span class="keyword">const</span> std::string&amp; host,
+<a name="l00667"></a>00667                   uint64_t timeoutNanoseconds,
+<a name="l00668"></a>00668                   <a class="code" href="structLogCabin_1_1Client_1_1Server.html" title="A member of the cluster Configuration.">Server</a>&amp; info);<span class="comment"></span>
+<a name="l00669"></a>00669 <span class="comment">    /**</span>
+<a name="l00670"></a>00670 <span class="comment">     * Like getServerStats but throws exceptions upon errors.</span>
+<a name="l00671"></a>00671 <span class="comment">     */</span>
+<a name="l00672"></a>00672     <a class="code" href="structLogCabin_1_1Client_1_1Server.html" title="A member of the cluster Configuration.">Server</a>
+<a name="l00673"></a>00673     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a0c2b38e28157bad21b90250f97949d84" title="Like getServerStats but throws exceptions upon errors.">getServerInfoEx</a>(<span class="keyword">const</span> std::string&amp; host,
+<a name="l00674"></a>00674                     uint64_t timeoutNanoseconds);
+<a name="l00675"></a>00675 <span class="comment"></span>
+<a name="l00676"></a>00676 <span class="comment">    /**</span>
+<a name="l00677"></a>00677 <span class="comment">     * Retrieve statistics from the given server, which are useful for</span>
+<a name="l00678"></a>00678 <span class="comment">     * diagnostics.</span>
+<a name="l00679"></a>00679 <span class="comment">     * \param host</span>
+<a name="l00680"></a>00680 <span class="comment">     *      The hostname or IP address of the server to retrieve stats from. It</span>
+<a name="l00681"></a>00681 <span class="comment">     *      is recommended that you do not use a DNS name that resolves to</span>
+<a name="l00682"></a>00682 <span class="comment">     *      multiple hosts here.</span>
+<a name="l00683"></a>00683 <span class="comment">     * \param timeoutNanoseconds</span>
+<a name="l00684"></a>00684 <span class="comment">     *      Abort the operation if it has not completed within the specified</span>
+<a name="l00685"></a>00685 <span class="comment">     *      period of time. Time is specified in nanoseconds, and the special</span>
+<a name="l00686"></a>00686 <span class="comment">     *      value of 0 indicates no timeout.</span>
+<a name="l00687"></a>00687 <span class="comment">     * \warning</span>
+<a name="l00688"></a>00688 <span class="comment">     *      The client library does not currently implement timeouts for DNS</span>
+<a name="l00689"></a>00689 <span class="comment">     *      lookups. See https://github.com/logcabin/logcabin/issues/75</span>
+<a name="l00690"></a>00690 <span class="comment">     * \param[out] stats</span>
+<a name="l00691"></a>00691 <span class="comment">     *      Protocol buffer of Stats as retrieved from the server.</span>
+<a name="l00692"></a>00692 <span class="comment">     * \return</span>
+<a name="l00693"></a>00693 <span class="comment">     *      Either OK or TIMEOUT.</span>
+<a name="l00694"></a>00694 <span class="comment">     */</span>
+<a name="l00695"></a>00695     <a class="code" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a>
+<a name="l00696"></a>00696     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507" title="Retrieve statistics from the given server, which are useful for diagnostics.">getServerStats</a>(<span class="keyword">const</span> std::string&amp; host,
+<a name="l00697"></a>00697                    uint64_t timeoutNanoseconds,
+<a name="l00698"></a>00698                    Protocol::ServerStats&amp; stats);<span class="comment"></span>
+<a name="l00699"></a>00699 <span class="comment">    /**</span>
+<a name="l00700"></a>00700 <span class="comment">     * Like getServerStats but throws exceptions upon errors.</span>
+<a name="l00701"></a>00701 <span class="comment">     */</span>
+<a name="l00702"></a>00702     Protocol::ServerStats
+<a name="l00703"></a>00703     <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a883654b25aa346a5cf8d0b843be6595e" title="Like getServerStats but throws exceptions upon errors.">getServerStatsEx</a>(<span class="keyword">const</span> std::string&amp; host,
+<a name="l00704"></a>00704                      uint64_t timeoutNanoseconds);
+<a name="l00705"></a>00705 <span class="comment"></span>
+<a name="l00706"></a>00706 <span class="comment">    /**</span>
+<a name="l00707"></a>00707 <span class="comment">     * Return an object to access the hierarchical key-value store.</span>
+<a name="l00708"></a>00708 <span class="comment">     * \return</span>
+<a name="l00709"></a>00709 <span class="comment">     *      A Tree object with the working directory of &#39;/&#39;.</span>
+<a name="l00710"></a>00710 <span class="comment">     */</span>
+<a name="l00711"></a>00711     <a class="code" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#ab04d52131d9ddb8c0aa140c359dc2841" title="Return an object to access the hierarchical key-value store.">getTree</a>();
+<a name="l00712"></a>00712 
+<a name="l00713"></a>00713   <span class="keyword">private</span>:
+<a name="l00714"></a><a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">00714</a>     std::shared_ptr&lt;ClientImpl&gt; <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html#a7a67b4852067c38e470b29a3a9c37b8d">clientImpl</a>;
+<a name="l00715"></a>00715 };
+<a name="l00716"></a>00716 
+<a name="l00717"></a>00717 } <span class="comment">// namespace LogCabin::Client</span>
+<a name="l00718"></a>00718 } <span class="comment">// namespace LogCabin</span>
+<a name="l00719"></a>00719 
+<a name="l00720"></a>00720 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_INCLUDE_LOGCABIN_CLIENT_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

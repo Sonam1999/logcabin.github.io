@@ -12,6 +12,8 @@ var searchData=
   ['service_2eh',['Service.h',['../Service_8h.html',1,'']]],
   ['servicemock_2ecc',['ServiceMock.cc',['../ServiceMock_8cc.html',1,'']]],
   ['servicemock_2eh',['ServiceMock.h',['../ServiceMock_8h.html',1,'']]],
+  ['sessionmanager_2ecc',['SessionManager.cc',['../SessionManager_8cc.html',1,'']]],
+  ['sessionmanager_2eh',['SessionManager.h',['../SessionManager_8h.html',1,'']]],
   ['signal_2ecc',['Signal.cc',['../Signal_8cc.html',1,'']]],
   ['signal_2eh',['Signal.h',['../Signal_8h.html',1,'']]],
   ['simplefilelog_2ecc',['SimpleFileLog.cc',['../SimpleFileLog_8cc.html',1,'']]],

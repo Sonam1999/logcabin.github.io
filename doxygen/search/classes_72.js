@@ -9,12 +9,14 @@ var searchData=
   ['record',['Record',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record.html',1,'LogCabin::Storage::SegmentedLog::Segment']]],
   ['rejectinvalidrequest',['RejectInvalidRequest',['../classLogCabin_1_1RPC_1_1ServiceMock_1_1RejectInvalidRequest.html',1,'LogCabin::RPC::ServiceMock']]],
   ['reply',['Reply',['../classLogCabin_1_1RPC_1_1ServiceMock_1_1Reply.html',1,'LogCabin::RPC::ServiceMock']]],
+  ['request',['Request',['../structLogCabin_1_1Protocol_1_1Common_1_1VersionMessage_1_1Request.html',1,'LogCabin::Protocol::Common::VersionMessage']]],
   ['requestheaderprefix',['RequestHeaderPrefix',['../structLogCabin_1_1RPC_1_1Protocol_1_1RequestHeaderPrefix.html',1,'LogCabin::RPC::Protocol']]],
   ['requestheaderversion1',['RequestHeaderVersion1',['../structLogCabin_1_1RPC_1_1Protocol_1_1RequestHeaderVersion1.html',1,'LogCabin::RPC::Protocol']]],
+  ['response',['Response',['../structLogCabin_1_1Protocol_1_1Common_1_1VersionMessage_1_1Response.html',1,'LogCabin::Protocol::Common::VersionMessage']]],
   ['response',['Response',['../structLogCabin_1_1RPC_1_1ClientSession_1_1Response.html',1,'LogCabin::RPC::ClientSession']]],
   ['responseheaderprefix',['ResponseHeaderPrefix',['../structLogCabin_1_1RPC_1_1Protocol_1_1ResponseHeaderPrefix.html',1,'LogCabin::RPC::Protocol']]],
   ['responseheaderversion1',['ResponseHeaderVersion1',['../structLogCabin_1_1RPC_1_1Protocol_1_1ResponseHeaderVersion1.html',1,'LogCabin::RPC::Protocol']]],
-  ['result',['Result',['../structLogCabin_1_1Tree_1_1Result.html',1,'LogCabin::Tree']]],
   ['result',['Result',['../structLogCabin_1_1Client_1_1Result.html',1,'LogCabin::Client']]],
+  ['result',['Result',['../structLogCabin_1_1Tree_1_1Result.html',1,'LogCabin::Tree']]],
   ['rpchandler',['RPCHandler',['../classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html',1,'LogCabin::RPC::Server']]]
 ];

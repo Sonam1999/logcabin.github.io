@@ -53,5 +53,5 @@ var searchData=
   ['outboundqueuemutex',['outboundQueueMutex',['../classLogCabin_1_1RPC_1_1MessageSocket.html#af0786d1f0f2169feb5d8ca39f48f1048',1,'LogCabin::RPC::MessageSocket']]],
   ['outputstream',['OutputStream',['../structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html',1,'LogCabin::Core::ProtoBuf']]],
   ['outstandingrpcnumbers',['outstandingRPCNumbers',['../classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a04f2d3fd5ef5e6c529dc7d0976fd8306',1,'LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper']]],
-  ['ownership',['Ownership',['../classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25',1,'LogCabin::Event::File::Ownership()'],['../classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139',1,'LogCabin::Event::File::ownership()']]]
+  ['ownership',['ownership',['../classLogCabin_1_1Event_1_1File.html#ace0674277883dc8e370dd2584229e139',1,'LogCabin::Event::File::ownership()'],['../classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25',1,'LogCabin::Event::File::Ownership()']]]
 ];
