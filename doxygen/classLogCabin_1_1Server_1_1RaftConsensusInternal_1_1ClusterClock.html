@@ -139,7 +139,7 @@ Public Attributes</h2></td></tr>
 <p>The <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html" title="Interprets and executes operations that have been committed into the Raft log.">StateMachine</a> uses cluster time to expire client sessions. Cluster times in committed log entries monotonically increase, so the state machine will see cluster times monotonically increase.</p>
 <p>Before cluster time, client sessions were expired based on the SystemClock. That meant that if the SystemClock jumped forwards drastically, all clients would expire. That's undesirable, so cluster time was introduced in #90 ("make client session timeout use monotonic clock") to address this. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00793">793</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00812">812</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a43efecbebdea1a5707fbc3d0ee20c757"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::ClusterClock::ClusterClock" ref="a43efecbebdea1a5707fbc3d0ee20c757" args="()" -->
 <div class="memitem">
@@ -157,7 +157,7 @@ Public Attributes</h2></td></tr>
 
 <p>Default constructor. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00778">778</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00782">782</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -180,7 +180,7 @@ Public Attributes</h2></td></tr>
 <p>Reset to the given cluster time, assuming it's the current time right now. </p>
 <p>This is used, for example, when a follower gets a new log entry (which includes a cluster time) from the leader. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00785">785</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00789">789</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -201,7 +201,7 @@ Public Attributes</h2></td></tr>
 <p>Called by leaders to generate a new cluster time for a new log entry. </p>
 <p>This is equivalent to the following but slightly more efficient: uint64_t now = c.interpolate(); c.newEpoch(now); return now; </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00792">792</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00796">796</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -221,7 +221,7 @@ Public Attributes</h2></td></tr>
 
 <p>Return the best approximation of the current cluster time, assuming there's been a leader all along. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00804">804</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00808">808</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -244,7 +244,7 @@ Public Attributes</h2></td></tr>
 <li>0. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00826">826</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00845">845</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -261,7 +261,7 @@ Public Attributes</h2></td></tr>
 
 <p>The local SteadyClock time when clusterTimeAtEpoch was set. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00831">831</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00850">850</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>

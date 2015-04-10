@@ -1,6 +1,7 @@
 var searchData=
 [
   ['fail',['FAIL',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0615edf4bb111f046846a730452b34bfabe09f273446e87ce894653f4b6d09076',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
+  ['failed',['FAILED',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0548ee7eb046a903349a22ff0a3c7bdaa15398142dc9aee5b6d4c20406dce7f23',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['fd',['fd',['../classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0',1,'LogCabin::Event::File::fd()'],['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092',1,'LogCabin::Storage::FilesystemUtil::File::fd()'],['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a66e52c154e31871ddd182a3cf22c0fac',1,'LogCabin::Storage::SegmentedLog::Sync::Op::fd()']]],
   ['fdatasync',['FDATASYNC',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a2dc118e94239a6a5cb97476357f35361adda0fe08bde939edf21a8d84a7a8a8bd',1,'LogCabin::Storage::SegmentedLog::Sync::Op::FDATASYNC()'],['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#af05d08c9ab6e409c77d38ae6b51bd67a',1,'LogCabin::Storage::FilesystemUtil::fdatasync()']]],
   ['fds',['fds',['../classLogCabin_1_1Storage_1_1SimpleFileLog_1_1Sync.html#a5d4c4fc4d3ca1635ecfc0556f4b64a76',1,'LogCabin::Storage::SimpleFileLog::Sync']]],
@@ -17,8 +18,8 @@ var searchData=
   ['filename1',['filename1',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#abdf9ae3cfefd4c251d1cf8cdb776413c',1,'LogCabin::Storage::SegmentedLog::Sync::Op']]],
   ['filename2',['filename2',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a6d8d55d4003695d4fb7d7585cb2809d5',1,'LogCabin::Storage::SegmentedLog::Sync::Op']]],
   ['filenamecounter',['filenameCounter',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a77befe83464268e8b645f89e6f9e962a',1,'LogCabin::Storage::SegmentedLog::PreparedSegments']]],
-  ['filenotfound',['FileNotFound',['../structLogCabin_1_1Core_1_1Config_1_1FileNotFound.html#a19ae62b02ea8d2104e5352db14100480',1,'LogCabin::Core::Config::FileNotFound']]],
   ['filenotfound',['FileNotFound',['../structLogCabin_1_1Core_1_1Config_1_1FileNotFound.html',1,'LogCabin::Core::Config']]],
+  ['filenotfound',['FileNotFound',['../structLogCabin_1_1Core_1_1Config_1_1FileNotFound.html#a19ae62b02ea8d2104e5352db14100480',1,'LogCabin::Core::Config::FileNotFound']]],
   ['filenotifier',['FileNotifier',['../structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html',1,'LogCabin::RPC::anonymous_namespace{ClientSession.cc}']]],
   ['filenotifier',['FileNotifier',['../structLogCabin_1_1RPC_1_1anonymous__namespace_02ClientSession_8cc_03_1_1FileNotifier.html#a1a8b5316d55cd83969ba57dfa1d3ee0d',1,'LogCabin::RPC::anonymous_namespace{ClientSession.cc}::FileNotifier']]],
   ['files',['files',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#ad9f05832405dc31e5a6b854a33b9a8c6',1,'LogCabin::Tree::Internal::Directory']]],

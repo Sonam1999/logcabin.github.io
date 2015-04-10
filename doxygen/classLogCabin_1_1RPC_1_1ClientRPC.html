@@ -127,7 +127,11 @@ Public Types</h2></td></tr>
 <br/>
 &#160;&#160;<a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a48a78577b16fe1d628e0b66e5afb7909">RPC_CANCELED</a>, 
 <br/>
-&#160;&#160;<a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3aa7111d3791fe1764a9d55ad9907a47f0">TIMEOUT</a>
+&#160;&#160;<a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3aa7111d3791fe1764a9d55ad9907a47f0">TIMEOUT</a>, 
+<br/>
+&#160;&#160;<a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a01ec2b9c3f61c1c392fce435c1fa3c1d">INVALID_SERVICE</a>, 
+<br/>
+&#160;&#160;<a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3aa4cff41b18b761d869bd74e65c629502">INVALID_REQUEST</a>
 <br/>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The return type of <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a5824f288f6066eae256f67b267943cd1" title="Wait for a reply to the RPC or an error.">waitForReply()</a>.  <a href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3">More...</a><br/></td></tr>
@@ -241,6 +245,12 @@ Private Attributes</h2></td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a7732b104e0010f946c5420ec05ec65a3aa7111d3791fe1764a9d55ad9907a47f0"></a><!-- doxytag: member="TIMEOUT" ref="a7732b104e0010f946c5420ec05ec65a3aa7111d3791fe1764a9d55ad9907a47f0" args="" -->TIMEOUT</em>&nbsp;</td><td>
 <p>The <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> did not complete before the given timeout elapsed. </p>
 <p>It is unknown whether or not the server executed the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> (yet). </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7732b104e0010f946c5420ec05ec65a3a01ec2b9c3f61c1c392fce435c1fa3c1d"></a><!-- doxytag: member="INVALID_SERVICE" ref="a7732b104e0010f946c5420ec05ec65a3a01ec2b9c3f61c1c392fce435c1fa3c1d" args="" -->INVALID_SERVICE</em>&nbsp;</td><td>
+<p>The server is not running the requested service. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a7732b104e0010f946c5420ec05ec65a3aa4cff41b18b761d869bd74e65c629502"></a><!-- doxytag: member="INVALID_REQUEST" ref="a7732b104e0010f946c5420ec05ec65a3aa4cff41b18b761d869bd74e65c629502" args="" -->INVALID_REQUEST</em>&nbsp;</td><td>
+<p>The server rejected the request, probably because it doesn't support the opcode, or maybe the request arguments were invalid. </p>
 </td></tr>
 </table>
 </dd>
@@ -518,7 +528,7 @@ Private Attributes</h2></td></tr>
 <p>All errors indicate that it is unknown whether or not the server executed the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. Unless the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> was canceled with <a class="el" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a70a114004ad27fac8bbc41dda1a27e1c" title="Abort the RPC.">cancel()</a>, the <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html" title="A ClientSession is used to initiate OpaqueClientRPCs.">ClientSession</a> has been disconnected and is no longer useful for initiating new RPCs.</p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>If an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> failure has occurred, a message describing that error. Otherwise, an empty string. </dd></dl>
 
-<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00208">208</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8cc_source.html#l00201">201</a> of file <a class="el" href="ClientRPC_8cc_source.html">ClientRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -554,7 +564,7 @@ Private Attributes</h2></td></tr>
 <p>Identifies the service running on the server. </p>
 <p>See <a class="el" href="namespaceLogCabin_1_1Protocol_1_1Common_1_1ServiceId.html">Protocol::Common::ServiceId</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00179">179</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00188">188</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
 
 </div>
 </div>
@@ -571,7 +581,7 @@ Private Attributes</h2></td></tr>
 
 <p>Identifies the remote procedure within the <a class="el" href="classLogCabin_1_1RPC_1_1Service.html" title="Base class for RPC services.">Service</a> to execute. </p>
 
-<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00184">184</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00193">193</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
 
 </div>
 </div>
@@ -586,7 +596,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00186">186</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientRPC_8h_source.html#l00195">195</a> of file <a class="el" href="ClientRPC_8h_source.html">ClientRPC.h</a>.</p>
 
 </div>
 </div>

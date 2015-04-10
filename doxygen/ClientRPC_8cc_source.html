@@ -257,63 +257,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00175"></a>00175             }
 <a name="l00176"></a>00176             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3ab129a4d2539b2521e3ac558c80dde7d6" title="The service threw an error (but at the transport level, the RPC succeeded).">Status::SERVICE_SPECIFIC_ERROR</a>;
 <a name="l00177"></a>00177 
-<a name="l00178"></a>00178         <span class="comment">// The server does not have the requested service.</span>
+<a name="l00178"></a>00178         <span class="comment">// The server is not running the requested service.</span>
 <a name="l00179"></a>00179         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a57b3feada853764683c0dda7595cbac5" title="The server does not have the requested service.">ProtocolStatus::INVALID_SERVICE</a>:
-<a name="l00180"></a>00180             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The server is not running the requested service (tried &quot;</span>
-<a name="l00181"></a>00181                   <span class="stringliteral">&quot;service %u, opcode %u)&quot;</span>,
-<a name="l00182"></a>00182                   <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a573aa520a006ff8a14b8eb559e9b5a53" title="Identifies the service running on the server.">service</a>, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a6fcfc8d2501ec0031ffa0feae14abf49" title="Identifies the remote procedure within the Service to execute.">opCode</a>);
-<a name="l00183"></a>00183 
-<a name="l00184"></a>00184         <span class="comment">// The server disliked our request. This shouldn&#39;t happen because</span>
-<a name="l00185"></a>00185         <span class="comment">// the higher layers of software were supposed to negotiate an RPC</span>
-<a name="l00186"></a>00186         <span class="comment">// protocol version.</span>
-<a name="l00187"></a>00187         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694aff3e9fbb7614ab1714ea489e399f19ea" title="The server did not like the RPC request.">ProtocolStatus::INVALID_REQUEST</a>:
-<a name="l00188"></a>00188             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;The server found the request to service %u, opcode %u to &quot;</span>
-<a name="l00189"></a>00189                   <span class="stringliteral">&quot;be invalid. This indicates a bug in the client or server &quot;</span>
-<a name="l00190"></a>00190                   <span class="stringliteral">&quot;in negotiating which RPCs the client may legally send to &quot;</span>
-<a name="l00191"></a>00191                   <span class="stringliteral">&quot;the server.&quot;</span>,
-<a name="l00192"></a>00192                   <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a573aa520a006ff8a14b8eb559e9b5a53" title="Identifies the service running on the server.">service</a>, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a6fcfc8d2501ec0031ffa0feae14abf49" title="Identifies the remote procedure within the Service to execute.">opCode</a>);
-<a name="l00193"></a>00193 
-<a name="l00194"></a>00194         <span class="keywordflow">default</span>:
-<a name="l00195"></a>00195             <span class="comment">// The server shouldn&#39;t reply back with status codes we don&#39;t</span>
-<a name="l00196"></a>00196             <span class="comment">// understand. That&#39;s why we gave it a version number in the</span>
-<a name="l00197"></a>00197             <span class="comment">// request header.</span>
-<a name="l00198"></a>00198             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Unknown status %u returned from server after sending it &quot;</span>
-<a name="l00199"></a>00199                   <span class="stringliteral">&quot;protocol version 1 in the request header for RPC to &quot;</span>
-<a name="l00200"></a>00200                   <span class="stringliteral">&quot;service %u, opcode %u. This probably indicates a bug in &quot;</span>
-<a name="l00201"></a>00201                   <span class="stringliteral">&quot;the server.&quot;</span>,
-<a name="l00202"></a>00202                   uint32_t(responseHeader.prefix.status), <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a573aa520a006ff8a14b8eb559e9b5a53" title="Identifies the service running on the server.">service</a>, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a6fcfc8d2501ec0031ffa0feae14abf49" title="Identifies the remote procedure within the Service to execute.">opCode</a>);
-<a name="l00203"></a>00203     }
-<a name="l00204"></a>00204 
-<a name="l00205"></a>00205 }
-<a name="l00206"></a>00206 
-<a name="l00207"></a>00207 std::string
-<a name="l00208"></a><a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#ac05c315769570fb5c612cc96a292aba2">00208</a> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#ac05c315769570fb5c612cc96a292aba2" title="If an RPC failure occurred, return a message describing that error.">ClientRPC::getErrorMessage</a>()<span class="keyword"> const</span>
-<a name="l00209"></a>00209 <span class="keyword"></span>{
-<a name="l00210"></a>00210     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#ae582457d237dfa5f835b84bcaef61c39" title="If an error has occurred, return a message describing that error.">getErrorMessage</a>();
-<a name="l00211"></a>00211 }
-<a name="l00212"></a>00212 
-<a name="l00213"></a>00213 ::std::ostream&amp;
-<a name="l00214"></a><a class="code" href="namespaceLogCabin_1_1RPC.html#a7a6fcacd0839f64cc09b65ab2fa5a5d1">00214</a> <a class="code" href="namespaceLogCabin_1_1RPC.html#a7a6fcacd0839f64cc09b65ab2fa5a5d1" title="Output a ClientRPC::Status to a stream.">operator&lt;&lt;</a>(::std::ostream&amp; os, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3" title="The return type of waitForReply().">ClientRPC::Status</a> status)
-<a name="l00215"></a>00215 {
-<a name="l00216"></a>00216     <span class="keyword">typedef</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3" title="The return type of waitForReply().">ClientRPC::Status</a> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4" title="Status codes returned by Tree operations.">Status</a>;
-<a name="l00217"></a>00217     <span class="keywordflow">switch</span> (status) {
-<a name="l00218"></a>00218         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">Status::OK</a>:
-<a name="l00219"></a>00219             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;OK&quot;</span>;
-<a name="l00220"></a>00220         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a3808388a3c1e6c97bdb3dd5e5ecee8f3" title="An error specific to the particular service.">Status::SERVICE_SPECIFIC_ERROR</a>:
-<a name="l00221"></a>00221             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;SERVICE_SPECIFIC_ERROR&quot;</span>;
-<a name="l00222"></a>00222         <span class="keywordflow">case</span> Status::RPC_FAILED:
-<a name="l00223"></a>00223             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;RPC_FAILED&quot;</span>;
-<a name="l00224"></a>00224         <span class="keywordflow">case</span> Status::RPC_CANCELED:
-<a name="l00225"></a>00225             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;RPC_CANCELED&quot;</span>;
-<a name="l00226"></a>00226         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4ab990fd14d55b44d8753e7aa00a8575bf" title="A timeout specified by Tree::setTimeout() elapsed while waiting for an operation to complete...">Status::TIMEOUT</a>:
-<a name="l00227"></a>00227             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;TIMEOUT&quot;</span>;
-<a name="l00228"></a>00228         <span class="keywordflow">default</span>:
-<a name="l00229"></a>00229             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;(INVALID VALUE)&quot;</span>;
-<a name="l00230"></a>00230     }
-<a name="l00231"></a>00231 }
-<a name="l00232"></a>00232 
-<a name="l00233"></a>00233 } <span class="comment">// namespace LogCabin::RPC</span>
-<a name="l00234"></a>00234 } <span class="comment">// namespace LogCabin</span>
+<a name="l00180"></a>00180             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3a01ec2b9c3f61c1c392fce435c1fa3c1d" title="The server is not running the requested service.">Status::INVALID_SERVICE</a>;
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182         <span class="comment">// The server disliked our request, probably because it doesn&#39;t support</span>
+<a name="l00183"></a>00183         <span class="comment">// the opcode, or maybe the request arguments were invalid.</span>
+<a name="l00184"></a>00184         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694aff3e9fbb7614ab1714ea489e399f19ea" title="The server did not like the RPC request.">ProtocolStatus::INVALID_REQUEST</a>:
+<a name="l00185"></a>00185             <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3aa4cff41b18b761d869bd74e65c629502" title="The server rejected the request, probably because it doesn&#39;t support the opcode, or maybe the request...">Status::INVALID_REQUEST</a>;
+<a name="l00186"></a>00186 
+<a name="l00187"></a>00187         <span class="keywordflow">default</span>:
+<a name="l00188"></a>00188             <span class="comment">// The server shouldn&#39;t reply back with status codes we don&#39;t</span>
+<a name="l00189"></a>00189             <span class="comment">// understand. That&#39;s why we gave it a version number in the</span>
+<a name="l00190"></a>00190             <span class="comment">// request header.</span>
+<a name="l00191"></a>00191             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Unknown status %u returned from server after sending it &quot;</span>
+<a name="l00192"></a>00192                   <span class="stringliteral">&quot;protocol version 1 in the request header for RPC to &quot;</span>
+<a name="l00193"></a>00193                   <span class="stringliteral">&quot;service %u, opcode %u. This probably indicates a bug in &quot;</span>
+<a name="l00194"></a>00194                   <span class="stringliteral">&quot;the server.&quot;</span>,
+<a name="l00195"></a>00195                   uint32_t(responseHeader.prefix.status), <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a573aa520a006ff8a14b8eb559e9b5a53" title="Identifies the service running on the server.">service</a>, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a6fcfc8d2501ec0031ffa0feae14abf49" title="Identifies the remote procedure within the Service to execute.">opCode</a>);
+<a name="l00196"></a>00196     }
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198 }
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200 std::string
+<a name="l00201"></a><a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#ac05c315769570fb5c612cc96a292aba2">00201</a> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#ac05c315769570fb5c612cc96a292aba2" title="If an RPC failure occurred, return a message describing that error.">ClientRPC::getErrorMessage</a>()<span class="keyword"> const</span>
+<a name="l00202"></a>00202 <span class="keyword"></span>{
+<a name="l00203"></a>00203     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7beeb2a4661b6d82263968d6d73e6c46">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#ae582457d237dfa5f835b84bcaef61c39" title="If an error has occurred, return a message describing that error.">getErrorMessage</a>();
+<a name="l00204"></a>00204 }
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206 ::std::ostream&amp;
+<a name="l00207"></a><a class="code" href="namespaceLogCabin_1_1RPC.html#a7a6fcacd0839f64cc09b65ab2fa5a5d1">00207</a> <a class="code" href="namespaceLogCabin_1_1RPC.html#a7a6fcacd0839f64cc09b65ab2fa5a5d1" title="Output a ClientRPC::Status to a stream.">operator&lt;&lt;</a>(::std::ostream&amp; os, <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3" title="The return type of waitForReply().">ClientRPC::Status</a> status)
+<a name="l00208"></a>00208 {
+<a name="l00209"></a>00209     <span class="keyword">typedef</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3" title="The return type of waitForReply().">ClientRPC::Status</a> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4" title="Status codes returned by Tree operations.">Status</a>;
+<a name="l00210"></a>00210     <span class="keywordflow">switch</span> (status) {
+<a name="l00211"></a>00211         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">Status::OK</a>:
+<a name="l00212"></a>00212             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;OK&quot;</span>;
+<a name="l00213"></a>00213         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a3808388a3c1e6c97bdb3dd5e5ecee8f3" title="An error specific to the particular service.">Status::SERVICE_SPECIFIC_ERROR</a>:
+<a name="l00214"></a>00214             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;SERVICE_SPECIFIC_ERROR&quot;</span>;
+<a name="l00215"></a>00215         <span class="keywordflow">case</span> Status::RPC_FAILED:
+<a name="l00216"></a>00216             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;RPC_FAILED&quot;</span>;
+<a name="l00217"></a>00217         <span class="keywordflow">case</span> Status::RPC_CANCELED:
+<a name="l00218"></a>00218             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;RPC_CANCELED&quot;</span>;
+<a name="l00219"></a>00219         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4ab990fd14d55b44d8753e7aa00a8575bf" title="A timeout specified by Tree::setTimeout() elapsed while waiting for an operation to complete...">Status::TIMEOUT</a>:
+<a name="l00220"></a>00220             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;TIMEOUT&quot;</span>;
+<a name="l00221"></a>00221         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a57b3feada853764683c0dda7595cbac5" title="The server does not have the requested service.">Status::INVALID_SERVICE</a>:
+<a name="l00222"></a>00222             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;INVALID_SERVICE&quot;</span>;
+<a name="l00223"></a>00223         <span class="keywordflow">case</span> <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694aff3e9fbb7614ab1714ea489e399f19ea" title="The server did not like the RPC request.">Status::INVALID_REQUEST</a>:
+<a name="l00224"></a>00224             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;INVALID_REQUEST&quot;</span>;
+<a name="l00225"></a>00225         <span class="keywordflow">default</span>:
+<a name="l00226"></a>00226             <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;(INVALID STATUS VALUE)&quot;</span>;
+<a name="l00227"></a>00227     }
+<a name="l00228"></a>00228 }
+<a name="l00229"></a>00229 
+<a name="l00230"></a>00230 } <span class="comment">// namespace LogCabin::RPC</span>
+<a name="l00231"></a>00231 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

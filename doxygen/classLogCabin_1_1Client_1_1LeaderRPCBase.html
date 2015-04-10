@@ -136,7 +136,9 @@ Public Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33">Status</a> { <br/>
 &#160;&#160;<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33afdb30d8046f5c8795b2499ce76fc0d8a">OK</a>, 
 <br/>
-&#160;&#160;<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33a0bc5ee5dfb04842148a094a2985e1d33">TIMEOUT</a>
+&#160;&#160;<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33a0bc5ee5dfb04842148a094a2985e1d33">TIMEOUT</a>, 
+<br/>
+&#160;&#160;<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33aa15deb1bcfe2d60059dfd70771ae8673">INVALID_REQUEST</a>
 <br/>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return type for <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#affe219f260f2dba9f73f2db4fa16d0c4" title="Execute an RPC on the cluster leader.">LeaderRPCBase::call()</a>.  <a href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33">More...</a><br/></td></tr>
@@ -241,6 +243,9 @@ Friends</h2></td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a29b3dd29c4be23a4e493e946baa6fb33a0bc5ee5dfb04842148a094a2985e1d33"></a><!-- doxytag: member="TIMEOUT" ref="a29b3dd29c4be23a4e493e946baa6fb33a0bc5ee5dfb04842148a094a2985e1d33" args="" -->TIMEOUT</em>&nbsp;</td><td>
 <p>The given timeout elapsed before the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> completed. </p>
 </td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a29b3dd29c4be23a4e493e946baa6fb33aa15deb1bcfe2d60059dfd70771ae8673"></a><!-- doxytag: member="INVALID_REQUEST" ref="a29b3dd29c4be23a4e493e946baa6fb33aa15deb1bcfe2d60059dfd70771ae8673" args="" -->INVALID_REQUEST</em>&nbsp;</td><td>
+<p>The server rejected the request, probably because it doesn't support the opcode, or maybe the request arguments were invalid. </p>
+</td></tr>
 </table>
 </dd>
 </dl>
@@ -266,7 +271,7 @@ Friends</h2></td></tr>
 
 <p>Constructor. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00092">92</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00097">97</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>
@@ -286,7 +291,7 @@ Friends</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00095">95</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00100">100</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>

@@ -155,7 +155,7 @@ Friends</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Ensures the current configuration reflects the latest state of the log and snapshot. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00671">671</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00690">690</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a20dde8951e005beb38d1fc337042e1e3"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::ConfigurationManager::ConfigurationManager" ref="a20dde8951e005beb38d1fc337042e1e3" args="(Configuration &amp;configuration)" -->
 <div class="memitem">
@@ -180,7 +180,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00700">700</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00704">704</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -351,7 +351,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The index and description of the configuration with the largest index in the range [1, lastIncludedIndex]. </dd></dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00747">747</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00751">751</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -375,7 +375,7 @@ Friends</h2></td></tr>
 <li>Set configuration to the configuration with the largest index in the descriptions map, or reset it the map is empty. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00763">763</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00767">767</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -391,7 +391,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00768">768</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00787">787</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -410,7 +410,7 @@ Friends</h2></td></tr>
 <p>Defines the servers that are part of the cluster. </p>
 <p>See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html" title="A configuration defines the servers that are part of the cluster.">Configuration</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00745">745</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00764">764</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -429,7 +429,7 @@ Friends</h2></td></tr>
 <p>It is used to find the right configuration when taking a snapshot and truncating the end of the log. It must be kept consistent with the log when it is loaded, as the log grows, as it gets truncated from the beginning for snapshots, and as it gets truncated from the end upon conflicts with the leader.</p>
 <p>The key is the entry ID where the configuration belongs in the log; the value is the serializable form of the configuration. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00760">760</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00779">779</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -446,7 +446,7 @@ Friends</h2></td></tr>
 
 <p>This reflects the configuration found in this server's latest snapshot, or {0, {}} if this server has no snapshot. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00766">766</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00785">785</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>

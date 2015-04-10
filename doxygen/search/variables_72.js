@@ -22,7 +22,6 @@ var searchData=
   ['rpc_5ffailure_5fbackoff_5fms',['RPC_FAILURE_BACKOFF_MS',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a2f6b8c578a37bbf9ab24fa1bca6efdfd',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
   ['rpcfailuressincelastwarning',['rpcFailuresSinceLastWarning',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#af384128771f7e60f485b837114f56788',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['rpchandler',['rpcHandler',['../classLogCabin_1_1RPC_1_1OpaqueServer.html#a43457466d16027aeb7bab822cc468107',1,'LogCabin::RPC::OpaqueServer::rpcHandler()'],['../classLogCabin_1_1RPC_1_1Server.html#ab14da95e44bc36465a4dcc2463162917',1,'LogCabin::RPC::Server::rpcHandler()']]],
-  ['rpcprotocolversion',['rpcProtocolVersion',['../classLogCabin_1_1Client_1_1ClientImpl.html#adb4ad6145d875b81cd94cff9bb1d74dc',1,'LogCabin::Client::ClientImpl']]],
   ['rpcqueue',['rpcQueue',['../classLogCabin_1_1RPC_1_1ThreadDispatchService.html#abb72ac16deb083c8124f3fbc29cba0e5',1,'LogCabin::RPC::ThreadDispatchService']]],
   ['rpcserver',['rpcServer',['../classLogCabin_1_1Server_1_1Globals.html#aa5ca9e0cf49a42c74813f2614fea84d7',1,'LogCabin::Server::Globals']]],
   ['runningthread',['runningThread',['../classLogCabin_1_1Event_1_1Loop.html#a3665d236c88d9c8a0de5da4f09a51b74',1,'LogCabin::Event::Loop']]]

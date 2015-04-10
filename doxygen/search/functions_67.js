@@ -50,7 +50,6 @@ var searchData=
   ['getsockaddr',['getSockAddr',['../classLogCabin_1_1RPC_1_1Address.html#ae1a2ab0e38b309a67bfacfe3169cbcae',1,'LogCabin::RPC::Address']]],
   ['getsockaddrlen',['getSockAddrLen',['../classLogCabin_1_1RPC_1_1Address.html#a35a95901abc5d978aa2a71b6a613c027',1,'LogCabin::RPC::Address']]],
   ['getstatus',['getStatus',['../classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a35a3f47dcbdec15d44fcb18a916e014f',1,'LogCabin::RPC::OpaqueClientRPC']]],
-  ['getsupportedrpcversions',['getSupportedRPCVersions',['../classLogCabin_1_1Server_1_1ClientService.html#a6b23891e28fc5875013899dc8bf49864',1,'LogCabin::Server::ClientService']]],
   ['gettimeout',['getTimeout',['../classLogCabin_1_1Client_1_1Tree.html#a66fc90296aaa481069575394cbf5933b',1,'LogCabin::Client::Tree']]],
   ['gettree',['getTree',['../classLogCabin_1_1Client_1_1Cluster.html#ab04d52131d9ddb8c0aa140c359dc2841',1,'LogCabin::Client::Cluster']]],
   ['gettreedetails',['getTreeDetails',['../classLogCabin_1_1Client_1_1Tree.html#a08946f4a9011e8143ba4cf0147a77514',1,'LogCabin::Client::Tree']]],
