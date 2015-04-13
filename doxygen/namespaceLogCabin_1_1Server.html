@@ -126,6 +126,10 @@ Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef Protocol::Client::Command&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server.html#ae8f9b22b20ae588668273a52eef301dc">Command</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
 Protocol::Client::CommandResponse&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server.html#a26cb708a129ba0b48d9f4a0626de36df">CommandResponse</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a4798c7e2244561626e4ce819710e7e56">Core::Time::SteadyClock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server.html#aff16e58144e452dddfca3d356281163f">Clock</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Clock used by watchdog timer thread.  <a href="#aff16e58144e452dddfca3d356281163f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Clock::time_point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server.html#a826e6b455fcabbc92e2d6a7c4d4c63de">TimePoint</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Point in time of Clock.  <a href="#a826e6b455fcabbc92e2d6a7c4d4c63de"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server.html#ade46c73b90b6acb3fd060b45a0a7de60">stateMachineSuppressThreads</a></td></tr>
@@ -177,6 +181,40 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aff16e58144e452dddfca3d356281163f"></a><!-- doxytag: member="LogCabin::Server::Clock" ref="aff16e58144e452dddfca3d356281163f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a4798c7e2244561626e4ce819710e7e56">Core::Time::SteadyClock</a> <a class="el" href="namespaceLogCabin_1_1Server.html#aff16e58144e452dddfca3d356281163f">LogCabin::Server::Clock</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Clock used by watchdog timer thread. </p>
+
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00040">40</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a826e6b455fcabbc92e2d6a7c4d4c63de"></a><!-- doxytag: member="LogCabin::Server::TimePoint" ref="a826e6b455fcabbc92e2d6a7c4d4c63de" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Clock::time_point</a> <a class="el" href="namespaceLogCabin_1_1Server.html#a826e6b455fcabbc92e2d6a7c4d4c63de">LogCabin::Server::TimePoint</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Point in time of Clock. </p>
+
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00042">42</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+
+</div>
+</div>
 <hr/><h2>Variable Documentation</h2>
 <a class="anchor" id="ade46c73b90b6acb3fd060b45a0a7de60"></a><!-- doxytag: member="LogCabin::Server::stateMachineSuppressThreads" ref="ade46c73b90b6acb3fd060b45a0a7de60" args="" -->
 <div class="memitem">
@@ -189,7 +227,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00037">37</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00045">45</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -204,7 +242,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00038">38</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00046">46</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>

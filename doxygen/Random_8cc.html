@@ -91,6 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;fcntl.h&gt;</code><br/>
 <code>#include &lt;limits&gt;</code><br/>
 <code>#include &lt;mutex&gt;</code><br/>
+<code>#include &lt;pthread.h&gt;</code><br/>
 <code>#include &lt;sys/stat.h&gt;</code><br/>
 <code>#include &lt;unistd.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="Core_2Debug_8h_source.html">Core/Debug.h</a>&quot;</code><br/>
@@ -112,6 +113,8 @@ Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html">LogCabin::Core::Random::anonymous_namespace{Random.cc}</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ab540c42d0bfc29d09967ae15a7ff76f2">LogCabin::Core::Random::anonymous_namespace{Random.cc}::resetRandomState</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in child after fork() to reset random seed.  <a href="#ab540c42d0bfc29d09967ae15a7ff76f2"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ac8535276bfdb0565dbb16455a03a8aea">LogCabin::Core::Random::anonymous_namespace{Random.cc}::getRandomBytes</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill a variable of type T with some random bytes.  <a href="#ac8535276bfdb0565dbb16455a03a8aea"></a><br/></td></tr>

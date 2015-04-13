@@ -61,6 +61,7 @@ var searchData=
   ['_7eserverstats',['~ServerStats',['../classLogCabin_1_1Server_1_1ServerStats.html#ac7e9dcabf4d80db703a688785c7dc6b0',1,'LogCabin::Server::ServerStats']]],
   ['_7eservice',['~Service',['../classLogCabin_1_1RPC_1_1Service.html#a4c7fa691563d13f93ffd1a7f860ff93e',1,'LogCabin::RPC::Service']]],
   ['_7eservicemock',['~ServiceMock',['../classLogCabin_1_1RPC_1_1ServiceMock.html#a248bbafd0d8511557a5aa7c2888b993d',1,'LogCabin::RPC::ServiceMock']]],
+  ['_7esharedmmap',['~SharedMMap',['../structLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer_1_1SharedMMap.html#a6c6be8926de51982786698eb62535523',1,'LogCabin::Storage::SnapshotFile::Writer::SharedMMap']]],
   ['_7esignal',['~Signal',['../classLogCabin_1_1Event_1_1Signal.html#ad65df78f5559d35394c5aa8abeb47fbc',1,'LogCabin::Event::Signal']]],
   ['_7esimpleconfiguration',['~SimpleConfiguration',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration_1_1SimpleConfiguration.html#ae3a92594fedb94d3c52f939f1e333d18',1,'LogCabin::Server::RaftConsensusInternal::Configuration::SimpleConfiguration']]],
   ['_7esimplefilelog',['~SimpleFileLog',['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#ad6d910df1e444ad721a196e8e86b77e8',1,'LogCabin::Storage::SimpleFileLog']]],

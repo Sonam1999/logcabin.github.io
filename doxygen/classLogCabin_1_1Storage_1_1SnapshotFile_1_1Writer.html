@@ -101,7 +101,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a>  </div>
   <div class="headertitle">
 <div class="title">LogCabin::Storage::SnapshotFile::Writer Class Reference</div>  </div>
@@ -124,6 +126,10 @@ Inheritance diagram for LogCabin::Storage::SnapshotFile::Writer:</div>
 
 <p><a href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer-members.html">List of all members.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer_1_1SharedMMap.html">SharedMMap</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates an object that is shared across processes.  <a href="structLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer_1_1SharedMMap.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#aea7dc57d3c2912a3dd0de9b44a5158da">Writer</a> (const <a class="el" href="classLogCabin_1_1Storage_1_1Layout.html">Storage::Layout</a> &amp;storageLayout)</td></tr>
@@ -144,6 +150,11 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the given ProtoBuf message to the stream.  <a href="#af6feb36e544029bfb6d834173a3f5617"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#aecb33b33d6aec0b0aecfec11f884e09f">writeRaw</a> (const void *data, uint64_t length)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write some raw bytes to the stream.  <a href="#aecb33b33d6aec0b0aecfec11f884e09f"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer_1_1SharedMMap.html">SharedMMap</a>&lt; std::atomic<br class="typebreak"/>
+&lt; uint64_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a1d37ddfb80fa78c56a31267da1035766">sharedBytesWritten</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This value is incremented every time bytes are written to the <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html" title="Assists in writing snapshot files to the local filesystem.">Writer</a> from any process holding this <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html" title="Assists in writing snapshot files to the local filesystem.">Writer</a>.  <a href="#a1d37ddfb80fa78c56a31267da1035766"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html">Storage::FilesystemUtil::File</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#ab12d289a1319ddf19e65af0d22c64ab4">parentDir</a></td></tr>
@@ -158,7 +169,7 @@ Private Attributes</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Assists in writing snapshot files to the local filesystem. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00077">77</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00083">83</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aea7dc57d3c2912a3dd0de9b44a5158da"></a><!-- doxytag: member="LogCabin::Storage::SnapshotFile::Writer::Writer" ref="aea7dc57d3c2912a3dd0de9b44a5158da" args="(const Storage::Layout &amp;storageLayout)" -->
 <div class="memitem">
@@ -183,7 +194,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00136">136</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00162">162</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -204,7 +215,7 @@ Private Attributes</h2></td></tr>
 <p>Destructor. </p>
 <p>If the file hasn't been explicitly saved or discarded, prints a warning and discards the file. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00150">150</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00177">177</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -226,7 +237,7 @@ Private Attributes</h2></td></tr>
 <p>Throw away the file. </p>
 <p>If you call this after the file has been closed, it will PANIC. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00159">159</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00186">186</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -248,7 +259,7 @@ Private Attributes</h2></td></tr>
 <p>Leave the file open for additional writes.</p>
 <p>This is useful when forking child processes to write to the file. The correct procedure for that is: 0. write stuff 1. call <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a5acdfa8012bd95341a898946e624bc2b" title="Flush changes just down to the operating system&#39;s buffer cache.">flushToOS()</a> 2. fork 3. child process: write stuff 4. child process: call <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a5acdfa8012bd95341a898946e624bc2b" title="Flush changes just down to the operating system&#39;s buffer cache.">flushToOS()</a> 5. child process: call _exit() 6. parent process: call <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#af2f1dc2ba7157b9e1f87837c3482ebd7" title="Seek to the end of the file, in case another process has written to it.">seekToEnd()</a> 7. parent process: write stuff 8. parent process: call <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#acd9deb7c50b661b287003896961c7138" title="Flush changes all the way down to the disk and close the file.">save()</a> </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00168">168</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00195">195</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -269,7 +280,7 @@ Private Attributes</h2></td></tr>
 <p>Seek to the end of the file, in case another process has written to it. </p>
 <p>Subsequent calls to <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#abfc3d5956bbcda8e3e4b6270198008b4" title="Return the number of bytes written so far.">getBytesWritten()</a> will include data written by other processes. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00174">174</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00201">201</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -291,7 +302,7 @@ Private Attributes</h2></td></tr>
 <p>If you call this after the file has been closed, it will PANIC. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Size in bytes of the file </dd></dl>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00183">183</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00210">210</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -313,7 +324,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a71dfd7d52ead85d327b38d6ef6010a9b">LogCabin::Core::ProtoBuf::OutputStream</a>.</p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00197">197</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00224">224</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -336,7 +347,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a68f978815ed884d081ea742ab8fbd250">LogCabin::Core::ProtoBuf::OutputStream</a>.</p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00203">203</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00230">230</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -369,7 +380,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="structLogCabin_1_1Core_1_1ProtoBuf_1_1OutputStream.html#a28fe58d86a77d1f9dc7583fb55488acd">LogCabin::Core::ProtoBuf::OutputStream</a>.</p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00221">221</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8cc_source.html#l00249">249</a> of file <a class="el" href="SnapshotFile_8cc_source.html">SnapshotFile.cc</a>.</p>
 
 </div>
 </div>
@@ -388,7 +399,7 @@ Private Attributes</h2></td></tr>
 <p>A handle to the directory containing the snapshot. </p>
 <p>Used for renameat on close. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00137">137</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00158">158</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
 
 </div>
 </div>
@@ -405,7 +416,7 @@ Private Attributes</h2></td></tr>
 
 <p>The temporary name of 'file' before it is closed. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00139">139</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00160">160</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
 
 </div>
 </div>
@@ -422,7 +433,7 @@ Private Attributes</h2></td></tr>
 
 <p>Wraps the raw file descriptor; in charge of closing it when done. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00141">141</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00162">162</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
 
 </div>
 </div>
@@ -439,7 +450,25 @@ Private Attributes</h2></td></tr>
 
 <p>The number of bytes accumulated in the file so far. </p>
 
-<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00143">143</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
+<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00164">164</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1d37ddfb80fa78c56a31267da1035766"></a><!-- doxytag: member="LogCabin::Storage::SnapshotFile::Writer::sharedBytesWritten" ref="a1d37ddfb80fa78c56a31267da1035766" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer_1_1SharedMMap.html">SharedMMap</a>&lt;std::atomic&lt;uint64_t&gt; &gt; <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a1d37ddfb80fa78c56a31267da1035766">LogCabin::Storage::SnapshotFile::Writer::sharedBytesWritten</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>This value is incremented every time bytes are written to the <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html" title="Assists in writing snapshot files to the local filesystem.">Writer</a> from any process holding this <a class="el" href="classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html" title="Assists in writing snapshot files to the local filesystem.">Writer</a>. </p>
+<p>Used by Server/StateMachine to implement a watchdog that checks progress of a snapshotting process. </p>
+
+<p>Definition at line <a class="el" href="SnapshotFile_8h_source.html#l00171">171</a> of file <a class="el" href="SnapshotFile_8h_source.html">SnapshotFile.h</a>.</p>
 
 </div>
 </div>

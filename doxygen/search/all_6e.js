@@ -25,5 +25,7 @@ var searchData=
   ['numactiverpcs',['numActiveRPCs',['../classLogCabin_1_1RPC_1_1ClientSession.html#af4979c1db2caa9316b907d829e57f71e',1,'LogCabin::RPC::ClientSession']]],
   ['numfreeworkers',['numFreeWorkers',['../classLogCabin_1_1RPC_1_1ThreadDispatchService.html#ac825efc25f9df93b84940ad2acbe9f0a',1,'LogCabin::RPC::ThreadDispatchService']]],
   ['numlocks',['numLocks',['../classLogCabin_1_1Event_1_1Loop.html#a0a46f8b181bc71b12324ebf42b5c0dd9',1,'LogCabin::Event::Loop']]],
-  ['numpeerthreads',['numPeerThreads',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0a31733af9e7b043cd1c703e44d1d076',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::numPeerThreads()'],['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Invariants_1_1ConsensusSnapshot.html#a43391b6f0f2fdc25f8636cb8275759ed',1,'LogCabin::Server::RaftConsensusInternal::Invariants::ConsensusSnapshot::numPeerThreads()']]]
+  ['numpeerthreads',['numPeerThreads',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0a31733af9e7b043cd1c703e44d1d076',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::numPeerThreads()'],['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Invariants_1_1ConsensusSnapshot.html#a43391b6f0f2fdc25f8636cb8275759ed',1,'LogCabin::Server::RaftConsensusInternal::Invariants::ConsensusSnapshot::numPeerThreads()']]],
+  ['numsnapshotsattempted',['numSnapshotsAttempted',['../classLogCabin_1_1Server_1_1StateMachine.html#a9b01f89f0c935d34052ae1afc29ce49b',1,'LogCabin::Server::StateMachine']]],
+  ['numsnapshotsfailed',['numSnapshotsFailed',['../classLogCabin_1_1Server_1_1StateMachine.html#a3476e30467344b04c8ccb4e515c4c3e8',1,'LogCabin::Server::StateMachine']]]
 ];

@@ -113,6 +113,8 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Keeps state needed by the random number generator, protected by a mutex.  <a href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ab540c42d0bfc29d09967ae15a7ff76f2">resetRandomState</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in child after fork() to reset random seed.  <a href="#ab540c42d0bfc29d09967ae15a7ff76f2"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ac8535276bfdb0565dbb16455a03a8aea">getRandomBytes</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill a variable of type T with some random bytes.  <a href="#ac8535276bfdb0565dbb16455a03a8aea"></a><br/></td></tr>
@@ -124,6 +126,26 @@ Variables</h2></td></tr>
 LogCabin::Core::Random::anonymous_namespace{Random.cc}::<a class="el" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html">RandomState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246">randomState</a></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="ab540c42d0bfc29d09967ae15a7ff76f2"></a><!-- doxytag: member="LogCabin::Core::Random::anonymous_namespace{Random.cc}::resetRandomState" ref="ab540c42d0bfc29d09967ae15a7ff76f2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void anonymous_namespace Random LogCabin::Core::Random::anonymous_namespace{Random.cc}::LogCabin::Core::Random::cc::resetRandomState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Called in child after fork() to reset random seed. </p>
+
+<p>Definition at line <a class="el" href="Random_8cc_source.html#l00144">144</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ac8535276bfdb0565dbb16455a03a8aea"></a><!-- doxytag: member="LogCabin::Core::Random::anonymous_namespace{Random.cc}::getRandomBytes" ref="ac8535276bfdb0565dbb16455a03a8aea" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -142,7 +164,7 @@ template&lt;typename T &gt; </div>
 
 <p>Fill a variable of type T with some random bytes. </p>
 
-<p>Definition at line <a class="el" href="Random_8cc_source.html#l00126">126</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
+<p>Definition at line <a class="el" href="Random_8cc_source.html#l00154">154</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
 
 </div>
 </div>
@@ -162,7 +184,7 @@ template&lt;typename T &gt; </div>
 
 <p>Return a random number between 0 and 1. </p>
 
-<p>Definition at line <a class="el" href="Random_8cc_source.html#l00141">141</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
+<p>Definition at line <a class="el" href="Random_8cc_source.html#l00169">169</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
 
 </div>
 </div>

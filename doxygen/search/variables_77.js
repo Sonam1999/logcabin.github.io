@@ -7,6 +7,7 @@ var searchData=
   ['workingdirectory',['workingDirectory',['../classLogCabin_1_1Client_1_1TreeDetails.html#ad000536c2d055c9bae956f8630d85191',1,'LogCabin::Client::TreeDetails']]],
   ['wrapper',['wrapper',['../classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#afbbaeab843b4efbec6b46c0d95be1452',1,'LogCabin::Server::ServerStats::Lock']]],
   ['writedata',['writeData',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a9c4b95cc38515a6cf7eb3816b023a909',1,'LogCabin::Storage::SegmentedLog::Sync::Op']]],
+  ['writer',['writer',['../classLogCabin_1_1Server_1_1StateMachine.html#acd24142379c2580222b05935f75bfb93',1,'LogCabin::Server::StateMachine']]],
   ['writers',['writers',['../classanonymous__namespace_02Benchmark_8cc_03_1_1OptionParser.html#ab9e3d1fbc2453c01f5c86da6182fe1a4',1,'anonymous_namespace{Benchmark.cc}::OptionParser']]],
   ['writev',['writev',['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil_1_1System.html#a3ebc7fefc89fce3b44a00c635209a623',1,'LogCabin::Storage::FilesystemUtil::System']]],
   ['written',['written',['../classanonymous__namespace_02Main_8cc_03_1_1PidFile.html#af9d23c58382a97674dba3d64175c931e',1,'anonymous_namespace{Main.cc}::PidFile']]]
