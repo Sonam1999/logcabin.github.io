@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: LogCabin::Storage::SegmentedLog::Segment::Record Struct Reference</title>
+<title>LogCabin: LogCabin::Storage::SegmentedLog::SegmentHeader Struct Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -95,103 +95,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
       <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Storage.html">Storage</a>      </li>
       <li class="navelem"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html">SegmentedLog</a>      </li>
-      <li class="navelem"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html">Segment</a>      </li>
-      <li class="navelem"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record.html">Record</a>      </li>
+      <li class="navelem"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html">SegmentHeader</a>      </li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
-<div class="title">LogCabin::Storage::SegmentedLog::Segment::Record Struct Reference</div>  </div>
+<div class="title">LogCabin::Storage::SegmentedLog::SegmentHeader Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="LogCabin::Storage::SegmentedLog::Segment::Record" -->
-<p>Describes a log entry record within a segment.  
- <a href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record.html#details">More...</a></p>
+<!-- doxytag: class="LogCabin::Storage::SegmentedLog::SegmentHeader" -->
+<p>This goes at the start of every segment.  
+ <a href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>&gt;</code></p>
-
-<p><a href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record-members.html">List of all members.</a></p>
+<p><a href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader-members.html">List of all members.</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record.html#aac467859b74d23804997d52d98b8b9e5">Record</a> (uint64_t <a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record.html#ae212eedfd27f6674decb5ff847017c72">offset</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#aac467859b74d23804997d52d98b8b9e5"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record.html#ae212eedfd27f6674decb5ff847017c72">offset</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Byte offset in the file where the entry begins.  <a href="#ae212eedfd27f6674decb5ff847017c72"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0">Log::Entry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record.html#a4b89b9aaee4d6ac9369690331420e023">entry</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The entry itself.  <a href="#a4b89b9aaee4d6ac9369690331420e023"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html#acd62a1703082e40d95b6321de7733eb5">version</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Always set to 1 for now.  <a href="#acd62a1703082e40d95b6321de7733eb5"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Describes a log entry record within a segment. </p>
+<div class="textblock"><p>This goes at the start of every segment. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00295">295</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
-</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aac467859b74d23804997d52d98b8b9e5"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::Segment::Record::Record" ref="aac467859b74d23804997d52d98b8b9e5" args="(uint64_t offset)" -->
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00357">357</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+</div><hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="acd62a1703082e40d95b6321de7733eb5"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::SegmentHeader::version" ref="acd62a1703082e40d95b6321de7733eb5" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record.html#aac467859b74d23804997d52d98b8b9e5">LogCabin::Storage::SegmentedLog::Segment::Record::Record</a> </td>
-          <td>(</td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>offset</em></td><td>)</td>
-          <td><code> [explicit]</code></td>
+          <td class="memname">uint8_t <a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html#acd62a1703082e40d95b6321de7733eb5">LogCabin::Storage::SegmentedLog::SegmentHeader::version</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Constructor. </p>
+<p>Always set to 1 for now. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00244">244</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
-
-</div>
-</div>
-<hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="ae212eedfd27f6674decb5ff847017c72"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::Segment::Record::offset" ref="ae212eedfd27f6674decb5ff847017c72" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint64_t <a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record.html#ae212eedfd27f6674decb5ff847017c72">LogCabin::Storage::SegmentedLog::Segment::Record::offset</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Byte offset in the file where the entry begins. </p>
-<p>This is used when truncating a segment. </p>
-
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00305">305</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00361">361</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a4b89b9aaee4d6ac9369690331420e023"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::Segment::Record::entry" ref="a4b89b9aaee4d6ac9369690331420e023" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0">Log::Entry</a> <a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record.html#a4b89b9aaee4d6ac9369690331420e023">LogCabin::Storage::SegmentedLog::Segment::Record::entry</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>The entry itself. </p>
-
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00310">310</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following files:<ul>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>Storage/<a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a></li>
-<li>Storage/<a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a></li>
 </ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->

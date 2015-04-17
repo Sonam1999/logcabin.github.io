@@ -133,7 +133,7 @@ Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5">endIndex</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the last entry in the segment, or <a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> - 1 if the segment is open and empty.  <a href="#a4e441d5d824a7b5727e82bcf84f1fdc5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330">bytes</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Size in bytes of the valid entries stored in the file.  <a href="#a57fa9278f9bb70d63a8dc426bd4ac330"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Size in bytes of the valid entries stored in the file plus the version number at the start of the file.  <a href="#a57fa9278f9bb70d63a8dc426bd4ac330"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6">filename</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the file within <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a> containing this segment.  <a href="#a46b3a926e117af917b0a6cfb62eb87c6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::deque&lt; <a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment_1_1Record.html">Record</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3">entries</a></td></tr>
@@ -143,7 +143,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>An open or closed segment. </p>
 <p>These are stored in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00287">287</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00291">291</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aacd883e2fd4accf7fb8ddcf670a8d821"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::Segment::Segment" ref="aacd883e2fd4accf7fb8ddcf670a8d821" args="()" -->
 <div class="memitem">
@@ -202,7 +202,7 @@ Public Attributes</h2></td></tr>
 
 <p>True for the open segment, false for closed segments. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00323">323</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00327">327</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -220,7 +220,7 @@ Public Attributes</h2></td></tr>
 <p>The index of the first entry in the segment. </p>
 <p>If the segment is open and empty, this may not exist yet and will be <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a>. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00328">328</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00332">332</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -237,7 +237,7 @@ Public Attributes</h2></td></tr>
 
 <p>The index of the last entry in the segment, or <a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> - 1 if the segment is open and empty. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00333">333</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00337">337</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -252,9 +252,9 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Size in bytes of the valid entries stored in the file. </p>
+<p>Size in bytes of the valid entries stored in the file plus the version number at the start of the file. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00337">337</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00342">342</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -271,7 +271,7 @@ Public Attributes</h2></td></tr>
 
 <p>The name of the file within <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a> containing this segment. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00341">341</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00346">346</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -288,7 +288,7 @@ Public Attributes</h2></td></tr>
 
 <p>The entries in this segment, from startIndex to endIndex, inclusive. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00345">345</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00350">350</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>

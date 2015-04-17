@@ -164,7 +164,7 @@ Private Attributes</h2></td></tr>
 <p>These are created asynchronously, hopefully ahead of the log appends.</p>
 <p>This class is written in a monitor style; each public method acquires <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#aaa664ac72aeb5c5f3032a9ea8c5afa78" title="Mutual exclusion for all of the members of this class.">mutex</a>. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00136">136</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00140">140</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="aec714ffb196312acf7cdd2a5867ddce2"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::PreparedSegments::OpenSegment" ref="aec714ffb196312acf7cdd2a5867ddce2" args="" -->
 <div class="memitem">
@@ -180,7 +180,7 @@ Private Attributes</h2></td></tr>
 <p>The type of element that is queued in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a72179229ddde167f6d61a13ee6a97e32" title="The queue where open segments sit before they&#39;re consumed.">openSegments</a>. </p>
 <p>The first element of each pair is its filename relative to <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>. The second element is its open file descriptor. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00143">143</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00147">147</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -396,7 +396,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reduce log message verbosity for unit tests. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00205">205</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00209">209</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -413,7 +413,7 @@ Private Attributes</h2></td></tr>
 
 <p>Mutual exclusion for all of the members of this class. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00211">211</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00215">215</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -430,7 +430,7 @@ Private Attributes</h2></td></tr>
 
 <p>Notified when <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a72179229ddde167f6d61a13ee6a97e32" title="The queue where open segments sit before they&#39;re consumed.">openSegments</a> shrinks in size or when <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a36f905893a367b405f15081f9ea4127a" title="Set to true when waiters should exit.">exiting</a> becomes true. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00216">216</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00220">220</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -447,7 +447,7 @@ Private Attributes</h2></td></tr>
 
 <p>Notified when <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a72179229ddde167f6d61a13ee6a97e32" title="The queue where open segments sit before they&#39;re consumed.">openSegments</a> grows in size or when <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a36f905893a367b405f15081f9ea4127a" title="Set to true when waiters should exit.">exiting</a> becomes true. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00221">221</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00225">225</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -464,7 +464,7 @@ Private Attributes</h2></td></tr>
 
 <p>Set to true when waiters should exit. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00225">225</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00229">229</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -481,7 +481,7 @@ Private Attributes</h2></td></tr>
 
 <p>The number of producers that may be started to fulfill demand. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00229">229</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00233">233</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -499,7 +499,7 @@ Private Attributes</h2></td></tr>
 <p>Used to assign filenames to open segments (which is done before the indexes they contain is known). </p>
 <p>This number is the largest of all previously known numbers so that it can be incremented then assigned to a new file. It's possible that numbers are reused across reboots. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00236">236</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00240">240</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -517,7 +517,7 @@ Private Attributes</h2></td></tr>
 <p>The queue where open segments sit before they're consumed. </p>
 <p>These are available for the log to use as future open segments. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00241">241</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00245">245</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>

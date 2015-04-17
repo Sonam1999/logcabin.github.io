@@ -2,6 +2,7 @@ var searchData=
 [
   ['segment',['Segment',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html',1,'LogCabin::Storage::SegmentedLog']]],
   ['segmentedlog',['SegmentedLog',['../classLogCabin_1_1Storage_1_1SegmentedLog.html',1,'LogCabin::Storage']]],
+  ['segmentheader',['SegmentHeader',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html',1,'LogCabin::Storage::SegmentedLog']]],
   ['sendsocket',['SendSocket',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html',1,'LogCabin::RPC::MessageSocket']]],
   ['server',['Server',['../structLogCabin_1_1Client_1_1Server.html',1,'LogCabin::Client']]],
   ['server',['Server',['../classLogCabin_1_1RPC_1_1Server.html',1,'LogCabin::RPC']]],
@@ -24,6 +25,6 @@ var searchData=
   ['statemachine',['StateMachine',['../classLogCabin_1_1Server_1_1StateMachine.html',1,'LogCabin::Server']]],
   ['steadytimeconverter',['SteadyTimeConverter',['../classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html',1,'LogCabin::Core::Time']]],
   ['sync',['Sync',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html',1,'LogCabin::Storage::SegmentedLog']]],
-  ['sync',['Sync',['../classLogCabin_1_1Storage_1_1Log_1_1Sync.html',1,'LogCabin::Storage::Log']]],
-  ['sync',['Sync',['../classLogCabin_1_1Storage_1_1SimpleFileLog_1_1Sync.html',1,'LogCabin::Storage::SimpleFileLog']]]
+  ['sync',['Sync',['../classLogCabin_1_1Storage_1_1SimpleFileLog_1_1Sync.html',1,'LogCabin::Storage::SimpleFileLog']]],
+  ['sync',['Sync',['../classLogCabin_1_1Storage_1_1Log_1_1Sync.html',1,'LogCabin::Storage::Log']]]
 ];
