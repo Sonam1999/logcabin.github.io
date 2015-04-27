@@ -115,10 +115,10 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If the client has specified a condition for the operation, serialize it into the request message.  <a href="#ad55137c5880d77899191748af133a082"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#a15ab146660ab9503819c1b88fd4925c5">split</a> (const std::string &amp;path, std::vector&lt; std::string &gt; &amp;components)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Split a path into its components.  <a href="#a15ab146660ab9503819c1b88fd4925c5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#aa4845b3fe36218ed62a400d98cee1b97">treeCall</a> (<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html">LeaderRPCBase</a> &amp;leaderRPC, <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7">LeaderRPC::OpCode</a> opCode, const Protocol::Client::ReadOnlyTree::Request &amp;request, Protocol::Client::ReadOnlyTree::Response &amp;response, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">ClientImpl::TimePoint</a> timeout)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper around <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aebd65669e90cd4b1d9011a052633a8dc" title="See LeaderRPCBase::call.">LeaderRPC::call()</a> that repackages a timeout as a ReadOnlyTree status and error message.  <a href="#aa4845b3fe36218ed62a400d98cee1b97"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#a402d1f1d9a2c4cb4c936db7e1eed3314">treeCall</a> (<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html">LeaderRPCBase</a> &amp;leaderRPC, <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7">LeaderRPC::OpCode</a> opCode, const Protocol::Client::ReadWriteTree::Request &amp;request, Protocol::Client::ReadWriteTree::Response &amp;response, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">ClientImpl::TimePoint</a> timeout)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper around <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aebd65669e90cd4b1d9011a052633a8dc" title="See LeaderRPCBase::call.">LeaderRPC::call()</a> that repackages a timeout as a ReadWriteTree status and error message.  <a href="#a402d1f1d9a2c4cb4c936db7e1eed3314"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#aff36e26e1cf5ee6ab79e650c67b427f7">treeCall</a> (<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html">LeaderRPCBase</a> &amp;leaderRPC, const Protocol::Client::ReadOnlyTree::Request &amp;request, Protocol::Client::ReadOnlyTree::Response &amp;response, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">ClientImpl::TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper around <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aebd65669e90cd4b1d9011a052633a8dc" title="See LeaderRPCBase::call.">LeaderRPC::call()</a> that repackages a timeout as a ReadOnlyTree status and error message.  <a href="#aff36e26e1cf5ee6ab79e650c67b427f7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#a63d3f05de1005e9054f9ed2292795d56">treeCall</a> (<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html">LeaderRPCBase</a> &amp;leaderRPC, const Protocol::Client::ReadWriteTree::Request &amp;request, Protocol::Client::ReadWriteTree::Response &amp;response, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">ClientImpl::TimePoint</a> timeout)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper around <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aebd65669e90cd4b1d9011a052633a8dc" title="See LeaderRPCBase::call.">LeaderRPC::call()</a> that repackages a timeout as a ReadWriteTree status and error message.  <a href="#a63d3f05de1005e9054f9ed2292795d56"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#aa16cc23c23edcf6b3565b00db6414b14">MIN_RPC_PROTOCOL_VERSION</a></td></tr>
@@ -179,7 +179,7 @@ template&lt;typename Message &gt; </div>
 
 <p>If the client has specified a condition for the operation, serialize it into the request message. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00088">88</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00093">93</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -218,25 +218,19 @@ template&lt;typename Message &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00104">104</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00109">109</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aa4845b3fe36218ed62a400d98cee1b97"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{ClientImpl.cc}::treeCall" ref="aa4845b3fe36218ed62a400d98cee1b97" args="(LeaderRPCBase &amp;leaderRPC, LeaderRPC::OpCode opCode, const Protocol::Client::ReadOnlyTree::Request &amp;request, Protocol::Client::ReadOnlyTree::Response &amp;response, ClientImpl::TimePoint timeout)" -->
+<a class="anchor" id="aff36e26e1cf5ee6ab79e650c67b427f7"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{ClientImpl.cc}::treeCall" ref="aff36e26e1cf5ee6ab79e650c67b427f7" args="(LeaderRPCBase &amp;leaderRPC, const Protocol::Client::ReadOnlyTree::Request &amp;request, Protocol::Client::ReadOnlyTree::Response &amp;response, ClientImpl::TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void LogCabin::Client::anonymous_namespace{ClientImpl.cc}::<a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#aa4845b3fe36218ed62a400d98cee1b97">treeCall</a> </td>
+          <td class="memname">void LogCabin::Client::anonymous_namespace{ClientImpl.cc}::<a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#aff36e26e1cf5ee6ab79e650c67b427f7">treeCall</a> </td>
           <td>(</td>
           <td class="paramtype">LeaderRPCBase &amp;&#160;</td>
           <td class="paramname"><em>leaderRPC</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">LeaderRPC::OpCode&#160;</td>
-          <td class="paramname"><em>opCode</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -267,25 +261,19 @@ template&lt;typename Message &gt; </div>
 
 <p>Wrapper around <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aebd65669e90cd4b1d9011a052633a8dc" title="See LeaderRPCBase::call.">LeaderRPC::call()</a> that repackages a timeout as a ReadOnlyTree status and error message. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00126">126</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00131">131</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a402d1f1d9a2c4cb4c936db7e1eed3314"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{ClientImpl.cc}::treeCall" ref="a402d1f1d9a2c4cb4c936db7e1eed3314" args="(LeaderRPCBase &amp;leaderRPC, LeaderRPC::OpCode opCode, const Protocol::Client::ReadWriteTree::Request &amp;request, Protocol::Client::ReadWriteTree::Response &amp;response, ClientImpl::TimePoint timeout)" -->
+<a class="anchor" id="a63d3f05de1005e9054f9ed2292795d56"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{ClientImpl.cc}::treeCall" ref="a63d3f05de1005e9054f9ed2292795d56" args="(LeaderRPCBase &amp;leaderRPC, const Protocol::Client::ReadWriteTree::Request &amp;request, Protocol::Client::ReadWriteTree::Response &amp;response, ClientImpl::TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void LogCabin::Client::anonymous_namespace{ClientImpl.cc}::<a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#aa4845b3fe36218ed62a400d98cee1b97">treeCall</a> </td>
+          <td class="memname">void LogCabin::Client::anonymous_namespace{ClientImpl.cc}::<a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#aff36e26e1cf5ee6ab79e650c67b427f7">treeCall</a> </td>
           <td>(</td>
           <td class="paramtype">LeaderRPCBase &amp;&#160;</td>
           <td class="paramname"><em>leaderRPC</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">LeaderRPC::OpCode&#160;</td>
-          <td class="paramname"><em>opCode</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -317,7 +305,7 @@ template&lt;typename Message &gt; </div>
 <p>Wrapper around <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aebd65669e90cd4b1d9011a052633a8dc" title="See LeaderRPCBase::call.">LeaderRPC::call()</a> that repackages a timeout as a ReadWriteTree status and error message. </p>
 <p>Also checks whether getRPCInfo timed out. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00167">167</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00175">175</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>

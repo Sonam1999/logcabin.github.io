@@ -13,6 +13,11 @@ var searchData=
   ['numfreeworkers',['numFreeWorkers',['../classLogCabin_1_1RPC_1_1ThreadDispatchService.html#ac825efc25f9df93b84940ad2acbe9f0a',1,'LogCabin::RPC::ThreadDispatchService']]],
   ['numlocks',['numLocks',['../classLogCabin_1_1Event_1_1Loop.html#a0a46f8b181bc71b12324ebf42b5c0dd9',1,'LogCabin::Event::Loop']]],
   ['numpeerthreads',['numPeerThreads',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0a31733af9e7b043cd1c703e44d1d076',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::numPeerThreads()'],['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Invariants_1_1ConsensusSnapshot.html#a43391b6f0f2fdc25f8636cb8275759ed',1,'LogCabin::Server::RaftConsensusInternal::Invariants::ConsensusSnapshot::numPeerThreads()']]],
+  ['numredundantadvanceversionentries',['numRedundantAdvanceVersionEntries',['../classLogCabin_1_1Server_1_1StateMachine.html#aa75f8ed926eb60524a5d5edc384b70fd',1,'LogCabin::Server::StateMachine']]],
+  ['numrejectedadvanceversionentries',['numRejectedAdvanceVersionEntries',['../classLogCabin_1_1Server_1_1StateMachine.html#a6f02211c2a35ebc1d5e729a4c3439a76',1,'LogCabin::Server::StateMachine']]],
   ['numsnapshotsattempted',['numSnapshotsAttempted',['../classLogCabin_1_1Server_1_1StateMachine.html#a9b01f89f0c935d34052ae1afc29ce49b',1,'LogCabin::Server::StateMachine']]],
-  ['numsnapshotsfailed',['numSnapshotsFailed',['../classLogCabin_1_1Server_1_1StateMachine.html#a3476e30467344b04c8ccb4e515c4c3e8',1,'LogCabin::Server::StateMachine']]]
+  ['numsnapshotsfailed',['numSnapshotsFailed',['../classLogCabin_1_1Server_1_1StateMachine.html#a3476e30467344b04c8ccb4e515c4c3e8',1,'LogCabin::Server::StateMachine']]],
+  ['numsuccessfuladvanceversionentries',['numSuccessfulAdvanceVersionEntries',['../classLogCabin_1_1Server_1_1StateMachine.html#a037dd68695766012985b1c3e23259da5',1,'LogCabin::Server::StateMachine']]],
+  ['numtotaladvanceversionentries',['numTotalAdvanceVersionEntries',['../classLogCabin_1_1Server_1_1StateMachine.html#aedef7a58f4dd70ce13a2ccdae9d3b3cb',1,'LogCabin::Server::StateMachine']]],
+  ['numunknownrequestssincelastmessage',['numUnknownRequestsSinceLastMessage',['../classLogCabin_1_1Server_1_1StateMachine.html#ab52f5e65c0b23995c29f059d7443f586',1,'LogCabin::Server::StateMachine']]]
 ];

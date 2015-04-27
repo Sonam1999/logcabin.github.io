@@ -138,17 +138,11 @@ Public Member Functions</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a24c49f2ca80f733ddb21f24609d16831">getServerInfo</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> rpc)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a53494b31e451647406079bf8fe56f94b">getServerStats</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> rpc)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a1c4f309780688bc7c41e2af433ce47df">openSession</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> rpc)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a68926d6561a3b5ac3f5b99ee76c448e7">getConfiguration</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> rpc)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a0b6f56d7cad75f38f0fc2a6ce24a8b93">setConfiguration</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> rpc)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a4573a6e1f770c65c9cdaab4cbc04c650">readOnlyTreeRPC</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> rpc)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a10792f147d08370ddea54ce7f42d8ee0">readWriteTreeRPC</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> rpc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a101d587ddd27122862399fab836c227c">stateMachineCommand</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> rpc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#add78d040f3926c39ed71081837b5c39a">stateMachineQuery</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> rpc)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#ae910cf2dbef4547d51875eb1db819e20">verifyRecipient</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> rpc)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::pair<br class="typebreak"/>
-&lt; RaftConsensus::ClientResult, <br class="typebreak"/>
-uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#ac9bce618f9cee058e948ff3a790d4264">submit</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> &amp;rpc, const google::protobuf::Message &amp;command)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">RaftConsensus::ClientResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a81685c734dc9adabf5b97bb5afa2e4b0">catchUpStateMachine</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> &amp;rpc)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#aecd35ddfa97bb30a00355359a6ae213b">getResponse</a> (<a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> &amp;rpc, uint64_t index, const Protocol::Client::ExactlyOnceRPCInfo &amp;rpcInfo, Protocol::Client::CommandResponse &amp;response)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a19942b154d09ee8a89b59b2ab002a113">ClientService</a> (const <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html">ClientService</a> &amp;)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html">ClientService</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#abde56b6883bf499bfdf0553866ba3cad">operator=</a> (const <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html">ClientService</a> &amp;)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
@@ -179,7 +173,7 @@ Private Attributes</h2></td></tr>
 
 <p>Constructor. </p>
 
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00032">32</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00034">34</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
 
 </div>
 </div>
@@ -199,7 +193,7 @@ Private Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00037">37</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00039">39</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
 
 </div>
 </div>
@@ -241,7 +235,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1RPC_1_1Service.html#a62b17ebd429160cff64aeb4dc32aead6">LogCabin::RPC::Service</a>.</p>
 
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00042">42</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00044">44</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
 
 </div>
 </div>
@@ -263,7 +257,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1RPC_1_1Service.html#a448fa4c2c431f882bb0c1a1520d05e20">LogCabin::RPC::Service</a>.</p>
 
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00081">81</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00080">80</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
 
 </div>
 </div>
@@ -282,7 +276,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00102">102</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00101">101</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
 
 </div>
 </div>
@@ -301,26 +295,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00112">112</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a1c4f309780688bc7c41e2af433ce47df"></a><!-- doxytag: member="LogCabin::Server::ClientService::openSession" ref="a1c4f309780688bc7c41e2af433ce47df" args="(RPC::ServerRPC rpc)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a1c4f309780688bc7c41e2af433ce47df">LogCabin::Server::ClientService::openSession</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a>&#160;</td>
-          <td class="paramname"><em>rpc</em></td><td>)</td>
-          <td><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00178">178</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00111">111</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
 
 </div>
 </div>
@@ -339,7 +314,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00191">191</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00119">119</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
 
 </div>
 </div>
@@ -358,16 +333,16 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00218">218</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00146">146</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a4573a6e1f770c65c9cdaab4cbc04c650"></a><!-- doxytag: member="LogCabin::Server::ClientService::readOnlyTreeRPC" ref="a4573a6e1f770c65c9cdaab4cbc04c650" args="(RPC::ServerRPC rpc)" -->
+<a class="anchor" id="a101d587ddd27122862399fab836c227c"></a><!-- doxytag: member="LogCabin::Server::ClientService::stateMachineCommand" ref="a101d587ddd27122862399fab836c227c" args="(RPC::ServerRPC rpc)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a4573a6e1f770c65c9cdaab4cbc04c650">LogCabin::Server::ClientService::readOnlyTreeRPC</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a101d587ddd27122862399fab836c227c">LogCabin::Server::ClientService::stateMachineCommand</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a>&#160;</td>
           <td class="paramname"><em>rpc</em></td><td>)</td>
@@ -377,16 +352,16 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00235">235</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00163">163</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a10792f147d08370ddea54ce7f42d8ee0"></a><!-- doxytag: member="LogCabin::Server::ClientService::readWriteTreeRPC" ref="a10792f147d08370ddea54ce7f42d8ee0" args="(RPC::ServerRPC rpc)" -->
+<a class="anchor" id="add78d040f3926c39ed71081837b5c39a"></a><!-- doxytag: member="LogCabin::Server::ClientService::stateMachineQuery" ref="add78d040f3926c39ed71081837b5c39a" args="(RPC::ServerRPC rpc)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a10792f147d08370ddea54ce7f42d8ee0">LogCabin::Server::ClientService::readWriteTreeRPC</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#add78d040f3926c39ed71081837b5c39a">LogCabin::Server::ClientService::stateMachineQuery</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a>&#160;</td>
           <td class="paramname"><em>rpc</em></td><td>)</td>
@@ -396,7 +371,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00245">245</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00188">188</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
 
 </div>
 </div>
@@ -415,96 +390,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00262">262</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac9bce618f9cee058e948ff3a790d4264"></a><!-- doxytag: member="LogCabin::Server::ClientService::submit" ref="ac9bce618f9cee058e948ff3a790d4264" args="(RPC::ServerRPC &amp;rpc, const google::protobuf::Message &amp;command)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::pair&lt; <a class="el" href="namespaceLogCabin_1_1Server.html#aa7f412bdef4a54af3492ff48d1f6c36a">Result</a>, uint64_t &gt; <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#ac9bce618f9cee058e948ff3a790d4264">LogCabin::Server::ClientService::submit</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> &amp;&#160;</td>
-          <td class="paramname"><em>rpc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const google::protobuf::Message &amp;&#160;</td>
-          <td class="paramname"><em>command</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00126">126</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a81685c734dc9adabf5b97bb5afa2e4b0"></a><!-- doxytag: member="LogCabin::Server::ClientService::catchUpStateMachine" ref="a81685c734dc9adabf5b97bb5afa2e4b0" args="(RPC::ServerRPC &amp;rpc)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespaceLogCabin_1_1Server.html#aa7f412bdef4a54af3492ff48d1f6c36a">Result</a> <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a81685c734dc9adabf5b97bb5afa2e4b0">LogCabin::Server::ClientService::catchUpStateMachine</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> &amp;&#160;</td>
-          <td class="paramname"><em>rpc</em></td><td>)</td>
-          <td><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00144">144</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aecd35ddfa97bb30a00355359a6ae213b"></a><!-- doxytag: member="LogCabin::Server::ClientService::getResponse" ref="aecd35ddfa97bb30a00355359a6ae213b" args="(RPC::ServerRPC &amp;rpc, uint64_t index, const Protocol::Client::ExactlyOnceRPCInfo &amp;rpcInfo, Protocol::Client::CommandResponse &amp;response)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#aecd35ddfa97bb30a00355359a6ae213b">LogCabin::Server::ClientService::getResponse</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html">RPC::ServerRPC</a> &amp;&#160;</td>
-          <td class="paramname"><em>rpc</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>index</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const Protocol::Client::ExactlyOnceRPCInfo &amp;&#160;</td>
-          <td class="paramname"><em>rpcInfo</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Protocol::Client::CommandResponse &amp;&#160;</td>
-          <td class="paramname"><em>response</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00161">161</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientService_8cc_source.html#l00210">210</a> of file <a class="el" href="ClientService_8cc_source.html">ClientService.cc</a>.</p>
 
 </div>
 </div>
@@ -539,7 +425,7 @@ Private Attributes</h2></td></tr>
 
 <p>The <a class="el" href="namespaceLogCabin.html">LogCabin</a> daemon's top-level objects. </p>
 
-<p>Definition at line <a class="el" href="ClientService_8h_source.html#l00080">80</a> of file <a class="el" href="ClientService_8h_source.html">ClientService.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientService_8h_source.html#l00066">66</a> of file <a class="el" href="ClientService_8h_source.html">ClientService.h</a>.</p>
 
 </div>
 </div>

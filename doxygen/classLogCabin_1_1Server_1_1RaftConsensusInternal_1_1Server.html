@@ -160,6 +160,12 @@ Public Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The ID of this server.  <a href="#ac1b2d6d134b4c41baf0220a0c6e587b7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a47cb3021d164ce1bbb1e9875591df632">addresses</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The network addresses at which this server may be available (comma-delimited)  <a href="#a47cb3021d164ce1bbb1e9875591df632"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#acf7e796648da3e5bb1d6b87113c8bcda">haveStateMachineSupportedVersions</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, minStateMachineVersion and maxStateMachineVersion are set (although they may be stale).  <a href="#acf7e796648da3e5bb1d6b87113c8bcda"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ab2ea7f59738fe606d01cb56d35a7cb33">minStateMachineVersion</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If haveStateMachineSupportedVersions is true, the smallest version of the state machine commands/behavior that the server can support.  <a href="#ab2ea7f59738fe606d01cb56d35a7cb33"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ad5d9ff4a22e88377e55b65d136f46f71">maxStateMachineVersion</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If haveStateMachineSupportedVersions is true, the largest version of the state machine commands/behavior that the server can support.  <a href="#ad5d9ff4a22e88377e55b65d136f46f71"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a9208d78c7fa30913a15d27fd58a57c54">gcFlag</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used internally by <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html" title="A configuration defines the servers that are part of the cluster.">Configuration</a> for garbage collection.  <a href="#a9208d78c7fa30913a15d27fd58a57c54"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="friends"></a>
@@ -210,7 +216,7 @@ Friends</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00061">61</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00064">64</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -484,7 +490,7 @@ Friends</h2></td></tr>
 
 <p>Print out a <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> for debugging purposes. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00066">66</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00069">69</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -523,6 +529,57 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="acf7e796648da3e5bb1d6b87113c8bcda"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Server::haveStateMachineSupportedVersions" ref="acf7e796648da3e5bb1d6b87113c8bcda" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#acf7e796648da3e5bb1d6b87113c8bcda">LogCabin::Server::RaftConsensusInternal::Server::haveStateMachineSupportedVersions</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>If true, minStateMachineVersion and maxStateMachineVersion are set (although they may be stale). </p>
+
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00204">204</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab2ea7f59738fe606d01cb56d35a7cb33"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Server::minStateMachineVersion" ref="ab2ea7f59738fe606d01cb56d35a7cb33" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ab2ea7f59738fe606d01cb56d35a7cb33">LogCabin::Server::RaftConsensusInternal::Server::minStateMachineVersion</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>If haveStateMachineSupportedVersions is true, the smallest version of the state machine commands/behavior that the server can support. </p>
+
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00209">209</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad5d9ff4a22e88377e55b65d136f46f71"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Server::maxStateMachineVersion" ref="ad5d9ff4a22e88377e55b65d136f46f71" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ad5d9ff4a22e88377e55b65d136f46f71">LogCabin::Server::RaftConsensusInternal::Server::maxStateMachineVersion</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>If haveStateMachineSupportedVersions is true, the largest version of the state machine commands/behavior that the server can support. </p>
+
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00214">214</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a9208d78c7fa30913a15d27fd58a57c54"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Server::gcFlag" ref="a9208d78c7fa30913a15d27fd58a57c54" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -536,7 +593,7 @@ Friends</h2></td></tr>
 
 <p>Used internally by <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html" title="A configuration defines the servers that are part of the cluster.">Configuration</a> for garbage collection. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00203">203</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00219">219</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>

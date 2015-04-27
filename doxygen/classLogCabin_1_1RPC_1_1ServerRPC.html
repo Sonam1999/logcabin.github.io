@@ -136,6 +136,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return which <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> is being executed, scoped to the service.  <a href="#a21962c2b329e32e595d87210cc7ab9b3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9372e93d64d70ec04a2e3ecdc9ef1477">getRequest</a> (google::protobuf::Message &amp;request)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the request out of the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>.  <a href="#a9372e93d64d70ec04a2e3ecdc9ef1477"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a8a0d5c035179560246a4e7923d62b7ab">getRequest</a> (<a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> &amp;buffer) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy the request out of the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>.  <a href="#a8a0d5c035179560246a4e7923d62b7ab"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea">reply</a> (const google::protobuf::Message &amp;payload)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a normal response back to the client.  <a href="#a35a2565819bb6b2d7e90f4f2471c68ea"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac817a925ce3cbd81f4d856586906555b">returnError</a> (const google::protobuf::Message &amp;serviceSpecificError)</td></tr>
@@ -175,7 +177,7 @@ Friends</h2></td></tr>
 <p>A <a class="el" href="classLogCabin_1_1RPC_1_1Server.html" title="A Server listens for incoming RPCs over TCP connections and dispatches these to Services.">Server</a> creates an instance when an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> is initiated. This is used to send the reply.</p>
 <p>This class may be used from any thread, but each object is meant to be accessed by only one thread at a time. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00036">36</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00037">37</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a30ae76fbcf07949f059f3a717dc33c3a"></a><!-- doxytag: member="LogCabin::RPC::ServerRPC::ServerRPC" ref="a30ae76fbcf07949f059f3a717dc33c3a" args="(OpaqueServerRPC opaqueRPC)" -->
 <div class="memitem">
@@ -195,7 +197,7 @@ Friends</h2></td></tr>
 <p>Constructor for <a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">ServerRPC</a>. </p>
 <p>This is called by <a class="el" href="classLogCabin_1_1RPC_1_1Server.html" title="A Server listens for incoming RPCs over TCP connections and dispatches these to Services.">Server</a> only. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00028">28</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00029">29</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -216,7 +218,7 @@ Friends</h2></td></tr>
 <p>Default constructor for empty <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> that can't be replied to. </p>
 <p>This is useful as a placeholder for a real <a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">ServerRPC</a>. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00059">59</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00060">60</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -237,7 +239,7 @@ Friends</h2></td></tr>
 
 <p>Move constructor. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00068">68</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00069">69</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -257,7 +259,7 @@ Friends</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00078">78</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00079">79</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -296,7 +298,7 @@ Friends</h2></td></tr>
 
 <p>Move assignment. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00088">88</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00089">89</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -317,7 +319,7 @@ Friends</h2></td></tr>
 <p>Returns whether this <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> is waiting for a reply. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if the owner needs to take action based on this <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>; false if the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> is not valid or has already been replied to. If this returns false, the caller should discard this <a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">ServerRPC</a> object. </dd></dl>
 
-<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00073">73</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00074">74</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
 
 </div>
 </div>
@@ -338,7 +340,7 @@ Friends</h2></td></tr>
 <p>This identifies which <a class="el" href="classLogCabin_1_1RPC_1_1Service.html" title="Base class for RPC services.">Service</a> the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> is destined for. </p>
 <p>The <a class="el" href="classLogCabin_1_1RPC_1_1Server.html" title="A Server listens for incoming RPCs over TCP connections and dispatches these to Services.">Server</a> class uses this to dispatch to the appropriate <a class="el" href="classLogCabin_1_1RPC_1_1Service.html" title="Base class for RPC services.">Service</a>. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00081">81</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00082">82</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
 
 </div>
 </div>
@@ -359,7 +361,7 @@ Friends</h2></td></tr>
 <p>This tells the <a class="el" href="classLogCabin_1_1RPC_1_1Service.html" title="Base class for RPC services.">Service</a> what service-specific errors the client understands. </p>
 <p>Services should take care not to send a client a service-specific error that it doesn't understand. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00090">90</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00091">91</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
 
 </div>
 </div>
@@ -379,7 +381,7 @@ Friends</h2></td></tr>
 
 <p>Return which <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> is being executed, scoped to the service. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00097">97</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00098">98</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
 
 </div>
 </div>
@@ -407,7 +409,35 @@ Friends</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if 'request' contains a valid <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> request which needs to be handled; false otherwise. If this returns false, the caller should discard this <a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">ServerRPC</a> object. </dd></dl>
 
-<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00100">100</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00101">101</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8a0d5c035179560246a4e7923d62b7ab"></a><!-- doxytag: member="LogCabin::RPC::ServerRPC::getRequest" ref="a8a0d5c035179560246a4e7923d62b7ab" args="(Core::Buffer &amp;buffer) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9372e93d64d70ec04a2e3ecdc9ef1477">LogCabin::RPC::ServerRPC::getRequest</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Core_1_1Buffer.html">Core::Buffer</a> &amp;&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Copy the request out of the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>An empty buffer that the request will be copied into. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>True if 'request' contains a valid <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> request which needs to be handled; false otherwise. If this returns false, the caller should discard this <a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">ServerRPC</a> object. </dd></dl>
+
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00114">114</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -434,7 +464,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00113">113</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00132">132</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -461,7 +491,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00129">129</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00148">148</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -481,7 +511,7 @@ Friends</h2></td></tr>
 
 <p>Reject the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> on the grounds that it specifies an invalid service ID. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00145">145</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00164">164</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -501,7 +531,7 @@ Friends</h2></td></tr>
 
 <p>Reject the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> on the grounds that it specifies an invalid request. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00151">151</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00170">170</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -522,7 +552,7 @@ Friends</h2></td></tr>
 <p>Close the session on which this request originated. </p>
 <p>This is an impolite thing to do to a client but can be useful occasionally, for example for testing. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00157">157</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00176">176</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -549,7 +579,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00164">164</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8cc_source.html#l00183">183</a> of file <a class="el" href="ServerRPC_8cc_source.html">ServerRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -582,7 +612,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00170">170</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00182">182</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
 
 </div>
 </div>
@@ -601,7 +631,7 @@ Friends</h2></td></tr>
 <p>The underlying transport-level <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> object. </p>
 <p>It doesn't know how to interpret the raw bytes of the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>, but it gets them from here to there. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00156">156</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00168">168</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
 
 </div>
 </div>
@@ -618,7 +648,7 @@ Friends</h2></td></tr>
 
 <p>Set to true if the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> needs a reply, false otherwise. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00161">161</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00173">173</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
 
 </div>
 </div>
@@ -635,7 +665,7 @@ Friends</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a866e60fad2d2e494a68d8edf20ba656f" title="This identifies which Service the RPC is destined for.">getService()</a>. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00164">164</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00176">176</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
 
 </div>
 </div>
@@ -652,7 +682,7 @@ Friends</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a6489b65f739b67ac37dcfa4a3636438f" title="This tells the Service what service-specific errors the client understands.">getServiceSpecificErrorVersion()</a>. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00166">166</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00178">178</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
 
 </div>
 </div>
@@ -669,7 +699,7 @@ Friends</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a21962c2b329e32e595d87210cc7ab9b3" title="Return which RPC is being executed, scoped to the service.">getOpCode()</a>. </p>
 
-<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00168">168</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerRPC_8h_source.html#l00180">180</a> of file <a class="el" href="ServerRPC_8h_source.html">ServerRPC.h</a>.</p>
 
 </div>
 </div>

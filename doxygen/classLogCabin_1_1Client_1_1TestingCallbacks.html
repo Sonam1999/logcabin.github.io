@@ -119,10 +119,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ad0464eff84d1a8d35967254efe67b47e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html#a5b146fd7e64b684b0b4f847cc24ae8c5">~TestingCallbacks</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a5b146fd7e64b684b0b4f847cc24ae8c5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html#a8df62550a0ff5330d75a0c4da78f4af3">readOnlyTreeRPC</a> (Protocol::Client::ReadOnlyTree_Request &amp;request, Protocol::Client::ReadOnlyTree_Response &amp;response)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle a read-only <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>, such as <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a74c016d6333e5548edd2873baff605c4" title="Get the value of a file.">Tree::read</a> or <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>.  <a href="#a8df62550a0ff5330d75a0c4da78f4af3"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html#a427356b37930d7bab14f11b9244a2f84">readWriteTreeRPC</a> (Protocol::Client::ReadWriteTree_Request &amp;request, Protocol::Client::ReadWriteTree_Response &amp;response)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle a read-write <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>, such as <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a74c016d6333e5548edd2873baff605c4" title="Get the value of a file.">Tree::read</a> or <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>.  <a href="#a427356b37930d7bab14f11b9244a2f84"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html#a03d32d1c51138f24a80d188bfb7f24af">stateMachineQuery</a> (Protocol::Client::StateMachineQuery_Request &amp;request, Protocol::Client::StateMachineQuery_Response &amp;response)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle a read-only state machine query, such as <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a74c016d6333e5548edd2873baff605c4" title="Get the value of a file.">Tree::read</a> or <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>.  <a href="#a03d32d1c51138f24a80d188bfb7f24af"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html#a67288911291e464ad46bcda6440a7314">stateMachineCommand</a> (Protocol::Client::StateMachineCommand_Request &amp;request, Protocol::Client::StateMachineCommand_Response &amp;response)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle a read-write state machine command, such as <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a74c016d6333e5548edd2873baff605c4" title="Get the value of a file.">Tree::read</a> or <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>.  <a href="#a67288911291e464ad46bcda6440a7314"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>When running in testing mode, these callbacks serve as a way for the application to interpose on requests and responses to inject failures and model dynamic scenarios. </p>
@@ -174,20 +174,20 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a8df62550a0ff5330d75a0c4da78f4af3"></a><!-- doxytag: member="LogCabin::Client::TestingCallbacks::readOnlyTreeRPC" ref="a8df62550a0ff5330d75a0c4da78f4af3" args="(Protocol::Client::ReadOnlyTree_Request &amp;request, Protocol::Client::ReadOnlyTree_Response &amp;response)" -->
+<a class="anchor" id="a03d32d1c51138f24a80d188bfb7f24af"></a><!-- doxytag: member="LogCabin::Client::TestingCallbacks::stateMachineQuery" ref="a03d32d1c51138f24a80d188bfb7f24af" args="(Protocol::Client::StateMachineQuery_Request &amp;request, Protocol::Client::StateMachineQuery_Response &amp;response)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html#a8df62550a0ff5330d75a0c4da78f4af3">LogCabin::Client::TestingCallbacks::readOnlyTreeRPC</a> </td>
+          <td class="memname">bool <a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html#a03d32d1c51138f24a80d188bfb7f24af">LogCabin::Client::TestingCallbacks::stateMachineQuery</a> </td>
           <td>(</td>
-          <td class="paramtype">Protocol::Client::ReadOnlyTree_Request &amp;&#160;</td>
+          <td class="paramtype">Protocol::Client::StateMachineQuery_Request &amp;&#160;</td>
           <td class="paramname"><em>request</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Protocol::Client::ReadOnlyTree_Response &amp;&#160;</td>
+          <td class="paramtype">Protocol::Client::StateMachineQuery_Response &amp;&#160;</td>
           <td class="paramname"><em>response</em>&#160;</td>
         </tr>
         <tr>
@@ -199,7 +199,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Handle a read-only <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>, such as <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a74c016d6333e5548edd2873baff605c4" title="Get the value of a file.">Tree::read</a> or <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>. </p>
+<p>Handle a read-only state machine query, such as <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a74c016d6333e5548edd2873baff605c4" title="Get the value of a file.">Tree::read</a> or <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>. </p>
 <p>The default implementation just returns false. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
@@ -214,20 +214,20 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a427356b37930d7bab14f11b9244a2f84"></a><!-- doxytag: member="LogCabin::Client::TestingCallbacks::readWriteTreeRPC" ref="a427356b37930d7bab14f11b9244a2f84" args="(Protocol::Client::ReadWriteTree_Request &amp;request, Protocol::Client::ReadWriteTree_Response &amp;response)" -->
+<a class="anchor" id="a67288911291e464ad46bcda6440a7314"></a><!-- doxytag: member="LogCabin::Client::TestingCallbacks::stateMachineCommand" ref="a67288911291e464ad46bcda6440a7314" args="(Protocol::Client::StateMachineCommand_Request &amp;request, Protocol::Client::StateMachineCommand_Response &amp;response)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html#a427356b37930d7bab14f11b9244a2f84">LogCabin::Client::TestingCallbacks::readWriteTreeRPC</a> </td>
+          <td class="memname">bool <a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html#a67288911291e464ad46bcda6440a7314">LogCabin::Client::TestingCallbacks::stateMachineCommand</a> </td>
           <td>(</td>
-          <td class="paramtype">Protocol::Client::ReadWriteTree_Request &amp;&#160;</td>
+          <td class="paramtype">Protocol::Client::StateMachineCommand_Request &amp;&#160;</td>
           <td class="paramname"><em>request</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Protocol::Client::ReadWriteTree_Response &amp;&#160;</td>
+          <td class="paramtype">Protocol::Client::StateMachineCommand_Response &amp;&#160;</td>
           <td class="paramname"><em>response</em>&#160;</td>
         </tr>
         <tr>
@@ -239,7 +239,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Handle a read-write <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>, such as <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a74c016d6333e5548edd2873baff605c4" title="Get the value of a file.">Tree::read</a> or <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>. </p>
+<p>Handle a read-write state machine command, such as <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a74c016d6333e5548edd2873baff605c4" title="Get the value of a file.">Tree::read</a> or <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>. </p>
 <p>The default implementation just returns false. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">

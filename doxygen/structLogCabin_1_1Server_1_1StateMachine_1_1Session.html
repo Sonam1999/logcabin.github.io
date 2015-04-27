@@ -123,14 +123,14 @@ Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9">firstOutstandingRPC</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Largest firstOutstandingRPC number processed from this client.  <a href="#a4b710243372cf195e78b941b1cdd6be9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; uint64_t, <br class="typebreak"/>
-Protocol::Client::CommandResponse &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d">responses</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps from <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> numbers to responses.  <a href="#a73701dad4007877f232cea466e96d90d"></a><br/></td></tr>
+Protocol::Client::StateMachineCommand::Response &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a69c14c3d62aaf095a9b448d67b1e2186">responses</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps from <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> numbers to responses.  <a href="#a69c14c3d62aaf095a9b448d67b1e2186"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Tracks state for a particular client. </p>
 <p>Used to prevent duplicate processing of duplicate RPCs. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00255">255</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00358">358</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ac66eafc103a7b67bad67d8dbfb73ff25"></a><!-- doxytag: member="LogCabin::Server::StateMachine::Session::Session" ref="ac66eafc103a7b67bad67d8dbfb73ff25" args="()" -->
 <div class="memitem">
@@ -146,7 +146,7 @@ Protocol::Client::CommandResponse &gt;&#160;</td><td class="memItemRight" valign
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00256">256</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00359">359</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -164,7 +164,7 @@ Protocol::Client::CommandResponse &gt;&#160;</td><td class="memItemRight" valign
 
 <p>When the session was last active, measured in cluster time (roughly the number of nanoseconds that the cluster has maintained a leader). </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00267">267</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00370">370</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -181,16 +181,16 @@ Protocol::Client::CommandResponse &gt;&#160;</td><td class="memItemRight" valign
 
 <p>Largest firstOutstandingRPC number processed from this client. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00271">271</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00374">374</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a73701dad4007877f232cea466e96d90d"></a><!-- doxytag: member="LogCabin::Server::StateMachine::Session::responses" ref="a73701dad4007877f232cea466e96d90d" args="" -->
+<a class="anchor" id="a69c14c3d62aaf095a9b448d67b1e2186"></a><!-- doxytag: member="LogCabin::Server::StateMachine::Session::responses" ref="a69c14c3d62aaf095a9b448d67b1e2186" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::unordered_map&lt;uint64_t, Protocol::Client::CommandResponse&gt; <a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a73701dad4007877f232cea466e96d90d">LogCabin::Server::StateMachine::Session::responses</a></td>
+          <td class="memname">std::unordered_map&lt;uint64_t, Protocol::Client::StateMachineCommand::Response&gt; <a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a69c14c3d62aaf095a9b448d67b1e2186">LogCabin::Server::StateMachine::Session::responses</a></td>
         </tr>
       </table>
 </div>
@@ -199,7 +199,7 @@ Protocol::Client::CommandResponse &gt;&#160;</td><td class="memItemRight" valign
 <p>Maps from <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> numbers to responses. </p>
 <p>Responses for RPCs numbered less that firstOutstandingRPC are discarded from this map. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00278">278</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00382">382</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>

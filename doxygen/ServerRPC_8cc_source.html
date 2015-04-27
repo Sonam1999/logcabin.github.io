@@ -81,185 +81,204 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="ServerRPC_8cc.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* Copyright (c) 2012 Stanford University</span>
-<a name="l00002"></a>00002 <span class="comment"> *</span>
-<a name="l00003"></a>00003 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
-<a name="l00004"></a>00004 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
-<a name="l00005"></a>00005 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
-<a name="l00006"></a>00006 <span class="comment"> *</span>
-<a name="l00007"></a>00007 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
-<a name="l00008"></a>00008 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
-<a name="l00009"></a>00009 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
-<a name="l00010"></a>00010 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
-<a name="l00011"></a>00011 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
-<a name="l00012"></a>00012 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
-<a name="l00013"></a>00013 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
-<a name="l00014"></a>00014 <span class="comment"> */</span>
-<a name="l00015"></a>00015 
-<a name="l00016"></a>00016 <span class="preprocessor">#include &quot;<a class="code" href="Core_2ProtoBuf_8h.html" title="Utilities for dealing with protocol buffers.">Core/ProtoBuf.h</a>&quot;</span>
-<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="ServerRPC_8h.html">RPC/ServerRPC.h</a>&quot;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">namespace </span>LogCabin {
-<a name="l00020"></a>00020 <span class="keyword">namespace </span>RPC {
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022 <span class="keyword">using</span> RPC::Protocol::RequestHeaderPrefix;
-<a name="l00023"></a>00023 <span class="keyword">using</span> RPC::Protocol::RequestHeaderVersion1;
-<a name="l00024"></a>00024 <span class="keyword">using</span> RPC::Protocol::ResponseHeaderPrefix;
-<a name="l00025"></a>00025 <span class="keyword">using</span> RPC::Protocol::ResponseHeaderVersion1;
-<a name="l00026"></a>00026 <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4" title="Status codes returned by Tree operations.">RPC::Protocol::Status</a>;
-<a name="l00027"></a>00027 
-<a name="l00028"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a30ae76fbcf07949f059f3a717dc33c3a">00028</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a374ca14553555667aaec4779cdc4518a" title="Default constructor for empty RPC that can&#39;t be replied to.">ServerRPC::ServerRPC</a>(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a> opaqueRPC)
-<a name="l00029"></a>00029     : opaqueRPC(std::move(opaqueRPC))
-<a name="l00030"></a>00030     , active(true)
-<a name="l00031"></a>00031     , service(0)
-<a name="l00032"></a>00032     , serviceSpecificErrorVersion(0)
-<a name="l00033"></a>00033     , opCode(0)
-<a name="l00034"></a>00034 {
-<a name="l00035"></a>00035     <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>&amp; request = this-&gt;opaqueRPC.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#af83d5705e1375ac12418f3dae1c0461a" title="The RPC request received from the client.">request</a>;
-<a name="l00036"></a>00036 
-<a name="l00037"></a>00037     <span class="comment">// Carefully read the headers.</span>
-<a name="l00038"></a>00038     <span class="keywordflow">if</span> (request.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(RequestHeaderPrefix)) {
-<a name="l00039"></a>00039         <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb" title="Reject the RPC.">reject</a>(<a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694aff3e9fbb7614ab1714ea489e399f19ea" title="The server did not like the RPC request.">Status::INVALID_REQUEST</a>);
-<a name="l00040"></a>00040         <span class="keywordflow">return</span>;
-<a name="l00041"></a>00041     }
-<a name="l00042"></a>00042     RequestHeaderPrefix requestHeaderPrefix =
-<a name="l00043"></a>00043         *<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>RequestHeaderPrefix*<span class="keyword">&gt;</span>(request.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>());
-<a name="l00044"></a>00044     requestHeaderPrefix.fromBigEndian();
-<a name="l00045"></a>00045     <span class="keywordflow">if</span> (requestHeaderPrefix.version != 1 ||
-<a name="l00046"></a>00046         request.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(RequestHeaderVersion1)) {
-<a name="l00047"></a>00047         <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb" title="Reject the RPC.">reject</a>(<a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a1a4c8d3c1c98c547b9caa581e7de0246" title="The server did not like the version number provided in the request header.">Status::INVALID_VERSION</a>);
-<a name="l00048"></a>00048         <span class="keywordflow">return</span>;
-<a name="l00049"></a>00049     }
-<a name="l00050"></a>00050     RequestHeaderVersion1 requestHeader =
-<a name="l00051"></a>00051         *<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>RequestHeaderVersion1*<span class="keyword">&gt;</span>(request.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>());
-<a name="l00052"></a>00052     requestHeader.fromBigEndian();
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a0297725fe4fd8b26b5571dfe75f57bc1" title="See getService().">service</a> = requestHeader.service;
-<a name="l00055"></a>00055     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ae7287164c85593c1e9bb50294d38e46d" title="See getServiceSpecificErrorVersion().">serviceSpecificErrorVersion</a> = requestHeader.serviceSpecificErrorVersion;
-<a name="l00056"></a>00056     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a7e07ab2d14df4dac2c37429b41c5f426" title="See getOpCode().">opCode</a> = requestHeader.opCode;
-<a name="l00057"></a>00057 }
-<a name="l00058"></a>00058 
-<a name="l00059"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a374ca14553555667aaec4779cdc4518a">00059</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a374ca14553555667aaec4779cdc4518a" title="Default constructor for empty RPC that can&#39;t be replied to.">ServerRPC::ServerRPC</a>()
-<a name="l00060"></a>00060     : opaqueRPC()
-<a name="l00061"></a>00061     , active(false)
-<a name="l00062"></a>00062     , service(0)
-<a name="l00063"></a>00063     , serviceSpecificErrorVersion(0)
-<a name="l00064"></a>00064     , opCode(0)
-<a name="l00065"></a>00065 {
-<a name="l00066"></a>00066 }
-<a name="l00067"></a>00067 
-<a name="l00068"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa57fea67d7774651af501e927eb46485">00068</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a374ca14553555667aaec4779cdc4518a" title="Default constructor for empty RPC that can&#39;t be replied to.">ServerRPC::ServerRPC</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">ServerRPC</a>&amp;&amp; other)
-<a name="l00069"></a>00069     : opaqueRPC(std::move(other.opaqueRPC))
-<a name="l00070"></a>00070     , active(other.active)
-<a name="l00071"></a>00071     , service(other.service)
-<a name="l00072"></a>00072     , serviceSpecificErrorVersion(other.serviceSpecificErrorVersion)
-<a name="l00073"></a>00073     , opCode(other.opCode)
-<a name="l00074"></a>00074 {
-<a name="l00075"></a>00075     other.active = <span class="keyword">false</span>;
-<a name="l00076"></a>00076 }
-<a name="l00077"></a>00077 
-<a name="l00078"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a0d06eb3ee53045b52530b66b3a0073b5">00078</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a0d06eb3ee53045b52530b66b3a0073b5" title="Destructor.">ServerRPC::~ServerRPC</a>()
-<a name="l00079"></a>00079 {
-<a name="l00080"></a>00080     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a>) {
-<a name="l00081"></a>00081         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;ServerRPC destroyed without a reply (service %u, opcode %u). &quot;</span>
-<a name="l00082"></a>00082                 <span class="stringliteral">&quot;This may cause the client of the RPC to hang&quot;</span>,
-<a name="l00083"></a>00083                 <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a0297725fe4fd8b26b5571dfe75f57bc1" title="See getService().">service</a>, <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a7e07ab2d14df4dac2c37429b41c5f426" title="See getOpCode().">opCode</a>);
-<a name="l00084"></a>00084     }
-<a name="l00085"></a>00085 }
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087 <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">ServerRPC</a>&amp;
-<a name="l00088"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa875b994d8ce2e490ee0f7457f35b3ed">00088</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa875b994d8ce2e490ee0f7457f35b3ed" title="Move assignment.">ServerRPC::operator=</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">ServerRPC</a>&amp;&amp; other)
-<a name="l00089"></a>00089 {
-<a name="l00090"></a>00090     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a> = std::move(other.opaqueRPC);
-<a name="l00091"></a>00091     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a> = other.active;
-<a name="l00092"></a>00092     other.active = <span class="keyword">false</span>;
-<a name="l00093"></a>00093     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a0297725fe4fd8b26b5571dfe75f57bc1" title="See getService().">service</a> = other.service;
-<a name="l00094"></a>00094     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ae7287164c85593c1e9bb50294d38e46d" title="See getServiceSpecificErrorVersion().">serviceSpecificErrorVersion</a> = other.serviceSpecificErrorVersion;
-<a name="l00095"></a>00095     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a7e07ab2d14df4dac2c37429b41c5f426" title="See getOpCode().">opCode</a> = other.opCode;
-<a name="l00096"></a>00096     <span class="keywordflow">return</span> *<span class="keyword">this</span>;
-<a name="l00097"></a>00097 }
-<a name="l00098"></a>00098 
-<a name="l00099"></a>00099 <span class="keywordtype">bool</span>
-<a name="l00100"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9372e93d64d70ec04a2e3ecdc9ef1477">00100</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9372e93d64d70ec04a2e3ecdc9ef1477" title="Parse the request out of the RPC.">ServerRPC::getRequest</a>(google::protobuf::Message&amp; request)
-<a name="l00101"></a>00101 {
-<a name="l00102"></a>00102     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a>)
-<a name="l00103"></a>00103         <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00104"></a>00104     <span class="keywordflow">if</span> (!<a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c" title="Parse a protocol buffer message out of a Core::Buffer.">Core::ProtoBuf::parse</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#af83d5705e1375ac12418f3dae1c0461a" title="The RPC request received from the client.">request</a>, request,
-<a name="l00105"></a>00105                                <span class="keyword">sizeof</span>(RequestHeaderVersion1))) {
-<a name="l00106"></a>00106         <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ab67aadc48e385864c66e82d3e0aa8d25" title="Reject the RPC on the grounds that it specifies an invalid request.">rejectInvalidRequest</a>();
-<a name="l00107"></a>00107         <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00108"></a>00108     }
-<a name="l00109"></a>00109     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00110"></a>00110 }
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112 <span class="keywordtype">void</span>
-<a name="l00113"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea">00113</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">ServerRPC::reply</a>(<span class="keyword">const</span> google::protobuf::Message&amp; payload)
-<a name="l00114"></a>00114 {
-<a name="l00115"></a>00115     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a> = <span class="keyword">false</span>;
-<a name="l00116"></a>00116     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> buffer;
-<a name="l00117"></a>00117     <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956" title="Serialize a protocol buffer message into a Core::Buffer.">Core::ProtoBuf::serialize</a>(payload, buffer,
-<a name="l00118"></a>00118                               <span class="keyword">sizeof</span>(ResponseHeaderVersion1));
-<a name="l00119"></a>00119     <span class="keyword">auto</span>&amp; responseHeader =
-<a name="l00120"></a>00120         *<span class="keyword">static_cast&lt;</span>ResponseHeaderVersion1*<span class="keyword">&gt;</span>(buffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>());
-<a name="l00121"></a>00121     responseHeader.prefix.status = <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">Status::OK</a>;
-<a name="l00122"></a>00122     responseHeader.prefix.toBigEndian();
-<a name="l00123"></a>00123     responseHeader.toBigEndian();
-<a name="l00124"></a>00124     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#aab79a2eb6ed3293e7e74f6ff1c1652cd" title="The reply to the RPC, to send back to the client.">response</a> = std::move(buffer);
-<a name="l00125"></a>00125     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a4e3fa8ab515370f7cc2830c65e62d8aa" title="Send the response back to the client.">sendReply</a>();
-<a name="l00126"></a>00126 }
-<a name="l00127"></a>00127 
-<a name="l00128"></a>00128 <span class="keywordtype">void</span>
-<a name="l00129"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac817a925ce3cbd81f4d856586906555b">00129</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac817a925ce3cbd81f4d856586906555b" title="Send a service-specific error back to the client.">ServerRPC::returnError</a>(<span class="keyword">const</span> google::protobuf::Message&amp; serviceSpecificError)
-<a name="l00130"></a>00130 {
-<a name="l00131"></a>00131     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a> = <span class="keyword">false</span>;
-<a name="l00132"></a>00132     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> buffer;
-<a name="l00133"></a>00133     <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956" title="Serialize a protocol buffer message into a Core::Buffer.">Core::ProtoBuf::serialize</a>(serviceSpecificError, buffer,
-<a name="l00134"></a>00134                               <span class="keyword">sizeof</span>(ResponseHeaderVersion1));
-<a name="l00135"></a>00135     <span class="keyword">auto</span>&amp; responseHeader =
-<a name="l00136"></a>00136         *<span class="keyword">static_cast&lt;</span>ResponseHeaderVersion1*<span class="keyword">&gt;</span>(buffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>());
-<a name="l00137"></a>00137     responseHeader.prefix.status = <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a3808388a3c1e6c97bdb3dd5e5ecee8f3" title="An error specific to the particular service.">Status::SERVICE_SPECIFIC_ERROR</a>;
-<a name="l00138"></a>00138     responseHeader.prefix.toBigEndian();
-<a name="l00139"></a>00139     responseHeader.toBigEndian();
-<a name="l00140"></a>00140     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#aab79a2eb6ed3293e7e74f6ff1c1652cd" title="The reply to the RPC, to send back to the client.">response</a> = std::move(buffer);
-<a name="l00141"></a>00141     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a4e3fa8ab515370f7cc2830c65e62d8aa" title="Send the response back to the client.">sendReply</a>();
-<a name="l00142"></a>00142 }
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144 <span class="keywordtype">void</span>
-<a name="l00145"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ad781863b218fda3f860368661a4ba84a">00145</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ad781863b218fda3f860368661a4ba84a" title="Reject the RPC on the grounds that it specifies an invalid service ID.">ServerRPC::rejectInvalidService</a>()
-<a name="l00146"></a>00146 {
-<a name="l00147"></a>00147     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb" title="Reject the RPC.">reject</a>(<a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a57b3feada853764683c0dda7595cbac5" title="The server does not have the requested service.">Status::INVALID_SERVICE</a>);
-<a name="l00148"></a>00148 }
-<a name="l00149"></a>00149 
-<a name="l00150"></a>00150 <span class="keywordtype">void</span>
-<a name="l00151"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ab67aadc48e385864c66e82d3e0aa8d25">00151</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ab67aadc48e385864c66e82d3e0aa8d25" title="Reject the RPC on the grounds that it specifies an invalid request.">ServerRPC::rejectInvalidRequest</a>()
-<a name="l00152"></a>00152 {
-<a name="l00153"></a>00153     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb" title="Reject the RPC.">reject</a>(<a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694aff3e9fbb7614ab1714ea489e399f19ea" title="The server did not like the RPC request.">Status::INVALID_REQUEST</a>);
-<a name="l00154"></a>00154 }
-<a name="l00155"></a>00155 
-<a name="l00156"></a>00156 <span class="keywordtype">void</span>
-<a name="l00157"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ae57dccdee3cb551a45b80039189dd6c6">00157</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ae57dccdee3cb551a45b80039189dd6c6" title="Close the session on which this request originated.">ServerRPC::closeSession</a>()
-<a name="l00158"></a>00158 {
-<a name="l00159"></a>00159     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a> = <span class="keyword">false</span>;
-<a name="l00160"></a>00160     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#affaffe471d4a8fdf3ad3e86f0bfb8ad6" title="Close the session on which this request originated.">closeSession</a>();
+<a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2015 Diego Ongaro</span>
+<a name="l00003"></a>00003 <span class="comment"> *</span>
+<a name="l00004"></a>00004 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
+<a name="l00005"></a>00005 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
+<a name="l00006"></a>00006 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
+<a name="l00007"></a>00007 <span class="comment"> *</span>
+<a name="l00008"></a>00008 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
+<a name="l00009"></a>00009 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
+<a name="l00010"></a>00010 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
+<a name="l00011"></a>00011 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
+<a name="l00012"></a>00012 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
+<a name="l00013"></a>00013 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
+<a name="l00014"></a>00014 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
+<a name="l00015"></a>00015 <span class="comment"> */</span>
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="preprocessor">#include &quot;<a class="code" href="Core_2ProtoBuf_8h.html" title="Utilities for dealing with protocol buffers.">Core/ProtoBuf.h</a>&quot;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &quot;<a class="code" href="ServerRPC_8h.html">RPC/ServerRPC.h</a>&quot;</span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 <span class="keyword">namespace </span>LogCabin {
+<a name="l00021"></a>00021 <span class="keyword">namespace </span>RPC {
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="keyword">using</span> RPC::Protocol::RequestHeaderPrefix;
+<a name="l00024"></a>00024 <span class="keyword">using</span> RPC::Protocol::RequestHeaderVersion1;
+<a name="l00025"></a>00025 <span class="keyword">using</span> RPC::Protocol::ResponseHeaderPrefix;
+<a name="l00026"></a>00026 <span class="keyword">using</span> RPC::Protocol::ResponseHeaderVersion1;
+<a name="l00027"></a>00027 <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4" title="Status codes returned by Tree operations.">RPC::Protocol::Status</a>;
+<a name="l00028"></a>00028 
+<a name="l00029"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a30ae76fbcf07949f059f3a717dc33c3a">00029</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a374ca14553555667aaec4779cdc4518a" title="Default constructor for empty RPC that can&#39;t be replied to.">ServerRPC::ServerRPC</a>(<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html" title="This class represents the server side of a remote procedure call.">OpaqueServerRPC</a> opaqueRPC)
+<a name="l00030"></a>00030     : opaqueRPC(std::move(opaqueRPC))
+<a name="l00031"></a>00031     , active(true)
+<a name="l00032"></a>00032     , service(0)
+<a name="l00033"></a>00033     , serviceSpecificErrorVersion(0)
+<a name="l00034"></a>00034     , opCode(0)
+<a name="l00035"></a>00035 {
+<a name="l00036"></a>00036     <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>&amp; request = this-&gt;opaqueRPC.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#af83d5705e1375ac12418f3dae1c0461a" title="The RPC request received from the client.">request</a>;
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038     <span class="comment">// Carefully read the headers.</span>
+<a name="l00039"></a>00039     <span class="keywordflow">if</span> (request.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(RequestHeaderPrefix)) {
+<a name="l00040"></a>00040         <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb" title="Reject the RPC.">reject</a>(<a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694aff3e9fbb7614ab1714ea489e399f19ea" title="The server did not like the RPC request.">Status::INVALID_REQUEST</a>);
+<a name="l00041"></a>00041         <span class="keywordflow">return</span>;
+<a name="l00042"></a>00042     }
+<a name="l00043"></a>00043     RequestHeaderPrefix requestHeaderPrefix =
+<a name="l00044"></a>00044         *<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>RequestHeaderPrefix*<span class="keyword">&gt;</span>(request.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>());
+<a name="l00045"></a>00045     requestHeaderPrefix.fromBigEndian();
+<a name="l00046"></a>00046     <span class="keywordflow">if</span> (requestHeaderPrefix.version != 1 ||
+<a name="l00047"></a>00047         request.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>() &lt; <span class="keyword">sizeof</span>(RequestHeaderVersion1)) {
+<a name="l00048"></a>00048         <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb" title="Reject the RPC.">reject</a>(<a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a1a4c8d3c1c98c547b9caa581e7de0246" title="The server did not like the version number provided in the request header.">Status::INVALID_VERSION</a>);
+<a name="l00049"></a>00049         <span class="keywordflow">return</span>;
+<a name="l00050"></a>00050     }
+<a name="l00051"></a>00051     RequestHeaderVersion1 requestHeader =
+<a name="l00052"></a>00052         *<span class="keyword">static_cast&lt;</span><span class="keyword">const </span>RequestHeaderVersion1*<span class="keyword">&gt;</span>(request.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>());
+<a name="l00053"></a>00053     requestHeader.fromBigEndian();
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a0297725fe4fd8b26b5571dfe75f57bc1" title="See getService().">service</a> = requestHeader.service;
+<a name="l00056"></a>00056     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ae7287164c85593c1e9bb50294d38e46d" title="See getServiceSpecificErrorVersion().">serviceSpecificErrorVersion</a> = requestHeader.serviceSpecificErrorVersion;
+<a name="l00057"></a>00057     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a7e07ab2d14df4dac2c37429b41c5f426" title="See getOpCode().">opCode</a> = requestHeader.opCode;
+<a name="l00058"></a>00058 }
+<a name="l00059"></a>00059 
+<a name="l00060"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a374ca14553555667aaec4779cdc4518a">00060</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a374ca14553555667aaec4779cdc4518a" title="Default constructor for empty RPC that can&#39;t be replied to.">ServerRPC::ServerRPC</a>()
+<a name="l00061"></a>00061     : opaqueRPC()
+<a name="l00062"></a>00062     , active(false)
+<a name="l00063"></a>00063     , service(0)
+<a name="l00064"></a>00064     , serviceSpecificErrorVersion(0)
+<a name="l00065"></a>00065     , opCode(0)
+<a name="l00066"></a>00066 {
+<a name="l00067"></a>00067 }
+<a name="l00068"></a>00068 
+<a name="l00069"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa57fea67d7774651af501e927eb46485">00069</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a374ca14553555667aaec4779cdc4518a" title="Default constructor for empty RPC that can&#39;t be replied to.">ServerRPC::ServerRPC</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">ServerRPC</a>&amp;&amp; other)
+<a name="l00070"></a>00070     : opaqueRPC(std::move(other.opaqueRPC))
+<a name="l00071"></a>00071     , active(other.active)
+<a name="l00072"></a>00072     , service(other.service)
+<a name="l00073"></a>00073     , serviceSpecificErrorVersion(other.serviceSpecificErrorVersion)
+<a name="l00074"></a>00074     , opCode(other.opCode)
+<a name="l00075"></a>00075 {
+<a name="l00076"></a>00076     other.active = <span class="keyword">false</span>;
+<a name="l00077"></a>00077 }
+<a name="l00078"></a>00078 
+<a name="l00079"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a0d06eb3ee53045b52530b66b3a0073b5">00079</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a0d06eb3ee53045b52530b66b3a0073b5" title="Destructor.">ServerRPC::~ServerRPC</a>()
+<a name="l00080"></a>00080 {
+<a name="l00081"></a>00081     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a>) {
+<a name="l00082"></a>00082         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;ServerRPC destroyed without a reply (service %u, opcode %u). &quot;</span>
+<a name="l00083"></a>00083                 <span class="stringliteral">&quot;This may cause the client of the RPC to hang&quot;</span>,
+<a name="l00084"></a>00084                 <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a0297725fe4fd8b26b5571dfe75f57bc1" title="See getService().">service</a>, <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a7e07ab2d14df4dac2c37429b41c5f426" title="See getOpCode().">opCode</a>);
+<a name="l00085"></a>00085     }
+<a name="l00086"></a>00086 }
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088 <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">ServerRPC</a>&amp;
+<a name="l00089"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa875b994d8ce2e490ee0f7457f35b3ed">00089</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa875b994d8ce2e490ee0f7457f35b3ed" title="Move assignment.">ServerRPC::operator=</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">ServerRPC</a>&amp;&amp; other)
+<a name="l00090"></a>00090 {
+<a name="l00091"></a>00091     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a> = std::move(other.opaqueRPC);
+<a name="l00092"></a>00092     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a> = other.active;
+<a name="l00093"></a>00093     other.active = <span class="keyword">false</span>;
+<a name="l00094"></a>00094     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a0297725fe4fd8b26b5571dfe75f57bc1" title="See getService().">service</a> = other.service;
+<a name="l00095"></a>00095     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ae7287164c85593c1e9bb50294d38e46d" title="See getServiceSpecificErrorVersion().">serviceSpecificErrorVersion</a> = other.serviceSpecificErrorVersion;
+<a name="l00096"></a>00096     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a7e07ab2d14df4dac2c37429b41c5f426" title="See getOpCode().">opCode</a> = other.opCode;
+<a name="l00097"></a>00097     <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00098"></a>00098 }
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 <span class="keywordtype">bool</span>
+<a name="l00101"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9372e93d64d70ec04a2e3ecdc9ef1477">00101</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9372e93d64d70ec04a2e3ecdc9ef1477" title="Parse the request out of the RPC.">ServerRPC::getRequest</a>(google::protobuf::Message&amp; request)
+<a name="l00102"></a>00102 {
+<a name="l00103"></a>00103     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a>)
+<a name="l00104"></a>00104         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00105"></a>00105     <span class="keywordflow">if</span> (!<a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c" title="Parse a protocol buffer message out of a Core::Buffer.">Core::ProtoBuf::parse</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#af83d5705e1375ac12418f3dae1c0461a" title="The RPC request received from the client.">request</a>, request,
+<a name="l00106"></a>00106                                <span class="keyword">sizeof</span>(RequestHeaderVersion1))) {
+<a name="l00107"></a>00107         <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ab67aadc48e385864c66e82d3e0aa8d25" title="Reject the RPC on the grounds that it specifies an invalid request.">rejectInvalidRequest</a>();
+<a name="l00108"></a>00108         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00109"></a>00109     }
+<a name="l00110"></a>00110     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00111"></a>00111 }
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 <span class="keywordtype">bool</span>
+<a name="l00114"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a8a0d5c035179560246a4e7923d62b7ab">00114</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9372e93d64d70ec04a2e3ecdc9ef1477" title="Parse the request out of the RPC.">ServerRPC::getRequest</a>(<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>&amp; buffer)<span class="keyword"> const</span>
+<a name="l00115"></a>00115 <span class="keyword"></span>{
+<a name="l00116"></a>00116     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a>)
+<a name="l00117"></a>00117         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00118"></a>00118     uint64_t bytes = <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#af83d5705e1375ac12418f3dae1c0461a" title="The RPC request received from the client.">request</a>.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>();
+<a name="l00119"></a>00119     assert(bytes &gt;= <span class="keyword">sizeof</span>(RequestHeaderVersion1));
+<a name="l00120"></a>00120     bytes -= <span class="keyword">sizeof</span>(RequestHeaderVersion1);
+<a name="l00121"></a>00121     buffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a5c620e31ddbad599c21c8a221aa2c568" title="Replace the data contained in this Buffer.">setData</a>(<span class="keyword">new</span> <span class="keywordtype">char</span>[bytes],
+<a name="l00122"></a>00122                    bytes,
+<a name="l00123"></a>00123                    Core::Buffer::deleteArrayFn&lt;char&gt;);
+<a name="l00124"></a>00124     <a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65" title="Copy some noncontiguous chunks of data into a contiguous chunk.">memcpy</a>(buffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>(),
+<a name="l00125"></a>00125            (<span class="keyword">static_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#af83d5705e1375ac12418f3dae1c0461a" title="The RPC request received from the client.">request</a>.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>()) +
+<a name="l00126"></a>00126             <span class="keyword">sizeof</span>(RequestHeaderVersion1)),
+<a name="l00127"></a>00127            bytes);
+<a name="l00128"></a>00128     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00129"></a>00129 }
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131 <span class="keywordtype">void</span>
+<a name="l00132"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea">00132</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">ServerRPC::reply</a>(<span class="keyword">const</span> google::protobuf::Message&amp; payload)
+<a name="l00133"></a>00133 {
+<a name="l00134"></a>00134     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a> = <span class="keyword">false</span>;
+<a name="l00135"></a>00135     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> buffer;
+<a name="l00136"></a>00136     <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956" title="Serialize a protocol buffer message into a Core::Buffer.">Core::ProtoBuf::serialize</a>(payload, buffer,
+<a name="l00137"></a>00137                               <span class="keyword">sizeof</span>(ResponseHeaderVersion1));
+<a name="l00138"></a>00138     <span class="keyword">auto</span>&amp; responseHeader =
+<a name="l00139"></a>00139         *<span class="keyword">static_cast&lt;</span>ResponseHeaderVersion1*<span class="keyword">&gt;</span>(buffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>());
+<a name="l00140"></a>00140     responseHeader.prefix.status = <a class="code" href="namespaceLogCabin_1_1Client.html#a4326ade2a152c568b8a7b7daafadf9b4a7324f75352386fdbcd0e25d926866ad7" title="The operation completed successfully.">Status::OK</a>;
+<a name="l00141"></a>00141     responseHeader.prefix.toBigEndian();
+<a name="l00142"></a>00142     responseHeader.toBigEndian();
+<a name="l00143"></a>00143     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#aab79a2eb6ed3293e7e74f6ff1c1652cd" title="The reply to the RPC, to send back to the client.">response</a> = std::move(buffer);
+<a name="l00144"></a>00144     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a4e3fa8ab515370f7cc2830c65e62d8aa" title="Send the response back to the client.">sendReply</a>();
+<a name="l00145"></a>00145 }
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147 <span class="keywordtype">void</span>
+<a name="l00148"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac817a925ce3cbd81f4d856586906555b">00148</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac817a925ce3cbd81f4d856586906555b" title="Send a service-specific error back to the client.">ServerRPC::returnError</a>(<span class="keyword">const</span> google::protobuf::Message&amp; serviceSpecificError)
+<a name="l00149"></a>00149 {
+<a name="l00150"></a>00150     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a> = <span class="keyword">false</span>;
+<a name="l00151"></a>00151     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> buffer;
+<a name="l00152"></a>00152     <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956" title="Serialize a protocol buffer message into a Core::Buffer.">Core::ProtoBuf::serialize</a>(serviceSpecificError, buffer,
+<a name="l00153"></a>00153                               <span class="keyword">sizeof</span>(ResponseHeaderVersion1));
+<a name="l00154"></a>00154     <span class="keyword">auto</span>&amp; responseHeader =
+<a name="l00155"></a>00155         *<span class="keyword">static_cast&lt;</span>ResponseHeaderVersion1*<span class="keyword">&gt;</span>(buffer.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>());
+<a name="l00156"></a>00156     responseHeader.prefix.status = <a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a3808388a3c1e6c97bdb3dd5e5ecee8f3" title="An error specific to the particular service.">Status::SERVICE_SPECIFIC_ERROR</a>;
+<a name="l00157"></a>00157     responseHeader.prefix.toBigEndian();
+<a name="l00158"></a>00158     responseHeader.toBigEndian();
+<a name="l00159"></a>00159     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#aab79a2eb6ed3293e7e74f6ff1c1652cd" title="The reply to the RPC, to send back to the client.">response</a> = std::move(buffer);
+<a name="l00160"></a>00160     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a4e3fa8ab515370f7cc2830c65e62d8aa" title="Send the response back to the client.">sendReply</a>();
 <a name="l00161"></a>00161 }
 <a name="l00162"></a>00162 
 <a name="l00163"></a>00163 <span class="keywordtype">void</span>
-<a name="l00164"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb">00164</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb" title="Reject the RPC.">ServerRPC::reject</a>(<a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694" title="The status codes returned in server responses.">RPC::Protocol::Status</a> status)
+<a name="l00164"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ad781863b218fda3f860368661a4ba84a">00164</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ad781863b218fda3f860368661a4ba84a" title="Reject the RPC on the grounds that it specifies an invalid service ID.">ServerRPC::rejectInvalidService</a>()
 <a name="l00165"></a>00165 {
-<a name="l00166"></a>00166     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a> = <span class="keyword">false</span>;
-<a name="l00167"></a>00167     ResponseHeaderVersion1&amp; responseHeader = *<span class="keyword">new</span> ResponseHeaderVersion1();
-<a name="l00168"></a>00168     responseHeader.prefix.status = status;
-<a name="l00169"></a>00169     responseHeader.prefix.toBigEndian();
-<a name="l00170"></a>00170     responseHeader.toBigEndian();
-<a name="l00171"></a>00171     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#aab79a2eb6ed3293e7e74f6ff1c1652cd" title="The reply to the RPC, to send back to the client.">response</a>.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a5c620e31ddbad599c21c8a221aa2c568" title="Replace the data contained in this Buffer.">setData</a>(
-<a name="l00172"></a>00172         &amp;responseHeader,
-<a name="l00173"></a>00173         <span class="keyword">sizeof</span>(responseHeader),
-<a name="l00174"></a>00174         Core::Buffer::deleteObjectFn&lt;ResponseHeaderVersion1*&gt;);
-<a name="l00175"></a>00175     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a4e3fa8ab515370f7cc2830c65e62d8aa" title="Send the response back to the client.">sendReply</a>();
-<a name="l00176"></a>00176 }
-<a name="l00177"></a>00177 
-<a name="l00178"></a>00178 
-<a name="l00179"></a>00179 } <span class="comment">// namespace LogCabin::RPC</span>
-<a name="l00180"></a>00180 } <span class="comment">// namespace LogCabin</span>
+<a name="l00166"></a>00166     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb" title="Reject the RPC.">reject</a>(<a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694a57b3feada853764683c0dda7595cbac5" title="The server does not have the requested service.">Status::INVALID_SERVICE</a>);
+<a name="l00167"></a>00167 }
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169 <span class="keywordtype">void</span>
+<a name="l00170"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ab67aadc48e385864c66e82d3e0aa8d25">00170</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ab67aadc48e385864c66e82d3e0aa8d25" title="Reject the RPC on the grounds that it specifies an invalid request.">ServerRPC::rejectInvalidRequest</a>()
+<a name="l00171"></a>00171 {
+<a name="l00172"></a>00172     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb" title="Reject the RPC.">reject</a>(<a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694aff3e9fbb7614ab1714ea489e399f19ea" title="The server did not like the RPC request.">Status::INVALID_REQUEST</a>);
+<a name="l00173"></a>00173 }
+<a name="l00174"></a>00174 
+<a name="l00175"></a>00175 <span class="keywordtype">void</span>
+<a name="l00176"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ae57dccdee3cb551a45b80039189dd6c6">00176</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ae57dccdee3cb551a45b80039189dd6c6" title="Close the session on which this request originated.">ServerRPC::closeSession</a>()
+<a name="l00177"></a>00177 {
+<a name="l00178"></a>00178     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a> = <span class="keyword">false</span>;
+<a name="l00179"></a>00179     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#affaffe471d4a8fdf3ad3e86f0bfb8ad6" title="Close the session on which this request originated.">closeSession</a>();
+<a name="l00180"></a>00180 }
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182 <span class="keywordtype">void</span>
+<a name="l00183"></a><a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb">00183</a> <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ac1af3f1becd5a1269df5fbcf294a63bb" title="Reject the RPC.">ServerRPC::reject</a>(<a class="code" href="namespaceLogCabin_1_1RPC_1_1Protocol.html#a85fb11a499988e97be6f566df469a694" title="The status codes returned in server responses.">RPC::Protocol::Status</a> status)
+<a name="l00184"></a>00184 {
+<a name="l00185"></a>00185     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21" title="Set to true if the RPC needs a reply, false otherwise.">active</a> = <span class="keyword">false</span>;
+<a name="l00186"></a>00186     ResponseHeaderVersion1&amp; responseHeader = *<span class="keyword">new</span> ResponseHeaderVersion1();
+<a name="l00187"></a>00187     responseHeader.prefix.status = status;
+<a name="l00188"></a>00188     responseHeader.prefix.toBigEndian();
+<a name="l00189"></a>00189     responseHeader.toBigEndian();
+<a name="l00190"></a>00190     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#aab79a2eb6ed3293e7e74f6ff1c1652cd" title="The reply to the RPC, to send back to the client.">response</a>.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a5c620e31ddbad599c21c8a221aa2c568" title="Replace the data contained in this Buffer.">setData</a>(
+<a name="l00191"></a>00191         &amp;responseHeader,
+<a name="l00192"></a>00192         <span class="keyword">sizeof</span>(responseHeader),
+<a name="l00193"></a>00193         Core::Buffer::deleteObjectFn&lt;ResponseHeaderVersion1*&gt;);
+<a name="l00194"></a>00194     <a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a9583ab472b70fcf3b232ce99fd871bcb" title="The underlying transport-level RPC object.">opaqueRPC</a>.<a class="code" href="classLogCabin_1_1RPC_1_1OpaqueServerRPC.html#a4e3fa8ab515370f7cc2830c65e62d8aa" title="Send the response back to the client.">sendReply</a>();
+<a name="l00195"></a>00195 }
+<a name="l00196"></a>00196 
+<a name="l00197"></a>00197 
+<a name="l00198"></a>00198 } <span class="comment">// namespace LogCabin::RPC</span>
+<a name="l00199"></a>00199 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
