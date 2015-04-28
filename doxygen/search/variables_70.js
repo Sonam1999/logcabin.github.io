@@ -5,7 +5,7 @@ var searchData=
   ['path',['path',['../classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a0e9d8165cd1c2b51539c5cc8466aee9d',1,'anonymous_namespace{TreeOps.cc}::OptionParser::path()'],['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293',1,'LogCabin::Storage::FilesystemUtil::File::path()']]],
   ['payloadlength',['payloadLength',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#a7b97669600ee6ae238ce1d11827020d5',1,'LogCabin::RPC::MessageSocket::Header']]],
   ['pidfilename',['pidFilename',['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#ad87c6524a04dbe73b6a776aa36db0470',1,'anonymous_namespace{Main.cc}::OptionParser']]],
-  ['ping_5ftimeout_5fms',['PING_TIMEOUT_MS',['../classLogCabin_1_1RPC_1_1ClientSession.html#a6533e01f950001bea63d65d5cf128e5b',1,'LogCabin::RPC::ClientSession']]],
+  ['ping_5ftimeout_5fns',['PING_TIMEOUT_NS',['../classLogCabin_1_1RPC_1_1ClientSession.html#a8ca745e2f9e2f85b759bce108716257d',1,'LogCabin::RPC::ClientSession']]],
   ['policy',['policy',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aefa22d74a958dcc8c0a60502347781d9',1,'LogCabin::Core::Debug::Internal']]],
   ['prefix',['prefix',['../structLogCabin_1_1RPC_1_1Protocol_1_1RequestHeaderVersion1.html#af29f2edd4e48f1c4111ae1ebf1947e1c',1,'LogCabin::RPC::Protocol::RequestHeaderVersion1::prefix()'],['../structLogCabin_1_1RPC_1_1Protocol_1_1ResponseHeaderVersion1.html#a2a8b7ce96c9fd58d0354421d21fbb9e6',1,'LogCabin::RPC::Protocol::ResponseHeaderVersion1::prefix()']]],
   ['preparedsegments',['preparedSegments',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a82ace8371782747c371bdadb29d41741',1,'LogCabin::Storage::SegmentedLog']]],

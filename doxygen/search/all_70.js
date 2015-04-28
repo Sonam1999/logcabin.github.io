@@ -18,7 +18,7 @@ var searchData=
   ['pidfile',['PidFile',['../classanonymous__namespace_02Main_8cc_03_1_1PidFile.html#a55863420948e957826f8f1efc435f064',1,'anonymous_namespace{Main.cc}::PidFile']]],
   ['pidfilename',['pidFilename',['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#ad87c6524a04dbe73b6a776aa36db0470',1,'anonymous_namespace{Main.cc}::OptionParser']]],
   ['ping_5fmessage_5fid',['PING_MESSAGE_ID',['../namespaceLogCabin_1_1Protocol_1_1Common.html#aa710500562524493a074bb752b28d5d1a4cac213a26a9494fed6de53a2233097a',1,'LogCabin::Protocol::Common']]],
-  ['ping_5ftimeout_5fms',['PING_TIMEOUT_MS',['../classLogCabin_1_1RPC_1_1ClientSession.html#a6533e01f950001bea63d65d5cf128e5b',1,'LogCabin::RPC::ClientSession']]],
+  ['ping_5ftimeout_5fns',['PING_TIMEOUT_NS',['../classLogCabin_1_1RPC_1_1ClientSession.html#a8ca745e2f9e2f85b759bce108716257d',1,'LogCabin::RPC::ClientSession']]],
   ['policy',['policy',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aefa22d74a958dcc8c0a60502347781d9',1,'LogCabin::Core::Debug::Internal']]],
   ['poprequest',['popRequest',['../classLogCabin_1_1Client_1_1LeaderRPCMock.html#aeacd39bf1791b2dea3b177c1963e4e10',1,'LogCabin::Client::LeaderRPCMock']]],
   ['predicate',['Predicate',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#ab03a45ca76847baf9dd1f673a1d4a0bf',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],

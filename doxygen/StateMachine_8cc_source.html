@@ -129,9 +129,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00047"></a>00047     , snapshotBlockPercentage(
 <a name="l00048"></a>00048             config.read&lt;uint64_t&gt;(<span class="stringliteral">&quot;snapshotBlockPercentage&quot;</span>, 0))
 <a name="l00049"></a>00049     , snapshotMinLogSize(
-<a name="l00050"></a>00050             config.read&lt;uint64_t&gt;(<span class="stringliteral">&quot;snapshotMinLogSize&quot;</span>, 1024))
+<a name="l00050"></a>00050             config.read&lt;uint64_t&gt;(<span class="stringliteral">&quot;snapshotMinLogSize&quot;</span>, 64UL * 1024 * 1024))
 <a name="l00051"></a>00051     , snapshotRatio(
-<a name="l00052"></a>00052             config.read&lt;uint64_t&gt;(<span class="stringliteral">&quot;snapshotRatio&quot;</span>, 10))
+<a name="l00052"></a>00052             config.read&lt;uint64_t&gt;(<span class="stringliteral">&quot;snapshotRatio&quot;</span>, 4))
 <a name="l00053"></a>00053     , snapshotWatchdogInterval(std::chrono::milliseconds(
 <a name="l00054"></a>00054             config.read&lt;uint64_t&gt;(<span class="stringliteral">&quot;snapshotWatchdogMilliseconds&quot;</span>, 10000)))
 <a name="l00055"></a>00055       <span class="comment">// TODO(ongaro): This should be configurable, but it must be the same for</span>

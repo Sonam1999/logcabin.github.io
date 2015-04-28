@@ -168,8 +168,8 @@ Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">ClientSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#af5f20f631eedc7dfed6815749d73c006">self</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is used to keep this object alive while there are outstanding RPCs.  <a href="#af5f20f631eedc7dfed6815749d73c006"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a6533e01f950001bea63d65d5cf128e5b">PING_TIMEOUT_MS</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of milliseconds to wait until the client gets suspicious about the server not responding.  <a href="#a6533e01f950001bea63d65d5cf128e5b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a8ca745e2f9e2f85b759bce108716257d">PING_TIMEOUT_NS</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of nanoseconds to wait until the client gets suspicious about the server not responding.  <a href="#a8ca745e2f9e2f85b759bce108716257d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a11b5031d1bcbf4fb6d04d053661ce56d">eventLoop</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The event loop that is used for non-blocking I/O.  <a href="#a11b5031d1bcbf4fb6d04d053661ce56d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classLogCabin_1_1RPC_1_1Address.html">Address</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#acf97ad99f351ca09b0eb405eb4acdd49">address</a></td></tr>
@@ -644,19 +644,19 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6533e01f950001bea63d65d5cf128e5b"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::PING_TIMEOUT_MS" ref="a6533e01f950001bea63d65d5cf128e5b" args="" -->
+<a class="anchor" id="a8ca745e2f9e2f85b759bce108716257d"></a><!-- doxytag: member="LogCabin::RPC::ClientSession::PING_TIMEOUT_NS" ref="a8ca745e2f9e2f85b759bce108716257d" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const uint64_t <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a6533e01f950001bea63d65d5cf128e5b">LogCabin::RPC::ClientSession::PING_TIMEOUT_MS</a><code> [private]</code></td>
+          <td class="memname">const uint64_t <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html#a8ca745e2f9e2f85b759bce108716257d">LogCabin::RPC::ClientSession::PING_TIMEOUT_NS</a><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>The number of milliseconds to wait until the client gets suspicious about the server not responding. </p>
-<p>After this amount of time elapses, the client will send a ping to the server. If no response is received within another PING_TIMEOUT_MS milliseconds, the session is closed.</p>
+<p>The number of nanoseconds to wait until the client gets suspicious about the server not responding. </p>
+<p>After this amount of time elapses, the client will send a ping to the server. If no response is received within another PING_TIMEOUT_NS milliseconds, the session is closed.</p>
 <p>TODO(ongaro): How should this value be chosen? Ideally, you probably want this to be set to something like the 99-th percentile of your <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> latency.</p>
 <p>TODO(ongaro): How does this interact with TCP? </p>
 
