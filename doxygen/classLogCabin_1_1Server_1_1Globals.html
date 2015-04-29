@@ -129,6 +129,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a6773759dfba55309b0d96d50268dcdc3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Globals.html#ae4cd0f508972df20291038885c401314">init</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Finish initializing this object.  <a href="#ae4cd0f508972df20291038885c401314"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Globals.html#a9d14fdfad2e48fd369089988e1faa7a5">leaveSignalsBlocked</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Leave the signals blocked when this object is destroyed.  <a href="#a9d14fdfad2e48fd369089988e1faa7a5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Globals.html#a7110e6c745d942fddad758a7c9a42e9f">run</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the event loop until SIGINT, SIGTERM, or someone calls <a class="el" href="classLogCabin_1_1Event_1_1Loop.html#adce1d647680489aeae87a0a6dfc0b1a9" title="Exit the main event loop, if one is running.">Event::Loop::exit()</a>.  <a href="#a7110e6c745d942fddad758a7c9a42e9f"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
@@ -259,7 +261,29 @@ Private Attributes</h2></td></tr>
 <p>Finish initializing this object. </p>
 <p>This should be called after <a class="el" href="classLogCabin_1_1Server_1_1Globals.html#a0716780cdbc776d14d8e63f9b6cdce41" title="Global configuration options.">config</a> has been filled in. </p>
 
-<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00078">78</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00075">75</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9d14fdfad2e48fd369089988e1faa7a5"></a><!-- doxytag: member="LogCabin::Server::Globals::leaveSignalsBlocked" ref="a9d14fdfad2e48fd369089988e1faa7a5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1Globals.html#a9d14fdfad2e48fd369089988e1faa7a5">LogCabin::Server::Globals::leaveSignalsBlocked</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Leave the signals blocked when this object is destroyed. </p>
+<p>This is used in <a class="el" href="Main_8cc.html">Server/Main.cc</a> for the long-running daemon; it's not used in unit tests.</p>
+<p>This was added to work around a specific problem: when running the servers under valgrind through cluster.py, the servers would receive SIGTERM, start to shut down, then the instant the SIGTERM signal was unmasked, the server would appear to exit with a 0 status, yet it wouldn't finish the shutdown process. I couldn't reproduce this outside of cluster.py. As there's no reason to unblock the signals before exiting the daemon, this seems like the safer bet for now. -Diego 2015-04-29 </p>
+
+<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00149">149</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
 
 </div>
 </div>
@@ -279,7 +303,7 @@ Private Attributes</h2></td></tr>
 
 <p>Run the event loop until SIGINT, SIGTERM, or someone calls <a class="el" href="classLogCabin_1_1Event_1_1Loop.html#adce1d647680489aeae87a0a6dfc0b1a9" title="Exit the main event loop, if one is running.">Event::Loop::exit()</a>. </p>
 
-<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00152">152</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00157">157</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
 
 </div>
 </div>
@@ -314,7 +338,7 @@ Private Attributes</h2></td></tr>
 
 <p>Global configuration options. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00088">88</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00104">104</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -331,7 +355,7 @@ Private Attributes</h2></td></tr>
 
 <p>The event loop that runs the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> system. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00093">93</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00109">109</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -349,7 +373,7 @@ Private Attributes</h2></td></tr>
 <p>Block SIGINT, which is handled by sigIntHandler. </p>
 <p>Signals are blocked early on in the startup process so that newly spawned threads also have them blocked. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00101">101</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00117">117</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -367,7 +391,7 @@ Private Attributes</h2></td></tr>
 <p>Block SIGTERM, which is handled by sigTermHandler. </p>
 <p>Signals are blocked early on in the startup process so that newly spawned threads also have them blocked. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00108">108</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00124">124</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -385,7 +409,7 @@ Private Attributes</h2></td></tr>
 <p>Block SIGUSR1, which is handled by serverStats. </p>
 <p>Signals are blocked early on in the startup process so that newly spawned threads also have them blocked. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00115">115</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00131">131</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -402,7 +426,7 @@ Private Attributes</h2></td></tr>
 
 <p>Exits the event loop upon receiving SIGINT (keyboard interrupt). </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00120">120</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00136">136</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -419,7 +443,7 @@ Private Attributes</h2></td></tr>
 
 <p>Registers sigIntHandler with the event loop. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00125">125</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00141">141</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -436,7 +460,7 @@ Private Attributes</h2></td></tr>
 
 <p>Exits the event loop upon receiving SIGTERM (kill). </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00130">130</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00146">146</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -453,7 +477,7 @@ Private Attributes</h2></td></tr>
 
 <p>Registers sigTermHandler with the event loop. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00135">135</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00151">151</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -471,7 +495,7 @@ Private Attributes</h2></td></tr>
 <p>Statistics and information about the server's current state. </p>
 <p>Useful for diagnostics. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00142">142</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00158">158</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -489,7 +513,7 @@ Private Attributes</h2></td></tr>
 <p>A unique ID for the cluster that this server may connect to. </p>
 <p>This is initialized to a value from the config file. If it's not set then, it may be set later as a result of learning a UUID from some other server. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00149">149</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00165">165</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -507,7 +531,7 @@ Private Attributes</h2></td></tr>
 <p>Unique ID for this server. </p>
 <p>Set from config file. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00154">154</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00170">170</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -524,7 +548,7 @@ Private Attributes</h2></td></tr>
 
 <p>Consensus module. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00159">159</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00175">175</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -541,7 +565,7 @@ Private Attributes</h2></td></tr>
 
 <p>State machine used to process client requests. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00164">164</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00180">180</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -558,7 +582,7 @@ Private Attributes</h2></td></tr>
 
 <p>Service used to communicate between servers. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00171">171</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00187">187</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -575,7 +599,7 @@ Private Attributes</h2></td></tr>
 
 <p>The application-facing facing <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> service. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00176">176</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00192">192</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>
@@ -592,7 +616,7 @@ Private Attributes</h2></td></tr>
 
 <p>Listens for inbound RPCs and passes them off to the services. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00181">181</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00197">197</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>

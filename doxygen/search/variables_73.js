@@ -23,6 +23,7 @@ var searchData=
   ['sharedbyteswritten',['sharedBytesWritten',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a1d37ddfb80fa78c56a31267da1035766',1,'LogCabin::Storage::SnapshotFile::Writer']]],
   ['shouldcheckinvariants',['shouldCheckInvariants',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#ad54138be8052e2963053757e8734f0d2',1,'LogCabin::Storage::SegmentedLog']]],
   ['shouldexit',['shouldExit',['../classLogCabin_1_1Event_1_1Loop.html#a7dbaa59de43f55a455b16842a4c0cb27',1,'LogCabin::Event::Loop']]],
+  ['shouldleaveblocked',['shouldLeaveBlocked',['../classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a53bed30d20977903fc7be0cf955368cd',1,'LogCabin::Event::Signal::Blocker']]],
   ['sigintblocker',['sigIntBlocker',['../classLogCabin_1_1Server_1_1Globals.html#a87b058fad5c58beaeea9391519776780',1,'LogCabin::Server::Globals']]],
   ['siginthandler',['sigIntHandler',['../classLogCabin_1_1Server_1_1Globals.html#a7a9794764dcd97aa5460710a93444f59',1,'LogCabin::Server::Globals']]],
   ['sigintmonitor',['sigIntMonitor',['../classLogCabin_1_1Server_1_1Globals.html#ab112dd6b44bc3de70e8919a156df8abc',1,'LogCabin::Server::Globals']]],

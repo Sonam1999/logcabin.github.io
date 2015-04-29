@@ -152,7 +152,7 @@ Private Attributes</h2></td></tr>
 <p>This class also goes through some trouble so that it can be used with std::unique_lock&lt;Core::Mutex&gt;, since normal condition variables may only be used with std::unique_lock&lt;std::mutex&gt;.</p>
 <p>All waiting on this class is done using a monotonic clock internally, so it will not be affected by time jumps from, e.g., NTP. This implies that, if you're actually waiting for a specific system time to come around, you might end up with surprising behavior. If you're wondering why, Linux/POSIX condition variables use a single clock for all waiters, whereas C++11 uses an impossible-to-implement interface where different waiters can use different clocks. </p>
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00064">64</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00059">59</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8cb1bb35303063a77c6b0d26084b3fe6"></a><!-- doxytag: member="LogCabin::Core::ConditionVariable::ConditionVariable" ref="a8cb1bb35303063a77c6b0d26084b3fe6" args="()" -->
 <div class="memitem">
@@ -321,7 +321,7 @@ template&lt;typename Clock , typename Duration &gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00081">81</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00076">76</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>
@@ -352,7 +352,7 @@ template&lt;typename Clock , typename Duration &gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00101">101</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00096">96</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>
@@ -370,7 +370,7 @@ template&lt;typename Clock , typename Duration &gt; </div>
 
 <p>Underlying condition variable. </p>
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00120">120</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00115">115</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>
@@ -388,7 +388,7 @@ template&lt;typename Clock , typename Duration &gt; </div>
 <p>This function will be called with the lock released during every invocation of wait/wait_until. </p>
 <p>No wait will actually occur; this is only used for unit testing. </p>
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00126">126</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00121">121</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>
@@ -405,7 +405,7 @@ template&lt;typename Clock , typename Duration &gt; </div>
 
 <p>The number of times this condition variable has been notified. </p>
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00131">131</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00126">126</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>
@@ -423,7 +423,7 @@ template&lt;typename Clock , typename Duration &gt; </div>
 <p>In the last call to wait_until, the timeout that the caller provided. </p>
 <p>This is used in some unit tests to check that timeouts are set correctly. It is stored as the number of milliseconds after the clock's epoch. (Since we don't know the Clock in advance, we can't store a time_point here.) </p>
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00139">139</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00134">134</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>

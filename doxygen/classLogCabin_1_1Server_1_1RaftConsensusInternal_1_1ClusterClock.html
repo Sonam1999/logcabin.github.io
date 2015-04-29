@@ -139,7 +139,7 @@ Public Attributes</h2></td></tr>
 <p>The <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html" title="Interprets and executes operations that have been committed into the Raft log.">StateMachine</a> uses cluster time to expire client sessions. Cluster times in committed log entries monotonically increase, so the state machine will see cluster times monotonically increase.</p>
 <p>Before cluster time, client sessions were expired based on the SystemClock. That meant that if the SystemClock jumped forwards drastically, all clients would expire. That's undesirable, so cluster time was introduced in #90 ("make client session timeout use monotonic clock") to address this. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00828">828</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00824">824</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a43efecbebdea1a5707fbc3d0ee20c757"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::ClusterClock::ClusterClock" ref="a43efecbebdea1a5707fbc3d0ee20c757" args="()" -->
 <div class="memitem">
@@ -244,7 +244,7 @@ Public Attributes</h2></td></tr>
 <li>0. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00861">861</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00857">857</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -261,7 +261,7 @@ Public Attributes</h2></td></tr>
 
 <p>The local SteadyClock time when clusterTimeAtEpoch was set. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00866">866</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00862">862</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
