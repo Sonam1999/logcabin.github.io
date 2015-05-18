@@ -126,7 +126,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00044"></a>00044     Small small = <span class="keyword">static_cast&lt;</span>Small<span class="keyword">&gt;</span>(large);
 <a name="l00045"></a>00045     <span class="comment">// The following comparison (rather than &quot;large==small&quot;) allows</span>
 <a name="l00046"></a>00046     <span class="comment">// this method to convert between signed and unsigned values.</span>
-<a name="l00047"></a>00047     assert(large - small == 0);
+<a name="l00047"></a>00047     assert(large - static_cast&lt;Large&gt;(small) == 0);
 <a name="l00048"></a>00048     <span class="keywordflow">return</span> small;
 <a name="l00049"></a>00049 }
 <a name="l00050"></a>00050 <span class="comment"></span>

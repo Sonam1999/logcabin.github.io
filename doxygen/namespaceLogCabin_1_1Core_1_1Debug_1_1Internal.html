@@ -112,8 +112,8 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a string to a log level.  <a href="#ae2f845e090e63600b8fe4059e20129cd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5">LogLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aae4d1aad342f6634ac37747739fd1561">getLogLevel</a> (const char *fileName)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">From the policy, calculate the most verbose log level that should be displayed for this file.  <a href="#aae4d1aad342f6634ac37747739fd1561"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a796ef67f8a2bdbf7e3cc7da6bbb3c33d">calculateLengthFilePrefix</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of characters of __FILE__ that make up the path prefix.  <a href="#a796ef67f8a2bdbf7e3cc7da6bbb3c33d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a23f12b79ae73d5f52064990146396cae">calculateLengthFilePrefix</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of characters of __FILE__ that make up the path prefix.  <a href="#a23f12b79ae73d5f52064990146396cae"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#acc4bd70b5716f2725c218b0b7e552a38">relativeFileName</a> (const char *fileName)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Strip out the common prefix of a filename to get a path from the project's root directory.  <a href="#acc4bd70b5716f2725c218b0b7e552a38"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
@@ -132,8 +132,8 @@ Variables</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Where log messages go (unless logHandler is set).  <a href="#a84232ae42d7545529ba3ee993b4682e2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::function&lt; void(<a class="el" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html">DebugMessage</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a9b1b7da5221b8fb784234b34fab553a0">logHandler</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If set, a callback that takes log messages instead of the normal log file (stream).  <a href="#a9b1b7da5221b8fb784234b34fab553a0"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a136afb482ee2a2fa4d93983d2edb50fd">lengthFilePrefix</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores result of <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a796ef67f8a2bdbf7e3cc7da6bbb3c33d" title="Return the number of characters of __FILE__ that make up the path prefix.">calculateLengthFilePrefix()</a>.  <a href="#a136afb482ee2a2fa4d93983d2edb50fd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a23f35385d9d06c5ceb267fbbcb9b6934">lengthFilePrefix</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores result of <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a23f12b79ae73d5f52064990146396cae" title="Return the number of characters of __FILE__ that make up the path prefix.">calculateLengthFilePrefix()</a>.  <a href="#a23f35385d9d06c5ceb267fbbcb9b6934"></a><br/></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
 <a class="anchor" id="ae2f845e090e63600b8fe4059e20129cd"></a><!-- doxytag: member="LogCabin::Core::Debug::Internal::logLevelFromString" ref="ae2f845e090e63600b8fe4059e20129cd" args="(const std::string &amp;level)" -->
@@ -187,12 +187,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a796ef67f8a2bdbf7e3cc7da6bbb3c33d"></a><!-- doxytag: member="LogCabin::Core::Debug::Internal::calculateLengthFilePrefix" ref="a796ef67f8a2bdbf7e3cc7da6bbb3c33d" args="()" -->
+<a class="anchor" id="a23f12b79ae73d5f52064990146396cae"></a><!-- doxytag: member="LogCabin::Core::Debug::Internal::calculateLengthFilePrefix" ref="a23f12b79ae73d5f52064990146396cae" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a796ef67f8a2bdbf7e3cc7da6bbb3c33d">LogCabin::Core::Debug::Internal::calculateLengthFilePrefix</a> </td>
+          <td class="memname">size_t <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a23f12b79ae73d5f52064990146396cae">LogCabin::Core::Debug::Internal::calculateLengthFilePrefix</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -345,18 +345,18 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a136afb482ee2a2fa4d93983d2edb50fd"></a><!-- doxytag: member="LogCabin::Core::Debug::Internal::lengthFilePrefix" ref="a136afb482ee2a2fa4d93983d2edb50fd" args="" -->
+<a class="anchor" id="a23f35385d9d06c5ceb267fbbcb9b6934"></a><!-- doxytag: member="LogCabin::Core::Debug::Internal::lengthFilePrefix" ref="a23f35385d9d06c5ceb267fbbcb9b6934" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const int <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a136afb482ee2a2fa4d93983d2edb50fd">LogCabin::Core::Debug::Internal::lengthFilePrefix</a></td>
+          <td class="memname">const size_t <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a23f35385d9d06c5ceb267fbbcb9b6934">LogCabin::Core::Debug::Internal::lengthFilePrefix</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Stores result of <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a796ef67f8a2bdbf7e3cc7da6bbb3c33d" title="Return the number of characters of __FILE__ that make up the path prefix.">calculateLengthFilePrefix()</a>. </p>
+<p>Stores result of <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a23f12b79ae73d5f52064990146396cae" title="Return the number of characters of __FILE__ that make up the path prefix.">calculateLengthFilePrefix()</a>. </p>
 
 <p>Definition at line <a class="el" href="Debug_8cc_source.html#l00218">218</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 

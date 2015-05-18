@@ -121,41 +121,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00039"></a>00039     <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0" title="The type of a log entry (the same format that&#39;s used in AppendEntries).">Entry</a>&amp; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ab1dac3c06be6944dc7c4dec3bb19deb0" title="Look up an entry by its log index.">getEntry</a>(uint64_t logIndex) <span class="keyword">const</span>;
 <a name="l00040"></a>00040     uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a72ba113f201a02064ab52ee111bc2251" title="Get the index of the first entry in the log (whether or not this entry exists).">getLogStartIndex</a>() <span class="keyword">const</span>;
 <a name="l00041"></a>00041     uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a8e8d61ed9dcebbea66b5a5377443a891" title="Get the index of the most recent entry in the log.">getLastLogIndex</a>() <span class="keyword">const</span>;
-<a name="l00042"></a>00042     uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a95bb18ffc0ceacc0ddfaef9c3396f4c1" title="Get the size of the entire log in bytes.">getSizeBytes</a>() <span class="keyword">const</span>;
-<a name="l00043"></a>00043     std::unique_ptr&lt;Sync&gt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71aa639443824a36d17b7bcfa6ca3a06" title="Get and remove the Log&#39;s Sync object in order to wait on it.">takeSync</a>();
-<a name="l00044"></a>00044     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a1e79f8dda89fa1e1d6140e019095eb24" title="Delete the log entries before the given index.">truncatePrefix</a>(uint64_t firstIndex);
-<a name="l00045"></a>00045     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ab1eac57a291ad80b2c5fe8566edd16c8" title="Delete the log entries past the given index.">truncateSuffix</a>(uint64_t lastIndex);
-<a name="l00046"></a>00046     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aa0f98d5650518eb17d1378c504238e30" title="Call this after changing metadata.">updateMetadata</a>();
-<a name="l00047"></a>00047 
-<a name="l00048"></a>00048   <span class="keyword">protected</span>:
-<a name="l00049"></a>00049 <span class="comment"></span>
-<a name="l00050"></a>00050 <span class="comment">    /**</span>
-<a name="l00051"></a>00051 <span class="comment">     * The index for the first entry in the log. Begins as 1 for new logs but</span>
-<a name="l00052"></a>00052 <span class="comment">     * will be larger for logs that have been snapshotted.</span>
-<a name="l00053"></a>00053 <span class="comment">     */</span>
-<a name="l00054"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1">00054</a>     uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a>;
-<a name="l00055"></a>00055 <span class="comment"></span>
-<a name="l00056"></a>00056 <span class="comment">    /**</span>
-<a name="l00057"></a>00057 <span class="comment">     * Stores the entries that make up the log.</span>
-<a name="l00058"></a>00058 <span class="comment">     * The offset into &#39;entries&#39; is the index of the entry minus &#39;startIndex&#39;.</span>
-<a name="l00059"></a>00059 <span class="comment">     * This is a deque rather than a vector to support fast prefix truncation</span>
-<a name="l00060"></a>00060 <span class="comment">     * (used after snapshotting a prefix of the log).</span>
-<a name="l00061"></a>00061 <span class="comment">     */</span>
-<a name="l00062"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278">00062</a>     std::deque&lt;Entry&gt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>;
-<a name="l00063"></a>00063 <span class="comment"></span>
-<a name="l00064"></a>00064 <span class="comment">    /**</span>
-<a name="l00065"></a>00065 <span class="comment">     * This is returned by the next call to getSync.</span>
-<a name="l00066"></a>00066 <span class="comment">     * It&#39;s totally unnecessary to have this member for MemoryLog, as its syncs</span>
-<a name="l00067"></a>00067 <span class="comment">     * don&#39;t do anything. However, it&#39;s useful for injecting different times of</span>
-<a name="l00068"></a>00068 <span class="comment">     * Syncs into unit tests.</span>
-<a name="l00069"></a>00069 <span class="comment">     */</span>
-<a name="l00070"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71575c9adbf9ddcd9cc039790dc837d1">00070</a>     std::unique_ptr&lt;Sync&gt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71575c9adbf9ddcd9cc039790dc837d1" title="This is returned by the next call to getSync.">currentSync</a>;
-<a name="l00071"></a>00071 };
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073 } <span class="comment">// namespace LogCabin::Storage</span>
-<a name="l00074"></a>00074 } <span class="comment">// namespace LogCabin</span>
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_STORAGE_MEMORYLOG_H */</span>
+<a name="l00042"></a>00042     std::string <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aacc25e510db96cb4a4fd1fe77a672933" title="Return the name of the log implementation as it would be specified in the config file.">getName</a>() <span class="keyword">const</span>;
+<a name="l00043"></a>00043     uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a95bb18ffc0ceacc0ddfaef9c3396f4c1" title="Get the size of the entire log in bytes.">getSizeBytes</a>() <span class="keyword">const</span>;
+<a name="l00044"></a>00044     std::unique_ptr&lt;Sync&gt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71aa639443824a36d17b7bcfa6ca3a06" title="Get and remove the Log&#39;s Sync object in order to wait on it.">takeSync</a>();
+<a name="l00045"></a>00045     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a1e79f8dda89fa1e1d6140e019095eb24" title="Delete the log entries before the given index.">truncatePrefix</a>(uint64_t firstIndex);
+<a name="l00046"></a>00046     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ab1eac57a291ad80b2c5fe8566edd16c8" title="Delete the log entries past the given index.">truncateSuffix</a>(uint64_t lastIndex);
+<a name="l00047"></a>00047     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aa0f98d5650518eb17d1378c504238e30" title="Call this after changing metadata.">updateMetadata</a>();
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049   <span class="keyword">protected</span>:
+<a name="l00050"></a>00050 <span class="comment"></span>
+<a name="l00051"></a>00051 <span class="comment">    /**</span>
+<a name="l00052"></a>00052 <span class="comment">     * The index for the first entry in the log. Begins as 1 for new logs but</span>
+<a name="l00053"></a>00053 <span class="comment">     * will be larger for logs that have been snapshotted.</span>
+<a name="l00054"></a>00054 <span class="comment">     */</span>
+<a name="l00055"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1">00055</a>     uint64_t <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a>;
+<a name="l00056"></a>00056 <span class="comment"></span>
+<a name="l00057"></a>00057 <span class="comment">    /**</span>
+<a name="l00058"></a>00058 <span class="comment">     * Stores the entries that make up the log.</span>
+<a name="l00059"></a>00059 <span class="comment">     * The offset into &#39;entries&#39; is the index of the entry minus &#39;startIndex&#39;.</span>
+<a name="l00060"></a>00060 <span class="comment">     * This is a deque rather than a vector to support fast prefix truncation</span>
+<a name="l00061"></a>00061 <span class="comment">     * (used after snapshotting a prefix of the log).</span>
+<a name="l00062"></a>00062 <span class="comment">     */</span>
+<a name="l00063"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278">00063</a>     std::deque&lt;Entry&gt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>;
+<a name="l00064"></a>00064 <span class="comment"></span>
+<a name="l00065"></a>00065 <span class="comment">    /**</span>
+<a name="l00066"></a>00066 <span class="comment">     * This is returned by the next call to getSync.</span>
+<a name="l00067"></a>00067 <span class="comment">     * It&#39;s totally unnecessary to have this member for MemoryLog, as its syncs</span>
+<a name="l00068"></a>00068 <span class="comment">     * don&#39;t do anything. However, it&#39;s useful for injecting different times of</span>
+<a name="l00069"></a>00069 <span class="comment">     * Syncs into unit tests.</span>
+<a name="l00070"></a>00070 <span class="comment">     */</span>
+<a name="l00071"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71575c9adbf9ddcd9cc039790dc837d1">00071</a>     std::unique_ptr&lt;Sync&gt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71575c9adbf9ddcd9cc039790dc837d1" title="This is returned by the next call to getSync.">currentSync</a>;
+<a name="l00072"></a>00072 };
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074 } <span class="comment">// namespace LogCabin::Storage</span>
+<a name="l00075"></a>00075 } <span class="comment">// namespace LogCabin</span>
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_STORAGE_MEMORYLOG_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

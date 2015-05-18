@@ -106,7 +106,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00024"></a>00024 <span class="preprocessor">#ifdef __bswap_constant_16</span>
 <a name="l00025"></a>00025 <span class="preprocessor"></span><span class="preprocessor">#undef __bswap_constant_16</span>
 <a name="l00026"></a>00026 <span class="preprocessor"></span><span class="preprocessor">#define __bswap_constant_16(x) \</span>
-<a name="l00027"></a>00027 <span class="preprocessor">     ((uint16_t) ((((x) &gt;&gt; 8) &amp; 0xff) | (((x) &amp; 0xff) &lt;&lt; 8)))</span>
+<a name="l00027"></a>00027 <span class="preprocessor">     (uint16_t((((x) &gt;&gt; 8) &amp; 0xff) | (((x) &amp; 0xff) &lt;&lt; 8)))</span>
 <a name="l00028"></a>00028 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
 <a name="l00029"></a>00029 <span class="preprocessor"></span>
 <a name="l00030"></a>00030 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_CORE_ENDIAN_H */</span>

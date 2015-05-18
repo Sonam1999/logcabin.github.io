@@ -191,7 +191,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00109"></a>00109 }
 <a name="l00110"></a>00110 
 <a name="l00111"></a>00111 <span class="keywordtype">void</span>
-<a name="l00112"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal.html#a100f317ed4da04b6c4278bd98b4fd236">00112</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#a100f317ed4da04b6c4278bd98b4fd236" title="Generic event handler for files.">Signal::handleFileEvent</a>(<span class="keywordtype">int</span> events)
+<a name="l00112"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal.html#af1c009668845e7c557a508b04697740b">00112</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#af1c009668845e7c557a508b04697740b" title="Generic event handler for files.">Signal::handleFileEvent</a>(uint32_t events)
 <a name="l00113"></a>00113 {
 <a name="l00114"></a>00114     <span class="keyword">struct </span>signalfd_siginfo info;
 <a name="l00115"></a>00115     ssize_t s = read(<a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>, &amp;info, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> signalfd_siginfo));

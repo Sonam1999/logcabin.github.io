@@ -140,7 +140,7 @@ Public Types</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returned by <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a4305e63041b96ea33cb28deaf2378b1c" title="Execute a remote procedure call on the server&#39;s RaftService.">callRPC()</a>.  <a href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0548ee7eb046a903349a22ff0a3c7bda">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ab658a5a52b9183a271843a5279d31ac9">Peer</a> (uint64_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ac1b2d6d134b4c41baf0220a0c6e587b7">serverId</a>, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a> &amp;<a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aab8969e0bf7d7c361908ad13073a6d2d">consensus</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ab658a5a52b9183a271843a5279d31ac9">Peer</a> (uint64_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ac1b2d6d134b4c41baf0220a0c6e587b7">serverId</a>, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html">RaftConsensus</a> &amp;<a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aab8969e0bf7d7c361908ad13073a6d2d">consensus</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ab658a5a52b9183a271843a5279d31ac9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a33cb93c3fc8e2aefe48e832b46d27b8f">~Peer</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a33cb93c3fc8e2aefe48e832b46d27b8f"></a><br/></td></tr>
@@ -165,14 +165,14 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0548ee7eb046a903349a22ff0a3c7bda">CallStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a4305e63041b96ea33cb28deaf2378b1c">callRPC</a> (Protocol::Raft::OpCode opCode, const google::protobuf::Message &amp;request, google::protobuf::Message &amp;response, std::unique_lock&lt; <a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#aa167a7f1729c5e12a748dc4011a3039d">Mutex</a> &gt; &amp;lockGuard)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a remote procedure call on the server's <a class="el" href="classLogCabin_1_1Server_1_1RaftService.html">RaftService</a>.  <a href="#a4305e63041b96ea33cb28deaf2378b1c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a64724bf0a6f9aa79c0e5dfc973d8a195">startThread</a> (std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html">Peer</a> &gt; self)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Launch this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html" title="Represents another server in the cluster.">Peer</a>'s thread, which should run <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac1f0d77d25c59e83ce7c446726292aaa" title="Initiate RPCs to a specific server as necessary.">RaftConsensus::peerThreadMain</a>.  <a href="#a64724bf0a6f9aa79c0e5dfc973d8a195"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Launch this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html" title="Represents another server in the cluster.">Peer</a>'s thread, which should run <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#acb5c8d3c4f827cfb7f01ef4128f435a4" title="Initiate RPCs to a specific server as necessary.">RaftConsensus::peerThreadMain</a>.  <a href="#a64724bf0a6f9aa79c0e5dfc973d8a195"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad76e79f05ed4e34288bf168ed931a6cd">dumpToStream</a> (std::ostream &amp;os) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual method for operator&lt;&lt;.  <a href="#ad76e79f05ed4e34288bf168ed931a6cd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a8b3a632d179de95c2adafaa5964a411a">updatePeerStats</a> (Protocol::ServerStats::Raft::Peer &amp;peerStats, <a class="el" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html">Core::Time::SteadyTimeConverter</a> &amp;time) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a>'s state into the given structure.  <a href="#a8b3a632d179de95c2adafaa5964a411a"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aab8969e0bf7d7c361908ad13073a6d2d">consensus</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html">RaftConsensus</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aab8969e0bf7d7c361908ad13073a6d2d">consensus</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used in startThread.  <a href="#aab8969e0bf7d7c361908ad13073a6d2d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2a7df5ec0a4db59fb8c0f0c462fd89ea">eventLoop</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to the server's event loop, needed to construct new sessions.  <a href="#a2a7df5ec0a4db59fb8c0f0c462fd89ea"></a><br/></td></tr>
@@ -225,8 +225,8 @@ Private Attributes</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Represents another server in the cluster. </p>
-<p>One of these exists for each other server. In addition to tracking state for each other server, this class provides a thread that executes <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac1f0d77d25c59e83ce7c446726292aaa" title="Initiate RPCs to a specific server as necessary.">RaftConsensus::peerThreadMain()</a>.</p>
-<p>This class has no internal locking: in general, the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> lock should be held when accessing this class, but there are some exceptions noted below. </p>
+<p>One of these exists for each other server. In addition to tracking state for each other server, this class provides a thread that executes <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#acb5c8d3c4f827cfb7f01ef4128f435a4" title="Initiate RPCs to a specific server as necessary.">RaftConsensus::peerThreadMain()</a>.</p>
+<p>This class has no internal locking: in general, the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> lock should be held when accessing this class, but there are some exceptions noted below. </p>
 
 <p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00258">258</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 </div><hr/><h2>Member Enumeration Documentation</h2>
@@ -275,7 +275,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html">RaftConsensus</a> &amp;&#160;</td>
           <td class="paramname"><em>consensus</em>&#160;</td>
         </tr>
         <tr>
@@ -346,7 +346,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Begin requesting the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a>'s vote in the current election. </p>
-<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#aab43402fe28b4fac77a2a53da7f7c779">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
@@ -369,7 +369,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Begin replicating to the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> in the current term. </p>
-<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ad03f113b797b25406325dde9bcf78fb2">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
@@ -392,7 +392,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Inform any threads belonging to this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> to exit. </p>
-<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ae4af8d452636e4d3fada9eb686416143">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
@@ -506,7 +506,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Cancel any outstanding RPCs to this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a>. </p>
-<p>The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#af56e0aa8cbf6377047a1737c461e84e9">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
@@ -529,7 +529,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Make the next heartbeat <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> happen soon. </p>
-<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a33c58fbb1b5f1b39cfd9cd941ab2b153">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
@@ -575,7 +575,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Execute a remote procedure call on the server's <a class="el" href="classLogCabin_1_1Server_1_1RaftService.html">RaftService</a>. </p>
-<p>As this operation might take a while, it should be called without <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> lock. </p>
+<p>As this operation might take a while, it should be called without <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> lock. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">opCode</td><td>The <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> opcode to execute (see Protocol::Raft::OpCode). </td></tr>
@@ -606,7 +606,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Launch this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html" title="Represents another server in the cluster.">Peer</a>'s thread, which should run <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac1f0d77d25c59e83ce7c446726292aaa" title="Initiate RPCs to a specific server as necessary.">RaftConsensus::peerThreadMain</a>. </p>
+<p>Launch this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html" title="Represents another server in the cluster.">Peer</a>'s thread, which should run <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#acb5c8d3c4f827cfb7f01ef4128f435a4" title="Initiate RPCs to a specific server as necessary.">RaftConsensus::peerThreadMain</a>. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>A shared_ptr to this object, which the detached thread uses to make sure this object doesn't go away. </td></tr>
@@ -691,7 +691,7 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Get the current session for this server. </p>
-<p>(This is cached in the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a16744a8ac76825923b7bd86625aa26c8" title="Caches the result of getSession().">session</a> member for efficiency.) As this operation might take a while, it should be called without <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> lock. </p>
+<p>(This is cached in the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a16744a8ac76825923b7bd86625aa26c8" title="Caches the result of getSession().">session</a> member for efficiency.) As this operation might take a while, it should be called without <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> lock. </p>
 
 <p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00307">307</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
@@ -720,7 +720,7 @@ Private Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a>&amp; <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aab8969e0bf7d7c361908ad13073a6d2d">LogCabin::Server::RaftConsensusInternal::Peer::consensus</a></td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html">RaftConsensus</a>&amp; <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aab8969e0bf7d7c361908ad13073a6d2d">LogCabin::Server::RaftConsensusInternal::Peer::consensus</a></td>
         </tr>
       </table>
 </div>

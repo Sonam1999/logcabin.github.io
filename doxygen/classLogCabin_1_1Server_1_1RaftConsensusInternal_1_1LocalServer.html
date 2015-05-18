@@ -126,7 +126,7 @@ Inheritance diagram for LogCabin::Server::RaftConsensusInternal::LocalServer:</d
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a04ba6976e9e92986869fe14a3da65166">LocalServer</a> (uint64_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ac1b2d6d134b4c41baf0220a0c6e587b7">serverId</a>, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a> &amp;<a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#acb15fa69e6a58e5b11e0b18454f679ea">consensus</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a04ba6976e9e92986869fe14a3da65166">LocalServer</a> (uint64_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ac1b2d6d134b4c41baf0220a0c6e587b7">serverId</a>, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html">RaftConsensus</a> &amp;<a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#acb15fa69e6a58e5b11e0b18454f679ea">consensus</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#af8e946ae3c1e53dfd90c9796b02930e5">~LocalServer</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#acbbe0af35379c8891b25994424e5abe5">exit</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Inform any threads belonging to this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> to exit.  <a href="#acbbe0af35379c8891b25994424e5abe5"></a><br/></td></tr>
@@ -152,7 +152,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Write this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a>'s state into the given structure.  <a href="#a103571cec603a72cee1a1135df41fd67"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#acb15fa69e6a58e5b11e0b18454f679ea">consensus</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html">RaftConsensus</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#acb15fa69e6a58e5b11e0b18454f679ea">consensus</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#afb49b56a95bb00a9e51c40565ab57bf5">lastSyncedIndex</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the last log entry that has been flushed to disk.  <a href="#afb49b56a95bb00a9e51c40565ab57bf5"></a><br/></td></tr>
 </table>
@@ -175,7 +175,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html">RaftConsensus</a> &amp;&#160;</td>
           <td class="paramname"><em>consensus</em>&#160;</td>
         </tr>
         <tr>
@@ -225,7 +225,7 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Inform any threads belonging to this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> to exit. </p>
-<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ae4af8d452636e4d3fada9eb686416143">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
@@ -248,7 +248,7 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Begin requesting the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a>'s vote in the current election. </p>
-<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#aab43402fe28b4fac77a2a53da7f7c779">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
@@ -271,7 +271,7 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Begin replicating to the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> in the current term. </p>
-<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ad03f113b797b25406325dde9bcf78fb2">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
@@ -362,7 +362,7 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Cancel any outstanding RPCs to this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a>. </p>
-<p>The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#af56e0aa8cbf6377047a1737c461e84e9">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
@@ -408,7 +408,7 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Make the next heartbeat <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> happen soon. </p>
-<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a33c58fbb1b5f1b39cfd9cd941ab2b153">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
@@ -479,7 +479,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a>&amp; <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#acb15fa69e6a58e5b11e0b18454f679ea">LogCabin::Server::RaftConsensusInternal::LocalServer::consensus</a></td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html">RaftConsensus</a>&amp; <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#acb15fa69e6a58e5b11e0b18454f679ea">LogCabin::Server::RaftConsensusInternal::LocalServer::consensus</a></td>
         </tr>
       </table>
 </div>

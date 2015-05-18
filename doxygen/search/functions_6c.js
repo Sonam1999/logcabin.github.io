@@ -1,8 +1,8 @@
 var searchData=
 [
   ['layout',['Layout',['../classLogCabin_1_1Storage_1_1Layout.html#aeccf692c381450a3f3760b7eff6a6380',1,'LogCabin::Storage::Layout::Layout()'],['../classLogCabin_1_1Storage_1_1Layout.html#a4e164302f0b47f09c5df9cd95e42b9d8',1,'LogCabin::Storage::Layout::Layout(Layout &amp;&amp;other)'],['../classLogCabin_1_1Storage_1_1Layout.html#a9173eeff881b730d869c730e77ec8afb',1,'LogCabin::Storage::Layout::Layout(const Layout &amp;other)']]],
-  ['leaderdiskthreadmain',['leaderDiskThreadMain',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a1cb25a9efb212c25dae3b8bfee51fc9a',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
-  ['leaderrpc',['LeaderRPC',['../classLogCabin_1_1Client_1_1LeaderRPC.html#a047deb4429e44681b96fe98e9693a880',1,'LogCabin::Client::LeaderRPC']]],
+  ['leaderdiskthreadmain',['leaderDiskThreadMain',['../classLogCabin_1_1Server_1_1RaftConsensus.html#ab869a94f802cecc39c768a3425aac160',1,'LogCabin::Server::RaftConsensus']]],
+  ['leaderrpc',['LeaderRPC',['../classLogCabin_1_1Client_1_1LeaderRPC.html#afaf78b44dba88c4fb3e440c11cdcca5a',1,'LogCabin::Client::LeaderRPC']]],
   ['leaderrpcbase',['LeaderRPCBase',['../classLogCabin_1_1Client_1_1LeaderRPCBase.html#a2b7c9e50fbb14282380c4b613ad3c627',1,'LogCabin::Client::LeaderRPCBase::LeaderRPCBase()'],['../classLogCabin_1_1Client_1_1LeaderRPCBase.html#a6f124d2c0c076b336f95fd776552e7b3',1,'LogCabin::Client::LeaderRPCBase::LeaderRPCBase(const LeaderRPCBase &amp;)']]],
   ['leaderrpcmock',['LeaderRPCMock',['../classLogCabin_1_1Client_1_1LeaderRPCMock.html#a6da2c6de0f51fce4647c266408e8ff33',1,'LogCabin::Client::LeaderRPCMock']]],
   ['leaderstamp',['leaderStamp',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ClusterClock.html#acfeeb3627de0308d4259324b78b7d84a',1,'LogCabin::Server::RaftConsensusInternal::ClusterClock']]],

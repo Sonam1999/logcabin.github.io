@@ -155,54 +155,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00073"></a>00073     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a> + <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.size() - 1;
 <a name="l00074"></a>00074 }
 <a name="l00075"></a>00075 
-<a name="l00076"></a>00076 uint64_t
-<a name="l00077"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a95bb18ffc0ceacc0ddfaef9c3396f4c1">00077</a> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a95bb18ffc0ceacc0ddfaef9c3396f4c1" title="Get the size of the entire log in bytes.">MemoryLog::getSizeBytes</a>()<span class="keyword"> const</span>
+<a name="l00076"></a>00076 std::string
+<a name="l00077"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aacc25e510db96cb4a4fd1fe77a672933">00077</a> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aacc25e510db96cb4a4fd1fe77a672933" title="Return the name of the log implementation as it would be specified in the config file.">MemoryLog::getName</a>()<span class="keyword"> const</span>
 <a name="l00078"></a>00078 <span class="keyword"></span>{
-<a name="l00079"></a>00079     <span class="comment">// TODO(ongaro): keep this pre-calculated for efficiency</span>
-<a name="l00080"></a>00080     uint64_t size = 0;
-<a name="l00081"></a>00081     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.begin(); it &lt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.end(); ++it)
-<a name="l00082"></a>00082         size += it-&gt;ByteSize();
-<a name="l00083"></a>00083     <span class="keywordflow">return</span> size;
-<a name="l00084"></a>00084 }
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086 std::unique_ptr&lt;Log::Sync&gt;
-<a name="l00087"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71aa639443824a36d17b7bcfa6ca3a06">00087</a> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71aa639443824a36d17b7bcfa6ca3a06" title="Get and remove the Log&#39;s Sync object in order to wait on it.">MemoryLog::takeSync</a>()
-<a name="l00088"></a>00088 {
-<a name="l00089"></a>00089     std::unique_ptr&lt;Sync&gt; other(<span class="keyword">new</span> <a class="code" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html" title="An interface for flushing newly appended log entries to stable storage.">Sync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a8e8d61ed9dcebbea66b5a5377443a891" title="Get the index of the most recent entry in the log.">getLastLogIndex</a>()));
-<a name="l00090"></a>00090     std::swap(other, <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71575c9adbf9ddcd9cc039790dc837d1" title="This is returned by the next call to getSync.">currentSync</a>);
-<a name="l00091"></a>00091     <span class="keywordflow">return</span> other;
-<a name="l00092"></a>00092 }
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094 <span class="keywordtype">void</span>
-<a name="l00095"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a1e79f8dda89fa1e1d6140e019095eb24">00095</a> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a1e79f8dda89fa1e1d6140e019095eb24" title="Delete the log entries before the given index.">MemoryLog::truncatePrefix</a>(uint64_t firstIndex)
-<a name="l00096"></a>00096 {
-<a name="l00097"></a>00097     <span class="keywordflow">if</span> (firstIndex &gt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a>) {
-<a name="l00098"></a>00098         <span class="comment">// Erase log entries in range [startIndex, firstIndex), so deque</span>
-<a name="l00099"></a>00099         <span class="comment">// offsets in range [0, firstIndex - startIndex). Be careful not to</span>
-<a name="l00100"></a>00100         <span class="comment">// erase past the end of the deque (STL doesn&#39;t check for this).</span>
-<a name="l00101"></a>00101         <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.erase(<a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.begin(),
-<a name="l00102"></a>00102                       <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.begin() + std::min(firstIndex - <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a>,
-<a name="l00103"></a>00103                                                  <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.size()));
-<a name="l00104"></a>00104         <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a> = firstIndex;
-<a name="l00105"></a>00105     }
-<a name="l00106"></a>00106 }
-<a name="l00107"></a>00107 
-<a name="l00108"></a>00108 <span class="keywordtype">void</span>
-<a name="l00109"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ab1eac57a291ad80b2c5fe8566edd16c8">00109</a> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ab1eac57a291ad80b2c5fe8566edd16c8" title="Delete the log entries past the given index.">MemoryLog::truncateSuffix</a>(uint64_t lastIndex)
-<a name="l00110"></a>00110 {
-<a name="l00111"></a>00111     <span class="keywordflow">if</span> (lastIndex &lt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a>)
-<a name="l00112"></a>00112         <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.clear();
-<a name="l00113"></a>00113     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lastIndex &lt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a> - 1 + <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.size())
-<a name="l00114"></a>00114         <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.resize(lastIndex - <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a> + 1);
-<a name="l00115"></a>00115 }
-<a name="l00116"></a>00116 
-<a name="l00117"></a>00117 <span class="keywordtype">void</span>
-<a name="l00118"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aa0f98d5650518eb17d1378c504238e30">00118</a> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aa0f98d5650518eb17d1378c504238e30" title="Call this after changing metadata.">MemoryLog::updateMetadata</a>()
-<a name="l00119"></a>00119 {
-<a name="l00120"></a>00120 }
-<a name="l00121"></a>00121 
-<a name="l00122"></a>00122 } <span class="comment">// namespace LogCabin::Storage</span>
-<a name="l00123"></a>00123 } <span class="comment">// namespace LogCabin</span>
+<a name="l00079"></a>00079     <span class="keywordflow">return</span> <span class="stringliteral">&quot;Memory&quot;</span>;
+<a name="l00080"></a>00080 }
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082 uint64_t
+<a name="l00083"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a95bb18ffc0ceacc0ddfaef9c3396f4c1">00083</a> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a95bb18ffc0ceacc0ddfaef9c3396f4c1" title="Get the size of the entire log in bytes.">MemoryLog::getSizeBytes</a>()<span class="keyword"> const</span>
+<a name="l00084"></a>00084 <span class="keyword"></span>{
+<a name="l00085"></a>00085     <span class="comment">// TODO(ongaro): keep this pre-calculated for efficiency</span>
+<a name="l00086"></a>00086     uint64_t size = 0;
+<a name="l00087"></a>00087     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.begin(); it &lt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.end(); ++it)
+<a name="l00088"></a>00088         size += uint64_t(it-&gt;ByteSize());
+<a name="l00089"></a>00089     <span class="keywordflow">return</span> size;
+<a name="l00090"></a>00090 }
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092 std::unique_ptr&lt;Log::Sync&gt;
+<a name="l00093"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71aa639443824a36d17b7bcfa6ca3a06">00093</a> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71aa639443824a36d17b7bcfa6ca3a06" title="Get and remove the Log&#39;s Sync object in order to wait on it.">MemoryLog::takeSync</a>()
+<a name="l00094"></a>00094 {
+<a name="l00095"></a>00095     std::unique_ptr&lt;Sync&gt; other(<span class="keyword">new</span> <a class="code" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html" title="An interface for flushing newly appended log entries to stable storage.">Sync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a8e8d61ed9dcebbea66b5a5377443a891" title="Get the index of the most recent entry in the log.">getLastLogIndex</a>()));
+<a name="l00096"></a>00096     std::swap(other, <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71575c9adbf9ddcd9cc039790dc837d1" title="This is returned by the next call to getSync.">currentSync</a>);
+<a name="l00097"></a>00097     <span class="keywordflow">return</span> other;
+<a name="l00098"></a>00098 }
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 <span class="keywordtype">void</span>
+<a name="l00101"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a1e79f8dda89fa1e1d6140e019095eb24">00101</a> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a1e79f8dda89fa1e1d6140e019095eb24" title="Delete the log entries before the given index.">MemoryLog::truncatePrefix</a>(uint64_t firstIndex)
+<a name="l00102"></a>00102 {
+<a name="l00103"></a>00103     <span class="keywordflow">if</span> (firstIndex &gt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a>) {
+<a name="l00104"></a>00104         <span class="comment">// Erase log entries in range [startIndex, firstIndex), so deque</span>
+<a name="l00105"></a>00105         <span class="comment">// offsets in range [0, firstIndex - startIndex). Be careful not to</span>
+<a name="l00106"></a>00106         <span class="comment">// erase past the end of the deque (STL doesn&#39;t check for this).</span>
+<a name="l00107"></a>00107         <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.erase(<a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.begin(),
+<a name="l00108"></a>00108                       <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.begin() +
+<a name="l00109"></a>00109                       int64_t(std::min(firstIndex - <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a>,
+<a name="l00110"></a>00110                                        <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.size())));
+<a name="l00111"></a>00111         <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a> = firstIndex;
+<a name="l00112"></a>00112     }
+<a name="l00113"></a>00113 }
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115 <span class="keywordtype">void</span>
+<a name="l00116"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ab1eac57a291ad80b2c5fe8566edd16c8">00116</a> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#ab1eac57a291ad80b2c5fe8566edd16c8" title="Delete the log entries past the given index.">MemoryLog::truncateSuffix</a>(uint64_t lastIndex)
+<a name="l00117"></a>00117 {
+<a name="l00118"></a>00118     <span class="keywordflow">if</span> (lastIndex &lt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a>)
+<a name="l00119"></a>00119         <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.clear();
+<a name="l00120"></a>00120     <span class="keywordflow">else</span> <span class="keywordflow">if</span> (lastIndex &lt; <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a> - 1 + <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.size())
+<a name="l00121"></a>00121         <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a433a640b5adde6c3bc711e094a6df278" title="Stores the entries that make up the log.">entries</a>.resize(lastIndex - <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#af7e151431b2e86f869f41013bbfa3cf1" title="The index for the first entry in the log.">startIndex</a> + 1);
+<a name="l00122"></a>00122 }
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 <span class="keywordtype">void</span>
+<a name="l00125"></a><a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aa0f98d5650518eb17d1378c504238e30">00125</a> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aa0f98d5650518eb17d1378c504238e30" title="Call this after changing metadata.">MemoryLog::updateMetadata</a>()
+<a name="l00126"></a>00126 {
+<a name="l00127"></a>00127 }
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 } <span class="comment">// namespace LogCabin::Storage</span>
+<a name="l00130"></a>00130 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -150,6 +150,8 @@ uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the index of the first entry in the log (whether or not this entry exists).  <a href="#a5d995c35a5bf8ac1a28eadb83a04525e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a75616a93cbe7839f1ad6247b7e865a46">getLastLogIndex</a> () const =0</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the index of the most recent entry in the log.  <a href="#a75616a93cbe7839f1ad6247b7e865a46"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#abd90715c67f4fa038111259feacdede1">getName</a> () const =0</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the name of the log implementation as it would be specified in the config file.  <a href="#abd90715c67f4fa038111259feacdede1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a73b678e98d205870c19ac73ecfd5c807">getSizeBytes</a> () const =0</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the entire log in bytes.  <a href="#a73b678e98d205870c19ac73ecfd5c807"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1Log.html#ab99aa495171e1e60aab8b6b65df3d56f">syncComplete</a> (std::unique_ptr&lt; <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html">Sync</a> &gt; sync)</td></tr>
@@ -219,7 +221,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Log_8cc_source.html#l00044">44</a> of file <a class="el" href="Log_8cc_source.html">Log.cc</a>.</p>
+<p>Definition at line <a class="el" href="Log_8cc_source.html#l00045">45</a> of file <a class="el" href="Log_8cc_source.html">Log.cc</a>.</p>
 
 </div>
 </div>
@@ -237,7 +239,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Log_8cc_source.html#l00049">49</a> of file <a class="el" href="Log_8cc_source.html">Log.cc</a>.</p>
+<p>Definition at line <a class="el" href="Log_8cc_source.html#l00050">50</a> of file <a class="el" href="Log_8cc_source.html">Log.cc</a>.</p>
 
 </div>
 </div>
@@ -358,6 +360,26 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="abd90715c67f4fa038111259feacdede1"></a><!-- doxytag: member="LogCabin::Storage::Log::getName" ref="abd90715c67f4fa038111259feacdede1" args="() const =0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#abd90715c67f4fa038111259feacdede1">LogCabin::Storage::Log::getName</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the name of the log implementation as it would be specified in the config file. </p>
+
+<p>Implemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a88c936327f9d62ba7e606cbf5fccab23">LogCabin::Storage::SegmentedLog</a>, <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a33379f308f9a4fa6cedbc4272cb11e28">LogCabin::Storage::SimpleFileLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aacc25e510db96cb4a4fd1fe77a672933">LogCabin::Storage::MemoryLog</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a73b678e98d205870c19ac73ecfd5c807"></a><!-- doxytag: member="LogCabin::Storage::Log::getSizeBytes" ref="a73b678e98d205870c19ac73ecfd5c807" args="() const =0" -->
 <div class="memitem">
 <div class="memproto">
@@ -396,7 +418,7 @@ Friends</h2></td></tr>
 <p>Release resources attached to the <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html" title="An interface for flushing newly appended log entries to stable storage.">Sync</a> object. </p>
 <p>Call this after waiting on the <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html" title="An interface for flushing newly appended log entries to stable storage.">Sync</a> object. </p>
 
-<p>Definition at line <a class="el" href="Log_8h_source.html#l00130">130</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
+<p>Definition at line <a class="el" href="Log_8h_source.html#l00136">136</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -418,7 +440,7 @@ Friends</h2></td></tr>
 <p>See <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#ab99aa495171e1e60aab8b6b65df3d56f" title="Release resources attached to the Sync object.">syncComplete()</a>. </p>
 <p>Intended for subclasses to override. </p>
 
-<p>Definition at line <a class="el" href="Log_8h_source.html#l00138">138</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
+<p>Definition at line <a class="el" href="Log_8h_source.html#l00144">144</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -541,7 +563,7 @@ Friends</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#acf6f1ee375ee34d73adee605da59a584">LogCabin::Storage::SegmentedLog</a>.</p>
 
-<p>Definition at line <a class="el" href="Log_8h_source.html#l00186">186</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
+<p>Definition at line <a class="el" href="Log_8h_source.html#l00192">192</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>
@@ -590,7 +612,7 @@ Friends</h2></td></tr>
 
 <p>Print out a <a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Log</a> for debugging purposes. </p>
 
-<p>Definition at line <a class="el" href="Log_8cc_source.html#l00054">54</a> of file <a class="el" href="Log_8cc_source.html">Log.cc</a>.</p>
+<p>Definition at line <a class="el" href="Log_8cc_source.html#l00055">55</a> of file <a class="el" href="Log_8cc_source.html">Log.cc</a>.</p>
 
 </div>
 </div>
@@ -610,7 +632,7 @@ Friends</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a407704019cb95cc426ec03e78d26071e">LogCabin::Storage::SegmentedLog</a>, and <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a26ef7de4808ccc853b334682db9dcde8">LogCabin::Storage::SimpleFileLog</a>.</p>
 
-<p>Definition at line <a class="el" href="Log_8h_source.html#l00191">191</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
+<p>Definition at line <a class="el" href="Log_8h_source.html#l00197">197</a> of file <a class="el" href="Log_8h_source.html">Log.h</a>.</p>
 
 </div>
 </div>

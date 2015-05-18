@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['server',['Server',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a780ea3772ca90761e948aff6d247514c',1,'LogCabin::Server::RaftConsensus']]],
   ['serverid',['ServerId',['../classLogCabin_1_1Client_1_1SessionManager.html#adaef23be09b3d87b26f38d93ee493c79',1,'LogCabin::Client::SessionManager']]],
   ['serverref',['ServerRef',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#aa59cb8c3759ba19620d16bd6a71bdb02',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
   ['sideeffect',['SideEffect',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#abf2bb86fbae1483909a8889762df58a5',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],

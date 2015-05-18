@@ -126,8 +126,8 @@ Inheritance diagram for LogCabin::RPC::MessageSocket::ReceiveSocket:</div>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ab74acad2a73ccb82458a763b5004f1ad">ReceiveSocket</a> (int <a class="el" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0">fd</a>, <a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html">MessageSocket</a> &amp;<a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#a18ceeebe443efe438393061e961c753c">messageSocket</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#a406f4f4c6663bf1cdbe335d286b34b40">~ReceiveSocket</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ad45fb20e5b8c08412f472ffd96a094cb">handleFileEvent</a> (int events)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when a file event occurs.  <a href="#ad45fb20e5b8c08412f472ffd96a094cb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#a1df581fde48d0f8c5fbd679b13855830">handleFileEvent</a> (uint32_t events)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when a file event occurs.  <a href="#a1df581fde48d0f8c5fbd679b13855830"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1RPC_1_1MessageSocket.html">MessageSocket</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#a18ceeebe443efe438393061e961c753c">messageSocket</a></td></tr>
@@ -186,14 +186,14 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="ad45fb20e5b8c08412f472ffd96a094cb"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::ReceiveSocket::handleFileEvent" ref="ad45fb20e5b8c08412f472ffd96a094cb" args="(int events)" -->
+<a class="anchor" id="a1df581fde48d0f8c5fbd679b13855830"></a><!-- doxytag: member="LogCabin::RPC::MessageSocket::ReceiveSocket::handleFileEvent" ref="a1df581fde48d0f8c5fbd679b13855830" args="(uint32_t events)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ad45fb20e5b8c08412f472ffd96a094cb">LogCabin::RPC::MessageSocket::ReceiveSocket::handleFileEvent</a> </td>
+          <td class="memname">void <a class="el" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#a1df581fde48d0f8c5fbd679b13855830">LogCabin::RPC::MessageSocket::ReceiveSocket::handleFileEvent</a> </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>events</em></td><td>)</td>
           <td><code> [virtual]</code></td>
         </tr>
@@ -211,7 +211,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classLogCabin_1_1Event_1_1File.html#a65772259f49bd8f7b757d8d12cb5921f">LogCabin::Event::File</a>.</p>
+<p>Implements <a class="el" href="classLogCabin_1_1Event_1_1File.html#af533b20c7a13d826d7e29a59526370a2">LogCabin::Event::File</a>.</p>
 
 <p>Definition at line <a class="el" href="MessageSocket_8cc_source.html#l00100">100</a> of file <a class="el" href="MessageSocket_8cc_source.html">MessageSocket.cc</a>.</p>
 

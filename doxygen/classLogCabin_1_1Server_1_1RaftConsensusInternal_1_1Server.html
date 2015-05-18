@@ -175,7 +175,7 @@ Friends</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A base class for known servers in the cluster, including this process (see <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html" title="A type of Server for the local process.">LocalServer</a>) and others (see <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html" title="Represents another server in the cluster.">Peer</a>). </p>
-<p>This tracks various bits of state for each server, which is used when we are a candidate or leader. This class does not do any internal locking; it should be accessed only while holding the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> lock. </p>
+<p>This tracks various bits of state for each server, which is used when we are a candidate or leader. This class does not do any internal locking; it should be accessed only while holding the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> lock. </p>
 
 <p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00106">106</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
@@ -236,7 +236,7 @@ Friends</h2></td></tr>
 <div class="memdoc">
 
 <p>Begin requesting the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a>'s vote in the current election. </p>
-<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implemented in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aa7a24ef9188194eefe118684d66a2ec5">LogCabin::Server::RaftConsensusInternal::Peer</a>, and <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#ac3e344c14b56bde9c89ce29b8d4ae4f9">LogCabin::Server::RaftConsensusInternal::LocalServer</a>.</p>
 
@@ -257,7 +257,7 @@ Friends</h2></td></tr>
 <div class="memdoc">
 
 <p>Begin replicating to the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> in the current term. </p>
-<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implemented in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad5ba27d28751c0c5c12e3670f7055afd">LogCabin::Server::RaftConsensusInternal::Peer</a>, and <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a59663bf7fc26786c1ef25c90ece3bfa5">LogCabin::Server::RaftConsensusInternal::LocalServer</a>.</p>
 
@@ -278,7 +278,7 @@ Friends</h2></td></tr>
 <div class="memdoc">
 
 <p>Inform any threads belonging to this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> to exit. </p>
-<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implemented in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a46d99021b75d28c44c31cbe4fe221001">LogCabin::Server::RaftConsensusInternal::Peer</a>, and <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#acbbe0af35379c8891b25994424e5abe5">LogCabin::Server::RaftConsensusInternal::LocalServer</a>.</p>
 
@@ -361,7 +361,7 @@ Friends</h2></td></tr>
 <div class="memdoc">
 
 <p>Cancel any outstanding RPCs to this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a>. </p>
-<p>The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implemented in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a5daf374d78d59b74c639acef42f8b1e5">LogCabin::Server::RaftConsensusInternal::Peer</a>, and <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a702ef4e87b2389c19c3540875af24b05">LogCabin::Server::RaftConsensusInternal::LocalServer</a>.</p>
 
@@ -403,7 +403,7 @@ Friends</h2></td></tr>
 <div class="memdoc">
 
 <p>Make the next heartbeat <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> happen soon. </p>
-<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
+<p>Return immediately. The condition variable in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> will be notified separately. </p>
 
 <p>Implemented in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a8cf12a4c6290d1ea99c3e4074fced205">LogCabin::Server::RaftConsensusInternal::Peer</a>, and <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a3ce146d3470eac69cfc9baf9ca378df8">LogCabin::Server::RaftConsensusInternal::LocalServer</a>.</p>
 

@@ -113,7 +113,6 @@ Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal_1_1anonymous__namespace_02RaftConsensus_8cc_03.html">anonymous_namespace{RaftConsensus.cc}</a></td></tr>
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1StagingProgressing.html">StagingProgressing</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Invariants.html">Invariants</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html">Server</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A base class for known servers in the cluster, including this process (see <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html" title="A type of Server for the local process.">LocalServer</a>) and others (see <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html" title="Represents another server in the cluster.">Peer</a>).  <a href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#details">More...</a><br/></td></tr>
@@ -127,11 +126,8 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures the current configuration reflects the latest state of the log and snapshot.  <a href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ClusterClock.html">ClusterClock</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the rough equivalent of a SteadyClock that can be shared across the network with other Raft servers.  <a href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ClusterClock.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">An implementation of the Raft consensus algorithm.  <a href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classLogCabin_1_1Storage_1_1Log.html">Storage::Log</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a101f3d29675508b8beb5c8d1d4ea71e9">Log</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
 <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a4798c7e2244561626e4ce819710e7e56">LogCabin::Core::Time::SteadyClock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a330bbb37ffd5f3ad681de1f61682d986">Clock</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the current time.  <a href="#a330bbb37ffd5f3ad681de1f61682d986"></a><br/></td></tr>
@@ -143,30 +139,12 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#ae6c452fe910faa2e4aee2efaeaaf0fd3">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html">Server</a> &amp;server)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#ab440c8789c5f9a7818ac17972195d4e2">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a602e7e486778ba0fda4c2ffceeeeb5ca">Configuration::State</a> state)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a8013265fc87fea80ad1f85f30576f57a">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html">Configuration</a> &amp;configuration)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a005128bd19b8d1320efe6cff1beee10c">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a> &amp;raft)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a6158f1818d5c2ab46e066acf310a4d68">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0615edf4bb111f046846a730452b34bf">RaftConsensus::ClientResult</a> clientResult)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a70a514eb807c30dcb85f4ff6c20f21d4">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a14a6602e14d73dc067e2b9de50c1711c">RaftConsensus::State</a> state)</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#aa3a20ec5673f7f239631c204201a57e0">startThreads</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">True if this should actually spawn threads, false otherwise.  <a href="#aa3a20ec5673f7f239631c204201a57e0"></a><br/></td></tr>
 </table>
 <hr/><h2>Typedef Documentation</h2>
-<a class="anchor" id="a101f3d29675508b8beb5c8d1d4ea71e9"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Log" ref="a101f3d29675508b8beb5c8d1d4ea71e9" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="classLogCabin_1_1Storage_1_1Log.html">Storage::Log</a> <a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a101f3d29675508b8beb5c8d1d4ea71e9">LogCabin::Server::RaftConsensusInternal::Log</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00048">48</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a330bbb37ffd5f3ad681de1f61682d986"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Clock" ref="a330bbb37ffd5f3ad681de1f61682d986" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -302,93 +280,6 @@ Variables</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00671">671</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a005128bd19b8d1320efe6cff1beee10c"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::operator&lt;&lt;" ref="a005128bd19b8d1320efe6cff1beee10c" args="(std::ostream &amp;os, const RaftConsensus &amp;raft)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream&amp; LogCabin::Server::RaftConsensusInternal::operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const RaftConsensus &amp;&#160;</td>
-          <td class="paramname"><em>raft</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01793">1793</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6158f1818d5c2ab46e066acf310a4d68"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::operator&lt;&lt;" ref="a6158f1818d5c2ab46e066acf310a4d68" args="(std::ostream &amp;os, RaftConsensus::ClientResult clientResult)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream&amp; LogCabin::Server::RaftConsensusInternal::operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">RaftConsensus::ClientResult&#160;</td>
-          <td class="paramname"><em>clientResult</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02831">2831</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a70a514eb807c30dcb85f4ff6c20f21d4"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::operator&lt;&lt;" ref="a70a514eb807c30dcb85f4ff6c20f21d4" args="(std::ostream &amp;os, RaftConsensus::State state)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream&amp; LogCabin::Server::RaftConsensusInternal::operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">RaftConsensus::State&#160;</td>
-          <td class="paramname"><em>state</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02852">2852</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>

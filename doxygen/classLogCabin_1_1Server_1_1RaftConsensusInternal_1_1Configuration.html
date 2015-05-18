@@ -144,7 +144,7 @@ Public Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef std::function&lt; void(<a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html">Server</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#abf2bb86fbae1483909a8889762df58a5">SideEffect</a></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a53c4fae24598befa701c67a7bfcc3344">Configuration</a> (uint64_t serverId, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a> &amp;<a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#af08504e6a6ba80678a5edf0f6252686a">consensus</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a53c4fae24598befa701c67a7bfcc3344">Configuration</a> (uint64_t serverId, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html">RaftConsensus</a> &amp;<a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#af08504e6a6ba80678a5edf0f6252686a">consensus</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a53c4fae24598befa701c67a7bfcc3344"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a70852b392d571b34d2f3f9d363dc0d49">~Configuration</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a70852b392d571b34d2f3f9d363dc0d49"></a><br/></td></tr>
@@ -188,7 +188,7 @@ Private Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If no server by the given ID is known, construct a new one.  <a href="#a546755a466da0a62d27b5848b193e983"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#af08504e6a6ba80678a5edf0f6252686a">consensus</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html">RaftConsensus</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#af08504e6a6ba80678a5edf0f6252686a">consensus</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for constructing <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> instances.  <a href="#af08504e6a6ba80678a5edf0f6252686a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; uint64_t, <br class="typebreak"/>
 <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#aa59cb8c3759ba19620d16bd6a71bdb02">ServerRef</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#adc97b0a5dee772e4c7b3e37ac1230f9b">knownServers</a></td></tr>
@@ -207,7 +207,7 @@ Friends</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A configuration defines the servers that are part of the cluster. </p>
-<p>This class does not do any internal locking; it should be accessed only while holding the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> lock. </p>
+<p>This class does not do any internal locking; it should be accessed only while holding the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a> lock. </p>
 
 <p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00476">476</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
@@ -320,7 +320,7 @@ Friends</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html">RaftConsensus</a> &amp;&#160;</td>
           <td class="paramname"><em>consensus</em>&#160;</td>
         </tr>
         <tr>
@@ -750,7 +750,7 @@ Friends</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html">RaftConsensus</a>&amp; <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#af08504e6a6ba80678a5edf0f6252686a">LogCabin::Server::RaftConsensusInternal::Configuration::consensus</a><code> [private]</code></td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html">RaftConsensus</a>&amp; <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#af08504e6a6ba80678a5edf0f6252686a">LogCabin::Server::RaftConsensusInternal::Configuration::consensus</a><code> [private]</code></td>
         </tr>
       </table>
 </div>

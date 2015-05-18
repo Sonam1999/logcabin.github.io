@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['raftconsensus',['RaftConsensus',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html',1,'LogCabin::Server::RaftConsensusInternal']]],
+  ['raftconsensus',['RaftConsensus',['../classLogCabin_1_1Server_1_1RaftConsensus.html',1,'LogCabin::Server']]],
   ['raftservice',['RaftService',['../classLogCabin_1_1Server_1_1RaftService.html',1,'LogCabin::Server']]],
   ['raiiswap',['RAIISwap',['../structLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1RAIISwap.html',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}']]],
   ['randomstate',['RandomState',['../classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html',1,'LogCabin::Core::Random::anonymous_namespace{Random.cc}']]],

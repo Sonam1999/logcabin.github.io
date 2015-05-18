@@ -139,6 +139,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#ad6d910df1e444ad721a196e8e86b77e8">~SimpleFileLog</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::pair&lt; uint64_t, uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a3fd8cd44fb0f21228974e55911735206">append</a> (const std::vector&lt; const <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a8ca64ace5d6ae6f0175186c595d4fbe0">Entry</a> * &gt; &amp;entries)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Start to append new entries to the log.  <a href="#a3fd8cd44fb0f21228974e55911735206"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a33379f308f9a4fa6cedbc4272cb11e28">getName</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the name of the log implementation as it would be specified in the config file.  <a href="#a33379f308f9a4fa6cedbc4272cb11e28"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html">Log::Sync</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#aec4f3bab89a66ba7d94713d70b9ed141">takeSync</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get and remove the <a class="el" href="classLogCabin_1_1Storage_1_1Log.html" title="This interface is used by RaftConsensus to store log entries and metadata.">Log</a>'s <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog_1_1Sync.html">Sync</a> object in order to wait on it.  <a href="#aec4f3bab89a66ba7d94713d70b9ed141"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a3db9d7ce06f0f16a77dc9117f191c819">truncatePrefix</a> (uint64_t firstEntryId)</td></tr>
@@ -264,6 +266,28 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a33379f308f9a4fa6cedbc4272cb11e28"></a><!-- doxytag: member="LogCabin::Storage::SimpleFileLog::getName" ref="a33379f308f9a4fa6cedbc4272cb11e28" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classLogCabin_1_1Storage_1_1SimpleFileLog.html#a33379f308f9a4fa6cedbc4272cb11e28">LogCabin::Storage::SimpleFileLog::getName</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the name of the log implementation as it would be specified in the config file. </p>
+
+<p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#abd90715c67f4fa038111259feacdede1">LogCabin::Storage::Log</a>.</p>
+
+<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00243">243</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="aec4f3bab89a66ba7d94713d70b9ed141"></a><!-- doxytag: member="LogCabin::Storage::SimpleFileLog::takeSync" ref="aec4f3bab89a66ba7d94713d70b9ed141" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -284,7 +308,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#aabf3345e03685b44d56b607ebbe282c9">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00242">242</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00249">249</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
 
 </div>
 </div>
@@ -314,7 +338,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a75237d59c0f0aeb45e0fe2425e7daea5">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00250">250</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00257">257</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
 
 </div>
 </div>
@@ -345,7 +369,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a166833dce487be2a51f28ce2b0d03852">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00262">262</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00269">269</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
 
 </div>
 </div>
@@ -375,7 +399,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a8a7efeea930f2b56dd90e8796abf6c82">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00274">274</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00281">281</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
 
 </div>
 </div>
@@ -398,7 +422,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a5d995c35a5bf8ac1a28eadb83a04525e">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00280">280</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00287">287</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
 
 </div>
 </div>
@@ -421,7 +445,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a75616a93cbe7839f1ad6247b7e865a46">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00286">286</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00293">293</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
 
 </div>
 </div>
@@ -443,7 +467,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a73b678e98d205870c19ac73ecfd5c807">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00292">292</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00299">299</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
 
 </div>
 </div>
@@ -465,7 +489,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#affd60dcee3571e1afc169cf36d887a13">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00298">298</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00305">305</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
 
 </div>
 </div>
@@ -483,7 +507,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00307">307</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00314">314</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
 
 </div>
 </div>
@@ -530,7 +554,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00321">321</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00328">328</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
 
 </div>
 </div>
@@ -549,7 +573,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00348">348</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8cc_source.html#l00355">355</a> of file <a class="el" href="SimpleFileLog_8cc_source.html">SimpleFileLog.cc</a>.</p>
 
 </div>
 </div>
@@ -565,7 +589,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8h_source.html#l00070">70</a> of file <a class="el" href="SimpleFileLog_8h_source.html">SimpleFileLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8h_source.html#l00071">71</a> of file <a class="el" href="SimpleFileLog_8h_source.html">SimpleFileLog.h</a>.</p>
 
 </div>
 </div>
@@ -584,7 +608,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a3044e83ee00115379349495937630463">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8h_source.html#l00071">71</a> of file <a class="el" href="SimpleFileLog_8h_source.html">SimpleFileLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8h_source.html#l00072">72</a> of file <a class="el" href="SimpleFileLog_8h_source.html">SimpleFileLog.h</a>.</p>
 
 </div>
 </div>
@@ -599,7 +623,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8h_source.html#l00072">72</a> of file <a class="el" href="SimpleFileLog_8h_source.html">SimpleFileLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8h_source.html#l00073">73</a> of file <a class="el" href="SimpleFileLog_8h_source.html">SimpleFileLog.h</a>.</p>
 
 </div>
 </div>
@@ -614,7 +638,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8h_source.html#l00073">73</a> of file <a class="el" href="SimpleFileLog_8h_source.html">SimpleFileLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8h_source.html#l00074">74</a> of file <a class="el" href="SimpleFileLog_8h_source.html">SimpleFileLog.h</a>.</p>
 
 </div>
 </div>
@@ -629,7 +653,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SimpleFileLog_8h_source.html#l00074">74</a> of file <a class="el" href="SimpleFileLog_8h_source.html">SimpleFileLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SimpleFileLog_8h_source.html#l00075">75</a> of file <a class="el" href="SimpleFileLog_8h_source.html">SimpleFileLog.h</a>.</p>
 
 </div>
 </div>

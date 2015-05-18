@@ -1,7 +1,7 @@
 var searchData=
 [
   ['daemon',['daemon',['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#af0739fee4e519388ee65e82d66e0233d',1,'anonymous_namespace{Main.cc}::OptionParser']]],
-  ['data',['DATA',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus_1_1Entry.html#a55578f18915148f4af5a6e2414520084a6d451f3ccae3822b3ec4e0df95282d71',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus::Entry::DATA()'],['../classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e',1,'LogCabin::Core::Buffer::data()']]],
+  ['data',['DATA',['../structLogCabin_1_1Server_1_1RaftConsensus_1_1Entry.html#a0b88eeaf00022ad116d9bb1499af28ebac9e0e10f40c459c4753efe71350e7c3e',1,'LogCabin::Server::RaftConsensus::Entry::DATA()'],['../classLogCabin_1_1Core_1_1Buffer.html#ad9687ac1794e05bc978b8e9f64b5912e',1,'LogCabin::Core::Buffer::data()']]],
   ['debug_2ecc',['Debug.cc',['../Debug_8cc.html',1,'']]],
   ['debug_2eh',['Debug.h',['../Core_2Debug_8h.html',1,'']]],
   ['debug_2eh',['Debug.h',['../include_2LogCabin_2Debug_8h.html',1,'']]],
@@ -28,7 +28,7 @@ var searchData=
   ['disableforever',['disableForever',['../classLogCabin_1_1Event_1_1File_1_1Monitor.html#a2b38fde47fcf4ac96b59d7835ad3b26d',1,'LogCabin::Event::File::Monitor']]],
   ['discard',['discard',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#adff750be580dd1545f6232792220f2c5',1,'LogCabin::Storage::SnapshotFile::Writer']]],
   ['discardpartialsnapshots',['discardPartialSnapshots',['../namespaceLogCabin_1_1Storage_1_1SnapshotFile.html#a2852e12ee900d5a5fc91c1410995cba5',1,'LogCabin::Storage::SnapshotFile']]],
-  ['discardunneededentries',['discardUnneededEntries',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#ac1a7962c0e417508be477e49e9506acb',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
+  ['discardunneededentries',['discardUnneededEntries',['../classLogCabin_1_1Server_1_1RaftConsensus.html#af98ae4ff770b37572783ee33946fb0b7',1,'LogCabin::Server::RaftConsensus']]],
   ['disconnect',['disconnect',['../classLogCabin_1_1RPC_1_1MessageSocket.html#af6f6db4ae752670c8c758b40b39a74ab',1,'LogCabin::RPC::MessageSocket']]],
   ['display',['display',['../namespaceLogCabin_1_1Core_1_1StringUtil_1_1anonymous__namespace_02StringUtil_8cc_03.html#a056bc02fa0b0eba6c967c64120cfbb4e',1,'LogCabin::Core::StringUtil::anonymous_namespace{StringUtil.cc}']]],
   ['donewithrpc',['doneWithRPC',['../classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a1a440dca3e1b2606e4e94a40e4e30211',1,'LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::doneWithRPC(const Protocol::Client::ExactlyOnceRPCInfo &amp;)'],['../classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a19cc2ce7619597307907f9e5c58fbcbe',1,'LogCabin::Client::ClientImpl::ExactlyOnceRPCHelper::doneWithRPC(const Protocol::Client::ExactlyOnceRPCInfo &amp;, Core::HoldingMutex holdingMutex)']]],

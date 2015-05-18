@@ -98,8 +98,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">LogCabin::Client::anonymous_namespace{ClientImpl.cc} Namespace Reference</div>  </div>
 </div><!--header-->
@@ -119,12 +118,6 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper around <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aebd65669e90cd4b1d9011a052633a8dc" title="See LeaderRPCBase::call.">LeaderRPC::call()</a> that repackages a timeout as a ReadOnlyTree status and error message.  <a href="#aff36e26e1cf5ee6ab79e650c67b427f7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#a63d3f05de1005e9054f9ed2292795d56">treeCall</a> (<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html">LeaderRPCBase</a> &amp;leaderRPC, const Protocol::Client::ReadWriteTree::Request &amp;request, Protocol::Client::ReadWriteTree::Response &amp;response, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">ClientImpl::TimePoint</a> timeout)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper around <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aebd65669e90cd4b1d9011a052633a8dc" title="See LeaderRPCBase::call.">LeaderRPC::call()</a> that repackages a timeout as a ReadWriteTree status and error message.  <a href="#a63d3f05de1005e9054f9ed2292795d56"></a><br/></td></tr>
-<tr><td colspan="2"><h2><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#aa16cc23c23edcf6b3565b00db6414b14">MIN_RPC_PROTOCOL_VERSION</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The oldest <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> protocol version that this client library supports.  <a href="#aa16cc23c23edcf6b3565b00db6414b14"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#add34bc9993fc4fdbfa33ba2dde4b5f8e">MAX_RPC_PROTOCOL_VERSION</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The newest <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> protocol version that this client library supports.  <a href="#add34bc9993fc4fdbfa33ba2dde4b5f8e"></a><br/></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
 <a class="anchor" id="a6ad6e1cc87d46898da7379d4af51dff0"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{ClientImpl.cc}::treeError" ref="a6ad6e1cc87d46898da7379d4af51dff0" args="(const Message &amp;response)" -->
@@ -146,7 +139,7 @@ template&lt;typename Message &gt; </div>
 
 <p>Parse an error response out of a ProtoBuf and into a <a class="el" href="structLogCabin_1_1Client_1_1Result.html" title="Returned by Tree operations; contain a status code and an error message.">Result</a> object. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00047">47</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00037">37</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -179,7 +172,7 @@ template&lt;typename Message &gt; </div>
 
 <p>If the client has specified a condition for the operation, serialize it into the request message. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00093">93</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00083">83</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -218,7 +211,7 @@ template&lt;typename Message &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00109">109</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00099">99</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -261,7 +254,7 @@ template&lt;typename Message &gt; </div>
 
 <p>Wrapper around <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aebd65669e90cd4b1d9011a052633a8dc" title="See LeaderRPCBase::call.">LeaderRPC::call()</a> that repackages a timeout as a ReadOnlyTree status and error message. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00131">131</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00121">121</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -305,42 +298,7 @@ template&lt;typename Message &gt; </div>
 <p>Wrapper around <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aebd65669e90cd4b1d9011a052633a8dc" title="See LeaderRPCBase::call.">LeaderRPC::call()</a> that repackages a timeout as a ReadWriteTree status and error message. </p>
 <p>Also checks whether getRPCInfo timed out. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00175">175</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
-
-</div>
-</div>
-<hr/><h2>Variable Documentation</h2>
-<a class="anchor" id="aa16cc23c23edcf6b3565b00db6414b14"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{ClientImpl.cc}::MIN_RPC_PROTOCOL_VERSION" ref="aa16cc23c23edcf6b3565b00db6414b14" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const uint32_t LogCabin::Client::anonymous_namespace{ClientImpl.cc}::<a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#aa16cc23c23edcf6b3565b00db6414b14">MIN_RPC_PROTOCOL_VERSION</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>The oldest <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> protocol version that this client library supports. </p>
-
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00035">35</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="add34bc9993fc4fdbfa33ba2dde4b5f8e"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{ClientImpl.cc}::MAX_RPC_PROTOCOL_VERSION" ref="add34bc9993fc4fdbfa33ba2dde4b5f8e" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const uint32_t LogCabin::Client::anonymous_namespace{ClientImpl.cc}::<a class="el" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#add34bc9993fc4fdbfa33ba2dde4b5f8e">MAX_RPC_PROTOCOL_VERSION</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>The newest <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> protocol version that this client library supports. </p>
-
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00040">40</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00165">165</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>

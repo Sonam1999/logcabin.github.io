@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['fail',['FAIL',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a0615edf4bb111f046846a730452b34bfabe09f273446e87ce894653f4b6d09076',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
+  ['fail',['FAIL',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a2e798f8f5febb02f25e027eccac8496aa3a5ab1577185f1c48d0e10aa7f6dc29d',1,'LogCabin::Server::RaftConsensus']]],
   ['failed',['FAILED',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0548ee7eb046a903349a22ff0a3c7bdaa15398142dc9aee5b6d4c20406dce7f23',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['fd',['fd',['../classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0',1,'LogCabin::Event::File::fd()'],['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092',1,'LogCabin::Storage::FilesystemUtil::File::fd()'],['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a66e52c154e31871ddd182a3cf22c0fac',1,'LogCabin::Storage::SegmentedLog::Sync::Op::fd()']]],
   ['fdatasync',['FDATASYNC',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a2dc118e94239a6a5cb97476357f35361adda0fe08bde939edf21a8d84a7a8a8bd',1,'LogCabin::Storage::SegmentedLog::Sync::Op::FDATASYNC()'],['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#af05d08c9ab6e409c77d38ae6b51bd67a',1,'LogCabin::Storage::FilesystemUtil::fdatasync()']]],
@@ -34,7 +34,7 @@ var searchData=
   ['flags',['flags',['../namespaceLogCabin_1_1Core_1_1StringUtil.html#a044e7b5d93bf1c94d2c6b4c53bc41c96',1,'LogCabin::Core::StringUtil']]],
   ['flock',['flock',['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#afb40e02ed16b81bc64e71239ea48eaea',1,'LogCabin::Storage::FilesystemUtil']]],
   ['flushtoos',['flushToOS',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#a5acdfa8012bd95341a898946e624bc2b',1,'LogCabin::Storage::SnapshotFile::Writer']]],
-  ['follower',['FOLLOWER',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1RaftConsensus.html#a14a6602e14d73dc067e2b9de50c1711cad442de331e163d23069b86bdc7140981',1,'LogCabin::Server::RaftConsensusInternal::RaftConsensus']]],
+  ['follower',['FOLLOWER',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a8a1270561380477170b6c7447705d74fa589983a6c56c8a49a9dac22184a0e0e7',1,'LogCabin::Server::RaftConsensus']]],
   ['forceheartbeat',['forceHeartbeat',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a50d0b442ca40959e135e45107a8c6c76',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['foreach',['forEach',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration_1_1SimpleConfiguration.html#a50f2e1ee2be8bb6779e0b1dd792e7d9b',1,'LogCabin::Server::RaftConsensusInternal::Configuration::SimpleConfiguration::forEach()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a5d735080020e1ec576316005e685327a',1,'LogCabin::Server::RaftConsensusInternal::Configuration::forEach()']]],
   ['format',['format',['../namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7',1,'LogCabin::Core::StringUtil']]],

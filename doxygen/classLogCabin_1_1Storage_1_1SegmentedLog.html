@@ -158,6 +158,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the index of the first entry in the log (whether or not this entry exists).  <a href="#ad729715c9512554255bb0670f6c385a2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a45c575000cfd56c3d77d6efa7a6286de">getLastLogIndex</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the index of the most recent entry in the log.  <a href="#a45c575000cfd56c3d77d6efa7a6286de"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a88c936327f9d62ba7e606cbf5fccab23">getName</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the name of the log implementation as it would be specified in the config file.  <a href="#a88c936327f9d62ba7e606cbf5fccab23"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a4f5d68a1e78453d838b4406f4405bc4f">getSizeBytes</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the entire log in bytes.  <a href="#a4f5d68a1e78453d838b4406f4405bc4f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html">Log::Sync</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a49998df90ec65f822e87a11d6f51a3e7">takeSync</a> ()</td></tr>
@@ -439,6 +441,28 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a88c936327f9d62ba7e606cbf5fccab23"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::getName" ref="a88c936327f9d62ba7e606cbf5fccab23" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a88c936327f9d62ba7e606cbf5fccab23">LogCabin::Storage::SegmentedLog::getName</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the name of the log implementation as it would be specified in the config file. </p>
+
+<p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#abd90715c67f4fa038111259feacdede1">LogCabin::Storage::Log</a>.</p>
+
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00529">529</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a4f5d68a1e78453d838b4406f4405bc4f"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::getSizeBytes" ref="a4f5d68a1e78453d838b4406f4405bc4f" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -457,7 +481,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a73b678e98d205870c19ac73ecfd5c807">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00529">529</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00538">538</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -481,7 +505,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#aabf3345e03685b44d56b607ebbe282c9">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00535">535</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00544">544</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -511,7 +535,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a75237d59c0f0aeb45e0fe2425e7daea5">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00544">544</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00553">553</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -542,7 +566,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a166833dce487be2a51f28ce2b0d03852">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00581">581</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00590">590</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -564,7 +588,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#affd60dcee3571e1afc169cf36d887a13">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00660">660</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00669">669</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -588,7 +612,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a3bdbcbd9789cfa2de387e7f8c0eb7f1e">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00692">692</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00701">701</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -610,7 +634,7 @@ Private Attributes</h2></td></tr>
 <p>This is only used during initialization. These segments are passed through <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa55ae05788df9d090c875dc1b82f2267" title="Read the given closed segment from disk, issuing PANICs and WARNINGs appropriately.">loadClosedSegment()</a> and <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a457babadc678e65279f85d0997a7f3f2" title="Read the given open segment from disk, issuing PANICs and WARNINGs appropriately, and closing the seg...">loadOpenSegment()</a> next. Also updates SegmentPreparer::filenameCounter. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Partially initialized <a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">Segment</a> objects, one per discovered filename. </dd></dl>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00705">705</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00714">714</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -657,7 +681,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if the file was read successfully, false otherwise. </dd></dl>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00763">763</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00772">772</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -699,7 +723,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if the segment is valid; false if it has been removed entirely from disk. </dd></dl>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00797">797</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00806">806</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -741,7 +765,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>True if the segment is valid; false if it has been removed entirely from disk. </dd></dl>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00867">867</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00876">876</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -762,7 +786,7 @@ Private Attributes</h2></td></tr>
 <p>Run through a bunch of assertions of class invariants (for debugging). </p>
 <p>For example, there should always be one open segment. See <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad54138be8052e2963053757e8734f0d2" title="Set to true if checkInvariants() should do its job, or set to false for performance.">shouldCheckInvariants</a>, controlled by the config option 'storageDebug', and the BUILDTYPE. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00969">969</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00978">978</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -783,7 +807,7 @@ Private Attributes</h2></td></tr>
 <p>Close the open segment if one is open. </p>
 <p>This removes the open segment if it is empty, or closes it otherwise. Since it's a class invariant that there is always an open segment, the caller should open a new segment after calling this (unless it's shutting down). </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01019">1019</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01028">1028</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -804,7 +828,7 @@ Private Attributes</h2></td></tr>
 <p>Return a reference to the current open segment (the one that new writes should go into). </p>
 <p>Crashes if there is no open segment (but it's an invariant of this class to maintain one). </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01058">1058</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01067">1067</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -822,7 +846,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01065">1065</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01074">1074</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -844,7 +868,7 @@ Private Attributes</h2></td></tr>
 <p>This is called when <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ae0b3ea9703e373566d879928296eae16" title="Start to append new entries to the log.">append()</a> needs more space but also when the end of the log is truncated with <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a06075f64815be30f9f3d56034d799f34" title="Delete the log entries before the given index.">truncatePrefix()</a> or <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ab6e085a74854607aea7e8399d1f05f87" title="Delete the log entries past the given index.">truncateSuffix()</a>. </p>
 <dl class="pre"><dt><b>Precondition:</b></dt><dd>There is no currently open segment. </dd></dl>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01072">1072</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01081">1081</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -902,7 +926,7 @@ Private Attributes</h2></td></tr>
 <p>dataLen is an unsigned integer (8 bytes, big-endian byte order) that specifies the length in bytes of data.</p>
 <p>data is a protobuf encoded as binary or text, depending on encoding. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01092">1092</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01101">1101</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -930,7 +954,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Buffer containing serialized record. </dd></dl>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01151">1151</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01160">1160</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -958,7 +982,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Filename and writable OS-level file. </dd></dl>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01199">1199</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01208">1208</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -978,7 +1002,7 @@ Private Attributes</h2></td></tr>
 
 <p>The main function for the <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa0118a6fca6d83903ac7f5cc5f6b35e1" title="Opens files, allocates the to full size, and places them on preparedSegments for the log to use...">segmentPreparer</a> thread. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01221">1221</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l01230">1230</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
@@ -996,7 +1020,7 @@ Private Attributes</h2></td></tr>
 
 <p>Specifies how individual records are stored. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00535">535</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00536">536</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -1014,7 +1038,7 @@ Private Attributes</h2></td></tr>
 <p>The algorithm to use when writing new records. </p>
 <p>When reading records, any available checksum is used. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00541">541</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00542">542</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -1032,7 +1056,7 @@ Private Attributes</h2></td></tr>
 <p>The maximum size in bytes for newly written segments. </p>
 <p>Controlled by the 'storageSegmentBytes' config option. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00547">547</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00548">548</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -1049,7 +1073,7 @@ Private Attributes</h2></td></tr>
 
 <p>Set to true if <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a9412657050c3b5ee0f15d13a687e031e" title="Run through a bunch of assertions of class invariants (for debugging).">checkInvariants()</a> should do its job, or set to false for performance. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00553">553</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00554">554</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -1069,7 +1093,7 @@ Private Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a3044e83ee00115379349495937630463">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00559">559</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00560">560</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -1086,7 +1110,7 @@ Private Attributes</h2></td></tr>
 
 <p>The directory containing every file this log creates. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00564">564</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00565">565</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -1104,7 +1128,7 @@ Private Attributes</h2></td></tr>
 <p>A writable OS-level file that contains the entries for the current open segment. </p>
 <p>It is a class invariant that this is always a valid file. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00570">570</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00571">571</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -1121,7 +1145,7 @@ Private Attributes</h2></td></tr>
 
 <p>The index of the first entry in the log, see <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad729715c9512554255bb0670f6c385a2" title="Get the index of the first entry in the log (whether or not this entry exists).">getLogStartIndex()</a>. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00575">575</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00576">576</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -1139,7 +1163,7 @@ Private Attributes</h2></td></tr>
 <p>Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment. </p>
 <p>This is used to support all the key operations, such as looking up an entry and truncation. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00582">582</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00583">583</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -1157,7 +1181,7 @@ Private Attributes</h2></td></tr>
 <p>The total number of bytes occupied by the closed segments on disk. </p>
 <p>Used to calculate <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a4f5d68a1e78453d838b4406f4405bc4f" title="Get the size of the entire log in bytes.">getSizeBytes()</a> efficiently. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00588">588</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00589">589</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -1174,7 +1198,7 @@ Private Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html" title="A producer/consumer monitor for a queue of files to use for open segments.">PreparedSegments</a>. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00593">593</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00594">594</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -1191,7 +1215,7 @@ Private Attributes</h2></td></tr>
 
 <p>Accumulates deferred filesystem operations for <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ae0b3ea9703e373566d879928296eae16" title="Start to append new entries to the log.">append()</a> and <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a06075f64815be30f9f3d56034d799f34" title="Delete the log entries before the given index.">truncatePrefix()</a>. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00599">599</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00600">600</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
@@ -1208,7 +1232,7 @@ Private Attributes</h2></td></tr>
 
 <p>Opens files, allocates the to full size, and places them on <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a82ace8371782747c371bdadb29d41741" title="See PreparedSegments.">preparedSegments</a> for the log to use. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00605">605</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00606">606</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>

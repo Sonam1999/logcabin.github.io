@@ -150,7 +150,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00068"></a>00068 }
 <a name="l00069"></a>00069 
 <a name="l00070"></a>00070 <span class="keywordtype">void</span>
-<a name="l00071"></a><a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html#a3f245586d9172aa94630b7c57b3e5b97">00071</a> <a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html#a3f245586d9172aa94630b7c57b3e5b97" title="This method is overridden by a subclass and invoked when a file event occurs.">MessageSocket::SendSocket::handleFileEvent</a>(<span class="keywordtype">int</span> events)
+<a name="l00071"></a><a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html#ae3e782bd46ba29a17a9b70c80f5bc3a0">00071</a> <a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html#ae3e782bd46ba29a17a9b70c80f5bc3a0" title="This method is overridden by a subclass and invoked when a file event occurs.">MessageSocket::SendSocket::handleFileEvent</a>(uint32_t events)
 <a name="l00072"></a>00072 {
 <a name="l00073"></a>00073     messageSocket.writable();
 <a name="l00074"></a>00074 }
@@ -179,7 +179,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00097"></a>00097 }
 <a name="l00098"></a>00098 
 <a name="l00099"></a>00099 <span class="keywordtype">void</span>
-<a name="l00100"></a><a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ad45fb20e5b8c08412f472ffd96a094cb">00100</a> <a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#ad45fb20e5b8c08412f472ffd96a094cb" title="This method is overridden by a subclass and invoked when a file event occurs.">MessageSocket::ReceiveSocket::handleFileEvent</a>(<span class="keywordtype">int</span> events)
+<a name="l00100"></a><a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#a1df581fde48d0f8c5fbd679b13855830">00100</a> <a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#a1df581fde48d0f8c5fbd679b13855830" title="This method is overridden by a subclass and invoked when a file event occurs.">MessageSocket::ReceiveSocket::handleFileEvent</a>(uint32_t events)
 <a name="l00101"></a>00101 {
 <a name="l00102"></a>00102     messageSocket.readable();
 <a name="l00103"></a>00103 }
@@ -303,7 +303,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00221"></a>00221     }
 <a name="l00222"></a>00222     <span class="comment">// Make sure the SendSocket is set up to call writable().</span>
 <a name="l00223"></a>00223     <span class="keywordflow">if</span> (kick)
-<a name="l00224"></a>00224         <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a7ed2f3fbc5e2815b1e34065f50778945" title="Registers sendSocket with the event loop.">sendSocketMonitor</a>.<a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a37ab4c08d28e255cb465060007163083" title="Specify the events of interest for the file.">setEvents</a>(EPOLLOUT|EPOLLONESHOT);
+<a name="l00224"></a>00224         <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a7ed2f3fbc5e2815b1e34065f50778945" title="Registers sendSocket with the event loop.">sendSocketMonitor</a>.<a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ab2f70d88f77d02cb53464a9ca219e8ca" title="Specify the events of interest for the file.">setEvents</a>(EPOLLOUT|EPOLLONESHOT);
 <a name="l00225"></a>00225 }
 <a name="l00226"></a>00226 
 <a name="l00227"></a>00227 <span class="keywordtype">void</span>
@@ -330,7 +330,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00248"></a>00248                 <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#af6f6db4ae752670c8c758b40b39a74ab" title="Cleans up and calls onDisconnect() when the socket has an error.">disconnect</a>();
 <a name="l00249"></a>00249                 <span class="keywordflow">return</span>;
 <a name="l00250"></a>00250             }
-<a name="l00251"></a>00251             <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#aa9723a90aa0df6884e1ccfc32a24b232" title="The current message that is being received.">inbound</a>.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Inbound.html#ad49d1e61c76635948dd9117a41aaa7ce" title="The number of bytes read for the message, including the header.">bytesRead</a> += bytesRead;
+<a name="l00251"></a>00251             <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#aa9723a90aa0df6884e1ccfc32a24b232" title="The current message that is being received.">inbound</a>.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Inbound.html#ad49d1e61c76635948dd9117a41aaa7ce" title="The number of bytes read for the message, including the header.">bytesRead</a> += size_t(bytesRead);
 <a name="l00252"></a>00252             <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#aa9723a90aa0df6884e1ccfc32a24b232" title="The current message that is being received.">inbound</a>.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Inbound.html#ad49d1e61c76635948dd9117a41aaa7ce" title="The number of bytes read for the message, including the header.">bytesRead</a> &lt; <span class="keyword">sizeof</span>(<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html" title="This is the header that precedes every message across the TCP socket.">Header</a>))
 <a name="l00253"></a>00253                 <span class="keywordflow">return</span>;
 <a name="l00254"></a>00254             <span class="comment">// Transition to receiving data</span>
@@ -375,7 +375,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00293"></a>00293                 <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#af6f6db4ae752670c8c758b40b39a74ab" title="Cleans up and calls onDisconnect() when the socket has an error.">disconnect</a>();
 <a name="l00294"></a>00294                 <span class="keywordflow">return</span>;
 <a name="l00295"></a>00295             }
-<a name="l00296"></a>00296             <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#aa9723a90aa0df6884e1ccfc32a24b232" title="The current message that is being received.">inbound</a>.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Inbound.html#ad49d1e61c76635948dd9117a41aaa7ce" title="The number of bytes read for the message, including the header.">bytesRead</a> += bytesRead;
+<a name="l00296"></a>00296             <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#aa9723a90aa0df6884e1ccfc32a24b232" title="The current message that is being received.">inbound</a>.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Inbound.html#ad49d1e61c76635948dd9117a41aaa7ce" title="The number of bytes read for the message, including the header.">bytesRead</a> += size_t(bytesRead);
 <a name="l00297"></a>00297             <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#aa9723a90aa0df6884e1ccfc32a24b232" title="The current message that is being received.">inbound</a>.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Inbound.html#ad49d1e61c76635948dd9117a41aaa7ce" title="The number of bytes read for the message, including the header.">bytesRead</a> &lt; (<span class="keyword">sizeof</span>(<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html" title="This is the header that precedes every message across the TCP socket.">Header</a>) +
 <a name="l00298"></a>00298                                      <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#aa9723a90aa0df6884e1ccfc32a24b232" title="The current message that is being received.">inbound</a>.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Inbound.html#aeea9608fe3f4031cef120e2540dc8790" title="If bytesRead &gt;= sizeof(header), the header has been fully received and its fields are in host order...">header</a>.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#a7b97669600ee6ae238ce1d11827020d5" title="The length in bytes of the contents of the message, not including this header.">payloadLength</a>)) {
 <a name="l00299"></a>00299                 <span class="keywordflow">return</span>;
@@ -439,53 +439,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00357"></a>00357                                    bytesSent);
 <a name="l00358"></a>00358                 <span class="keywordflow">if</span> (bytesSent &lt; iov[i].iov_len) {
 <a name="l00359"></a>00359                     iov[i].iov_len -= bytesSent;
-<a name="l00360"></a>00360                     bytesSent = 0;
-<a name="l00361"></a>00361                     <span class="keywordflow">break</span>;
-<a name="l00362"></a>00362                 } <span class="keywordflow">else</span> {
-<a name="l00363"></a>00363                     bytesSent -= iov[i].iov_len;
-<a name="l00364"></a>00364                     iov[i].iov_len = 0;
-<a name="l00365"></a>00365                 }
-<a name="l00366"></a>00366             }
-<a name="l00367"></a>00367         }
-<a name="l00368"></a>00368 
-<a name="l00369"></a>00369         <span class="keyword">struct </span>msghdr msg;
-<a name="l00370"></a>00370         memset(&amp;msg, 0, <span class="keyword">sizeof</span>(msg));
-<a name="l00371"></a>00371         msg.msg_iov = iov;
-<a name="l00372"></a>00372         msg.msg_iovlen = IOV_LEN;
-<a name="l00373"></a>00373 
-<a name="l00374"></a>00374         <span class="comment">// Do the actual send</span>
-<a name="l00375"></a>00375         ssize_t bytesSent = sendmsg(<a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a6b0b0f248f03624e5e7873b4ebf43970" title="Notifies MessageSocket when the socket can be transmitted on without blocking.">sendSocket</a>.<a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>, &amp;msg, flags);
-<a name="l00376"></a>00376         <span class="keywordflow">if</span> (bytesSent &lt; 0) {
-<a name="l00377"></a>00377             <span class="keywordflow">if</span> (errno == EAGAIN || errno == EWOULDBLOCK || errno == EINTR) {
-<a name="l00378"></a>00378                 <span class="comment">// Wasn&#39;t able to send, try again later.</span>
-<a name="l00379"></a>00379                 bytesSent = 0;
-<a name="l00380"></a>00380             } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (errno == ECONNRESET || errno == EPIPE) {
-<a name="l00381"></a>00381                 <span class="comment">// Connection closed; disconnect this end.</span>
-<a name="l00382"></a>00382                 <span class="comment">// This must be the last line to touch this object, in case</span>
-<a name="l00383"></a>00383                 <span class="comment">// handleDisconnect() deletes this object.</span>
-<a name="l00384"></a>00384                 <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#af6f6db4ae752670c8c758b40b39a74ab" title="Cleans up and calls onDisconnect() when the socket has an error.">disconnect</a>();
-<a name="l00385"></a>00385                 <span class="keywordflow">return</span>;
-<a name="l00386"></a>00386             } <span class="keywordflow">else</span> {
-<a name="l00387"></a>00387                 <span class="comment">// Unexpected error.</span>
-<a name="l00388"></a>00388                 <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Error while writing to socket %d: %s&quot;</span>,
-<a name="l00389"></a>00389                       <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a6b0b0f248f03624e5e7873b4ebf43970" title="Notifies MessageSocket when the socket can be transmitted on without blocking.">sendSocket</a>.<a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>, strerror(errno));
-<a name="l00390"></a>00390             }
-<a name="l00391"></a>00391         }
-<a name="l00392"></a>00392 
-<a name="l00393"></a>00393         <span class="comment">// Sent successfully.</span>
-<a name="l00394"></a>00394         outbound.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#aea15b927af79f6aef509496096c85d4c" title="The number of bytes already sent for this message, including the header.">bytesSent</a> += bytesSent;
-<a name="l00395"></a>00395         <span class="keywordflow">if</span> (outbound.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#aea15b927af79f6aef509496096c85d4c" title="The number of bytes already sent for this message, including the header.">bytesSent</a> != (<span class="keyword">sizeof</span>(<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html" title="This is the header that precedes every message across the TCP socket.">Header</a>) +
-<a name="l00396"></a>00396                                    outbound.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#a360fe4dd0847275c26d8d95819abd802" title="The contents of the message (after the header).">message</a>.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>())) {
-<a name="l00397"></a>00397             <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a7ed2f3fbc5e2815b1e34065f50778945" title="Registers sendSocket with the event loop.">sendSocketMonitor</a>.<a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a37ab4c08d28e255cb465060007163083" title="Specify the events of interest for the file.">setEvents</a>(EPOLLOUT|EPOLLONESHOT);
-<a name="l00398"></a>00398             std::lock_guard&lt;Core::Mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#af0786d1f0f2169feb5d8ca39f48f1048" title="Protects outboundQueue only from concurrent modification.">outboundQueueMutex</a>);
-<a name="l00399"></a>00399             <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a6f40d25e40b88fa0d1eb1e8fd9936e8e" title="A queue of messages waiting to be sent.">outboundQueue</a>.emplace_front(std::move(outbound));
-<a name="l00400"></a>00400             <span class="keywordflow">return</span>;
-<a name="l00401"></a>00401         }
-<a name="l00402"></a>00402     }
-<a name="l00403"></a>00403 }
-<a name="l00404"></a>00404 
-<a name="l00405"></a>00405 } <span class="comment">// namespace LogCabin::RPC</span>
-<a name="l00406"></a>00406 } <span class="comment">// namespace LogCabin</span>
+<a name="l00360"></a>00360                     <span class="keywordflow">break</span>;
+<a name="l00361"></a>00361                 } <span class="keywordflow">else</span> {
+<a name="l00362"></a>00362                     bytesSent -= iov[i].iov_len;
+<a name="l00363"></a>00363                     iov[i].iov_len = 0;
+<a name="l00364"></a>00364                 }
+<a name="l00365"></a>00365             }
+<a name="l00366"></a>00366         }
+<a name="l00367"></a>00367 
+<a name="l00368"></a>00368         <span class="keyword">struct </span>msghdr msg;
+<a name="l00369"></a>00369         memset(&amp;msg, 0, <span class="keyword">sizeof</span>(msg));
+<a name="l00370"></a>00370         msg.msg_iov = iov;
+<a name="l00371"></a>00371         msg.msg_iovlen = IOV_LEN;
+<a name="l00372"></a>00372 
+<a name="l00373"></a>00373         <span class="comment">// Do the actual send</span>
+<a name="l00374"></a>00374         ssize_t bytesSent = sendmsg(<a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a6b0b0f248f03624e5e7873b4ebf43970" title="Notifies MessageSocket when the socket can be transmitted on without blocking.">sendSocket</a>.<a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>, &amp;msg, flags);
+<a name="l00375"></a>00375         <span class="keywordflow">if</span> (bytesSent &lt; 0) {
+<a name="l00376"></a>00376             <span class="keywordflow">if</span> (errno == EAGAIN || errno == EWOULDBLOCK || errno == EINTR) {
+<a name="l00377"></a>00377                 <span class="comment">// Wasn&#39;t able to send, try again later.</span>
+<a name="l00378"></a>00378                 bytesSent = 0;
+<a name="l00379"></a>00379             } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (errno == ECONNRESET || errno == EPIPE) {
+<a name="l00380"></a>00380                 <span class="comment">// Connection closed; disconnect this end.</span>
+<a name="l00381"></a>00381                 <span class="comment">// This must be the last line to touch this object, in case</span>
+<a name="l00382"></a>00382                 <span class="comment">// handleDisconnect() deletes this object.</span>
+<a name="l00383"></a>00383                 <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#af6f6db4ae752670c8c758b40b39a74ab" title="Cleans up and calls onDisconnect() when the socket has an error.">disconnect</a>();
+<a name="l00384"></a>00384                 <span class="keywordflow">return</span>;
+<a name="l00385"></a>00385             } <span class="keywordflow">else</span> {
+<a name="l00386"></a>00386                 <span class="comment">// Unexpected error.</span>
+<a name="l00387"></a>00387                 <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Error while writing to socket %d: %s&quot;</span>,
+<a name="l00388"></a>00388                       <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a6b0b0f248f03624e5e7873b4ebf43970" title="Notifies MessageSocket when the socket can be transmitted on without blocking.">sendSocket</a>.<a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>, strerror(errno));
+<a name="l00389"></a>00389             }
+<a name="l00390"></a>00390         }
+<a name="l00391"></a>00391 
+<a name="l00392"></a>00392         <span class="comment">// Sent successfully.</span>
+<a name="l00393"></a>00393         outbound.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#aea15b927af79f6aef509496096c85d4c" title="The number of bytes already sent for this message, including the header.">bytesSent</a> += size_t(bytesSent);
+<a name="l00394"></a>00394         <span class="keywordflow">if</span> (outbound.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#aea15b927af79f6aef509496096c85d4c" title="The number of bytes already sent for this message, including the header.">bytesSent</a> != (<span class="keyword">sizeof</span>(<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html" title="This is the header that precedes every message across the TCP socket.">Header</a>) +
+<a name="l00395"></a>00395                                    outbound.<a class="code" href="structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#a360fe4dd0847275c26d8d95819abd802" title="The contents of the message (after the header).">message</a>.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>())) {
+<a name="l00396"></a>00396             <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a7ed2f3fbc5e2815b1e34065f50778945" title="Registers sendSocket with the event loop.">sendSocketMonitor</a>.<a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ab2f70d88f77d02cb53464a9ca219e8ca" title="Specify the events of interest for the file.">setEvents</a>(EPOLLOUT|EPOLLONESHOT);
+<a name="l00397"></a>00397             std::lock_guard&lt;Core::Mutex&gt; lockGuard(<a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#af0786d1f0f2169feb5d8ca39f48f1048" title="Protects outboundQueue only from concurrent modification.">outboundQueueMutex</a>);
+<a name="l00398"></a>00398             <a class="code" href="classLogCabin_1_1RPC_1_1MessageSocket.html#a6f40d25e40b88fa0d1eb1e8fd9936e8e" title="A queue of messages waiting to be sent.">outboundQueue</a>.emplace_front(std::move(outbound));
+<a name="l00399"></a>00399             <span class="keywordflow">return</span>;
+<a name="l00400"></a>00400         }
+<a name="l00401"></a>00401     }
+<a name="l00402"></a>00402 }
+<a name="l00403"></a>00403 
+<a name="l00404"></a>00404 } <span class="comment">// namespace LogCabin::RPC</span>
+<a name="l00405"></a>00405 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

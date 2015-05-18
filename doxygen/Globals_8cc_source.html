@@ -166,7 +166,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00084"></a>00084         serverStatsLock-&gt;set_server_id(<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#adb41a9a190dc41f64fd3fa42bb5494da" title="Unique ID for this server.">serverId</a>);
 <a name="l00085"></a>00085     }
 <a name="l00086"></a>00086     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>) {
-<a name="l00087"></a>00087         <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>.reset(<span class="keyword">new</span> RaftConsensus(*<span class="keyword">this</span>));
+<a name="l00087"></a>00087         <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>.reset(<span class="keyword">new</span> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html" title="An implementation of the Raft consensus algorithm.">RaftConsensus</a>(*<span class="keyword">this</span>));
 <a name="l00088"></a>00088         <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;serverId = <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#adb41a9a190dc41f64fd3fa42bb5494da" title="Unique ID for this server.">serverId</a>;
 <a name="l00089"></a>00089     }
 <a name="l00090"></a>00090 

@@ -132,6 +132,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the index of the first entry in the log (whether or not this entry exists).  <a href="#a72ba113f201a02064ab52ee111bc2251"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a8e8d61ed9dcebbea66b5a5377443a891">getLastLogIndex</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the index of the most recent entry in the log.  <a href="#a8e8d61ed9dcebbea66b5a5377443a891"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aacc25e510db96cb4a4fd1fe77a672933">getName</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the name of the log implementation as it would be specified in the config file.  <a href="#aacc25e510db96cb4a4fd1fe77a672933"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a95bb18ffc0ceacc0ddfaef9c3396f4c1">getSizeBytes</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of the entire log in bytes.  <a href="#a95bb18ffc0ceacc0ddfaef9c3396f4c1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html">Sync</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#a71aa639443824a36d17b7bcfa6ca3a06">takeSync</a> ()</td></tr>
@@ -299,6 +301,28 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aacc25e510db96cb4a4fd1fe77a672933"></a><!-- doxytag: member="LogCabin::Storage::MemoryLog::getName" ref="aacc25e510db96cb4a4fd1fe77a672933" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html#aacc25e510db96cb4a4fd1fe77a672933">LogCabin::Storage::MemoryLog::getName</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the name of the log implementation as it would be specified in the config file. </p>
+
+<p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#abd90715c67f4fa038111259feacdede1">LogCabin::Storage::Log</a>.</p>
+
+<p>Definition at line <a class="el" href="MemoryLog_8cc_source.html#l00077">77</a> of file <a class="el" href="MemoryLog_8cc_source.html">MemoryLog.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a95bb18ffc0ceacc0ddfaef9c3396f4c1"></a><!-- doxytag: member="LogCabin::Storage::MemoryLog::getSizeBytes" ref="a95bb18ffc0ceacc0ddfaef9c3396f4c1" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -317,7 +341,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a73b678e98d205870c19ac73ecfd5c807">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="MemoryLog_8cc_source.html#l00077">77</a> of file <a class="el" href="MemoryLog_8cc_source.html">MemoryLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="MemoryLog_8cc_source.html#l00083">83</a> of file <a class="el" href="MemoryLog_8cc_source.html">MemoryLog.cc</a>.</p>
 
 </div>
 </div>
@@ -341,7 +365,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#aabf3345e03685b44d56b607ebbe282c9">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="MemoryLog_8cc_source.html#l00087">87</a> of file <a class="el" href="MemoryLog_8cc_source.html">MemoryLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="MemoryLog_8cc_source.html#l00093">93</a> of file <a class="el" href="MemoryLog_8cc_source.html">MemoryLog.cc</a>.</p>
 
 </div>
 </div>
@@ -371,7 +395,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a75237d59c0f0aeb45e0fe2425e7daea5">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="MemoryLog_8cc_source.html#l00095">95</a> of file <a class="el" href="MemoryLog_8cc_source.html">MemoryLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="MemoryLog_8cc_source.html#l00101">101</a> of file <a class="el" href="MemoryLog_8cc_source.html">MemoryLog.cc</a>.</p>
 
 </div>
 </div>
@@ -402,7 +426,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#a166833dce487be2a51f28ce2b0d03852">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="MemoryLog_8cc_source.html#l00109">109</a> of file <a class="el" href="MemoryLog_8cc_source.html">MemoryLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="MemoryLog_8cc_source.html#l00116">116</a> of file <a class="el" href="MemoryLog_8cc_source.html">MemoryLog.cc</a>.</p>
 
 </div>
 </div>
@@ -424,7 +448,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Storage_1_1Log.html#affd60dcee3571e1afc169cf36d887a13">LogCabin::Storage::Log</a>.</p>
 
-<p>Definition at line <a class="el" href="MemoryLog_8cc_source.html#l00118">118</a> of file <a class="el" href="MemoryLog_8cc_source.html">MemoryLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="MemoryLog_8cc_source.html#l00125">125</a> of file <a class="el" href="MemoryLog_8cc_source.html">MemoryLog.cc</a>.</p>
 
 </div>
 </div>
@@ -443,7 +467,7 @@ Protected Attributes</h2></td></tr>
 <p>The index for the first entry in the log. </p>
 <p>Begins as 1 for new logs but will be larger for logs that have been snapshotted. </p>
 
-<p>Definition at line <a class="el" href="MemoryLog_8h_source.html#l00054">54</a> of file <a class="el" href="MemoryLog_8h_source.html">MemoryLog.h</a>.</p>
+<p>Definition at line <a class="el" href="MemoryLog_8h_source.html#l00055">55</a> of file <a class="el" href="MemoryLog_8h_source.html">MemoryLog.h</a>.</p>
 
 </div>
 </div>
@@ -461,7 +485,7 @@ Protected Attributes</h2></td></tr>
 <p>Stores the entries that make up the log. </p>
 <p>The offset into 'entries' is the index of the entry minus 'startIndex'. This is a deque rather than a vector to support fast prefix truncation (used after snapshotting a prefix of the log). </p>
 
-<p>Definition at line <a class="el" href="MemoryLog_8h_source.html#l00062">62</a> of file <a class="el" href="MemoryLog_8h_source.html">MemoryLog.h</a>.</p>
+<p>Definition at line <a class="el" href="MemoryLog_8h_source.html#l00063">63</a> of file <a class="el" href="MemoryLog_8h_source.html">MemoryLog.h</a>.</p>
 
 </div>
 </div>
@@ -479,7 +503,7 @@ Protected Attributes</h2></td></tr>
 <p>This is returned by the next call to getSync. </p>
 <p>It's totally unnecessary to have this member for <a class="el" href="classLogCabin_1_1Storage_1_1MemoryLog.html">MemoryLog</a>, as its syncs don't do anything. However, it's useful for injecting different times of Syncs into unit tests. </p>
 
-<p>Definition at line <a class="el" href="MemoryLog_8h_source.html#l00070">70</a> of file <a class="el" href="MemoryLog_8h_source.html">MemoryLog.h</a>.</p>
+<p>Definition at line <a class="el" href="MemoryLog_8h_source.html#l00071">71</a> of file <a class="el" href="MemoryLog_8h_source.html">MemoryLog.h</a>.</p>
 
 </div>
 </div>
