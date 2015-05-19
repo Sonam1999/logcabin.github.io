@@ -103,26 +103,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00021"></a>00021 <span class="keyword">namespace </span>Core {
 <a name="l00022"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html">00022</a> <span class="keyword">namespace </span>Util {
 <a name="l00023"></a>00023 
-<a name="l00024"></a>00024 <span class="keywordtype">void</span>*
-<a name="l00025"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65">00025</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65" title="Copy some noncontiguous chunks of data into a contiguous chunk.">memcpy</a>(<span class="keywordtype">void</span>* dest,
-<a name="l00026"></a>00026        std::initializer_list&lt;std::pair&lt;const void*, size_t&gt;&gt; src)
-<a name="l00027"></a>00027 {
-<a name="l00028"></a>00028     uint8_t* target = <span class="keyword">static_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(dest);
-<a name="l00029"></a>00029     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = src.begin(); it != src.end(); ++it) {
-<a name="l00030"></a>00030         <a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65" title="Copy some noncontiguous chunks of data into a contiguous chunk.">::memcpy</a>(target, it-&gt;first, it-&gt;second);
-<a name="l00031"></a>00031         target += it-&gt;second;
-<a name="l00032"></a>00032     }
-<a name="l00033"></a>00033     <span class="keywordflow">return</span> dest;
-<a name="l00034"></a>00034 }
-<a name="l00035"></a>00035 
-<a name="l00036"></a><a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html#a39ec6633169bd02835a8adad3f447e87">00036</a> <a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html#a39ec6633169bd02835a8adad3f447e87">ThreadInterruptedException::ThreadInterruptedException</a>()
-<a name="l00037"></a>00037     : std::runtime_error(<span class="stringliteral">&quot;Thread was interrupted&quot;</span>)
-<a name="l00038"></a>00038 {
-<a name="l00039"></a>00039 }
-<a name="l00040"></a>00040 
-<a name="l00041"></a>00041 } <span class="comment">// namespace LogCabin::Core::Util</span>
-<a name="l00042"></a>00042 } <span class="comment">// namespace LogCabin::Core</span>
-<a name="l00043"></a>00043 } <span class="comment">// namespace LogCabin</span>
+<a name="l00024"></a>00024 <span class="keywordtype">bool</span>
+<a name="l00025"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a384eaad64bd93af1b07a030368b5303b">00025</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a384eaad64bd93af1b07a030368b5303b" title="Return true if the log of x in base 2 is a whole number.">isPowerOfTwo</a>(uint64_t x)
+<a name="l00026"></a>00026 {
+<a name="l00027"></a>00027     <span class="keywordflow">if</span> (x == 0)
+<a name="l00028"></a>00028         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00029"></a>00029     <span class="keywordflow">else</span>
+<a name="l00030"></a>00030         <span class="keywordflow">return</span> (x &amp; (x - 1)) == 0;
+<a name="l00031"></a>00031 }
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="keywordtype">void</span>*
+<a name="l00034"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65">00034</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65" title="Copy some noncontiguous chunks of data into a contiguous chunk.">memcpy</a>(<span class="keywordtype">void</span>* dest,
+<a name="l00035"></a>00035        std::initializer_list&lt;std::pair&lt;const void*, size_t&gt;&gt; src)
+<a name="l00036"></a>00036 {
+<a name="l00037"></a>00037     uint8_t* target = <span class="keyword">static_cast&lt;</span>uint8_t*<span class="keyword">&gt;</span>(dest);
+<a name="l00038"></a>00038     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = src.begin(); it != src.end(); ++it) {
+<a name="l00039"></a>00039         <a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65" title="Copy some noncontiguous chunks of data into a contiguous chunk.">::memcpy</a>(target, it-&gt;first, it-&gt;second);
+<a name="l00040"></a>00040         target += it-&gt;second;
+<a name="l00041"></a>00041     }
+<a name="l00042"></a>00042     <span class="keywordflow">return</span> dest;
+<a name="l00043"></a>00043 }
+<a name="l00044"></a>00044 
+<a name="l00045"></a><a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html#a39ec6633169bd02835a8adad3f447e87">00045</a> <a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html#a39ec6633169bd02835a8adad3f447e87">ThreadInterruptedException::ThreadInterruptedException</a>()
+<a name="l00046"></a>00046     : std::runtime_error(<span class="stringliteral">&quot;Thread was interrupted&quot;</span>)
+<a name="l00047"></a>00047 {
+<a name="l00048"></a>00048 }
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 } <span class="comment">// namespace LogCabin::Core::Util</span>
+<a name="l00051"></a>00051 } <span class="comment">// namespace LogCabin::Core</span>
+<a name="l00052"></a>00052 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

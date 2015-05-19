@@ -28,6 +28,7 @@ var searchData=
   ['islogging',['isLogging',['../namespaceLogCabin_1_1Core_1_1Debug.html#a6fb17a6ff9a81e892702560656d691a2',1,'LogCabin::Core::Debug']]],
   ['isloggingcache',['isLoggingCache',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb',1,'LogCabin::Core::Debug::Internal']]],
   ['isopen',['isOpen',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb',1,'LogCabin::Storage::SegmentedLog::Segment']]],
+  ['ispoweroftwo',['isPowerOfTwo',['../namespaceLogCabin_1_1Core_1_1Util.html#a384eaad64bd93af1b07a030368b5303b',1,'LogCabin::Core::Util']]],
   ['isprintable',['isPrintable',['../namespaceLogCabin_1_1Core_1_1StringUtil.html#a31b6a7f1a7a00fd1c52a264124b0697d',1,'LogCabin::Core::StringUtil::isPrintable(const char *str)'],['../namespaceLogCabin_1_1Core_1_1StringUtil.html#aa4338bbde590dee745cee6019a3a6cf5',1,'LogCabin::Core::StringUtil::isPrintable(const void *data, size_t length)']]],
   ['isready',['isReady',['../classLogCabin_1_1RPC_1_1ClientRPC.html#a692623fa366a7e5180350a6f16b9c077',1,'LogCabin::RPC::ClientRPC']]],
   ['isscheduled',['isScheduled',['../classLogCabin_1_1Event_1_1Timer.html#a7336e1b520a7b370999b766835157ed8',1,'LogCabin::Event::Timer']]],

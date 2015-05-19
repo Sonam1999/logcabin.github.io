@@ -147,8 +147,12 @@ Private Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a session connected to the most likely cluster leader, creating it if necessary.  <a href="#a03f098c41f8c205471fa1de4c4d1ed4c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#ab419ff7fede5c2a6079d285ab042f00c">reportFailure</a> (std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">RPC::ClientSession</a> &gt; cachedSession)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notify this class that an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> on the given session failed.  <a href="#ab419ff7fede5c2a6079d285ab042f00c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aca46956f08ccec82982e408f8afc99a3">reportNotLeader</a> (std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">RPC::ClientSession</a> &gt; cachedSession)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notify this class that a non-leader server rejected an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>.  <a href="#aca46956f08ccec82982e408f8afc99a3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#ac5092094c0f194da237decd8451096c7">reportRedirect</a> (std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">RPC::ClientSession</a> &gt; cachedSession, const std::string &amp;host)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notify this class that an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> on the given session was redirected by a non-leader server.  <a href="#ac5092094c0f194da237decd8451096c7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a394d72d307bcb16275b08e1e829f0d24">reportSuccess</a> (std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">RPC::ClientSession</a> &gt; cachedSession)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notify this class that an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> on the given session reached a leader.  <a href="#a394d72d307bcb16275b08e1e829f0d24"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Client_1_1SessionManager.html#ac136e1be63ce1d0cf66d944983cedfde">SessionManager::ClusterUUID</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#afddb43fa0d151e0ae1a8a9fe02dbbe83">clusterUUID</a></td></tr>
@@ -166,6 +170,8 @@ Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::shared_ptr<br class="typebreak"/>
 &lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">RPC::ClientSession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a8f9cf29935a2916dfd68877f60052e61">leaderSession</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The goal is to get this session connected to the cluster leader.  <a href="#a8f9cf29935a2916dfd68877f60052e61"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a788fea6f1d929d43301f522cc719a761">failuresSinceLastSuccess</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of attempted RPCs that have not successfully reached a leader since the last time an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> did.  <a href="#a788fea6f1d929d43301f522cc719a761"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This is the implementation of <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html" title="This class is used to send RPCs from clients to the leader of the LogCabin cluster.">LeaderRPCBase</a> that uses the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> system. </p>
@@ -221,7 +227,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00165">165</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00159">159</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -241,7 +247,7 @@ Private Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00179">179</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00174">174</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -287,7 +293,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#affe219f260f2dba9f73f2db4fa16d0c4">LogCabin::Client::LeaderRPCBase</a>.</p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00185">185</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00180">180</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -309,7 +315,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ac8317451a34eefd8e2938586dc57e5a7">LogCabin::Client::LeaderRPCBase</a>.</p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00208">208</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00203">203</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -337,7 +343,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Session on which to execute RPCs. </dd></dl>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00214">214</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00209">209</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -365,7 +371,35 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00241">241</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00236">236</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aca46956f08ccec82982e408f8afc99a3"></a><!-- doxytag: member="LogCabin::Client::LeaderRPC::reportNotLeader" ref="aca46956f08ccec82982e408f8afc99a3" args="(std::shared_ptr&lt; RPC::ClientSession &gt; cachedSession)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#aca46956f08ccec82982e408f8afc99a3">LogCabin::Client::LeaderRPC::reportNotLeader</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">RPC::ClientSession</a> &gt;&#160;</td>
+          <td class="paramname"><em>cachedSession</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Notify this class that a non-leader server rejected an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. </p>
+<p>This will usually cause this class to connect to a random server next time <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a03f098c41f8c205471fa1de4c4d1ed4c" title="Return a session connected to the most likely cluster leader, creating it if necessary.">getSession()</a> is called. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cachedSession</td><td>Session previously returned by <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a03f098c41f8c205471fa1de4c4d1ed4c" title="Return a session connected to the most likely cluster leader, creating it if necessary.">getSession()</a>. This is used to detect races in which some other thread has already solved the problem. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00257">257</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -404,7 +438,35 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00249">249</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00278">278</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a394d72d307bcb16275b08e1e829f0d24"></a><!-- doxytag: member="LogCabin::Client::LeaderRPC::reportSuccess" ref="a394d72d307bcb16275b08e1e829f0d24" args="(std::shared_ptr&lt; RPC::ClientSession &gt; cachedSession)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a394d72d307bcb16275b08e1e829f0d24">LogCabin::Client::LeaderRPC::reportSuccess</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1RPC_1_1ClientSession.html">RPC::ClientSession</a> &gt;&#160;</td>
+          <td class="paramname"><em>cachedSession</em></td><td>)</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Notify this class that an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> on the given session reached a leader. </p>
+<p>This is just here for debug log messages. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cachedSession</td><td>Session previously returned by <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a03f098c41f8c205471fa1de4c4d1ed4c" title="Return a session connected to the most likely cluster leader, creating it if necessary.">getSession()</a>. This is used to detect races in which some other thread has already solved any problems. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="LeaderRPC_8cc_source.html#l00303">303</a> of file <a class="el" href="LeaderRPC_8cc_source.html">LeaderRPC.cc</a>.</p>
 
 </div>
 </div>
@@ -422,7 +484,7 @@ Private Attributes</h2></td></tr>
 
 <p>Keeps track of the unique ID for this cluster, if known. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00320">320</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00341">341</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>
@@ -439,7 +501,7 @@ Private Attributes</h2></td></tr>
 
 <p>Used to rate-limit the creation of ClientSession objects (TCP connections). </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00326">326</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00347">347</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>
@@ -456,7 +518,7 @@ Private Attributes</h2></td></tr>
 
 <p>Used to create new sessions. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00331">331</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00352">352</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>
@@ -474,7 +536,7 @@ Private Attributes</h2></td></tr>
 <p>Protects all of the following member variables in this class. </p>
 <p>Threads hang on to this mutex while initiating new sessions to possible cluster leaders, in case other threads are already handling the problem. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00338">338</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00359">359</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>
@@ -492,7 +554,7 @@ Private Attributes</h2></td></tr>
 <p>An address referring to the hosts in the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster. </p>
 <p>A random host is selected from here when this class doesn't know who the cluster leader is. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00345">345</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00366">366</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>
@@ -509,7 +571,7 @@ Private Attributes</h2></td></tr>
 
 <p>If nonempty, the address of the server that is likely to be the current leader. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00351">351</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00372">372</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>
@@ -527,7 +589,25 @@ Private Attributes</h2></td></tr>
 <p>The goal is to get this session connected to the cluster leader. </p>
 <p>This is never null, but it might sometimes point to the wrong host. </p>
 
-<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00357">357</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00378">378</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a788fea6f1d929d43301f522cc719a761"></a><!-- doxytag: member="LogCabin::Client::LeaderRPC::failuresSinceLastSuccess" ref="a788fea6f1d929d43301f522cc719a761" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPC.html#a788fea6f1d929d43301f522cc719a761">LogCabin::Client::LeaderRPC::failuresSinceLastSuccess</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The number of attempted RPCs that have not successfully reached a leader since the last time an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> did. </p>
+<p>Used for rate-limiting and summarizing log messages: they're only printed when this number reaches a power of two. </p>
+
+<p>Definition at line <a class="el" href="LeaderRPC_8h_source.html#l00386">386</a> of file <a class="el" href="LeaderRPC_8h_source.html">LeaderRPC.h</a>.</p>
 
 </div>
 </div>

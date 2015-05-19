@@ -2,6 +2,7 @@ var searchData=
 [
   ['fail',['FAIL',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a2e798f8f5febb02f25e027eccac8496aa3a5ab1577185f1c48d0e10aa7f6dc29d',1,'LogCabin::Server::RaftConsensus']]],
   ['failed',['FAILED',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0548ee7eb046a903349a22ff0a3c7bdaa15398142dc9aee5b6d4c20406dce7f23',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
+  ['failuressincelastsuccess',['failuresSinceLastSuccess',['../classLogCabin_1_1Client_1_1LeaderRPC.html#a788fea6f1d929d43301f522cc719a761',1,'LogCabin::Client::LeaderRPC']]],
   ['fd',['fd',['../classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0',1,'LogCabin::Event::File::fd()'],['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092',1,'LogCabin::Storage::FilesystemUtil::File::fd()'],['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a66e52c154e31871ddd182a3cf22c0fac',1,'LogCabin::Storage::SegmentedLog::Sync::Op::fd()']]],
   ['fdatasync',['FDATASYNC',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a2dc118e94239a6a5cb97476357f35361adda0fe08bde939edf21a8d84a7a8a8bd',1,'LogCabin::Storage::SegmentedLog::Sync::Op::FDATASYNC()'],['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#af05d08c9ab6e409c77d38ae6b51bd67a',1,'LogCabin::Storage::FilesystemUtil::fdatasync()']]],
   ['fds',['fds',['../classLogCabin_1_1Storage_1_1SimpleFileLog_1_1Sync.html#a5d4c4fc4d3ca1635ecfc0556f4b64a76',1,'LogCabin::Storage::SimpleFileLog::Sync']]],
