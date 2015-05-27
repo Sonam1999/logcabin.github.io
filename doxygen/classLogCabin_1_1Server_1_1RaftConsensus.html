@@ -328,6 +328,8 @@ Private Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The earliest time at which <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a502802fd49e11b01a4005f2cd794fc68" title="The thread that executes timerThreadMain() to begin new elections after periods of inactivity...">timerThread</a> should begin a new election with <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a2d9850882643fd6df30cf42e985258be" title="Transitions to being a candidate from being a follower or candidate.">startNewElection()</a>.  <a href="#a3528d66b8409ca51a4392d7c3f395d39"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#adadb64ccb66627454e6001aca18dc801">TimePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a075b1f3174db6673435f31622c231d02">withholdVotesUntil</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The earliest time at which RequestVote messages should be processed.  <a href="#a075b1f3174db6673435f31622c231d02"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a651ad565303b12e3ab72a38429349d23">numEntriesTruncated</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The total number of entries ever truncated from the end of the log.  <a href="#a651ad565303b12e3ab72a38429349d23"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a07ae9a16a699b6773c80175d0d3a003b">leaderDiskThread</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The thread that executes <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#ab869a94f802cecc39c768a3425aac160" title="Flush log entries to stable storage in the background on leaders.">leaderDiskThreadMain()</a> to flush log entries to stable storage in the background on leaders.  <a href="#a07ae9a16a699b6773c80175d0d3a003b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a502802fd49e11b01a4005f2cd794fc68">timerThread</a></td></tr>
@@ -595,7 +597,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00897">897</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00920">920</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -615,7 +617,7 @@ Friends</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00949">949</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00973">973</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -636,7 +638,7 @@ Friends</h2></td></tr>
 
 <p>Initialize. Must be called before any other method. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00979">979</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01003">1003</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -656,7 +658,7 @@ Friends</h2></td></tr>
 
 <p>Signal the consensus module to exit (shut down threads, etc). </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01067">1067</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01091">1091</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -677,7 +679,7 @@ Friends</h2></td></tr>
 <p>Initialize the log with a configuration consisting of just this server. </p>
 <p>This should be called just once the very first time the very first server in your cluster is started. PANICs if any log entries or snapshots already exist. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01078">1078</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01102">1102</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -708,7 +710,7 @@ Friends</h2></td></tr>
 
 <p>Get the current leader's active, committed, simple cluster configuration. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01106">1106</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01130">1130</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -729,7 +731,7 @@ Friends</h2></td></tr>
 <p>Return the most recent entry ID that has been externalized by the replicated log. </p>
 <p>This is used to provide non-stale reads to the state machine. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01123">1123</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01147">1147</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -749,7 +751,7 @@ Friends</h2></td></tr>
 
 <p>Return the network address for a recent leader, if known, or empty string otherwise. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01133">1133</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01157">1157</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -777,7 +779,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01140">1140</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01164">1164</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -797,7 +799,7 @@ Friends</h2></td></tr>
 
 <p>Return statistics that may be useful in deciding when to snapshot. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01195">1195</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01219">1219</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -836,7 +838,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01210">1210</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01234">1234</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -875,7 +877,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01363">1363</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01390">1390</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -914,7 +916,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01442">1442</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01469">1469</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -942,7 +944,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>First component is status code. If SUCCESS, second component is the log index at which the entry has been committed to the replicated log. </dd></dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01501">1501</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01528">1528</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -975,7 +977,7 @@ Friends</h2></td></tr>
 <p>Returns successfully once operation completed and old servers are no longer needed. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>NOT_LEADER, or other code with response filled in. </dd></dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01511">1511</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01538">1538</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1014,7 +1016,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01648">1648</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01675">1675</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1043,7 +1045,7 @@ Friends</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A file the state machine can dump its snapshot into. </dd></dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01665">1665</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01692">1692</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1082,7 +1084,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01733">1733</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01760">1760</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1103,7 +1105,7 @@ Friends</h2></td></tr>
 
 <p>Add information about the consensus state to the given structure. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01784">1784</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01811">1811</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1124,7 +1126,7 @@ Friends</h2></td></tr>
 <p>Flush log entries to stable storage in the background on leaders. </p>
 <p>Once they're flushed, it tries to advance the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#acf4fcf7f835b8b2ac372b58ac3be5667" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a>. This is the method that <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a07ae9a16a699b6773c80175d0d3a003b" title="The thread that executes leaderDiskThreadMain() to flush log entries to stable storage in the backgro...">leaderDiskThread</a> executes. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01943">1943</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01971">1971</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1145,7 +1147,7 @@ Friends</h2></td></tr>
 <p>Start new elections when it's time to do so. </p>
 <p>This is the method that <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a502802fd49e11b01a4005f2cd794fc68" title="The thread that executes timerThreadMain() to begin new elections after periods of inactivity...">timerThread</a> executes. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01975">1975</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02003">2003</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1167,7 +1169,7 @@ Friends</h2></td></tr>
 <p>Initiate RPCs to a specific server as necessary. </p>
 <p>One thread for each remote server calls this method (see Peer::thread). </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01987">1987</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02015">2015</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1187,7 +1189,7 @@ Friends</h2></td></tr>
 
 <p>Append advance state machine version entries to the log as leader once all servers can support a new state machine version. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01859">1859</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01887">1887</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1208,7 +1210,7 @@ Friends</h2></td></tr>
 <p>Return to follower state when, as leader, this server is not able to communicate with a quorum. </p>
 <p>This helps two things in cases where a quorum is not available to this leader but clients can still communicate with the leader. First, it returns to clients in a timely manner so that they can try to find another current leader, if one exists. Second, it frees up the resources associated with those client's RPCs on the server. This is the method that <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a2fc61e8f83d7ea5520bb1a81c236dd28" title="The thread that executes stepDownThreadMain() to return to the follower state if the leader becomes d...">stepDownThread</a> executes. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02041">2041</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02069">2069</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1231,7 +1233,7 @@ Friends</h2></td></tr>
 <p><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#acf4fcf7f835b8b2ac372b58ac3be5667" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> can jump by more than 1 on new leaders, since their <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#acf4fcf7f835b8b2ac372b58ac3be5667" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> may be well out of date until they figure out which log entries their followers have.</p>
 <dl class="pre"><dt><b>Precondition:</b></dt><dd>state is LEADER. </dd></dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02093">2093</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02121">2121</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1252,7 +1254,7 @@ Friends</h2></td></tr>
 
 <p>Append entries to the log, set the configuration if this contains a configuration entry, and notify <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a97b47be8f306bee7170912932c17ed89" title="Notified when basically anything changes.">stateChanged</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02145">2145</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02173">2173</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1290,7 +1292,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02168">2168</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02196">2196</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1328,7 +1330,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02319">2319</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02347">2347</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1349,7 +1351,7 @@ Friends</h2></td></tr>
 <p>Transition to being a leader. </p>
 <p>This is called when a candidate has received votes from a quorum. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02407">2407</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02435">2435</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1369,7 +1371,7 @@ Friends</h2></td></tr>
 
 <p>Remove the prefix of the log that is redundant with this server's snapshot. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02443">2443</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02471">2471</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1390,7 +1392,7 @@ Friends</h2></td></tr>
 <p>Return the term corresponding to log-&gt;getLastLogIndex(). </p>
 <p>This may come from the log, from the snapshot, or it may be 0. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02462">2462</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02490">2490</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1411,7 +1413,7 @@ Friends</h2></td></tr>
 <p>Notify the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a97b47be8f306bee7170912932c17ed89" title="Notified when basically anything changes.">stateChanged</a> condition variable and cancel all current RPCs. </p>
 <p>This should be called when stepping down, starting a new election, becoming leader, or exiting. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02474">2474</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02502">2502</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1433,7 +1435,7 @@ Friends</h2></td></tr>
 <p>Loads the header of the snapshot file, which is used internally by the consensus module. The rest of the file reader is kept in <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a66df54dcef389e690e4e94df391f8120" title="If not NULL, this is a Storage::SnapshotFile::Reader that covers up through lastSnapshotIndex.">snapshotReader</a> for the state machine to process upon a future <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a3cb2290f2b2be4201ca8ee5a2d540d4f" title="This returns the entry following lastIndex in the replicated log.">getNextEntry()</a>.</p>
 <p>If the snapshot file on disk is no good, <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a66df54dcef389e690e4e94df391f8120" title="If not NULL, this is a Storage::SnapshotFile::Reader that covers up through lastSnapshotIndex.">snapshotReader</a> will remain NULL. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02483">2483</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02511">2511</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1464,7 +1466,7 @@ Friends</h2></td></tr>
 
 <p>Append an entry to the log and wait for it to be committed. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02590">2590</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02618">2618</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1503,7 +1505,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02610">2610</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02638">2638</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1524,7 +1526,7 @@ Friends</h2></td></tr>
 <p>Dumps serverId, currentTerm, state, leaderId, and votedFor to the debug log. </p>
 <p>This is intended to be easy to grep and parse. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02680">2680</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02708">2708</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1545,7 +1547,7 @@ Friends</h2></td></tr>
 <p>Set the timer to start a new election and notify <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a97b47be8f306bee7170912932c17ed89" title="Notified when basically anything changes.">stateChanged</a>. </p>
 <p>The timer is set for ELECTION_TIMEOUT_MS plus some random jitter from now. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02670">2670</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02698">2698</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1566,7 +1568,7 @@ Friends</h2></td></tr>
 <p>Transitions to being a candidate from being a follower or candidate. </p>
 <p>This is called when a timeout elapses. If the configuration is blank, it does nothing. Moreover, if this server forms a quorum (it is the only server in the configuration), this will immediately transition to leader. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02703">2703</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02731">2731</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1588,7 +1590,7 @@ Friends</h2></td></tr>
 <p>Transition to being a follower. </p>
 <p>This is called when we receive an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> request with newer term, receive an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> response indicating our term is stale, or discover a current leader while a candidate. In this last case, newTerm will be the same as currentTerm. This will call setElectionTimer for you if no election timer is currently set. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02745">2745</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02773">2773</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1608,7 +1610,7 @@ Friends</h2></td></tr>
 
 <p>Persist critical state, such as the term and the vote, to stable storage. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02793">2793</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02821">2821</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1630,7 +1632,7 @@ Friends</h2></td></tr>
 <p>Return true if every entry that might have already been marked committed on any leader is marked committed on this leader by the time this call returns. </p>
 <p>This is used to provide non-stale read operations to clients. It gives up after ELECTION_TIMEOUT_MS, since stepDownThread will return to the follower state after that time. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02803">2803</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02831">2831</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1646,7 +1648,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01681">1681</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01688">1688</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1661,7 +1663,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01682">1682</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01689">1689</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1676,7 +1678,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01683">1683</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01690">1690</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1707,7 +1709,7 @@ Friends</h2></td></tr>
 
 <p>Print out the contents of this class for debugging purposes. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01823">1823</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l01851">1851</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1738,7 +1740,7 @@ Friends</h2></td></tr>
 
 <p>Print out a ClientResult for debugging purposes. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02836">2836</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02864">2864</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -1769,7 +1771,7 @@ Friends</h2></td></tr>
 
 <p>Print out a State for debugging purposes. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02857">2857</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l02885">2885</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
 </div>
 </div>
@@ -2397,6 +2399,24 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a651ad565303b12e3ab72a38429349d23"></a><!-- doxytag: member="LogCabin::Server::RaftConsensus::numEntriesTruncated" ref="a651ad565303b12e3ab72a38429349d23" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a651ad565303b12e3ab72a38429349d23">LogCabin::Server::RaftConsensus::numEntriesTruncated</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The total number of entries ever truncated from the end of the log. </p>
+<p>This happens only when a new leader tells this server to remove extraneous uncommitted entries from its log. </p>
+
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01660">1660</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a07ae9a16a699b6773c80175d0d3a003b"></a><!-- doxytag: member="LogCabin::Server::RaftConsensus::leaderDiskThread" ref="a07ae9a16a699b6773c80175d0d3a003b" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -2410,7 +2430,7 @@ Friends</h2></td></tr>
 
 <p>The thread that executes <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#ab869a94f802cecc39c768a3425aac160" title="Flush log entries to stable storage in the background on leaders.">leaderDiskThreadMain()</a> to flush log entries to stable storage in the background on leaders. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01659">1659</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01666">1666</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -2427,7 +2447,7 @@ Friends</h2></td></tr>
 
 <p>The thread that executes <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a0c3b92e4cd0c94b84b00c21c77dad0b6" title="Start new elections when it&#39;s time to do so.">timerThreadMain()</a> to begin new elections after periods of inactivity. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01665">1665</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01672">1672</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -2444,7 +2464,7 @@ Friends</h2></td></tr>
 
 <p>The thread that executes <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#ade987b3689a8b49a9e08e749af69110a" title="Append advance state machine version entries to the log as leader once all servers can support a new ...">stateMachineUpdaterThreadMain()</a> to append advance state machine version entries to the log on leaders. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01671">1671</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01678">1678</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -2461,7 +2481,7 @@ Friends</h2></td></tr>
 
 <p>The thread that executes <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a20e9e7e7e4f6d13a219cf1044db92857" title="Return to follower state when, as leader, this server is not able to communicate with a quorum...">stepDownThreadMain()</a> to return to the follower state if the leader becomes disconnected from a quorum of servers. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01677">1677</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01684">1684</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -2476,7 +2496,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01679">1679</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l01686">1686</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
