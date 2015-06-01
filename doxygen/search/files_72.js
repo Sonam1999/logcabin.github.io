@@ -7,5 +7,7 @@ var searchData=
   ['raftservice_2eh',['RaftService.h',['../RaftService_8h.html',1,'']]],
   ['random_2ecc',['Random.cc',['../Random_8cc.html',1,'']]],
   ['random_2eh',['Random.h',['../Random_8h.html',1,'']]],
-  ['reconfigure_2ecc',['Reconfigure.cc',['../Reconfigure_8cc.html',1,'']]]
+  ['reconfigure_2ecc',['Reconfigure.cc',['../Reconfigure_8cc.html',1,'']]],
+  ['rollingstat_2ecc',['RollingStat.cc',['../RollingStat_8cc.html',1,'']]],
+  ['rollingstat_2eh',['RollingStat.h',['../RollingStat_8h.html',1,'']]]
 ];

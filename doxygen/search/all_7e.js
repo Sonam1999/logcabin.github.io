@@ -53,6 +53,7 @@ var searchData=
   ['_7eraiiswap',['~RAIISwap',['../structLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1RAIISwap.html#aedf41db6922c04951d0c4b3559d10c1b',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::RAIISwap']]],
   ['_7ereader',['~Reader',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Reader.html#a6120c7eac2cabc961ab9449a90cd565a',1,'LogCabin::Storage::SnapshotFile::Reader']]],
   ['_7ereceivesocket',['~ReceiveSocket',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1ReceiveSocket.html#a406f4f4c6663bf1cdbe335d286b34b40',1,'LogCabin::RPC::MessageSocket::ReceiveSocket']]],
+  ['_7erollingstat',['~RollingStat',['../classLogCabin_1_1Core_1_1RollingStat.html#a205ec3aef1703162fd4f9706a88ffdc1',1,'LogCabin::Core::RollingStat']]],
   ['_7erpchandler',['~RPCHandler',['../classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html#a91350a8820563d8339fba9dd19f026af',1,'LogCabin::RPC::Server::RPCHandler']]],
   ['_7esegmentedlog',['~SegmentedLog',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a3665b28b42b618a022ab40ed88969345',1,'LogCabin::Storage::SegmentedLog']]],
   ['_7esendsocket',['~SendSocket',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1SendSocket.html#a5aff4adff3e0542755fefa71371026a2',1,'LogCabin::RPC::MessageSocket::SendSocket']]],

@@ -179,10 +179,96 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00097"></a>00097         <a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#af3e1ab4770d3fab346fa6759858b2418" title="Return the given time according the system clock (assuming no time jumps).">convert</a>(when).time_since_epoch()).count();
 <a name="l00098"></a>00098 }
 <a name="l00099"></a>00099 
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101 } <span class="comment">// namespace LogCabin::Core::Time</span>
-<a name="l00102"></a>00102 } <span class="comment">// namespace LogCabin::Core</span>
-<a name="l00103"></a>00103 } <span class="comment">// namespace LogCabin</span>
+<a name="l00100"></a>00100 } <span class="comment">// namespace LogCabin::Core::Time</span>
+<a name="l00101"></a>00101 } <span class="comment">// namespace LogCabin::Core</span>
+<a name="l00102"></a>00102 } <span class="comment">// namespace LogCabin</span>
+<a name="l00103"></a>00103 
+<a name="l00104"></a><a class="code" href="namespacestd.html">00104</a> <span class="keyword">namespace </span>std {
+<a name="l00105"></a>00105 
+<a name="l00106"></a><a class="code" href="namespacestd_1_1anonymous__namespace_02Time_8cc_03.html">00106</a> <span class="keyword">namespace </span>{
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108 std::string
+<a name="l00109"></a><a class="code" href="namespacestd_1_1anonymous__namespace_02Time_8cc_03.html#a073bb53f88d43b96185dd598a0392dc4">00109</a> <a class="code" href="namespacestd_1_1anonymous__namespace_02Time_8cc_03.html#a073bb53f88d43b96185dd598a0392dc4">padFraction</a>(int64_t fraction, uint64_t digits)
+<a name="l00110"></a>00110 {
+<a name="l00111"></a>00111     <span class="keywordflow">if</span> (fraction == 0)
+<a name="l00112"></a>00112         <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;
+<a name="l00113"></a>00113     <span class="keywordflow">if</span> (fraction &lt; 0)
+<a name="l00114"></a>00114         fraction *= -1;
+<a name="l00115"></a>00115     <span class="keywordflow">while</span> (fraction % 1000 == 0 &amp;&amp; digits &gt;= 3) {
+<a name="l00116"></a>00116         digits -= 3;
+<a name="l00117"></a>00117         fraction /= 1000;
+<a name="l00118"></a>00118     }
+<a name="l00119"></a>00119     <span class="keywordtype">char</span> ret[digits + 2];
+<a name="l00120"></a>00120     ret[0] = <span class="charliteral">&#39;.&#39;</span>;
+<a name="l00121"></a>00121     ret[digits + 1] = <span class="charliteral">&#39;\0&#39;</span>;
+<a name="l00122"></a>00122     <span class="keywordflow">for</span> (uint64_t i = digits; i &gt; 0; --i) {
+<a name="l00123"></a>00123         ret[i] = char(<span class="charliteral">&#39;0&#39;</span> + (fraction % 10));
+<a name="l00124"></a>00124         fraction /= 10;
+<a name="l00125"></a>00125     }
+<a name="l00126"></a>00126     <span class="keywordflow">return</span> ret;
+<a name="l00127"></a>00127 }
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 } <span class="comment">// namespace std::&lt;anonymous&gt;</span>
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131 std::ostream&amp;
+<a name="l00132"></a><a class="code" href="namespacestd.html#abf4fde0cc01028afcea832b2f26c0d0e">00132</a> <a class="code" href="namespacestd.html#abf4fde0cc01028afcea832b2f26c0d0e">operator&lt;&lt;</a>(std::ostream&amp; os,
+<a name="l00133"></a>00133            <span class="keyword">const</span> std::chrono::nanoseconds&amp; duration)
+<a name="l00134"></a>00134 {
+<a name="l00135"></a>00135     int64_t nanos = duration.count();
+<a name="l00136"></a>00136     <span class="keywordflow">if</span> (nanos / 1000000000L != 0) {
+<a name="l00137"></a>00137         int64_t whole    = nanos / 1000000000L;
+<a name="l00138"></a>00138         int64_t fraction = nanos % 1000000000L;
+<a name="l00139"></a>00139         os &lt;&lt; whole &lt;&lt; <a class="code" href="namespacestd_1_1anonymous__namespace_02Time_8cc_03.html#a073bb53f88d43b96185dd598a0392dc4">padFraction</a>(fraction, 9) &lt;&lt; <span class="stringliteral">&quot; s&quot;</span>;
+<a name="l00140"></a>00140     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (nanos / 1000000L != 0) {
+<a name="l00141"></a>00141         int64_t whole    = nanos / 1000000L;
+<a name="l00142"></a>00142         int64_t fraction = nanos % 1000000L;
+<a name="l00143"></a>00143         os &lt;&lt; whole &lt;&lt; <a class="code" href="namespacestd_1_1anonymous__namespace_02Time_8cc_03.html#a073bb53f88d43b96185dd598a0392dc4">padFraction</a>(fraction, 6) &lt;&lt; <span class="stringliteral">&quot; ms&quot;</span>;
+<a name="l00144"></a>00144     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (nanos / 1000L != 0) {
+<a name="l00145"></a>00145         int64_t whole    = nanos / 1000L;
+<a name="l00146"></a>00146         int64_t fraction = nanos % 1000L;
+<a name="l00147"></a>00147         os &lt;&lt; whole &lt;&lt; <a class="code" href="namespacestd_1_1anonymous__namespace_02Time_8cc_03.html#a073bb53f88d43b96185dd598a0392dc4">padFraction</a>(fraction, 3) &lt;&lt; <span class="stringliteral">&quot; us&quot;</span>;
+<a name="l00148"></a>00148     } <span class="keywordflow">else</span> {
+<a name="l00149"></a>00149         os &lt;&lt; nanos &lt;&lt; <span class="stringliteral">&quot; ns&quot;</span>;
+<a name="l00150"></a>00150     }
+<a name="l00151"></a>00151     <span class="keywordflow">return</span> os;
+<a name="l00152"></a>00152 }
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154 std::ostream&amp;
+<a name="l00155"></a><a class="code" href="namespacestd.html#a78713f1442d57eb8f2b7d379c13642a6">00155</a> <a class="code" href="namespacestd.html#abf4fde0cc01028afcea832b2f26c0d0e">operator&lt;&lt;</a>(std::ostream&amp; os,
+<a name="l00156"></a>00156            <span class="keyword">const</span> std::chrono::microseconds&amp; duration)
+<a name="l00157"></a>00157 {
+<a name="l00158"></a>00158     <span class="keywordflow">return</span> os &lt;&lt; chrono::duration_cast&lt;chrono::nanoseconds&gt;(duration);
+<a name="l00159"></a>00159 }
+<a name="l00160"></a>00160 
+<a name="l00161"></a>00161 std::ostream&amp;
+<a name="l00162"></a><a class="code" href="namespacestd.html#a156f5d4c8fa85bfdcc716e886d97aaa8">00162</a> <a class="code" href="namespacestd.html#abf4fde0cc01028afcea832b2f26c0d0e">operator&lt;&lt;</a>(std::ostream&amp; os,
+<a name="l00163"></a>00163            <span class="keyword">const</span> std::chrono::milliseconds&amp; duration)
+<a name="l00164"></a>00164 {
+<a name="l00165"></a>00165     <span class="keywordflow">return</span> os &lt;&lt; chrono::duration_cast&lt;chrono::nanoseconds&gt;(duration);
+<a name="l00166"></a>00166 }
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168 std::ostream&amp;
+<a name="l00169"></a><a class="code" href="namespacestd.html#a63c8971d93b21e93c34cce3e3f6a4cee">00169</a> <a class="code" href="namespacestd.html#abf4fde0cc01028afcea832b2f26c0d0e">operator&lt;&lt;</a>(std::ostream&amp; os,
+<a name="l00170"></a>00170            <span class="keyword">const</span> std::chrono::seconds&amp; duration)
+<a name="l00171"></a>00171 {
+<a name="l00172"></a>00172     <span class="keywordflow">return</span> os &lt;&lt; chrono::duration_cast&lt;chrono::nanoseconds&gt;(duration);
+<a name="l00173"></a>00173 }
+<a name="l00174"></a>00174 
+<a name="l00175"></a>00175 std::ostream&amp;
+<a name="l00176"></a><a class="code" href="namespacestd.html#a08447fee460afa8301a5ae70af3ad41b">00176</a> <a class="code" href="namespacestd.html#abf4fde0cc01028afcea832b2f26c0d0e">operator&lt;&lt;</a>(std::ostream&amp; os,
+<a name="l00177"></a>00177            <span class="keyword">const</span> std::chrono::minutes&amp; duration)
+<a name="l00178"></a>00178 {
+<a name="l00179"></a>00179     <span class="keywordflow">return</span> os &lt;&lt; chrono::duration_cast&lt;chrono::nanoseconds&gt;(duration);
+<a name="l00180"></a>00180 }
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182 std::ostream&amp;
+<a name="l00183"></a><a class="code" href="namespacestd.html#a02304b3b188e86d10a845e555f438caa">00183</a> <a class="code" href="namespacestd.html#abf4fde0cc01028afcea832b2f26c0d0e">operator&lt;&lt;</a>(std::ostream&amp; os,
+<a name="l00184"></a>00184            <span class="keyword">const</span> std::chrono::hours&amp; duration)
+<a name="l00185"></a>00185 {
+<a name="l00186"></a>00186     <span class="keywordflow">return</span> os &lt;&lt; chrono::duration_cast&lt;chrono::nanoseconds&gt;(duration);
+<a name="l00187"></a>00187 }
+<a name="l00188"></a>00188 
+<a name="l00189"></a>00189 } <span class="comment">// namespace std</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

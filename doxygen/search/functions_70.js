@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['padfraction',['padFraction',['../namespacestd_1_1anonymous__namespace_02Time_8cc_03.html#a073bb53f88d43b96185dd598a0392dc4',1,'std::anonymous_namespace{Time.cc}']]],
   ['parentsthrough',['parentsThrough',['../classLogCabin_1_1Tree_1_1Internal_1_1Path.html#a30850b2145ffb3ecad708e2c82ae8479',1,'LogCabin::Tree::Internal::Path']]],
   ['parse',['parse',['../namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c',1,'LogCabin::Core::ProtoBuf']]],
   ['parsetime',['parseTime',['../namespaceLogCabin_1_1Examples_1_1Util.html#a8a2f344cd7d14a34e41d69297edd5423',1,'LogCabin::Examples::Util']]],
@@ -13,5 +14,6 @@ var searchData=
   ['preparenewsegment',['prepareNewSegment',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a428a4dd73370ddbff7dfe151c03f60fe',1,'LogCabin::Storage::SegmentedLog']]],
   ['printconfiguration',['printConfiguration',['../namespaceanonymous__namespace_02Reconfigure_8cc_03.html#a70637f1de77848fb53512c4f5fa2016f',1,'anonymous_namespace{Reconfigure.cc}']]],
   ['printelectionstate',['printElectionState',['../classLogCabin_1_1Server_1_1RaftConsensus.html#acfe558f9de36a467f22e24dbb07b38fd',1,'LogCabin::Server::RaftConsensus']]],
-  ['prototofile',['protoToFile',['../namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html#abe942c0a861f9651e547bdc3c92f6579',1,'LogCabin::Storage::anonymous_namespace{SimpleFileLog.cc}']]]
+  ['prototofile',['protoToFile',['../namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html#abe942c0a861f9651e547bdc3c92f6579',1,'LogCabin::Storage::anonymous_namespace{SimpleFileLog.cc}']]],
+  ['push',['push',['../classLogCabin_1_1Core_1_1RollingStat.html#a73989b5b1da5c3bdca03238f330c8a43',1,'LogCabin::Core::RollingStat']]]
 ];

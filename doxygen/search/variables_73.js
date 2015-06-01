@@ -76,6 +76,8 @@ var searchData=
   ['storage',['storage',['../classLogCabin_1_1RPC_1_1Address.html#a7a2b3ccec4525ac7d85762ec0e72b67a',1,'LogCabin::RPC::Address']]],
   ['storagelayout',['storageLayout',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a6bed133d4a5b6e69399b1dbc44f7f483',1,'LogCabin::Server::RaftConsensus']]],
   ['stream',['stream',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2',1,'LogCabin::Core::Debug::Internal']]],
+  ['sum',['sum',['../classLogCabin_1_1Core_1_1RollingStat.html#a878a909ffde1adb880daab1339c750eb',1,'LogCabin::Core::RollingStat']]],
+  ['sumsquares',['sumSquares',['../classLogCabin_1_1Core_1_1RollingStat.html#ab5109523a0b810191d0bc35f20cdb8f7',1,'LogCabin::Core::RollingStat']]],
   ['superroot',['superRoot',['../classLogCabin_1_1Tree_1_1Tree.html#a37a4968f520bac82d6bca93dca54a6a0',1,'LogCabin::Tree::Tree']]],
   ['symbolic',['symbolic',['../classLogCabin_1_1Tree_1_1Internal_1_1Path.html#aad803aef043e2a9a9107673fd8a9ba00',1,'LogCabin::Tree::Internal::Path']]],
   ['systemnow',['systemNow',['../classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#a40e15dbc3f432b10a9d0968e15731604',1,'LogCabin::Core::Time::SteadyTimeConverter']]]

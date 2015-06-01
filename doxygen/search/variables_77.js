@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['waitend',['waitEnd',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#a7a2704045993a22b6887f6950299648f',1,'LogCabin::Storage::SegmentedLog::Sync']]],
+  ['waitstart',['waitStart',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#aff1d2ddb3f90f766752e8ae1128826f2',1,'LogCabin::Storage::SegmentedLog::Sync']]],
   ['whitespace',['whitespace',['../namespaceLogCabin_1_1Core_1_1anonymous__namespace_02Config_8cc_03.html#a565ff55bd6b34e18c8a3de2466487a2d',1,'LogCabin::Core::anonymous_namespace{Config.cc}']]],
   ['windowcount',['windowCount',['../classLogCabin_1_1Client_1_1Backoff.html#a5e201e6574f14da90e03354271e2516d',1,'LogCabin::Client::Backoff']]],
   ['windowduration',['windowDuration',['../classLogCabin_1_1Client_1_1Backoff.html#a93677fd466f2dc809e20adc8e626a54a',1,'LogCabin::Client::Backoff']]],

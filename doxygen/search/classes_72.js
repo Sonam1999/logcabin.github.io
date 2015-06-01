@@ -18,5 +18,6 @@ var searchData=
   ['responseheaderversion1',['ResponseHeaderVersion1',['../structLogCabin_1_1RPC_1_1Protocol_1_1ResponseHeaderVersion1.html',1,'LogCabin::RPC::Protocol']]],
   ['result',['Result',['../structLogCabin_1_1Client_1_1Result.html',1,'LogCabin::Client']]],
   ['result',['Result',['../structLogCabin_1_1Tree_1_1Result.html',1,'LogCabin::Tree']]],
+  ['rollingstat',['RollingStat',['../classLogCabin_1_1Core_1_1RollingStat.html',1,'LogCabin::Core']]],
   ['rpchandler',['RPCHandler',['../classLogCabin_1_1RPC_1_1Server_1_1RPCHandler.html',1,'LogCabin::RPC::Server']]]
 ];

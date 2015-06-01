@@ -135,12 +135,15 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Release a mutex upon construction, reacquires it upon destruction.  <a href="classLogCabin_1_1Core_1_1MutexUnlock.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1HoldingMutex.html">HoldingMutex</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Proof that the caller is holding some mutex.  <a href="classLogCabin_1_1Core_1_1HoldingMutex.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1RollingStat.html">RollingStat</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class gathers statistics about a given metric over time, like its average, standard deviation, and exponentially weighted moving average.  <a href="classLogCabin_1_1Core_1_1RollingStat.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core.html#a264c66ab3fb5085752e9d781f2cfbbae">operator&gt;&gt;</a> (std::istream &amp;is, <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Config</a> &amp;cf)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core.html#a2d238b270736707dd76f5161b3247fcc">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classLogCabin_1_1Core_1_1Config.html">Config</a> &amp;cf)</td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core.html#aafa9cb72bb44de25631df58c58de61a3">Config::fromString&lt; std::string &gt;</a> (const string &amp;key, const string &amp;s)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core.html#a9677a87db7bc5acdd5460d7e9537baf4">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classLogCabin_1_1Core_1_1RollingStat.html">RollingStat</a> &amp;stat)</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
 <a class="anchor" id="a264c66ab3fb5085752e9d781f2cfbbae"></a><!-- doxytag: member="LogCabin::Core::operator&gt;&gt;" ref="a264c66ab3fb5085752e9d781f2cfbbae" args="(std::istream &amp;is, Config &amp;cf)" -->
@@ -229,6 +232,35 @@ template&lt;&gt; </div>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="Config_8cc_source.html#l00251">251</a> of file <a class="el" href="Config_8cc_source.html">Config.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9677a87db7bc5acdd5460d7e9537baf4"></a><!-- doxytag: member="LogCabin::Core::operator&lt;&lt;" ref="a9677a87db7bc5acdd5460d7e9537baf4" args="(std::ostream &amp;os, const RollingStat &amp;stat)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; LogCabin::Core::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const RollingStat &amp;&#160;</td>
+          <td class="paramname"><em>stat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="RollingStat_8cc_source.html#l00180">180</a> of file <a class="el" href="RollingStat_8cc_source.html">RollingStat.cc</a>.</p>
 
 </div>
 </div>

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['padfraction',['padFraction',['../namespacestd_1_1anonymous__namespace_02Time_8cc_03.html#a073bb53f88d43b96185dd598a0392dc4',1,'std::anonymous_namespace{Time.cc}']]],
   ['panic',['PANIC',['../Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3',1,'Debug.h']]],
   ['parentdir',['parentDir',['../classLogCabin_1_1Storage_1_1SnapshotFile_1_1Writer.html#ab12d289a1319ddf19e65af0d22c64ab4',1,'LogCabin::Storage::SnapshotFile::Writer']]],
   ['parents',['parents',['../classLogCabin_1_1Tree_1_1Internal_1_1Path.html#aac3d35a17feb20e2657a8c3ab288c2c0',1,'LogCabin::Tree::Internal::Path']]],
@@ -34,10 +35,11 @@ var searchData=
   ['produced',['produced',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#add3588780e45725228778e326abb0931',1,'LogCabin::Storage::SegmentedLog::PreparedSegments']]],
   ['protobuf_2ecc',['ProtoBuf.cc',['../Core_2ProtoBuf_8cc.html',1,'']]],
   ['protobuf_2ecc',['ProtoBuf.cc',['../Tree_2ProtoBuf_8cc.html',1,'']]],
-  ['protobuf_2eh',['ProtoBuf.h',['../Core_2ProtoBuf_8h.html',1,'']]],
   ['protobuf_2eh',['ProtoBuf.h',['../Tree_2ProtoBuf_8h.html',1,'']]],
+  ['protobuf_2eh',['ProtoBuf.h',['../Core_2ProtoBuf_8h.html',1,'']]],
   ['protocol_2ecc',['Protocol.cc',['../Protocol_8cc.html',1,'']]],
   ['protocol_2eh',['Protocol.h',['../Protocol_8h.html',1,'']]],
   ['protocolstatus',['ProtocolStatus',['../namespaceLogCabin_1_1RPC.html#ac9eb92d2002e37f8d412f7150228918d',1,'LogCabin::RPC']]],
-  ['prototofile',['protoToFile',['../namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html#abe942c0a861f9651e547bdc3c92f6579',1,'LogCabin::Storage::anonymous_namespace{SimpleFileLog.cc}']]]
+  ['prototofile',['protoToFile',['../namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SimpleFileLog_8cc_03.html#abe942c0a861f9651e547bdc3c92f6579',1,'LogCabin::Storage::anonymous_namespace{SimpleFileLog.cc}']]],
+  ['push',['push',['../classLogCabin_1_1Core_1_1RollingStat.html#a73989b5b1da5c3bdca03238f330c8a43',1,'LogCabin::Core::RollingStat']]]
 ];

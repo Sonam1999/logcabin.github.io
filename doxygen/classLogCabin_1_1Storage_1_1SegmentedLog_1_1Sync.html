@@ -128,36 +128,52 @@ Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html">Op</a></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#ac61afbe3e271a42a8ffec861fe1e6256">Sync</a> (uint64_t <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html#a8d7fdefda8b3c5f7b0bee116e73ddb6e">lastIndex</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#ae0f85c081878540ec8695d48a5e2ccb7">Sync</a> (uint64_t <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html#a8d7fdefda8b3c5f7b0bee116e73ddb6e">lastIndex</a>, std::chrono::nanoseconds <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#ab7072dcde9de8ee613d8b51b37e67af9">diskWriteDurationThreshold</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#acce08f5bd231ab28ee382512d5a86ce3">~Sync</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#afe940b3be199a39ec78a34ee88e07378">updateStats</a> (<a class="el" href="classLogCabin_1_1Core_1_1RollingStat.html">Core::RollingStat</a> &amp;nanos) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add how long the filesystem ops took to 'nanos'.  <a href="#afe940b3be199a39ec78a34ee88e07378"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#aa40fcc5e7877bf0bb2df88bd9aff54cf">wait</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for the log entries to be durable.  <a href="#aa40fcc5e7877bf0bb2df88bd9aff54cf"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const std::chrono::nanoseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#ab7072dcde9de8ee613d8b51b37e67af9">diskWriteDurationThreshold</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If a <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#aa40fcc5e7877bf0bb2df88bd9aff54cf" title="Wait for the log entries to be durable.">wait()</a> exceeds this time, log a warning.  <a href="#ab7072dcde9de8ee613d8b51b37e67af9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::deque&lt; <a class="el" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html">Op</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#af2b02d730f270d522393b688ed330ac5">ops</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">List of operations to perform during <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#aa40fcc5e7877bf0bb2df88bd9aff54cf" title="Wait for the log entries to be durable.">wait()</a>.  <a href="#af2b02d730f270d522393b688ed330ac5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a33b9e1951fe268841a6b75d180435add">TimePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#aff1d2ddb3f90f766752e8ae1128826f2">waitStart</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Time at start of <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#aa40fcc5e7877bf0bb2df88bd9aff54cf" title="Wait for the log entries to be durable.">wait()</a> call.  <a href="#aff1d2ddb3f90f766752e8ae1128826f2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a33b9e1951fe268841a6b75d180435add">TimePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#a7a2704045993a22b6887f6950299648f">waitEnd</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Time at end of <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#aa40fcc5e7877bf0bb2df88bd9aff54cf" title="Wait for the log entries to be durable.">wait()</a> call.  <a href="#a7a2704045993a22b6887f6950299648f"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Queues various operations on files, such as writes and fsyncs, to be executed later. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00253">253</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00263">263</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ac61afbe3e271a42a8ffec861fe1e6256"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::Sync::Sync" ref="ac61afbe3e271a42a8ffec861fe1e6256" args="(uint64_t lastIndex)" -->
+<a class="anchor" id="ae0f85c081878540ec8695d48a5e2ccb7"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::Sync::Sync" ref="ae0f85c081878540ec8695d48a5e2ccb7" args="(uint64_t lastIndex, std::chrono::nanoseconds diskWriteDurationThreshold)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#ac61afbe3e271a42a8ffec861fe1e6256">LogCabin::Storage::SegmentedLog::Sync::Sync</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#ae0f85c081878540ec8695d48a5e2ccb7">LogCabin::Storage::SegmentedLog::Sync::Sync</a> </td>
           <td>(</td>
           <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>lastIndex</em></td><td>)</td>
-          <td><code> [explicit]</code></td>
+          <td class="paramname"><em>lastIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::chrono::nanoseconds&#160;</td>
+          <td class="paramname"><em>diskWriteDurationThreshold</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [explicit]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html#a2391024042dab54ea85c4251621bdffc">LogCabin::Storage::Log::Sync</a>.</p>
 
 <p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00178">178</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
@@ -179,11 +195,33 @@ Public Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html#a2fd5aebdbdf9dc6417fc55e1d2bb4326">LogCabin::Storage::Log::Sync</a>.</p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00184">184</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00188">188</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="afe940b3be199a39ec78a34ee88e07378"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::Sync::updateStats" ref="afe940b3be199a39ec78a34ee88e07378" args="(Core::RollingStat &amp;nanos) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#afe940b3be199a39ec78a34ee88e07378">LogCabin::Storage::SegmentedLog::Sync::updateStats</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Core_1_1RollingStat.html">Core::RollingStat</a> &amp;&#160;</td>
+          <td class="paramname"><em>nanos</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Add how long the filesystem ops took to 'nanos'. </p>
+<p>This is invoked from syncCompleteVirtual so that it is thread-safe with respect to the 'nanos' variable. We can't do it in 'wait' directly since that can execute concurrently with someone reading 'nanos'. </p>
+
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00282">282</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="aa40fcc5e7877bf0bb2df88bd9aff54cf"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::Sync::wait" ref="aa40fcc5e7877bf0bb2df88bd9aff54cf" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -203,11 +241,28 @@ Public Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classLogCabin_1_1Storage_1_1Log_1_1Sync.html#ae86cc8eedc591121e0185beb6446a64b">LogCabin::Storage::Log::Sync</a>.</p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00189">189</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8cc_source.html#l00193">193</a> of file <a class="el" href="SegmentedLog_8cc_source.html">SegmentedLog.cc</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="ab7072dcde9de8ee613d8b51b37e67af9"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::Sync::diskWriteDurationThreshold" ref="ab7072dcde9de8ee613d8b51b37e67af9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::chrono::nanoseconds <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#ab7072dcde9de8ee613d8b51b37e67af9">LogCabin::Storage::SegmentedLog::Sync::diskWriteDurationThreshold</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>If a <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#aa40fcc5e7877bf0bb2df88bd9aff54cf" title="Wait for the log entries to be durable.">wait()</a> exceeds this time, log a warning. </p>
+
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00304">304</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="af2b02d730f270d522393b688ed330ac5"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::Sync::ops" ref="af2b02d730f270d522393b688ed330ac5" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -221,7 +276,41 @@ Public Attributes</h2></td></tr>
 
 <p>List of operations to perform during <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#aa40fcc5e7877bf0bb2df88bd9aff54cf" title="Wait for the log entries to be durable.">wait()</a>. </p>
 
-<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00286">286</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00306">306</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aff1d2ddb3f90f766752e8ae1128826f2"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::Sync::waitStart" ref="aff1d2ddb3f90f766752e8ae1128826f2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a33b9e1951fe268841a6b75d180435add">TimePoint</a> <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#aff1d2ddb3f90f766752e8ae1128826f2">LogCabin::Storage::SegmentedLog::Sync::waitStart</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Time at start of <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#aa40fcc5e7877bf0bb2df88bd9aff54cf" title="Wait for the log entries to be durable.">wait()</a> call. </p>
+
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00308">308</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7a2704045993a22b6887f6950299648f"></a><!-- doxytag: member="LogCabin::Storage::SegmentedLog::Sync::waitEnd" ref="a7a2704045993a22b6887f6950299648f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a33b9e1951fe268841a6b75d180435add">TimePoint</a> <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#a7a2704045993a22b6887f6950299648f">LogCabin::Storage::SegmentedLog::Sync::waitEnd</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Time at end of <a class="el" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#aa40fcc5e7877bf0bb2df88bd9aff54cf" title="Wait for the log entries to be durable.">wait()</a> call. </p>
+
+<p>Definition at line <a class="el" href="SegmentedLog_8h_source.html#l00310">310</a> of file <a class="el" href="SegmentedLog_8h_source.html">SegmentedLog.h</a>.</p>
 
 </div>
 </div>
