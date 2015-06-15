@@ -189,7 +189,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00107"></a>00107 }
 <a name="l00108"></a>00108 
 <a name="l00109"></a>00109 uint64_t
-<a name="l00110"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a7d86b0f4f303f9c7b5d420a73779a2dc">00110</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a7d86b0f4f303f9c7b5d420a73779a2dc" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">LocalServer::getMatchIndex</a>()<span class="keyword"> const</span>
+<a name="l00110"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a0a6c42fe404b4a624b6b3660b505fe62">00110</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a0a6c42fe404b4a624b6b3660b505fe62" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">LocalServer::getLastAgreeIndex</a>()<span class="keyword"> const</span>
 <a name="l00111"></a>00111 <span class="keyword"></span>{
 <a name="l00112"></a>00112     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#afb49b56a95bb00a9e51c40565ab57bf5" title="The index of the last log entry that has been flushed to disk.">lastSyncedIndex</a>;
 <a name="l00113"></a>00113 }
@@ -254,7 +254,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00172"></a>00172       <span class="comment">// is set incorrectly, it&#39;s self-correcting, so it&#39;s just a potential</span>
 <a name="l00173"></a>00173       <span class="comment">// performance issue.</span>
 <a name="l00174"></a>00174     , nextIndex(consensus.<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ac6edb3bfbfca4fc5ae5a98a0c36ffdda" title="Unconditionally log the given message to stderr.">log</a>-&gt;getLastLogIndex() + 1)
-<a name="l00175"></a>00175     , matchIndex(0)
+<a name="l00175"></a>00175     , lastAgreeIndex(0)
 <a name="l00176"></a>00176     , lastAckEpoch(0)
 <a name="l00177"></a>00177     , nextHeartbeatTime(<a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a9b2ddcfb6434331d10e3ed84c66e14e3" title="Some point in time relative to the Clock&#39;s epoch.">TimePoint</a>::min())
 <a name="l00178"></a>00178     , backoffUntil(<a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a9b2ddcfb6434331d10e3ed84c66e14e3" title="Some point in time relative to the Clock&#39;s epoch.">TimePoint</a>::min())
@@ -286,7 +286,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00204"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad5ba27d28751c0c5c12e3670f7055afd">00204</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad5ba27d28751c0c5c12e3670f7055afd" title="Begin replicating to the Server in the current term.">Peer::beginLeadership</a>()
 <a name="l00205"></a>00205 {
 <a name="l00206"></a>00206     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07" title="The index of the next entry to send to the follower.">nextIndex</a> = <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aab8969e0bf7d7c361908ad13073a6d2d" title="Used in startThread.">consensus</a>.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#afd35bf6be1f566a9a9e0990a56093620" title="Provides all storage for this server.">log</a>-&gt;getLastLogIndex() + 1;
-<a name="l00207"></a>00207     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0738db8e678aebe6e286279ad99fb434" title="See getMatchIndex().">matchIndex</a> = 0;
+<a name="l00207"></a>00207     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21" title="See getLastAgreeIndex().">lastAgreeIndex</a> = 0;
 <a name="l00208"></a>00208     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#acec029e3eba5cd9306732cc48f73abcf" title="Indicates that the leader and the follower aren&#39;t necessarily synchronized.">suppressBulkData</a> = <span class="keyword">true</span>;
 <a name="l00209"></a>00209     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad26b3c377e98b3ae5f0818b7b76908fd" title="A snapshot file to be sent to the follower, or NULL.">snapshotFile</a>.reset();
 <a name="l00210"></a>00210     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a71e8fe01080a5c648184fcada409c56a" title="The number of bytes of &#39;snapshotFile&#39; that have been acknowledged by the follower already...">snapshotFileOffset</a> = 0;
@@ -307,9 +307,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00225"></a>00225 }
 <a name="l00226"></a>00226 
 <a name="l00227"></a>00227 uint64_t
-<a name="l00228"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a5268036e9ee4711b9dd5bb3311cfed62">00228</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a5268036e9ee4711b9dd5bb3311cfed62" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">Peer::getMatchIndex</a>()<span class="keyword"> const</span>
+<a name="l00228"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a74f6a5c2c9950c94cf61c1c302f9d84f">00228</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a74f6a5c2c9950c94cf61c1c302f9d84f" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">Peer::getLastAgreeIndex</a>()<span class="keyword"> const</span>
 <a name="l00229"></a>00229 <span class="keyword"></span>{
-<a name="l00230"></a>00230     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0738db8e678aebe6e286279ad99fb434" title="See getMatchIndex().">matchIndex</a>;
+<a name="l00230"></a>00230     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21" title="See getLastAgreeIndex().">lastAgreeIndex</a>;
 <a name="l00231"></a>00231 }
 <a name="l00232"></a>00232 
 <a name="l00233"></a>00233 <span class="keywordtype">bool</span>
@@ -434,7 +434,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00352"></a>00352         <span class="keywordflow">case</span> RaftConsensus::State::LEADER:
 <a name="l00353"></a>00353             os &lt;&lt; <span class="stringliteral">&quot;suppressBulkData: &quot;</span> &lt;&lt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#acec029e3eba5cd9306732cc48f73abcf" title="Indicates that the leader and the follower aren&#39;t necessarily synchronized.">suppressBulkData</a> &lt;&lt; std::endl;
 <a name="l00354"></a>00354             os &lt;&lt; <span class="stringliteral">&quot;nextIndex: &quot;</span> &lt;&lt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07" title="The index of the next entry to send to the follower.">nextIndex</a> &lt;&lt; std::endl;
-<a name="l00355"></a>00355             os &lt;&lt; <span class="stringliteral">&quot;matchIndex: &quot;</span> &lt;&lt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0738db8e678aebe6e286279ad99fb434" title="See getMatchIndex().">matchIndex</a> &lt;&lt; std::endl;
+<a name="l00355"></a>00355             os &lt;&lt; <span class="stringliteral">&quot;lastAgreeIndex: &quot;</span> &lt;&lt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21" title="See getLastAgreeIndex().">lastAgreeIndex</a> &lt;&lt; std::endl;
 <a name="l00356"></a>00356             <span class="keywordflow">break</span>;
 <a name="l00357"></a>00357     }
 <a name="l00358"></a>00358     <span class="keywordflow">return</span> os;
@@ -452,7 +452,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00370"></a>00370         <span class="keywordflow">case</span> RaftConsensus::State::LEADER:
 <a name="l00371"></a>00371             peerStats.set_suppress_bulk_data(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#acec029e3eba5cd9306732cc48f73abcf" title="Indicates that the leader and the follower aren&#39;t necessarily synchronized.">suppressBulkData</a>);
 <a name="l00372"></a>00372             peerStats.set_next_index(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07" title="The index of the next entry to send to the follower.">nextIndex</a>);
-<a name="l00373"></a>00373             peerStats.set_last_agree_index(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0738db8e678aebe6e286279ad99fb434" title="See getMatchIndex().">matchIndex</a>);
+<a name="l00373"></a>00373             peerStats.set_last_agree_index(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21" title="See getLastAgreeIndex().">lastAgreeIndex</a>);
 <a name="l00374"></a>00374             peerStats.set_is_caught_up(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aa35915b9016d63af612039b1eea9c9bf" title="See isCaughtUp().">isCaughtUp_</a>);
 <a name="l00375"></a>00375             peerStats.set_next_heartbeat_at(time.<a class="code" href="classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#aa967e929bf170e2fe251eb06ad8b3dd7" title="Return the given time in nanoseconds since the Unix epoch according the system clock (assuming no tim...">unixNanos</a>(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#af3115d040af27bfe093f1881fd243716" title="When the next heartbeat should be sent to the follower.">nextHeartbeatTime</a>));
 <a name="l00376"></a>00376             <span class="keywordflow">break</span>;
@@ -2134,7 +2134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02052"></a>02052 
 <a name="l02053"></a>02053                 <span class="comment">// Leaders replicate entries and periodically send heartbeats.</span>
 <a name="l02054"></a>02054                 <span class="keywordflow">case</span> State::LEADER:
-<a name="l02055"></a>02055                     <span class="keywordflow">if</span> (peer-&gt;getMatchIndex() &lt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#afd35bf6be1f566a9a9e0990a56093620" title="Provides all storage for this server.">log</a>-&gt;getLastLogIndex() ||
+<a name="l02055"></a>02055                     <span class="keywordflow">if</span> (peer-&gt;getLastAgreeIndex() &lt; <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#afd35bf6be1f566a9a9e0990a56093620" title="Provides all storage for this server.">log</a>-&gt;getLastLogIndex() ||
 <a name="l02056"></a>02056                         peer-&gt;nextHeartbeatTime &lt; now) {
 <a name="l02057"></a>02057                         <span class="comment">// appendEntries delegates to installSnapshot if we</span>
 <a name="l02058"></a>02058                         <span class="comment">// need to send a snapshot instead</span>
@@ -2211,7 +2211,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02129"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a6313bbd5c18d255db90131471985d80e">02129</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a6313bbd5c18d255db90131471985d80e" title="Move forward commitIndex if possible.">RaftConsensus::advanceCommitIndex</a>()
 <a name="l02130"></a>02130 {
 <a name="l02131"></a>02131     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a637ff4c51a73404603c10fb96dbd4b43" title="The server&#39;s current role in the cluster (follower, candidate, or leader).">state</a> != State::LEADER) {
-<a name="l02132"></a>02132         <span class="comment">// getMatchIndex is undefined unless we&#39;re leader</span>
+<a name="l02132"></a>02132         <span class="comment">// getLastAgreeIndex is undefined unless we&#39;re leader</span>
 <a name="l02133"></a>02133         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;advanceCommitIndex called as %s&quot;</span>,
 <a name="l02134"></a>02134                 <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0" title="Return a string returned from the given object&#39;s stream operator.">Core::StringUtil::toString</a>(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a637ff4c51a73404603c10fb96dbd4b43" title="The server&#39;s current role in the cluster (follower, candidate, or leader).">state</a>).c_str());
 <a name="l02135"></a>02135         <span class="keywordflow">return</span>;
@@ -2219,7 +2219,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02137"></a>02137 
 <a name="l02138"></a>02138     <span class="comment">// calculate the largest entry ID stored on a quorum of servers</span>
 <a name="l02139"></a>02139     uint64_t newCommitIndex =
-<a name="l02140"></a>02140         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a96dd3a7dc3af639ded7aff8cd9a7cc39" title="Defines the servers that are part of the cluster.">configuration</a>-&gt;quorumMin(&amp;<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a5f09629ccb2981f69e6e5def9ef5d9b9" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">Server::getMatchIndex</a>);
+<a name="l02140"></a>02140         <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a96dd3a7dc3af639ded7aff8cd9a7cc39" title="Defines the servers that are part of the cluster.">configuration</a>-&gt;quorumMin(&amp;<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ab54a3a7c21b87f7d0b93babbbbc3d00a" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">Server::getLastAgreeIndex</a>);
 <a name="l02141"></a>02141     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#acf4fcf7f835b8b2ac372b58ac3be5667" title="The largest entry ID for which a quorum is known to have stored the same entry as this server has...">commitIndex</a> &gt;= newCommitIndex)
 <a name="l02142"></a>02142         <span class="keywordflow">return</span>;
 <a name="l02143"></a>02143     <span class="comment">// If we have discarded the entry, it&#39;s because we already knew it was</span>
@@ -2363,21 +2363,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02281"></a>02281         peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#af3115d040af27bfe093f1881fd243716" title="When the next heartbeat should be sent to the follower.">nextHeartbeatTime</a> = start +
 <a name="l02282"></a>02282             std::chrono::milliseconds(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a4b4eba8076afd37eb50b234346d491dc" title="A leader sends RPCs at least this often, even if there is no data to send.">HEARTBEAT_PERIOD_MS</a>);
 <a name="l02283"></a>02283         <span class="keywordflow">if</span> (response.success()) {
-<a name="l02284"></a>02284             <span class="keywordflow">if</span> (peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0738db8e678aebe6e286279ad99fb434" title="See getMatchIndex().">matchIndex</a> &gt; prevLogIndex + numEntries) {
+<a name="l02284"></a>02284             <span class="keywordflow">if</span> (peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21" title="See getLastAgreeIndex().">lastAgreeIndex</a> &gt; prevLogIndex + numEntries) {
 <a name="l02285"></a>02285                 <span class="comment">// Revisit this warning if we pipeline AppendEntries RPCs for</span>
 <a name="l02286"></a>02286                 <span class="comment">// performance.</span>
-<a name="l02287"></a>02287                 <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;matchIndex should monotonically increase within a &quot;</span>
+<a name="l02287"></a>02287                 <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;lastAgreeIndex should monotonically increase within a &quot;</span>
 <a name="l02288"></a>02288                         <span class="stringliteral">&quot;term, since servers don&#39;t forget entries. But it &quot;</span>
 <a name="l02289"></a>02289                         <span class="stringliteral">&quot;didn&#39;t.&quot;</span>);
 <a name="l02290"></a>02290             } <span class="keywordflow">else</span> {
-<a name="l02291"></a>02291                 peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0738db8e678aebe6e286279ad99fb434" title="See getMatchIndex().">matchIndex</a> = prevLogIndex + numEntries;
+<a name="l02291"></a>02291                 peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21" title="See getLastAgreeIndex().">lastAgreeIndex</a> = prevLogIndex + numEntries;
 <a name="l02292"></a>02292                 <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a6313bbd5c18d255db90131471985d80e" title="Move forward commitIndex if possible.">advanceCommitIndex</a>();
 <a name="l02293"></a>02293             }
-<a name="l02294"></a>02294             peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07" title="The index of the next entry to send to the follower.">nextIndex</a> = peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0738db8e678aebe6e286279ad99fb434" title="See getMatchIndex().">matchIndex</a> + 1;
+<a name="l02294"></a>02294             peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07" title="The index of the next entry to send to the follower.">nextIndex</a> = peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21" title="See getLastAgreeIndex().">lastAgreeIndex</a> + 1;
 <a name="l02295"></a>02295             peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#acec029e3eba5cd9306732cc48f73abcf" title="Indicates that the leader and the follower aren&#39;t necessarily synchronized.">suppressBulkData</a> = <span class="keyword">false</span>;
 <a name="l02296"></a>02296 
 <a name="l02297"></a>02297             <span class="keywordflow">if</span> (!peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aa35915b9016d63af612039b1eea9c9bf" title="See isCaughtUp().">isCaughtUp_</a> &amp;&amp;
-<a name="l02298"></a>02298                 peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0b1063ab72094143e3e1acdfb531b355">thisCatchUpIterationGoalId</a> &lt;= peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0738db8e678aebe6e286279ad99fb434" title="See getMatchIndex().">matchIndex</a>) {
+<a name="l02298"></a>02298                 peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0b1063ab72094143e3e1acdfb531b355">thisCatchUpIterationGoalId</a> &lt;= peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21" title="See getLastAgreeIndex().">lastAgreeIndex</a>) {
 <a name="l02299"></a>02299                 <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a47b51df2c5844d317d1fb74b4723e4f4">Clock::duration</a> duration =
 <a name="l02300"></a>02300                     <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Clock::now</a>() - peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aee6a46284ffbb597bdaaf4171cca5b6a">thisCatchUpIterationStart</a>;
 <a name="l02301"></a>02301                 uint64_t thisCatchUpIterationMs =
@@ -2507,11 +2507,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02425"></a>02425         <span class="keywordflow">if</span> (request.done()) {
 <a name="l02426"></a>02426             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Done sending snapshot through index %lu to follower&quot;</span>,
 <a name="l02427"></a>02427                    peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a4a814e3469c1609f999488037a01087c" title="The last log index that &#39;snapshotFile&#39; corresponds to.">lastSnapshotIndex</a>);
-<a name="l02428"></a>02428             peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0738db8e678aebe6e286279ad99fb434" title="See getMatchIndex().">matchIndex</a> = peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a4a814e3469c1609f999488037a01087c" title="The last log index that &#39;snapshotFile&#39; corresponds to.">lastSnapshotIndex</a>;
+<a name="l02428"></a>02428             peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21" title="See getLastAgreeIndex().">lastAgreeIndex</a> = peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a4a814e3469c1609f999488037a01087c" title="The last log index that &#39;snapshotFile&#39; corresponds to.">lastSnapshotIndex</a>;
 <a name="l02429"></a>02429             peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07" title="The index of the next entry to send to the follower.">nextIndex</a> = peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a4a814e3469c1609f999488037a01087c" title="The last log index that &#39;snapshotFile&#39; corresponds to.">lastSnapshotIndex</a> + 1;
 <a name="l02430"></a>02430             <span class="comment">// These entries are already committed if they&#39;re in a snapshot, so</span>
 <a name="l02431"></a>02431             <span class="comment">// the commitIndex shouldn&#39;t advance, but let&#39;s just follow the</span>
-<a name="l02432"></a>02432             <span class="comment">// simple rule that bumping matchIndex should always be</span>
+<a name="l02432"></a>02432             <span class="comment">// simple rule that bumping lastAgreeIndex should always be</span>
 <a name="l02433"></a>02433             <span class="comment">// followed by a call to advanceCommitIndex():</span>
 <a name="l02434"></a>02434             <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a6313bbd5c18d255db90131471985d80e" title="Move forward commitIndex if possible.">advanceCommitIndex</a>();
 <a name="l02435"></a>02435             peer.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad26b3c377e98b3ae5f0818b7b76908fd" title="A snapshot file to be sent to the follower, or NULL.">snapshotFile</a>.reset();
@@ -2541,7 +2541,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02459"></a>02459     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#aa525cfc8dac0abdc8f744f5bd75302ae" title="Tracks the passage of &quot;cluster time&quot;.">clusterClock</a>.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ClusterClock.html#ad5adb9f0618aeb7a7a55e1524849a8bc" title="Reset to the given cluster time, assuming it&#39;s the current time right now.">newEpoch</a>(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#aa525cfc8dac0abdc8f744f5bd75302ae" title="Tracks the passage of &quot;cluster time&quot;.">clusterClock</a>.<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ClusterClock.html#a9d1de557c99f1ad6b3b175f9d4838983" title="Invariant: this is equal to the cluster time in:">clusterTimeAtEpoch</a>);
 <a name="l02460"></a>02460 
 <a name="l02461"></a>02461     <span class="comment">// The ordering is pretty important here: First set nextIndex and</span>
-<a name="l02462"></a>02462     <span class="comment">// matchIndex for ourselves and each follower, then append the no op.</span>
+<a name="l02462"></a>02462     <span class="comment">// lastAgreeIndex for ourselves and each follower, then append the no op.</span>
 <a name="l02463"></a>02463     <span class="comment">// Otherwise we&#39;ll set our localServer&#39;s last agree index too high.</span>
 <a name="l02464"></a>02464     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a96dd3a7dc3af639ded7aff8cd9a7cc39" title="Defines the servers that are part of the cluster.">configuration</a>-&gt;forEach(&amp;<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ad03f113b797b25406325dde9bcf78fb2" title="Begin replicating to the Server in the current term.">Server::beginLeadership</a>);
 <a name="l02465"></a>02465 

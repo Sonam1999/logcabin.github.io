@@ -31,6 +31,7 @@ var searchData=
   ['internal',['Internal',['../namespaceLogCabin_1_1Tree_1_1Internal.html',1,'LogCabin::Tree']]],
   ['last',['last',['../classLogCabin_1_1Core_1_1RollingStat.html#a815bc6eb2caba58ba23eac569b880818',1,'LogCabin::Core::RollingStat']]],
   ['lastackepoch',['lastAckEpoch',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a3ac99d0f0a94203643ac72cf4e4c0e69',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
+  ['lastagreeindex',['lastAgreeIndex',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['lastcatchupiterationms',['lastCatchUpIterationMs',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aa278a1b1f4db199d22db2077dab0bd1f',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['lastexceptional',['lastExceptional',['../classLogCabin_1_1Core_1_1RollingStat.html#ac76024cee247b7b819d92fdad03db434',1,'LogCabin::Core::RollingStat']]],
   ['lastindex',['lastIndex',['../classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b',1,'LogCabin::Server::StateMachine::lastIndex()'],['../classLogCabin_1_1Storage_1_1Log_1_1Sync.html#a8d7fdefda8b3c5f7b0bee116e73ddb6e',1,'LogCabin::Storage::Log::Sync::lastIndex()']]],
@@ -88,8 +89,8 @@ var searchData=
   ['lock',['Lock',['../classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html',1,'LogCabin::Server::ServerStats']]],
   ['lock',['Lock',['../classLogCabin_1_1Event_1_1Loop_1_1Lock.html',1,'LogCabin::Event::Loop']]],
   ['lock',['lock',['../classLogCabin_1_1Core_1_1Mutex.html#a6876236ae8783ad0514b853751a6cc1b',1,'LogCabin::Core::Mutex::lock()'],['../structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html#a4a1c30deb54b6a7584b764aa32d391e1',1,'LogCabin::Event::Loop::NoOpLockable::lock()'],['../classLogCabin_1_1Event_1_1Loop_1_1Lock.html#aa3001fa7acca86c468a26b884d2e6808',1,'LogCabin::Event::Loop::Lock::Lock(Event::Loop &amp;eventLoop)'],['../classLogCabin_1_1Event_1_1Loop_1_1Lock.html#a60900753314e0bba999cc5c3e3e670a8',1,'LogCabin::Event::Loop::Lock::Lock(const Lock &amp;)'],['../classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a213b959ec3cebaea75946c9a0a4db3de',1,'LogCabin::Server::ServerStats::Lock::Lock()']]],
-  ['lockedassignment',['LockedAssignment',['../classLogCabin_1_1Client_1_1SessionManager_1_1LockedAssignment.html',1,'LogCabin::Client::SessionManager']]],
   ['lockedassignment',['LockedAssignment',['../classLogCabin_1_1Client_1_1SessionManager_1_1LockedAssignment.html#a518529c6883074c929595ad5e1c1209a',1,'LogCabin::Client::SessionManager::LockedAssignment::LockedAssignment()'],['../classLogCabin_1_1Client_1_1SessionManager_1_1LockedAssignment.html#afd62e52c4b1a78aa04611abf74316b6d',1,'LogCabin::Client::SessionManager::LockedAssignment::LockedAssignment(T value)']]],
+  ['lockedassignment',['LockedAssignment',['../classLogCabin_1_1Client_1_1SessionManager_1_1LockedAssignment.html',1,'LogCabin::Client::SessionManager']]],
   ['lockfile',['lockFile',['../classLogCabin_1_1Storage_1_1Layout.html#ae0f3b216a0f364d1282d96c7c5d46011',1,'LogCabin::Storage::Layout']]],
   ['lockguard',['lockGuard',['../classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#a6a2c1639bb7c4b8326ee126573aa4f66',1,'LogCabin::Server::ServerStats::Lock']]],
   ['lockowner',['lockOwner',['../classLogCabin_1_1Event_1_1Loop.html#a2257b824bb17445bbe22854f4a9cc3be',1,'LogCabin::Event::Loop']]],
@@ -140,7 +141,7 @@ var searchData=
   ['threadid',['ThreadId',['../namespaceLogCabin_1_1Core_1_1ThreadId.html',1,'LogCabin::Core']]],
   ['time',['Time',['../namespaceLogCabin_1_1Core_1_1Time.html',1,'LogCabin::Core']]],
   ['tree',['Tree',['../namespaceLogCabin_1_1Tree.html',1,'LogCabin']]],
-  ['util',['Util',['../namespaceLogCabin_1_1Core_1_1Util.html',1,'LogCabin::Core']]],
   ['util',['Util',['../namespaceLogCabin_1_1Examples_1_1Util.html',1,'LogCabin::Examples']]],
+  ['util',['Util',['../namespaceLogCabin_1_1Core_1_1Util.html',1,'LogCabin::Core']]],
   ['versionmessage',['VersionMessage',['../namespaceLogCabin_1_1Protocol_1_1Common_1_1VersionMessage.html',1,'LogCabin::Protocol::Common']]]
 ];

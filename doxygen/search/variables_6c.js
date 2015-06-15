@@ -2,6 +2,7 @@ var searchData=
 [
   ['last',['last',['../classLogCabin_1_1Core_1_1RollingStat.html#a815bc6eb2caba58ba23eac569b880818',1,'LogCabin::Core::RollingStat']]],
   ['lastackepoch',['lastAckEpoch',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a3ac99d0f0a94203643ac72cf4e4c0e69',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
+  ['lastagreeindex',['lastAgreeIndex',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['lastcatchupiterationms',['lastCatchUpIterationMs',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aa278a1b1f4db199d22db2077dab0bd1f',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['lastexceptional',['lastExceptional',['../classLogCabin_1_1Core_1_1RollingStat.html#ac76024cee247b7b819d92fdad03db434',1,'LogCabin::Core::RollingStat']]],
   ['lastindex',['lastIndex',['../classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b',1,'LogCabin::Server::StateMachine::lastIndex()'],['../classLogCabin_1_1Storage_1_1Log_1_1Sync.html#a8d7fdefda8b3c5f7b0bee116e73ddb6e',1,'LogCabin::Storage::Log::Sync::lastIndex()']]],
