@@ -13,6 +13,5 @@ var searchData=
   ['filesystemopsnanos',['filesystemOpsNanos',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a5e9b315d9ab8bb031f0edf8a8adc376f',1,'LogCabin::Storage::SegmentedLog']]],
   ['firstoutstandingrpc',['firstOutstandingRPC',['../structLogCabin_1_1Server_1_1StateMachine_1_1Session.html#a4b710243372cf195e78b941b1cdd6be9',1,'LogCabin::Server::StateMachine::Session']]],
   ['fixed',['fixed',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html#a9b958c82f08b662a2661b4f2bb08b289',1,'LogCabin::RPC::MessageSocket::Header']]],
-  ['forceheartbeat',['forceHeartbeat',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a50d0b442ca40959e135e45107a8c6c76',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['function',['function',['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a8a097a4bf5c8830274408091cad057b6',1,'LogCabin::Core::Debug::DebugMessage']]]
 ];

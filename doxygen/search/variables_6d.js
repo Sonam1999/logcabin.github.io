@@ -2,7 +2,9 @@ var searchData=
 [
   ['m',['m',['../classLogCabin_1_1Core_1_1Mutex.html#a5869efedc57e5d2cbd98de1e6e9f629a',1,'LogCabin::Core::Mutex']]],
   ['map',['map',['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#ad06f3de83cfb80f731fe1a7587b80b8c',1,'LogCabin::Storage::FilesystemUtil::FileContents']]],
+  ['matchindex',['matchIndex',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0738db8e678aebe6e286279ad99fb434',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['max',['max',['../classLogCabin_1_1Core_1_1RollingStat.html#a4f5f8910c2af0f040345cedd268fab65',1,'LogCabin::Core::RollingStat']]],
+  ['max_5flog_5fentries_5fper_5frequest',['MAX_LOG_ENTRIES_PER_REQUEST',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a71736d734934eedd807d0267063b5e10',1,'LogCabin::Server::RaftConsensus']]],
   ['max_5fsegment_5fsize',['MAX_SEGMENT_SIZE',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#ad45c8da67feb145bf972bbc7c1f15136',1,'LogCabin::Storage::SegmentedLog']]],
   ['maxmessagelength',['maxMessageLength',['../classLogCabin_1_1RPC_1_1MessageSocket.html#a2ba7a53974229080136ff86a3c62dee8',1,'LogCabin::RPC::MessageSocket::maxMessageLength()'],['../classLogCabin_1_1RPC_1_1OpaqueServer.html#acb2edeca2b4c9adaeb9c2d12f78e70d7',1,'LogCabin::RPC::OpaqueServer::maxMessageLength()']]],
   ['maxstatemachineversion',['maxStateMachineVersion',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ad5d9ff4a22e88377e55b65d136f46f71',1,'LogCabin::Server::RaftConsensusInternal::Server']]],

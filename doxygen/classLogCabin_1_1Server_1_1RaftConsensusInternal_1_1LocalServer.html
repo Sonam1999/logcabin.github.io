@@ -134,8 +134,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin requesting the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a>'s vote in the current election.  <a href="#ac3e344c14b56bde9c89ce29b8d4ae4f9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a59663bf7fc26786c1ef25c90ece3bfa5">beginLeadership</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin replicating to the <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> in the current term.  <a href="#a59663bf7fc26786c1ef25c90ece3bfa5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a0a6c42fe404b4a624b6b3660b505fe62">getLastAgreeIndex</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the largest entry ID for which this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> is known to share the same entries up to and including this entry with our log.  <a href="#a0a6c42fe404b4a624b6b3660b505fe62"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a7d86b0f4f303f9c7b5d420a73779a2dc">getMatchIndex</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the largest entry ID for which this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> is known to share the same entries up to and including this entry with our log.  <a href="#a7d86b0f4f303f9c7b5d420a73779a2dc"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a7791d0dedf53d637f6a2df75caa4b36c">haveVote</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> has awarded us its vote for this term.  <a href="#a7791d0dedf53d637f6a2df75caa4b36c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#ad36cd81c3d4ae8293f4a5219d0c6d121">getLastAckEpoch</a> () const </td></tr>
@@ -279,12 +279,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a0a6c42fe404b4a624b6b3660b505fe62"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::LocalServer::getLastAgreeIndex" ref="a0a6c42fe404b4a624b6b3660b505fe62" args="() const " -->
+<a class="anchor" id="a7d86b0f4f303f9c7b5d420a73779a2dc"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::LocalServer::getMatchIndex" ref="a7d86b0f4f303f9c7b5d420a73779a2dc" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a0a6c42fe404b4a624b6b3660b505fe62">LogCabin::Server::RaftConsensusInternal::LocalServer::getLastAgreeIndex</a> </td>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a7d86b0f4f303f9c7b5d420a73779a2dc">LogCabin::Server::RaftConsensusInternal::LocalServer::getMatchIndex</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const<code> [virtual]</code></td>
@@ -297,7 +297,7 @@ Public Attributes</h2></td></tr>
 <p>This is used for advancing the leader's commitIndex. Monotonically increases within a term.</p>
 <dl class="warning"><dt><b>Warning:</b></dt><dd>Only valid when we're leader. </dd></dl>
 
-<p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ab54a3a7c21b87f7d0b93babbbbc3d00a">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
+<p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a5f09629ccb2981f69e6e5def9ef5d9b9">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
 <p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00110">110</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
@@ -501,7 +501,7 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>The index of the last log entry that has been flushed to disk. </p>
-<p>Valid for leaders only. Returned by <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a0a6c42fe404b4a624b6b3660b505fe62" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">getLastAgreeIndex()</a> and used to advance the leader's commitIndex. </p>
+<p>Valid for leaders only. Returned by <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1LocalServer.html#a7d86b0f4f303f9c7b5d420a73779a2dc" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">getMatchIndex()</a> and used to advance the leader's commitIndex. </p>
 
 <p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00246">246</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 

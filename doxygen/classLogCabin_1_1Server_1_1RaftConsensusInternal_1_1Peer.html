@@ -152,8 +152,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Inform any threads belonging to this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> to exit.  <a href="#a46d99021b75d28c44c31cbe4fe221001"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2a60ec5adc78780464eff2eaaf625d86">getLastAckEpoch</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the latest time this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> acknowledged our current term.  <a href="#a2a60ec5adc78780464eff2eaaf625d86"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a74f6a5c2c9950c94cf61c1c302f9d84f">getLastAgreeIndex</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the largest entry ID for which this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> is known to share the same entries up to and including this entry with our log.  <a href="#a74f6a5c2c9950c94cf61c1c302f9d84f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a5268036e9ee4711b9dd5bb3311cfed62">getMatchIndex</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the largest entry ID for which this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> is known to share the same entries up to and including this entry with our log.  <a href="#a5268036e9ee4711b9dd5bb3311cfed62"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a31e4de7206ec311e2bd8e9f912a284d0">haveVote</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if this <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html" title="A base class for known servers in the cluster, including this process (see LocalServer) and others (s...">Server</a> has awarded us its vote for this term.  <a href="#a31e4de7206ec311e2bd8e9f912a284d0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a81973f60b1302672c5d0c582a4638f4b">isCaughtUp</a> () const </td></tr>
@@ -182,12 +182,12 @@ Public Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set to true if the server has responded to our RequestVote request in the current term, false otherwise.  <a href="#ac4a82cf70a21989f2f59505281647c3f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a57b21af23dcbefa804c9c962591e5025">haveVote_</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a31e4de7206ec311e2bd8e9f912a284d0" title="Return true if this Server has awarded us its vote for this term.">haveVote()</a>.  <a href="#a57b21af23dcbefa804c9c962591e5025"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a50d0b442ca40959e135e45107a8c6c76">forceHeartbeat</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates that nextIndex is still a (poor) guess: the leader should send heartbeats to save bandwidth until it finds where the follower's log diverges from its own.  <a href="#a50d0b442ca40959e135e45107a8c6c76"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#acec029e3eba5cd9306732cc48f73abcf">suppressBulkData</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates that the leader and the follower aren't necessarily synchronized.  <a href="#acec029e3eba5cd9306732cc48f73abcf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07">nextIndex</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the next entry to send to the follower.  <a href="#a681aed27116449b0ec7705e85f09fd07"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21">lastAgreeIndex</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a74f6a5c2c9950c94cf61c1c302f9d84f" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">getLastAgreeIndex()</a>.  <a href="#a2af3be3d3ac5cfb2c79270d084f01e21"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0738db8e678aebe6e286279ad99fb434">matchIndex</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a5268036e9ee4711b9dd5bb3311cfed62" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">getMatchIndex()</a>.  <a href="#a0738db8e678aebe6e286279ad99fb434"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a3ac99d0f0a94203643ac72cf4e4c0e69">lastAckEpoch</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2a60ec5adc78780464eff2eaaf625d86" title="Return the latest time this Server acknowledged our current term.">getLastAckEpoch()</a>.  <a href="#a3ac99d0f0a94203643ac72cf4e4c0e69"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a9b2ddcfb6434331d10e3ed84c66e14e3">TimePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#af3115d040af27bfe093f1881fd243716">nextHeartbeatTime</a></td></tr>
@@ -422,12 +422,12 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a74f6a5c2c9950c94cf61c1c302f9d84f"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Peer::getLastAgreeIndex" ref="a74f6a5c2c9950c94cf61c1c302f9d84f" args="() const " -->
+<a class="anchor" id="a5268036e9ee4711b9dd5bb3311cfed62"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Peer::getMatchIndex" ref="a5268036e9ee4711b9dd5bb3311cfed62" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a74f6a5c2c9950c94cf61c1c302f9d84f">LogCabin::Server::RaftConsensusInternal::Peer::getLastAgreeIndex</a> </td>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a5268036e9ee4711b9dd5bb3311cfed62">LogCabin::Server::RaftConsensusInternal::Peer::getMatchIndex</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const<code> [virtual]</code></td>
@@ -440,7 +440,7 @@ Private Attributes</h2></td></tr>
 <p>This is used for advancing the leader's commitIndex. Monotonically increases within a term.</p>
 <dl class="warning"><dt><b>Warning:</b></dt><dd>Only valid when we're leader. </dd></dl>
 
-<p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#ab54a3a7c21b87f7d0b93babbbbc3d00a">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
+<p>Implements <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Server.html#a5f09629ccb2981f69e6e5def9ef5d9b9">LogCabin::Server::RaftConsensusInternal::Server</a>.</p>
 
 <p>Definition at line <a class="el" href="RaftConsensus_8cc_source.html#l00228">228</a> of file <a class="el" href="RaftConsensus_8cc_source.html">RaftConsensus.cc</a>.</p>
 
@@ -801,21 +801,22 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a50d0b442ca40959e135e45107a8c6c76"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Peer::forceHeartbeat" ref="a50d0b442ca40959e135e45107a8c6c76" args="" -->
+<a class="anchor" id="acec029e3eba5cd9306732cc48f73abcf"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Peer::suppressBulkData" ref="acec029e3eba5cd9306732cc48f73abcf" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a50d0b442ca40959e135e45107a8c6c76">LogCabin::Server::RaftConsensusInternal::Peer::forceHeartbeat</a></td>
+          <td class="memname">bool <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#acec029e3eba5cd9306732cc48f73abcf">LogCabin::Server::RaftConsensusInternal::Peer::suppressBulkData</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Indicates that nextIndex is still a (poor) guess: the leader should send heartbeats to save bandwidth until it finds where the follower's log diverges from its own. </p>
+<p>Indicates that the leader and the follower aren't necessarily synchronized. </p>
+<p>The leader should not send large amounts of data (with many log entries or large chunks of a snapshot file) to the follower while this flag is true. For example, the follower might have been disconnected, or the leader might not know where the follower's log diverges from its own. It's better to sync up using small RPCs like heartbeats, then begin/resume sending bulk data after receiving an acknowledgment.</p>
 <p>Only used when leader. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00380">380</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00387">387</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -831,26 +832,26 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>The index of the next entry to send to the follower. </p>
-<p>Only used when leader. </p>
+<p>Only used when leader. Minimum value of 1. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00386">386</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00393">393</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a2af3be3d3ac5cfb2c79270d084f01e21"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Peer::lastAgreeIndex" ref="a2af3be3d3ac5cfb2c79270d084f01e21" args="" -->
+<a class="anchor" id="a0738db8e678aebe6e286279ad99fb434"></a><!-- doxytag: member="LogCabin::Server::RaftConsensusInternal::Peer::matchIndex" ref="a0738db8e678aebe6e286279ad99fb434" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2af3be3d3ac5cfb2c79270d084f01e21">LogCabin::Server::RaftConsensusInternal::Peer::lastAgreeIndex</a></td>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a0738db8e678aebe6e286279ad99fb434">LogCabin::Server::RaftConsensusInternal::Peer::matchIndex</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a74f6a5c2c9950c94cf61c1c302f9d84f" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">getLastAgreeIndex()</a>. </p>
+<p>See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a5268036e9ee4711b9dd5bb3311cfed62" title="Return the largest entry ID for which this Server is known to share the same entries up to and includ...">getMatchIndex()</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00391">391</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00398">398</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -867,7 +868,7 @@ Private Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a2a60ec5adc78780464eff2eaaf625d86" title="Return the latest time this Server acknowledged our current term.">getLastAckEpoch()</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00396">396</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00403">403</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -886,7 +887,7 @@ Private Attributes</h2></td></tr>
 <p>Only valid while we're leader. The leader sends heartbeats periodically if it has no new data to send, to stop the follower from starting a new election. </p>
 <dl class="invariant"><dt><b>Invariant:</b></dt><dd>This is never more than HEARTBEAT_PERIOD_MS in the future, since new leaders don't reset it. </dd></dl>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00407">407</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00414">414</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -904,7 +905,7 @@ Private Attributes</h2></td></tr>
 <p>The minimum time at which the next <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> should be sent. </p>
 <p>Only valid while we're a candidate or leader. This is set when an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> fails so as to not overwhelm the network with retries (some RPCs fail without timing out, for example if the remote kernel rejects the connection). </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00416">416</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00423">423</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -922,7 +923,7 @@ Private Attributes</h2></td></tr>
 <p>Counts <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> failures to issue fewer warnings. </p>
 <p>Accessed only from <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a4305e63041b96ea33cb28deaf2378b1c" title="Execute a remote procedure call on the server&#39;s RaftService.">callRPC()</a> without holding the lock. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00422">422</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00429">429</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -937,7 +938,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00425">425</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00432">432</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -952,7 +953,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00426">426</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00433">433</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -967,7 +968,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00427">427</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00434">434</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -984,7 +985,7 @@ Private Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a81973f60b1302672c5d0c582a4638f4b" title="Return true once this Server is ready to be added to the cluster.">isCaughtUp()</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00432">432</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00439">439</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1002,7 +1003,7 @@ Private Attributes</h2></td></tr>
 <p>A snapshot file to be sent to the follower, or NULL. </p>
 <p>TODO(ongaro): It'd be better to destroy this as soon as this server steps down, but peers don't have a hook for that right now. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00439">439</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00446">446</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1020,7 +1021,7 @@ Private Attributes</h2></td></tr>
 <p>The number of bytes of 'snapshotFile' that have been acknowledged by the follower already. </p>
 <p>Send starting here next time. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00444">444</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00451">451</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1038,7 +1039,7 @@ Private Attributes</h2></td></tr>
 <p>The last log index that 'snapshotFile' corresponds to. </p>
 <p>This is used to set the follower's <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a681aed27116449b0ec7705e85f09fd07" title="The index of the next entry to send to the follower.">nextIndex</a> accordingly after we're done sending it the snapshot. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00450">450</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00457">457</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1055,7 +1056,7 @@ Private Attributes</h2></td></tr>
 
 <p>Caches the result of <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a3e688557bfc2d99836ae83fe7ccd8145" title="Get the current session for this server.">getSession()</a>. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00457">457</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00464">464</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
@@ -1073,7 +1074,7 @@ Private Attributes</h2></td></tr>
 <p><a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a4305e63041b96ea33cb28deaf2378b1c" title="Execute a remote procedure call on the server&#39;s RaftService.">callRPC()</a> places its <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> here so that <a class="el" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a5daf374d78d59b74c639acef42f8b1e5" title="Cancel any outstanding RPCs to this Server.">interrupt()</a> may cancel it. </p>
 <p>Setting this member and canceling the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> must be done while holding the Raft lock; waiting on the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> is done without holding that lock. </p>
 
-<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00464">464</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
+<p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00471">471</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 
 </div>
 </div>
