@@ -38,6 +38,7 @@ var searchData=
   ['numsnapshotsfailed',['numSnapshotsFailed',['../classLogCabin_1_1Server_1_1StateMachine.html#a3476e30467344b04c8ccb4e515c4c3e8',1,'LogCabin::Server::StateMachine']]],
   ['numsuccessfuladvanceversionentries',['numSuccessfulAdvanceVersionEntries',['../classLogCabin_1_1Server_1_1StateMachine.html#a037dd68695766012985b1c3e23259da5',1,'LogCabin::Server::StateMachine']]],
   ['numtotaladvanceversionentries',['numTotalAdvanceVersionEntries',['../classLogCabin_1_1Server_1_1StateMachine.html#aedef7a58f4dd70ce13a2ccdae9d3b3cb',1,'LogCabin::Server::StateMachine']]],
+  ['numunknownrequests',['numUnknownRequests',['../classLogCabin_1_1Server_1_1StateMachine.html#aae241756ba0a495e4dcee096f62bd9e0',1,'LogCabin::Server::StateMachine']]],
   ['numunknownrequestssincelastmessage',['numUnknownRequestsSinceLastMessage',['../classLogCabin_1_1Server_1_1StateMachine.html#ab52f5e65c0b23995c29f059d7443f586',1,'LogCabin::Server::StateMachine']]],
   ['numwriteattempted',['numWriteAttempted',['../classLogCabin_1_1Tree_1_1Tree.html#acbca5a3c1d997d8765327580a51cd765',1,'LogCabin::Tree::Tree']]],
   ['numwritesuccess',['numWriteSuccess',['../classLogCabin_1_1Tree_1_1Tree.html#a4409b59fb24c6039336488ff28ab1099',1,'LogCabin::Tree::Tree']]]

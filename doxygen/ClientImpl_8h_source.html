@@ -368,44 +368,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00286"></a><a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#adfb2719978aefcf420057c37d221b1bf">00286</a>         <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c" title="Type for absolute time values used for timeouts.">TimePoint</a> <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#adfb2719978aefcf420057c37d221b1bf" title="Time just before the last keep-alive or read-write request to the cluster was made.">lastKeepAliveStart</a>;<span class="comment"></span>
 <a name="l00287"></a>00287 <span class="comment">        /**</span>
 <a name="l00288"></a>00288 <span class="comment">         * How often session keep-alive requests are sent during periods of</span>
-<a name="l00289"></a>00289 <span class="comment">         * inactivity, in milliseconds.</span>
+<a name="l00289"></a>00289 <span class="comment">         * inactivity.</span>
 <a name="l00290"></a>00290 <span class="comment">         */</span>
-<a name="l00291"></a><a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a9c6d52b44a1dc805081c602347a0e422">00291</a>         uint64_t <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a9c6d52b44a1dc805081c602347a0e422" title="How often session keep-alive requests are sent during periods of inactivity, in milliseconds.">keepAliveIntervalMs</a>;
-<a name="l00292"></a>00292 <span class="comment"></span>
-<a name="l00293"></a>00293 <span class="comment">        /**</span>
-<a name="l00294"></a>00294 <span class="comment">         * If set, this is an ongoing keep-alive RPC. This call is canceled to</span>
-<a name="l00295"></a>00295 <span class="comment">         * interrupt #keepAliveThread when exiting.</span>
-<a name="l00296"></a>00296 <span class="comment">         */</span>
-<a name="l00297"></a><a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#afe6e2fb31ae6673ea2506b4588702cb6">00297</a>         std::unique_ptr&lt;LeaderRPCBase::Call&gt; <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#afe6e2fb31ae6673ea2506b4588702cb6" title="If set, this is an ongoing keep-alive RPC.">keepAliveCall</a>;
-<a name="l00298"></a>00298 <span class="comment"></span>
-<a name="l00299"></a>00299 <span class="comment">        /**</span>
-<a name="l00300"></a>00300 <span class="comment">         * Runs keepAliveThreadMain().</span>
-<a name="l00301"></a>00301 <span class="comment">         * Since this thread would be unexpected/wasteful for clients that only</span>
-<a name="l00302"></a>00302 <span class="comment">         * issue read-only requests (or no requests at all), it is spawned</span>
-<a name="l00303"></a>00303 <span class="comment">         * lazily, if/when the client opens its session with the cluster (upon</span>
-<a name="l00304"></a>00304 <span class="comment">         * its first read-write request).</span>
-<a name="l00305"></a>00305 <span class="comment">         */</span>
-<a name="l00306"></a><a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a28858c45dfad2f9abbad0db36170049d">00306</a>         std::thread <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a28858c45dfad2f9abbad0db36170049d" title="Runs keepAliveThreadMain().">keepAliveThread</a>;
-<a name="l00307"></a>00307 
-<a name="l00308"></a>00308         <span class="comment">// ExactlyOnceRPCHelper is not copyable.</span>
-<a name="l00309"></a>00309         <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a369717ef5eb0b062fed7197d7bbe59f4" title="Constructor.">ExactlyOnceRPCHelper</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html" title="This class helps with providing exactly-once semantics for read-write RPCs.">ExactlyOnceRPCHelper</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00310"></a>00310         <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html" title="This class helps with providing exactly-once semantics for read-write RPCs.">ExactlyOnceRPCHelper</a>&amp; <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a4920481921fa5fc81508e26a0082aa2f">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html" title="This class helps with providing exactly-once semantics for read-write RPCs.">ExactlyOnceRPCHelper</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00311"></a>00311     } <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#af04e95b84f17f61a4abc1065df02644c">exactlyOnceRPCHelper</a>;
-<a name="l00312"></a>00312 <span class="comment"></span>
-<a name="l00313"></a>00313 <span class="comment">    /**</span>
-<a name="l00314"></a>00314 <span class="comment">     * A thread that runs the Event::Loop.</span>
-<a name="l00315"></a>00315 <span class="comment">     */</span>
-<a name="l00316"></a><a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#a2cba828d40a7eeff6655bf2eb187666d">00316</a>     std::thread <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#a2cba828d40a7eeff6655bf2eb187666d" title="A thread that runs the Event::Loop.">eventLoopThread</a>;
-<a name="l00317"></a>00317 
-<a name="l00318"></a>00318     <span class="comment">// ClientImpl is not copyable</span>
-<a name="l00319"></a>00319     <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#ae2f0feb236e7b9917b229f070877016c" title="Constructor.">ClientImpl</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html" title="The implementation of the client library.">ClientImpl</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00320"></a>00320     <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html" title="The implementation of the client library.">ClientImpl</a>&amp; <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#a789b8b53de877017d667dee35a8e8bd4">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html" title="The implementation of the client library.">ClientImpl</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00321"></a>00321 };
-<a name="l00322"></a>00322 
-<a name="l00323"></a>00323 } <span class="comment">// namespace LogCabin::Client</span>
-<a name="l00324"></a>00324 } <span class="comment">// namespace LogCabin</span>
-<a name="l00325"></a>00325 
-<a name="l00326"></a>00326 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_CLIENT_CLIENTIMPL_H */</span>
+<a name="l00291"></a><a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a873e03221f214ffe46cc9c350b86ffa2">00291</a>         std::chrono::milliseconds <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a873e03221f214ffe46cc9c350b86ffa2" title="How often session keep-alive requests are sent during periods of inactivity.">keepAliveInterval</a>;<span class="comment"></span>
+<a name="l00292"></a>00292 <span class="comment">        /**</span>
+<a name="l00293"></a>00293 <span class="comment">         * How long to wait for the CloseSession RPC before giving up.</span>
+<a name="l00294"></a>00294 <span class="comment">         */</span>
+<a name="l00295"></a><a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a7c6a79d51a3961b55975f9b607334acf">00295</a>         std::chrono::milliseconds <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a7c6a79d51a3961b55975f9b607334acf" title="How long to wait for the CloseSession RPC before giving up.">sessionCloseTimeout</a>;
+<a name="l00296"></a>00296 <span class="comment"></span>
+<a name="l00297"></a>00297 <span class="comment">        /**</span>
+<a name="l00298"></a>00298 <span class="comment">         * If set, this is an ongoing keep-alive RPC. This call is canceled to</span>
+<a name="l00299"></a>00299 <span class="comment">         * interrupt #keepAliveThread when exiting.</span>
+<a name="l00300"></a>00300 <span class="comment">         */</span>
+<a name="l00301"></a><a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#afe6e2fb31ae6673ea2506b4588702cb6">00301</a>         std::unique_ptr&lt;LeaderRPCBase::Call&gt; <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#afe6e2fb31ae6673ea2506b4588702cb6" title="If set, this is an ongoing keep-alive RPC.">keepAliveCall</a>;
+<a name="l00302"></a>00302 <span class="comment"></span>
+<a name="l00303"></a>00303 <span class="comment">        /**</span>
+<a name="l00304"></a>00304 <span class="comment">         * Runs keepAliveThreadMain().</span>
+<a name="l00305"></a>00305 <span class="comment">         * Since this thread would be unexpected/wasteful for clients that only</span>
+<a name="l00306"></a>00306 <span class="comment">         * issue read-only requests (or no requests at all), it is spawned</span>
+<a name="l00307"></a>00307 <span class="comment">         * lazily, if/when the client opens its session with the cluster (upon</span>
+<a name="l00308"></a>00308 <span class="comment">         * its first read-write request).</span>
+<a name="l00309"></a>00309 <span class="comment">         */</span>
+<a name="l00310"></a><a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a28858c45dfad2f9abbad0db36170049d">00310</a>         std::thread <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a28858c45dfad2f9abbad0db36170049d" title="Runs keepAliveThreadMain().">keepAliveThread</a>;
+<a name="l00311"></a>00311 
+<a name="l00312"></a>00312         <span class="comment">// ExactlyOnceRPCHelper is not copyable.</span>
+<a name="l00313"></a>00313         <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a369717ef5eb0b062fed7197d7bbe59f4" title="Constructor.">ExactlyOnceRPCHelper</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html" title="This class helps with providing exactly-once semantics for read-write RPCs.">ExactlyOnceRPCHelper</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00314"></a>00314         <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html" title="This class helps with providing exactly-once semantics for read-write RPCs.">ExactlyOnceRPCHelper</a>&amp; <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html#a4920481921fa5fc81508e26a0082aa2f">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl_1_1ExactlyOnceRPCHelper.html" title="This class helps with providing exactly-once semantics for read-write RPCs.">ExactlyOnceRPCHelper</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00315"></a>00315     } <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#af04e95b84f17f61a4abc1065df02644c">exactlyOnceRPCHelper</a>;
+<a name="l00316"></a>00316 <span class="comment"></span>
+<a name="l00317"></a>00317 <span class="comment">    /**</span>
+<a name="l00318"></a>00318 <span class="comment">     * A thread that runs the Event::Loop.</span>
+<a name="l00319"></a>00319 <span class="comment">     */</span>
+<a name="l00320"></a><a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#a2cba828d40a7eeff6655bf2eb187666d">00320</a>     std::thread <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#a2cba828d40a7eeff6655bf2eb187666d" title="A thread that runs the Event::Loop.">eventLoopThread</a>;
+<a name="l00321"></a>00321 
+<a name="l00322"></a>00322     <span class="comment">// ClientImpl is not copyable</span>
+<a name="l00323"></a>00323     <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#ae2f0feb236e7b9917b229f070877016c" title="Constructor.">ClientImpl</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html" title="The implementation of the client library.">ClientImpl</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00324"></a>00324     <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html" title="The implementation of the client library.">ClientImpl</a>&amp; <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html#a789b8b53de877017d667dee35a8e8bd4">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1ClientImpl.html" title="The implementation of the client library.">ClientImpl</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00325"></a>00325 };
+<a name="l00326"></a>00326 
+<a name="l00327"></a>00327 } <span class="comment">// namespace LogCabin::Client</span>
+<a name="l00328"></a>00328 } <span class="comment">// namespace LogCabin</span>
+<a name="l00329"></a>00329 
+<a name="l00330"></a>00330 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_CLIENT_CLIENTIMPL_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

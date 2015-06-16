@@ -169,10 +169,11 @@ Private Attributes</h2></td></tr>
 <ul>
 <li>clusterUUID (see sample.conf)</li>
 <li>tcpHeartbeatTimeoutMilliseconds (see sample.conf)</li>
-<li>tcpConnectTimeoutMilliseconds (see sample.conf) </li>
+<li>tcpConnectTimeoutMilliseconds (see sample.conf)</li>
+<li>sessionCloseTimeoutMilliseconds: This <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html" title="A handle to the LogCabin cluster.">Cluster</a> object opens a session with <a class="el" href="namespaceLogCabin.html">LogCabin</a> before issuing any read-write commands to the replicated state machine. When this <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html" title="A handle to the LogCabin cluster.">Cluster</a> object is destroyed, it will attempt to close its session gracefully. This timeout controls the number of milliseconds that the client will wait until giving up on the close session <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a>. It defaults to tcpConnectTimeoutMilliseconds, since they should be on the same order of magnitude. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00590">590</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00598">598</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
@@ -534,7 +535,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00716">716</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00724">724</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
