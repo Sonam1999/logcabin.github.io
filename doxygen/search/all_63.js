@@ -9,7 +9,7 @@ var searchData=
   ['call',['Call',['../classLogCabin_1_1Client_1_1LeaderRPC_1_1Call.html',1,'LogCabin::Client::LeaderRPC']]],
   ['call',['Call',['../classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html',1,'LogCabin::Client::LeaderRPCBase']]],
   ['callback',['callback',['../classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408',1,'LogCabin::Core::ConditionVariable::callback()'],['../classLogCabin_1_1Core_1_1Mutex.html#a9b6a7d967ca3c6be6681255bdd58a894',1,'LogCabin::Core::Mutex::callback()']]],
-  ['callbacks',['callbacks',['../classLogCabin_1_1Client_1_1MockClientImpl.html#aa1d60447023203804ddc35e369726bd3',1,'LogCabin::Client::MockClientImpl']]],
+  ['callbacks',['callbacks',['../classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#ab80b95d6af413199bce6acee3d2f31a3',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC']]],
   ['callbackswap',['CallbackSwap',['../namespaceLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03.html#a8d810079f4ef1e9c621e84abc49b2191',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}']]],
   ['caller_5fcloses_5ffd',['CALLER_CLOSES_FD',['../classLogCabin_1_1Event_1_1File.html#a7c031367840fbc7ec54fa81d3ce9ef25a8d388f3cae0684a3eb73ea6baa87be70',1,'LogCabin::Event::File']]],
   ['callrpc',['callRPC',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a4305e63041b96ea33cb28deaf2378b1c',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],

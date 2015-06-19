@@ -128,7 +128,7 @@ Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC_1_1Call.html">Call</a></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a4e17ae8375320cbe1d8f631ff27f37c9">TreeLeaderRPC</a> (<a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html">MockClientImpl</a> &amp;<a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a8df1575c2e7898bb6645f36689eac83f">mockClientImpl</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a83dca93abd429986345fad2ce1d7aa09">TreeLeaderRPC</a> (std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html">TestingCallbacks</a> &gt; <a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#ab80b95d6af413199bce6acee3d2f31a3">callbacks</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a29b3dd29c4be23a4e493e946baa6fb33">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a4e198d3c4731b503c43b804817f53e0e">call</a> (<a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#a14f24cc35ca8d17a1df4f0ada9a569f7">OpCode</a> opCode, const google::protobuf::Message &amp;request, google::protobuf::Message &amp;response, <a class="el" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ab8c09d1a16236b8b75f575c9d2681c78">TimePoint</a> timeout)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute an <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> on the cluster leader.  <a href="#a4e198d3c4731b503c43b804817f53e0e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unique_ptr<br class="typebreak"/>
@@ -136,9 +136,9 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a new <a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC_1_1Call.html">Call</a> object.  <a href="#a6801e924e6e1f17a4f9a333f7fd88acb"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html">MockClientImpl</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a8df1575c2e7898bb6645f36689eac83f">mockClientImpl</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::recursive_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a7942ac8d89bda0072e16ab092ccce84e">mutex</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevents concurrent access to 'tree'.  <a href="#a7942ac8d89bda0072e16ab092ccce84e"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prevents concurrent access to callbacks and tree.  <a href="#a7942ac8d89bda0072e16ab092ccce84e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html">TestingCallbacks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#ab80b95d6af413199bce6acee3d2f31a3">callbacks</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Tree_1_1Tree.html">LogCabin::Tree::Tree</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a9979a17d7e4f5ca99d74eb7b733cf10e">tree</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
@@ -147,15 +147,15 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00052">52</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a4e17ae8375320cbe1d8f631ff27f37c9"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC::TreeLeaderRPC" ref="a4e17ae8375320cbe1d8f631ff27f37c9" args="(MockClientImpl &amp;mockClientImpl)" -->
+<a class="anchor" id="a83dca93abd429986345fad2ce1d7aa09"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC::TreeLeaderRPC" ref="a83dca93abd429986345fad2ce1d7aa09" args="(std::shared_ptr&lt; TestingCallbacks &gt; callbacks)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::<a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a4e17ae8375320cbe1d8f631ff27f37c9">TreeLeaderRPC::TreeLeaderRPC</a> </td>
+          <td class="memname">LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::<a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a83dca93abd429986345fad2ce1d7aa09">TreeLeaderRPC::TreeLeaderRPC</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html">MockClientImpl</a> &amp;&#160;</td>
-          <td class="paramname"><em>mockClientImpl</em></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html">TestingCallbacks</a> &gt;&#160;</td>
+          <td class="paramname"><em>callbacks</em></td><td>)</td>
           <td><code> [inline, explicit]</code></td>
         </tr>
       </table>
@@ -245,21 +245,6 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a8df1575c2e7898bb6645f36689eac83f"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC::mockClientImpl" ref="a8df1575c2e7898bb6645f36689eac83f" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html">MockClientImpl</a>&amp; LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::<a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a8df1575c2e7898bb6645f36689eac83f">TreeLeaderRPC::mockClientImpl</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00145">145</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a7942ac8d89bda0072e16ab092ccce84e"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC::mutex" ref="a7942ac8d89bda0072e16ab092ccce84e" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -271,8 +256,23 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Prevents concurrent access to 'tree'. </p>
+<p>Prevents concurrent access to callbacks and tree. </p>
 <p>It's recursive so that you can call the client library from within MockCallbacks, if you're that insane. </p>
+
+<p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00150">150</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab80b95d6af413199bce6acee3d2f31a3"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC::callbacks" ref="ab80b95d6af413199bce6acee3d2f31a3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classLogCabin_1_1Client_1_1TestingCallbacks.html">TestingCallbacks</a>&gt; LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::<a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#ab80b95d6af413199bce6acee3d2f31a3">TreeLeaderRPC::callbacks</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
 <p>Definition at line <a class="el" href="MockClientImpl_8cc_source.html#l00151">151</a> of file <a class="el" href="MockClientImpl_8cc_source.html">MockClientImpl.cc</a>.</p>
 

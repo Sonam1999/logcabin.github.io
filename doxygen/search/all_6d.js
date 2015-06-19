@@ -54,7 +54,7 @@ var searchData=
   ['mkdtemp',['mkdtemp',['../namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a683521eb86e46202e8fc0674da9cc12f',1,'LogCabin::Storage::FilesystemUtil']]],
   ['mockableclock',['MockableClock',['../structLogCabin_1_1Core_1_1Time_1_1MockableClock.html',1,'LogCabin::Core::Time']]],
   ['mockclientimpl',['MockClientImpl',['../classLogCabin_1_1Client_1_1MockClientImpl.html',1,'LogCabin::Client']]],
-  ['mockclientimpl',['MockClientImpl',['../classLogCabin_1_1Client_1_1MockClientImpl.html#a81ace5f927c82898dc86f97caa449599',1,'LogCabin::Client::MockClientImpl::MockClientImpl(std::shared_ptr&lt; TestingCallbacks &gt; callbacks)'],['../classLogCabin_1_1Client_1_1MockClientImpl.html#a1210e9464ff3302895f2bfa1c74700c7',1,'LogCabin::Client::MockClientImpl::MockClientImpl(const MockClientImpl &amp;)'],['../classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#a8df1575c2e7898bb6645f36689eac83f',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC::mockClientImpl()']]],
+  ['mockclientimpl',['MockClientImpl',['../classLogCabin_1_1Client_1_1MockClientImpl.html#a81ace5f927c82898dc86f97caa449599',1,'LogCabin::Client::MockClientImpl::MockClientImpl(std::shared_ptr&lt; TestingCallbacks &gt; callbacks)'],['../classLogCabin_1_1Client_1_1MockClientImpl.html#a1210e9464ff3302895f2bfa1c74700c7',1,'LogCabin::Client::MockClientImpl::MockClientImpl(const MockClientImpl &amp;)']]],
   ['mockclientimpl_2ecc',['MockClientImpl.cc',['../MockClientImpl_8cc.html',1,'']]],
   ['mockclientimpl_2eh',['MockClientImpl.h',['../MockClientImpl_8h.html',1,'']]],
   ['mocker',['Mocker',['../structLogCabin_1_1Core_1_1Time_1_1MockableClock_1_1Mocker.html',1,'LogCabin::Core::Time::MockableClock']]],

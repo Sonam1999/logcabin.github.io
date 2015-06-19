@@ -2,7 +2,7 @@ var searchData=
 [
   ['cachedsession',['cachedSession',['../classLogCabin_1_1Client_1_1LeaderRPC_1_1Call.html#a499e9a01bc9906317b9b8547295ece68',1,'LogCabin::Client::LeaderRPC::Call']]],
   ['callback',['callback',['../classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408',1,'LogCabin::Core::ConditionVariable::callback()'],['../classLogCabin_1_1Core_1_1Mutex.html#a9b6a7d967ca3c6be6681255bdd58a894',1,'LogCabin::Core::Mutex::callback()']]],
-  ['callbacks',['callbacks',['../classLogCabin_1_1Client_1_1MockClientImpl.html#aa1d60447023203804ddc35e369726bd3',1,'LogCabin::Client::MockClientImpl']]],
+  ['callbacks',['callbacks',['../classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC.html#ab80b95d6af413199bce6acee3d2f31a3',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC']]],
   ['canceled',['canceled',['../classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html#a551db6e7f1698f81e24161875b16c003',1,'LogCabin::Client::LeaderRPCMock::Call']]],
   ['checksumalgorithm',['checksumAlgorithm',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a34485601251390adc6b38fb2848e9a43',1,'LogCabin::Storage::SegmentedLog']]],
   ['childpid',['childPid',['../classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51',1,'LogCabin::Server::StateMachine']]],
