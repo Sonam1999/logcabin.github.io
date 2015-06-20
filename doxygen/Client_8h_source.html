@@ -580,7 +580,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00498"></a>00498 <span class="comment">    /**</span>
 <a name="l00499"></a>00499 <span class="comment">     * Provides mutual exclusion to treeDetails pointer.</span>
 <a name="l00500"></a>00500 <span class="comment">     */</span>
-<a name="l00501"></a><a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d">00501</a>     <span class="keyword">mutable</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">std::mutex</a> <a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d" title="Provides mutual exclusion to treeDetails pointer.">mutex</a>;<span class="comment"></span>
+<a name="l00501"></a><a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d">00501</a>     <span class="keyword">mutable</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">std::mutex</a> <a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a4253d99a59b7052d5946353e899e291d" title="Provides mutual exclusion to treeDetails pointer.">mutex</a>;<span class="comment"></span>
 <a name="l00502"></a>00502 <span class="comment">    /**</span>
 <a name="l00503"></a>00503 <span class="comment">     * Reference-counted pointer to implementation-specific members. This is</span>
 <a name="l00504"></a>00504 <span class="comment">     * copy-on-write, so &#39;mutex&#39; need not be held after taking a reference to</span>

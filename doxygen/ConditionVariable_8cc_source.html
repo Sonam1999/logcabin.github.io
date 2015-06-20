@@ -162,7 +162,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00080"></a>00080         <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a6fe50be51dae5cbc76ce1b3a81dc4408" title="This function will be called with the lock released during every invocation of wait/wait_until.">callback</a>();
 <a name="l00081"></a>00081         lockGuard.lock();
 <a name="l00082"></a>00082     } <span class="keywordflow">else</span> {
-<a name="l00083"></a>00083         pthread_mutex_t* <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a> = lockGuard.mutex()-&gt;native_handle();
+<a name="l00083"></a>00083         pthread_mutex_t* <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a> = lockGuard.mutex()-&gt;native_handle();
 <a name="l00084"></a>00084         <span class="keywordtype">int</span> r = pthread_cond_wait(&amp;<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a663128ec2dfa8ec1206b511a93d1ee01" title="Underlying condition variable.">cv</a>, mutex);
 <a name="l00085"></a>00085         <span class="keywordflow">if</span> (r != 0)
 <a name="l00086"></a>00086             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;pthread_cond_wait failed: %s&quot;</span>, strerror(r));
@@ -172,16 +172,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00090"></a>00090 <span class="keywordtype">void</span>
 <a name="l00091"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#ac98fdf167cf54e33c3cc7f7148ac3ebf">00091</a> <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">ConditionVariable::wait</a>(std::unique_lock&lt;Core::Mutex&gt;&amp; lockGuard)
 <a name="l00092"></a>00092 {
-<a name="l00093"></a>00093     <a class="code" href="classLogCabin_1_1Core_1_1Mutex.html" title="A wrapper around std::mutex that is useful for testing purposes.">Core::Mutex</a>&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>(*lockGuard.mutex());
-<a name="l00094"></a>00094     <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>.callback)
-<a name="l00095"></a>00095         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>.callback();
+<a name="l00093"></a>00093     <a class="code" href="classLogCabin_1_1Core_1_1Mutex.html" title="A wrapper around std::mutex that is useful for testing purposes.">Core::Mutex</a>&amp; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>(*lockGuard.mutex());
+<a name="l00094"></a>00094     <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>.callback)
+<a name="l00095"></a>00095         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>.callback();
 <a name="l00096"></a>00096     assert(lockGuard);
-<a name="l00097"></a>00097     std::unique_lock&lt;std::mutex&gt; stdLockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>.m,
+<a name="l00097"></a>00097     std::unique_lock&lt;std::mutex&gt; stdLockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>.m,
 <a name="l00098"></a>00098                                               std::adopt_lock_t());
 <a name="l00099"></a>00099     lockGuard.release();
 <a name="l00100"></a>00100     <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#aedc8162c9f0251ae3491e6bc6efbe477">wait</a>(stdLockGuard);
 <a name="l00101"></a>00101     assert(stdLockGuard);
-<a name="l00102"></a>00102     lockGuard = std::unique_lock&lt;Core::Mutex&gt;(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>, std::adopt_lock_t());
+<a name="l00102"></a>00102     lockGuard = std::unique_lock&lt;Core::Mutex&gt;(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>, std::adopt_lock_t());
 <a name="l00103"></a>00103     stdLockGuard.release();
 <a name="l00104"></a>00104     <span class="keywordflow">if</span> (mutex.callback)
 <a name="l00105"></a>00105         mutex.callback();
@@ -207,7 +207,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00125"></a>00125         <span class="keywordflow">if</span> (wake &lt; now)
 <a name="l00126"></a>00126             <span class="keywordflow">return</span>;
 <a name="l00127"></a>00127         <span class="keyword">struct </span>timespec wakespec = <a class="code" href="namespaceLogCabin_1_1Core_1_1Time.html#ab1f0bfec14cc5ca8578cf2ce2f2092d6" title="Convert a C++11 time point into a POSIX timespec.">Core::Time::makeTimeSpec</a>(wake);
-<a name="l00128"></a>00128         pthread_mutex_t* <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a> = lockGuard.mutex()-&gt;native_handle();
+<a name="l00128"></a>00128         pthread_mutex_t* <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a> = lockGuard.mutex()-&gt;native_handle();
 <a name="l00129"></a>00129         <span class="keywordtype">int</span> r = pthread_cond_timedwait(&amp;<a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a663128ec2dfa8ec1206b511a93d1ee01" title="Underlying condition variable.">cv</a>, mutex, &amp;wakespec);
 <a name="l00130"></a>00130         <span class="keywordflow">switch</span> (r) {
 <a name="l00131"></a>00131             <span class="keywordflow">case</span> 0:

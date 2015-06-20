@@ -130,33 +130,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00048"></a>00048 <span class="comment"></span>
 <a name="l00049"></a>00049 <span class="comment">//// class Signal::Blocker ////</span>
 <a name="l00050"></a>00050 <span class="comment"></span>
-<a name="l00051"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a567fce997c82f54f1fcf11b2ce9f947b">00051</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a567fce997c82f54f1fcf11b2ce9f947b" title="Constructor. Masks asynchronous signal delivery for signalNumber.">Signal::Blocker::Blocker</a>(<span class="keywordtype">int</span> signalNumber)
+<a name="l00051"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a567fce997c82f54f1fcf11b2ce9f947b">00051</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a567fce997c82f54f1fcf11b2ce9f947b" title="Constructor.">Signal::Blocker::Blocker</a>(<span class="keywordtype">int</span> signalNumber)
 <a name="l00052"></a>00052     : signalNumber(signalNumber)
-<a name="l00053"></a>00053     , shouldLeaveBlocked(false)
-<a name="l00054"></a>00054 {
-<a name="l00055"></a>00055     <span class="comment">// Block signal</span>
-<a name="l00056"></a>00056     sigset_t mask;
-<a name="l00057"></a>00057     sigemptyset(&amp;mask);
-<a name="l00058"></a>00058     sigaddset(&amp;mask, signalNumber);
-<a name="l00059"></a>00059     <span class="keywordtype">int</span> r = pthread_sigmask(SIG_BLOCK, &amp;mask, NULL);
-<a name="l00060"></a>00060     <span class="keywordflow">if</span> (r != 0) {
-<a name="l00061"></a>00061         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not block signal %d: %s&quot;</span>,
-<a name="l00062"></a>00062               signalNumber, strerror(r));
-<a name="l00063"></a>00063     }
-<a name="l00064"></a>00064 }
-<a name="l00065"></a>00065 
-<a name="l00066"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2b0801a61222f6f02380247945b56289">00066</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2b0801a61222f6f02380247945b56289" title="Destructor. Unmasks asynchronous signal delivery for signalNumber.">Signal::Blocker::~Blocker</a>()
+<a name="l00053"></a>00053     , isBlocked(false)
+<a name="l00054"></a>00054     , shouldLeaveBlocked(false)
+<a name="l00055"></a>00055 {
+<a name="l00056"></a>00056     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2e647e275eff85ecee582e6fcf4b0a55" title="Blocks further signals if they are not already blocked.">block</a>();
+<a name="l00057"></a>00057 }
+<a name="l00058"></a>00058 
+<a name="l00059"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2b0801a61222f6f02380247945b56289">00059</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2b0801a61222f6f02380247945b56289" title="Destructor.">Signal::Blocker::~Blocker</a>()
+<a name="l00060"></a>00060 {
+<a name="l00061"></a>00061     <span class="keywordflow">if</span> (!shouldLeaveBlocked)
+<a name="l00062"></a>00062         unblock();
+<a name="l00063"></a>00063 }
+<a name="l00064"></a>00064 
+<a name="l00065"></a>00065 <span class="keywordtype">void</span>
+<a name="l00066"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2e647e275eff85ecee582e6fcf4b0a55">00066</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2e647e275eff85ecee582e6fcf4b0a55" title="Blocks further signals if they are not already blocked.">Signal::Blocker::block</a>()
 <a name="l00067"></a>00067 {
-<a name="l00068"></a>00068     <span class="keywordflow">if</span> (!shouldLeaveBlocked) {
-<a name="l00069"></a>00069         <span class="comment">// Unblock signal</span>
-<a name="l00070"></a>00070         sigset_t mask;
-<a name="l00071"></a>00071         sigemptyset(&amp;mask);
-<a name="l00072"></a>00072         sigaddset(&amp;mask, <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3" title="The signal number identifying which signal to receive (man signal.h).">signalNumber</a>);
-<a name="l00073"></a>00073         <span class="keywordtype">int</span> r = pthread_sigmask(SIG_UNBLOCK, &amp;mask, NULL);
-<a name="l00074"></a>00074         <span class="keywordflow">if</span> (r != 0) {
-<a name="l00075"></a>00075             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not unblock signal %d: %s&quot;</span>,
-<a name="l00076"></a>00076                   <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3" title="The signal number identifying which signal to receive (man signal.h).">signalNumber</a>, strerror(r));
-<a name="l00077"></a>00077         }
+<a name="l00068"></a>00068     <span class="keywordflow">if</span> (!isBlocked) {
+<a name="l00069"></a>00069         sigset_t mask;
+<a name="l00070"></a>00070         sigemptyset(&amp;mask);
+<a name="l00071"></a>00071         sigaddset(&amp;mask, <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3" title="The signal number identifying which signal to receive (man signal.h).">signalNumber</a>);
+<a name="l00072"></a>00072         <span class="keywordtype">int</span> r = pthread_sigmask(SIG_BLOCK, &amp;mask, NULL);
+<a name="l00073"></a>00073         <span class="keywordflow">if</span> (r != 0) {
+<a name="l00074"></a>00074             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not block signal %d: %s&quot;</span>,
+<a name="l00075"></a>00075                   <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3" title="The signal number identifying which signal to receive (man signal.h).">signalNumber</a>, strerror(r));
+<a name="l00076"></a>00076         }
+<a name="l00077"></a>00077         isBlocked = <span class="keyword">true</span>;
 <a name="l00078"></a>00078     }
 <a name="l00079"></a>00079 }
 <a name="l00080"></a>00080 
@@ -165,48 +165,66 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00083"></a>00083 {
 <a name="l00084"></a>00084     shouldLeaveBlocked = <span class="keyword">true</span>;
 <a name="l00085"></a>00085 }
-<a name="l00086"></a>00086 <span class="comment"></span>
-<a name="l00087"></a>00087 <span class="comment">//// class Signal::Monitor ////</span>
-<a name="l00088"></a>00088 <span class="comment"></span>
-<a name="l00089"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#ae70eabfe3618583a853a745067e5bc97">00089</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#ae70eabfe3618583a853a745067e5bc97" title="See File::Monitor::Monitor.">Signal::Monitor::Monitor</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; eventLoop, <a class="code" href="classLogCabin_1_1Event_1_1Signal.html" title="A Signal is called by the Event::Loop when a Unix signal is received.">Signal</a>&amp; signal)
-<a name="l00090"></a>00090     : <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>::<a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html" title="Registers a File handler to be monitored by the Event::Loop.">Monitor</a>(eventLoop, signal, EPOLLIN)
-<a name="l00091"></a>00091 {
-<a name="l00092"></a>00092 }
-<a name="l00093"></a>00093 
-<a name="l00094"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#a4229a866a1255f7ef3c8c391c209f8dc">00094</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#a4229a866a1255f7ef3c8c391c209f8dc" title="See File::Monitor::~Monitor.">Signal::Monitor::~Monitor</a>()
-<a name="l00095"></a>00095 {
-<a name="l00096"></a>00096 }
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098 <span class="comment"></span>
-<a name="l00099"></a>00099 <span class="comment">//// class Signal ////</span>
-<a name="l00100"></a>00100 <span class="comment"></span>
-<a name="l00101"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal.html#a5d2d1edd104bb3628a89eeb79a463d5f">00101</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#a5d2d1edd104bb3628a89eeb79a463d5f" title="Construct a signal handler.">Signal::Signal</a>(<span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3" title="The signal number identifying which signal to receive (man signal.h).">signalNumber</a>)
-<a name="l00102"></a>00102     : Event::<a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>(<a class="code" href="namespaceLogCabin_1_1Event_1_1anonymous__namespace_02Signal_8cc_03.html#ab45b8c28a4e138a03968bbd7e603c7bb" title="Helper for Signal constructor.">createSignalFd</a>(signalNumber))
-<a name="l00103"></a>00103     , signalNumber(signalNumber)
-<a name="l00104"></a>00104 {
-<a name="l00105"></a>00105 }
-<a name="l00106"></a>00106 
-<a name="l00107"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal.html#ad65df78f5559d35394c5aa8abeb47fbc">00107</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#ad65df78f5559d35394c5aa8abeb47fbc" title="Destructor.">Signal::~Signal</a>()
-<a name="l00108"></a>00108 {
-<a name="l00109"></a>00109 }
-<a name="l00110"></a>00110 
-<a name="l00111"></a>00111 <span class="keywordtype">void</span>
-<a name="l00112"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal.html#af1c009668845e7c557a508b04697740b">00112</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#af1c009668845e7c557a508b04697740b" title="Generic event handler for files.">Signal::handleFileEvent</a>(uint32_t events)
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 <span class="keywordtype">void</span>
+<a name="l00088"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a3dc905a3adc574eb4f4f59afb9ca7bbd">00088</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a3dc905a3adc574eb4f4f59afb9ca7bbd" title="Unblocks signals if they are blocked.">Signal::Blocker::unblock</a>()
+<a name="l00089"></a>00089 {
+<a name="l00090"></a>00090     <span class="keywordflow">if</span> (isBlocked) {
+<a name="l00091"></a>00091         sigset_t mask;
+<a name="l00092"></a>00092         sigemptyset(&amp;mask);
+<a name="l00093"></a>00093         sigaddset(&amp;mask, <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3" title="The signal number identifying which signal to receive (man signal.h).">signalNumber</a>);
+<a name="l00094"></a>00094         <span class="keywordtype">int</span> r = pthread_sigmask(SIG_UNBLOCK, &amp;mask, NULL);
+<a name="l00095"></a>00095         <span class="keywordflow">if</span> (r != 0) {
+<a name="l00096"></a>00096             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not unblock signal %d: %s&quot;</span>,
+<a name="l00097"></a>00097                   <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3" title="The signal number identifying which signal to receive (man signal.h).">signalNumber</a>, strerror(r));
+<a name="l00098"></a>00098         }
+<a name="l00099"></a>00099         isBlocked = <span class="keyword">false</span>;
+<a name="l00100"></a>00100         shouldLeaveBlocked = <span class="keyword">false</span>;
+<a name="l00101"></a>00101     }
+<a name="l00102"></a>00102 }
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104 <span class="comment"></span>
+<a name="l00105"></a>00105 <span class="comment">//// class Signal::Monitor ////</span>
+<a name="l00106"></a>00106 <span class="comment"></span>
+<a name="l00107"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#ae70eabfe3618583a853a745067e5bc97">00107</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#ae70eabfe3618583a853a745067e5bc97" title="See File::Monitor::Monitor.">Signal::Monitor::Monitor</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; eventLoop, <a class="code" href="classLogCabin_1_1Event_1_1Signal.html" title="A Signal is called by the Event::Loop when a Unix signal is received.">Signal</a>&amp; signal)
+<a name="l00108"></a>00108     : <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>::<a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html" title="Registers a File handler to be monitored by the Event::Loop.">Monitor</a>(eventLoop, signal, EPOLLIN)
+<a name="l00109"></a>00109 {
+<a name="l00110"></a>00110 }
+<a name="l00111"></a>00111 
+<a name="l00112"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#a4229a866a1255f7ef3c8c391c209f8dc">00112</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#a4229a866a1255f7ef3c8c391c209f8dc" title="See File::Monitor::~Monitor.">Signal::Monitor::~Monitor</a>()
 <a name="l00113"></a>00113 {
-<a name="l00114"></a>00114     <span class="keyword">struct </span>signalfd_siginfo info;
-<a name="l00115"></a>00115     ssize_t s = read(<a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>, &amp;info, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> signalfd_siginfo));
-<a name="l00116"></a>00116     <span class="keywordflow">if</span> (s &lt; 0) {
-<a name="l00117"></a>00117         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not read signal info (to discard): %s&quot;</span>,
-<a name="l00118"></a>00118               strerror(errno));
-<a name="l00119"></a>00119     }
-<a name="l00120"></a>00120     <span class="keywordflow">if</span> (<span class="keywordtype">size_t</span>(s) != <span class="keyword">sizeof</span>(<span class="keyword">struct</span> signalfd_siginfo)) {
-<a name="l00121"></a>00121         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not read full signal info (to discard)&quot;</span>);
-<a name="l00122"></a>00122     }
-<a name="l00123"></a>00123     <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#aef1177de7a82a50c6b591d384ecf7349" title="This method is overridden by a subclass and invoked when the signal is received.">handleSignalEvent</a>();
-<a name="l00124"></a>00124 }
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126 } <span class="comment">// namespace LogCabin::Event</span>
-<a name="l00127"></a>00127 } <span class="comment">// namespace LogCabin</span>
+<a name="l00114"></a>00114 }
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 <span class="comment"></span>
+<a name="l00117"></a>00117 <span class="comment">//// class Signal ////</span>
+<a name="l00118"></a>00118 <span class="comment"></span>
+<a name="l00119"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal.html#a5d2d1edd104bb3628a89eeb79a463d5f">00119</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#a5d2d1edd104bb3628a89eeb79a463d5f" title="Construct a signal handler.">Signal::Signal</a>(<span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3" title="The signal number identifying which signal to receive (man signal.h).">signalNumber</a>)
+<a name="l00120"></a>00120     : Event::<a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>(<a class="code" href="namespaceLogCabin_1_1Event_1_1anonymous__namespace_02Signal_8cc_03.html#ab45b8c28a4e138a03968bbd7e603c7bb" title="Helper for Signal constructor.">createSignalFd</a>(signalNumber))
+<a name="l00121"></a>00121     , signalNumber(signalNumber)
+<a name="l00122"></a>00122 {
+<a name="l00123"></a>00123 }
+<a name="l00124"></a>00124 
+<a name="l00125"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal.html#ad65df78f5559d35394c5aa8abeb47fbc">00125</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#ad65df78f5559d35394c5aa8abeb47fbc" title="Destructor.">Signal::~Signal</a>()
+<a name="l00126"></a>00126 {
+<a name="l00127"></a>00127 }
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 <span class="keywordtype">void</span>
+<a name="l00130"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal.html#af1c009668845e7c557a508b04697740b">00130</a> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#af1c009668845e7c557a508b04697740b" title="Generic event handler for files.">Signal::handleFileEvent</a>(uint32_t events)
+<a name="l00131"></a>00131 {
+<a name="l00132"></a>00132     <span class="keyword">struct </span>signalfd_siginfo info;
+<a name="l00133"></a>00133     ssize_t s = read(<a class="code" href="classLogCabin_1_1Event_1_1File.html#a3ed9c9de5f24ffe58ccf1c526190b6a0" title="The file descriptor to monitor.">fd</a>, &amp;info, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> signalfd_siginfo));
+<a name="l00134"></a>00134     <span class="keywordflow">if</span> (s &lt; 0) {
+<a name="l00135"></a>00135         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not read signal info (to discard): %s&quot;</span>,
+<a name="l00136"></a>00136               strerror(errno));
+<a name="l00137"></a>00137     }
+<a name="l00138"></a>00138     <span class="keywordflow">if</span> (<span class="keywordtype">size_t</span>(s) != <span class="keyword">sizeof</span>(<span class="keyword">struct</span> signalfd_siginfo)) {
+<a name="l00139"></a>00139         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not read full signal info (to discard)&quot;</span>);
+<a name="l00140"></a>00140     }
+<a name="l00141"></a>00141     <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#aef1177de7a82a50c6b591d384ecf7349" title="This method is overridden by a subclass and invoked when the signal is received.">handleSignalEvent</a>();
+<a name="l00142"></a>00142 }
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144 } <span class="comment">// namespace LogCabin::Event</span>
+<a name="l00145"></a>00145 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

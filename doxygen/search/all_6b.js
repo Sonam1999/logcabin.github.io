@@ -9,6 +9,6 @@ var searchData=
   ['keyexists',['keyExists',['../classLogCabin_1_1Core_1_1Config.html#a644b1f65b2aee3dc8e04439be46f30a7',1,'LogCabin::Core::Config']]],
   ['keynotfound',['KeyNotFound',['../structLogCabin_1_1Core_1_1Config_1_1KeyNotFound.html#a9cccd4eec08b04e42d395c88d3a14a68',1,'LogCabin::Core::Config::KeyNotFound']]],
   ['keynotfound',['KeyNotFound',['../structLogCabin_1_1Core_1_1Config_1_1KeyNotFound.html',1,'LogCabin::Core::Config']]],
-  ['killsnapshotprocess',['killSnapshotProcess',['../classLogCabin_1_1Server_1_1StateMachine.html#a914e7ba0c31c11305784afc14f02769b',1,'LogCabin::Server::StateMachine']]],
+  ['killsnapshotprocess',['killSnapshotProcess',['../classLogCabin_1_1Server_1_1StateMachine.html#a14c96954de0d02aa63d82ddc5e00f290',1,'LogCabin::Server::StateMachine']]],
   ['knownservers',['knownServers',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#adc97b0a5dee772e4c7b3e37ac1230f9b',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]]
 ];

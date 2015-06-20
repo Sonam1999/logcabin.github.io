@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: LogCabin::Server::Globals::ExitHandler Class Reference</title>
+<title>LogCabin: LogCabin::Server::Globals::LogRotateHandler Class Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -95,7 +95,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
       <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Server.html">Server</a>      </li>
       <li class="navelem"><a class="el" href="classLogCabin_1_1Server_1_1Globals.html">Globals</a>      </li>
-      <li class="navelem"><a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html">ExitHandler</a>      </li>
+      <li class="navelem"><a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler.html">LogRotateHandler</a>      </li>
     </ul>
   </div>
 </div>
@@ -104,45 +104,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a>  </div>
   <div class="headertitle">
-<div class="title">LogCabin::Server::Globals::ExitHandler Class Reference</div>  </div>
+<div class="title">LogCabin::Server::Globals::LogRotateHandler Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="LogCabin::Server::Globals::ExitHandler" --><!-- doxytag: inherits="LogCabin::Event::Signal" -->
-<p>Exits from the event loop upon receiving a UNIX signal.  
- <a href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html#details">More...</a></p>
+<!-- doxytag: class="LogCabin::Server::Globals::LogRotateHandler" --><!-- doxytag: inherits="LogCabin::Event::Signal" -->
+<p>Re-opens the log file upon receiving a UNIX signal.  
+ <a href="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler.html#details">More...</a></p>
 <div class="dynheader">
-Inheritance diagram for LogCabin::Server::Globals::ExitHandler:</div>
+Inheritance diagram for LogCabin::Server::Globals::LogRotateHandler:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.png" usemap="#LogCabin::Server::Globals::ExitHandler_map" alt=""/>
-  <map id="LogCabin::Server::Globals::ExitHandler_map" name="LogCabin::Server::Globals::ExitHandler_map">
-<area href="classLogCabin_1_1Event_1_1Signal.html" title="A Signal is called by the Event::Loop when a Unix signal is received." alt="LogCabin::Event::Signal" shape="rect" coords="0,56,230,80"/>
-<area href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable." alt="LogCabin::Event::File" shape="rect" coords="0,0,230,24"/>
+  <img src="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler.png" usemap="#LogCabin::Server::Globals::LogRotateHandler_map" alt=""/>
+  <map id="LogCabin::Server::Globals::LogRotateHandler_map" name="LogCabin::Server::Globals::LogRotateHandler_map">
+<area href="classLogCabin_1_1Event_1_1Signal.html" title="A Signal is called by the Event::Loop when a Unix signal is received." alt="LogCabin::Event::Signal" shape="rect" coords="0,56,266,80"/>
+<area href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable." alt="LogCabin::Event::File" shape="rect" coords="0,0,266,24"/>
 </map>
  </div></div>
 
-<p><a href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler-members.html">List of all members.</a></p>
+<p><a href="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html#a60db450823537dd43e1399606f14de48">ExitHandler</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html#a1c52253cdb6aade8ecb51979f715d99d">eventLoop</a>, int <a class="el" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3">signalNumber</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html#a06b80a41f9dda5cf5722a3d41b032760">handleSignalEvent</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when the signal is received.  <a href="#a06b80a41f9dda5cf5722a3d41b032760"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler.html#afb7f30576f597aa3fbd84277267fbe98">LogRotateHandler</a> (<a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;<a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler.html#a119e9d5ab3807e94bd5ac3e52cb0bcd0">eventLoop</a>, int <a class="el" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3">signalNumber</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler.html#a7935e15e09c78e2d73b647aa3a07d278">handleSignalEvent</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is overridden by a subclass and invoked when the signal is received.  <a href="#a7935e15e09c78e2d73b647aa3a07d278"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html#a1c52253cdb6aade8ecb51979f715d99d">eventLoop</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler.html#a119e9d5ab3807e94bd5ac3e52cb0bcd0">eventLoop</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Exits from the event loop upon receiving a UNIX signal. </p>
+<div class="textblock"><p>Re-opens the log file upon receiving a UNIX signal. </p>
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00055">55</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00065">65</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a60db450823537dd43e1399606f14de48"></a><!-- doxytag: member="LogCabin::Server::Globals::ExitHandler::ExitHandler" ref="a60db450823537dd43e1399606f14de48" args="(Event::Loop &amp;eventLoop, int signalNumber)" -->
+<a class="anchor" id="afb7f30576f597aa3fbd84277267fbe98"></a><!-- doxytag: member="LogCabin::Server::Globals::LogRotateHandler::LogRotateHandler" ref="afb7f30576f597aa3fbd84277267fbe98" args="(Event::Loop &amp;eventLoop, int signalNumber)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html#a60db450823537dd43e1399606f14de48">LogCabin::Server::Globals::ExitHandler::ExitHandler</a> </td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler.html#afb7f30576f597aa3fbd84277267fbe98">LogCabin::Server::Globals::LogRotateHandler::LogRotateHandler</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a> &amp;&#160;</td>
           <td class="paramname"><em>eventLoop</em>, </td>
@@ -162,17 +162,17 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00035">35</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00050">50</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a06b80a41f9dda5cf5722a3d41b032760"></a><!-- doxytag: member="LogCabin::Server::Globals::ExitHandler::handleSignalEvent" ref="a06b80a41f9dda5cf5722a3d41b032760" args="()" -->
+<a class="anchor" id="a7935e15e09c78e2d73b647aa3a07d278"></a><!-- doxytag: member="LogCabin::Server::Globals::LogRotateHandler::handleSignalEvent" ref="a7935e15e09c78e2d73b647aa3a07d278" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html#a06b80a41f9dda5cf5722a3d41b032760">LogCabin::Server::Globals::ExitHandler::handleSignalEvent</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler.html#a7935e15e09c78e2d73b647aa3a07d278">LogCabin::Server::Globals::LogRotateHandler::handleSignalEvent</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [virtual]</code></td>
@@ -186,23 +186,23 @@ Public Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classLogCabin_1_1Event_1_1Signal.html#aef1177de7a82a50c6b591d384ecf7349">LogCabin::Event::Signal</a>.</p>
 
-<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00044">44</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8cc_source.html#l00059">59</a> of file <a class="el" href="Globals_8cc_source.html">Globals.cc</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a1c52253cdb6aade8ecb51979f715d99d"></a><!-- doxytag: member="LogCabin::Server::Globals::ExitHandler::eventLoop" ref="a1c52253cdb6aade8ecb51979f715d99d" args="" -->
+<a class="anchor" id="a119e9d5ab3807e94bd5ac3e52cb0bcd0"></a><!-- doxytag: member="LogCabin::Server::Globals::LogRotateHandler::eventLoop" ref="a119e9d5ab3807e94bd5ac3e52cb0bcd0" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a>&amp; <a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html#a1c52253cdb6aade8ecb51979f715d99d">LogCabin::Server::Globals::ExitHandler::eventLoop</a></td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Event_1_1Loop.html">Event::Loop</a>&amp; <a class="el" href="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler.html#a119e9d5ab3807e94bd5ac3e52cb0bcd0">LogCabin::Server::Globals::LogRotateHandler::eventLoop</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Globals_8h_source.html#l00059">59</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
+<p>Definition at line <a class="el" href="Globals_8h_source.html#l00069">69</a> of file <a class="el" href="Globals_8h_source.html">Globals.h</a>.</p>
 
 </div>
 </div>

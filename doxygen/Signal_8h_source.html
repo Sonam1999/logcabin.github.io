@@ -122,80 +122,107 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00040"></a>00040 <span class="comment">     * Blocks asynchronous signal delivery on the current thread for the given</span>
 <a name="l00041"></a>00041 <span class="comment">     * signal. This should normally be called before any secondary threads are</span>
 <a name="l00042"></a>00042 <span class="comment">     * started, so that all subsequent threads also have the signal blocked.</span>
-<a name="l00043"></a>00043 <span class="comment">     */</span>
-<a name="l00044"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html">00044</a>     <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html" title="Blocks asynchronous signal delivery on the current thread for the given signal.">Blocker</a> {
-<a name="l00045"></a>00045       <span class="keyword">public</span>:<span class="comment"></span>
-<a name="l00046"></a>00046 <span class="comment">        /// Constructor. Masks asynchronous signal delivery for signalNumber.</span>
-<a name="l00047"></a>00047 <span class="comment"></span>        <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a567fce997c82f54f1fcf11b2ce9f947b" title="Constructor. Masks asynchronous signal delivery for signalNumber.">Blocker</a>(<span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a6a902703e0f284cd6e2df4cf558ed9b0">signalNumber</a>);<span class="comment"></span>
-<a name="l00048"></a>00048 <span class="comment">        /// Destructor. Unmasks asynchronous signal delivery for signalNumber.</span>
-<a name="l00049"></a>00049 <span class="comment"></span>        <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2b0801a61222f6f02380247945b56289" title="Destructor. Unmasks asynchronous signal delivery for signalNumber.">~Blocker</a>();<span class="comment"></span>
-<a name="l00050"></a>00050 <span class="comment">        /// Leave the signal blocked when this object is destroyed.</span>
-<a name="l00051"></a>00051 <span class="comment"></span>        <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a58937bd352f326f543b67eb285b61fb1" title="Leave the signal blocked when this object is destroyed.">leaveBlocked</a>();
-<a name="l00052"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a6a902703e0f284cd6e2df4cf558ed9b0">00052</a>         <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a6a902703e0f284cd6e2df4cf558ed9b0">signalNumber</a>;
-<a name="l00053"></a>00053       <span class="keyword">private</span>:
-<a name="l00054"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a53bed30d20977903fc7be0cf955368cd">00054</a>         <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a53bed30d20977903fc7be0cf955368cd">shouldLeaveBlocked</a>;
-<a name="l00055"></a>00055     };
-<a name="l00056"></a>00056 <span class="comment"></span>
-<a name="l00057"></a>00057 <span class="comment">    /**</span>
-<a name="l00058"></a>00058 <span class="comment">     * Registers a Signal handler to be monitored by the Event::Loop. Once this</span>
-<a name="l00059"></a>00059 <span class="comment">     * is constructed, the Event::Loop will call the Signal&#39;s event handler</span>
-<a name="l00060"></a>00060 <span class="comment">     * appropriately.</span>
-<a name="l00061"></a>00061 <span class="comment">     *</span>
-<a name="l00062"></a>00062 <span class="comment">     * This object must be destroyed or disableForever() called BEFORE the</span>
-<a name="l00063"></a>00063 <span class="comment">     * Signal object can be destroyed safely.</span>
-<a name="l00064"></a>00064 <span class="comment">     */</span>
-<a name="l00065"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html">00065</a>     <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html" title="Registers a File handler to be monitored by the Event::Loop.">Monitor</a> : <span class="keyword">private</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>::<a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html" title="Registers a File handler to be monitored by the Event::Loop.">Monitor</a> {
-<a name="l00066"></a>00066       <span class="keyword">public</span>:<span class="comment"></span>
-<a name="l00067"></a>00067 <span class="comment">        /// See File::Monitor::Monitor.</span>
-<a name="l00068"></a>00068 <span class="comment"></span>        <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#ae70eabfe3618583a853a745067e5bc97" title="See File::Monitor::Monitor.">Monitor</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a809482d1ac7026bb8692c8a851f4b0af" title="Event::Loop that will monitor the file.">eventLoop</a>, <a class="code" href="classLogCabin_1_1Event_1_1Signal.html" title="A Signal is called by the Event::Loop when a Unix signal is received.">Signal</a>&amp; signal);<span class="comment"></span>
-<a name="l00069"></a>00069 <span class="comment">        /// See File::Monitor::~Monitor.</span>
-<a name="l00070"></a>00070 <span class="comment"></span>        <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#a4229a866a1255f7ef3c8c391c209f8dc" title="See File::Monitor::~Monitor.">~Monitor</a>();<span class="comment"></span>
-<a name="l00071"></a>00071 <span class="comment">        /// See File::Monitor::disableForever.</span>
-<a name="l00072"></a>00072 <span class="comment"></span>        <span class="keyword">using</span> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a2b38fde47fcf4ac96b59d7835ad3b26d" title="Stop monitoring this file.">File::Monitor::disableForever</a>;
-<a name="l00073"></a>00073     };
-<a name="l00074"></a>00074 <span class="comment"></span>
-<a name="l00075"></a>00075 <span class="comment">    /**</span>
-<a name="l00076"></a>00076 <span class="comment">     * Construct a signal handler.</span>
-<a name="l00077"></a>00077 <span class="comment">     * See also Blocker, which you&#39;ll generally need to create first,</span>
-<a name="l00078"></a>00078 <span class="comment">     * and Monitor, which you&#39;ll need to create after.</span>
-<a name="l00079"></a>00079 <span class="comment">     * \param signalNumber</span>
-<a name="l00080"></a>00080 <span class="comment">     *      The signal number identifying which signal to receive</span>
-<a name="l00081"></a>00081 <span class="comment">     *      (man signal.h).</span>
-<a name="l00082"></a>00082 <span class="comment">     */</span>
-<a name="l00083"></a>00083     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#a5d2d1edd104bb3628a89eeb79a463d5f" title="Construct a signal handler.">Signal</a>(<span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3" title="The signal number identifying which signal to receive (man signal.h).">signalNumber</a>);
-<a name="l00084"></a>00084 <span class="comment"></span>
-<a name="l00085"></a>00085 <span class="comment">    /**</span>
-<a name="l00086"></a>00086 <span class="comment">     * Destructor.</span>
-<a name="l00087"></a>00087 <span class="comment">     */</span>
-<a name="l00088"></a>00088     <span class="keyword">virtual</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#ad65df78f5559d35394c5aa8abeb47fbc" title="Destructor.">~Signal</a>();
-<a name="l00089"></a>00089 <span class="comment"></span>
-<a name="l00090"></a>00090 <span class="comment">    /**</span>
-<a name="l00091"></a>00091 <span class="comment">     * This method is overridden by a subclass and invoked when the signal</span>
-<a name="l00092"></a>00092 <span class="comment">     * is received. This method will be invoked by the main event loop on</span>
-<a name="l00093"></a>00093 <span class="comment">     * whatever thread is running the Event::Loop.</span>
-<a name="l00094"></a>00094 <span class="comment">     */</span>
-<a name="l00095"></a>00095     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#aef1177de7a82a50c6b591d384ecf7349" title="This method is overridden by a subclass and invoked when the signal is received.">handleSignalEvent</a>() = 0;
-<a name="l00096"></a>00096 <span class="comment"></span>
-<a name="l00097"></a>00097 <span class="comment">    /**</span>
-<a name="l00098"></a>00098 <span class="comment">     * The signal number identifying which signal to receive (man signal.h).</span>
-<a name="l00099"></a>00099 <span class="comment">     */</span>
-<a name="l00100"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3">00100</a>     <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3" title="The signal number identifying which signal to receive (man signal.h).">signalNumber</a>;
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102   <span class="keyword">private</span>:<span class="comment"></span>
-<a name="l00103"></a>00103 <span class="comment">    /**</span>
-<a name="l00104"></a>00104 <span class="comment">     * Generic event handler for files. Calls handleSignalEvent().</span>
-<a name="l00105"></a>00105 <span class="comment">     */</span>
-<a name="l00106"></a>00106     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#af1c009668845e7c557a508b04697740b" title="Generic event handler for files.">handleFileEvent</a>(uint32_t events);
-<a name="l00107"></a>00107 
-<a name="l00108"></a>00108     <span class="comment">// Signal is not copyable.</span>
-<a name="l00109"></a>00109     <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#a5d2d1edd104bb3628a89eeb79a463d5f" title="Construct a signal handler.">Signal</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html" title="A Signal is called by the Event::Loop when a Unix signal is received.">Signal</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00110"></a>00110     <a class="code" href="classLogCabin_1_1Event_1_1Signal.html" title="A Signal is called by the Event::Loop when a Unix signal is received.">Signal</a>&amp; <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#ac501e1ed504a3584172c2f98b5c759c7">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html" title="A Signal is called by the Event::Loop when a Unix signal is received.">Signal</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00111"></a>00111 };
-<a name="l00112"></a>00112 
-<a name="l00113"></a>00113 } <span class="comment">// namespace LogCabin::Event</span>
-<a name="l00114"></a>00114 } <span class="comment">// namespace LogCabin</span>
-<a name="l00115"></a>00115 
-<a name="l00116"></a>00116 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_EVENT_SIGNAL_H */</span>
+<a name="l00043"></a>00043 <span class="comment">     * \warning</span>
+<a name="l00044"></a>00044 <span class="comment">     *      This class is not thread-safe: the caller must use an external</span>
+<a name="l00045"></a>00045 <span class="comment">     *      mutex or (more commonly) may only manipulate this class while</span>
+<a name="l00046"></a>00046 <span class="comment">     *      a single thread is running.</span>
+<a name="l00047"></a>00047 <span class="comment">     */</span>
+<a name="l00048"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html">00048</a>     <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html" title="Blocks asynchronous signal delivery on the current thread for the given signal.">Blocker</a> {
+<a name="l00049"></a>00049       <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00050"></a>00050 <span class="comment">        /**</span>
+<a name="l00051"></a>00051 <span class="comment">         * Constructor.</span>
+<a name="l00052"></a>00052 <span class="comment">         * Masks asynchronous signal delivery for signalNumber.</span>
+<a name="l00053"></a>00053 <span class="comment">         */</span>
+<a name="l00054"></a>00054         <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a567fce997c82f54f1fcf11b2ce9f947b" title="Constructor.">Blocker</a>(<span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a6a902703e0f284cd6e2df4cf558ed9b0">signalNumber</a>);<span class="comment"></span>
+<a name="l00055"></a>00055 <span class="comment">        /**</span>
+<a name="l00056"></a>00056 <span class="comment">         * Destructor. Unmasks asynchronous signal delivery for signalNumber.</span>
+<a name="l00057"></a>00057 <span class="comment">         */</span>
+<a name="l00058"></a>00058         <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2b0801a61222f6f02380247945b56289" title="Destructor.">~Blocker</a>();<span class="comment"></span>
+<a name="l00059"></a>00059 <span class="comment">        /**</span>
+<a name="l00060"></a>00060 <span class="comment">         * Blocks further signals if they are not already blocked.</span>
+<a name="l00061"></a>00061 <span class="comment">         */</span>
+<a name="l00062"></a>00062         <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a2e647e275eff85ecee582e6fcf4b0a55" title="Blocks further signals if they are not already blocked.">block</a>();<span class="comment"></span>
+<a name="l00063"></a>00063 <span class="comment">        /**</span>
+<a name="l00064"></a>00064 <span class="comment">         * Leave the signal blocked when this object is destroyed.</span>
+<a name="l00065"></a>00065 <span class="comment">         */</span>
+<a name="l00066"></a>00066         <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a58937bd352f326f543b67eb285b61fb1" title="Leave the signal blocked when this object is destroyed.">leaveBlocked</a>();<span class="comment"></span>
+<a name="l00067"></a>00067 <span class="comment">        /**</span>
+<a name="l00068"></a>00068 <span class="comment">         * Unblocks signals if they are blocked. Also clears</span>
+<a name="l00069"></a>00069 <span class="comment">         * #shouldLeaveBlocked.</span>
+<a name="l00070"></a>00070 <span class="comment">         */</span>
+<a name="l00071"></a>00071         <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a3dc905a3adc574eb4f4f59afb9ca7bbd" title="Unblocks signals if they are blocked.">unblock</a>();
+<a name="l00072"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a6a902703e0f284cd6e2df4cf558ed9b0">00072</a>         <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a6a902703e0f284cd6e2df4cf558ed9b0">signalNumber</a>;
+<a name="l00073"></a>00073       <span class="keyword">private</span>:<span class="comment"></span>
+<a name="l00074"></a>00074 <span class="comment">        /**</span>
+<a name="l00075"></a>00075 <span class="comment">         * Set to true if the signal is currently blocked.</span>
+<a name="l00076"></a>00076 <span class="comment">         */</span>
+<a name="l00077"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a289b5e8e0aed011e8015a1167c9788f6">00077</a>         <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a289b5e8e0aed011e8015a1167c9788f6" title="Set to true if the signal is currently blocked.">isBlocked</a>;<span class="comment"></span>
+<a name="l00078"></a>00078 <span class="comment">        /**</span>
+<a name="l00079"></a>00079 <span class="comment">         * Set to true if the signal should be left unblocked on destruction.</span>
+<a name="l00080"></a>00080 <span class="comment">         */</span>
+<a name="l00081"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a53bed30d20977903fc7be0cf955368cd">00081</a>         <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a53bed30d20977903fc7be0cf955368cd" title="Set to true if the signal should be left unblocked on destruction.">shouldLeaveBlocked</a>;
+<a name="l00082"></a>00082     };
+<a name="l00083"></a>00083 <span class="comment"></span>
+<a name="l00084"></a>00084 <span class="comment">    /**</span>
+<a name="l00085"></a>00085 <span class="comment">     * Registers a Signal handler to be monitored by the Event::Loop. Once this</span>
+<a name="l00086"></a>00086 <span class="comment">     * is constructed, the Event::Loop will call the Signal&#39;s event handler</span>
+<a name="l00087"></a>00087 <span class="comment">     * appropriately.</span>
+<a name="l00088"></a>00088 <span class="comment">     *</span>
+<a name="l00089"></a>00089 <span class="comment">     * This object must be destroyed or disableForever() called BEFORE the</span>
+<a name="l00090"></a>00090 <span class="comment">     * Signal object can be destroyed safely.</span>
+<a name="l00091"></a>00091 <span class="comment">     */</span>
+<a name="l00092"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html">00092</a>     <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html" title="Registers a File handler to be monitored by the Event::Loop.">Monitor</a> : <span class="keyword">private</span> <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>::<a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html" title="Registers a File handler to be monitored by the Event::Loop.">Monitor</a> {
+<a name="l00093"></a>00093       <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00094"></a>00094 <span class="comment">        /// See File::Monitor::Monitor.</span>
+<a name="l00095"></a>00095 <span class="comment"></span>        <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#ae70eabfe3618583a853a745067e5bc97" title="See File::Monitor::Monitor.">Monitor</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a809482d1ac7026bb8692c8a851f4b0af" title="Event::Loop that will monitor the file.">eventLoop</a>, <a class="code" href="classLogCabin_1_1Event_1_1Signal.html" title="A Signal is called by the Event::Loop when a Unix signal is received.">Signal</a>&amp; signal);<span class="comment"></span>
+<a name="l00096"></a>00096 <span class="comment">        /// See File::Monitor::~Monitor.</span>
+<a name="l00097"></a>00097 <span class="comment"></span>        <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html#a4229a866a1255f7ef3c8c391c209f8dc" title="See File::Monitor::~Monitor.">~Monitor</a>();<span class="comment"></span>
+<a name="l00098"></a>00098 <span class="comment">        /// See File::Monitor::disableForever.</span>
+<a name="l00099"></a>00099 <span class="comment"></span>        <span class="keyword">using</span> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a2b38fde47fcf4ac96b59d7835ad3b26d" title="Stop monitoring this file.">File::Monitor::disableForever</a>;
+<a name="l00100"></a>00100     };
+<a name="l00101"></a>00101 <span class="comment"></span>
+<a name="l00102"></a>00102 <span class="comment">    /**</span>
+<a name="l00103"></a>00103 <span class="comment">     * Construct a signal handler.</span>
+<a name="l00104"></a>00104 <span class="comment">     * See also Blocker, which you&#39;ll generally need to create first,</span>
+<a name="l00105"></a>00105 <span class="comment">     * and Monitor, which you&#39;ll need to create after.</span>
+<a name="l00106"></a>00106 <span class="comment">     * \param signalNumber</span>
+<a name="l00107"></a>00107 <span class="comment">     *      The signal number identifying which signal to receive</span>
+<a name="l00108"></a>00108 <span class="comment">     *      (man signal.h).</span>
+<a name="l00109"></a>00109 <span class="comment">     */</span>
+<a name="l00110"></a>00110     <span class="keyword">explicit</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#a5d2d1edd104bb3628a89eeb79a463d5f" title="Construct a signal handler.">Signal</a>(<span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3" title="The signal number identifying which signal to receive (man signal.h).">signalNumber</a>);
+<a name="l00111"></a>00111 <span class="comment"></span>
+<a name="l00112"></a>00112 <span class="comment">    /**</span>
+<a name="l00113"></a>00113 <span class="comment">     * Destructor.</span>
+<a name="l00114"></a>00114 <span class="comment">     */</span>
+<a name="l00115"></a>00115     <span class="keyword">virtual</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#ad65df78f5559d35394c5aa8abeb47fbc" title="Destructor.">~Signal</a>();
+<a name="l00116"></a>00116 <span class="comment"></span>
+<a name="l00117"></a>00117 <span class="comment">    /**</span>
+<a name="l00118"></a>00118 <span class="comment">     * This method is overridden by a subclass and invoked when the signal</span>
+<a name="l00119"></a>00119 <span class="comment">     * is received. This method will be invoked by the main event loop on</span>
+<a name="l00120"></a>00120 <span class="comment">     * whatever thread is running the Event::Loop.</span>
+<a name="l00121"></a>00121 <span class="comment">     */</span>
+<a name="l00122"></a>00122     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#aef1177de7a82a50c6b591d384ecf7349" title="This method is overridden by a subclass and invoked when the signal is received.">handleSignalEvent</a>() = 0;
+<a name="l00123"></a>00123 <span class="comment"></span>
+<a name="l00124"></a>00124 <span class="comment">    /**</span>
+<a name="l00125"></a>00125 <span class="comment">     * The signal number identifying which signal to receive (man signal.h).</span>
+<a name="l00126"></a>00126 <span class="comment">     */</span>
+<a name="l00127"></a><a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3">00127</a>     <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#adc64e736246c41da271ab47ca2e1fad3" title="The signal number identifying which signal to receive (man signal.h).">signalNumber</a>;
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129   <span class="keyword">private</span>:<span class="comment"></span>
+<a name="l00130"></a>00130 <span class="comment">    /**</span>
+<a name="l00131"></a>00131 <span class="comment">     * Generic event handler for files. Calls handleSignalEvent().</span>
+<a name="l00132"></a>00132 <span class="comment">     */</span>
+<a name="l00133"></a>00133     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#af1c009668845e7c557a508b04697740b" title="Generic event handler for files.">handleFileEvent</a>(uint32_t events);
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135     <span class="comment">// Signal is not copyable.</span>
+<a name="l00136"></a>00136     <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#a5d2d1edd104bb3628a89eeb79a463d5f" title="Construct a signal handler.">Signal</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html" title="A Signal is called by the Event::Loop when a Unix signal is received.">Signal</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00137"></a>00137     <a class="code" href="classLogCabin_1_1Event_1_1Signal.html" title="A Signal is called by the Event::Loop when a Unix signal is received.">Signal</a>&amp; <a class="code" href="classLogCabin_1_1Event_1_1Signal.html#ac501e1ed504a3584172c2f98b5c759c7">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Event_1_1Signal.html" title="A Signal is called by the Event::Loop when a Unix signal is received.">Signal</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00138"></a>00138 };
+<a name="l00139"></a>00139 
+<a name="l00140"></a>00140 } <span class="comment">// namespace LogCabin::Event</span>
+<a name="l00141"></a>00141 } <span class="comment">// namespace LogCabin</span>
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_EVENT_SIGNAL_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -7,6 +7,7 @@ var searchData=
   ['intervalnanos',['intervalNanos',['../classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#adde0bf4e9deee47d3be72d4d0ecaab97',1,'LogCabin::Server::ServerStats::TimerHandler']]],
   ['invariants',['invariants',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a2d6ee7995b60660085fdf042d07c276c',1,'LogCabin::Server::RaftConsensus']]],
   ['is_5fsteady',['is_steady',['../structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html#a7a715091394fc942bae20fa03ee50121',1,'LogCabin::Core::Time::CSystemClock::is_steady()'],['../structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#adc96c0781a8f555a304a38eb92400794',1,'LogCabin::Core::Time::CSteadyClock::is_steady()'],['../structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#ab4f4cd42e83e3568af0feffc206851e1',1,'LogCabin::Core::Time::MockableClock::is_steady()']]],
+  ['isblocked',['isBlocked',['../classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a289b5e8e0aed011e8015a1167c9788f6',1,'LogCabin::Event::Signal::Blocker']]],
   ['iscaughtup_5f',['isCaughtUp_',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aa35915b9016d63af612039b1eea9c9bf',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['isconnecting',['isConnecting',['../classLogCabin_1_1Client_1_1LeaderRPC.html#a14bb81a36c5ac6423a158fe78738ac34',1,'LogCabin::Client::LeaderRPC']]],
   ['isloggingcache',['isLoggingCache',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb',1,'LogCabin::Core::Debug::Internal']]],

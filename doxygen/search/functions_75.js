@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['unblock',['unblock',['../classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a3dc905a3adc574eb4f4f59afb9ca7bbd',1,'LogCabin::Event::Signal::Blocker']]],
+  ['unblockallsignals',['unblockAllSignals',['../classLogCabin_1_1Server_1_1Globals.html#af244e1f1bfb34ee226cdd7b9cad4eecf',1,'LogCabin::Server::Globals']]],
   ['unixnanos',['unixNanos',['../classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#aa967e929bf170e2fe251eb06ad8b3dd7',1,'LogCabin::Core::Time::SteadyTimeConverter']]],
   ['unlock',['unlock',['../classLogCabin_1_1Core_1_1Mutex.html#a7ca22aeba53a48d3824f34ec7748f3d6',1,'LogCabin::Core::Mutex::unlock()'],['../structLogCabin_1_1Event_1_1Loop_1_1NoOpLockable.html#a9f41db33b473d9992eda36128ef9399d',1,'LogCabin::Event::Loop::NoOpLockable::unlock()']]],
   ['update',['update',['../classLogCabin_1_1RPC_1_1ClientSession.html#a464dbb3925165c6bc8bf94bd4a8a39be',1,'LogCabin::RPC::ClientSession::update()'],['../classLogCabin_1_1RPC_1_1OpaqueClientRPC.html#a03b014c343c2011dc957ee60a573525e',1,'LogCabin::RPC::OpaqueClientRPC::update()']]],

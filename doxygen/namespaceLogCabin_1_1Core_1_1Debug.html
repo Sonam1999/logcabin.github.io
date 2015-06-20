@@ -132,6 +132,12 @@ Enumerations</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The levels of verbosity for log messages.  <a href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ad7c6ff7d9db6f2425ae16f5024555dd2">getLogFilename</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the filename given to the last successful call to <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a951e51ab93e895341a7633369a82befa" title="Open the given file by name and append future debug log messages to it.">setLogFilename()</a>, or the empty string if none.  <a href="#ad7c6ff7d9db6f2425ae16f5024555dd2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a951e51ab93e895341a7633369a82befa">setLogFilename</a> (const std::string &amp;filename)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Open the given file by name and append future debug log messages to it.  <a href="#a951e51ab93e895341a7633369a82befa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a99a55c22f6c17911671f1ece8240eb3c">reopenLogFromFilename</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to rotate the log file.  <a href="#a99a55c22f6c17911671f1ece8240eb3c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a221c605df65625a7bcb91990af0986d3">setLogFile</a> (FILE *newFile)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the file on which debug log messages are written.  <a href="#a221c605df65625a7bcb91990af0986d3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::function&lt; void(<a class="el" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html">DebugMessage</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae229e11e9f1413bc265c12f8fe39cf6f">setLogHandler</a> (std::function&lt; void(<a class="el" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html">DebugMessage</a>)&gt; newHandler)</td></tr>
@@ -191,6 +197,80 @@ Variables</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="ad7c6ff7d9db6f2425ae16f5024555dd2"></a><!-- doxytag: member="LogCabin::Core::Debug::getLogFilename" ref="ad7c6ff7d9db6f2425ae16f5024555dd2" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ad7c6ff7d9db6f2425ae16f5024555dd2">LogCabin::Core::Debug::getLogFilename</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the filename given to the last successful call to <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a951e51ab93e895341a7633369a82befa" title="Open the given file by name and append future debug log messages to it.">setLogFilename()</a>, or the empty string if none. </p>
+<dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. </dd></dl>
+
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00250">250</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a951e51ab93e895341a7633369a82befa"></a><!-- doxytag: member="LogCabin::Core::Debug::setLogFilename" ref="a951e51ab93e895341a7633369a82befa" args="(const std::string &amp;filename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a951e51ab93e895341a7633369a82befa">LogCabin::Core::Debug::setLogFilename</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Open the given file by name and append future debug log messages to it. </p>
+<p>Note that if a handler is set with setLogHandler, this file will not be used. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Name of file. If it already exists, new messages will be appended at the end. If the file is already open, this will re-open it (useful for rotating logs). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Error message if errors were encountered opening the file, otherwise an empty string indicates success. </dd></dl>
+<dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. </dd></dl>
+
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00257">257</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a99a55c22f6c17911671f1ece8240eb3c"></a><!-- doxytag: member="LogCabin::Core::Debug::reopenLogFromFilename" ref="a99a55c22f6c17911671f1ece8240eb3c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a99a55c22f6c17911671f1ece8240eb3c">LogCabin::Core::Debug::reopenLogFromFilename</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Called to rotate the log file. </p>
+<p>If there was a previous call to <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a951e51ab93e895341a7633369a82befa" title="Open the given file by name and append future debug log messages to it.">setLogFilename()</a>, this will reopen that file by name, returning any errors. Otherwise, it will do nothing. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Error message if errors were encountered in reopening the file, otherwise an empty string indicates success. </dd></dl>
+<dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. </dd></dl>
+
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00283">283</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a221c605df65625a7bcb91990af0986d3"></a><!-- doxytag: member="LogCabin::Core::Debug::setLogFile" ref="a221c605df65625a7bcb91990af0986d3" args="(FILE *newFile)" -->
 <div class="memitem">
 <div class="memproto">
@@ -207,7 +287,7 @@ Variables</h2></td></tr>
 <div class="memdoc">
 
 <p>Change the file on which debug log messages are written. </p>
-<p>Note that if a handler is set with setLogHandler, this file will not be used. </p>
+<p>Note that if a handler is set with setLogHandler, this file will not be used. If a filename has been set with <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a951e51ab93e895341a7633369a82befa" title="Open the given file by name and append future debug log messages to it.">setLogFilename()</a>, this will clear it.</p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">newFile</td><td>Handle to open file where log messages will be written. </td></tr>
@@ -216,7 +296,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Handle to previous log file (initialized to stderr on process start). </dd></dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00244">244</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00293">293</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -245,7 +325,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Previous callback (initialized to empty std::function on process start). </dd></dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00253">253</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00303">303</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -267,7 +347,7 @@ Variables</h2></td></tr>
 <p>Specify the log messages that should be displayed for each filename. </p>
 <p>This first component is a pattern; the second is a log level. A filename is matched against each pattern in order: if the filename starts with or ends with the pattern, the corresponding log level defines the most verbose messages that are to be displayed for the file. If a filename matches no pattern, its log level will default to NOTICE. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00262">262</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00312">312</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -288,7 +368,7 @@ Variables</h2></td></tr>
 
 <p>See setLogPolicy. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00271">271</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00321">321</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -320,7 +400,7 @@ Variables</h2></td></tr>
 <p>Output a LogLevel to a stream. </p>
 <p>Having this improves gtest error messages. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00279">279</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00329">329</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -360,7 +440,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00286">286</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00336">336</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -427,7 +507,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00301">301</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00351">351</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>

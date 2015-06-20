@@ -159,7 +159,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00077"></a>00077 
 <a name="l00078"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a16271ee544de5859188c1f9b61b50b88">00078</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a16271ee544de5859188c1f9b61b50b88" title="Constructor.">SegmentedLog::PreparedSegments::PreparedSegments</a>(uint64_t queueSize)
 <a name="l00079"></a>00079     : quietForUnitTests(false)
-<a name="l00080"></a>00080     , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>()
+<a name="l00080"></a>00080     , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>()
 <a name="l00081"></a>00081     , consumed()
 <a name="l00082"></a>00082     , produced()
 <a name="l00083"></a>00083     , exiting(false)
@@ -176,7 +176,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00094"></a>00094 <span class="keywordtype">void</span>
 <a name="l00095"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a5f162dd14c8c2015fcaf89136a005d7c">00095</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a5f162dd14c8c2015fcaf89136a005d7c" title="Do not block any more waiting threads, and return immediately.">SegmentedLog::PreparedSegments::exit</a>()
 <a name="l00096"></a>00096 {
-<a name="l00097"></a>00097     std::lock_guard&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
+<a name="l00097"></a>00097     std::lock_guard&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
 <a name="l00098"></a>00098     exiting = <span class="keyword">true</span>;
 <a name="l00099"></a>00099     consumed.notify_all();
 <a name="l00100"></a>00100     produced.notify_all();
@@ -185,7 +185,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00103"></a>00103 <span class="keywordtype">void</span>
 <a name="l00104"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#abd71cd3d4a9c565daeece49bcba028c5">00104</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#abd71cd3d4a9c565daeece49bcba028c5" title="Ensure that future filenames will be larger than this one.">SegmentedLog::PreparedSegments::foundFile</a>(uint64_t fileId)
 <a name="l00105"></a>00105 {
-<a name="l00106"></a>00106     std::lock_guard&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
+<a name="l00106"></a>00106     std::lock_guard&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
 <a name="l00107"></a>00107     <span class="keywordflow">if</span> (filenameCounter &lt; fileId)
 <a name="l00108"></a>00108         filenameCounter = fileId;
 <a name="l00109"></a>00109 }
@@ -193,7 +193,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00111"></a>00111 std::deque&lt;SegmentedLog::PreparedSegments::OpenSegment&gt;
 <a name="l00112"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a15760282a6b5028d7f614f3a927fa889">00112</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a15760282a6b5028d7f614f3a927fa889" title="Immediately return all currently prepared segments.">SegmentedLog::PreparedSegments::releaseAll</a>()
 <a name="l00113"></a>00113 {
-<a name="l00114"></a>00114     std::lock_guard&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
+<a name="l00114"></a>00114     std::lock_guard&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
 <a name="l00115"></a>00115     std::deque&lt;OpenSegment&gt; ret;
 <a name="l00116"></a>00116     std::swap(openSegments, ret);
 <a name="l00117"></a>00117     <span class="keywordflow">return</span> ret;
@@ -202,7 +202,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00120"></a>00120 <span class="keywordtype">void</span>
 <a name="l00121"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#afd8a7596509da88d86ca924bf8a8988f">00121</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#afd8a7596509da88d86ca924bf8a8988f" title="Producers call this when they&#39;re done creating a new file.">SegmentedLog::PreparedSegments::submitOpenSegment</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#aec714ffb196312acf7cdd2a5867ddce2" title="The type of element that is queued in openSegments.">OpenSegment</a> segment)
 <a name="l00122"></a>00122 {
-<a name="l00123"></a>00123     std::lock_guard&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
+<a name="l00123"></a>00123     std::lock_guard&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
 <a name="l00124"></a>00124     openSegments.push_back(std::move(segment));
 <a name="l00125"></a>00125     produced.notify_one();
 <a name="l00126"></a>00126 }
@@ -210,7 +210,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00128"></a>00128 uint64_t
 <a name="l00129"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a403047fd918948feff565db7a0e6c9d3">00129</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a403047fd918948feff565db7a0e6c9d3" title="Producers call this first to block until work becomes needed.">SegmentedLog::PreparedSegments::waitForDemand</a>()
 <a name="l00130"></a>00130 {
-<a name="l00131"></a>00131     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
+<a name="l00131"></a>00131     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
 <a name="l00132"></a>00132     <span class="keywordflow">while</span> (!exiting) {
 <a name="l00133"></a>00133         <span class="keywordflow">if</span> (demanded &gt; 0) {
 <a name="l00134"></a>00134             --demanded;
@@ -225,7 +225,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00143"></a>00143 <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#aec714ffb196312acf7cdd2a5867ddce2" title="The type of element that is queued in openSegments.">SegmentedLog::PreparedSegments::OpenSegment</a>
 <a name="l00144"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#ac1ad3bdbede3bc25c6a755bbadae9b4e">00144</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#ac1ad3bdbede3bc25c6a755bbadae9b4e" title="Consumers call this when they need a prepared segment file.">SegmentedLog::PreparedSegments::waitForOpenSegment</a>()
 <a name="l00145"></a>00145 {
-<a name="l00146"></a>00146     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy and isLoggingCache.">mutex</a>);
+<a name="l00146"></a>00146     std::unique_lock&lt;Core::Mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
 <a name="l00147"></a>00147     uint64_t numWaits = 0;
 <a name="l00148"></a>00148     <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
 <a name="l00149"></a>00149         <span class="keywordflow">if</span> (exiting) {

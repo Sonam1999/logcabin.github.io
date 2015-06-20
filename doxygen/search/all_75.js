@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['unblock',['unblock',['../classLogCabin_1_1Event_1_1Signal_1_1Blocker.html#a3dc905a3adc574eb4f4f59afb9ca7bbd',1,'LogCabin::Event::Signal::Blocker']]],
+  ['unblockallsignals',['unblockAllSignals',['../classLogCabin_1_1Server_1_1Globals.html#af244e1f1bfb34ee226cdd7b9cad4eecf',1,'LogCabin::Server::Globals']]],
   ['unixnanos',['unixNanos',['../classLogCabin_1_1Core_1_1Time_1_1SteadyTimeConverter.html#aa967e929bf170e2fe251eb06ad8b3dd7',1,'LogCabin::Core::Time::SteadyTimeConverter']]],
   ['unknownrequestmessagebackoff',['unknownRequestMessageBackoff',['../classLogCabin_1_1Server_1_1StateMachine.html#ae458f754641b44f5bcf57b38db7c8590',1,'LogCabin::Server::StateMachine']]],
   ['unlinkat',['UNLINKAT',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync_1_1Op.html#a2dc118e94239a6a5cb97476357f35361abb2ae8d9275409296ab025abdf235623',1,'LogCabin::Storage::SegmentedLog::Sync::Op']]],
@@ -16,8 +18,8 @@ var searchData=
   ['uptodateleader',['upToDateLeader',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a083099431c4dd8bdb9985027a7385861',1,'LogCabin::Server::RaftConsensus']]],
   ['usage',['usage',['../classanonymous__namespace_02Benchmark_8cc_03_1_1OptionParser.html#ac20e5ff0c746fd4603adfd62b2cb67bb',1,'anonymous_namespace{Benchmark.cc}::OptionParser::usage()'],['../classanonymous__namespace_02HelloWorld_8cc_03_1_1OptionParser.html#a4d5896810a50f1268fc3a3997dc0ceb1',1,'anonymous_namespace{HelloWorld.cc}::OptionParser::usage()'],['../classanonymous__namespace_02Reconfigure_8cc_03_1_1OptionParser.html#a59c9af1bbd1747291ee765dcf5ffab57',1,'anonymous_namespace{Reconfigure.cc}::OptionParser::usage()'],['../classanonymous__namespace_02ServerStats_8cc_03_1_1OptionParser.html#a8a8b4658c39c3b75f45596655f70f117',1,'anonymous_namespace{ServerStats.cc}::OptionParser::usage()'],['../classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#aea0eec12214b4d87d554fda98a9496e3',1,'anonymous_namespace{TreeOps.cc}::OptionParser::usage()'],['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#ab102eec9d3892a3bd83d774c5cab8500',1,'anonymous_namespace{Main.cc}::OptionParser::usage()'],['../classanonymous__namespace_02Tool_8cc_03_1_1OptionParser.html#a1b5cc52feeeb593c6625d16211a2bd0f',1,'anonymous_namespace{Tool.cc}::OptionParser::usage()']]],
   ['usemockvalue',['useMockValue',['../structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#aec40dbf9e041ae87a155796d8e8f4337',1,'LogCabin::Core::Time::MockableClock']]],
-  ['util_2ecc',['Util.cc',['../Core_2Util_8cc.html',1,'']]],
   ['util_2ecc',['Util.cc',['../Examples_2Util_8cc.html',1,'']]],
-  ['util_2eh',['Util.h',['../Core_2Util_8h.html',1,'']]],
-  ['util_2eh',['Util.h',['../Examples_2Util_8h.html',1,'']]]
+  ['util_2ecc',['Util.cc',['../Core_2Util_8cc.html',1,'']]],
+  ['util_2eh',['Util.h',['../Examples_2Util_8h.html',1,'']]],
+  ['util_2eh',['Util.h',['../Core_2Util_8h.html',1,'']]]
 ];
