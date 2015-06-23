@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['abstimeout',['absTimeout',['../namespaceLogCabin_1_1Client_1_1Internal.html#a38158417b149708ba57013d66a85d09d',1,'LogCabin::Client::Internal']]],
+  ['abstimeout',['absTimeout',['../classLogCabin_1_1Client_1_1ClientImpl.html#ab98e07d5743d0fd31a07735da34d5b63',1,'LogCabin::Client::ClientImpl']]],
   ['add',['add',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#aff783eca177f6fbbc4d3bd6d799859c0',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],
   ['address',['Address',['../classLogCabin_1_1RPC_1_1Address.html#a6fca7808cfdd71a8a7c7166e2381bc9b',1,'LogCabin::RPC::Address::Address(const std::string &amp;str, uint16_t defaultPort)'],['../classLogCabin_1_1RPC_1_1Address.html#a1a41b490a3d6dec175879f28b992a0e3',1,'LogCabin::RPC::Address::Address()'],['../classLogCabin_1_1RPC_1_1Address.html#a9656e1338de102adb64f6af40f1db0b5',1,'LogCabin::RPC::Address::Address(const Address &amp;other)']]],
   ['advancecommitindex',['advanceCommitIndex',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a6313bbd5c18d255db90131471985d80e',1,'LogCabin::Server::RaftConsensus']]],
@@ -11,5 +11,6 @@ var searchData=
   ['appendentries',['appendEntries',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a46bfac42c8d88437bf408de89878db10',1,'LogCabin::Server::RaftConsensus::appendEntries()'],['../classLogCabin_1_1Server_1_1RaftService.html#ac6cee7aed6b04e935b8ef43ac3c8df69',1,'LogCabin::Server::RaftService::appendEntries()']]],
   ['apply',['apply',['../classLogCabin_1_1Server_1_1StateMachine.html#abf2f8983d83cb9a590fa62c8ce27c1a7',1,'LogCabin::Server::StateMachine']]],
   ['applythreadmain',['applyThreadMain',['../classLogCabin_1_1Server_1_1StateMachine.html#a85315565676068d98d26b883a69ba8e6',1,'LogCabin::Server::StateMachine']]],
-  ['assign',['assign',['../namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#a2ee71c405a048a097064ab3ae4b87031',1,'LogCabin::Core::ThreadId::Internal']]]
+  ['assign',['assign',['../namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#a2ee71c405a048a097064ab3ae4b87031',1,'LogCabin::Core::ThreadId::Internal']]],
+  ['at',['at',['../classLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03_1_1OptionParser.html#a6eccf9196dcfc53ba7d5b7ab7834b837',1,'LogCabin::Client::anonymous_namespace{ServerControl.cc}::OptionParser']]]
 ];

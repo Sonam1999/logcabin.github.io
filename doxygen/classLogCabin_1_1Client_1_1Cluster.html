@@ -136,7 +136,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a7ebf0a13c59ddbc790875c53baf89517">getServerInfo</a> (const std::string &amp;host, uint64_t timeoutNanoseconds, <a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a> &amp;info)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve basic information from the given server, like its ID and the addresses on which it is listening.  <a href="#a7ebf0a13c59ddbc790875c53baf89517"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a0c2b38e28157bad21b90250f97949d84">getServerInfoEx</a> (const std::string &amp;host, uint64_t timeoutNanoseconds)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Like getServerStats but throws exceptions upon errors.  <a href="#a0c2b38e28157bad21b90250f97949d84"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Like getServerInfo but throws exceptions upon errors.  <a href="#a0c2b38e28157bad21b90250f97949d84"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a3d1821618e39b1ce3ca58dc6ad2a9507">getServerStats</a> (const std::string &amp;host, uint64_t timeoutNanoseconds, Protocol::ServerStats &amp;stats)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve statistics from the given server, which are useful for diagnostics.  <a href="#a3d1821618e39b1ce3ca58dc6ad2a9507"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">Protocol::ServerStats&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a883654b25aa346a5cf8d0b843be6595e">getServerStatsEx</a> (const std::string &amp;host, uint64_t timeoutNanoseconds)</td></tr>
@@ -214,7 +214,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00495">495</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00476">476</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -252,7 +252,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00504">504</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00485">485</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -272,7 +272,7 @@ Private Attributes</h2></td></tr>
 
 <p>Destructor. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00515">515</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00496">496</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -294,7 +294,7 @@ Private Attributes</h2></td></tr>
 <p>Get the current, stable cluster configuration. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>first: configurationId: Identifies the configuration. Pass this to setConfiguration later. second: The list of servers in the configuration. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00520">520</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00501">501</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -332,7 +332,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00526">526</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00507">507</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -384,7 +384,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Either OK or TIMEOUT. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00534">534</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00515">515</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -413,9 +413,9 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Like getServerStats but throws exceptions upon errors. </p>
+<p>Like getServerInfo but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00545">545</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00526">526</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -467,7 +467,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Either OK or TIMEOUT. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00554">554</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00535">535</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -498,7 +498,7 @@ Private Attributes</h2></td></tr>
 
 <p>Like getServerStats but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00565">565</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00553">553</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -519,7 +519,7 @@ Private Attributes</h2></td></tr>
 <p>Return an object to access the hierarchical key-value store. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A <a class="el" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a> object with the working directory of '/'. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00574">574</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00562">562</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>

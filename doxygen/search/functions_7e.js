@@ -14,6 +14,7 @@ var searchData=
   ['_7econfiguration',['~Configuration',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a70852b392d571b34d2f3f9d363dc0d49',1,'LogCabin::Server::RaftConsensusInternal::Configuration']]],
   ['_7econfigurationmanager',['~ConfigurationManager',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#abb9e78257346313f89d479aad1cf360f',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],
   ['_7econfigurationresult',['~ConfigurationResult',['../structLogCabin_1_1Client_1_1ConfigurationResult.html#acfb9509c9c7c5f6aac2885715455f4e1',1,'LogCabin::Client::ConfigurationResult']]],
+  ['_7econtrolservice',['~ControlService',['../classLogCabin_1_1Server_1_1ControlService.html#a128a3fc45c3e1cd96e59bf1d0c99c515',1,'LogCabin::Server::ControlService']]],
   ['_7econversionerror',['~ConversionError',['../structLogCabin_1_1Core_1_1Config_1_1ConversionError.html#a7f0948bda3855a940d76123e2616668e',1,'LogCabin::Core::Config::ConversionError']]],
   ['_7edebugmessage',['~DebugMessage',['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a71979c9db8ed236750b47d94c91bd993',1,'LogCabin::Core::Debug::DebugMessage']]],
   ['_7eentry',['~Entry',['../structLogCabin_1_1Server_1_1RaftConsensus_1_1Entry.html#a43d3cae5e0048ae8205408e5886c60e5',1,'LogCabin::Server::RaftConsensus::Entry']]],

@@ -127,6 +127,8 @@ Typedefs</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A clock that reads wall time and is affected by NTP adjustments.  <a href="#a9edb96154f308f4284060230766da1f1"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a9b4dbdf565a390161eeba2cfa782a365">parseDuration</a> (const std::string &amp;description)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a human-readable description of a time duration into a number of nanoseconds.  <a href="#a9b4dbdf565a390161eeba2cfa782a365"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75">sleep</a> (<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> wake)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Block the calling thread until the given time.  <a href="#a8f257504e3a87c3f6fcafce6729c1f75"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename Clock , typename Duration &gt; </td></tr>
@@ -175,6 +177,40 @@ Variables</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a9b4dbdf565a390161eeba2cfa782a365"></a><!-- doxytag: member="LogCabin::Core::Time::parseDuration" ref="a9b4dbdf565a390161eeba2cfa782a365" args="(const std::string &amp;description)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a9b4dbdf565a390161eeba2cfa782a365">LogCabin::Core::Time::parseDuration</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>description</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Convert a human-readable description of a time duration into a number of nanoseconds. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">description</td><td>Something like 10, 10s, 200ms, 3us, or 999ns. With no units, defaults to seconds. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Number of nanoseconds. </dd></dl>
+<dl class="exception"><dt><b>Exceptions:</b></dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>If description could not be parsed successfully. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="Time_8cc_source.html#l00059">59</a> of file <a class="el" href="Time_8cc_source.html">Time.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a8f257504e3a87c3f6fcafce6729c1f75"></a><!-- doxytag: member="LogCabin::Core::Time::sleep" ref="a8f257504e3a87c3f6fcafce6729c1f75" args="(SteadyClock::time_point wake)" -->
 <div class="memitem">
 <div class="memproto">
@@ -192,7 +228,7 @@ Variables</h2></td></tr>
 
 <p>Block the calling thread until the given time. </p>
 
-<p>Definition at line <a class="el" href="Time_8cc_source.html#l00056">56</a> of file <a class="el" href="Time_8cc_source.html">Time.cc</a>.</p>
+<p>Definition at line <a class="el" href="Time_8cc_source.html#l00100">100</a> of file <a class="el" href="Time_8cc_source.html">Time.cc</a>.</p>
 
 </div>
 </div>
@@ -243,7 +279,7 @@ template&lt;typename Clock , typename Duration &gt; </div>
 <p>Read the CPU's cycle counter. </p>
 <p>This is useful for benchmarking. </p>
 
-<p>Definition at line <a class="el" href="Time_8h_source.html#l00190">190</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
+<p>Definition at line <a class="el" href="Time_8h_source.html#l00203">203</a> of file <a class="el" href="Time_8h_source.html">Time.h</a>.</p>
 
 </div>
 </div>

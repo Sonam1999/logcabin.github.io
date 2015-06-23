@@ -150,7 +150,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00068"></a>00068 
 <a name="l00069"></a>00069     <span class="keyword">typedef</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3" title="The return type of waitForReply().">RPC::ClientRPC::Status</a> RPCStatus;
 <a name="l00070"></a>00070     Protocol::Client::VerifyRecipient::Response response;
-<a name="l00071"></a>00071     Protocol::Client::Error error;
+<a name="l00071"></a>00071     Protocol::Client::Error <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a>;
 <a name="l00072"></a>00072     RPCStatus status = rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a5824f288f6066eae256f67b267943cd1" title="Wait for a reply to the RPC or an error.">waitForReply</a>(&amp;response, &amp;error, timeout);
 <a name="l00073"></a>00073 
 <a name="l00074"></a>00074     <span class="comment">// Decode the response</span>

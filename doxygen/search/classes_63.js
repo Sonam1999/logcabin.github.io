@@ -18,6 +18,7 @@ var searchData=
   ['configurationmanager',['ConfigurationManager',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html',1,'LogCabin::Server::RaftConsensusInternal']]],
   ['configurationresult',['ConfigurationResult',['../structLogCabin_1_1Client_1_1ConfigurationResult.html',1,'LogCabin::Client']]],
   ['consensussnapshot',['ConsensusSnapshot',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Invariants_1_1ConsensusSnapshot.html',1,'LogCabin::Server::RaftConsensusInternal::Invariants']]],
+  ['controlservice',['ControlService',['../classLogCabin_1_1Server_1_1ControlService.html',1,'LogCabin::Server']]],
   ['conversionerror',['ConversionError',['../structLogCabin_1_1Core_1_1Config_1_1ConversionError.html',1,'LogCabin::Core::Config']]],
   ['csteadyclock',['CSteadyClock',['../structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html',1,'LogCabin::Core::Time']]],
   ['csystemclock',['CSystemClock',['../structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html',1,'LogCabin::Core::Time']]]

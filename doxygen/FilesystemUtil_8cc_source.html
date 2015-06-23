@@ -231,7 +231,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00149"></a>00149 {
 <a name="l00150"></a>00150     <span class="keywordflow">if</span> (::<a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#afb40e02ed16b81bc64e71239ea48eaea" title="Apply or remove an advisory lock on a file or directory.">flock</a>(file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092" title="The open file descriptor, or -1 otherwise.">fd</a>, operation) == 0)
 <a name="l00151"></a>00151         <span class="keywordflow">return</span> std::string();
-<a name="l00152"></a>00152     <span class="keywordtype">int</span> error = errno;
+<a name="l00152"></a>00152     <span class="keywordtype">int</span> <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a> = errno;
 <a name="l00153"></a>00153     std::string msg = <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">Core::StringUtil::format</a>(
 <a name="l00154"></a>00154         <span class="stringliteral">&quot;Could not flock(&#39;%s&#39;, %s): %s&quot;</span>,
 <a name="l00155"></a>00155         file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str(),

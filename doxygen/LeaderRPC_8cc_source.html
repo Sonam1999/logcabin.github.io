@@ -187,7 +187,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00105"></a>00105                       <a class="code" href="classLogCabin_1_1Client_1_1LeaderRPCBase.html#ab8c09d1a16236b8b75f575c9d2681c78" title="Type for absolute time values used for timeouts.">TimePoint</a> timeout)
 <a name="l00106"></a>00106 {
 <a name="l00107"></a>00107     <span class="keyword">typedef</span> <a class="code" href="classLogCabin_1_1RPC_1_1ClientRPC.html#a7732b104e0010f946c5420ec05ec65a3" title="The return type of waitForReply().">RPC::ClientRPC::Status</a> RPCStatus;
-<a name="l00108"></a>00108     Protocol::Client::Error error;
+<a name="l00108"></a>00108     Protocol::Client::Error <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a>;
 <a name="l00109"></a>00109     RPCStatus status = rpc.waitForReply(&amp;response, &amp;error, timeout);
 <a name="l00110"></a>00110 
 <a name="l00111"></a>00111     <span class="comment">// Decode the response</span>

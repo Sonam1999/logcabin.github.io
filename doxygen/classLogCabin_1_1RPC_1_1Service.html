@@ -119,7 +119,8 @@ Inheritance diagram for LogCabin::RPC::Service:</div>
 <area href="classLogCabin_1_1RPC_1_1ServiceMock.html" title="This class is used to mock out a Service for testing a client that sends RPCs." alt="LogCabin::RPC::ServiceMock" shape="rect" coords="0,56,236,80"/>
 <area href="classLogCabin_1_1RPC_1_1ThreadDispatchService.html" title="This class is an adaptor to enable multi-threaded services." alt="LogCabin::RPC::ThreadDispatchService" shape="rect" coords="246,56,482,80"/>
 <area href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service." alt="LogCabin::Server::ClientService" shape="rect" coords="492,56,728,80"/>
-<area href="classLogCabin_1_1Server_1_1RaftService.html" alt="LogCabin::Server::RaftService" shape="rect" coords="738,56,974,80"/>
+<area href="classLogCabin_1_1Server_1_1ControlService.html" title="Invoked by logcabinctl client to inspect and manipulate internal server state." alt="LogCabin::Server::ControlService" shape="rect" coords="738,56,974,80"/>
+<area href="classLogCabin_1_1Server_1_1RaftService.html" alt="LogCabin::Server::RaftService" shape="rect" coords="984,56,1220,80"/>
 </map>
  </div></div>
 
@@ -220,7 +221,7 @@ Public Member Functions</h2></td></tr>
 <p>This method is overridden by a subclass and invoked by the <a class="el" href="classLogCabin_1_1RPC_1_1Server.html" title="A Server listens for incoming RPCs over TCP connections and dispatches these to Services.">Server</a> class when a new <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> arrives. </p>
 <p>It should call <a class="el" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">ServerRPC::reply()</a> or another method on the <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> to handle the request. The <a class="el" href="classLogCabin_1_1RPC_1_1Server.html" title="A Server listens for incoming RPCs over TCP connections and dispatches these to Services.">Server</a> class calls this on a thread pool. </p>
 
-<p>Implemented in <a class="el" href="classLogCabin_1_1RPC_1_1ServiceMock.html#a87aed7a8814c6cfd8ac4aaf747ab9136">LogCabin::RPC::ServiceMock</a>, <a class="el" href="classLogCabin_1_1RPC_1_1ThreadDispatchService.html#aa9fc40f3a07d71deb0016aff1c6234cd">LogCabin::RPC::ThreadDispatchService</a>, <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#ac25707d5facbd648d2e6d035866b5f51">LogCabin::Server::ClientService</a>, and <a class="el" href="classLogCabin_1_1Server_1_1RaftService.html#a3548013d38c01578f4299069c9e5327e">LogCabin::Server::RaftService</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1RPC_1_1ServiceMock.html#a87aed7a8814c6cfd8ac4aaf747ab9136">LogCabin::RPC::ServiceMock</a>, <a class="el" href="classLogCabin_1_1RPC_1_1ThreadDispatchService.html#aa9fc40f3a07d71deb0016aff1c6234cd">LogCabin::RPC::ThreadDispatchService</a>, <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#ac25707d5facbd648d2e6d035866b5f51">LogCabin::Server::ClientService</a>, <a class="el" href="classLogCabin_1_1Server_1_1ControlService.html#a29df31b2fb0523de1b67f1bef9dde5b5">LogCabin::Server::ControlService</a>, and <a class="el" href="classLogCabin_1_1Server_1_1RaftService.html#a3548013d38c01578f4299069c9e5327e">LogCabin::Server::RaftService</a>.</p>
 
 </div>
 </div>
@@ -240,7 +241,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Return a short name for this service which can be used in things like log messages. </p>
 
-<p>Implemented in <a class="el" href="classLogCabin_1_1RPC_1_1ServiceMock.html#a387fd0f077f8827e58506900a7755881">LogCabin::RPC::ServiceMock</a>, <a class="el" href="classLogCabin_1_1RPC_1_1ThreadDispatchService.html#ae45d7c7c09560d4cc30514e0bd34c3b3">LogCabin::RPC::ThreadDispatchService</a>, <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a43065688343bcac90fa98a2d62ae422b">LogCabin::Server::ClientService</a>, and <a class="el" href="classLogCabin_1_1Server_1_1RaftService.html#a75bb0eeface6abecea1922b300c7651e">LogCabin::Server::RaftService</a>.</p>
+<p>Implemented in <a class="el" href="classLogCabin_1_1RPC_1_1ServiceMock.html#a387fd0f077f8827e58506900a7755881">LogCabin::RPC::ServiceMock</a>, <a class="el" href="classLogCabin_1_1RPC_1_1ThreadDispatchService.html#ae45d7c7c09560d4cc30514e0bd34c3b3">LogCabin::RPC::ThreadDispatchService</a>, <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html#a43065688343bcac90fa98a2d62ae422b">LogCabin::Server::ClientService</a>, <a class="el" href="classLogCabin_1_1Server_1_1ControlService.html#a6bc4936461f24836b843875f0f6c7a94">LogCabin::Server::ControlService</a>, and <a class="el" href="classLogCabin_1_1Server_1_1RaftService.html#a75bb0eeface6abecea1922b300c7651e">LogCabin::Server::RaftService</a>.</p>
 
 </div>
 </div>

@@ -83,8 +83,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Core/Time.cc File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;cassert&gt;</code><br/>
+<div class="textblock"><code>#include &lt;algorithm&gt;</code><br/>
+<code>#include &lt;cassert&gt;</code><br/>
 <code>#include &lt;cstring&gt;</code><br/>
+<code>#include &lt;functional&gt;</code><br/>
+<code>#include &lt;stdexcept&gt;</code><br/>
 <code>#include &quot;<a class="el" href="Core_2Debug_8h_source.html">Core/Debug.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Time_8h_source.html">Core/Time.h</a>&quot;</code><br/>
 </div>
@@ -99,6 +102,8 @@ Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd_1_1anonymous__namespace_02Time_8cc_03.html">std::anonymous_namespace{Time.cc}</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a9b4dbdf565a390161eeba2cfa782a365">LogCabin::Core::Time::parseDuration</a> (const std::string &amp;description)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a human-readable description of a time duration into a number of nanoseconds.  <a href="#a9b4dbdf565a390161eeba2cfa782a365"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75">LogCabin::Core::Time::sleep</a> (SteadyClock::time_point wake)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Block the calling thread until the given time.  <a href="#a8f257504e3a87c3f6fcafce6729c1f75"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd_1_1anonymous__namespace_02Time_8cc_03.html#a073bb53f88d43b96185dd598a0392dc4">std::anonymous_namespace{Time.cc}::padFraction</a> (int64_t fraction, uint64_t digits)</td></tr>

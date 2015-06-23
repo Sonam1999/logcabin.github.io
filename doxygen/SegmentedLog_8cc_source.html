@@ -959,7 +959,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00877"></a>00877                            SegmentedLogMetadata::Metadata&amp; metadata,
 <a name="l00878"></a>00878                            <span class="keywordtype">bool</span> quiet)<span class="keyword"> const</span>
 <a name="l00879"></a>00879 <span class="keyword"></span>{
-<a name="l00880"></a>00880     std::string error;
+<a name="l00880"></a>00880     std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a>;
 <a name="l00881"></a>00881     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FS::File</a> file = <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a8c4e5186a5d9c353ec8484e0931a155f" title="Open a file.">FS::tryOpenFile</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, filename, O_RDONLY);
 <a name="l00882"></a>00882     <span class="keywordflow">if</span> (file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092" title="The open file descriptor, or -1 otherwise.">fd</a> == -1) {
 <a name="l00883"></a>00883         error = <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;Could not open %s/%s: %s&quot;</span>,
@@ -1025,7 +1025,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00943"></a>00943     <span class="keywordflow">for</span> (uint64_t index = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>;
 <a name="l00944"></a>00944          index &lt;= segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a>;
 <a name="l00945"></a>00945          ++index) {
-<a name="l00946"></a>00946         std::string error;
+<a name="l00946"></a>00946         std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a>;
 <a name="l00947"></a>00947         <span class="keywordflow">if</span> (offset &gt;= reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>()) {
 <a name="l00948"></a>00948             error = <span class="stringliteral">&quot;File too short&quot;</span>;
 <a name="l00949"></a>00949         } <span class="keywordflow">else</span> {
@@ -1084,7 +1084,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01002"></a>01002     uint64_t lastIndex = 0;
 <a name="l01003"></a>01003     <span class="keywordflow">while</span> (offset &lt; reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>()) {
 <a name="l01004"></a>01004         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.emplace_back(offset);
-<a name="l01005"></a>01005         std::string error = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa7c541cbed809b7dbfe7541b2c789d15" title="Read the next ProtoBuf record out of &#39;file&#39;.">readProtoFromFile</a>(
+<a name="l01005"></a>01005         std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a> = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa7c541cbed809b7dbfe7541b2c789d15" title="Read the next ProtoBuf record out of &#39;file&#39;.">readProtoFromFile</a>(
 <a name="l01006"></a>01006                 file,
 <a name="l01007"></a>01007                 reader,
 <a name="l01008"></a>01008                 &amp;offset,
@@ -1311,7 +1311,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01229"></a>01229 
 <a name="l01230"></a>01230     <span class="keyword">const</span> <span class="keywordtype">void</span>* checksumCoverage = reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a9d72e8e623b3b64feac1c58079bad1c5" title="Get a pointer to a region of the file.">get</a>(loffset,
 <a name="l01231"></a>01231                                               <span class="keyword">sizeof</span>(dataLen) + dataLen);
-<a name="l01232"></a>01232     std::string error = <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#ad6fd1ade236f1b3bb9a26a54acda71c7" title="Verify data against an existing checksum.">Core::Checksum::verify</a>(checksum, checksumCoverage,
+<a name="l01232"></a>01232     std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#ad6fd1ade236f1b3bb9a26a54acda71c7" title="Verify data against an existing checksum.">Core::Checksum::verify</a>(checksum, checksumCoverage,
 <a name="l01233"></a>01233                                                <span class="keyword">sizeof</span>(dataLen) + dataLen);
 <a name="l01234"></a>01234     <span class="keywordflow">if</span> (!error.empty()) {
 <a name="l01235"></a>01235         <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;Checksum verification failure on %s: %s&quot;</span>,

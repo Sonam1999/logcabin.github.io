@@ -3,7 +3,6 @@ var searchData=
   ['b',['b',['../structLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1RAIISwap.html#a85ed600effefa7668395b85389ed4c72',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::RAIISwap']]],
   ['backoffuntil',['backoffUntil',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a8b6511933a555747a4edf9e4cb9f385c',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['badservers',['badServers',['../structLogCabin_1_1Client_1_1ConfigurationResult.html#a5b2c4d3eec9932176188567f47af1ac7',1,'LogCabin::Client::ConfigurationResult']]],
-  ['binary',['binary',['../classanonymous__namespace_02ServerStats_8cc_03_1_1OptionParser.html#a357b5b0e250d8c79a7c19929ced41fa7',1,'anonymous_namespace{ServerStats.cc}::OptionParser']]],
   ['bootstrap',['bootstrap',['../classanonymous__namespace_02Main_8cc_03_1_1OptionParser.html#aabc1dd2c57d0572ece3abdb9ca30a25c',1,'anonymous_namespace{Main.cc}::OptionParser']]],
   ['boundlisteners',['boundListeners',['../classLogCabin_1_1RPC_1_1OpaqueServer.html#a18bced70dd394238cac7a60fa6abe851',1,'LogCabin::RPC::OpaqueServer']]],
   ['boundlistenersmutex',['boundListenersMutex',['../classLogCabin_1_1RPC_1_1OpaqueServer.html#aea4127f7de6d74ee0f21c7c98e2ffea0',1,'LogCabin::RPC::OpaqueServer']]],

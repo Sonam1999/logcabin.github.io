@@ -135,27 +135,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00053"></a>00053 <span class="comment">    ////////// RPC handlers //////////</span>
 <a name="l00054"></a>00054 <span class="comment"></span>
 <a name="l00055"></a>00055     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a24c49f2ca80f733ddb21f24609d16831">getServerInfo</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
-<a name="l00056"></a>00056     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a53494b31e451647406079bf8fe56f94b">getServerStats</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
-<a name="l00057"></a>00057     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a68926d6561a3b5ac3f5b99ee76c448e7">getConfiguration</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
-<a name="l00058"></a>00058     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a0b6f56d7cad75f38f0fc2a6ce24a8b93">setConfiguration</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
-<a name="l00059"></a>00059     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a101d587ddd27122862399fab836c227c">stateMachineCommand</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
-<a name="l00060"></a>00060     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#add78d040f3926c39ed71081837b5c39a">stateMachineQuery</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
-<a name="l00061"></a>00061     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#ae910cf2dbef4547d51875eb1db819e20">verifyRecipient</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
-<a name="l00062"></a>00062 <span class="comment"></span>
-<a name="l00063"></a>00063 <span class="comment">    /**</span>
-<a name="l00064"></a>00064 <span class="comment">     * The LogCabin daemon&#39;s top-level objects.</span>
-<a name="l00065"></a>00065 <span class="comment">     */</span>
-<a name="l00066"></a><a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a5f6e9275b2850acaa8a5ff7adb0b7ca4">00066</a>     <a class="code" href="classLogCabin_1_1Server_1_1Globals.html" title="Holds the LogCabin daemon&#39;s top-level objects.">Globals</a>&amp; <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a5f6e9275b2850acaa8a5ff7adb0b7ca4" title="The LogCabin daemon&#39;s top-level objects.">globals</a>;
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068     <span class="comment">// ClientService is non-copyable.</span>
-<a name="l00069"></a>00069     <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#ae1cacd28a5486d1d18f88242070bb6e7" title="Constructor.">ClientService</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00070"></a>00070     <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a>&amp; <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#abde56b6883bf499bfdf0553866ba3cad">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00071"></a>00071 }; <span class="comment">// class ClientService</span>
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073 } <span class="comment">// namespace LogCabin::Server</span>
-<a name="l00074"></a>00074 } <span class="comment">// namespace LogCabin</span>
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_SERVER_CLIENTSERVICE_H */</span>
+<a name="l00056"></a>00056     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a68926d6561a3b5ac3f5b99ee76c448e7">getConfiguration</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
+<a name="l00057"></a>00057     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a0b6f56d7cad75f38f0fc2a6ce24a8b93">setConfiguration</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
+<a name="l00058"></a>00058     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a101d587ddd27122862399fab836c227c">stateMachineCommand</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
+<a name="l00059"></a>00059     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#add78d040f3926c39ed71081837b5c39a">stateMachineQuery</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
+<a name="l00060"></a>00060     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#ae910cf2dbef4547d51875eb1db819e20">verifyRecipient</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
+<a name="l00061"></a>00061 <span class="comment"></span>
+<a name="l00062"></a>00062 <span class="comment">    /**</span>
+<a name="l00063"></a>00063 <span class="comment">     * The LogCabin daemon&#39;s top-level objects.</span>
+<a name="l00064"></a>00064 <span class="comment">     */</span>
+<a name="l00065"></a><a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a5f6e9275b2850acaa8a5ff7adb0b7ca4">00065</a>     <a class="code" href="classLogCabin_1_1Server_1_1Globals.html" title="Holds the LogCabin daemon&#39;s top-level objects.">Globals</a>&amp; <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#a5f6e9275b2850acaa8a5ff7adb0b7ca4" title="The LogCabin daemon&#39;s top-level objects.">globals</a>;
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067     <span class="comment">// ClientService is non-copyable.</span>
+<a name="l00068"></a>00068     <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#ae1cacd28a5486d1d18f88242070bb6e7" title="Constructor.">ClientService</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00069"></a>00069     <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a>&amp; <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html#abde56b6883bf499bfdf0553866ba3cad">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00070"></a>00070 }; <span class="comment">// class ClientService</span>
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072 } <span class="comment">// namespace LogCabin::Server</span>
+<a name="l00073"></a>00073 } <span class="comment">// namespace LogCabin</span>
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_SERVER_CLIENTSERVICE_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
