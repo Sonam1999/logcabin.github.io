@@ -38,6 +38,7 @@ var searchData=
   ['loglevel',['logLevel',['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a6d04ae99f78881c253afffb741bad9ff',1,'LogCabin::Core::Debug::DebugMessage']]],
   ['loglevelstring',['logLevelString',['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a306adbdcbb237f8f4efe7044697faa81',1,'LogCabin::Core::Debug::DebugMessage']]],
   ['logleveltostring',['logLevelToString',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86',1,'LogCabin::Core::Debug::Internal']]],
+  ['logpolicy',['logPolicy',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114',1,'LogCabin::Core::Debug::Internal']]],
   ['logstartindex',['logStartIndex',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865',1,'LogCabin::Storage::SegmentedLog']]],
   ['logsyncqueued',['logSyncQueued',['../classLogCabin_1_1Server_1_1RaftConsensus.html#aa6c06993ed2a50989b453f120cd31aea',1,'LogCabin::Server::RaftConsensus']]],
   ['lostandfound',['lostAndFound',['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#aa8f420a998b34012fc032eac8ab912c8',1,'LogCabin::Storage::SimpleFileLog']]]

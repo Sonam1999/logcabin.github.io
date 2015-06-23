@@ -204,9 +204,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00122"></a>00122 };
 <a name="l00123"></a>00123 <span class="comment"></span>
 <a name="l00124"></a>00124 <span class="comment">/**</span>
-<a name="l00125"></a>00125 <span class="comment"> * Protects #policy, #isLoggingCache, and #logFilename.</span>
+<a name="l00125"></a>00125 <span class="comment"> * Protects #logPolicy, #isLoggingCache, and #logFilename.</span>
 <a name="l00126"></a>00126 <span class="comment"> */</span>
-<a name="l00127"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d">00127</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">std::mutex</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>;
+<a name="l00127"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d">00127</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">std::mutex</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>;
 <a name="l00128"></a>00128 <span class="comment"></span>
 <a name="l00129"></a>00129 <span class="comment">/**</span>
 <a name="l00130"></a>00130 <span class="comment"> * Specifies the log messages that should be displayed for each filename.</span>
@@ -218,11 +218,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00136"></a>00136 <span class="comment"> *</span>
 <a name="l00137"></a>00137 <span class="comment"> * Protected by #mutex.</span>
 <a name="l00138"></a>00138 <span class="comment"> */</span>
-<a name="l00139"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aefa22d74a958dcc8c0a60502347781d9">00139</a> std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aefa22d74a958dcc8c0a60502347781d9" title="Specifies the log messages that should be displayed for each filename.">policy</a>;
+<a name="l00139"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114">00139</a> std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a>;
 <a name="l00140"></a>00140 <span class="comment"></span>
 <a name="l00141"></a>00141 <span class="comment">/**</span>
 <a name="l00142"></a>00142 <span class="comment"> * A cache of the results of getLogLevel(), since that function is slow.</span>
-<a name="l00143"></a>00143 <span class="comment"> * This needs to be cleared when the policy changes.</span>
+<a name="l00143"></a>00143 <span class="comment"> * This needs to be cleared when the logPolicy changes.</span>
 <a name="l00144"></a>00144 <span class="comment"> * The key to the map is a pointer to the absolute filename, which should be a</span>
 <a name="l00145"></a>00145 <span class="comment"> * string literal.</span>
 <a name="l00146"></a>00146 <span class="comment"> *</span>
@@ -277,7 +277,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00195"></a>00195 <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5" title="The levels of verbosity for log messages.">LogLevel</a>
 <a name="l00196"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aae4d1aad342f6634ac37747739fd1561">00196</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aae4d1aad342f6634ac37747739fd1561" title="From the policy, calculate the most verbose log level that should be displayed for this file...">getLogLevel</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* fileName)
 <a name="l00197"></a>00197 {
-<a name="l00198"></a>00198     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aefa22d74a958dcc8c0a60502347781d9" title="Specifies the log messages that should be displayed for each filename.">policy</a>.begin(); it != <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aefa22d74a958dcc8c0a60502347781d9" title="Specifies the log messages that should be displayed for each filename.">policy</a>.end(); ++it) {
+<a name="l00198"></a>00198     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a>.begin(); it != <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a>.end(); ++it) {
 <a name="l00199"></a>00199         <span class="keyword">const</span> std::string&amp; pattern = it-&gt;first;
 <a name="l00200"></a>00200         <span class="keyword">const</span> std::string&amp; logLevel = it-&gt;second;
 <a name="l00201"></a>00201         <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#abd5665712d4706d4b2189d3a182f4316" title="Return true if haystack begins with needle.">Core::StringUtil::startsWith</a>(fileName, pattern) ||
@@ -331,7 +331,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00249"></a>00249 std::string
 <a name="l00250"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ad7c6ff7d9db6f2425ae16f5024555dd2">00250</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ad7c6ff7d9db6f2425ae16f5024555dd2" title="Return the filename given to the last successful call to setLogFilename(), or the empty string if non...">getLogFilename</a>()
 <a name="l00251"></a>00251 {
-<a name="l00252"></a>00252     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
+<a name="l00252"></a>00252     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
 <a name="l00253"></a>00253     <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#ad154d38c45ad62de8f29f46371b8d3cf" title="Filename of currently open stream, if known.">logFilename</a>;
 <a name="l00254"></a>00254 }
 <a name="l00255"></a>00255 
@@ -347,7 +347,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00265"></a>00265     }
 <a name="l00266"></a>00266     FILE* old;
 <a name="l00267"></a>00267     {
-<a name="l00268"></a>00268         std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
+<a name="l00268"></a>00268         std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
 <a name="l00269"></a>00269         old = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>;
 <a name="l00270"></a>00270         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a> = next;
 <a name="l00271"></a>00271         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#ad154d38c45ad62de8f29f46371b8d3cf" title="Filename of currently open stream, if known.">logFilename</a> = filename;
@@ -374,7 +374,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00292"></a>00292 FILE*
 <a name="l00293"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a221c605df65625a7bcb91990af0986d3">00293</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a221c605df65625a7bcb91990af0986d3" title="Change the file on which debug log messages are written.">setLogFile</a>(FILE* newFile)
 <a name="l00294"></a>00294 {
-<a name="l00295"></a>00295     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
+<a name="l00295"></a>00295     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
 <a name="l00296"></a>00296     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#ad154d38c45ad62de8f29f46371b8d3cf" title="Filename of currently open stream, if known.">logFilename</a>.clear();
 <a name="l00297"></a>00297     FILE* old = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>;
 <a name="l00298"></a>00298     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a> = newFile;
@@ -384,142 +384,201 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00302"></a>00302 std::function&lt;void(DebugMessage)&gt;
 <a name="l00303"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae229e11e9f1413bc265c12f8fe39cf6f">00303</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae229e11e9f1413bc265c12f8fe39cf6f" title="Accept log messages on the given callback instead of writing them to a file.">setLogHandler</a>(std::function&lt;<span class="keywordtype">void</span>(<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html" title="When LogCabin wants to print a log message, this is the information that gets included.">DebugMessage</a>)&gt; handler)
 <a name="l00304"></a>00304 {
-<a name="l00305"></a>00305     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
+<a name="l00305"></a>00305     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
 <a name="l00306"></a>00306     std::function&lt;void(DebugMessage)&gt; old = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a9b1b7da5221b8fb784234b34fab553a0" title="If set, a callback that takes log messages instead of the normal log file (stream).">logHandler</a>;
 <a name="l00307"></a>00307     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a9b1b7da5221b8fb784234b34fab553a0" title="If set, a callback that takes log messages instead of the normal log file (stream).">logHandler</a> = handler;
 <a name="l00308"></a>00308     <span class="keywordflow">return</span> old;
 <a name="l00309"></a>00309 }
 <a name="l00310"></a>00310 
-<a name="l00311"></a>00311 <span class="keywordtype">void</span>
-<a name="l00312"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0">00312</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">setLogPolicy</a>(<span class="keyword">const</span> std::vector&lt;std::pair&lt;std::string,
-<a name="l00313"></a>00313                                          std::string&gt;&gt;&amp; newPolicy)
-<a name="l00314"></a>00314 {
-<a name="l00315"></a>00315     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
-<a name="l00316"></a>00316     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aefa22d74a958dcc8c0a60502347781d9" title="Specifies the log messages that should be displayed for each filename.">policy</a> = newPolicy;
-<a name="l00317"></a>00317     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>.clear();
-<a name="l00318"></a>00318 }
-<a name="l00319"></a>00319 
-<a name="l00320"></a>00320 <span class="keywordtype">void</span>
-<a name="l00321"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#af6b81483d297545dd73523bc1243b3a8">00321</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">setLogPolicy</a>(<span class="keyword">const</span> std::initializer_list&lt;std::pair&lt;std::string,
-<a name="l00322"></a>00322                                          std::string&gt;&gt;&amp; newPolicy)
-<a name="l00323"></a>00323 {
-<a name="l00324"></a>00324     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">setLogPolicy</a>(std::vector&lt;std::pair&lt;std::string,
-<a name="l00325"></a>00325                                          std::string&gt;&gt;(newPolicy));
-<a name="l00326"></a>00326 }
-<a name="l00327"></a>00327 
-<a name="l00328"></a>00328 std::ostream&amp;
-<a name="l00329"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a2a8a29aaac86e7894abfb09d095b1b36">00329</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a2a8a29aaac86e7894abfb09d095b1b36" title="Output a LogLevel to a stream.">operator&lt;&lt;</a>(std::ostream&amp; ostream, <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5" title="The levels of verbosity for log messages.">LogLevel</a> level)
+<a name="l00311"></a>00311 std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt;
+<a name="l00312"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#aa75ec185568820982b1624f824e48414">00312</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#aa75ec185568820982b1624f824e48414" title="Return the current log policy (as set by a previous call to setLogPolicy).">getLogPolicy</a>()
+<a name="l00313"></a>00313 {
+<a name="l00314"></a>00314     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
+<a name="l00315"></a>00315     <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a>;
+<a name="l00316"></a>00316 }
+<a name="l00317"></a>00317 
+<a name="l00318"></a>00318 <span class="keywordtype">void</span>
+<a name="l00319"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0">00319</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">setLogPolicy</a>(<span class="keyword">const</span> std::vector&lt;std::pair&lt;std::string,
+<a name="l00320"></a>00320                                          std::string&gt;&gt;&amp; newPolicy)
+<a name="l00321"></a>00321 {
+<a name="l00322"></a>00322     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
+<a name="l00323"></a>00323     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a> = newPolicy;
+<a name="l00324"></a>00324     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>.clear();
+<a name="l00325"></a>00325 }
+<a name="l00326"></a>00326 
+<a name="l00327"></a>00327 <span class="keywordtype">void</span>
+<a name="l00328"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#af6b81483d297545dd73523bc1243b3a8">00328</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">setLogPolicy</a>(<span class="keyword">const</span> std::initializer_list&lt;std::pair&lt;std::string,
+<a name="l00329"></a>00329                                          std::string&gt;&gt;&amp; newPolicy)
 <a name="l00330"></a>00330 {
-<a name="l00331"></a>00331     ostream &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86" title="Used to convert LogLevels into strings that will be printed.">logLevelToString</a>[uint32_t(level)];
-<a name="l00332"></a>00332     <span class="keywordflow">return</span> ostream;
+<a name="l00331"></a>00331     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">setLogPolicy</a>(std::vector&lt;std::pair&lt;std::string,
+<a name="l00332"></a>00332                                          std::string&gt;&gt;(newPolicy));
 <a name="l00333"></a>00333 }
 <a name="l00334"></a>00334 
-<a name="l00335"></a>00335 <span class="keywordtype">bool</span>
-<a name="l00336"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a6fb17a6ff9a81e892702560656d691a2">00336</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a6fb17a6ff9a81e892702560656d691a2" title="Return whether the current logging configuration includes messages of the given level for the given f...">isLogging</a>(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5" title="The levels of verbosity for log messages.">LogLevel</a> level, <span class="keyword">const</span> <span class="keywordtype">char</span>* fileName)
+<a name="l00335"></a>00335 std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt;
+<a name="l00336"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9">00336</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9" title="Build a log policy from its string representation.">logPolicyFromString</a>(<span class="keyword">const</span> std::string&amp; in)
 <a name="l00337"></a>00337 {
-<a name="l00338"></a>00338     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
-<a name="l00339"></a>00339     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5" title="The levels of verbosity for log messages.">LogLevel</a> verbosity;
-<a name="l00340"></a>00340     <span class="keyword">auto</span> it = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>.find(fileName);
-<a name="l00341"></a>00341     <span class="keywordflow">if</span> (it == <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>.end()) {
-<a name="l00342"></a>00342         verbosity = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aae4d1aad342f6634ac37747739fd1561" title="From the policy, calculate the most verbose log level that should be displayed for this file...">getLogLevel</a>(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#acc4bd70b5716f2725c218b0b7e552a38" title="Strip out the common prefix of a filename to get a path from the project&#39;s root directory.">relativeFileName</a>(fileName));
-<a name="l00343"></a>00343         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>[fileName] = verbosity;
-<a name="l00344"></a>00344     } <span class="keywordflow">else</span> {
-<a name="l00345"></a>00345         verbosity = it-&gt;second;
-<a name="l00346"></a>00346     }
-<a name="l00347"></a>00347     <span class="keywordflow">return</span> uint32_t(level) &lt;= uint32_t(verbosity);
-<a name="l00348"></a>00348 }
-<a name="l00349"></a>00349 
-<a name="l00350"></a>00350 <span class="keywordtype">void</span>
-<a name="l00351"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ac6edb3bfbfca4fc5ae5a98a0c36ffdda">00351</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ac6edb3bfbfca4fc5ae5a98a0c36ffdda" title="Unconditionally log the given message to stderr.">log</a>(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5" title="The levels of verbosity for log messages.">LogLevel</a> level,
-<a name="l00352"></a>00352     <span class="keyword">const</span> <span class="keywordtype">char</span>* fileName, uint32_t lineNum, <span class="keyword">const</span> <span class="keywordtype">char</span>* functionName,
-<a name="l00353"></a>00353     <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>, ...)
-<a name="l00354"></a>00354 {
-<a name="l00355"></a>00355     va_list ap;
-<a name="l00356"></a>00356 
-<a name="l00357"></a>00357     <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a9b1b7da5221b8fb784234b34fab553a0" title="If set, a callback that takes log messages instead of the normal log file (stream).">logHandler</a>) {
-<a name="l00358"></a>00358         <a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html" title="When LogCabin wants to print a log message, this is the information that gets included.">DebugMessage</a> d;
-<a name="l00359"></a>00359         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#ac7418c441a3b04d68c6f44e92c1f9fad" title="The output of __FILE__.">filename</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#acc4bd70b5716f2725c218b0b7e552a38" title="Strip out the common prefix of a filename to get a path from the project&#39;s root directory.">relativeFileName</a>(fileName);
-<a name="l00360"></a>00360         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#af99a662b0d7637d910a2204db921ba1c" title="The output of __LINE__.">linenum</a> = int(lineNum);
-<a name="l00361"></a>00361         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a8a097a4bf5c8830274408091cad057b6" title="The output of __FUNCTION__.">function</a> = functionName;
-<a name="l00362"></a>00362         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a6d04ae99f78881c253afffb741bad9ff" title="The level of importance of the message as an integer.">logLevel</a> = int(level);
-<a name="l00363"></a>00363         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a306adbdcbb237f8f4efe7044697faa81" title="The level of importance of the message as a static string.">logLevelString</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86" title="Used to convert LogLevels into strings that will be printed.">logLevelToString</a>[uint32_t(level)];
-<a name="l00364"></a>00364         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a97158a2a93627aba12f9f94e2117203a" title="The name of the current process (its PID or server ID).">processName</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae3a1029f050a61c1bb014d03486280a6" title="A short name to be used in log messages to identify this process.">processName</a>;
-<a name="l00365"></a>00365         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a21df0765d2f5797a3c0acdc8d74cdaf7" title="The name of the current thread (by its function or its thread ID).">threadName</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#aa4967ee656e33d34264341269ef8418f" title="Get the friendly name for the current thread.">ThreadId::getName</a>();
-<a name="l00366"></a>00366 
-<a name="l00367"></a>00367         <span class="comment">// this part is copied from Core::StringUtil::toString.</span>
-<a name="l00368"></a>00368         va_start(ap, format);
-<a name="l00369"></a>00369         <span class="comment">// We&#39;re not really sure how big of a buffer will be necessary.</span>
-<a name="l00370"></a>00370         <span class="comment">// Try 1K, if not the return value will tell us how much is necessary.</span>
-<a name="l00371"></a>00371         <span class="keywordtype">size_t</span> bufSize = 1024;
-<a name="l00372"></a>00372         <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
-<a name="l00373"></a>00373             <span class="keywordtype">char</span> buf[bufSize];
-<a name="l00374"></a>00374             <span class="comment">// vsnprintf trashes the va_list, so copy it first</span>
-<a name="l00375"></a>00375             va_list aq;
-<a name="l00376"></a>00376             va_copy(aq, ap);
-<a name="l00377"></a>00377             <span class="keywordtype">int</span> r = vsnprintf(buf, bufSize, format, aq);
-<a name="l00378"></a>00378             va_end(aq);
-<a name="l00379"></a>00379             assert(r &gt;= 0); <span class="comment">// old glibc versions returned -1</span>
-<a name="l00380"></a>00380             <span class="keywordtype">size_t</span> r2 = size_t(r);
-<a name="l00381"></a>00381             <span class="keywordflow">if</span> (r2 &lt; bufSize) {
-<a name="l00382"></a>00382                 buf[r2 - 1] = <span class="charliteral">&#39;\0&#39;</span>; <span class="comment">// strip off &quot;\n&quot; added by LOG macro</span>
-<a name="l00383"></a>00383                 d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a14b1f71a6d3d7504411960a3aa79d815" title="The contents of the message.">message</a> = buf; <span class="comment">// copy string</span>
-<a name="l00384"></a>00384                 <span class="keywordflow">break</span>;
-<a name="l00385"></a>00385             }
-<a name="l00386"></a>00386             bufSize = size_t(r2) + 1;
-<a name="l00387"></a>00387         }
-<a name="l00388"></a>00388         va_end(ap);
-<a name="l00389"></a>00389         (<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a9b1b7da5221b8fb784234b34fab553a0" title="If set, a callback that takes log messages instead of the normal log file (stream).">logHandler</a>)(d);
-<a name="l00390"></a>00390         <span class="keywordflow">return</span>;
-<a name="l00391"></a>00391     }
-<a name="l00392"></a>00392 
-<a name="l00393"></a>00393     <span class="comment">// Don&#39;t use Core::Time here since it could potentially call PANIC.</span>
-<a name="l00394"></a>00394     <span class="keyword">struct </span>timespec now;
-<a name="l00395"></a>00395     clock_gettime(CLOCK_REALTIME, &amp;now);
-<a name="l00396"></a>00396 
-<a name="l00397"></a>00397     <span class="comment">// Failures are a little annoying here, since we can&#39;t exactly log</span>
-<a name="l00398"></a>00398     <span class="comment">// errors that come up.</span>
-<a name="l00399"></a>00399     <span class="keywordtype">char</span> formattedSeconds[64]; <span class="comment">// a human-readable string now.tv_sec</span>
-<a name="l00400"></a>00400     <span class="keywordtype">bool</span> ok = <span class="keyword">false</span>;
-<a name="l00401"></a>00401     { <span class="comment">// First, try gmtime and strftime.</span>
-<a name="l00402"></a>00402         <span class="keyword">struct </span>tm calendarTime;
-<a name="l00403"></a>00403         <span class="keywordflow">if</span> (gmtime_r(&amp;now.tv_sec, &amp;calendarTime) != NULL) {
-<a name="l00404"></a>00404             ok = (strftime(formattedSeconds,
-<a name="l00405"></a>00405                            <span class="keyword">sizeof</span>(formattedSeconds),
-<a name="l00406"></a>00406                            <span class="stringliteral">&quot;%F %T&quot;</span>,
-<a name="l00407"></a>00407                            &amp;calendarTime) &gt; 0);
-<a name="l00408"></a>00408         }
-<a name="l00409"></a>00409     }
-<a name="l00410"></a>00410     <span class="keywordflow">if</span> (!ok) { <span class="comment">// If that failed, use the raw number.</span>
-<a name="l00411"></a>00411         snprintf(formattedSeconds,
-<a name="l00412"></a>00412                  <span class="keyword">sizeof</span>(formattedSeconds),
-<a name="l00413"></a>00413                  <span class="stringliteral">&quot;%010lu&quot;</span>,
-<a name="l00414"></a>00414                  now.tv_sec);
-<a name="l00415"></a>00415         formattedSeconds[<span class="keyword">sizeof</span>(formattedSeconds) - 1] = <span class="charliteral">&#39;\0&#39;</span>;
-<a name="l00416"></a>00416     }
-<a name="l00417"></a>00417 
-<a name="l00418"></a>00418     <span class="comment">// This ensures that output on stderr won&#39;t be interspersed with other</span>
-<a name="l00419"></a>00419     <span class="comment">// output. This normally happens automatically for a single call to</span>
-<a name="l00420"></a>00420     <span class="comment">// fprintf, but must be explicit since we&#39;re using two calls here.</span>
-<a name="l00421"></a>00421     flockfile(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>);
-<a name="l00422"></a>00422 
-<a name="l00423"></a>00423     fprintf(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>, <span class="stringliteral">&quot;%s.%06lu %s:%d in %s() %s[%s:%s]: &quot;</span>,
-<a name="l00424"></a>00424             formattedSeconds, now.tv_nsec / 1000,
-<a name="l00425"></a>00425             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#acc4bd70b5716f2725c218b0b7e552a38" title="Strip out the common prefix of a filename to get a path from the project&#39;s root directory.">relativeFileName</a>(fileName), lineNum, functionName,
-<a name="l00426"></a>00426             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86" title="Used to convert LogLevels into strings that will be printed.">logLevelToString</a>[uint32_t(level)],
-<a name="l00427"></a>00427             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae3a1029f050a61c1bb014d03486280a6" title="A short name to be used in log messages to identify this process.">processName</a>.c_str(), <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#aa4967ee656e33d34264341269ef8418f" title="Get the friendly name for the current thread.">ThreadId::getName</a>().c_str());
-<a name="l00428"></a>00428 
-<a name="l00429"></a>00429     va_start(ap, format);
-<a name="l00430"></a>00430     vfprintf(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>, format, ap);
-<a name="l00431"></a>00431     va_end(ap);
-<a name="l00432"></a>00432 
-<a name="l00433"></a>00433     funlockfile(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>);
-<a name="l00434"></a>00434 
-<a name="l00435"></a>00435     fflush(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>);
-<a name="l00436"></a>00436 }
-<a name="l00437"></a>00437 
-<a name="l00438"></a>00438 } <span class="comment">// namespace LogCabin::Core::Debug</span>
-<a name="l00439"></a>00439 } <span class="comment">// namespace LogCabin::Core</span>
-<a name="l00440"></a>00440 } <span class="comment">// namespace LogCabin</span>
+<a name="l00338"></a>00338     std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt; policy;
+<a name="l00339"></a>00339     std::vector&lt;std::string&gt; rules = <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#a15ab146660ab9503819c1b88fd4925c5" title="Split a path into its components.">Core::StringUtil::split</a>(in, <span class="charliteral">&#39;,&#39;</span>);
+<a name="l00340"></a>00340     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = rules.begin(); it != rules.end(); ++it) {
+<a name="l00341"></a>00341         std::vector&lt;std::string&gt; pair = <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#a15ab146660ab9503819c1b88fd4925c5" title="Split a path into its components.">Core::StringUtil::split</a>(*it, <span class="charliteral">&#39;@&#39;</span>);
+<a name="l00342"></a>00342         <span class="keywordflow">if</span> (pair.size() == 1) {
+<a name="l00343"></a>00343             policy.emplace_back(<span class="stringliteral">&quot;&quot;</span>, pair.at(0));
+<a name="l00344"></a>00344         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pair.size() == 2) {
+<a name="l00345"></a>00345             policy.emplace_back(pair.at(0), pair.at(1));
+<a name="l00346"></a>00346         } <span class="keywordflow">else</span> {
+<a name="l00347"></a>00347             <span class="comment">// someone put an @ in their pattern? odd</span>
+<a name="l00348"></a>00348             assert(pair.size() &gt;= 3);
+<a name="l00349"></a>00349             std::string level = pair.back();
+<a name="l00350"></a>00350             pair.pop_back();
+<a name="l00351"></a>00351             policy.emplace_back(<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#adfbbd1867934ebf70536e941854eb913">Core::StringUtil::join</a>(pair, <span class="stringliteral">&quot;@&quot;</span>),
+<a name="l00352"></a>00352                                 level);
+<a name="l00353"></a>00353         }
+<a name="l00354"></a>00354     }
+<a name="l00355"></a>00355     <span class="keywordflow">return</span> policy;
+<a name="l00356"></a>00356 }
+<a name="l00357"></a>00357 
+<a name="l00358"></a>00358 std::string
+<a name="l00359"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae300ca19d1a62f404316fc719ac3e2bd">00359</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae300ca19d1a62f404316fc719ac3e2bd" title="Serialize a log policy into a string representation.">logPolicyToString</a>(<span class="keyword">const</span> std::vector&lt;std::pair&lt;std::string,
+<a name="l00360"></a>00360                                               std::string&gt;&gt;&amp; policy)
+<a name="l00361"></a>00361 {
+<a name="l00362"></a>00362     std::stringstream ss;
+<a name="l00363"></a>00363     <span class="keywordflow">if</span> (policy.empty()) {
+<a name="l00364"></a>00364         ss &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5a6038e5887d28d4c66e7da74e206046b1" title="A system message that might be useful for administrators and developers.">LogLevel::NOTICE</a>;
+<a name="l00365"></a>00365     } <span class="keywordflow">else</span> {
+<a name="l00366"></a>00366         <span class="keywordtype">bool</span> lastPatternEmpty = <span class="keyword">false</span>;
+<a name="l00367"></a>00367         <span class="keywordflow">for</span> (uint64_t i = 0; i &lt; policy.size(); ++i) {
+<a name="l00368"></a>00368             <span class="keywordflow">if</span> (policy.at(i).first.empty()) {
+<a name="l00369"></a>00369                 lastPatternEmpty = <span class="keyword">true</span>;
+<a name="l00370"></a>00370             } <span class="keywordflow">else</span> {
+<a name="l00371"></a>00371                 lastPatternEmpty = <span class="keyword">false</span>;
+<a name="l00372"></a>00372                 ss &lt;&lt; policy.at(i).first;
+<a name="l00373"></a>00373                 ss &lt;&lt; <span class="stringliteral">&quot;@&quot;</span>;
+<a name="l00374"></a>00374             }
+<a name="l00375"></a>00375             ss &lt;&lt; policy.at(i).second;
+<a name="l00376"></a>00376             <span class="keywordflow">if</span> (i &lt; policy.size() - 1)
+<a name="l00377"></a>00377                 ss &lt;&lt; <span class="stringliteral">&quot;,&quot;</span>;
+<a name="l00378"></a>00378         }
+<a name="l00379"></a>00379         <span class="keywordflow">if</span> (!lastPatternEmpty) {
+<a name="l00380"></a>00380             ss &lt;&lt; <span class="stringliteral">&quot;,&quot;</span>;
+<a name="l00381"></a>00381             ss &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5a6038e5887d28d4c66e7da74e206046b1" title="A system message that might be useful for administrators and developers.">LogLevel::NOTICE</a>;
+<a name="l00382"></a>00382         }
+<a name="l00383"></a>00383     }
+<a name="l00384"></a>00384     <span class="keywordflow">return</span> ss.str();
+<a name="l00385"></a>00385 }
+<a name="l00386"></a>00386 
+<a name="l00387"></a>00387 std::ostream&amp;
+<a name="l00388"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a2a8a29aaac86e7894abfb09d095b1b36">00388</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a2a8a29aaac86e7894abfb09d095b1b36" title="Output a LogLevel to a stream.">operator&lt;&lt;</a>(std::ostream&amp; ostream, <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5" title="The levels of verbosity for log messages.">LogLevel</a> level)
+<a name="l00389"></a>00389 {
+<a name="l00390"></a>00390     ostream &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86" title="Used to convert LogLevels into strings that will be printed.">logLevelToString</a>[uint32_t(level)];
+<a name="l00391"></a>00391     <span class="keywordflow">return</span> ostream;
+<a name="l00392"></a>00392 }
+<a name="l00393"></a>00393 
+<a name="l00394"></a>00394 <span class="keywordtype">bool</span>
+<a name="l00395"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a6fb17a6ff9a81e892702560656d691a2">00395</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a6fb17a6ff9a81e892702560656d691a2" title="Return whether the current logging configuration includes messages of the given level for the given f...">isLogging</a>(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5" title="The levels of verbosity for log messages.">LogLevel</a> level, <span class="keyword">const</span> <span class="keywordtype">char</span>* fileName)
+<a name="l00396"></a>00396 {
+<a name="l00397"></a>00397     std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
+<a name="l00398"></a>00398     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5" title="The levels of verbosity for log messages.">LogLevel</a> verbosity;
+<a name="l00399"></a>00399     <span class="keyword">auto</span> it = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>.find(fileName);
+<a name="l00400"></a>00400     <span class="keywordflow">if</span> (it == <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>.end()) {
+<a name="l00401"></a>00401         verbosity = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aae4d1aad342f6634ac37747739fd1561" title="From the policy, calculate the most verbose log level that should be displayed for this file...">getLogLevel</a>(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#acc4bd70b5716f2725c218b0b7e552a38" title="Strip out the common prefix of a filename to get a path from the project&#39;s root directory.">relativeFileName</a>(fileName));
+<a name="l00402"></a>00402         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>[fileName] = verbosity;
+<a name="l00403"></a>00403     } <span class="keywordflow">else</span> {
+<a name="l00404"></a>00404         verbosity = it-&gt;second;
+<a name="l00405"></a>00405     }
+<a name="l00406"></a>00406     <span class="keywordflow">return</span> uint32_t(level) &lt;= uint32_t(verbosity);
+<a name="l00407"></a>00407 }
+<a name="l00408"></a>00408 
+<a name="l00409"></a>00409 <span class="keywordtype">void</span>
+<a name="l00410"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ac6edb3bfbfca4fc5ae5a98a0c36ffdda">00410</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ac6edb3bfbfca4fc5ae5a98a0c36ffdda" title="Unconditionally log the given message to stderr.">log</a>(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5" title="The levels of verbosity for log messages.">LogLevel</a> level,
+<a name="l00411"></a>00411     <span class="keyword">const</span> <span class="keywordtype">char</span>* fileName, uint32_t lineNum, <span class="keyword">const</span> <span class="keywordtype">char</span>* functionName,
+<a name="l00412"></a>00412     <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>, ...)
+<a name="l00413"></a>00413 {
+<a name="l00414"></a>00414     va_list ap;
+<a name="l00415"></a>00415 
+<a name="l00416"></a>00416     <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a9b1b7da5221b8fb784234b34fab553a0" title="If set, a callback that takes log messages instead of the normal log file (stream).">logHandler</a>) {
+<a name="l00417"></a>00417         <a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html" title="When LogCabin wants to print a log message, this is the information that gets included.">DebugMessage</a> d;
+<a name="l00418"></a>00418         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#ac7418c441a3b04d68c6f44e92c1f9fad" title="The output of __FILE__.">filename</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#acc4bd70b5716f2725c218b0b7e552a38" title="Strip out the common prefix of a filename to get a path from the project&#39;s root directory.">relativeFileName</a>(fileName);
+<a name="l00419"></a>00419         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#af99a662b0d7637d910a2204db921ba1c" title="The output of __LINE__.">linenum</a> = int(lineNum);
+<a name="l00420"></a>00420         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a8a097a4bf5c8830274408091cad057b6" title="The output of __FUNCTION__.">function</a> = functionName;
+<a name="l00421"></a>00421         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a6d04ae99f78881c253afffb741bad9ff" title="The level of importance of the message as an integer.">logLevel</a> = int(level);
+<a name="l00422"></a>00422         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a306adbdcbb237f8f4efe7044697faa81" title="The level of importance of the message as a static string.">logLevelString</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86" title="Used to convert LogLevels into strings that will be printed.">logLevelToString</a>[uint32_t(level)];
+<a name="l00423"></a>00423         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a97158a2a93627aba12f9f94e2117203a" title="The name of the current process (its PID or server ID).">processName</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae3a1029f050a61c1bb014d03486280a6" title="A short name to be used in log messages to identify this process.">processName</a>;
+<a name="l00424"></a>00424         d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a21df0765d2f5797a3c0acdc8d74cdaf7" title="The name of the current thread (by its function or its thread ID).">threadName</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#aa4967ee656e33d34264341269ef8418f" title="Get the friendly name for the current thread.">ThreadId::getName</a>();
+<a name="l00425"></a>00425 
+<a name="l00426"></a>00426         <span class="comment">// this part is copied from Core::StringUtil::toString.</span>
+<a name="l00427"></a>00427         va_start(ap, format);
+<a name="l00428"></a>00428         <span class="comment">// We&#39;re not really sure how big of a buffer will be necessary.</span>
+<a name="l00429"></a>00429         <span class="comment">// Try 1K, if not the return value will tell us how much is necessary.</span>
+<a name="l00430"></a>00430         <span class="keywordtype">size_t</span> bufSize = 1024;
+<a name="l00431"></a>00431         <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
+<a name="l00432"></a>00432             <span class="keywordtype">char</span> buf[bufSize];
+<a name="l00433"></a>00433             <span class="comment">// vsnprintf trashes the va_list, so copy it first</span>
+<a name="l00434"></a>00434             va_list aq;
+<a name="l00435"></a>00435             va_copy(aq, ap);
+<a name="l00436"></a>00436             <span class="keywordtype">int</span> r = vsnprintf(buf, bufSize, format, aq);
+<a name="l00437"></a>00437             va_end(aq);
+<a name="l00438"></a>00438             assert(r &gt;= 0); <span class="comment">// old glibc versions returned -1</span>
+<a name="l00439"></a>00439             <span class="keywordtype">size_t</span> r2 = size_t(r);
+<a name="l00440"></a>00440             <span class="keywordflow">if</span> (r2 &lt; bufSize) {
+<a name="l00441"></a>00441                 buf[r2 - 1] = <span class="charliteral">&#39;\0&#39;</span>; <span class="comment">// strip off &quot;\n&quot; added by LOG macro</span>
+<a name="l00442"></a>00442                 d.<a class="code" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#a14b1f71a6d3d7504411960a3aa79d815" title="The contents of the message.">message</a> = buf; <span class="comment">// copy string</span>
+<a name="l00443"></a>00443                 <span class="keywordflow">break</span>;
+<a name="l00444"></a>00444             }
+<a name="l00445"></a>00445             bufSize = size_t(r2) + 1;
+<a name="l00446"></a>00446         }
+<a name="l00447"></a>00447         va_end(ap);
+<a name="l00448"></a>00448         (<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a9b1b7da5221b8fb784234b34fab553a0" title="If set, a callback that takes log messages instead of the normal log file (stream).">logHandler</a>)(d);
+<a name="l00449"></a>00449         <span class="keywordflow">return</span>;
+<a name="l00450"></a>00450     }
+<a name="l00451"></a>00451 
+<a name="l00452"></a>00452     <span class="comment">// Don&#39;t use Core::Time here since it could potentially call PANIC.</span>
+<a name="l00453"></a>00453     <span class="keyword">struct </span>timespec now;
+<a name="l00454"></a>00454     clock_gettime(CLOCK_REALTIME, &amp;now);
+<a name="l00455"></a>00455 
+<a name="l00456"></a>00456     <span class="comment">// Failures are a little annoying here, since we can&#39;t exactly log</span>
+<a name="l00457"></a>00457     <span class="comment">// errors that come up.</span>
+<a name="l00458"></a>00458     <span class="keywordtype">char</span> formattedSeconds[64]; <span class="comment">// a human-readable string now.tv_sec</span>
+<a name="l00459"></a>00459     <span class="keywordtype">bool</span> ok = <span class="keyword">false</span>;
+<a name="l00460"></a>00460     { <span class="comment">// First, try gmtime and strftime.</span>
+<a name="l00461"></a>00461         <span class="keyword">struct </span>tm calendarTime;
+<a name="l00462"></a>00462         <span class="keywordflow">if</span> (gmtime_r(&amp;now.tv_sec, &amp;calendarTime) != NULL) {
+<a name="l00463"></a>00463             ok = (strftime(formattedSeconds,
+<a name="l00464"></a>00464                            <span class="keyword">sizeof</span>(formattedSeconds),
+<a name="l00465"></a>00465                            <span class="stringliteral">&quot;%F %T&quot;</span>,
+<a name="l00466"></a>00466                            &amp;calendarTime) &gt; 0);
+<a name="l00467"></a>00467         }
+<a name="l00468"></a>00468     }
+<a name="l00469"></a>00469     <span class="keywordflow">if</span> (!ok) { <span class="comment">// If that failed, use the raw number.</span>
+<a name="l00470"></a>00470         snprintf(formattedSeconds,
+<a name="l00471"></a>00471                  <span class="keyword">sizeof</span>(formattedSeconds),
+<a name="l00472"></a>00472                  <span class="stringliteral">&quot;%010lu&quot;</span>,
+<a name="l00473"></a>00473                  now.tv_sec);
+<a name="l00474"></a>00474         formattedSeconds[<span class="keyword">sizeof</span>(formattedSeconds) - 1] = <span class="charliteral">&#39;\0&#39;</span>;
+<a name="l00475"></a>00475     }
+<a name="l00476"></a>00476 
+<a name="l00477"></a>00477     <span class="comment">// This ensures that output on stderr won&#39;t be interspersed with other</span>
+<a name="l00478"></a>00478     <span class="comment">// output. This normally happens automatically for a single call to</span>
+<a name="l00479"></a>00479     <span class="comment">// fprintf, but must be explicit since we&#39;re using two calls here.</span>
+<a name="l00480"></a>00480     flockfile(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>);
+<a name="l00481"></a>00481 
+<a name="l00482"></a>00482     fprintf(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>, <span class="stringliteral">&quot;%s.%06lu %s:%d in %s() %s[%s:%s]: &quot;</span>,
+<a name="l00483"></a>00483             formattedSeconds, now.tv_nsec / 1000,
+<a name="l00484"></a>00484             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#acc4bd70b5716f2725c218b0b7e552a38" title="Strip out the common prefix of a filename to get a path from the project&#39;s root directory.">relativeFileName</a>(fileName), lineNum, functionName,
+<a name="l00485"></a>00485             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86" title="Used to convert LogLevels into strings that will be printed.">logLevelToString</a>[uint32_t(level)],
+<a name="l00486"></a>00486             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae3a1029f050a61c1bb014d03486280a6" title="A short name to be used in log messages to identify this process.">processName</a>.c_str(), <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#aa4967ee656e33d34264341269ef8418f" title="Get the friendly name for the current thread.">ThreadId::getName</a>().c_str());
+<a name="l00487"></a>00487 
+<a name="l00488"></a>00488     va_start(ap, format);
+<a name="l00489"></a>00489     vfprintf(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>, format, ap);
+<a name="l00490"></a>00490     va_end(ap);
+<a name="l00491"></a>00491 
+<a name="l00492"></a>00492     funlockfile(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>);
+<a name="l00493"></a>00493 
+<a name="l00494"></a>00494     fflush(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>);
+<a name="l00495"></a>00495 }
+<a name="l00496"></a>00496 
+<a name="l00497"></a>00497 } <span class="comment">// namespace LogCabin::Core::Debug</span>
+<a name="l00498"></a>00498 } <span class="comment">// namespace LogCabin::Core</span>
+<a name="l00499"></a>00499 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

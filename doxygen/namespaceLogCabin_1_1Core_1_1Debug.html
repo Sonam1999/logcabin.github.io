@@ -142,10 +142,18 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the file on which debug log messages are written.  <a href="#a221c605df65625a7bcb91990af0986d3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::function&lt; void(<a class="el" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html">DebugMessage</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae229e11e9f1413bc265c12f8fe39cf6f">setLogHandler</a> (std::function&lt; void(<a class="el" href="structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html">DebugMessage</a>)&gt; newHandler)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Accept log messages on the given callback instead of writing them to a file.  <a href="#ae229e11e9f1413bc265c12f8fe39cf6f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair<br class="typebreak"/>
+&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#aa75ec185568820982b1624f824e48414">getLogPolicy</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current log policy (as set by a previous call to setLogPolicy).  <a href="#aa75ec185568820982b1624f824e48414"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0">setLogPolicy</a> (const std::vector&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;newPolicy)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Specify the log messages that should be displayed for each filename.  <a href="#a5624f934c72b6c028ab5a2f4c45948b0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#af6b81483d297545dd73523bc1243b3a8">setLogPolicy</a> (const std::initializer_list&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;newPolicy)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See setLogPolicy.  <a href="#af6b81483d297545dd73523bc1243b3a8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair<br class="typebreak"/>
+&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9">logPolicyFromString</a> (const std::string &amp;in)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a log policy from its string representation.  <a href="#acf7365ee10373d2ef355d84b9e8a92a9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae300ca19d1a62f404316fc719ac3e2bd">logPolicyToString</a> (const std::vector&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;policy)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a log policy into a string representation.  <a href="#ae300ca19d1a62f404316fc719ac3e2bd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a2a8a29aaac86e7894abfb09d095b1b36">operator&lt;&lt;</a> (std::ostream &amp;ostream, <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5">LogLevel</a> level)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Output a LogLevel to a stream.  <a href="#a2a8a29aaac86e7894abfb09d095b1b36"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a6fb17a6ff9a81e892702560656d691a2">isLogging</a> (<a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5">LogLevel</a> level, const char *fileName)</td></tr>
@@ -329,6 +337,28 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aa75ec185568820982b1624f824e48414"></a><!-- doxytag: member="LogCabin::Core::Debug::getLogPolicy" ref="aa75ec185568820982b1624f824e48414" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::pair&lt; std::string, std::string &gt; &gt; <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#aa75ec185568820982b1624f824e48414">LogCabin::Core::Debug::getLogPolicy</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the current log policy (as set by a previous call to setLogPolicy). </p>
+<p>Note that this may be empty, indicating that the default level of NOTICE is in use. </p>
+<dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. </dd></dl>
+
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00312">312</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a5624f934c72b6c028ab5a2f4c45948b0"></a><!-- doxytag: member="LogCabin::Core::Debug::setLogPolicy" ref="a5624f934c72b6c028ab5a2f4c45948b0" args="(const std::vector&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;newPolicy)" -->
 <div class="memitem">
 <div class="memproto">
@@ -347,7 +377,7 @@ Variables</h2></td></tr>
 <p>Specify the log messages that should be displayed for each filename. </p>
 <p>This first component is a pattern; the second is a log level. A filename is matched against each pattern in order: if the filename starts with or ends with the pattern, the corresponding log level defines the most verbose messages that are to be displayed for the file. If a filename matches no pattern, its log level will default to NOTICE. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00312">312</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00319">319</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -368,7 +398,65 @@ Variables</h2></td></tr>
 
 <p>See setLogPolicy. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00321">321</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00328">328</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acf7365ee10373d2ef355d84b9e8a92a9"></a><!-- doxytag: member="LogCabin::Core::Debug::logPolicyFromString" ref="acf7365ee10373d2ef355d84b9e8a92a9" args="(const std::string &amp;in)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::pair&lt; std::string, std::string &gt; &gt; <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9">LogCabin::Core::Debug::logPolicyFromString</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Build a log policy from its string representation. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in</td><td>A string of the form "pattern@level,pattern@level,level". The pattern is separated from the level by an at symbol. Multiple rules are separated by comma. A rule with an empty pattern (match all) does not need an at symbol. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Logging policy based on string description. </dd></dl>
+<dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. </dd></dl>
+
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00336">336</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae300ca19d1a62f404316fc719ac3e2bd"></a><!-- doxytag: member="LogCabin::Core::Debug::logPolicyToString" ref="ae300ca19d1a62f404316fc719ac3e2bd" args="(const std::vector&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;policy)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae300ca19d1a62f404316fc719ac3e2bd">LogCabin::Core::Debug::logPolicyToString</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>policy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Serialize a log policy into a string representation. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">policy</td><td>Logging policy in the format required by setLogPolicy. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>String representation as accepted by logPolicyFromString. </dd></dl>
+<dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. </dd></dl>
+
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00359">359</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -400,7 +488,7 @@ Variables</h2></td></tr>
 <p>Output a LogLevel to a stream. </p>
 <p>Having this improves gtest error messages. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00329">329</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00388">388</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -440,7 +528,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00336">336</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00395">395</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -507,7 +595,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00351">351</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00410">410</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>

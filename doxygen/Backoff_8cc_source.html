@@ -101,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00019"></a><a class="code" href="namespaceLogCabin_1_1Client.html">00019</a> <span class="keyword">namespace </span>Client {
 <a name="l00020"></a>00020 
 <a name="l00021"></a><a class="code" href="classLogCabin_1_1Client_1_1Backoff.html#a96983170178d5ebb449ed2e79fa8db3b">00021</a> <a class="code" href="classLogCabin_1_1Client_1_1Backoff.html#a96983170178d5ebb449ed2e79fa8db3b" title="Constructor.">Backoff::Backoff</a>(uint64_t windowCount, uint64_t windowNanos)
-<a name="l00022"></a>00022     : <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>()
+<a name="l00022"></a>00022     : <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>()
 <a name="l00023"></a>00023     , windowCount(std::max(1UL, windowCount))
 <a name="l00024"></a>00024     , windowDuration(windowNanos)
 <a name="l00025"></a>00025     , startTimes()

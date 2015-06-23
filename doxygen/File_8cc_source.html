@@ -111,7 +111,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00029"></a>00029 <span class="comment"></span>
 <a name="l00030"></a><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a7565120185f0ca3a5ac890323fe2393a">00030</a> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a7565120185f0ca3a5ac890323fe2393a" title="Constructor; begins monitoring events on a file.">File::Monitor::Monitor</a>(<a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>&amp; eventLoop, <a class="code" href="classLogCabin_1_1Event_1_1File.html" title="A File is called by the Event::Loop when a file becomes readable or writable.">File</a>&amp; file, uint32_t fileEvents)
 <a name="l00031"></a>00031     : eventLoop(eventLoop)
-<a name="l00032"></a>00032     , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>()
+<a name="l00032"></a>00032     , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>()
 <a name="l00033"></a>00033     , file(&amp;file)
 <a name="l00034"></a>00034 {
 <a name="l00035"></a>00035     <span class="keyword">struct </span>epoll_event event;
@@ -134,7 +134,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00052"></a>00052 <span class="keywordtype">void</span>
 <a name="l00053"></a><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a2b38fde47fcf4ac96b59d7835ad3b26d">00053</a> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#a2b38fde47fcf4ac96b59d7835ad3b26d" title="Stop monitoring this file.">File::Monitor::disableForever</a>()
 <a name="l00054"></a>00054 {
-<a name="l00055"></a>00055     std::lock_guard&lt;std::mutex&gt; mutexGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
+<a name="l00055"></a>00055     std::lock_guard&lt;std::mutex&gt; mutexGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
 <a name="l00056"></a>00056     <span class="keywordflow">if</span> (file == NULL)
 <a name="l00057"></a>00057         <span class="keywordflow">return</span>;
 <a name="l00058"></a>00058     <a class="code" href="classLogCabin_1_1Event_1_1Loop_1_1Lock.html" title="Lock objects are used to synchronize between the Event::Loop thread and other threads.">Event::Loop::Lock</a> lock(eventLoop);
@@ -149,7 +149,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00067"></a>00067 <span class="keywordtype">void</span>
 <a name="l00068"></a><a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ab2f70d88f77d02cb53464a9ca219e8ca">00068</a> <a class="code" href="classLogCabin_1_1Event_1_1File_1_1Monitor.html#ab2f70d88f77d02cb53464a9ca219e8ca" title="Specify the events of interest for the file.">File::Monitor::setEvents</a>(uint32_t fileEvents)
 <a name="l00069"></a>00069 {
-<a name="l00070"></a>00070     std::lock_guard&lt;std::mutex&gt; mutexGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>);
+<a name="l00070"></a>00070     std::lock_guard&lt;std::mutex&gt; mutexGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
 <a name="l00071"></a>00071     <span class="keywordflow">if</span> (file == NULL)
 <a name="l00072"></a>00072         <span class="keywordflow">return</span>;
 <a name="l00073"></a>00073     <span class="keyword">struct </span>epoll_event event;

@@ -121,10 +121,10 @@ Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86">logLevelToString</a> []</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to convert LogLevels into strings that will be printed.  <a href="#a4572027c7c82fd8581b1e911f9635e86"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d">mutex</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aefa22d74a958dcc8c0a60502347781d9" title="Specifies the log messages that should be displayed for each filename.">policy</a>, <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>, and <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#ad154d38c45ad62de8f29f46371b8d3cf" title="Filename of currently open stream, if known.">logFilename</a>.  <a href="#aa55966a108a48de3c0ecc7fac2c1c82d"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a>, <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>, and <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#ad154d38c45ad62de8f29f46371b8d3cf" title="Filename of currently open stream, if known.">logFilename</a>.  <a href="#aa55966a108a48de3c0ecc7fac2c1c82d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair<br class="typebreak"/>
-&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aefa22d74a958dcc8c0a60502347781d9">policy</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Specifies the log messages that should be displayed for each filename.  <a href="#aefa22d74a958dcc8c0a60502347781d9"></a><br/></td></tr>
+&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114">logPolicy</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Specifies the log messages that should be displayed for each filename.  <a href="#a5203f84d84f5a11b4f74157581266114"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; const char <br class="typebreak"/>
 *, <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5">LogLevel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb">isLoggingCache</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A cache of the results of <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aae4d1aad342f6634ac37747739fd1561" title="From the policy, calculate the most verbose log level that should be displayed for this file...">getLogLevel()</a>, since that function is slow.  <a href="#a87e5b990cfa0531a01de3e2bfd26c9fb"></a><br/></td></tr>
@@ -177,7 +177,7 @@ Variables</h2></td></tr>
 
 <p>From the policy, calculate the most verbose log level that should be displayed for this file. </p>
 <p>This is slow, so <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a6fb17a6ff9a81e892702560656d691a2" title="Return whether the current logging configuration includes messages of the given level for the given f...">isLogging()</a> caches the results in isLoggingCache.</p>
-<p>Must be called with <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a> held.</p>
+<p>Must be called with <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a> held.</p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">fileName</td><td>Relative filename. </td></tr>
@@ -268,18 +268,18 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Protects <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aefa22d74a958dcc8c0a60502347781d9" title="Specifies the log messages that should be displayed for each filename.">policy</a>, <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>, and <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#ad154d38c45ad62de8f29f46371b8d3cf" title="Filename of currently open stream, if known.">logFilename</a>. </p>
+<p>Protects <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a>, <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>, and <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#ad154d38c45ad62de8f29f46371b8d3cf" title="Filename of currently open stream, if known.">logFilename</a>. </p>
 
 <p>Definition at line <a class="el" href="Debug_8cc_source.html#l00127">127</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aefa22d74a958dcc8c0a60502347781d9"></a><!-- doxytag: member="LogCabin::Core::Debug::Internal::policy" ref="aefa22d74a958dcc8c0a60502347781d9" args="" -->
+<a class="anchor" id="a5203f84d84f5a11b4f74157581266114"></a><!-- doxytag: member="LogCabin::Core::Debug::Internal::logPolicy" ref="a5203f84d84f5a11b4f74157581266114" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::pair&lt;std::string, std::string&gt; &gt; <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aefa22d74a958dcc8c0a60502347781d9">LogCabin::Core::Debug::Internal::policy</a></td>
+          <td class="memname">std::vector&lt;std::pair&lt;std::string, std::string&gt; &gt; <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114">LogCabin::Core::Debug::Internal::logPolicy</a></td>
         </tr>
       </table>
 </div>
@@ -287,7 +287,7 @@ Variables</h2></td></tr>
 
 <p>Specifies the log messages that should be displayed for each filename. </p>
 <p>This first component is a pattern; the second is a log level. A filename is matched against each pattern in order: if the filename starts with or ends with the pattern, the corresponding log level defines the most verbose messages that are to be displayed for the file. If a filename matches no pattern, its log level will default to NOTICE.</p>
-<p>Protected by <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>. </p>
+<p>Protected by <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>. </p>
 
 <p>Definition at line <a class="el" href="Debug_8cc_source.html#l00139">139</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
@@ -305,8 +305,8 @@ Variables</h2></td></tr>
 <div class="memdoc">
 
 <p>A cache of the results of <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aae4d1aad342f6634ac37747739fd1561" title="From the policy, calculate the most verbose log level that should be displayed for this file...">getLogLevel()</a>, since that function is slow. </p>
-<p>This needs to be cleared when the policy changes. The key to the map is a pointer to the absolute filename, which should be a string literal.</p>
-<p>Protected by <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>. </p>
+<p>This needs to be cleared when the logPolicy changes. The key to the map is a pointer to the absolute filename, which should be a string literal.</p>
+<p>Protected by <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>. </p>
 
 <p>Definition at line <a class="el" href="Debug_8cc_source.html#l00149">149</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
@@ -324,7 +324,7 @@ Variables</h2></td></tr>
 <div class="memdoc">
 
 <p>Filename of currently open stream, if known. </p>
-<p>Protected by <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>. </p>
+<p>Protected by <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>. </p>
 
 <p>Definition at line <a class="el" href="Debug_8cc_source.html#l00155">155</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 

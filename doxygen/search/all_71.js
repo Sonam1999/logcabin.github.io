@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['query',['Query',['../classLogCabin_1_1Server_1_1StateMachine.html#aa00d09de6cec467ea1245a4ff2fa6032',1,'LogCabin::Server::StateMachine::Query()'],['../classLogCabin_1_1Server_1_1StateMachine.html#a4538d10665b3a7195da4e734cc9c9f91',1,'LogCabin::Server::StateMachine::query(const Query::Request &amp;request, Query::Response &amp;response) const ']]],
+  ['query',['query',['../classLogCabin_1_1Server_1_1StateMachine.html#a4538d10665b3a7195da4e734cc9c9f91',1,'LogCabin::Server::StateMachine::query(const Query::Request &amp;request, Query::Response &amp;response) const '],['../classLogCabin_1_1Server_1_1StateMachine.html#aa00d09de6cec467ea1245a4ff2fa6032',1,'LogCabin::Server::StateMachine::Query()']]],
   ['quiet',['quiet',['../classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a3a78237fe874580fb2620f2bec9dc5f9',1,'anonymous_namespace{TreeOps.cc}::OptionParser']]],
   ['quietforunittests',['quietForUnitTests',['../classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#ae680064c1ac1b4b67c0162758625ff69',1,'LogCabin::Storage::SegmentedLog::PreparedSegments']]],
   ['quorumall',['quorumAll',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration_1_1SimpleConfiguration.html#ac6cb4987028dc5522acca25ad8af4bb9',1,'LogCabin::Server::RaftConsensusInternal::Configuration::SimpleConfiguration::quorumAll()'],['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html#a326d5cbde57c0c09fa0ae8fe8f23cbad',1,'LogCabin::Server::RaftConsensusInternal::Configuration::quorumAll()']]],

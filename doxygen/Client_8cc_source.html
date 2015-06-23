@@ -279,13 +279,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00197"></a>00197 <span class="comment"></span>
 <a name="l00198"></a><a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a9c11695109d32373d099470ba38b0f2b">00198</a> <a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a9c11695109d32373d099470ba38b0f2b" title="Constructor.">Tree::Tree</a>(std::shared_ptr&lt;ClientImpl&gt; clientImpl,
 <a name="l00199"></a>00199            <span class="keyword">const</span> std::string&amp; workingDirectory)
-<a name="l00200"></a>00200     : <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>()
+<a name="l00200"></a>00200     : <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>()
 <a name="l00201"></a>00201     , treeDetails(new <a class="code" href="classLogCabin_1_1Client_1_1TreeDetails.html" title="Implementation-specific members of Client::Tree.">TreeDetails</a>(clientImpl, workingDirectory))
 <a name="l00202"></a>00202 {
 <a name="l00203"></a>00203 }
 <a name="l00204"></a>00204 
 <a name="l00205"></a><a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a0e9489da8bd1c64b4ba084e51802fea0">00205</a> <a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a9c11695109d32373d099470ba38b0f2b" title="Constructor.">Tree::Tree</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a>&amp; other)
-<a name="l00206"></a>00206     : <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects policy, isLoggingCache, and logFilename.">mutex</a>()
+<a name="l00206"></a>00206     : <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>()
 <a name="l00207"></a>00207     , treeDetails(other.getTreeDetails())
 <a name="l00208"></a>00208 {
 <a name="l00209"></a>00209 }

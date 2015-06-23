@@ -3,6 +3,8 @@ var searchData=
   ['debugfilenameget',['debugFilenameGet',['../classLogCabin_1_1Server_1_1ControlService.html#a291fffb400d6ef186f86038d53fd9758',1,'LogCabin::Server::ControlService']]],
   ['debugfilenameset',['debugFilenameSet',['../classLogCabin_1_1Server_1_1ControlService.html#aa89900b05b81e7450c0352b124bb91bf',1,'LogCabin::Server::ControlService']]],
   ['debugmessage',['DebugMessage',['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#abd67d2ff1b5b82301a014d0bb9216e89',1,'LogCabin::Core::Debug::DebugMessage::DebugMessage()'],['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#aba37f5c81014bc05cd6a563030c5a104',1,'LogCabin::Core::Debug::DebugMessage::DebugMessage(const DebugMessage &amp;other)'],['../structLogCabin_1_1Core_1_1Debug_1_1DebugMessage.html#ac4f0e2b94d575c6c3254dd806ebef841',1,'LogCabin::Core::Debug::DebugMessage::DebugMessage(DebugMessage &amp;&amp;other)']]],
+  ['debugpolicyget',['debugPolicyGet',['../classLogCabin_1_1Server_1_1ControlService.html#a784973152b768e0303546250c734f1fa',1,'LogCabin::Server::ControlService']]],
+  ['debugpolicyset',['debugPolicySet',['../classLogCabin_1_1Server_1_1ControlService.html#aeec584290b4518bf69ebe8ebaf10eb3f',1,'LogCabin::Server::ControlService']]],
   ['debugrotate',['debugRotate',['../classLogCabin_1_1Server_1_1ControlService.html#af8303dd0033b0a2dc7e0401f8ff8549c',1,'LogCabin::Server::ControlService']]],
   ['deferred',['Deferred',['../structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#afc8952c46778acefaea54245e0520c02',1,'LogCabin::Server::ServerStats::Deferred']]],
   ['delayandbegin',['delayAndBegin',['../classLogCabin_1_1Client_1_1Backoff.html#a1695d3da40aaa2e2acbab1c4add0634e',1,'LogCabin::Client::Backoff']]],

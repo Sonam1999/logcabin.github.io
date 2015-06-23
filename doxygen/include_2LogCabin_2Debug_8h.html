@@ -118,10 +118,18 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the file on which debug log messages are written.  <a href="#a221c605df65625a7bcb91990af0986d3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::function&lt; void(DebugMessage)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae229e11e9f1413bc265c12f8fe39cf6f">LogCabin::Core::Debug::setLogHandler</a> (std::function&lt; void(DebugMessage)&gt; newHandler)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Accept log messages on the given callback instead of writing them to a file.  <a href="#ae229e11e9f1413bc265c12f8fe39cf6f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair<br class="typebreak"/>
+&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#aa75ec185568820982b1624f824e48414">LogCabin::Core::Debug::getLogPolicy</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current log policy (as set by a previous call to setLogPolicy).  <a href="#aa75ec185568820982b1624f824e48414"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0">LogCabin::Core::Debug::setLogPolicy</a> (const std::vector&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;newPolicy)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Specify the log messages that should be displayed for each filename.  <a href="#a5624f934c72b6c028ab5a2f4c45948b0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#af6b81483d297545dd73523bc1243b3a8">LogCabin::Core::Debug::setLogPolicy</a> (const std::initializer_list&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;newPolicy)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See setLogPolicy.  <a href="#af6b81483d297545dd73523bc1243b3a8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair<br class="typebreak"/>
+&lt; std::string, std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9">LogCabin::Core::Debug::logPolicyFromString</a> (const std::string &amp;in)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a log policy from its string representation.  <a href="#acf7365ee10373d2ef355d84b9e8a92a9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae300ca19d1a62f404316fc719ac3e2bd">LogCabin::Core::Debug::logPolicyToString</a> (const std::vector&lt; std::pair&lt; std::string, std::string &gt;&gt; &amp;policy)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize a log policy into a string representation.  <a href="#ae300ca19d1a62f404316fc719ac3e2bd"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This file is used to control how <a class="el" href="namespaceLogCabin.html">LogCabin</a>'s debug log (event log) messages are handled. </p>
