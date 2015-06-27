@@ -108,6 +108,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a94910b28175eb26180cd3aa54d3a79c5">logLevelToString</a> (<a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5">LogLevel</a> level)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a log level to a (static) string.  <a href="#a94910b28175eb26180cd3aa54d3a79c5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5">LogLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#ae2f845e090e63600b8fe4059e20129cd">logLevelFromString</a> (const std::string &amp;level)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a string to a log level.  <a href="#ae2f845e090e63600b8fe4059e20129cd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#adc065d555e423169e3f74efa3f13b8e5">LogLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aae4d1aad342f6634ac37747739fd1561">getLogLevel</a> (const char *fileName)</td></tr>
@@ -118,8 +120,6 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Strip out the common prefix of a filename to get a path from the project's root directory.  <a href="#acc4bd70b5716f2725c218b0b7e552a38"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86">logLevelToString</a> []</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to convert LogLevels into strings that will be printed.  <a href="#a4572027c7c82fd8581b1e911f9635e86"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d">mutex</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a>, <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>, and <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#ad154d38c45ad62de8f29f46371b8d3cf" title="Filename of currently open stream, if known.">logFilename</a>.  <a href="#aa55966a108a48de3c0ecc7fac2c1c82d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair<br class="typebreak"/>
@@ -138,6 +138,28 @@ Variables</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores result of <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a23f12b79ae73d5f52064990146396cae" title="Return the number of characters of __FILE__ that make up the path prefix.">calculateLengthFilePrefix()</a>.  <a href="#a23f35385d9d06c5ceb267fbbcb9b6934"></a><br/></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a94910b28175eb26180cd3aa54d3a79c5"></a><!-- doxytag: member="LogCabin::Core::Debug::Internal::logLevelToString" ref="a94910b28175eb26180cd3aa54d3a79c5" args="(LogLevel level)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a94910b28175eb26180cd3aa54d3a79c5">LogCabin::Core::Debug::Internal::logLevelToString</a> </td>
+          <td>(</td>
+          <td class="paramtype">LogLevel&#160;</td>
+          <td class="paramname"><em>level</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Convert a log level to a (static) string. </p>
+<p>PANICs if the string is not a valid log level (case insensitive). </p>
+
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00160">160</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ae2f845e090e63600b8fe4059e20129cd"></a><!-- doxytag: member="LogCabin::Core::Debug::Internal::logLevelFromString" ref="ae2f845e090e63600b8fe4059e20129cd" args="(const std::string &amp;level)" -->
 <div class="memitem">
 <div class="memproto">
@@ -156,7 +178,7 @@ Variables</h2></td></tr>
 <p>Convert a string to a log level. </p>
 <p>PANICs if the string is not a valid log level (case insensitive). </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00174">174</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00179">179</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -185,7 +207,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00196">196</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00202">202</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -206,7 +228,7 @@ Variables</h2></td></tr>
 <p>Return the number of characters of __FILE__ that make up the path prefix. </p>
 <p>That is, __FILE__ plus this value will be the relative path from the top directory of the code tree. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00215">215</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00221">221</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -234,29 +256,11 @@ Variables</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>A nicer way to show display 'fileName' to the user. For example, this file would yield "Core/Debug.cc". </dd></dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00236">236</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00242">242</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Variable Documentation</h2>
-<a class="anchor" id="a4572027c7c82fd8581b1e911f9635e86"></a><!-- doxytag: member="LogCabin::Core::Debug::Internal::logLevelToString" ref="a4572027c7c82fd8581b1e911f9635e86" args="[]" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a4572027c7c82fd8581b1e911f9635e86">LogCabin::Core::Debug::Internal::logLevelToString</a>[]</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Used to convert LogLevels into strings that will be printed. </p>
-<p>This array must match the LogLevel enum in <a class="el" href="Core_2Debug_8h.html">Core/Debug.h</a>. </p>
-
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00114">114</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="aa55966a108a48de3c0ecc7fac2c1c82d"></a><!-- doxytag: member="LogCabin::Core::Debug::Internal::mutex" ref="aa55966a108a48de3c0ecc7fac2c1c82d" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -270,7 +274,7 @@ Variables</h2></td></tr>
 
 <p>Protects <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a>, <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb" title="A cache of the results of getLogLevel(), since that function is slow.">isLoggingCache</a>, and <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#ad154d38c45ad62de8f29f46371b8d3cf" title="Filename of currently open stream, if known.">logFilename</a>. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00127">127</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00113">113</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -289,7 +293,7 @@ Variables</h2></td></tr>
 <p>This first component is a pattern; the second is a log level. A filename is matched against each pattern in order: if the filename starts with or ends with the pattern, the corresponding log level defines the most verbose messages that are to be displayed for the file. If a filename matches no pattern, its log level will default to NOTICE.</p>
 <p>Protected by <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00139">139</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00125">125</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -308,7 +312,7 @@ Variables</h2></td></tr>
 <p>This needs to be cleared when the logPolicy changes. The key to the map is a pointer to the absolute filename, which should be a string literal.</p>
 <p>Protected by <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00149">149</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00135">135</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -326,7 +330,7 @@ Variables</h2></td></tr>
 <p>Filename of currently open stream, if known. </p>
 <p>Protected by <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00155">155</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00141">141</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -343,7 +347,7 @@ Variables</h2></td></tr>
 
 <p>Where log messages go (unless logHandler is set). </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00160">160</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00146">146</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -361,7 +365,7 @@ Variables</h2></td></tr>
 <p>If set, a callback that takes log messages instead of the normal log file (stream). </p>
 <p>This is exposed to client applications so they can integrate with their own logging mechanism. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00167">167</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00153">153</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -378,7 +382,7 @@ Variables</h2></td></tr>
 
 <p>Stores result of <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a23f12b79ae73d5f52064990146396cae" title="Return the number of characters of __FILE__ that make up the path prefix.">calculateLengthFilePrefix()</a>. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00224">224</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00230">230</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>

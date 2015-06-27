@@ -98,179 +98,178 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00016"></a>00016 <span class="preprocessor">#include &lt;unistd.h&gt;</span>
 <a name="l00017"></a>00017 
 <a name="l00018"></a>00018 <span class="preprocessor">#include &quot;build/Protocol/ServerControl.pb.h&quot;</span>
-<a name="l00019"></a>00019 <span class="preprocessor">#include &quot;<a class="code" href="include_2LogCabin_2Debug_8h.html" title="This file is used to control how LogCabin&#39;s debug log (event log) messages are handled.">include/LogCabin/Debug.h</a>&quot;</span>
-<a name="l00020"></a>00020 <span class="preprocessor">#include &quot;<a class="code" href="Core_2Debug_8h.html">Core/Debug.h</a>&quot;</span>
-<a name="l00021"></a>00021 <span class="preprocessor">#include &quot;<a class="code" href="ServerRPC_8h.html">RPC/ServerRPC.h</a>&quot;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;<a class="code" href="ControlService_8h.html">Server/ControlService.h</a>&quot;</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#include &quot;<a class="code" href="Globals_8h.html">Server/Globals.h</a>&quot;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &quot;<a class="code" href="RaftConsensus_8h.html">Server/RaftConsensus.h</a>&quot;</span>
-<a name="l00025"></a>00025 
-<a name="l00026"></a>00026 <span class="keyword">namespace </span>LogCabin {
-<a name="l00027"></a>00027 <span class="keyword">namespace </span>Server {
-<a name="l00028"></a>00028 
-<a name="l00029"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a367f99cb79cee183de5311f17ed0de41">00029</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a367f99cb79cee183de5311f17ed0de41" title="Constructor.">ControlService::ControlService</a>(<a class="code" href="classLogCabin_1_1Server_1_1Globals.html" title="Holds the LogCabin daemon&#39;s top-level objects.">Globals</a>&amp; globals)
-<a name="l00030"></a>00030     : globals(globals)
-<a name="l00031"></a>00031 {
-<a name="l00032"></a>00032 }
-<a name="l00033"></a>00033 
-<a name="l00034"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a128a3fc45c3e1cd96e59bf1d0c99c515">00034</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a128a3fc45c3e1cd96e59bf1d0c99c515" title="Destructor.">ControlService::~ControlService</a>()
-<a name="l00035"></a>00035 {
-<a name="l00036"></a>00036 }
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038 <span class="keywordtype">void</span>
-<a name="l00039"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a29df31b2fb0523de1b67f1bef9dde5b5">00039</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a29df31b2fb0523de1b67f1bef9dde5b5" title="This method is overridden by a subclass and invoked by the Server class when a new RPC arrives...">ControlService::handleRPC</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
-<a name="l00040"></a>00040 {
-<a name="l00041"></a>00041     <span class="keyword">using</span> Protocol::ServerControl::OpCode;
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043     <span class="comment">// Call the appropriate RPC handler based on the request&#39;s opCode.</span>
-<a name="l00044"></a>00044     <span class="keywordflow">switch</span> (rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a21962c2b329e32e595d87210cc7ab9b3" title="Return which RPC is being executed, scoped to the service.">getOpCode</a>()) {
-<a name="l00045"></a>00045         <span class="keywordflow">case</span> OpCode::DEBUG_FILENAME_GET:
-<a name="l00046"></a>00046             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a291fffb400d6ef186f86038d53fd9758">debugFilenameGet</a>(std::move(rpc));
-<a name="l00047"></a>00047             <span class="keywordflow">break</span>;
-<a name="l00048"></a>00048         <span class="keywordflow">case</span> OpCode::DEBUG_FILENAME_SET:
-<a name="l00049"></a>00049             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aa89900b05b81e7450c0352b124bb91bf">debugFilenameSet</a>(std::move(rpc));
-<a name="l00050"></a>00050             <span class="keywordflow">break</span>;
-<a name="l00051"></a>00051         <span class="keywordflow">case</span> OpCode::DEBUG_POLICY_GET:
-<a name="l00052"></a>00052             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a784973152b768e0303546250c734f1fa">debugPolicyGet</a>(std::move(rpc));
-<a name="l00053"></a>00053             <span class="keywordflow">break</span>;
-<a name="l00054"></a>00054         <span class="keywordflow">case</span> OpCode::DEBUG_POLICY_SET:
-<a name="l00055"></a>00055             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aeec584290b4518bf69ebe8ebaf10eb3f">debugPolicySet</a>(std::move(rpc));
-<a name="l00056"></a>00056             <span class="keywordflow">break</span>;
-<a name="l00057"></a>00057         <span class="keywordflow">case</span> OpCode::DEBUG_ROTATE:
-<a name="l00058"></a>00058             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#af8303dd0033b0a2dc7e0401f8ff8549c">debugRotate</a>(std::move(rpc));
-<a name="l00059"></a>00059             <span class="keywordflow">break</span>;
-<a name="l00060"></a>00060         <span class="keywordflow">case</span> OpCode::SERVER_INFO_GET:
-<a name="l00061"></a>00061             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a318c9bd327ea007ac310544e92eb2b89">serverInfoGet</a>(std::move(rpc));
-<a name="l00062"></a>00062             <span class="keywordflow">break</span>;
-<a name="l00063"></a>00063         <span class="keywordflow">case</span> OpCode::SERVER_STATS_DUMP:
-<a name="l00064"></a>00064             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a6840e7928f4f7fc4a1714eb28b9f7155">serverStatsDump</a>(std::move(rpc));
-<a name="l00065"></a>00065             <span class="keywordflow">break</span>;
-<a name="l00066"></a>00066         <span class="keywordflow">case</span> OpCode::SERVER_STATS_GET:
-<a name="l00067"></a>00067             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#ac9c5dc5f7678fdd0514dafecaaf5d714">serverStatsGet</a>(std::move(rpc));
-<a name="l00068"></a>00068             <span class="keywordflow">break</span>;
-<a name="l00069"></a>00069         <span class="keywordflow">default</span>:
-<a name="l00070"></a>00070             <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Client sent request with bad op code (%u) to &quot;</span>
-<a name="l00071"></a>00071                     <span class="stringliteral">&quot;ControlService&quot;</span>, rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a21962c2b329e32e595d87210cc7ab9b3" title="Return which RPC is being executed, scoped to the service.">getOpCode</a>());
-<a name="l00072"></a>00072             rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ab67aadc48e385864c66e82d3e0aa8d25" title="Reject the RPC on the grounds that it specifies an invalid request.">rejectInvalidRequest</a>();
-<a name="l00073"></a>00073     }
-<a name="l00074"></a>00074 }
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076 std::string
-<a name="l00077"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a6bc4936461f24836b843875f0f6c7a94">00077</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a6bc4936461f24836b843875f0f6c7a94" title="Return a short name for this service which can be used in things like log messages.">ControlService::getName</a>()<span class="keyword"> const</span>
-<a name="l00078"></a>00078 <span class="keyword"></span>{
-<a name="l00079"></a>00079     <span class="keywordflow">return</span> <span class="stringliteral">&quot;ControlService&quot;</span>;
-<a name="l00080"></a>00080 }
-<a name="l00081"></a>00081 <span class="comment"></span>
-<a name="l00082"></a>00082 <span class="comment">/**</span>
-<a name="l00083"></a>00083 <span class="comment"> * Place this at the top of each RPC handler. Afterwards, &#39;request&#39; will refer</span>
-<a name="l00084"></a>00084 <span class="comment"> * to the protocol buffer for the request with all required fields set.</span>
-<a name="l00085"></a>00085 <span class="comment"> * &#39;response&#39; will be an empty protocol buffer for you to fill in the response.</span>
-<a name="l00086"></a>00086 <span class="comment"> */</span>
-<a name="l00087"></a><a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5">00087</a> <span class="preprocessor">#define PRELUDE(rpcClass) \</span>
-<a name="l00088"></a>00088 <span class="preprocessor">    Protocol::ServerControl::rpcClass::Request request; \</span>
-<a name="l00089"></a>00089 <span class="preprocessor">    Protocol::ServerControl::rpcClass::Response response; \</span>
-<a name="l00090"></a>00090 <span class="preprocessor">    if (!rpc.getRequest(request)) \</span>
-<a name="l00091"></a>00091 <span class="preprocessor">        return;</span>
-<a name="l00092"></a>00092 <span class="preprocessor"></span><span class="comment"></span>
-<a name="l00093"></a>00093 <span class="comment">////////// RPC handlers //////////</span>
-<a name="l00094"></a>00094 <span class="comment"></span>
-<a name="l00095"></a>00095 <span class="keywordtype">void</span>
-<a name="l00096"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a291fffb400d6ef186f86038d53fd9758">00096</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a291fffb400d6ef186f86038d53fd9758">ControlService::debugFilenameGet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
-<a name="l00097"></a>00097 {
-<a name="l00098"></a>00098     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(DebugFilenameGet);
-<a name="l00099"></a>00099     response.set_filename(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ad7c6ff7d9db6f2425ae16f5024555dd2" title="Return the filename given to the last successful call to setLogFilename(), or the empty string if non...">Core::Debug::getLogFilename</a>());
-<a name="l00100"></a>00100     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
-<a name="l00101"></a>00101 }
-<a name="l00102"></a>00102 
-<a name="l00103"></a>00103 <span class="keywordtype">void</span>
-<a name="l00104"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aa89900b05b81e7450c0352b124bb91bf">00104</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aa89900b05b81e7450c0352b124bb91bf">ControlService::debugFilenameSet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
-<a name="l00105"></a>00105 {
-<a name="l00106"></a>00106     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(DebugFilenameSet);
-<a name="l00107"></a>00107     std::string prev = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ad7c6ff7d9db6f2425ae16f5024555dd2" title="Return the filename given to the last successful call to setLogFilename(), or the empty string if non...">Core::Debug::getLogFilename</a>();
-<a name="l00108"></a>00108     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Switching to log file %s&quot;</span>,
-<a name="l00109"></a>00109            request.filename().c_str());
-<a name="l00110"></a>00110     std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a951e51ab93e895341a7633369a82befa" title="Open the given file by name and append future debug log messages to it.">Core::Debug::setLogFilename</a>(request.filename());
-<a name="l00111"></a>00111     <span class="keywordflow">if</span> (error.empty()) {
-<a name="l00112"></a>00112         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Switched from log file %s&quot;</span>,
-<a name="l00113"></a>00113                prev.c_str());
-<a name="l00114"></a>00114     } <span class="keywordflow">else</span> {
-<a name="l00115"></a>00115         <a class="code" href="Core_2Debug_8h.html#a78e40dfd87f516e322340d249027aea1" title="Log an ERROR message.">ERROR</a>(<span class="stringliteral">&quot;Failed to switch to log file %s: %s&quot;</span>,
-<a name="l00116"></a>00116               request.filename().c_str(),
-<a name="l00117"></a>00117               error.c_str());
-<a name="l00118"></a>00118         response.set_error(error);
-<a name="l00119"></a>00119     }
-<a name="l00120"></a>00120     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
-<a name="l00121"></a>00121 }
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123 <span class="keywordtype">void</span>
-<a name="l00124"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a784973152b768e0303546250c734f1fa">00124</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a784973152b768e0303546250c734f1fa">ControlService::debugPolicyGet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
-<a name="l00125"></a>00125 {
-<a name="l00126"></a>00126     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(DebugPolicyGet);
-<a name="l00127"></a>00127     response.set_policy(
-<a name="l00128"></a>00128             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae300ca19d1a62f404316fc719ac3e2bd" title="Serialize a log policy into a string representation.">Core::Debug::logPolicyToString</a>(
-<a name="l00129"></a>00129                 <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#aa75ec185568820982b1624f824e48414" title="Return the current log policy (as set by a previous call to setLogPolicy).">Core::Debug::getLogPolicy</a>()));
-<a name="l00130"></a>00130     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
-<a name="l00131"></a>00131 }
-<a name="l00132"></a>00132 
-<a name="l00133"></a>00133 <span class="keywordtype">void</span>
-<a name="l00134"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aeec584290b4518bf69ebe8ebaf10eb3f">00134</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aeec584290b4518bf69ebe8ebaf10eb3f">ControlService::debugPolicySet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
-<a name="l00135"></a>00135 {
-<a name="l00136"></a>00136     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(DebugPolicySet);
-<a name="l00137"></a>00137     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Switching to log policy %s&quot;</span>,
-<a name="l00138"></a>00138            request.policy().c_str());
-<a name="l00139"></a>00139     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">Core::Debug::setLogPolicy</a>(
-<a name="l00140"></a>00140             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9" title="Build a log policy from its string representation.">Core::Debug::logPolicyFromString</a>(
-<a name="l00141"></a>00141                 request.policy()));
-<a name="l00142"></a>00142     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
-<a name="l00143"></a>00143 }
-<a name="l00144"></a>00144 
-<a name="l00145"></a>00145 <span class="keywordtype">void</span>
-<a name="l00146"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#af8303dd0033b0a2dc7e0401f8ff8549c">00146</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#af8303dd0033b0a2dc7e0401f8ff8549c">ControlService::debugRotate</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
-<a name="l00147"></a>00147 {
-<a name="l00148"></a>00148     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(DebugRotate);
-<a name="l00149"></a>00149     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Rotating logs&quot;</span>);
-<a name="l00150"></a>00150     std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a99a55c22f6c17911671f1ece8240eb3c" title="Called to rotate the log file.">Core::Debug::reopenLogFromFilename</a>();
-<a name="l00151"></a>00151     <span class="keywordflow">if</span> (error.empty()) {
-<a name="l00152"></a>00152         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Done rotating logs&quot;</span>);
-<a name="l00153"></a>00153     } <span class="keywordflow">else</span> {
-<a name="l00154"></a>00154         <a class="code" href="Core_2Debug_8h.html#a78e40dfd87f516e322340d249027aea1" title="Log an ERROR message.">ERROR</a>(<span class="stringliteral">&quot;Failed to rotate log file: %s&quot;</span>,
-<a name="l00155"></a>00155               error.c_str());
-<a name="l00156"></a>00156         response.set_error(error);
-<a name="l00157"></a>00157     }
-<a name="l00158"></a>00158     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
-<a name="l00159"></a>00159 }
-<a name="l00160"></a>00160 
-<a name="l00161"></a>00161 <span class="keywordtype">void</span>
-<a name="l00162"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a318c9bd327ea007ac310544e92eb2b89">00162</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a318c9bd327ea007ac310544e92eb2b89">ControlService::serverInfoGet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
-<a name="l00163"></a>00163 {
-<a name="l00164"></a>00164     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(ServerInfoGet);
-<a name="l00165"></a>00165     response.set_server_id(<a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;serverId);
-<a name="l00166"></a>00166     response.set_addresses(<a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;serverAddresses);
-<a name="l00167"></a>00167     response.set_process_id(getpid());
-<a name="l00168"></a>00168     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
-<a name="l00169"></a>00169 }
-<a name="l00170"></a>00170 
-<a name="l00171"></a>00171 <span class="keywordtype">void</span>
-<a name="l00172"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a6840e7928f4f7fc4a1714eb28b9f7155">00172</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a6840e7928f4f7fc4a1714eb28b9f7155">ControlService::serverStatsDump</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
-<a name="l00173"></a>00173 {
-<a name="l00174"></a>00174     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(ServerStatsDump);
-<a name="l00175"></a>00175     <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>;
-<a name="l00176"></a>00176     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Requested dump of ServerStats:\n%s&quot;</span>,
-<a name="l00177"></a>00177            <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">dumpString</a>(<a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7dc92bf35a9d8d455210e5c497f8a714" title="Statistics and information about the server&#39;s current state.">serverStats</a>.<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456" title="Calculate and return the current server stats.">getCurrent</a>()).c_str());
-<a name="l00178"></a>00178     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
-<a name="l00179"></a>00179 }
-<a name="l00180"></a>00180 
-<a name="l00181"></a>00181 <span class="keywordtype">void</span>
-<a name="l00182"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#ac9c5dc5f7678fdd0514dafecaaf5d714">00182</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#ac9c5dc5f7678fdd0514dafecaaf5d714">ControlService::serverStatsGet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
-<a name="l00183"></a>00183 {
-<a name="l00184"></a>00184     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(ServerStatsGet);
-<a name="l00185"></a>00185     *response.mutable_server_stats() = <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7dc92bf35a9d8d455210e5c497f8a714" title="Statistics and information about the server&#39;s current state.">serverStats</a>.<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456" title="Calculate and return the current server stats.">getCurrent</a>();
-<a name="l00186"></a>00186     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
-<a name="l00187"></a>00187 }
+<a name="l00019"></a>00019 <span class="preprocessor">#include &quot;<a class="code" href="Core_2Debug_8h.html">Core/Debug.h</a>&quot;</span>
+<a name="l00020"></a>00020 <span class="preprocessor">#include &quot;<a class="code" href="ServerRPC_8h.html">RPC/ServerRPC.h</a>&quot;</span>
+<a name="l00021"></a>00021 <span class="preprocessor">#include &quot;<a class="code" href="ControlService_8h.html">Server/ControlService.h</a>&quot;</span>
+<a name="l00022"></a>00022 <span class="preprocessor">#include &quot;<a class="code" href="Globals_8h.html">Server/Globals.h</a>&quot;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &quot;<a class="code" href="RaftConsensus_8h.html">Server/RaftConsensus.h</a>&quot;</span>
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 <span class="keyword">namespace </span>LogCabin {
+<a name="l00026"></a>00026 <span class="keyword">namespace </span>Server {
+<a name="l00027"></a>00027 
+<a name="l00028"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a367f99cb79cee183de5311f17ed0de41">00028</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a367f99cb79cee183de5311f17ed0de41" title="Constructor.">ControlService::ControlService</a>(<a class="code" href="classLogCabin_1_1Server_1_1Globals.html" title="Holds the LogCabin daemon&#39;s top-level objects.">Globals</a>&amp; globals)
+<a name="l00029"></a>00029     : globals(globals)
+<a name="l00030"></a>00030 {
+<a name="l00031"></a>00031 }
+<a name="l00032"></a>00032 
+<a name="l00033"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a128a3fc45c3e1cd96e59bf1d0c99c515">00033</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a128a3fc45c3e1cd96e59bf1d0c99c515" title="Destructor.">ControlService::~ControlService</a>()
+<a name="l00034"></a>00034 {
+<a name="l00035"></a>00035 }
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 <span class="keywordtype">void</span>
+<a name="l00038"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a29df31b2fb0523de1b67f1bef9dde5b5">00038</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a29df31b2fb0523de1b67f1bef9dde5b5" title="This method is overridden by a subclass and invoked by the Server class when a new RPC arrives...">ControlService::handleRPC</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
+<a name="l00039"></a>00039 {
+<a name="l00040"></a>00040     <span class="keyword">using</span> Protocol::ServerControl::OpCode;
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042     <span class="comment">// Call the appropriate RPC handler based on the request&#39;s opCode.</span>
+<a name="l00043"></a>00043     <span class="keywordflow">switch</span> (rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a21962c2b329e32e595d87210cc7ab9b3" title="Return which RPC is being executed, scoped to the service.">getOpCode</a>()) {
+<a name="l00044"></a>00044         <span class="keywordflow">case</span> OpCode::DEBUG_FILENAME_GET:
+<a name="l00045"></a>00045             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a291fffb400d6ef186f86038d53fd9758">debugFilenameGet</a>(std::move(rpc));
+<a name="l00046"></a>00046             <span class="keywordflow">break</span>;
+<a name="l00047"></a>00047         <span class="keywordflow">case</span> OpCode::DEBUG_FILENAME_SET:
+<a name="l00048"></a>00048             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aa89900b05b81e7450c0352b124bb91bf">debugFilenameSet</a>(std::move(rpc));
+<a name="l00049"></a>00049             <span class="keywordflow">break</span>;
+<a name="l00050"></a>00050         <span class="keywordflow">case</span> OpCode::DEBUG_POLICY_GET:
+<a name="l00051"></a>00051             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a784973152b768e0303546250c734f1fa">debugPolicyGet</a>(std::move(rpc));
+<a name="l00052"></a>00052             <span class="keywordflow">break</span>;
+<a name="l00053"></a>00053         <span class="keywordflow">case</span> OpCode::DEBUG_POLICY_SET:
+<a name="l00054"></a>00054             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aeec584290b4518bf69ebe8ebaf10eb3f">debugPolicySet</a>(std::move(rpc));
+<a name="l00055"></a>00055             <span class="keywordflow">break</span>;
+<a name="l00056"></a>00056         <span class="keywordflow">case</span> OpCode::DEBUG_ROTATE:
+<a name="l00057"></a>00057             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#af8303dd0033b0a2dc7e0401f8ff8549c">debugRotate</a>(std::move(rpc));
+<a name="l00058"></a>00058             <span class="keywordflow">break</span>;
+<a name="l00059"></a>00059         <span class="keywordflow">case</span> OpCode::SERVER_INFO_GET:
+<a name="l00060"></a>00060             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a318c9bd327ea007ac310544e92eb2b89">serverInfoGet</a>(std::move(rpc));
+<a name="l00061"></a>00061             <span class="keywordflow">break</span>;
+<a name="l00062"></a>00062         <span class="keywordflow">case</span> OpCode::SERVER_STATS_DUMP:
+<a name="l00063"></a>00063             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a6840e7928f4f7fc4a1714eb28b9f7155">serverStatsDump</a>(std::move(rpc));
+<a name="l00064"></a>00064             <span class="keywordflow">break</span>;
+<a name="l00065"></a>00065         <span class="keywordflow">case</span> OpCode::SERVER_STATS_GET:
+<a name="l00066"></a>00066             <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#ac9c5dc5f7678fdd0514dafecaaf5d714">serverStatsGet</a>(std::move(rpc));
+<a name="l00067"></a>00067             <span class="keywordflow">break</span>;
+<a name="l00068"></a>00068         <span class="keywordflow">default</span>:
+<a name="l00069"></a>00069             <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Client sent request with bad op code (%u) to &quot;</span>
+<a name="l00070"></a>00070                     <span class="stringliteral">&quot;ControlService&quot;</span>, rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a21962c2b329e32e595d87210cc7ab9b3" title="Return which RPC is being executed, scoped to the service.">getOpCode</a>());
+<a name="l00071"></a>00071             rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#ab67aadc48e385864c66e82d3e0aa8d25" title="Reject the RPC on the grounds that it specifies an invalid request.">rejectInvalidRequest</a>();
+<a name="l00072"></a>00072     }
+<a name="l00073"></a>00073 }
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 std::string
+<a name="l00076"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a6bc4936461f24836b843875f0f6c7a94">00076</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a6bc4936461f24836b843875f0f6c7a94" title="Return a short name for this service which can be used in things like log messages.">ControlService::getName</a>()<span class="keyword"> const</span>
+<a name="l00077"></a>00077 <span class="keyword"></span>{
+<a name="l00078"></a>00078     <span class="keywordflow">return</span> <span class="stringliteral">&quot;ControlService&quot;</span>;
+<a name="l00079"></a>00079 }
+<a name="l00080"></a>00080 <span class="comment"></span>
+<a name="l00081"></a>00081 <span class="comment">/**</span>
+<a name="l00082"></a>00082 <span class="comment"> * Place this at the top of each RPC handler. Afterwards, &#39;request&#39; will refer</span>
+<a name="l00083"></a>00083 <span class="comment"> * to the protocol buffer for the request with all required fields set.</span>
+<a name="l00084"></a>00084 <span class="comment"> * &#39;response&#39; will be an empty protocol buffer for you to fill in the response.</span>
+<a name="l00085"></a>00085 <span class="comment"> */</span>
+<a name="l00086"></a><a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5">00086</a> <span class="preprocessor">#define PRELUDE(rpcClass) \</span>
+<a name="l00087"></a>00087 <span class="preprocessor">    Protocol::ServerControl::rpcClass::Request request; \</span>
+<a name="l00088"></a>00088 <span class="preprocessor">    Protocol::ServerControl::rpcClass::Response response; \</span>
+<a name="l00089"></a>00089 <span class="preprocessor">    if (!rpc.getRequest(request)) \</span>
+<a name="l00090"></a>00090 <span class="preprocessor">        return;</span>
+<a name="l00091"></a>00091 <span class="preprocessor"></span><span class="comment"></span>
+<a name="l00092"></a>00092 <span class="comment">////////// RPC handlers //////////</span>
+<a name="l00093"></a>00093 <span class="comment"></span>
+<a name="l00094"></a>00094 <span class="keywordtype">void</span>
+<a name="l00095"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a291fffb400d6ef186f86038d53fd9758">00095</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a291fffb400d6ef186f86038d53fd9758">ControlService::debugFilenameGet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
+<a name="l00096"></a>00096 {
+<a name="l00097"></a>00097     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(DebugFilenameGet);
+<a name="l00098"></a>00098     response.set_filename(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ad7c6ff7d9db6f2425ae16f5024555dd2" title="Return the filename given to the last successful call to setLogFilename(), or the empty string if non...">Core::Debug::getLogFilename</a>());
+<a name="l00099"></a>00099     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
+<a name="l00100"></a>00100 }
+<a name="l00101"></a>00101 
+<a name="l00102"></a>00102 <span class="keywordtype">void</span>
+<a name="l00103"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aa89900b05b81e7450c0352b124bb91bf">00103</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aa89900b05b81e7450c0352b124bb91bf">ControlService::debugFilenameSet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
+<a name="l00104"></a>00104 {
+<a name="l00105"></a>00105     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(DebugFilenameSet);
+<a name="l00106"></a>00106     std::string prev = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ad7c6ff7d9db6f2425ae16f5024555dd2" title="Return the filename given to the last successful call to setLogFilename(), or the empty string if non...">Core::Debug::getLogFilename</a>();
+<a name="l00107"></a>00107     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Switching to log file %s&quot;</span>,
+<a name="l00108"></a>00108            request.filename().c_str());
+<a name="l00109"></a>00109     std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a951e51ab93e895341a7633369a82befa" title="Open the given file by name and append future debug log messages to it.">Core::Debug::setLogFilename</a>(request.filename());
+<a name="l00110"></a>00110     <span class="keywordflow">if</span> (error.empty()) {
+<a name="l00111"></a>00111         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Switched from log file %s&quot;</span>,
+<a name="l00112"></a>00112                prev.c_str());
+<a name="l00113"></a>00113     } <span class="keywordflow">else</span> {
+<a name="l00114"></a>00114         <a class="code" href="Core_2Debug_8h.html#a78e40dfd87f516e322340d249027aea1" title="Log an ERROR message.">ERROR</a>(<span class="stringliteral">&quot;Failed to switch to log file %s: %s&quot;</span>,
+<a name="l00115"></a>00115               request.filename().c_str(),
+<a name="l00116"></a>00116               error.c_str());
+<a name="l00117"></a>00117         response.set_error(error);
+<a name="l00118"></a>00118     }
+<a name="l00119"></a>00119     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
+<a name="l00120"></a>00120 }
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122 <span class="keywordtype">void</span>
+<a name="l00123"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a784973152b768e0303546250c734f1fa">00123</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a784973152b768e0303546250c734f1fa">ControlService::debugPolicyGet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
+<a name="l00124"></a>00124 {
+<a name="l00125"></a>00125     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(DebugPolicyGet);
+<a name="l00126"></a>00126     response.set_policy(
+<a name="l00127"></a>00127             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae300ca19d1a62f404316fc719ac3e2bd" title="Serialize a log policy into a string representation.">Core::Debug::logPolicyToString</a>(
+<a name="l00128"></a>00128                 <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#aa75ec185568820982b1624f824e48414" title="Return the current log policy (as set by a previous call to setLogPolicy).">Core::Debug::getLogPolicy</a>()));
+<a name="l00129"></a>00129     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
+<a name="l00130"></a>00130 }
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132 <span class="keywordtype">void</span>
+<a name="l00133"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aeec584290b4518bf69ebe8ebaf10eb3f">00133</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aeec584290b4518bf69ebe8ebaf10eb3f">ControlService::debugPolicySet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
+<a name="l00134"></a>00134 {
+<a name="l00135"></a>00135     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(DebugPolicySet);
+<a name="l00136"></a>00136     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Switching to log policy %s&quot;</span>,
+<a name="l00137"></a>00137            request.policy().c_str());
+<a name="l00138"></a>00138     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">Core::Debug::setLogPolicy</a>(
+<a name="l00139"></a>00139             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9" title="Build a log policy from its string representation.">Core::Debug::logPolicyFromString</a>(
+<a name="l00140"></a>00140                 request.policy()));
+<a name="l00141"></a>00141     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
+<a name="l00142"></a>00142 }
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144 <span class="keywordtype">void</span>
+<a name="l00145"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#af8303dd0033b0a2dc7e0401f8ff8549c">00145</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#af8303dd0033b0a2dc7e0401f8ff8549c">ControlService::debugRotate</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
+<a name="l00146"></a>00146 {
+<a name="l00147"></a>00147     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(DebugRotate);
+<a name="l00148"></a>00148     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Rotating logs&quot;</span>);
+<a name="l00149"></a>00149     std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a99a55c22f6c17911671f1ece8240eb3c" title="Called to rotate the log file.">Core::Debug::reopenLogFromFilename</a>();
+<a name="l00150"></a>00150     <span class="keywordflow">if</span> (error.empty()) {
+<a name="l00151"></a>00151         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Done rotating logs&quot;</span>);
+<a name="l00152"></a>00152     } <span class="keywordflow">else</span> {
+<a name="l00153"></a>00153         <a class="code" href="Core_2Debug_8h.html#a78e40dfd87f516e322340d249027aea1" title="Log an ERROR message.">ERROR</a>(<span class="stringliteral">&quot;Failed to rotate log file: %s&quot;</span>,
+<a name="l00154"></a>00154               error.c_str());
+<a name="l00155"></a>00155         response.set_error(error);
+<a name="l00156"></a>00156     }
+<a name="l00157"></a>00157     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
+<a name="l00158"></a>00158 }
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160 <span class="keywordtype">void</span>
+<a name="l00161"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a318c9bd327ea007ac310544e92eb2b89">00161</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a318c9bd327ea007ac310544e92eb2b89">ControlService::serverInfoGet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
+<a name="l00162"></a>00162 {
+<a name="l00163"></a>00163     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(ServerInfoGet);
+<a name="l00164"></a>00164     response.set_server_id(<a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;serverId);
+<a name="l00165"></a>00165     response.set_addresses(<a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;serverAddresses);
+<a name="l00166"></a>00166     response.set_process_id(getpid());
+<a name="l00167"></a>00167     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
+<a name="l00168"></a>00168 }
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170 <span class="keywordtype">void</span>
+<a name="l00171"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a6840e7928f4f7fc4a1714eb28b9f7155">00171</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a6840e7928f4f7fc4a1714eb28b9f7155">ControlService::serverStatsDump</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
+<a name="l00172"></a>00172 {
+<a name="l00173"></a>00173     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(ServerStatsDump);
+<a name="l00174"></a>00174     <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>;
+<a name="l00175"></a>00175     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Requested dump of ServerStats:\n%s&quot;</span>,
+<a name="l00176"></a>00176            <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">dumpString</a>(<a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7dc92bf35a9d8d455210e5c497f8a714" title="Statistics and information about the server&#39;s current state.">serverStats</a>.<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456" title="Calculate and return the current server stats.">getCurrent</a>()).c_str());
+<a name="l00177"></a>00177     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
+<a name="l00178"></a>00178 }
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180 <span class="keywordtype">void</span>
+<a name="l00181"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#ac9c5dc5f7678fdd0514dafecaaf5d714">00181</a> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#ac9c5dc5f7678fdd0514dafecaaf5d714">ControlService::serverStatsGet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc)
+<a name="l00182"></a>00182 {
+<a name="l00183"></a>00183     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(ServerStatsGet);
+<a name="l00184"></a>00184     *response.mutable_server_stats() = <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7dc92bf35a9d8d455210e5c497f8a714" title="Statistics and information about the server&#39;s current state.">serverStats</a>.<a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html#a12bde7ac8f063a573f820764ffc5c456" title="Calculate and return the current server stats.">getCurrent</a>();
+<a name="l00185"></a>00185     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
+<a name="l00186"></a>00186 }
+<a name="l00187"></a>00187 
 <a name="l00188"></a>00188 
-<a name="l00189"></a>00189 
-<a name="l00190"></a>00190 } <span class="comment">// namespace LogCabin::Server</span>
-<a name="l00191"></a>00191 } <span class="comment">// namespace LogCabin</span>
+<a name="l00189"></a>00189 } <span class="comment">// namespace LogCabin::Server</span>
+<a name="l00190"></a>00190 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

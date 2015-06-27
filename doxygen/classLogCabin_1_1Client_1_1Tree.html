@@ -289,7 +289,9 @@ Friends</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Status and error message. Possible errors are:<ul>
 <li>INVALID_ARGUMENT if workingDirectory is malformed.</li>
 <li>TYPE_ERROR if parent of workingDirectory is a file.</li>
-<li>TYPE_ERROR if workingDirectory exists but is a file. If this returns an error, future operations on this tree using relative paths will fail until a valid working directory is set. </li>
+<li>TYPE_ERROR if workingDirectory exists but is a file.</li>
+<li>CONDITION_NOT_MET if predicate from <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a> was false.</li>
+<li>TIMEOUT if timeout elapsed before the operation completed. If this returns an error, future operations on this tree using relative paths will fail until a valid working directory is set. </li>
 </ul>
 </dd></dl>
 
@@ -356,7 +358,7 @@ Friends</h2></td></tr>
 <p>Return the condition set by a previous call to <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a>. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>First component: the absolute path corresponding to the 'path' argument of <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a>. Second component: the file contents given as the 'value' argument of <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00307">307</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00311">311</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -430,7 +432,7 @@ Friends</h2></td></tr>
 
 <p>Like setCondition but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00301">301</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00305">305</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -451,7 +453,7 @@ Friends</h2></td></tr>
 <p>Return the timeout set by a previous call to <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#ac0f658f32b73a9daba01889040180ca7" title="Abort each future operation if it may not have completed within the specified period of time...">setTimeout()</a>. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The maximum duration of each operation (in nanoseconds), or 0 for no timeout. </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00314">314</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00318">318</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -479,7 +481,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00321">321</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00325">325</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -509,11 +511,13 @@ Friends</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Status and error message. Possible errors are:<ul>
 <li>INVALID_ARGUMENT if path is malformed.</li>
 <li>TYPE_ERROR if a parent of path is a file.</li>
-<li>TYPE_ERROR if path exists but is a file. </li>
+<li>TYPE_ERROR if path exists but is a file.</li>
+<li>CONDITION_NOT_MET if predicate from <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a> was false.</li>
+<li>TIMEOUT if timeout elapsed before the operation completed. </li>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00330">330</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00334">334</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -534,7 +538,7 @@ Friends</h2></td></tr>
 
 <p>Like makeDirectory but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00341">341</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00345">345</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -576,11 +580,13 @@ Friends</h2></td></tr>
 <li>LOOKUP_ERROR if a parent of path does not exist.</li>
 <li>LOOKUP_ERROR if path does not exist.</li>
 <li>TYPE_ERROR if a parent of path is a file.</li>
-<li>TYPE_ERROR if path exists but is a file. </li>
+<li>TYPE_ERROR if path exists but is a file.</li>
+<li>CONDITION_NOT_MET if predicate from <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a> was false.</li>
+<li>TIMEOUT if timeout elapsed before the operation completed. </li>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00347">347</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00351">351</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -601,7 +607,7 @@ Friends</h2></td></tr>
 
 <p>Like listDirectory but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00360">360</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00364">364</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -632,11 +638,13 @@ Friends</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Status and error message. Possible errors are:<ul>
 <li>INVALID_ARGUMENT if path is malformed.</li>
 <li>TYPE_ERROR if a parent of path is a file.</li>
-<li>TYPE_ERROR if path exists but is a file. </li>
+<li>TYPE_ERROR if path exists but is a file.</li>
+<li>CONDITION_NOT_MET if predicate from <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a> was false.</li>
+<li>TIMEOUT if timeout elapsed before the operation completed. </li>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00368">368</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00372">372</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -657,7 +665,7 @@ Friends</h2></td></tr>
 
 <p>Like removeDirectory but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00379">379</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00383">383</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -699,11 +707,13 @@ Friends</h2></td></tr>
 <li>INVALID_ARGUMENT if contents are too large to fit in a file.</li>
 <li>LOOKUP_ERROR if a parent of path does not exist.</li>
 <li>TYPE_ERROR if a parent of path is a file.</li>
-<li>TYPE_ERROR if path exists but is a directory. </li>
+<li>TYPE_ERROR if path exists but is a directory.</li>
+<li>CONDITION_NOT_MET if predicate from <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a> was false.</li>
+<li>TIMEOUT if timeout elapsed before the operation completed. </li>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00385">385</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00389">389</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -734,7 +744,7 @@ Friends</h2></td></tr>
 
 <p>Like write but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00397">397</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00401">401</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -776,11 +786,13 @@ Friends</h2></td></tr>
 <li>LOOKUP_ERROR if a parent of path does not exist.</li>
 <li>LOOKUP_ERROR if path does not exist.</li>
 <li>TYPE_ERROR if a parent of path is a file.</li>
-<li>TYPE_ERROR if path is a directory. </li>
+<li>TYPE_ERROR if path is a directory.</li>
+<li>CONDITION_NOT_MET if predicate from <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a> was false.</li>
+<li>TIMEOUT if timeout elapsed before the operation completed. </li>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00403">403</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00407">407</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -801,7 +813,7 @@ Friends</h2></td></tr>
 
 <p>Like read but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00415">415</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00419">419</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -830,11 +842,13 @@ Friends</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Status and error message. Possible errors are:<ul>
 <li>INVALID_ARGUMENT if path is malformed.</li>
 <li>TYPE_ERROR if a parent of path is a file.</li>
-<li>TYPE_ERROR if path exists but is a directory. </li>
+<li>TYPE_ERROR if path exists but is a directory.</li>
+<li>CONDITION_NOT_MET if predicate from <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#aa2b64e58dccb96f0458b09da95151921" title="Set a predicate on all future operations.">setCondition()</a> was false.</li>
+<li>TIMEOUT if timeout elapsed before the operation completed. </li>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00423">423</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00427">427</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -855,7 +869,7 @@ Friends</h2></td></tr>
 
 <p>Like removeFile but throws exceptions upon errors. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00434">434</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00438">438</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -875,7 +889,7 @@ Friends</h2></td></tr>
 
 <p>Get a reference to the implementation-specific members of this class. </p>
 
-<p>Definition at line <a class="el" href="Client_8cc_source.html#l00440">440</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
+<p>Definition at line <a class="el" href="Client_8cc_source.html#l00444">444</a> of file <a class="el" href="Client_8cc_source.html">Client.cc</a>.</p>
 
 </div>
 </div>
@@ -891,7 +905,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00508">508</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00522">522</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
@@ -909,7 +923,7 @@ Friends</h2></td></tr>
 
 <p>Provides mutual exclusion to treeDetails pointer. </p>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00501">501</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00515">515</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>
@@ -927,7 +941,7 @@ Friends</h2></td></tr>
 <p>Reference-counted pointer to implementation-specific members. </p>
 <p>This is copy-on-write, so 'mutex' need not be held after taking a reference to treeDetails. </p>
 
-<p>Definition at line <a class="el" href="Client_8h_source.html#l00507">507</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
+<p>Definition at line <a class="el" href="Client_8h_source.html#l00521">521</a> of file <a class="el" href="Client_8h_source.html">Client.h</a>.</p>
 
 </div>
 </div>

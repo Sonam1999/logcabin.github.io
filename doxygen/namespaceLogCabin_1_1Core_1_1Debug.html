@@ -178,7 +178,8 @@ Variables</h2></td></tr>
 <div class="memdoc">
 
 <p>The levels of verbosity for log messages. </p>
-<p>Higher values are noisier. </p>
+<p>Higher values are noisier.</p>
+<dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. New levels may be added in future minor releases (adding a new level is considered backwards-compatible), so use 'default' values in switch statements. </dd></dl>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" id="adc065d555e423169e3f74efa3f13b8e5a95711f7dec5f19094bb2b73111e8b390"></a><!-- doxytag: member="SILENT" ref="adc065d555e423169e3f74efa3f13b8e5a95711f7dec5f19094bb2b73111e8b390" args="" -->SILENT</em>&nbsp;</td><td>
 <p>This log level is just used for disabling all log messages, which is really only useful in unit tests. </p>
@@ -200,7 +201,7 @@ Variables</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00034">34</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="include_2LogCabin_2Debug_8h_source.html#l00047">47</a> of file <a class="el" href="include_2LogCabin_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>
@@ -222,7 +223,7 @@ Variables</h2></td></tr>
 <p>Return the filename given to the last successful call to <a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a951e51ab93e895341a7633369a82befa" title="Open the given file by name and append future debug log messages to it.">setLogFilename()</a>, or the empty string if none. </p>
 <dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. </dd></dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00250">250</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00256">256</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -252,7 +253,7 @@ Variables</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Error message if errors were encountered opening the file, otherwise an empty string indicates success. </dd></dl>
 <dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. </dd></dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00257">257</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00263">263</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -275,7 +276,7 @@ Variables</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Error message if errors were encountered in reopening the file, otherwise an empty string indicates success. </dd></dl>
 <dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. </dd></dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00283">283</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00289">289</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -304,7 +305,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Handle to previous log file (initialized to stderr on process start). </dd></dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00293">293</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00299">299</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -333,7 +334,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Previous callback (initialized to empty std::function on process start). </dd></dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00303">303</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00309">309</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -355,7 +356,7 @@ Variables</h2></td></tr>
 <p>Note that this may be empty, indicating that the default level of NOTICE is in use. </p>
 <dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. </dd></dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00312">312</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00318">318</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -377,7 +378,7 @@ Variables</h2></td></tr>
 <p>Specify the log messages that should be displayed for each filename. </p>
 <p>This first component is a pattern; the second is a log level. A filename is matched against each pattern in order: if the filename starts with or ends with the pattern, the corresponding log level defines the most verbose messages that are to be displayed for the file. If a filename matches no pattern, its log level will default to NOTICE. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00319">319</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00325">325</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -398,7 +399,7 @@ Variables</h2></td></tr>
 
 <p>See setLogPolicy. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00328">328</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00334">334</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -427,7 +428,7 @@ Variables</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Logging policy based on string description. </dd></dl>
 <dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. </dd></dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00336">336</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00342">342</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -456,7 +457,7 @@ Variables</h2></td></tr>
 <dl class="return"><dt><b>Returns:</b></dt><dd>String representation as accepted by logPolicyFromString. </dd></dl>
 <dl class="since"><dt><b>Since:</b></dt><dd><a class="el" href="namespaceLogCabin.html">LogCabin</a> v1.1.0. </dd></dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00359">359</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00365">365</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -488,7 +489,7 @@ Variables</h2></td></tr>
 <p>Output a LogLevel to a stream. </p>
 <p>Having this improves gtest error messages. </p>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00388">388</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00394">394</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -528,7 +529,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00395">395</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00401">401</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
@@ -595,7 +596,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00410">410</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
+<p>Definition at line <a class="el" href="Debug_8cc_source.html#l00416">416</a> of file <a class="el" href="Debug_8cc_source.html">Debug.cc</a>.</p>
 
 </div>
 </div>
