@@ -48,7 +48,7 @@ var searchData=
   ['replaceall',['replaceAll',['../namespaceLogCabin_1_1Core_1_1StringUtil.html#a93fbbed8769a31a464c1d9f8633d8402',1,'LogCabin::Core::StringUtil']]],
   ['replicate',['replicate',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a0093bdf7b22e915100ad46aa974da8c0',1,'LogCabin::Server::RaftConsensus']]],
   ['replicateentry',['replicateEntry',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a2d3262b95e156d88b3e239397bad643e',1,'LogCabin::Server::RaftConsensus']]],
-  ['reply',['reply',['../classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea',1,'LogCabin::RPC::ServerRPC::reply()'],['../classLogCabin_1_1RPC_1_1ServiceMock.html#a6eb6b5e9a205df4487cfe03e459c2b6d',1,'LogCabin::RPC::ServiceMock::reply()'],['../classLogCabin_1_1RPC_1_1ServiceMock_1_1Reply.html#aca63f5138ca68e8378de442dcd5b1fdd',1,'LogCabin::RPC::ServiceMock::Reply::Reply()']]],
+  ['reply',['Reply',['../classLogCabin_1_1RPC_1_1ServiceMock_1_1Reply.html#aca63f5138ca68e8378de442dcd5b1fdd',1,'LogCabin::RPC::ServiceMock::Reply::Reply()'],['../classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea',1,'LogCabin::RPC::ServerRPC::reply()'],['../classLogCabin_1_1RPC_1_1ServiceMock.html#a6eb6b5e9a205df4487cfe03e459c2b6d',1,'LogCabin::RPC::ServiceMock::reply()']]],
   ['reportfailure',['reportFailure',['../classLogCabin_1_1Client_1_1LeaderRPC.html#ab419ff7fede5c2a6079d285ab042f00c',1,'LogCabin::Client::LeaderRPC']]],
   ['reportnotleader',['reportNotLeader',['../classLogCabin_1_1Client_1_1LeaderRPC.html#aca46956f08ccec82982e408f8afc99a3',1,'LogCabin::Client::LeaderRPC']]],
   ['reportredirect',['reportRedirect',['../classLogCabin_1_1Client_1_1LeaderRPC.html#ac5092094c0f194da237decd8451096c7',1,'LogCabin::Client::LeaderRPC']]],
