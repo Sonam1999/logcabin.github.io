@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LogCabin: LogCabin::Client::Util Namespace Reference</title>
+<title>LogCabin: LogCabin::Core::Config::Exception Struct Reference</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -47,8 +47,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -70,8 +70,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
-      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -91,60 +93,70 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="nav-path" class="navpath">
     <ul>
       <li class="navelem"><a class="el" href="namespaceLogCabin.html">LogCabin</a>      </li>
-      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Client.html">Client</a>      </li>
-      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Client_1_1Util.html">Util</a>      </li>
+      <li class="navelem"><a class="el" href="namespaceLogCabin_1_1Core.html">Core</a>      </li>
+      <li class="navelem"><a class="el" href="classLogCabin_1_1Core_1_1Config.html">Config</a>      </li>
+      <li class="navelem"><a class="el" href="structLogCabin_1_1Core_1_1Config_1_1Exception.html">Exception</a>      </li>
     </ul>
   </div>
 </div>
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a>  </div>
   <div class="headertitle">
-<div class="title">LogCabin::Client::Util Namespace Reference</div>  </div>
+<div class="title">LogCabin::Core::Config::Exception Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<!-- doxytag: class="LogCabin::Core::Config::Exception" -->
+<p>Base class for <a class="el" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Config</a> exceptions.  
+ <a href="structLogCabin_1_1Core_1_1Config_1_1Exception.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Config_8h_source.html">Config.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for LogCabin::Core::Config::Exception:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="structLogCabin_1_1Core_1_1Config_1_1Exception.png" usemap="#LogCabin::Core::Config::Exception_map" alt=""/>
+  <map id="LogCabin::Core::Config::Exception_map" name="LogCabin::Core::Config::Exception_map">
+<area href="structLogCabin_1_1Core_1_1Config_1_1ConversionError.html" alt="LogCabin::Core::Config::ConversionError" shape="rect" coords="0,56,244,80"/>
+<area href="structLogCabin_1_1Core_1_1Config_1_1FileNotFound.html" alt="LogCabin::Core::Config::FileNotFound" shape="rect" coords="254,56,498,80"/>
+<area href="structLogCabin_1_1Core_1_1Config_1_1KeyNotFound.html" alt="LogCabin::Core::Config::KeyNotFound" shape="rect" coords="508,56,752,80"/>
+</map>
+ </div></div>
+
+<p><a href="structLogCabin_1_1Core_1_1Config_1_1Exception-members.html">List of all members.</a></p>
 <table class="memberdecls">
-<tr><td colspan="2"><h2><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1Util.html#a24ce1ecee7dd892d597c0f32f6a735ab">parseDuration</a> (const std::string &amp;description)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a human-readable description of a time duration into a number of nanoseconds.  <a href="#a24ce1ecee7dd892d597c0f32f6a735ab"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Core_1_1Config_1_1Exception.html#a1accd0f79ad0070d7feee63257b7478b">Exception</a> (const std::string &amp;error)</td></tr>
 </table>
-<hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a24ce1ecee7dd892d597c0f32f6a735ab"></a><!-- doxytag: member="LogCabin::Client::Util::parseDuration" ref="a24ce1ecee7dd892d597c0f32f6a735ab" args="(const std::string &amp;description)" -->
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Base class for <a class="el" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Config</a> exceptions. </p>
+
+<p>Definition at line <a class="el" href="Config_8h_source.html#l00068">68</a> of file <a class="el" href="Config_8h_source.html">Config.h</a>.</p>
+</div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a1accd0f79ad0070d7feee63257b7478b"></a><!-- doxytag: member="LogCabin::Core::Config::Exception::Exception" ref="a1accd0f79ad0070d7feee63257b7478b" args="(const std::string &amp;error)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="namespaceLogCabin_1_1Client_1_1Util.html#a24ce1ecee7dd892d597c0f32f6a735ab">LogCabin::Client::Util::parseDuration</a> </td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Core_1_1Config_1_1Exception.html#a1accd0f79ad0070d7feee63257b7478b">LogCabin::Core::Config::Exception::Exception</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>description</em></td><td>)</td>
-          <td></td>
+          <td class="paramname"><em>error</em></td><td>)</td>
+          <td><code> [explicit]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Convert a human-readable description of a time duration into a number of nanoseconds. </p>
-<dl class="params"><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">description</td><td>Something like 10, 10s, 200ms, 3us, or 999ns. With no units, defaults to seconds. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Number of nanoseconds. </dd></dl>
-<dl class="exception"><dt><b>Exceptions:</b></dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classLogCabin_1_1Client_1_1InvalidArgumentException.html" title="See Status::INVALID_ARGUMENT.">Client::InvalidArgumentException</a></td><td>If description could not be parsed successfully. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="warning"><dt><b>Warning:</b></dt><dd>This function is subject to change. It is not subject to the versioning requirements of <a class="el" href="namespaceLogCabin.html">LogCabin</a>'s public API. </dd></dl>
-
-<p>Definition at line <a class="el" href="Client_2Util_8cc_source.html#l00025">25</a> of file <a class="el" href="Client_2Util_8cc_source.html">Util.cc</a>.</p>
+<p>Definition at line <a class="el" href="Config_8cc_source.html#l00102">102</a> of file <a class="el" href="Config_8cc_source.html">Config.cc</a>.</p>
 
 </div>
 </div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li>Core/<a class="el" href="Config_8h_source.html">Config.h</a></li>
+<li>Core/<a class="el" href="Config_8cc_source.html">Config.cc</a></li>
+</ul>
 </div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

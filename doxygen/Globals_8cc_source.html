@@ -236,7 +236,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00154"></a>00154         std::vector&lt;std::string&gt; listenAddresses =
 <a name="l00155"></a>00155             <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html#a15ab146660ab9503819c1b88fd4925c5" title="Split a path into its components.">Core::StringUtil::split</a>(listenAddressesStr, <span class="charliteral">&#39;,&#39;</span>);
 <a name="l00156"></a>00156         <span class="keywordflow">if</span> (listenAddresses.empty()) {
-<a name="l00157"></a>00157             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;No server addresses specified to listen on&quot;</span>);
+<a name="l00157"></a>00157             <a class="code" href="Core_2Debug_8h.html#ae62d555ee2a777ff1ff54e6c6175891c" title="Log an ERROR message and exit the process with status 1.">EXIT</a>(<span class="stringliteral">&quot;No server addresses specified to listen on&quot;</span>);
 <a name="l00158"></a>00158         }
 <a name="l00159"></a>00159         <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = listenAddresses.begin();
 <a name="l00160"></a>00160              it != listenAddresses.end();
@@ -245,9 +245,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00163"></a>00163             address.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#a862df7c77ff8748a64dfde7696df9b76" title="Convert (a random one of) the host(s) and port(s) to a sockaddr.">refresh</a>(RPC::Address::TimePoint::max());
 <a name="l00164"></a>00164             std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a> = <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa5ca9e0cf49a42c74813f2614fea84d7" title="Listens for inbound RPCs and passes them off to the services.">rpcServer</a>-&gt;bind(address);
 <a name="l00165"></a>00165             <span class="keywordflow">if</span> (!error.empty()) {
-<a name="l00166"></a>00166                 <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not listen on address %s: %s&quot;</span>,
-<a name="l00167"></a>00167                       address.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#ab6a0a36311326ceb780aa3a9bad3ac83" title="Return a string describing this Address.">toString</a>().c_str(),
-<a name="l00168"></a>00168                       error.c_str());
+<a name="l00166"></a>00166                 <a class="code" href="Core_2Debug_8h.html#ae62d555ee2a777ff1ff54e6c6175891c" title="Log an ERROR message and exit the process with status 1.">EXIT</a>(<span class="stringliteral">&quot;Could not listen on address %s: %s&quot;</span>,
+<a name="l00167"></a>00167                      address.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#ab6a0a36311326ceb780aa3a9bad3ac83" title="Return a string describing this Address.">toString</a>().c_str(),
+<a name="l00168"></a>00168                      error.c_str());
 <a name="l00169"></a>00169             }
 <a name="l00170"></a>00170             <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Serving on %s&quot;</span>,
 <a name="l00171"></a>00171                    address.<a class="code" href="classLogCabin_1_1RPC_1_1Address.html#ab6a0a36311326ceb780aa3a9bad3ac83" title="Return a string describing this Address.">toString</a>().c_str());

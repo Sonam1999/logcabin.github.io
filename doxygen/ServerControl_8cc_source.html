@@ -405,85 +405,94 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00323"></a>00323     <span class="keyword">using namespace </span>LogCabin;
 <a name="l00324"></a>00324     <span class="keyword">using namespace </span>LogCabin::Client;
 <a name="l00325"></a>00325     <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>;
-<a name="l00326"></a>00326     Client::OptionParser options(argc, argv);
-<a name="l00327"></a>00327     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">Client::Debug::setLogPolicy</a>(
-<a name="l00328"></a>00328         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9" title="Build a log policy from its string representation.">Client::Debug::logPolicyFromString</a>(options.logPolicy));
-<a name="l00329"></a>00329     ServerControl server(options.server,
-<a name="l00330"></a>00330                          ClientImpl::absTimeout(options.timeout));
-<a name="l00331"></a>00331 
-<a name="l00332"></a>00332     <span class="keywordflow">if</span> (options.at(0) == <span class="stringliteral">&quot;info&quot;</span>) {
-<a name="l00333"></a>00333         <span class="keywordflow">if</span> (options.at(1) == <span class="stringliteral">&quot;get&quot;</span>) {
-<a name="l00334"></a>00334             options.done();
-<a name="l00335"></a>00335             Proto::ServerInfoGet::Request request;
-<a name="l00336"></a>00336             Proto::ServerInfoGet::Response response;
-<a name="l00337"></a>00337             server.ServerInfoGet(request, response);
-<a name="l00338"></a>00338             std::cout &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">dumpString</a>(response);
-<a name="l00339"></a>00339             <span class="keywordflow">return</span> 0;
-<a name="l00340"></a>00340         }
-<a name="l00341"></a>00341     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(0) == <span class="stringliteral">&quot;debug&quot;</span>) {
-<a name="l00342"></a>00342         <span class="keywordflow">if</span> (options.at(1) == <span class="stringliteral">&quot;filename&quot;</span>) {
-<a name="l00343"></a>00343             <span class="keywordflow">if</span> (options.at(2) == <span class="stringliteral">&quot;get&quot;</span>) {
-<a name="l00344"></a>00344                 options.done();
-<a name="l00345"></a>00345                 Proto::DebugFilenameGet::Request request;
-<a name="l00346"></a>00346                 Proto::DebugFilenameGet::Response response;
-<a name="l00347"></a>00347                 server.DebugFilenameGet(request, response);
-<a name="l00348"></a>00348                 std::cout &lt;&lt; response.filename() &lt;&lt; std::endl;
-<a name="l00349"></a>00349                 <span class="keywordflow">return</span> 0;
-<a name="l00350"></a>00350             } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(2) == <span class="stringliteral">&quot;set&quot;</span>) {
-<a name="l00351"></a>00351                 std::string value = options.at(3);
-<a name="l00352"></a>00352                 options.done();
-<a name="l00353"></a>00353                 Proto::DebugFilenameSet::Request request;
-<a name="l00354"></a>00354                 Proto::DebugFilenameSet::Response response;
-<a name="l00355"></a>00355                 request.set_filename(value);
-<a name="l00356"></a>00356                 server.DebugFilenameSet(request, response);
-<a name="l00357"></a>00357                 <span class="keywordflow">if</span> (response.has_error())
-<a name="l00358"></a>00358                     <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a>(response.error());
-<a name="l00359"></a>00359                 <span class="keywordflow">return</span> 0;
-<a name="l00360"></a>00360             }
-<a name="l00361"></a>00361         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(1) == <span class="stringliteral">&quot;policy&quot;</span>) {
-<a name="l00362"></a>00362             <span class="keywordflow">if</span> (options.at(2) == <span class="stringliteral">&quot;get&quot;</span>) {
-<a name="l00363"></a>00363                 options.done();
-<a name="l00364"></a>00364                 Proto::DebugPolicyGet::Request request;
-<a name="l00365"></a>00365                 Proto::DebugPolicyGet::Response response;
-<a name="l00366"></a>00366                 server.DebugPolicyGet(request, response);
-<a name="l00367"></a>00367                 std::cout &lt;&lt; response.policy() &lt;&lt; std::endl;
-<a name="l00368"></a>00368                 <span class="keywordflow">return</span> 0;
-<a name="l00369"></a>00369             } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(2) == <span class="stringliteral">&quot;set&quot;</span>) {
-<a name="l00370"></a>00370                 std::string value = options.at(3);
-<a name="l00371"></a>00371                 options.done();
-<a name="l00372"></a>00372                 Proto::DebugPolicySet::Request request;
-<a name="l00373"></a>00373                 Proto::DebugPolicySet::Response response;
-<a name="l00374"></a>00374                 request.set_policy(value);
-<a name="l00375"></a>00375                 server.DebugPolicySet(request, response);
-<a name="l00376"></a>00376                 <span class="keywordflow">return</span> 0;
-<a name="l00377"></a>00377             }
-<a name="l00378"></a>00378         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(1) == <span class="stringliteral">&quot;rotate&quot;</span>) {
-<a name="l00379"></a>00379             options.done();
-<a name="l00380"></a>00380             Proto::DebugRotate::Request request;
-<a name="l00381"></a>00381             Proto::DebugRotate::Response response;
-<a name="l00382"></a>00382             server.DebugRotate(request, response);
-<a name="l00383"></a>00383             <span class="keywordflow">if</span> (response.has_error())
-<a name="l00384"></a>00384                 <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a>(response.error());
-<a name="l00385"></a>00385             <span class="keywordflow">return</span> 0;
-<a name="l00386"></a>00386         }
-<a name="l00387"></a>00387     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(0) == <span class="stringliteral">&quot;stats&quot;</span>) {
-<a name="l00388"></a>00388         <span class="keywordflow">if</span> (options.at(1) == <span class="stringliteral">&quot;get&quot;</span>) {
-<a name="l00389"></a>00389             options.done();
-<a name="l00390"></a>00390             Proto::ServerStatsGet::Request request;
-<a name="l00391"></a>00391             Proto::ServerStatsGet::Response response;
-<a name="l00392"></a>00392             server.ServerStatsGet(request, response);
-<a name="l00393"></a>00393             std::cout &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">dumpString</a>(response.server_stats());
-<a name="l00394"></a>00394             <span class="keywordflow">return</span> 0;
-<a name="l00395"></a>00395         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(1) == <span class="stringliteral">&quot;dump&quot;</span>) {
-<a name="l00396"></a>00396             options.done();
-<a name="l00397"></a>00397             Proto::ServerStatsDump::Request request;
-<a name="l00398"></a>00398             Proto::ServerStatsDump::Response response;
-<a name="l00399"></a>00399             server.ServerStatsDump(request, response);
-<a name="l00400"></a>00400             <span class="keywordflow">return</span> 0;
-<a name="l00401"></a>00401         }
-<a name="l00402"></a>00402     }
-<a name="l00403"></a>00403     options.usageError(<span class="stringliteral">&quot;Unknown command&quot;</span>);
-<a name="l00404"></a>00404 }
+<a name="l00326"></a>00326 
+<a name="l00327"></a>00327     <span class="keywordflow">try</span> {
+<a name="l00328"></a>00328         Client::OptionParser options(argc, argv);
+<a name="l00329"></a>00329         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">Client::Debug::setLogPolicy</a>(
+<a name="l00330"></a>00330             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9" title="Build a log policy from its string representation.">Client::Debug::logPolicyFromString</a>(options.logPolicy));
+<a name="l00331"></a>00331         ServerControl server(options.server,
+<a name="l00332"></a>00332                              ClientImpl::absTimeout(options.timeout));
+<a name="l00333"></a>00333 
+<a name="l00334"></a>00334         <span class="keywordflow">if</span> (options.at(0) == <span class="stringliteral">&quot;info&quot;</span>) {
+<a name="l00335"></a>00335             <span class="keywordflow">if</span> (options.at(1) == <span class="stringliteral">&quot;get&quot;</span>) {
+<a name="l00336"></a>00336                 options.done();
+<a name="l00337"></a>00337                 Proto::ServerInfoGet::Request request;
+<a name="l00338"></a>00338                 Proto::ServerInfoGet::Response response;
+<a name="l00339"></a>00339                 server.ServerInfoGet(request, response);
+<a name="l00340"></a>00340                 std::cout &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">dumpString</a>(response);
+<a name="l00341"></a>00341                 <span class="keywordflow">return</span> 0;
+<a name="l00342"></a>00342             }
+<a name="l00343"></a>00343         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(0) == <span class="stringliteral">&quot;debug&quot;</span>) {
+<a name="l00344"></a>00344             <span class="keywordflow">if</span> (options.at(1) == <span class="stringliteral">&quot;filename&quot;</span>) {
+<a name="l00345"></a>00345                 <span class="keywordflow">if</span> (options.at(2) == <span class="stringliteral">&quot;get&quot;</span>) {
+<a name="l00346"></a>00346                     options.done();
+<a name="l00347"></a>00347                     Proto::DebugFilenameGet::Request request;
+<a name="l00348"></a>00348                     Proto::DebugFilenameGet::Response response;
+<a name="l00349"></a>00349                     server.DebugFilenameGet(request, response);
+<a name="l00350"></a>00350                     std::cout &lt;&lt; response.filename() &lt;&lt; std::endl;
+<a name="l00351"></a>00351                     <span class="keywordflow">return</span> 0;
+<a name="l00352"></a>00352                 } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(2) == <span class="stringliteral">&quot;set&quot;</span>) {
+<a name="l00353"></a>00353                     std::string value = options.at(3);
+<a name="l00354"></a>00354                     options.done();
+<a name="l00355"></a>00355                     Proto::DebugFilenameSet::Request request;
+<a name="l00356"></a>00356                     Proto::DebugFilenameSet::Response response;
+<a name="l00357"></a>00357                     request.set_filename(value);
+<a name="l00358"></a>00358                     server.DebugFilenameSet(request, response);
+<a name="l00359"></a>00359                     <span class="keywordflow">if</span> (response.has_error())
+<a name="l00360"></a>00360                         <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a>(response.error());
+<a name="l00361"></a>00361                     <span class="keywordflow">return</span> 0;
+<a name="l00362"></a>00362                 }
+<a name="l00363"></a>00363             } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(1) == <span class="stringliteral">&quot;policy&quot;</span>) {
+<a name="l00364"></a>00364                 <span class="keywordflow">if</span> (options.at(2) == <span class="stringliteral">&quot;get&quot;</span>) {
+<a name="l00365"></a>00365                     options.done();
+<a name="l00366"></a>00366                     Proto::DebugPolicyGet::Request request;
+<a name="l00367"></a>00367                     Proto::DebugPolicyGet::Response response;
+<a name="l00368"></a>00368                     server.DebugPolicyGet(request, response);
+<a name="l00369"></a>00369                     std::cout &lt;&lt; response.policy() &lt;&lt; std::endl;
+<a name="l00370"></a>00370                     <span class="keywordflow">return</span> 0;
+<a name="l00371"></a>00371                 } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(2) == <span class="stringliteral">&quot;set&quot;</span>) {
+<a name="l00372"></a>00372                     std::string value = options.at(3);
+<a name="l00373"></a>00373                     options.done();
+<a name="l00374"></a>00374                     Proto::DebugPolicySet::Request request;
+<a name="l00375"></a>00375                     Proto::DebugPolicySet::Response response;
+<a name="l00376"></a>00376                     request.set_policy(value);
+<a name="l00377"></a>00377                     server.DebugPolicySet(request, response);
+<a name="l00378"></a>00378                     <span class="keywordflow">return</span> 0;
+<a name="l00379"></a>00379                 }
+<a name="l00380"></a>00380             } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(1) == <span class="stringliteral">&quot;rotate&quot;</span>) {
+<a name="l00381"></a>00381                 options.done();
+<a name="l00382"></a>00382                 Proto::DebugRotate::Request request;
+<a name="l00383"></a>00383                 Proto::DebugRotate::Response response;
+<a name="l00384"></a>00384                 server.DebugRotate(request, response);
+<a name="l00385"></a>00385                 <span class="keywordflow">if</span> (response.has_error())
+<a name="l00386"></a>00386                     <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a>(response.error());
+<a name="l00387"></a>00387                 <span class="keywordflow">return</span> 0;
+<a name="l00388"></a>00388             }
+<a name="l00389"></a>00389         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(0) == <span class="stringliteral">&quot;stats&quot;</span>) {
+<a name="l00390"></a>00390             <span class="keywordflow">if</span> (options.at(1) == <span class="stringliteral">&quot;get&quot;</span>) {
+<a name="l00391"></a>00391                 options.done();
+<a name="l00392"></a>00392                 Proto::ServerStatsGet::Request request;
+<a name="l00393"></a>00393                 Proto::ServerStatsGet::Response response;
+<a name="l00394"></a>00394                 server.ServerStatsGet(request, response);
+<a name="l00395"></a>00395                 std::cout &lt;&lt; <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">dumpString</a>(response.server_stats());
+<a name="l00396"></a>00396                 <span class="keywordflow">return</span> 0;
+<a name="l00397"></a>00397             } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (options.at(1) == <span class="stringliteral">&quot;dump&quot;</span>) {
+<a name="l00398"></a>00398                 options.done();
+<a name="l00399"></a>00399                 Proto::ServerStatsDump::Request request;
+<a name="l00400"></a>00400                 Proto::ServerStatsDump::Response response;
+<a name="l00401"></a>00401                 server.ServerStatsDump(request, response);
+<a name="l00402"></a>00402                 <span class="keywordflow">return</span> 0;
+<a name="l00403"></a>00403             }
+<a name="l00404"></a>00404         }
+<a name="l00405"></a>00405         options.usageError(<span class="stringliteral">&quot;Unknown command&quot;</span>);
+<a name="l00406"></a>00406 
+<a name="l00407"></a>00407     } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1Exception.html" title="Base class for LogCabin client exceptions.">LogCabin::Client::Exception</a>&amp; e) {
+<a name="l00408"></a>00408         std::cerr &lt;&lt; <span class="stringliteral">&quot;Exiting due to LogCabin::Client::Exception: &quot;</span>
+<a name="l00409"></a>00409                   &lt;&lt; e.what()
+<a name="l00410"></a>00410                   &lt;&lt; std::endl;
+<a name="l00411"></a>00411         exit(1);
+<a name="l00412"></a>00412     }
+<a name="l00413"></a>00413 }
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

@@ -396,67 +396,76 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00314"></a>00314 <span class="keywordtype">int</span>
 <a name="l00315"></a><a class="code" href="TreeOps_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">00315</a> <a class="code" href="ServerControl_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
 <a name="l00316"></a>00316 {
-<a name="l00317"></a>00317     OptionParser options(argc, argv);
-<a name="l00318"></a>00318 
-<a name="l00319"></a>00319     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">LogCabin::Client::Debug::setLogPolicy</a>(
-<a name="l00320"></a>00320         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9" title="Build a log policy from its string representation.">LogCabin::Client::Debug::logPolicyFromString</a>(
-<a name="l00321"></a>00321             options.logPolicy));
-<a name="l00322"></a>00322 
-<a name="l00323"></a>00323     Cluster cluster(options.cluster);
-<a name="l00324"></a>00324     Tree tree = cluster.getTree();
-<a name="l00325"></a>00325 
-<a name="l00326"></a>00326     <span class="keywordflow">if</span> (options.timeout &gt; 0) {
-<a name="l00327"></a>00327         tree.setTimeout(options.timeout);
-<a name="l00328"></a>00328     }
-<a name="l00329"></a>00329 
-<a name="l00330"></a>00330     <span class="keywordflow">if</span> (!options.dir.empty()) {
-<a name="l00331"></a>00331         tree.setWorkingDirectoryEx(options.dir);
-<a name="l00332"></a>00332     }
-<a name="l00333"></a>00333 
-<a name="l00334"></a>00334     <span class="keywordflow">if</span> (!options.condition.first.empty()) {
-<a name="l00335"></a>00335         tree.setConditionEx(options.condition.first,
-<a name="l00336"></a>00336                             options.condition.second);
-<a name="l00337"></a>00337     }
-<a name="l00338"></a>00338 
-<a name="l00339"></a>00339     std::string&amp; path = options.path;
-<a name="l00340"></a>00340     <span class="keywordflow">switch</span> (options.command) {
-<a name="l00341"></a>00341         <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4aa24e9a4fc425d45ffd90d35fc2b203fc">Command::MKDIR</a>:
-<a name="l00342"></a>00342             tree.makeDirectoryEx(path);
-<a name="l00343"></a>00343             <span class="keywordflow">break</span>;
-<a name="l00344"></a>00344         <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4acc14ae9d521053c8309bd2b6e3c969bc">Command::LIST</a>: {
-<a name="l00345"></a>00345             std::vector&lt;std::string&gt; keys = tree.listDirectoryEx(path);
-<a name="l00346"></a>00346             <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = keys.begin(); it != keys.end(); ++it)
-<a name="l00347"></a>00347                 std::cout &lt;&lt; *it &lt;&lt; std::endl;
-<a name="l00348"></a>00348             <span class="keywordflow">break</span>;
-<a name="l00349"></a>00349         }
-<a name="l00350"></a>00350         <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a76cbf13d3e31dcfbd4e5f15ea632eeeb">Command::DUMP</a>: {
-<a name="l00351"></a>00351             <span class="keywordflow">if</span> (path.empty() || path.at(path.size() - 1) != <span class="charliteral">&#39;/&#39;</span>)
-<a name="l00352"></a>00352                 path.append(<span class="stringliteral">&quot;/&quot;</span>);
-<a name="l00353"></a>00353             <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree, path);
-<a name="l00354"></a>00354             <span class="keywordflow">break</span>;
-<a name="l00355"></a>00355         }
-<a name="l00356"></a>00356         <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a89432fb320d95262a41a1ec3ac44dba2">Command::RMDIR</a>:
-<a name="l00357"></a>00357             tree.removeDirectoryEx(path);
-<a name="l00358"></a>00358             <span class="keywordflow">break</span>;
-<a name="l00359"></a>00359         <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4afc14db0d9cbb712a69cde39327c8e944">Command::WRITE</a>:
-<a name="l00360"></a>00360             tree.writeEx(path, <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a75c3fa6e4e9a575c7ee511b1bb4659a8">readStdin</a>());
-<a name="l00361"></a>00361             <span class="keywordflow">break</span>;
-<a name="l00362"></a>00362         <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a57389fcf76b4316dcc20bf27216c5a52">Command::READ</a>: {
-<a name="l00363"></a>00363             std::string contents = tree.readEx(path);
-<a name="l00364"></a>00364             std::cout &lt;&lt; contents;
-<a name="l00365"></a>00365             <span class="keywordflow">if</span> (contents.empty() || contents.at(contents.size() - 1) != <span class="charliteral">&#39;\n&#39;</span>)
-<a name="l00366"></a>00366                 std::cout &lt;&lt; std::endl;
-<a name="l00367"></a>00367             <span class="keywordflow">else</span>
-<a name="l00368"></a>00368                 std::cout.flush();
-<a name="l00369"></a>00369             <span class="keywordflow">break</span>;
-<a name="l00370"></a>00370         }
-<a name="l00371"></a>00371         <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493">Command::REMOVE</a>:
-<a name="l00372"></a>00372             tree.removeFileEx(path);
-<a name="l00373"></a>00373             <span class="keywordflow">break</span>;
-<a name="l00374"></a>00374     }
-<a name="l00375"></a>00375     <span class="keywordflow">return</span> 0;
-<a name="l00376"></a>00376 }
-<a name="l00377"></a>00377 
+<a name="l00317"></a>00317     <span class="keywordflow">try</span> {
+<a name="l00318"></a>00318         OptionParser options(argc, argv);
+<a name="l00319"></a>00319 
+<a name="l00320"></a>00320         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">LogCabin::Client::Debug::setLogPolicy</a>(
+<a name="l00321"></a>00321             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9" title="Build a log policy from its string representation.">LogCabin::Client::Debug::logPolicyFromString</a>(
+<a name="l00322"></a>00322                 options.logPolicy));
+<a name="l00323"></a>00323 
+<a name="l00324"></a>00324         Cluster cluster(options.cluster);
+<a name="l00325"></a>00325         Tree tree = cluster.getTree();
+<a name="l00326"></a>00326 
+<a name="l00327"></a>00327         <span class="keywordflow">if</span> (options.timeout &gt; 0) {
+<a name="l00328"></a>00328             tree.setTimeout(options.timeout);
+<a name="l00329"></a>00329         }
+<a name="l00330"></a>00330 
+<a name="l00331"></a>00331         <span class="keywordflow">if</span> (!options.dir.empty()) {
+<a name="l00332"></a>00332             tree.setWorkingDirectoryEx(options.dir);
+<a name="l00333"></a>00333         }
+<a name="l00334"></a>00334 
+<a name="l00335"></a>00335         <span class="keywordflow">if</span> (!options.condition.first.empty()) {
+<a name="l00336"></a>00336             tree.setConditionEx(options.condition.first,
+<a name="l00337"></a>00337                                 options.condition.second);
+<a name="l00338"></a>00338         }
+<a name="l00339"></a>00339 
+<a name="l00340"></a>00340         std::string&amp; path = options.path;
+<a name="l00341"></a>00341         <span class="keywordflow">switch</span> (options.command) {
+<a name="l00342"></a>00342             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4aa24e9a4fc425d45ffd90d35fc2b203fc">Command::MKDIR</a>:
+<a name="l00343"></a>00343                 tree.makeDirectoryEx(path);
+<a name="l00344"></a>00344                 <span class="keywordflow">break</span>;
+<a name="l00345"></a>00345             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4acc14ae9d521053c8309bd2b6e3c969bc">Command::LIST</a>: {
+<a name="l00346"></a>00346                 std::vector&lt;std::string&gt; keys = tree.listDirectoryEx(path);
+<a name="l00347"></a>00347                 <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = keys.begin(); it != keys.end(); ++it)
+<a name="l00348"></a>00348                     std::cout &lt;&lt; *it &lt;&lt; std::endl;
+<a name="l00349"></a>00349                 <span class="keywordflow">break</span>;
+<a name="l00350"></a>00350             }
+<a name="l00351"></a>00351             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a76cbf13d3e31dcfbd4e5f15ea632eeeb">Command::DUMP</a>: {
+<a name="l00352"></a>00352                 <span class="keywordflow">if</span> (path.empty() || path.at(path.size() - 1) != <span class="charliteral">&#39;/&#39;</span>)
+<a name="l00353"></a>00353                     path.append(<span class="stringliteral">&quot;/&quot;</span>);
+<a name="l00354"></a>00354                 <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree, path);
+<a name="l00355"></a>00355                 <span class="keywordflow">break</span>;
+<a name="l00356"></a>00356             }
+<a name="l00357"></a>00357             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a89432fb320d95262a41a1ec3ac44dba2">Command::RMDIR</a>:
+<a name="l00358"></a>00358                 tree.removeDirectoryEx(path);
+<a name="l00359"></a>00359                 <span class="keywordflow">break</span>;
+<a name="l00360"></a>00360             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4afc14db0d9cbb712a69cde39327c8e944">Command::WRITE</a>:
+<a name="l00361"></a>00361                 tree.writeEx(path, <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a75c3fa6e4e9a575c7ee511b1bb4659a8">readStdin</a>());
+<a name="l00362"></a>00362                 <span class="keywordflow">break</span>;
+<a name="l00363"></a>00363             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a57389fcf76b4316dcc20bf27216c5a52">Command::READ</a>: {
+<a name="l00364"></a>00364                 std::string contents = tree.readEx(path);
+<a name="l00365"></a>00365                 std::cout &lt;&lt; contents;
+<a name="l00366"></a>00366                 <span class="keywordflow">if</span> (contents.empty() ||
+<a name="l00367"></a>00367                     contents.at(contents.size() - 1) != <span class="charliteral">&#39;\n&#39;</span>) {
+<a name="l00368"></a>00368                     std::cout &lt;&lt; std::endl;
+<a name="l00369"></a>00369                 } <span class="keywordflow">else</span> {
+<a name="l00370"></a>00370                     std::cout.flush();
+<a name="l00371"></a>00371                 }
+<a name="l00372"></a>00372                 <span class="keywordflow">break</span>;
+<a name="l00373"></a>00373             }
+<a name="l00374"></a>00374             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493">Command::REMOVE</a>:
+<a name="l00375"></a>00375                 tree.removeFileEx(path);
+<a name="l00376"></a>00376                 <span class="keywordflow">break</span>;
+<a name="l00377"></a>00377         }
+<a name="l00378"></a>00378         <span class="keywordflow">return</span> 0;
+<a name="l00379"></a>00379 
+<a name="l00380"></a>00380     } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1Exception.html" title="Base class for LogCabin client exceptions.">LogCabin::Client::Exception</a>&amp; e) {
+<a name="l00381"></a>00381         std::cerr &lt;&lt; <span class="stringliteral">&quot;Exiting due to LogCabin::Client::Exception: &quot;</span>
+<a name="l00382"></a>00382                   &lt;&lt; e.what()
+<a name="l00383"></a>00383                   &lt;&lt; std::endl;
+<a name="l00384"></a>00384         exit(1);
+<a name="l00385"></a>00385     }
+<a name="l00386"></a>00386 }
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

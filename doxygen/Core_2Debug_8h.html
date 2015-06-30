@@ -102,6 +102,8 @@ Defines</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Unconditionally log the given message to stderr.  <a href="#a2d871a9bb0ec3ed46f6450ab2c20a18e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3">PANIC</a>(format,...)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Log an ERROR message and abort the process.  <a href="#ad84b0f521394f4d9214c9d185711a8c3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_2Debug_8h.html#ae62d555ee2a777ff1ff54e6c6175891c">EXIT</a>(format,...)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Log an ERROR message and exit the process with status 1.  <a href="#ae62d555ee2a777ff1ff54e6c6175891c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_2Debug_8h.html#a78e40dfd87f516e322340d249027aea1">ERROR</a>(format,...)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Log an ERROR message.  <a href="#a78e40dfd87f516e322340d249027aea1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32">WARNING</a>(format,...)</td></tr>
@@ -204,6 +206,44 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae62d555ee2a777ff1ff54e6c6175891c"></a><!-- doxytag: member="Debug.h::EXIT" ref="ae62d555ee2a777ff1ff54e6c6175891c" args="(format,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define <a class="el" href="Core_2Debug_8h.html#ae62d555ee2a777ff1ff54e6c6175891c">EXIT</a></td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">format, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Log an ERROR message and exit the process with status 1. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td>A printf-style format string for the message. It should not include a line break at the end, as LOG will add one. </td></tr>
+    <tr><td class="paramname">...</td><td>The arguments to the format string, as in printf. </td></tr>
+  </table>
+  </dd>
+</dl>
+ 
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00119">119</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a78e40dfd87f516e322340d249027aea1"></a><!-- doxytag: member="Debug.h::ERROR" ref="a78e40dfd87f516e322340d249027aea1" args="(format,...)" -->
 <div class="memitem">
 <div class="memproto">
@@ -238,7 +278,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00123">123</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00132">132</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>
@@ -276,7 +316,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
  
-<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00130">130</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00139">139</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>
@@ -314,7 +354,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
  
-<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00137">137</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00146">146</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>
@@ -352,7 +392,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
  
-<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00144">144</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00153">153</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>
