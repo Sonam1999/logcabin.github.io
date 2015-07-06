@@ -17,6 +17,5 @@ var searchData=
   ['isprintable',['isPrintable',['../namespaceLogCabin_1_1Core_1_1StringUtil.html#a31b6a7f1a7a00fd1c52a264124b0697d',1,'LogCabin::Core::StringUtil::isPrintable(const char *str)'],['../namespaceLogCabin_1_1Core_1_1StringUtil.html#aa4338bbde590dee745cee6019a3a6cf5',1,'LogCabin::Core::StringUtil::isPrintable(const void *data, size_t length)']]],
   ['isready',['isReady',['../classLogCabin_1_1RPC_1_1ClientRPC.html#a692623fa366a7e5180350a6f16b9c077',1,'LogCabin::RPC::ClientRPC']]],
   ['isscheduled',['isScheduled',['../classLogCabin_1_1Event_1_1Timer.html#a7336e1b520a7b370999b766835157ed8',1,'LogCabin::Event::Timer']]],
-  ['istakingsnapshot',['isTakingSnapshot',['../classLogCabin_1_1Server_1_1StateMachine.html#aaf7ec3baf881d89c032d1cbf16a95d28',1,'LogCabin::Server::StateMachine']]],
   ['isvalid',['isValid',['../classLogCabin_1_1RPC_1_1Address.html#a23cefe87e6b3185263fca1efb12332fb',1,'LogCabin::RPC::Address']]]
 ];

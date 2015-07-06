@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['takesnapshot',['takeSnapshot',['../classLogCabin_1_1Server_1_1StateMachine.html#a41f535e09acaf33c4ae3fcaff5527bbe',1,'LogCabin::Server::StateMachine']]],
+  ['takesnapshot',['takeSnapshot',['../classLogCabin_1_1Server_1_1StateMachine.html#ab79199c9f82bf4c897fb6147ca30315b',1,'LogCabin::Server::StateMachine']]],
   ['takesync',['takeSync',['../classLogCabin_1_1Storage_1_1Log.html#aabf3345e03685b44d56b607ebbe282c9',1,'LogCabin::Storage::Log::takeSync()'],['../classLogCabin_1_1Storage_1_1MemoryLog.html#a71aa639443824a36d17b7bcfa6ca3a06',1,'LogCabin::Storage::MemoryLog::takeSync()'],['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a49998df90ec65f822e87a11d6f51a3e7',1,'LogCabin::Storage::SegmentedLog::takeSync()'],['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#aec4f3bab89a66ba7d94713d70b9ed141',1,'LogCabin::Storage::SimpleFileLog::takeSync()']]],
   ['testingcallbacks',['TestingCallbacks',['../classLogCabin_1_1Client_1_1TestingCallbacks.html#ad0464eff84d1a8d35967254efe67b47e',1,'LogCabin::Client::TestingCallbacks']]],
   ['threaddispatchservice',['ThreadDispatchService',['../classLogCabin_1_1RPC_1_1ThreadDispatchService.html#af7fa2d7daaeac43a2bd811f772d28c70',1,'LogCabin::RPC::ThreadDispatchService::ThreadDispatchService(std::shared_ptr&lt; Service &gt; threadSafeService, uint32_t minThreads, uint32_t maxThreads)'],['../classLogCabin_1_1RPC_1_1ThreadDispatchService.html#a7c594b000c246c99021b3cbe3ebc47dc',1,'LogCabin::RPC::ThreadDispatchService::ThreadDispatchService(const ThreadDispatchService &amp;)']]],

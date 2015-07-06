@@ -43,7 +43,6 @@ var searchData=
   ['skipverify',['skipVerify',['../classLogCabin_1_1Client_1_1SessionManager.html#a43bb0dbbcbfdeebc49de70832623cd62',1,'LogCabin::Client::SessionManager']]],
   ['snapshot',['snapshot',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#a0219706f5f3f19733f82f6330ad49383',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],
   ['snapshotblockpercentage',['snapshotBlockPercentage',['../classLogCabin_1_1Server_1_1StateMachine.html#a4d2c4cdb605a3cb91f7cbda1302be1a3',1,'LogCabin::Server::StateMachine']]],
-  ['snapshotcompleted',['snapshotCompleted',['../classLogCabin_1_1Server_1_1StateMachine.html#a9a1e1f407332d0b6d626b1c450683fde',1,'LogCabin::Server::StateMachine']]],
   ['snapshotdir',['snapshotDir',['../classLogCabin_1_1Storage_1_1Layout.html#a8dc98b30f53f5468d051623f04207aed',1,'LogCabin::Storage::Layout']]],
   ['snapshotfile',['snapshotFile',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#ad26b3c377e98b3ae5f0818b7b76908fd',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['snapshotfileoffset',['snapshotFileOffset',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a71e8fe01080a5c648184fcada409c56a',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
