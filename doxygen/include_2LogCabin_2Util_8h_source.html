@@ -118,23 +118,62 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00036"></a>00036 <span class="comment"> * Convert a human-readable description of a time duration into a number of</span>
 <a name="l00037"></a>00037 <span class="comment"> * nanoseconds.</span>
 <a name="l00038"></a>00038 <span class="comment"> * \param description</span>
-<a name="l00039"></a>00039 <span class="comment"> *      Something like 10, 10s, 200ms, 3us, or 999ns. With no units, defaults</span>
-<a name="l00040"></a>00040 <span class="comment"> *      to seconds.</span>
-<a name="l00041"></a>00041 <span class="comment"> * \return</span>
-<a name="l00042"></a>00042 <span class="comment"> *      Number of nanoseconds.</span>
-<a name="l00043"></a>00043 <span class="comment"> * \throw Client::InvalidArgumentException</span>
-<a name="l00044"></a>00044 <span class="comment"> *      If description could not be parsed successfully.</span>
-<a name="l00045"></a>00045 <span class="comment"> * \warning</span>
-<a name="l00046"></a>00046 <span class="comment"> *      This function is subject to change. It is not subject to the versioning</span>
-<a name="l00047"></a>00047 <span class="comment"> *      requirements of LogCabin&#39;s public API.</span>
-<a name="l00048"></a>00048 <span class="comment"> */</span>
-<a name="l00049"></a>00049 uint64_t <a class="code" href="namespaceLogCabin_1_1Client_1_1Util.html#a24ce1ecee7dd892d597c0f32f6a735ab" title="Convert a human-readable description of a time duration into a number of nanoseconds.">parseDuration</a>(<span class="keyword">const</span> std::string&amp; description);
-<a name="l00050"></a>00050 
-<a name="l00051"></a>00051 } <span class="comment">// namespace LogCabin::Util</span>
-<a name="l00052"></a>00052 } <span class="comment">// namespace LogCabin::Client</span>
-<a name="l00053"></a>00053 } <span class="comment">// namespace LogCabin</span>
-<a name="l00054"></a>00054 
-<a name="l00055"></a>00055 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_INCLUDE_LOGCABIN_UTIL_H */</span>
+<a name="l00039"></a>00039 <span class="comment"> *      Something like 10, 10s, -200ms, 3us, or -999ns. With no units, defaults</span>
+<a name="l00040"></a>00040 <span class="comment"> *      to seconds. May be negative.</span>
+<a name="l00041"></a>00041 <span class="comment"> *      Allowed units:</span>
+<a name="l00042"></a>00042 <span class="comment"> *          ns, nanosecond(s),</span>
+<a name="l00043"></a>00043 <span class="comment"> *          ms, millisecond(s),</span>
+<a name="l00044"></a>00044 <span class="comment"> *          s, second(s),</span>
+<a name="l00045"></a>00045 <span class="comment"> *          min, minute(s),</span>
+<a name="l00046"></a>00046 <span class="comment"> *          h, hr, hour(s),</span>
+<a name="l00047"></a>00047 <span class="comment"> *          d, day(s),</span>
+<a name="l00048"></a>00048 <span class="comment"> *          w, wk, week(s),</span>
+<a name="l00049"></a>00049 <span class="comment"> *          mo, month(s),</span>
+<a name="l00050"></a>00050 <span class="comment"> *          y, yr, year(s).</span>
+<a name="l00051"></a>00051 <span class="comment"> * \return</span>
+<a name="l00052"></a>00052 <span class="comment"> *      Number of nanoseconds (may be negative, capped to the range of a signed</span>
+<a name="l00053"></a>00053 <span class="comment"> *      64-bit integer).</span>
+<a name="l00054"></a>00054 <span class="comment"> * \throw Client::InvalidArgumentException</span>
+<a name="l00055"></a>00055 <span class="comment"> *      If description could not be parsed successfully.</span>
+<a name="l00056"></a>00056 <span class="comment"> * \warning</span>
+<a name="l00057"></a>00057 <span class="comment"> *      This function is subject to change. It is not subject to the versioning</span>
+<a name="l00058"></a>00058 <span class="comment"> *      requirements of LogCabin&#39;s public API.</span>
+<a name="l00059"></a>00059 <span class="comment"> */</span>
+<a name="l00060"></a>00060 int64_t <a class="code" href="namespaceLogCabin_1_1Client_1_1Util.html#a26c8801e33b46828ac82c58f6a536a00" title="Convert a human-readable description of a time duration into a number of nanoseconds.">parseSignedDuration</a>(<span class="keyword">const</span> std::string&amp; description);
+<a name="l00061"></a>00061 <span class="comment"></span>
+<a name="l00062"></a>00062 <span class="comment">/**</span>
+<a name="l00063"></a>00063 <span class="comment"> * Convert a human-readable description of a time duration into a number of</span>
+<a name="l00064"></a>00064 <span class="comment"> * nanoseconds.</span>
+<a name="l00065"></a>00065 <span class="comment"> * \param description</span>
+<a name="l00066"></a>00066 <span class="comment"> *      Something like 10, 10s, 200ms, 3us, or 999ns. With no units, defaults</span>
+<a name="l00067"></a>00067 <span class="comment"> *      to seconds. May not be negative.</span>
+<a name="l00068"></a>00068 <span class="comment"> *      Allowed units:</span>
+<a name="l00069"></a>00069 <span class="comment"> *          ns, nanosecond(s),</span>
+<a name="l00070"></a>00070 <span class="comment"> *          ms, millisecond(s),</span>
+<a name="l00071"></a>00071 <span class="comment"> *          s, second(s),</span>
+<a name="l00072"></a>00072 <span class="comment"> *          min, minute(s),</span>
+<a name="l00073"></a>00073 <span class="comment"> *          h, hr, hour(s),</span>
+<a name="l00074"></a>00074 <span class="comment"> *          d, day(s),</span>
+<a name="l00075"></a>00075 <span class="comment"> *          w, wk, week(s),</span>
+<a name="l00076"></a>00076 <span class="comment"> *          mo, month(s),</span>
+<a name="l00077"></a>00077 <span class="comment"> *          y, yr, year(s).</span>
+<a name="l00078"></a>00078 <span class="comment"> * \return</span>
+<a name="l00079"></a>00079 <span class="comment"> *      Number of nanoseconds (will not be negative, capped to the range of a</span>
+<a name="l00080"></a>00080 <span class="comment"> *      signed 64-bit integer on the high end).</span>
+<a name="l00081"></a>00081 <span class="comment"> * \throw Client::InvalidArgumentException</span>
+<a name="l00082"></a>00082 <span class="comment"> *      If description could not be parsed successfully.</span>
+<a name="l00083"></a>00083 <span class="comment"> * \warning</span>
+<a name="l00084"></a>00084 <span class="comment"> *      This function is subject to change. It is not subject to the versioning</span>
+<a name="l00085"></a>00085 <span class="comment"> *      requirements of LogCabin&#39;s public API.</span>
+<a name="l00086"></a>00086 <span class="comment"> */</span>
+<a name="l00087"></a>00087 uint64_t <a class="code" href="namespaceLogCabin_1_1Client_1_1Util.html#af0c32c85ea76a02a605b7560e11d4e92" title="Convert a human-readable description of a time duration into a number of nanoseconds.">parseNonNegativeDuration</a>(<span class="keyword">const</span> std::string&amp; description);
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 } <span class="comment">// namespace LogCabin::Util</span>
+<a name="l00091"></a>00091 } <span class="comment">// namespace LogCabin::Client</span>
+<a name="l00092"></a>00092 } <span class="comment">// namespace LogCabin</span>
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_INCLUDE_LOGCABIN_UTIL_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

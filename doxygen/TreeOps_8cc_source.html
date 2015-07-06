@@ -110,362 +110,363 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00028"></a>00028 
 <a name="l00029"></a>00029 <span class="keyword">using</span> <a class="code" href="classLogCabin_1_1Client_1_1Cluster.html" title="A handle to the LogCabin cluster.">LogCabin::Client::Cluster</a>;
 <a name="l00030"></a>00030 <span class="keyword">using</span> <a class="code" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">LogCabin::Client::Tree</a>;
-<a name="l00031"></a>00031 
-<a name="l00032"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4">00032</a> <span class="keyword">enum class</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4">Command</a> {
-<a name="l00033"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4aa24e9a4fc425d45ffd90d35fc2b203fc">00033</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4aa24e9a4fc425d45ffd90d35fc2b203fc">MKDIR</a>,
-<a name="l00034"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4acc14ae9d521053c8309bd2b6e3c969bc">00034</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4acc14ae9d521053c8309bd2b6e3c969bc">LIST</a>,
-<a name="l00035"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a76cbf13d3e31dcfbd4e5f15ea632eeeb">00035</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a76cbf13d3e31dcfbd4e5f15ea632eeeb">DUMP</a>,
-<a name="l00036"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a89432fb320d95262a41a1ec3ac44dba2">00036</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a89432fb320d95262a41a1ec3ac44dba2">RMDIR</a>,
-<a name="l00037"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4afc14db0d9cbb712a69cde39327c8e944">00037</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4afc14db0d9cbb712a69cde39327c8e944">WRITE</a>,
-<a name="l00038"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a57389fcf76b4316dcc20bf27216c5a52">00038</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a57389fcf76b4316dcc20bf27216c5a52">READ</a>,
-<a name="l00039"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493">00039</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493">REMOVE</a>,
-<a name="l00040"></a>00040 };
-<a name="l00041"></a>00041 <span class="comment"></span>
-<a name="l00042"></a>00042 <span class="comment">/**</span>
-<a name="l00043"></a>00043 <span class="comment"> * Parses argv for the main function.</span>
-<a name="l00044"></a>00044 <span class="comment"> */</span>
-<a name="l00045"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html">00045</a> <span class="keyword">class </span><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html" title="Parses argv for the main function.">OptionParser</a> {
-<a name="l00046"></a>00046   <span class="keyword">public</span>:
-<a name="l00047"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#ac3b9f8db27ae710ec65a8d9e8bffb512">00047</a>     <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html" title="Parses argv for the main function.">OptionParser</a>(<span class="keywordtype">int</span>&amp; argc, <span class="keywordtype">char</span>**&amp; argv)
-<a name="l00048"></a>00048         : argc(argc)
-<a name="l00049"></a>00049         , argv(argv)
-<a name="l00050"></a>00050         , cluster(<span class="stringliteral">&quot;logcabin:5254&quot;</span>)
-<a name="l00051"></a>00051         , command()
-<a name="l00052"></a>00052         , condition()
-<a name="l00053"></a>00053         , dir()
-<a name="l00054"></a>00054         , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a>(<span class="stringliteral">&quot;&quot;</span>)
-<a name="l00055"></a>00055         , path()
-<a name="l00056"></a>00056         , timeout(LogCabin::Client::Util::<a class="code" href="namespaceLogCabin_1_1Client_1_1Util.html#a24ce1ecee7dd892d597c0f32f6a735ab" title="Convert a human-readable description of a time duration into a number of nanoseconds.">parseDuration</a>(<span class="stringliteral">&quot;0s&quot;</span>))
-<a name="l00057"></a>00057     {
-<a name="l00058"></a>00058         <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
-<a name="l00059"></a>00059             <span class="keyword">static</span> <span class="keyword">struct </span>option longOptions[] = {
-<a name="l00060"></a>00060                {<span class="stringliteral">&quot;cluster&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;c&#39;</span>},
-<a name="l00061"></a>00061                {<span class="stringliteral">&quot;dir&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;d&#39;</span>},
-<a name="l00062"></a>00062                {<span class="stringliteral">&quot;help&quot;</span>,  no_argument, NULL, <span class="charliteral">&#39;h&#39;</span>},
-<a name="l00063"></a>00063                {<span class="stringliteral">&quot;condition&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;p&#39;</span>},
-<a name="l00064"></a>00064                {<span class="stringliteral">&quot;quiet&quot;</span>,  no_argument, NULL, <span class="charliteral">&#39;q&#39;</span>},
-<a name="l00065"></a>00065                {<span class="stringliteral">&quot;timeout&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;t&#39;</span>},
-<a name="l00066"></a>00066                {<span class="stringliteral">&quot;verbose&quot;</span>,  no_argument, NULL, <span class="charliteral">&#39;v&#39;</span>},
-<a name="l00067"></a>00067                {<span class="stringliteral">&quot;verbosity&quot;</span>,  required_argument, NULL, 256},
-<a name="l00068"></a>00068                {0, 0, 0, 0}
-<a name="l00069"></a>00069             };
-<a name="l00070"></a>00070             <span class="keywordtype">int</span> c = getopt_long(argc, argv, <span class="stringliteral">&quot;c:d:p:t:hqv&quot;</span>, longOptions, NULL);
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072             <span class="comment">// Detect the end of the options.</span>
-<a name="l00073"></a>00073             <span class="keywordflow">if</span> (c == -1)
-<a name="l00074"></a>00074                 <span class="keywordflow">break</span>;
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076             <span class="keywordflow">switch</span> (c) {
-<a name="l00077"></a>00077                 <span class="keywordflow">case</span> <span class="charliteral">&#39;c&#39;</span>:
-<a name="l00078"></a>00078                     cluster = optarg;
-<a name="l00079"></a>00079                     <span class="keywordflow">break</span>;
-<a name="l00080"></a>00080                 <span class="keywordflow">case</span> <span class="charliteral">&#39;d&#39;</span>:
-<a name="l00081"></a>00081                     dir = optarg;
-<a name="l00082"></a>00082                     <span class="keywordflow">break</span>;
-<a name="l00083"></a>00083                 <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>:
-<a name="l00084"></a>00084                     usage();
-<a name="l00085"></a>00085                     exit(0);
-<a name="l00086"></a>00086                 <span class="keywordflow">case</span> <span class="charliteral">&#39;p&#39;</span>: {
-<a name="l00087"></a>00087                     std::istringstream <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>(optarg);
-<a name="l00088"></a>00088                     std::string path;
-<a name="l00089"></a>00089                     std::string value;
-<a name="l00090"></a>00090                     std::getline(stream, path, <span class="charliteral">&#39;:&#39;</span>);
-<a name="l00091"></a>00091                     std::getline(stream, value);
-<a name="l00092"></a>00092                     condition = {path, value};
-<a name="l00093"></a>00093                     <span class="keywordflow">break</span>;
-<a name="l00094"></a>00094                 }
-<a name="l00095"></a>00095                 <span class="keywordflow">case</span> <span class="charliteral">&#39;q&#39;</span>:
-<a name="l00096"></a>00096                     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a> = <span class="stringliteral">&quot;WARNING&quot;</span>;
-<a name="l00097"></a>00097                     <span class="keywordflow">break</span>;
-<a name="l00098"></a>00098                 <span class="keywordflow">case</span> <span class="charliteral">&#39;t&#39;</span>:
-<a name="l00099"></a>00099                     timeout = <a class="code" href="namespaceLogCabin_1_1Client_1_1Util.html#a24ce1ecee7dd892d597c0f32f6a735ab" title="Convert a human-readable description of a time duration into a number of nanoseconds.">LogCabin::Client::Util::parseDuration</a>(optarg);
-<a name="l00100"></a>00100                     <span class="keywordflow">break</span>;
-<a name="l00101"></a>00101                 <span class="keywordflow">case</span> <span class="charliteral">&#39;v&#39;</span>:
-<a name="l00102"></a>00102                     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a> = <span class="stringliteral">&quot;VERBOSE&quot;</span>;
-<a name="l00103"></a>00103                     <span class="keywordflow">break</span>;
-<a name="l00104"></a>00104                 <span class="keywordflow">case</span> 256:
-<a name="l00105"></a>00105                     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a> = optarg;
-<a name="l00106"></a>00106                     <span class="keywordflow">break</span>;
-<a name="l00107"></a>00107                 <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span>:
-<a name="l00108"></a>00108                 <span class="keywordflow">default</span>:
-<a name="l00109"></a>00109                     <span class="comment">// getopt_long already printed an error message.</span>
-<a name="l00110"></a>00110                     usage();
-<a name="l00111"></a>00111                     exit(1);
-<a name="l00112"></a>00112             }
-<a name="l00113"></a>00113         }
-<a name="l00114"></a>00114 
-<a name="l00115"></a>00115         <span class="comment">// Additional command line arguments are required.</span>
-<a name="l00116"></a>00116         <span class="keywordflow">if</span> (optind == argc) {
-<a name="l00117"></a>00117             usage();
-<a name="l00118"></a>00118             exit(1);
-<a name="l00119"></a>00119         }
-<a name="l00120"></a>00120 
-<a name="l00121"></a>00121         std::string cmdStr = argv[optind];
-<a name="l00122"></a>00122         ++optind;
-<a name="l00123"></a>00123         <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;mkdir&quot;</span>) {
-<a name="l00124"></a>00124             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4aa24e9a4fc425d45ffd90d35fc2b203fc">Command::MKDIR</a>;
-<a name="l00125"></a>00125         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;list&quot;</span> || cmdStr == <span class="stringliteral">&quot;ls&quot;</span>) {
-<a name="l00126"></a>00126             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4acc14ae9d521053c8309bd2b6e3c969bc">Command::LIST</a>;
-<a name="l00127"></a>00127         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;dump&quot;</span>) {
-<a name="l00128"></a>00128             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a76cbf13d3e31dcfbd4e5f15ea632eeeb">Command::DUMP</a>;
-<a name="l00129"></a>00129             path = <span class="stringliteral">&quot;/&quot;</span>;
-<a name="l00130"></a>00130         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;rmdir&quot;</span> || cmdStr == <span class="stringliteral">&quot;removeDir&quot;</span>) {
-<a name="l00131"></a>00131             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a89432fb320d95262a41a1ec3ac44dba2">Command::RMDIR</a>;
-<a name="l00132"></a>00132         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;write&quot;</span> || cmdStr == <span class="stringliteral">&quot;create&quot;</span> ||
-<a name="l00133"></a>00133                    cmdStr == <span class="stringliteral">&quot;set&quot;</span>) {
-<a name="l00134"></a>00134             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4afc14db0d9cbb712a69cde39327c8e944">Command::WRITE</a>;
-<a name="l00135"></a>00135         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;read&quot;</span> || cmdStr == <span class="stringliteral">&quot;get&quot;</span>) {
-<a name="l00136"></a>00136             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a57389fcf76b4316dcc20bf27216c5a52">Command::READ</a>;
-<a name="l00137"></a>00137         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;remove&quot;</span> || cmdStr == <span class="stringliteral">&quot;rm&quot;</span> ||
-<a name="l00138"></a>00138                    cmdStr == <span class="stringliteral">&quot;removeFile&quot;</span>) {
-<a name="l00139"></a>00139             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493">Command::REMOVE</a>;
-<a name="l00140"></a>00140         } <span class="keywordflow">else</span> {
-<a name="l00141"></a>00141             std::cout &lt;&lt; <span class="stringliteral">&quot;Unknown command: &quot;</span> &lt;&lt; cmdStr &lt;&lt; std::endl;
-<a name="l00142"></a>00142             usage();
-<a name="l00143"></a>00143             exit(1);
-<a name="l00144"></a>00144         }
-<a name="l00145"></a>00145 
-<a name="l00146"></a>00146         <span class="keywordflow">if</span> (optind &lt; argc) {
-<a name="l00147"></a>00147             path = argv[optind];
-<a name="l00148"></a>00148             ++optind;
-<a name="l00149"></a>00149         }
-<a name="l00150"></a>00150 
-<a name="l00151"></a>00151         <span class="keywordflow">if</span> (path.empty()) {
-<a name="l00152"></a>00152             std::cout &lt;&lt; <span class="stringliteral">&quot;No path given&quot;</span> &lt;&lt; std::endl;
-<a name="l00153"></a>00153             usage();
-<a name="l00154"></a>00154             exit(1);
-<a name="l00155"></a>00155         }
-<a name="l00156"></a>00156         <span class="keywordflow">if</span> (optind &lt; argc) {
-<a name="l00157"></a>00157             std::cout &lt;&lt; <span class="stringliteral">&quot;Unexpected positional argument: &quot;</span> &lt;&lt; argv[optind]
-<a name="l00158"></a>00158                       &lt;&lt; std::endl;
-<a name="l00159"></a>00159             usage();
-<a name="l00160"></a>00160             exit(1);
-<a name="l00161"></a>00161         }
-<a name="l00162"></a>00162     }
-<a name="l00163"></a>00163 
-<a name="l00164"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#aea0eec12214b4d87d554fda98a9496e3">00164</a>     <span class="keywordtype">void</span> <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#aea0eec12214b4d87d554fda98a9496e3">usage</a>() {
-<a name="l00165"></a>00165         std::cout &lt;&lt; <span class="stringliteral">&quot;Run various operations on a LogCabin replicated state &quot;</span>
-<a name="l00166"></a>00166                   &lt;&lt; <span class="stringliteral">&quot;machine.&quot;</span>
-<a name="l00167"></a>00167                   &lt;&lt; std::endl
+<a name="l00031"></a>00031 <span class="keyword">using</span> <a class="code" href="namespaceLogCabin_1_1Client_1_1Util.html#af0c32c85ea76a02a605b7560e11d4e92" title="Convert a human-readable description of a time duration into a number of nanoseconds.">LogCabin::Client::Util::parseNonNegativeDuration</a>;
+<a name="l00032"></a>00032 
+<a name="l00033"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4">00033</a> <span class="keyword">enum class</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4">Command</a> {
+<a name="l00034"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4aa24e9a4fc425d45ffd90d35fc2b203fc">00034</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4aa24e9a4fc425d45ffd90d35fc2b203fc">MKDIR</a>,
+<a name="l00035"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4acc14ae9d521053c8309bd2b6e3c969bc">00035</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4acc14ae9d521053c8309bd2b6e3c969bc">LIST</a>,
+<a name="l00036"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a76cbf13d3e31dcfbd4e5f15ea632eeeb">00036</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a76cbf13d3e31dcfbd4e5f15ea632eeeb">DUMP</a>,
+<a name="l00037"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a89432fb320d95262a41a1ec3ac44dba2">00037</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a89432fb320d95262a41a1ec3ac44dba2">RMDIR</a>,
+<a name="l00038"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4afc14db0d9cbb712a69cde39327c8e944">00038</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4afc14db0d9cbb712a69cde39327c8e944">WRITE</a>,
+<a name="l00039"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a57389fcf76b4316dcc20bf27216c5a52">00039</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a57389fcf76b4316dcc20bf27216c5a52">READ</a>,
+<a name="l00040"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493">00040</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493">REMOVE</a>,
+<a name="l00041"></a>00041 };
+<a name="l00042"></a>00042 <span class="comment"></span>
+<a name="l00043"></a>00043 <span class="comment">/**</span>
+<a name="l00044"></a>00044 <span class="comment"> * Parses argv for the main function.</span>
+<a name="l00045"></a>00045 <span class="comment"> */</span>
+<a name="l00046"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html">00046</a> <span class="keyword">class </span><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html" title="Parses argv for the main function.">OptionParser</a> {
+<a name="l00047"></a>00047   <span class="keyword">public</span>:
+<a name="l00048"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#ac3b9f8db27ae710ec65a8d9e8bffb512">00048</a>     <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html" title="Parses argv for the main function.">OptionParser</a>(<span class="keywordtype">int</span>&amp; argc, <span class="keywordtype">char</span>**&amp; argv)
+<a name="l00049"></a>00049         : argc(argc)
+<a name="l00050"></a>00050         , argv(argv)
+<a name="l00051"></a>00051         , cluster(<span class="stringliteral">&quot;logcabin:5254&quot;</span>)
+<a name="l00052"></a>00052         , command()
+<a name="l00053"></a>00053         , condition()
+<a name="l00054"></a>00054         , dir()
+<a name="l00055"></a>00055         , <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a>(<span class="stringliteral">&quot;&quot;</span>)
+<a name="l00056"></a>00056         , path()
+<a name="l00057"></a>00057         , timeout(<a class="code" href="namespaceLogCabin_1_1Client_1_1Util.html#af0c32c85ea76a02a605b7560e11d4e92" title="Convert a human-readable description of a time duration into a number of nanoseconds.">parseNonNegativeDuration</a>(<span class="stringliteral">&quot;0s&quot;</span>))
+<a name="l00058"></a>00058     {
+<a name="l00059"></a>00059         <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
+<a name="l00060"></a>00060             <span class="keyword">static</span> <span class="keyword">struct </span>option longOptions[] = {
+<a name="l00061"></a>00061                {<span class="stringliteral">&quot;cluster&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;c&#39;</span>},
+<a name="l00062"></a>00062                {<span class="stringliteral">&quot;dir&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;d&#39;</span>},
+<a name="l00063"></a>00063                {<span class="stringliteral">&quot;help&quot;</span>,  no_argument, NULL, <span class="charliteral">&#39;h&#39;</span>},
+<a name="l00064"></a>00064                {<span class="stringliteral">&quot;condition&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;p&#39;</span>},
+<a name="l00065"></a>00065                {<span class="stringliteral">&quot;quiet&quot;</span>,  no_argument, NULL, <span class="charliteral">&#39;q&#39;</span>},
+<a name="l00066"></a>00066                {<span class="stringliteral">&quot;timeout&quot;</span>,  required_argument, NULL, <span class="charliteral">&#39;t&#39;</span>},
+<a name="l00067"></a>00067                {<span class="stringliteral">&quot;verbose&quot;</span>,  no_argument, NULL, <span class="charliteral">&#39;v&#39;</span>},
+<a name="l00068"></a>00068                {<span class="stringliteral">&quot;verbosity&quot;</span>,  required_argument, NULL, 256},
+<a name="l00069"></a>00069                {0, 0, 0, 0}
+<a name="l00070"></a>00070             };
+<a name="l00071"></a>00071             <span class="keywordtype">int</span> c = getopt_long(argc, argv, <span class="stringliteral">&quot;c:d:p:t:hqv&quot;</span>, longOptions, NULL);
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073             <span class="comment">// Detect the end of the options.</span>
+<a name="l00074"></a>00074             <span class="keywordflow">if</span> (c == -1)
+<a name="l00075"></a>00075                 <span class="keywordflow">break</span>;
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077             <span class="keywordflow">switch</span> (c) {
+<a name="l00078"></a>00078                 <span class="keywordflow">case</span> <span class="charliteral">&#39;c&#39;</span>:
+<a name="l00079"></a>00079                     cluster = optarg;
+<a name="l00080"></a>00080                     <span class="keywordflow">break</span>;
+<a name="l00081"></a>00081                 <span class="keywordflow">case</span> <span class="charliteral">&#39;d&#39;</span>:
+<a name="l00082"></a>00082                     dir = optarg;
+<a name="l00083"></a>00083                     <span class="keywordflow">break</span>;
+<a name="l00084"></a>00084                 <span class="keywordflow">case</span> <span class="charliteral">&#39;h&#39;</span>:
+<a name="l00085"></a>00085                     usage();
+<a name="l00086"></a>00086                     exit(0);
+<a name="l00087"></a>00087                 <span class="keywordflow">case</span> <span class="charliteral">&#39;p&#39;</span>: {
+<a name="l00088"></a>00088                     std::istringstream <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a84232ae42d7545529ba3ee993b4682e2" title="Where log messages go (unless logHandler is set).">stream</a>(optarg);
+<a name="l00089"></a>00089                     std::string path;
+<a name="l00090"></a>00090                     std::string value;
+<a name="l00091"></a>00091                     std::getline(stream, path, <span class="charliteral">&#39;:&#39;</span>);
+<a name="l00092"></a>00092                     std::getline(stream, value);
+<a name="l00093"></a>00093                     condition = {path, value};
+<a name="l00094"></a>00094                     <span class="keywordflow">break</span>;
+<a name="l00095"></a>00095                 }
+<a name="l00096"></a>00096                 <span class="keywordflow">case</span> <span class="charliteral">&#39;q&#39;</span>:
+<a name="l00097"></a>00097                     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a> = <span class="stringliteral">&quot;WARNING&quot;</span>;
+<a name="l00098"></a>00098                     <span class="keywordflow">break</span>;
+<a name="l00099"></a>00099                 <span class="keywordflow">case</span> <span class="charliteral">&#39;t&#39;</span>:
+<a name="l00100"></a>00100                     timeout = <a class="code" href="namespaceLogCabin_1_1Client_1_1Util.html#af0c32c85ea76a02a605b7560e11d4e92" title="Convert a human-readable description of a time duration into a number of nanoseconds.">parseNonNegativeDuration</a>(optarg);
+<a name="l00101"></a>00101                     <span class="keywordflow">break</span>;
+<a name="l00102"></a>00102                 <span class="keywordflow">case</span> <span class="charliteral">&#39;v&#39;</span>:
+<a name="l00103"></a>00103                     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a> = <span class="stringliteral">&quot;VERBOSE&quot;</span>;
+<a name="l00104"></a>00104                     <span class="keywordflow">break</span>;
+<a name="l00105"></a>00105                 <span class="keywordflow">case</span> 256:
+<a name="l00106"></a>00106                     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a5203f84d84f5a11b4f74157581266114" title="Specifies the log messages that should be displayed for each filename.">logPolicy</a> = optarg;
+<a name="l00107"></a>00107                     <span class="keywordflow">break</span>;
+<a name="l00108"></a>00108                 <span class="keywordflow">case</span> <span class="charliteral">&#39;?&#39;</span>:
+<a name="l00109"></a>00109                 <span class="keywordflow">default</span>:
+<a name="l00110"></a>00110                     <span class="comment">// getopt_long already printed an error message.</span>
+<a name="l00111"></a>00111                     usage();
+<a name="l00112"></a>00112                     exit(1);
+<a name="l00113"></a>00113             }
+<a name="l00114"></a>00114         }
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116         <span class="comment">// Additional command line arguments are required.</span>
+<a name="l00117"></a>00117         <span class="keywordflow">if</span> (optind == argc) {
+<a name="l00118"></a>00118             usage();
+<a name="l00119"></a>00119             exit(1);
+<a name="l00120"></a>00120         }
+<a name="l00121"></a>00121 
+<a name="l00122"></a>00122         std::string cmdStr = argv[optind];
+<a name="l00123"></a>00123         ++optind;
+<a name="l00124"></a>00124         <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;mkdir&quot;</span>) {
+<a name="l00125"></a>00125             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4aa24e9a4fc425d45ffd90d35fc2b203fc">Command::MKDIR</a>;
+<a name="l00126"></a>00126         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;list&quot;</span> || cmdStr == <span class="stringliteral">&quot;ls&quot;</span>) {
+<a name="l00127"></a>00127             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4acc14ae9d521053c8309bd2b6e3c969bc">Command::LIST</a>;
+<a name="l00128"></a>00128         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;dump&quot;</span>) {
+<a name="l00129"></a>00129             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a76cbf13d3e31dcfbd4e5f15ea632eeeb">Command::DUMP</a>;
+<a name="l00130"></a>00130             path = <span class="stringliteral">&quot;/&quot;</span>;
+<a name="l00131"></a>00131         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;rmdir&quot;</span> || cmdStr == <span class="stringliteral">&quot;removeDir&quot;</span>) {
+<a name="l00132"></a>00132             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a89432fb320d95262a41a1ec3ac44dba2">Command::RMDIR</a>;
+<a name="l00133"></a>00133         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;write&quot;</span> || cmdStr == <span class="stringliteral">&quot;create&quot;</span> ||
+<a name="l00134"></a>00134                    cmdStr == <span class="stringliteral">&quot;set&quot;</span>) {
+<a name="l00135"></a>00135             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4afc14db0d9cbb712a69cde39327c8e944">Command::WRITE</a>;
+<a name="l00136"></a>00136         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;read&quot;</span> || cmdStr == <span class="stringliteral">&quot;get&quot;</span>) {
+<a name="l00137"></a>00137             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a57389fcf76b4316dcc20bf27216c5a52">Command::READ</a>;
+<a name="l00138"></a>00138         } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cmdStr == <span class="stringliteral">&quot;remove&quot;</span> || cmdStr == <span class="stringliteral">&quot;rm&quot;</span> ||
+<a name="l00139"></a>00139                    cmdStr == <span class="stringliteral">&quot;removeFile&quot;</span>) {
+<a name="l00140"></a>00140             command = <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493">Command::REMOVE</a>;
+<a name="l00141"></a>00141         } <span class="keywordflow">else</span> {
+<a name="l00142"></a>00142             std::cout &lt;&lt; <span class="stringliteral">&quot;Unknown command: &quot;</span> &lt;&lt; cmdStr &lt;&lt; std::endl;
+<a name="l00143"></a>00143             usage();
+<a name="l00144"></a>00144             exit(1);
+<a name="l00145"></a>00145         }
+<a name="l00146"></a>00146 
+<a name="l00147"></a>00147         <span class="keywordflow">if</span> (optind &lt; argc) {
+<a name="l00148"></a>00148             path = argv[optind];
+<a name="l00149"></a>00149             ++optind;
+<a name="l00150"></a>00150         }
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152         <span class="keywordflow">if</span> (path.empty()) {
+<a name="l00153"></a>00153             std::cout &lt;&lt; <span class="stringliteral">&quot;No path given&quot;</span> &lt;&lt; std::endl;
+<a name="l00154"></a>00154             usage();
+<a name="l00155"></a>00155             exit(1);
+<a name="l00156"></a>00156         }
+<a name="l00157"></a>00157         <span class="keywordflow">if</span> (optind &lt; argc) {
+<a name="l00158"></a>00158             std::cout &lt;&lt; <span class="stringliteral">&quot;Unexpected positional argument: &quot;</span> &lt;&lt; argv[optind]
+<a name="l00159"></a>00159                       &lt;&lt; std::endl;
+<a name="l00160"></a>00160             usage();
+<a name="l00161"></a>00161             exit(1);
+<a name="l00162"></a>00162         }
+<a name="l00163"></a>00163     }
+<a name="l00164"></a>00164 
+<a name="l00165"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#aea0eec12214b4d87d554fda98a9496e3">00165</a>     <span class="keywordtype">void</span> <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#aea0eec12214b4d87d554fda98a9496e3">usage</a>() {
+<a name="l00166"></a>00166         std::cout &lt;&lt; <span class="stringliteral">&quot;Run various operations on a LogCabin replicated state &quot;</span>
+<a name="l00167"></a>00167                   &lt;&lt; <span class="stringliteral">&quot;machine.&quot;</span>
 <a name="l00168"></a>00168                   &lt;&lt; std::endl
-<a name="l00169"></a>00169                   &lt;&lt; <span class="stringliteral">&quot;This program was released in LogCabin v1.0.0.&quot;</span>
-<a name="l00170"></a>00170                   &lt;&lt; std::endl;
-<a name="l00171"></a>00171         std::cout &lt;&lt; std::endl;
-<a name="l00172"></a>00172 
-<a name="l00173"></a>00173         std::cout &lt;&lt; <span class="stringliteral">&quot;Usage: &quot;</span> &lt;&lt; argv[0] &lt;&lt; <span class="stringliteral">&quot; [options] &lt;command&gt; [&lt;args&gt;]&quot;</span>
-<a name="l00174"></a>00174                   &lt;&lt; std::endl;
-<a name="l00175"></a>00175         std::cout &lt;&lt; std::endl;
-<a name="l00176"></a>00176 
-<a name="l00177"></a>00177         std::cout &lt;&lt; <span class="stringliteral">&quot;Commands:&quot;</span> &lt;&lt; std::endl;
-<a name="l00178"></a>00178         std::cout
-<a name="l00179"></a>00179             &lt;&lt; <span class="stringliteral">&quot;  mkdir &lt;path&gt;    If no directory exists at &lt;path&gt;, create it.&quot;</span>
-<a name="l00180"></a>00180             &lt;&lt; std::endl
-<a name="l00181"></a>00181             &lt;&lt; <span class="stringliteral">&quot;  list &lt;path&gt;     List keys within directory at &lt;path&gt;. &quot;</span>
-<a name="l00182"></a>00182             &lt;&lt; <span class="stringliteral">&quot;Alias: ls.&quot;</span>
-<a name="l00183"></a>00183             &lt;&lt; std::endl
-<a name="l00184"></a>00184             &lt;&lt; <span class="stringliteral">&quot;  dump [&lt;path&gt;]   Recursively print keys and values within &quot;</span>
-<a name="l00185"></a>00185             &lt;&lt; <span class="stringliteral">&quot;directory at &lt;path&gt;.&quot;</span>
-<a name="l00186"></a>00186             &lt;&lt; std::endl
-<a name="l00187"></a>00187             &lt;&lt; <span class="stringliteral">&quot;                  Defaults to printing all keys and values &quot;</span>
-<a name="l00188"></a>00188             &lt;&lt; <span class="stringliteral">&quot;from root of tree.&quot;</span>
-<a name="l00189"></a>00189             &lt;&lt; std::endl
-<a name="l00190"></a>00190             &lt;&lt; <span class="stringliteral">&quot;  rmdir &lt;path&gt;    Recursively remove directory at &lt;path&gt;, if &quot;</span>
-<a name="l00191"></a>00191             &lt;&lt; <span class="stringliteral">&quot;any.&quot;</span>
-<a name="l00192"></a>00192             &lt;&lt; std::endl
-<a name="l00193"></a>00193             &lt;&lt; <span class="stringliteral">&quot;                  Alias: removedir.&quot;</span>
-<a name="l00194"></a>00194             &lt;&lt; std::endl
-<a name="l00195"></a>00195             &lt;&lt; <span class="stringliteral">&quot;  write &lt;path&gt;    Set/create value of file at &lt;path&gt; to &quot;</span>
-<a name="l00196"></a>00196             &lt;&lt; <span class="stringliteral">&quot;stdin.&quot;</span>
-<a name="l00197"></a>00197             &lt;&lt; std::endl
-<a name="l00198"></a>00198             &lt;&lt; <span class="stringliteral">&quot;                  Alias: create, set.&quot;</span>
-<a name="l00199"></a>00199             &lt;&lt; std::endl
-<a name="l00200"></a>00200             &lt;&lt; <span class="stringliteral">&quot;  read &lt;path&gt;     Print value of file at &lt;path&gt;. Alias: get.&quot;</span>
-<a name="l00201"></a>00201             &lt;&lt; std::endl
-<a name="l00202"></a>00202             &lt;&lt; <span class="stringliteral">&quot;  remove &lt;path&gt;   Remove file at &lt;path&gt;, if any. Alias: rm, &quot;</span>
-<a name="l00203"></a>00203             &lt;&lt; <span class="stringliteral">&quot;removefile.&quot;</span>
-<a name="l00204"></a>00204             &lt;&lt; std::endl
-<a name="l00205"></a>00205             &lt;&lt; std::endl;
-<a name="l00206"></a>00206 
-<a name="l00207"></a>00207         std::cout &lt;&lt; <span class="stringliteral">&quot;Options:&quot;</span> &lt;&lt; std::endl;
-<a name="l00208"></a>00208         std::cout
-<a name="l00209"></a>00209             &lt;&lt; <span class="stringliteral">&quot;  -c &lt;addresses&gt;, --cluster=&lt;addresses&gt;  &quot;</span>
-<a name="l00210"></a>00210             &lt;&lt; <span class="stringliteral">&quot;Network addresses of the LogCabin&quot;</span>
-<a name="l00211"></a>00211             &lt;&lt; std::endl
-<a name="l00212"></a>00212             &lt;&lt; <span class="stringliteral">&quot;                                         &quot;</span>
-<a name="l00213"></a>00213             &lt;&lt; <span class="stringliteral">&quot;servers, comma-separated&quot;</span>
-<a name="l00214"></a>00214             &lt;&lt; std::endl
-<a name="l00215"></a>00215             &lt;&lt; <span class="stringliteral">&quot;                                         &quot;</span>
-<a name="l00216"></a>00216             &lt;&lt; <span class="stringliteral">&quot;[default: logcabin:5254]&quot;</span>
-<a name="l00217"></a>00217             &lt;&lt; std::endl
-<a name="l00218"></a>00218 
-<a name="l00219"></a>00219             &lt;&lt; <span class="stringliteral">&quot;  -d &lt;path&gt;, --dir=&lt;path&gt;        &quot;</span>
-<a name="l00220"></a>00220             &lt;&lt; <span class="stringliteral">&quot;Set working directory [default: /]&quot;</span>
-<a name="l00221"></a>00221             &lt;&lt; std::endl
-<a name="l00222"></a>00222 
-<a name="l00223"></a>00223             &lt;&lt; <span class="stringliteral">&quot;  -h, --help                     &quot;</span>
-<a name="l00224"></a>00224             &lt;&lt; <span class="stringliteral">&quot;Print this usage information&quot;</span>
-<a name="l00225"></a>00225             &lt;&lt; std::endl
-<a name="l00226"></a>00226 
-<a name="l00227"></a>00227             &lt;&lt; <span class="stringliteral">&quot;  -p &lt;pred&gt;, --condition=&lt;pred&gt;  &quot;</span>
-<a name="l00228"></a>00228             &lt;&lt; <span class="stringliteral">&quot;Set predicate on the operation of the&quot;</span>
-<a name="l00229"></a>00229             &lt;&lt; std::endl
-<a name="l00230"></a>00230             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
-<a name="l00231"></a>00231             &lt;&lt; <span class="stringliteral">&quot;form &lt;path&gt;:&lt;value&gt;, indicating that the key&quot;</span>
-<a name="l00232"></a>00232             &lt;&lt; std::endl
-<a name="l00233"></a>00233             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
-<a name="l00234"></a>00234             &lt;&lt; <span class="stringliteral">&quot;at &lt;path&gt; must have the given value.&quot;</span>
-<a name="l00235"></a>00235             &lt;&lt; std::endl
-<a name="l00236"></a>00236 
-<a name="l00237"></a>00237             &lt;&lt; <span class="stringliteral">&quot;  -q, --quiet                    &quot;</span>
-<a name="l00238"></a>00238             &lt;&lt; <span class="stringliteral">&quot;Same as --verbosity=WARNING&quot;</span>
-<a name="l00239"></a>00239             &lt;&lt; std::endl
-<a name="l00240"></a>00240 
-<a name="l00241"></a>00241             &lt;&lt; <span class="stringliteral">&quot;  -t &lt;time&gt;, --timeout=&lt;time&gt;    &quot;</span>
-<a name="l00242"></a>00242             &lt;&lt; <span class="stringliteral">&quot;Set timeout for the operation&quot;</span>
-<a name="l00243"></a>00243             &lt;&lt; std::endl
-<a name="l00244"></a>00244             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
-<a name="l00245"></a>00245             &lt;&lt; <span class="stringliteral">&quot;(0 means wait forever) [default: 0s]&quot;</span>
-<a name="l00246"></a>00246             &lt;&lt; std::endl
-<a name="l00247"></a>00247 
-<a name="l00248"></a>00248             &lt;&lt; <span class="stringliteral">&quot;  -v, --verbose                  &quot;</span>
-<a name="l00249"></a>00249             &lt;&lt; <span class="stringliteral">&quot;Same as --verbosity=VERBOSE (added in v1.1.0)&quot;</span>
-<a name="l00250"></a>00250             &lt;&lt; std::endl
-<a name="l00251"></a>00251 
-<a name="l00252"></a>00252             &lt;&lt; <span class="stringliteral">&quot;  --verbosity=&lt;policy&gt;           &quot;</span>
-<a name="l00253"></a>00253             &lt;&lt; <span class="stringliteral">&quot;Set which log messages are shown.&quot;</span>
-<a name="l00254"></a>00254             &lt;&lt; std::endl
-<a name="l00255"></a>00255             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
-<a name="l00256"></a>00256             &lt;&lt; <span class="stringliteral">&quot;Comma-separated LEVEL or PATTERN@LEVEL rules.&quot;</span>
-<a name="l00257"></a>00257             &lt;&lt; std::endl
-<a name="l00258"></a>00258             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
-<a name="l00259"></a>00259             &lt;&lt; <span class="stringliteral">&quot;Levels: SILENT ERROR WARNING NOTICE VERBOSE.&quot;</span>
-<a name="l00260"></a>00260             &lt;&lt; std::endl
-<a name="l00261"></a>00261             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
-<a name="l00262"></a>00262             &lt;&lt; <span class="stringliteral">&quot;Patterns match filename prefixes or suffixes.&quot;</span>
-<a name="l00263"></a>00263             &lt;&lt; std::endl
-<a name="l00264"></a>00264             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
-<a name="l00265"></a>00265             &lt;&lt; <span class="stringliteral">&quot;Example: Client@NOTICE,Test.cc@SILENT,VERBOSE.&quot;</span>
-<a name="l00266"></a>00266             &lt;&lt; std::endl
-<a name="l00267"></a>00267             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
-<a name="l00268"></a>00268             &lt;&lt; <span class="stringliteral">&quot;(added in v1.1.0)&quot;</span>
-<a name="l00269"></a>00269             &lt;&lt; std::endl;
-<a name="l00270"></a>00270     }
-<a name="l00271"></a>00271 
-<a name="l00272"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a034fe07775c971010189cc6de707be30">00272</a>     <span class="keywordtype">int</span>&amp; <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a034fe07775c971010189cc6de707be30">argc</a>;
-<a name="l00273"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#ac84492511ac470d81e1e25c942060c28">00273</a>     <span class="keywordtype">char</span>**&amp; <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#ac84492511ac470d81e1e25c942060c28">argv</a>;
-<a name="l00274"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a317c35fbabd6bcca30c1ed0b6dd8ac10">00274</a>     std::string <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a317c35fbabd6bcca30c1ed0b6dd8ac10">cluster</a>;
-<a name="l00275"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#aa737319b65af6348f1f249b73960059e">00275</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4">Command</a> <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#aa737319b65af6348f1f249b73960059e">command</a>;
-<a name="l00276"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a3220c1eb10e781c8946a6c1a0648aba3">00276</a>     std::pair&lt;std::string, std::string&gt; <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a3220c1eb10e781c8946a6c1a0648aba3">condition</a>;
-<a name="l00277"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#ae72d6e5ca1465cf26840a55a17a471d4">00277</a>     std::string <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#ae72d6e5ca1465cf26840a55a17a471d4">dir</a>;
-<a name="l00278"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a7edbc84e73b2cd515bc157e80652aea5">00278</a>     std::string <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a7edbc84e73b2cd515bc157e80652aea5">logPolicy</a>;
-<a name="l00279"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a0e9d8165cd1c2b51539c5cc8466aee9d">00279</a>     std::string <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a0e9d8165cd1c2b51539c5cc8466aee9d">path</a>;
-<a name="l00280"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a349213186798c2213eaf238524101fd5">00280</a>     uint64_t <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a349213186798c2213eaf238524101fd5">timeout</a>;
-<a name="l00281"></a>00281 };
-<a name="l00282"></a>00282 <span class="comment"></span>
-<a name="l00283"></a>00283 <span class="comment">/**</span>
-<a name="l00284"></a>00284 <span class="comment"> * Depth-first search tree traversal, dumping out contents of all files</span>
-<a name="l00285"></a>00285 <span class="comment"> */</span>
-<a name="l00286"></a>00286 <span class="keywordtype">void</span>
-<a name="l00287"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2">00287</a> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a>&amp; tree, std::string path)
-<a name="l00288"></a>00288 {
-<a name="l00289"></a>00289     std::cout &lt;&lt; path &lt;&lt; std::endl;
-<a name="l00290"></a>00290     std::vector&lt;std::string&gt; children = tree.<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a922e4fb2066c5a349f75bd52bbcc5401" title="Like listDirectory but throws exceptions upon errors.">listDirectoryEx</a>(path);
-<a name="l00291"></a>00291     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = children.begin(); it != children.end(); ++it) {
-<a name="l00292"></a>00292         std::string child = path + *it;
-<a name="l00293"></a>00293         <span class="keywordflow">if</span> (*child.rbegin() == <span class="charliteral">&#39;/&#39;</span>) { <span class="comment">// directory</span>
-<a name="l00294"></a>00294             <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree, child);
-<a name="l00295"></a>00295         } <span class="keywordflow">else</span> { <span class="comment">// file</span>
-<a name="l00296"></a>00296             std::cout &lt;&lt; child &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; std::endl;
-<a name="l00297"></a>00297             std::cout &lt;&lt; <span class="stringliteral">&quot;    &quot;</span> &lt;&lt; tree.<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#ae55cbfaac8a0b5a6ae396544db8d2038" title="Like read but throws exceptions upon errors.">readEx</a>(child) &lt;&lt; std::endl;
-<a name="l00298"></a>00298         }
-<a name="l00299"></a>00299     }
-<a name="l00300"></a>00300 }
-<a name="l00301"></a>00301 
-<a name="l00302"></a>00302 std::string
-<a name="l00303"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a75c3fa6e4e9a575c7ee511b1bb4659a8">00303</a> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a75c3fa6e4e9a575c7ee511b1bb4659a8">readStdin</a>()
-<a name="l00304"></a>00304 {
-<a name="l00305"></a>00305     std::cin &gt;&gt; std::noskipws;
-<a name="l00306"></a>00306     std::istream_iterator&lt;char&gt; it(std::cin);
-<a name="l00307"></a>00307     std::istream_iterator&lt;char&gt; end;
-<a name="l00308"></a>00308     std::string results(it, end);
-<a name="l00309"></a>00309     <span class="keywordflow">return</span> results;
-<a name="l00310"></a>00310 }
-<a name="l00311"></a>00311 
-<a name="l00312"></a>00312 } <span class="comment">// anonymous namespace</span>
-<a name="l00313"></a>00313 
-<a name="l00314"></a>00314 <span class="keywordtype">int</span>
-<a name="l00315"></a><a class="code" href="TreeOps_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">00315</a> <a class="code" href="ServerControl_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
-<a name="l00316"></a>00316 {
-<a name="l00317"></a>00317     <span class="keywordflow">try</span> {
-<a name="l00318"></a>00318         OptionParser options(argc, argv);
-<a name="l00319"></a>00319 
-<a name="l00320"></a>00320         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">LogCabin::Client::Debug::setLogPolicy</a>(
-<a name="l00321"></a>00321             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9" title="Build a log policy from its string representation.">LogCabin::Client::Debug::logPolicyFromString</a>(
-<a name="l00322"></a>00322                 options.logPolicy));
-<a name="l00323"></a>00323 
-<a name="l00324"></a>00324         Cluster cluster(options.cluster);
-<a name="l00325"></a>00325         Tree tree = cluster.getTree();
-<a name="l00326"></a>00326 
-<a name="l00327"></a>00327         <span class="keywordflow">if</span> (options.timeout &gt; 0) {
-<a name="l00328"></a>00328             tree.setTimeout(options.timeout);
-<a name="l00329"></a>00329         }
-<a name="l00330"></a>00330 
-<a name="l00331"></a>00331         <span class="keywordflow">if</span> (!options.dir.empty()) {
-<a name="l00332"></a>00332             tree.setWorkingDirectoryEx(options.dir);
-<a name="l00333"></a>00333         }
-<a name="l00334"></a>00334 
-<a name="l00335"></a>00335         <span class="keywordflow">if</span> (!options.condition.first.empty()) {
-<a name="l00336"></a>00336             tree.setConditionEx(options.condition.first,
-<a name="l00337"></a>00337                                 options.condition.second);
-<a name="l00338"></a>00338         }
-<a name="l00339"></a>00339 
-<a name="l00340"></a>00340         std::string&amp; path = options.path;
-<a name="l00341"></a>00341         <span class="keywordflow">switch</span> (options.command) {
-<a name="l00342"></a>00342             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4aa24e9a4fc425d45ffd90d35fc2b203fc">Command::MKDIR</a>:
-<a name="l00343"></a>00343                 tree.makeDirectoryEx(path);
-<a name="l00344"></a>00344                 <span class="keywordflow">break</span>;
-<a name="l00345"></a>00345             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4acc14ae9d521053c8309bd2b6e3c969bc">Command::LIST</a>: {
-<a name="l00346"></a>00346                 std::vector&lt;std::string&gt; keys = tree.listDirectoryEx(path);
-<a name="l00347"></a>00347                 <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = keys.begin(); it != keys.end(); ++it)
-<a name="l00348"></a>00348                     std::cout &lt;&lt; *it &lt;&lt; std::endl;
-<a name="l00349"></a>00349                 <span class="keywordflow">break</span>;
-<a name="l00350"></a>00350             }
-<a name="l00351"></a>00351             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a76cbf13d3e31dcfbd4e5f15ea632eeeb">Command::DUMP</a>: {
-<a name="l00352"></a>00352                 <span class="keywordflow">if</span> (path.empty() || path.at(path.size() - 1) != <span class="charliteral">&#39;/&#39;</span>)
-<a name="l00353"></a>00353                     path.append(<span class="stringliteral">&quot;/&quot;</span>);
-<a name="l00354"></a>00354                 <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree, path);
-<a name="l00355"></a>00355                 <span class="keywordflow">break</span>;
-<a name="l00356"></a>00356             }
-<a name="l00357"></a>00357             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a89432fb320d95262a41a1ec3ac44dba2">Command::RMDIR</a>:
-<a name="l00358"></a>00358                 tree.removeDirectoryEx(path);
-<a name="l00359"></a>00359                 <span class="keywordflow">break</span>;
-<a name="l00360"></a>00360             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4afc14db0d9cbb712a69cde39327c8e944">Command::WRITE</a>:
-<a name="l00361"></a>00361                 tree.writeEx(path, <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a75c3fa6e4e9a575c7ee511b1bb4659a8">readStdin</a>());
-<a name="l00362"></a>00362                 <span class="keywordflow">break</span>;
-<a name="l00363"></a>00363             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a57389fcf76b4316dcc20bf27216c5a52">Command::READ</a>: {
-<a name="l00364"></a>00364                 std::string contents = tree.readEx(path);
-<a name="l00365"></a>00365                 std::cout &lt;&lt; contents;
-<a name="l00366"></a>00366                 <span class="keywordflow">if</span> (contents.empty() ||
-<a name="l00367"></a>00367                     contents.at(contents.size() - 1) != <span class="charliteral">&#39;\n&#39;</span>) {
-<a name="l00368"></a>00368                     std::cout &lt;&lt; std::endl;
-<a name="l00369"></a>00369                 } <span class="keywordflow">else</span> {
-<a name="l00370"></a>00370                     std::cout.flush();
-<a name="l00371"></a>00371                 }
-<a name="l00372"></a>00372                 <span class="keywordflow">break</span>;
-<a name="l00373"></a>00373             }
-<a name="l00374"></a>00374             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493">Command::REMOVE</a>:
-<a name="l00375"></a>00375                 tree.removeFileEx(path);
-<a name="l00376"></a>00376                 <span class="keywordflow">break</span>;
-<a name="l00377"></a>00377         }
-<a name="l00378"></a>00378         <span class="keywordflow">return</span> 0;
-<a name="l00379"></a>00379 
-<a name="l00380"></a>00380     } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1Exception.html" title="Base class for LogCabin client exceptions.">LogCabin::Client::Exception</a>&amp; e) {
-<a name="l00381"></a>00381         std::cerr &lt;&lt; <span class="stringliteral">&quot;Exiting due to LogCabin::Client::Exception: &quot;</span>
-<a name="l00382"></a>00382                   &lt;&lt; e.what()
-<a name="l00383"></a>00383                   &lt;&lt; std::endl;
-<a name="l00384"></a>00384         exit(1);
-<a name="l00385"></a>00385     }
-<a name="l00386"></a>00386 }
+<a name="l00169"></a>00169                   &lt;&lt; std::endl
+<a name="l00170"></a>00170                   &lt;&lt; <span class="stringliteral">&quot;This program was released in LogCabin v1.0.0.&quot;</span>
+<a name="l00171"></a>00171                   &lt;&lt; std::endl;
+<a name="l00172"></a>00172         std::cout &lt;&lt; std::endl;
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174         std::cout &lt;&lt; <span class="stringliteral">&quot;Usage: &quot;</span> &lt;&lt; argv[0] &lt;&lt; <span class="stringliteral">&quot; [options] &lt;command&gt; [&lt;args&gt;]&quot;</span>
+<a name="l00175"></a>00175                   &lt;&lt; std::endl;
+<a name="l00176"></a>00176         std::cout &lt;&lt; std::endl;
+<a name="l00177"></a>00177 
+<a name="l00178"></a>00178         std::cout &lt;&lt; <span class="stringliteral">&quot;Commands:&quot;</span> &lt;&lt; std::endl;
+<a name="l00179"></a>00179         std::cout
+<a name="l00180"></a>00180             &lt;&lt; <span class="stringliteral">&quot;  mkdir &lt;path&gt;    If no directory exists at &lt;path&gt;, create it.&quot;</span>
+<a name="l00181"></a>00181             &lt;&lt; std::endl
+<a name="l00182"></a>00182             &lt;&lt; <span class="stringliteral">&quot;  list &lt;path&gt;     List keys within directory at &lt;path&gt;. &quot;</span>
+<a name="l00183"></a>00183             &lt;&lt; <span class="stringliteral">&quot;Alias: ls.&quot;</span>
+<a name="l00184"></a>00184             &lt;&lt; std::endl
+<a name="l00185"></a>00185             &lt;&lt; <span class="stringliteral">&quot;  dump [&lt;path&gt;]   Recursively print keys and values within &quot;</span>
+<a name="l00186"></a>00186             &lt;&lt; <span class="stringliteral">&quot;directory at &lt;path&gt;.&quot;</span>
+<a name="l00187"></a>00187             &lt;&lt; std::endl
+<a name="l00188"></a>00188             &lt;&lt; <span class="stringliteral">&quot;                  Defaults to printing all keys and values &quot;</span>
+<a name="l00189"></a>00189             &lt;&lt; <span class="stringliteral">&quot;from root of tree.&quot;</span>
+<a name="l00190"></a>00190             &lt;&lt; std::endl
+<a name="l00191"></a>00191             &lt;&lt; <span class="stringliteral">&quot;  rmdir &lt;path&gt;    Recursively remove directory at &lt;path&gt;, if &quot;</span>
+<a name="l00192"></a>00192             &lt;&lt; <span class="stringliteral">&quot;any.&quot;</span>
+<a name="l00193"></a>00193             &lt;&lt; std::endl
+<a name="l00194"></a>00194             &lt;&lt; <span class="stringliteral">&quot;                  Alias: removedir.&quot;</span>
+<a name="l00195"></a>00195             &lt;&lt; std::endl
+<a name="l00196"></a>00196             &lt;&lt; <span class="stringliteral">&quot;  write &lt;path&gt;    Set/create value of file at &lt;path&gt; to &quot;</span>
+<a name="l00197"></a>00197             &lt;&lt; <span class="stringliteral">&quot;stdin.&quot;</span>
+<a name="l00198"></a>00198             &lt;&lt; std::endl
+<a name="l00199"></a>00199             &lt;&lt; <span class="stringliteral">&quot;                  Alias: create, set.&quot;</span>
+<a name="l00200"></a>00200             &lt;&lt; std::endl
+<a name="l00201"></a>00201             &lt;&lt; <span class="stringliteral">&quot;  read &lt;path&gt;     Print value of file at &lt;path&gt;. Alias: get.&quot;</span>
+<a name="l00202"></a>00202             &lt;&lt; std::endl
+<a name="l00203"></a>00203             &lt;&lt; <span class="stringliteral">&quot;  remove &lt;path&gt;   Remove file at &lt;path&gt;, if any. Alias: rm, &quot;</span>
+<a name="l00204"></a>00204             &lt;&lt; <span class="stringliteral">&quot;removefile.&quot;</span>
+<a name="l00205"></a>00205             &lt;&lt; std::endl
+<a name="l00206"></a>00206             &lt;&lt; std::endl;
+<a name="l00207"></a>00207 
+<a name="l00208"></a>00208         std::cout &lt;&lt; <span class="stringliteral">&quot;Options:&quot;</span> &lt;&lt; std::endl;
+<a name="l00209"></a>00209         std::cout
+<a name="l00210"></a>00210             &lt;&lt; <span class="stringliteral">&quot;  -c &lt;addresses&gt;, --cluster=&lt;addresses&gt;  &quot;</span>
+<a name="l00211"></a>00211             &lt;&lt; <span class="stringliteral">&quot;Network addresses of the LogCabin&quot;</span>
+<a name="l00212"></a>00212             &lt;&lt; std::endl
+<a name="l00213"></a>00213             &lt;&lt; <span class="stringliteral">&quot;                                         &quot;</span>
+<a name="l00214"></a>00214             &lt;&lt; <span class="stringliteral">&quot;servers, comma-separated&quot;</span>
+<a name="l00215"></a>00215             &lt;&lt; std::endl
+<a name="l00216"></a>00216             &lt;&lt; <span class="stringliteral">&quot;                                         &quot;</span>
+<a name="l00217"></a>00217             &lt;&lt; <span class="stringliteral">&quot;[default: logcabin:5254]&quot;</span>
+<a name="l00218"></a>00218             &lt;&lt; std::endl
+<a name="l00219"></a>00219 
+<a name="l00220"></a>00220             &lt;&lt; <span class="stringliteral">&quot;  -d &lt;path&gt;, --dir=&lt;path&gt;        &quot;</span>
+<a name="l00221"></a>00221             &lt;&lt; <span class="stringliteral">&quot;Set working directory [default: /]&quot;</span>
+<a name="l00222"></a>00222             &lt;&lt; std::endl
+<a name="l00223"></a>00223 
+<a name="l00224"></a>00224             &lt;&lt; <span class="stringliteral">&quot;  -h, --help                     &quot;</span>
+<a name="l00225"></a>00225             &lt;&lt; <span class="stringliteral">&quot;Print this usage information&quot;</span>
+<a name="l00226"></a>00226             &lt;&lt; std::endl
+<a name="l00227"></a>00227 
+<a name="l00228"></a>00228             &lt;&lt; <span class="stringliteral">&quot;  -p &lt;pred&gt;, --condition=&lt;pred&gt;  &quot;</span>
+<a name="l00229"></a>00229             &lt;&lt; <span class="stringliteral">&quot;Set predicate on the operation of the&quot;</span>
+<a name="l00230"></a>00230             &lt;&lt; std::endl
+<a name="l00231"></a>00231             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
+<a name="l00232"></a>00232             &lt;&lt; <span class="stringliteral">&quot;form &lt;path&gt;:&lt;value&gt;, indicating that the key&quot;</span>
+<a name="l00233"></a>00233             &lt;&lt; std::endl
+<a name="l00234"></a>00234             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
+<a name="l00235"></a>00235             &lt;&lt; <span class="stringliteral">&quot;at &lt;path&gt; must have the given value.&quot;</span>
+<a name="l00236"></a>00236             &lt;&lt; std::endl
+<a name="l00237"></a>00237 
+<a name="l00238"></a>00238             &lt;&lt; <span class="stringliteral">&quot;  -q, --quiet                    &quot;</span>
+<a name="l00239"></a>00239             &lt;&lt; <span class="stringliteral">&quot;Same as --verbosity=WARNING&quot;</span>
+<a name="l00240"></a>00240             &lt;&lt; std::endl
+<a name="l00241"></a>00241 
+<a name="l00242"></a>00242             &lt;&lt; <span class="stringliteral">&quot;  -t &lt;time&gt;, --timeout=&lt;time&gt;    &quot;</span>
+<a name="l00243"></a>00243             &lt;&lt; <span class="stringliteral">&quot;Set timeout for the operation&quot;</span>
+<a name="l00244"></a>00244             &lt;&lt; std::endl
+<a name="l00245"></a>00245             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
+<a name="l00246"></a>00246             &lt;&lt; <span class="stringliteral">&quot;(0 means wait forever) [default: 0s]&quot;</span>
+<a name="l00247"></a>00247             &lt;&lt; std::endl
+<a name="l00248"></a>00248 
+<a name="l00249"></a>00249             &lt;&lt; <span class="stringliteral">&quot;  -v, --verbose                  &quot;</span>
+<a name="l00250"></a>00250             &lt;&lt; <span class="stringliteral">&quot;Same as --verbosity=VERBOSE (added in v1.1.0)&quot;</span>
+<a name="l00251"></a>00251             &lt;&lt; std::endl
+<a name="l00252"></a>00252 
+<a name="l00253"></a>00253             &lt;&lt; <span class="stringliteral">&quot;  --verbosity=&lt;policy&gt;           &quot;</span>
+<a name="l00254"></a>00254             &lt;&lt; <span class="stringliteral">&quot;Set which log messages are shown.&quot;</span>
+<a name="l00255"></a>00255             &lt;&lt; std::endl
+<a name="l00256"></a>00256             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
+<a name="l00257"></a>00257             &lt;&lt; <span class="stringliteral">&quot;Comma-separated LEVEL or PATTERN@LEVEL rules.&quot;</span>
+<a name="l00258"></a>00258             &lt;&lt; std::endl
+<a name="l00259"></a>00259             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
+<a name="l00260"></a>00260             &lt;&lt; <span class="stringliteral">&quot;Levels: SILENT ERROR WARNING NOTICE VERBOSE.&quot;</span>
+<a name="l00261"></a>00261             &lt;&lt; std::endl
+<a name="l00262"></a>00262             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
+<a name="l00263"></a>00263             &lt;&lt; <span class="stringliteral">&quot;Patterns match filename prefixes or suffixes.&quot;</span>
+<a name="l00264"></a>00264             &lt;&lt; std::endl
+<a name="l00265"></a>00265             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
+<a name="l00266"></a>00266             &lt;&lt; <span class="stringliteral">&quot;Example: Client@NOTICE,Test.cc@SILENT,VERBOSE.&quot;</span>
+<a name="l00267"></a>00267             &lt;&lt; std::endl
+<a name="l00268"></a>00268             &lt;&lt; <span class="stringliteral">&quot;                                 &quot;</span>
+<a name="l00269"></a>00269             &lt;&lt; <span class="stringliteral">&quot;(added in v1.1.0)&quot;</span>
+<a name="l00270"></a>00270             &lt;&lt; std::endl;
+<a name="l00271"></a>00271     }
+<a name="l00272"></a>00272 
+<a name="l00273"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a034fe07775c971010189cc6de707be30">00273</a>     <span class="keywordtype">int</span>&amp; <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a034fe07775c971010189cc6de707be30">argc</a>;
+<a name="l00274"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#ac84492511ac470d81e1e25c942060c28">00274</a>     <span class="keywordtype">char</span>**&amp; <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#ac84492511ac470d81e1e25c942060c28">argv</a>;
+<a name="l00275"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a317c35fbabd6bcca30c1ed0b6dd8ac10">00275</a>     std::string <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a317c35fbabd6bcca30c1ed0b6dd8ac10">cluster</a>;
+<a name="l00276"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#aa737319b65af6348f1f249b73960059e">00276</a>     <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4">Command</a> <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#aa737319b65af6348f1f249b73960059e">command</a>;
+<a name="l00277"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a3220c1eb10e781c8946a6c1a0648aba3">00277</a>     std::pair&lt;std::string, std::string&gt; <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a3220c1eb10e781c8946a6c1a0648aba3">condition</a>;
+<a name="l00278"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#ae72d6e5ca1465cf26840a55a17a471d4">00278</a>     std::string <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#ae72d6e5ca1465cf26840a55a17a471d4">dir</a>;
+<a name="l00279"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a7edbc84e73b2cd515bc157e80652aea5">00279</a>     std::string <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a7edbc84e73b2cd515bc157e80652aea5">logPolicy</a>;
+<a name="l00280"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a0e9d8165cd1c2b51539c5cc8466aee9d">00280</a>     std::string <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a0e9d8165cd1c2b51539c5cc8466aee9d">path</a>;
+<a name="l00281"></a><a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a349213186798c2213eaf238524101fd5">00281</a>     uint64_t <a class="code" href="classanonymous__namespace_02TreeOps_8cc_03_1_1OptionParser.html#a349213186798c2213eaf238524101fd5">timeout</a>;
+<a name="l00282"></a>00282 };
+<a name="l00283"></a>00283 <span class="comment"></span>
+<a name="l00284"></a>00284 <span class="comment">/**</span>
+<a name="l00285"></a>00285 <span class="comment"> * Depth-first search tree traversal, dumping out contents of all files</span>
+<a name="l00286"></a>00286 <span class="comment"> */</span>
+<a name="l00287"></a>00287 <span class="keywordtype">void</span>
+<a name="l00288"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2">00288</a> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1Tree.html" title="Provides access to the hierarchical key-value store.">Tree</a>&amp; tree, std::string path)
+<a name="l00289"></a>00289 {
+<a name="l00290"></a>00290     std::cout &lt;&lt; path &lt;&lt; std::endl;
+<a name="l00291"></a>00291     std::vector&lt;std::string&gt; children = tree.<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#a922e4fb2066c5a349f75bd52bbcc5401" title="Like listDirectory but throws exceptions upon errors.">listDirectoryEx</a>(path);
+<a name="l00292"></a>00292     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = children.begin(); it != children.end(); ++it) {
+<a name="l00293"></a>00293         std::string child = path + *it;
+<a name="l00294"></a>00294         <span class="keywordflow">if</span> (*child.rbegin() == <span class="charliteral">&#39;/&#39;</span>) { <span class="comment">// directory</span>
+<a name="l00295"></a>00295             <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree, child);
+<a name="l00296"></a>00296         } <span class="keywordflow">else</span> { <span class="comment">// file</span>
+<a name="l00297"></a>00297             std::cout &lt;&lt; child &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; std::endl;
+<a name="l00298"></a>00298             std::cout &lt;&lt; <span class="stringliteral">&quot;    &quot;</span> &lt;&lt; tree.<a class="code" href="classLogCabin_1_1Client_1_1Tree.html#ae55cbfaac8a0b5a6ae396544db8d2038" title="Like read but throws exceptions upon errors.">readEx</a>(child) &lt;&lt; std::endl;
+<a name="l00299"></a>00299         }
+<a name="l00300"></a>00300     }
+<a name="l00301"></a>00301 }
+<a name="l00302"></a>00302 
+<a name="l00303"></a>00303 std::string
+<a name="l00304"></a><a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a75c3fa6e4e9a575c7ee511b1bb4659a8">00304</a> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a75c3fa6e4e9a575c7ee511b1bb4659a8">readStdin</a>()
+<a name="l00305"></a>00305 {
+<a name="l00306"></a>00306     std::cin &gt;&gt; std::noskipws;
+<a name="l00307"></a>00307     std::istream_iterator&lt;char&gt; it(std::cin);
+<a name="l00308"></a>00308     std::istream_iterator&lt;char&gt; end;
+<a name="l00309"></a>00309     std::string results(it, end);
+<a name="l00310"></a>00310     <span class="keywordflow">return</span> results;
+<a name="l00311"></a>00311 }
+<a name="l00312"></a>00312 
+<a name="l00313"></a>00313 } <span class="comment">// anonymous namespace</span>
+<a name="l00314"></a>00314 
+<a name="l00315"></a>00315 <span class="keywordtype">int</span>
+<a name="l00316"></a><a class="code" href="TreeOps_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">00316</a> <a class="code" href="ServerControl_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv)
+<a name="l00317"></a>00317 {
+<a name="l00318"></a>00318     <span class="keywordflow">try</span> {
+<a name="l00319"></a>00319         OptionParser options(argc, argv);
+<a name="l00320"></a>00320 
+<a name="l00321"></a>00321         <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#a5624f934c72b6c028ab5a2f4c45948b0" title="Specify the log messages that should be displayed for each filename.">LogCabin::Client::Debug::setLogPolicy</a>(
+<a name="l00322"></a>00322             <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#acf7365ee10373d2ef355d84b9e8a92a9" title="Build a log policy from its string representation.">LogCabin::Client::Debug::logPolicyFromString</a>(
+<a name="l00323"></a>00323                 options.logPolicy));
+<a name="l00324"></a>00324 
+<a name="l00325"></a>00325         Cluster cluster(options.cluster);
+<a name="l00326"></a>00326         Tree tree = cluster.getTree();
+<a name="l00327"></a>00327 
+<a name="l00328"></a>00328         <span class="keywordflow">if</span> (options.timeout &gt; 0) {
+<a name="l00329"></a>00329             tree.setTimeout(options.timeout);
+<a name="l00330"></a>00330         }
+<a name="l00331"></a>00331 
+<a name="l00332"></a>00332         <span class="keywordflow">if</span> (!options.dir.empty()) {
+<a name="l00333"></a>00333             tree.setWorkingDirectoryEx(options.dir);
+<a name="l00334"></a>00334         }
+<a name="l00335"></a>00335 
+<a name="l00336"></a>00336         <span class="keywordflow">if</span> (!options.condition.first.empty()) {
+<a name="l00337"></a>00337             tree.setConditionEx(options.condition.first,
+<a name="l00338"></a>00338                                 options.condition.second);
+<a name="l00339"></a>00339         }
+<a name="l00340"></a>00340 
+<a name="l00341"></a>00341         std::string&amp; path = options.path;
+<a name="l00342"></a>00342         <span class="keywordflow">switch</span> (options.command) {
+<a name="l00343"></a>00343             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4aa24e9a4fc425d45ffd90d35fc2b203fc">Command::MKDIR</a>:
+<a name="l00344"></a>00344                 tree.makeDirectoryEx(path);
+<a name="l00345"></a>00345                 <span class="keywordflow">break</span>;
+<a name="l00346"></a>00346             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4acc14ae9d521053c8309bd2b6e3c969bc">Command::LIST</a>: {
+<a name="l00347"></a>00347                 std::vector&lt;std::string&gt; keys = tree.listDirectoryEx(path);
+<a name="l00348"></a>00348                 <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = keys.begin(); it != keys.end(); ++it)
+<a name="l00349"></a>00349                     std::cout &lt;&lt; *it &lt;&lt; std::endl;
+<a name="l00350"></a>00350                 <span class="keywordflow">break</span>;
+<a name="l00351"></a>00351             }
+<a name="l00352"></a>00352             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a76cbf13d3e31dcfbd4e5f15ea632eeeb">Command::DUMP</a>: {
+<a name="l00353"></a>00353                 <span class="keywordflow">if</span> (path.empty() || path.at(path.size() - 1) != <span class="charliteral">&#39;/&#39;</span>)
+<a name="l00354"></a>00354                     path.append(<span class="stringliteral">&quot;/&quot;</span>);
+<a name="l00355"></a>00355                 <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a6653f08b94129f37a3e18d73965796d2" title="Depth-first search tree traversal, dumping out contents of all files.">dumpTree</a>(tree, path);
+<a name="l00356"></a>00356                 <span class="keywordflow">break</span>;
+<a name="l00357"></a>00357             }
+<a name="l00358"></a>00358             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a89432fb320d95262a41a1ec3ac44dba2">Command::RMDIR</a>:
+<a name="l00359"></a>00359                 tree.removeDirectoryEx(path);
+<a name="l00360"></a>00360                 <span class="keywordflow">break</span>;
+<a name="l00361"></a>00361             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4afc14db0d9cbb712a69cde39327c8e944">Command::WRITE</a>:
+<a name="l00362"></a>00362                 tree.writeEx(path, <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a75c3fa6e4e9a575c7ee511b1bb4659a8">readStdin</a>());
+<a name="l00363"></a>00363                 <span class="keywordflow">break</span>;
+<a name="l00364"></a>00364             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a57389fcf76b4316dcc20bf27216c5a52">Command::READ</a>: {
+<a name="l00365"></a>00365                 std::string contents = tree.readEx(path);
+<a name="l00366"></a>00366                 std::cout &lt;&lt; contents;
+<a name="l00367"></a>00367                 <span class="keywordflow">if</span> (contents.empty() ||
+<a name="l00368"></a>00368                     contents.at(contents.size() - 1) != <span class="charliteral">&#39;\n&#39;</span>) {
+<a name="l00369"></a>00369                     std::cout &lt;&lt; std::endl;
+<a name="l00370"></a>00370                 } <span class="keywordflow">else</span> {
+<a name="l00371"></a>00371                     std::cout.flush();
+<a name="l00372"></a>00372                 }
+<a name="l00373"></a>00373                 <span class="keywordflow">break</span>;
+<a name="l00374"></a>00374             }
+<a name="l00375"></a>00375             <span class="keywordflow">case</span> <a class="code" href="namespaceanonymous__namespace_02TreeOps_8cc_03.html#a94563cd0ddc21c06a8b4965dfc3888b4a5f107051c213464787873efe3b7d5493">Command::REMOVE</a>:
+<a name="l00376"></a>00376                 tree.removeFileEx(path);
+<a name="l00377"></a>00377                 <span class="keywordflow">break</span>;
+<a name="l00378"></a>00378         }
+<a name="l00379"></a>00379         <span class="keywordflow">return</span> 0;
+<a name="l00380"></a>00380 
+<a name="l00381"></a>00381     } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Client_1_1Exception.html" title="Base class for LogCabin client exceptions.">LogCabin::Client::Exception</a>&amp; e) {
+<a name="l00382"></a>00382         std::cerr &lt;&lt; <span class="stringliteral">&quot;Exiting due to LogCabin::Client::Exception: &quot;</span>
+<a name="l00383"></a>00383                   &lt;&lt; e.what()
+<a name="l00384"></a>00384                   &lt;&lt; std::endl;
+<a name="l00385"></a>00385         exit(1);
+<a name="l00386"></a>00386     }
+<a name="l00387"></a>00387 }
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

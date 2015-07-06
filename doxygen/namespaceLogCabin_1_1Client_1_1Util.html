@@ -106,16 +106,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1Util.html#a24ce1ecee7dd892d597c0f32f6a735ab">parseDuration</a> (const std::string &amp;description)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a human-readable description of a time duration into a number of nanoseconds.  <a href="#a24ce1ecee7dd892d597c0f32f6a735ab"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1Util.html#a26c8801e33b46828ac82c58f6a536a00">parseSignedDuration</a> (const std::string &amp;description)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a human-readable description of a time duration into a number of nanoseconds.  <a href="#a26c8801e33b46828ac82c58f6a536a00"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Client_1_1Util.html#af0c32c85ea76a02a605b7560e11d4e92">parseNonNegativeDuration</a> (const std::string &amp;description)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a human-readable description of a time duration into a number of nanoseconds.  <a href="#af0c32c85ea76a02a605b7560e11d4e92"></a><br/></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a24ce1ecee7dd892d597c0f32f6a735ab"></a><!-- doxytag: member="LogCabin::Client::Util::parseDuration" ref="a24ce1ecee7dd892d597c0f32f6a735ab" args="(const std::string &amp;description)" -->
+<a class="anchor" id="a26c8801e33b46828ac82c58f6a536a00"></a><!-- doxytag: member="LogCabin::Client::Util::parseSignedDuration" ref="a26c8801e33b46828ac82c58f6a536a00" args="(const std::string &amp;description)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="namespaceLogCabin_1_1Client_1_1Util.html#a24ce1ecee7dd892d597c0f32f6a735ab">LogCabin::Client::Util::parseDuration</a> </td>
+          <td class="memname">int64_t <a class="el" href="namespaceLogCabin_1_1Client_1_1Util.html#a26c8801e33b46828ac82c58f6a536a00">LogCabin::Client::Util::parseSignedDuration</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>description</em></td><td>)</td>
@@ -128,11 +130,11 @@ Functions</h2></td></tr>
 <p>Convert a human-readable description of a time duration into a number of nanoseconds. </p>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">description</td><td>Something like 10, 10s, 200ms, 3us, or 999ns. With no units, defaults to seconds. </td></tr>
+    <tr><td class="paramname">description</td><td>Something like 10, 10s, -200ms, 3us, or -999ns. With no units, defaults to seconds. May be negative. Allowed units: ns, nanosecond(s), ms, millisecond(s), s, second(s), min, minute(s), h, hr, hour(s), d, day(s), w, wk, week(s), mo, month(s), y, yr, year(s). </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>Number of nanoseconds. </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Number of nanoseconds (may be negative, capped to the range of a signed 64-bit integer). </dd></dl>
 <dl class="exception"><dt><b>Exceptions:</b></dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classLogCabin_1_1Client_1_1InvalidArgumentException.html" title="See Status::INVALID_ARGUMENT.">Client::InvalidArgumentException</a></td><td>If description could not be parsed successfully. </td></tr>
@@ -142,6 +144,41 @@ Functions</h2></td></tr>
 <dl class="warning"><dt><b>Warning:</b></dt><dd>This function is subject to change. It is not subject to the versioning requirements of <a class="el" href="namespaceLogCabin.html">LogCabin</a>'s public API. </dd></dl>
 
 <p>Definition at line <a class="el" href="Client_2Util_8cc_source.html#l00025">25</a> of file <a class="el" href="Client_2Util_8cc_source.html">Util.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af0c32c85ea76a02a605b7560e11d4e92"></a><!-- doxytag: member="LogCabin::Client::Util::parseNonNegativeDuration" ref="af0c32c85ea76a02a605b7560e11d4e92" args="(const std::string &amp;description)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t <a class="el" href="namespaceLogCabin_1_1Client_1_1Util.html#af0c32c85ea76a02a605b7560e11d4e92">LogCabin::Client::Util::parseNonNegativeDuration</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>description</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Convert a human-readable description of a time duration into a number of nanoseconds. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">description</td><td>Something like 10, 10s, 200ms, 3us, or 999ns. With no units, defaults to seconds. May not be negative. Allowed units: ns, nanosecond(s), ms, millisecond(s), s, second(s), min, minute(s), h, hr, hour(s), d, day(s), w, wk, week(s), mo, month(s), y, yr, year(s). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Number of nanoseconds (will not be negative, capped to the range of a signed 64-bit integer on the high end). </dd></dl>
+<dl class="exception"><dt><b>Exceptions:</b></dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classLogCabin_1_1Client_1_1InvalidArgumentException.html" title="See Status::INVALID_ARGUMENT.">Client::InvalidArgumentException</a></td><td>If description could not be parsed successfully. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="warning"><dt><b>Warning:</b></dt><dd>This function is subject to change. It is not subject to the versioning requirements of <a class="el" href="namespaceLogCabin.html">LogCabin</a>'s public API. </dd></dl>
+
+<p>Definition at line <a class="el" href="Client_2Util_8cc_source.html#l00035">35</a> of file <a class="el" href="Client_2Util_8cc_source.html">Util.cc</a>.</p>
 
 </div>
 </div>
