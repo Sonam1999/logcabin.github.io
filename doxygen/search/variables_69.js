@@ -11,5 +11,6 @@ var searchData=
   ['iscaughtup_5f',['isCaughtUp_',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#aa35915b9016d63af612039b1eea9c9bf',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['isconnecting',['isConnecting',['../classLogCabin_1_1Client_1_1LeaderRPC.html#a14bb81a36c5ac6423a158fe78738ac34',1,'LogCabin::Client::LeaderRPC']]],
   ['isloggingcache',['isLoggingCache',['../namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#a87e5b990cfa0531a01de3e2bfd26c9fb',1,'LogCabin::Core::Debug::Internal']]],
-  ['isopen',['isOpen',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb',1,'LogCabin::Storage::SegmentedLog::Segment']]]
+  ['isopen',['isOpen',['../structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb',1,'LogCabin::Storage::SegmentedLog::Segment']]],
+  ['issnapshotrequested',['isSnapshotRequested',['../classLogCabin_1_1Server_1_1StateMachine.html#a9faac0c9d6e607948d232d07e4de2da8',1,'LogCabin::Server::StateMachine']]]
 ];

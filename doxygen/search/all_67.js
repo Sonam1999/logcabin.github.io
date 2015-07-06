@@ -20,6 +20,7 @@ var searchData=
   ['getfilelength',['getFileLength',['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8',1,'LogCabin::Storage::FilesystemUtil::FileContents']]],
   ['gethelper',['getHelper',['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#aeda5607969f6f60ef7d00135cee3278a',1,'LogCabin::Storage::FilesystemUtil::FileContents']]],
   ['getid',['getId',['../namespaceLogCabin_1_1Core_1_1ThreadId.html#a30fee27beb13289e3a52ec480236e8af',1,'LogCabin::Core::ThreadId']]],
+  ['getinhibit',['getInhibit',['../classLogCabin_1_1Server_1_1StateMachine.html#a39dfc93b0a921fc4b9aab390006c033a',1,'LogCabin::Server::StateMachine']]],
   ['getitems',['getItems',['../namespaceLogCabin_1_1Core_1_1STLUtil.html#a340d336480db73fb910f2e804a728988',1,'LogCabin::Core::STLUtil']]],
   ['getkeys',['getKeys',['../namespaceLogCabin_1_1Core_1_1STLUtil.html#ac746aa33e81dac9376c8529651293f60',1,'LogCabin::Core::STLUtil']]],
   ['getlast',['getLast',['../classLogCabin_1_1Core_1_1RollingStat.html#a833d530ef36b2c02ba684515a9c8fb75',1,'LogCabin::Core::RollingStat']]],

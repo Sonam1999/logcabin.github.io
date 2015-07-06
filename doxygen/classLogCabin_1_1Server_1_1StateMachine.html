@@ -146,6 +146,16 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return once the state machine has applied at least the given entry.  <a href="#a40792af98645b4d05e6ddcf10902044e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#afc43ab99d0f60635b3389c40b628df8e">waitForResponse</a> (uint64_t logIndex, const Command::Request &amp;command, Command::Response &amp;response) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a> to get a response for a read-write command on the state machine.  <a href="#afc43ab99d0f60635b3389c40b628df8e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aaf7ec3baf881d89c032d1cbf16a95d28">isTakingSnapshot</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the server is currently taking a snapshot and false otherwise.  <a href="#aaf7ec3baf881d89c032d1cbf16a95d28"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#ac932698ce7d589b809ef43cb4a67498b">startTakingSnapshot</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If the state machine is not taking a snapshot, this starts one.  <a href="#ac932698ce7d589b809ef43cb4a67498b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a6e20988f22f3e9e8dffcaa12a3534d0b">stopTakingSnapshot</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If the server is currently taking a snapshot, abort it.  <a href="#a6e20988f22f3e9e8dffcaa12a3534d0b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::chrono::nanoseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a39dfc93b0a921fc4b9aab390006c033a">getInhibit</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the time for which the state machine will not take any automated snapshots.  <a href="#a39dfc93b0a921fc4b9aab390006c033a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a1372dc3a3ea87463c41ae8ce5a121f3f">setInhibit</a> (std::chrono::nanoseconds duration)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable automated snapshots for the given duration.  <a href="#a1372dc3a3ea87463c41ae8ce5a121f3f"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-types"></a>
 Private Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a4798c7e2244561626e4ce819710e7e56">Core::Time::SteadyClock</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aaaeea534b96663793c85c4626e3e11fb">Clock</a></td></tr>
@@ -182,8 +192,8 @@ Private Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function for thread that calls takeSnapshot when appropriate.  <a href="#a6c2fd3f31f6b186194efa2741b4908f2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a3a03145566d2f38511e15d15d371a615">snapshotWatchdogThreadMain</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Main function for thread that checks the progress of the child process.  <a href="#a3a03145566d2f38511e15d15d371a615"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#ab79199c9f82bf4c897fb6147ca30315b">takeSnapshot</a> (uint64_t lastIncludedIndex, std::unique_lock&lt; std::mutex &gt; &amp;lockGuard)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by snapshotThreadMain to actually take the snapshot.  <a href="#ab79199c9f82bf4c897fb6147ca30315b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a41f535e09acaf33c4ae3fcaff5527bbe">takeSnapshot</a> (uint64_t lastIncludedIndex, std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;lockGuard)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by snapshotThreadMain to actually take the snapshot.  <a href="#a41f535e09acaf33c4ae3fcaff5527bbe"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aac6394dd9a97b05e4d680b01305118e6">warnUnknownRequest</a> (const google::protobuf::Message &amp;request, const char *reason) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to log a debug message if appropriate when the state machine encounters a query or command that is not understood by the current running version.  <a href="#aac6394dd9a97b05e4d680b01305118e6"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
@@ -204,14 +214,16 @@ Private Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The time interval after which to remove an inactive client session, in nanoseconds of cluster time.  <a href="#add14d3c5856a100c00e47af58da99550"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#ae458f754641b44f5bcf57b38db7c8590">unknownRequestMessageBackoff</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The state machine logs messages when it receives a command or query that is not understood in the current running version.  <a href="#ae458f754641b44f5bcf57b38db7c8590"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce">mutex</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects against concurrent access for all members of this class (except 'consensus', which is itself a monitor.  <a href="#a0c9edd86fc09f8d0f4cdb4507abf57ce"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aa0459bad9ace7a173ca3ebd202d023ef">mutex</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects against concurrent access for all members of this class (except 'consensus', which is itself a monitor.  <a href="#aa0459bad9ace7a173ca3ebd202d023ef"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5">entriesApplied</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when lastIndex changes after some entry got applied.  <a href="#a9d61e516ad4e5c6dfbe7fa27252aa4c5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae">snapshotSuggested</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when shouldTakeSnapshot(lastIndex) becomes true.  <a href="#a41836b3ab4c77d8549c8b4939100e8ae"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a29d4ce900d7eee2614920ba7ed11d33d">snapshotStarted</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when a snapshot process is forked.  <a href="#a29d4ce900d7eee2614920ba7ed11d33d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9a1e1f407332d0b6d626b1c450683fde">snapshotCompleted</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when a snapshot process is joined.  <a href="#a9a1e1f407332d0b6d626b1c450683fde"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#ab4936b203196f899b5087cf2a05f79c7">exiting</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">applyThread sets this to true to signal that the server is shutting down.  <a href="#ab4936b203196f899b5087cf2a05f79c7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">pid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51">childPid</a></td></tr>
@@ -236,6 +248,10 @@ Private Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of times a log entry was processed to successfully advance the state machine's running version, where the state machine was previously at a smaller version.  <a href="#a037dd68695766012985b1c3e23259da5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aedef7a58f4dd70ce13a2ccdae9d3b3cb">numTotalAdvanceVersionEntries</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of times any log entry to advance the state machine's running version was processed.  <a href="#aedef7a58f4dd70ce13a2ccdae9d3b3cb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9faac0c9d6e607948d232d07e4de2da8">isSnapshotRequested</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set to true when an administrator has asked the server to take a snapshot; set to false once the server starts any snapshot.  <a href="#a9faac0c9d6e607948d232d07e4de2da8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a837498fe5f9affdd75af0c8c37a955e9">TimePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a91d43fa346fe9c4c72b96bc676e29d1c">maySnapshotAt</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The time at which the server may begin to take automated snapshots.  <a href="#a91d43fa346fe9c4c72b96bc676e29d1c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; uint64_t, <br class="typebreak"/>
 <a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html">Session</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4">sessions</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespaceLogCabin_1_1Client.html">Client</a> ID to <a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a> map.  <a href="#af9ff58694b29d3f72aba84d52f8ad8b4"></a><br/></td></tr>
@@ -261,7 +277,7 @@ Private Attributes</h2></td></tr>
 <li>Version 2 added the CloseSession command, which clients can use when they gracefully shut down. </li>
 </ul>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00048">48</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00049">49</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
 <a class="anchor" id="a49d74036b195e6cd915e0b9a0d89754c"></a><!-- doxytag: member="LogCabin::Server::StateMachine::Command" ref="a49d74036b195e6cd915e0b9a0d89754c" args="" -->
 <div class="memitem">
@@ -274,7 +290,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00050">50</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00051">51</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -289,7 +305,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00051">51</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00052">52</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -306,7 +322,7 @@ Private Attributes</h2></td></tr>
 
 <p>Clock used by watchdog timer thread. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00108">108</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00149">149</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -323,7 +339,7 @@ Private Attributes</h2></td></tr>
 
 <p>Point in time of Clock. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00113">113</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00154">154</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -349,7 +365,7 @@ Private Attributes</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00053">53</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00054">54</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -403,7 +419,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00103">103</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00106">106</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -436,7 +452,7 @@ Private Attributes</h2></td></tr>
 <p>Called by <a class="el" href="classLogCabin_1_1Server_1_1ClientService.html" title="This is LogCabin&#39;s application-facing RPC service.">ClientService</a> to execute read-only queries on the state machine. </p>
 <dl class="warning"><dt><b>Warning:</b></dt><dd>Be sure to <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a40792af98645b4d05e6ddcf10902044e" title="Return once the state machine has applied at least the given entry.">wait()</a> first! </dd></dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00118">118</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00121">121</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -457,7 +473,7 @@ Private Attributes</h2></td></tr>
 
 <p>Add information about the state machine state to the given structure. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00133">133</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00136">136</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -478,7 +494,7 @@ Private Attributes</h2></td></tr>
 
 <p>Return once the state machine has applied at least the given entry. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00160">160</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00165">165</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -523,7 +539,117 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00168">168</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00173">173</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaf7ec3baf881d89c032d1cbf16a95d28"></a><!-- doxytag: member="LogCabin::Server::StateMachine::isTakingSnapshot" ref="aaf7ec3baf881d89c032d1cbf16a95d28" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aaf7ec3baf881d89c032d1cbf16a95d28">LogCabin::Server::StateMachine::isTakingSnapshot</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return true if the server is currently taking a snapshot and false otherwise. </p>
+
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00228">228</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac932698ce7d589b809ef43cb4a67498b"></a><!-- doxytag: member="LogCabin::Server::StateMachine::startTakingSnapshot" ref="ac932698ce7d589b809ef43cb4a67498b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#ac932698ce7d589b809ef43cb4a67498b">LogCabin::Server::StateMachine::startTakingSnapshot</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>If the state machine is not taking a snapshot, this starts one. </p>
+<p>This method will return after the snapshot has been started (it may have already completed). </p>
+
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00235">235</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6e20988f22f3e9e8dffcaa12a3534d0b"></a><!-- doxytag: member="LogCabin::Server::StateMachine::stopTakingSnapshot" ref="a6e20988f22f3e9e8dffcaa12a3534d0b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a6e20988f22f3e9e8dffcaa12a3534d0b">LogCabin::Server::StateMachine::stopTakingSnapshot</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>If the server is currently taking a snapshot, abort it. </p>
+<p>This method will return after the existing snapshot has been stopped (it's possible that another snapshot will have already started). </p>
+
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00253">253</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a39dfc93b0a921fc4b9aab390006c033a"></a><!-- doxytag: member="LogCabin::Server::StateMachine::getInhibit" ref="a39dfc93b0a921fc4b9aab390006c033a" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::nanoseconds <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a39dfc93b0a921fc4b9aab390006c033a">LogCabin::Server::StateMachine::getInhibit</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the time for which the state machine will not take any automated snapshots. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Zero or positive duration. </dd></dl>
+
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00267">267</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1372dc3a3ea87463c41ae8ce5a121f3f"></a><!-- doxytag: member="LogCabin::Server::StateMachine::setInhibit" ref="a1372dc3a3ea87463c41ae8ce5a121f3f" args="(std::chrono::nanoseconds duration)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a1372dc3a3ea87463c41ae8ce5a121f3f">LogCabin::Server::StateMachine::setInhibit</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::chrono::nanoseconds&#160;</td>
+          <td class="paramname"><em>duration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Disable automated snapshots for the given duration. </p>
+<dl class="params"><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">duration</td><td>If zero or negative, immediately enables automated snapshotting. If positive, disables automated snapshotting for the given duration (or until a later call to <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a1372dc3a3ea87463c41ae8ce5a121f3f" title="Disable automated snapshots for the given duration.">setInhibit()</a>). Note that this will not stop the current snapshot; the caller should invoke <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a6e20988f22f3e9e8dffcaa12a3534d0b" title="If the server is currently taking a snapshot, abort it.">stopTakingSnapshot()</a> separately if desired. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00279">279</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -544,7 +670,7 @@ Private Attributes</h2></td></tr>
 
 <p>Invoked once per committed entry from the Raft log. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00226">226</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00301">301</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -564,7 +690,7 @@ Private Attributes</h2></td></tr>
 
 <p>Main function for thread that waits for new commands from Raft. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00311">311</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00386">386</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -585,7 +711,7 @@ Private Attributes</h2></td></tr>
 
 <p>Return the <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a> table as a protobuf message for writing into a snapshot. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00349">349</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00427">427</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -623,7 +749,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00368">368</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00446">446</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -650,7 +776,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00383">383</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00461">461</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -672,7 +798,7 @@ Private Attributes</h2></td></tr>
 <p>Return the version of the state machine behavior as of the given log index. </p>
 <p>Note that this is based on versionHistory internally, so if you're changing that variable at the given index, update it first. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00404">404</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00482">482</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -703,7 +829,7 @@ Private Attributes</h2></td></tr>
 
 <p>If there is a current snapshot process, send it a signal and return immediately. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00412">412</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00490">490</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -724,7 +850,7 @@ Private Attributes</h2></td></tr>
 
 <p>Restore the <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#af9ff58694b29d3f72aba84d52f8ad8b4" title="Client ID to Session map.">sessions</a> table from a snapshot. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00426">426</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00505">505</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -745,7 +871,7 @@ Private Attributes</h2></td></tr>
 
 <p>Read all of the state machine state from a snapshot file (including version, sessions, and tree). </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00445">445</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00524">524</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -766,7 +892,7 @@ Private Attributes</h2></td></tr>
 
 <p>Restore the <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#afea3fc3f23fcbded5ed5d319cdba0b9a" title="The log position when the state machine was updated to each new version.">versionHistory</a> table from a snapshot. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00476">476</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00555">555</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -787,7 +913,7 @@ Private Attributes</h2></td></tr>
 
 <p>Return the <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#afea3fc3f23fcbded5ed5d319cdba0b9a" title="The log position when the state machine was updated to each new version.">versionHistory</a> table as a protobuf message for writing into a snapshot. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00500">500</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00579">579</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -808,8 +934,9 @@ Private Attributes</h2></td></tr>
 
 <p>Return true if it is time to create a new snapshot. </p>
 <p>This is called by applyThread as an optimization to avoid waking up snapshotThread upon applying every single entry. </p>
+<dl class="warning"><dt><b>Warning:</b></dt><dd>Callers should take care to honor maySnapshotAt; this method ignores it. </dd></dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00514">514</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00593">593</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -829,7 +956,7 @@ Private Attributes</h2></td></tr>
 
 <p>Main function for thread that calls takeSnapshot when appropriate. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00544">544</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00623">623</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -849,16 +976,16 @@ Private Attributes</h2></td></tr>
 
 <p>Main function for thread that checks the progress of the child process. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00557">557</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00653">653</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ab79199c9f82bf4c897fb6147ca30315b"></a><!-- doxytag: member="LogCabin::Server::StateMachine::takeSnapshot" ref="ab79199c9f82bf4c897fb6147ca30315b" args="(uint64_t lastIncludedIndex, std::unique_lock&lt; std::mutex &gt; &amp;lockGuard)" -->
+<a class="anchor" id="a41f535e09acaf33c4ae3fcaff5527bbe"></a><!-- doxytag: member="LogCabin::Server::StateMachine::takeSnapshot" ref="a41f535e09acaf33c4ae3fcaff5527bbe" args="(uint64_t lastIncludedIndex, std::unique_lock&lt; Core::Mutex &gt; &amp;lockGuard)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#ab79199c9f82bf4c897fb6147ca30315b">LogCabin::Server::StateMachine::takeSnapshot</a> </td>
+          <td class="memname">void <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a41f535e09acaf33c4ae3fcaff5527bbe">LogCabin::Server::StateMachine::takeSnapshot</a> </td>
           <td>(</td>
           <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>lastIncludedIndex</em>, </td>
@@ -866,7 +993,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::unique_lock&lt; std::mutex &gt; &amp;&#160;</td>
+          <td class="paramtype">std::unique_lock&lt; <a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>lockGuard</em>&#160;</td>
         </tr>
         <tr>
@@ -880,7 +1007,7 @@ Private Attributes</h2></td></tr>
 
 <p>Called by snapshotThreadMain to actually take the snapshot. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00625">625</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00721">721</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -918,7 +1045,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00711">711</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8cc_source.html#l00808">808</a> of file <a class="el" href="StateMachine_8cc_source.html">StateMachine.cc</a>.</p>
 
 </div>
 </div>
@@ -936,7 +1063,7 @@ Private Attributes</h2></td></tr>
 
 <p>Consensus module from which this state machine pulls commands and snapshots. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00224">224</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00268">268</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -954,7 +1081,7 @@ Private Attributes</h2></td></tr>
 <p>Server-wide globals. </p>
 <p>Used to unblock signal handlers in child process. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00229">229</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00273">273</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -972,7 +1099,7 @@ Private Attributes</h2></td></tr>
 <p>Used for testing the snapshot watchdog thread. </p>
 <p>The probability that a snapshotting process will deadlock on purpose before starting, as a percentage. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00236">236</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00280">280</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -989,7 +1116,7 @@ Private Attributes</h2></td></tr>
 
 <p>Size in bytes of smallest log to snapshot. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00241">241</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00285">285</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1006,7 +1133,7 @@ Private Attributes</h2></td></tr>
 
 <p>Maximum log size as multiple of last snapshot size until server should snapshot. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00247">247</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00291">291</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1024,7 +1151,7 @@ Private Attributes</h2></td></tr>
 <p>After this much time has elapsed without any progress, the snapshot watchdog thread will kill the snapshotting process. </p>
 <p>A special value of 0 disables the watchdog entirely. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00254">254</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00298">298</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1041,7 +1168,7 @@ Private Attributes</h2></td></tr>
 
 <p>The time interval after which to remove an inactive client session, in nanoseconds of cluster time. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00260">260</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00304">304</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1059,16 +1186,16 @@ Private Attributes</h2></td></tr>
 <p>The state machine logs messages when it receives a command or query that is not understood in the current running version. </p>
 <p>This controls the minimum interval between such messages to prevent spamming the debug log. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00268">268</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00312">312</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a0c9edd86fc09f8d0f4cdb4507abf57ce"></a><!-- doxytag: member="LogCabin::Server::StateMachine::mutex" ref="a0c9edd86fc09f8d0f4cdb4507abf57ce" args="" -->
+<a class="anchor" id="aa0459bad9ace7a173ca3ebd202d023ef"></a><!-- doxytag: member="LogCabin::Server::StateMachine::mutex" ref="aa0459bad9ace7a173ca3ebd202d023ef" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::mutex <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a0c9edd86fc09f8d0f4cdb4507abf57ce">LogCabin::Server::StateMachine::mutex</a><code> [mutable, private]</code></td>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a> <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aa0459bad9ace7a173ca3ebd202d023ef">LogCabin::Server::StateMachine::mutex</a><code> [mutable, private]</code></td>
         </tr>
       </table>
 </div>
@@ -1076,7 +1203,7 @@ Private Attributes</h2></td></tr>
 
 <p>Protects against concurrent access for all members of this class (except 'consensus', which is itself a monitor. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00274">274</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00318">318</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1094,7 +1221,7 @@ Private Attributes</h2></td></tr>
 <p>Notified when lastIndex changes after some entry got applied. </p>
 <p>Also notified upon exiting. This is used for client threads to wait; see <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a40792af98645b4d05e6ddcf10902044e" title="Return once the state machine has applied at least the given entry.">wait()</a>. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00281">281</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00325">325</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1110,9 +1237,9 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Notified when shouldTakeSnapshot(lastIndex) becomes true. </p>
-<p>Also notified upon exiting. This is used for snapshotThread to wake up only when necessary. </p>
+<p>Also notified upon exiting and when <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a91d43fa346fe9c4c72b96bc676e29d1c" title="The time at which the server may begin to take automated snapshots.">maySnapshotAt</a> changes. This is used for snapshotThread to wake up only when necessary. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00288">288</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00332">332</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1128,9 +1255,27 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Notified when a snapshot process is forked. </p>
-<p>Also notified upon exiting. This is used so that the watchdog thread knows to begin checking the progress of the child process. </p>
+<p>Also notified upon exiting. This is used so that the watchdog thread knows to begin checking the progress of the child process, and also in <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#ac932698ce7d589b809ef43cb4a67498b" title="If the state machine is not taking a snapshot, this starts one.">startTakingSnapshot()</a>. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00296">296</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00340">340</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9a1e1f407332d0b6d626b1c450683fde"></a><!-- doxytag: member="LogCabin::Server::StateMachine::snapshotCompleted" ref="a9a1e1f407332d0b6d626b1c450683fde" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a> <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9a1e1f407332d0b6d626b1c450683fde">LogCabin::Server::StateMachine::snapshotCompleted</a><code> [mutable, private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Notified when a snapshot process is joined. </p>
+<p>Also notified upon exiting. This is used so that <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a6e20988f22f3e9e8dffcaa12a3534d0b" title="If the server is currently taking a snapshot, abort it.">stopTakingSnapshot()</a> knows when it's done. </p>
+
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00347">347</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1147,7 +1292,7 @@ Private Attributes</h2></td></tr>
 
 <p>applyThread sets this to true to signal that the server is shutting down. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00302">302</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00353">353</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1165,7 +1310,7 @@ Private Attributes</h2></td></tr>
 <p>The PID of snapshotThread's child process, if any. </p>
 <p>This is used by applyThread to signal exits: if applyThread is exiting, it sends SIGTERM to this child process. A childPid of 0 indicates that there is no child process. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00310">310</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00361">361</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1183,7 +1328,7 @@ Private Attributes</h2></td></tr>
 <p>The index of the last log entry that this state machine has applied. </p>
 <p>This variable is only written to by applyThread, so applyThread is free to access this variable without holding 'mutex'. Other readers must hold 'mutex'. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00318">318</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00369">369</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1201,7 +1346,7 @@ Private Attributes</h2></td></tr>
 <p>The time when <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aac6394dd9a97b05e4d680b01305118e6" title="Called to log a debug message if appropriate when the state machine encounters a query or command tha...">warnUnknownRequest()</a> last printed a debug message. </p>
 <p>Used to prevent spamming the debug log. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00324">324</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00375">375</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1218,7 +1363,7 @@ Private Attributes</h2></td></tr>
 
 <p>Total number of commands/queries that this state machine either did not understand or could not process because they were introduced in a newer version. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00331">331</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00382">382</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1236,7 +1381,7 @@ Private Attributes</h2></td></tr>
 <p>The number of debug messages suppressed by <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aac6394dd9a97b05e4d680b01305118e6" title="Called to log a debug message if appropriate when the state machine encounters a query or command tha...">warnUnknownRequest()</a> since lastUnknownRequestMessage. </p>
 <p>Used to prevent spamming the debug log. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00337">337</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00388">388</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1252,9 +1397,9 @@ Private Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>The number of times a snapshot has been started. </p>
-<p>In addition to being a useful stat, the watchdog thread uses this to know whether it's been watching the same snapshot or whether a new one has been started. </p>
+<p>In addition to being a useful stat, the watchdog thread uses this to know whether it's been watching the same snapshot or whether a new one has been started, and <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#ac932698ce7d589b809ef43cb4a67498b" title="If the state machine is not taking a snapshot, this starts one.">startTakingSnapshot()</a> waits for this to change before returning. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00345">345</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00397">397</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1271,7 +1416,7 @@ Private Attributes</h2></td></tr>
 
 <p>The number of times a snapshot child process has failed to exit cleanly. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00350">350</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00402">402</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1288,7 +1433,7 @@ Private Attributes</h2></td></tr>
 
 <p>The number of times a log entry was processed to advance the state machine's running version, but the state machine was already at that version. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00357">357</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00409">409</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1305,7 +1450,7 @@ Private Attributes</h2></td></tr>
 
 <p>The number of times a log entry was processed to advance the state machine's running version, but the state machine was already at a larger version. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00364">364</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00416">416</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1322,7 +1467,7 @@ Private Attributes</h2></td></tr>
 
 <p>The number of times a log entry was processed to successfully advance the state machine's running version, where the state machine was previously at a smaller version. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00371">371</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00423">423</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1340,7 +1485,43 @@ Private Attributes</h2></td></tr>
 <p>The number of times any log entry to advance the state machine's running version was processed. </p>
 <p>Should be the sum of redundant, rejected, and successful counts. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00378">378</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00430">430</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9faac0c9d6e607948d232d07e4de2da8"></a><!-- doxytag: member="LogCabin::Server::StateMachine::isSnapshotRequested" ref="a9faac0c9d6e607948d232d07e4de2da8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9faac0c9d6e607948d232d07e4de2da8">LogCabin::Server::StateMachine::isSnapshotRequested</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set to true when an administrator has asked the server to take a snapshot; set to false once the server starts any snapshot. </p>
+<p>Snapshots that are requested due to this flag are permitted to begin even if automated snapshots have been inhibited with <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a1372dc3a3ea87463c41ae8ce5a121f3f" title="Disable automated snapshots for the given duration.">setInhibit()</a>. </p>
+
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00438">438</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a91d43fa346fe9c4c72b96bc676e29d1c"></a><!-- doxytag: member="LogCabin::Server::StateMachine::maySnapshotAt" ref="a91d43fa346fe9c4c72b96bc676e29d1c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a837498fe5f9affdd75af0c8c37a955e9">TimePoint</a> <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a91d43fa346fe9c4c72b96bc676e29d1c">LogCabin::Server::StateMachine::maySnapshotAt</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The time at which the server may begin to take automated snapshots. </p>
+<p>Normally this is set to some time in the past. When automated snapshots are inhibited with <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a1372dc3a3ea87463c41ae8ce5a121f3f" title="Disable automated snapshots for the given duration.">setInhibit()</a>, this will be set to a future time. </p>
+
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00445">445</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1357,7 +1538,7 @@ Private Attributes</h2></td></tr>
 
 <p><a class="el" href="namespaceLogCabin_1_1Client.html">Client</a> ID to <a class="el" href="structLogCabin_1_1Server_1_1StateMachine_1_1Session.html" title="Tracks state for a particular client.">Session</a> map. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00414">414</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00481">481</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1375,7 +1556,7 @@ Private Attributes</h2></td></tr>
 <p>The hierarchical key-value store. </p>
 <p>Used in readOnlyTreeRPC and readWriteTreeRPC. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00420">420</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00487">487</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1395,7 +1576,7 @@ Private Attributes</h2></td></tr>
 <p>This is used by getResponse() to determine the running version at a given log index (to determine whether a command would have been applied), and it's used elsewhere to determine the state machine's current running version.</p>
 <p>Invariant: the pair (index 0, version 1) is always present. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00434">434</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00501">501</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1413,7 +1594,7 @@ Private Attributes</h2></td></tr>
 <p>The file that the snapshot is being written into. </p>
 <p>Also used by to track the progress of the child process for the watchdog thread. This is non-empty if and only if childPid &gt; 0. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00441">441</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00508">508</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1430,7 +1611,7 @@ Private Attributes</h2></td></tr>
 
 <p>Repeatedly calls into the consensus module to get commands to process and applies them. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00447">447</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00514">514</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1447,7 +1628,7 @@ Private Attributes</h2></td></tr>
 
 <p>Takes snapshots with the help of a child process. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00452">452</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00519">519</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>
@@ -1465,7 +1646,7 @@ Private Attributes</h2></td></tr>
 <p>Watches the child process to make sure it's writing to <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#acd24142379c2580222b05935f75bfb93" title="The file that the snapshot is being written into.">writer</a>, and kills it otherwise. </p>
 <p>This is to detect any possible deadlock that might occur if a thread in the parent at the time of the fork held a lock that the child process then tried to access. See <a href="https://github.com/logcabin/logcabin/issues/121">https://github.com/logcabin/logcabin/issues/121</a> for more rationale. </p>
 
-<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00461">461</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
+<p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00528">528</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
 
 </div>
 </div>

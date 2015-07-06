@@ -118,6 +118,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03_1_1OptionParser.html#a56054043da36cc7ba898dc687dbe1f28">OptionParser</a> (int &amp;<a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03_1_1OptionParser.html#a84b325e3e026c5e1ef87684a60574768">argc</a>, char **&amp;<a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03_1_1OptionParser.html#a1a3319a136d9e055055d572ecd3a2057">argv</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03_1_1OptionParser.html#a6eccf9196dcfc53ba7d5b7ab7834b837">at</a> (uint64_t index)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the positional argument at the given index, or panic if there were not enough arguments.  <a href="#a6eccf9196dcfc53ba7d5b7ab7834b837"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03_1_1OptionParser.html#a428ffbf0238653e39f48ec162f0b63c6">remaining</a> (uint64_t index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return all arguments at index or following it.  <a href="#a428ffbf0238653e39f48ec162f0b63c6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03_1_1OptionParser.html#a69ec898d3c69de1cdaf6fa4810945ffd">done</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Panic if are any unused arguments remain.  <a href="#a69ec898d3c69de1cdaf6fa4810945ffd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03_1_1OptionParser.html#a05d5779c48bae25741d6dcaecf8620ee">usageError</a> (const std::string &amp;message)</td></tr>
@@ -138,7 +140,7 @@ Public Attributes</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Parses argv for the main function. </p>
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00036">36</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00038">38</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a56054043da36cc7ba898dc687dbe1f28"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{ServerControl.cc}::OptionParser::OptionParser" ref="a56054043da36cc7ba898dc687dbe1f28" args="(int &amp;argc, char **&amp;argv)" -->
 <div class="memitem">
@@ -165,7 +167,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00038">38</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00040">40</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>
@@ -187,7 +189,28 @@ Public Attributes</h2></td></tr>
 
 <p>Return the positional argument at the given index, or panic if there were not enough arguments. </p>
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00093">93</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00095">95</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a428ffbf0238653e39f48ec162f0b63c6"></a><!-- doxytag: member="LogCabin::Client::anonymous_namespace{ServerControl.cc}::OptionParser::remaining" ref="a428ffbf0238653e39f48ec162f0b63c6" args="(uint64_t index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string LogCabin::Client::anonymous_namespace{ServerControl.cc}::<a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03_1_1OptionParser.html#a428ffbf0238653e39f48ec162f0b63c6">OptionParser::remaining</a> </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return all arguments at index or following it. </p>
+
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00105">105</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>
@@ -207,7 +230,7 @@ Public Attributes</h2></td></tr>
 
 <p>Panic if are any unused arguments remain. </p>
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00103">103</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00122">122</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>
@@ -228,7 +251,7 @@ Public Attributes</h2></td></tr>
 
 <p>Print an error and the usage message and exit nonzero. </p>
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00111">111</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00130">130</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>
@@ -249,7 +272,7 @@ Public Attributes</h2></td></tr>
 
 <p>Helper for spacing in <a class="el" href="classLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03_1_1OptionParser.html#ab93a02f391b0d9d33baadaada1c0676c">usage()</a> message. </p>
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00120">120</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00139">139</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>
@@ -267,7 +290,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00127">127</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00146">146</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>
@@ -283,7 +306,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00252">252</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00273">273</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>
@@ -298,7 +321,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00253">253</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00274">274</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>
@@ -313,7 +336,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00254">254</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00275">275</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>
@@ -328,7 +351,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00255">255</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00276">276</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>
@@ -343,7 +366,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00256">256</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00277">277</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>
@@ -358,7 +381,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00257">257</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00278">278</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>
@@ -373,7 +396,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00258">258</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerControl_8cc_source.html#l00279">279</a> of file <a class="el" href="ServerControl_8cc_source.html">ServerControl.cc</a>.</p>
 
 </div>
 </div>

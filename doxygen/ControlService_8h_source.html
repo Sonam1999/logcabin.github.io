@@ -142,23 +142,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00060"></a>00060     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a318c9bd327ea007ac310544e92eb2b89">serverInfoGet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
 <a name="l00061"></a>00061     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a6840e7928f4f7fc4a1714eb28b9f7155">serverStatsDump</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
 <a name="l00062"></a>00062     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#ac9c5dc5f7678fdd0514dafecaaf5d714">serverStatsGet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
-<a name="l00063"></a>00063 <span class="comment"></span>
-<a name="l00064"></a>00064 <span class="comment">    /**</span>
-<a name="l00065"></a>00065 <span class="comment">     * The LogCabin daemon&#39;s top-level objects.</span>
-<a name="l00066"></a>00066 <span class="comment">     */</span>
-<a name="l00067"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163">00067</a>     <a class="code" href="classLogCabin_1_1Server_1_1Globals.html" title="Holds the LogCabin daemon&#39;s top-level objects.">Globals</a>&amp; <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>;
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069   <span class="keyword">public</span>:
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071     <span class="comment">// ControlService is non-copyable.</span>
-<a name="l00072"></a>00072     <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a367f99cb79cee183de5311f17ed0de41" title="Constructor.">ControlService</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html" title="Invoked by logcabinctl client to inspect and manipulate internal server state.">ControlService</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00073"></a>00073     <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html" title="Invoked by logcabinctl client to inspect and manipulate internal server state.">ControlService</a>&amp; <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a5006298c0d488eb9957e4653cf5aa3a5">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html" title="Invoked by logcabinctl client to inspect and manipulate internal server state.">ControlService</a>&amp;) = <span class="keyword">delete</span>;
-<a name="l00074"></a>00074 }; <span class="comment">// class ControlService</span>
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076 } <span class="comment">// namespace LogCabin::Server</span>
-<a name="l00077"></a>00077 } <span class="comment">// namespace LogCabin</span>
+<a name="l00063"></a>00063     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a66ea905fbaf50a334b01667b624a764b">snapshotControl</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
+<a name="l00064"></a>00064     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aa379c29092f4cf1b2ab9f643de318f0d">snapshotInhibitGet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
+<a name="l00065"></a>00065     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a480750b88111adab15d77ece9a281ce2">snapshotInhibitSet</a>(<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html" title="This class represents the server side of a remote procedure call.">RPC::ServerRPC</a> rpc);
+<a name="l00066"></a>00066 <span class="comment"></span>
+<a name="l00067"></a>00067 <span class="comment">    /**</span>
+<a name="l00068"></a>00068 <span class="comment">     * The LogCabin daemon&#39;s top-level objects.</span>
+<a name="l00069"></a>00069 <span class="comment">     */</span>
+<a name="l00070"></a><a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163">00070</a>     <a class="code" href="classLogCabin_1_1Server_1_1Globals.html" title="Holds the LogCabin daemon&#39;s top-level objects.">Globals</a>&amp; <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072   <span class="keyword">public</span>:
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074     <span class="comment">// ControlService is non-copyable.</span>
+<a name="l00075"></a>00075     <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a367f99cb79cee183de5311f17ed0de41" title="Constructor.">ControlService</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html" title="Invoked by logcabinctl client to inspect and manipulate internal server state.">ControlService</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00076"></a>00076     <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html" title="Invoked by logcabinctl client to inspect and manipulate internal server state.">ControlService</a>&amp; <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#a5006298c0d488eb9957e4653cf5aa3a5">operator=</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html" title="Invoked by logcabinctl client to inspect and manipulate internal server state.">ControlService</a>&amp;) = <span class="keyword">delete</span>;
+<a name="l00077"></a>00077 }; <span class="comment">// class ControlService</span>
 <a name="l00078"></a>00078 
-<a name="l00079"></a>00079 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_SERVER_CONTROLSERVICE_H */</span>
+<a name="l00079"></a>00079 } <span class="comment">// namespace LogCabin::Server</span>
+<a name="l00080"></a>00080 } <span class="comment">// namespace LogCabin</span>
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082 <span class="preprocessor">#endif </span><span class="comment">/* LOGCABIN_SERVER_CONTROLSERVICE_H */</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
