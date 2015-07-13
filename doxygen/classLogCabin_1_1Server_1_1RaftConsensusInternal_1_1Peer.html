@@ -885,7 +885,7 @@ Private Attributes</h2></td></tr>
 
 <p>When the next heartbeat should be sent to the follower. </p>
 <p>Only valid while we're leader. The leader sends heartbeats periodically if it has no new data to send, to stop the follower from starting a new election. </p>
-<dl class="invariant"><dt><b>Invariant:</b></dt><dd>This is never more than HEARTBEAT_PERIOD_MS in the future, since new leaders don't reset it. </dd></dl>
+<dl class="invariant"><dt><b>Invariant:</b></dt><dd>This is never more than HEARTBEAT_PERIOD in the future, since new leaders don't reset it. </dd></dl>
 
 <p>Definition at line <a class="el" href="RaftConsensus_8h_source.html#l00414">414</a> of file <a class="el" href="RaftConsensus_8h_source.html">RaftConsensus.h</a>.</p>
 

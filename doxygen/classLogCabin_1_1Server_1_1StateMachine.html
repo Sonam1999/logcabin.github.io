@@ -217,9 +217,9 @@ Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1Mutex.html">Core::Mutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aa0459bad9ace7a173ca3ebd202d023ef">mutex</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Protects against concurrent access for all members of this class (except 'consensus', which is itself a monitor.  <a href="#aa0459bad9ace7a173ca3ebd202d023ef"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9d61e516ad4e5c6dfbe7fa27252aa4c5">entriesApplied</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when lastIndex changes after some entry got applied.  <a href="#a9d61e516ad4e5c6dfbe7fa27252aa4c5"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when lastApplied changes after some entry got applied.  <a href="#a9d61e516ad4e5c6dfbe7fa27252aa4c5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a41836b3ab4c77d8549c8b4939100e8ae">snapshotSuggested</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when shouldTakeSnapshot(lastIndex) becomes true.  <a href="#a41836b3ab4c77d8549c8b4939100e8ae"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when shouldTakeSnapshot(lastApplied) becomes true.  <a href="#a41836b3ab4c77d8549c8b4939100e8ae"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a29d4ce900d7eee2614920ba7ed11d33d">snapshotStarted</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Notified when a snapshot process is forked.  <a href="#a29d4ce900d7eee2614920ba7ed11d33d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html">Core::ConditionVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a9a1e1f407332d0b6d626b1c450683fde">snapshotCompleted</a></td></tr>
@@ -228,8 +228,8 @@ Private Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">applyThread sets this to true to signal that the server is shutting down.  <a href="#ab4936b203196f899b5087cf2a05f79c7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">pid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a778aa31b9626283494099f4d2726aa51">childPid</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The PID of snapshotThread's child process, if any.  <a href="#a778aa31b9626283494099f4d2726aa51"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b">lastIndex</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the last log entry that this state machine has applied.  <a href="#aa47c94fbe0c206ce321636ff0fb9357b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a42a90aaadd3e811622e89c6a58e22893">lastApplied</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The index of the last log entry that this state machine has applied.  <a href="#a42a90aaadd3e811622e89c6a58e22893"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a837498fe5f9affdd75af0c8c37a955e9">TimePoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#abbea2bb17f32b9c1ce7b3d4696220297">lastUnknownRequestMessage</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The time when <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aac6394dd9a97b05e4d680b01305118e6" title="Called to log a debug message if appropriate when the state machine encounters a query or command tha...">warnUnknownRequest()</a> last printed a debug message.  <a href="#abbea2bb17f32b9c1ce7b3d4696220297"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aae241756ba0a495e4dcee096f62bd9e0">numUnknownRequests</a></td></tr>
@@ -1218,7 +1218,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Notified when lastIndex changes after some entry got applied. </p>
+<p>Notified when lastApplied changes after some entry got applied. </p>
 <p>Also notified upon exiting. This is used for client threads to wait; see <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a40792af98645b4d05e6ddcf10902044e" title="Return once the state machine has applied at least the given entry.">wait()</a>. </p>
 
 <p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00325">325</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
@@ -1236,7 +1236,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Notified when shouldTakeSnapshot(lastIndex) becomes true. </p>
+<p>Notified when shouldTakeSnapshot(lastApplied) becomes true. </p>
 <p>Also notified upon exiting and when <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a91d43fa346fe9c4c72b96bc676e29d1c" title="The time at which the server may begin to take automated snapshots.">maySnapshotAt</a> changes. This is used for snapshotThread to wake up only when necessary. </p>
 
 <p>Definition at line <a class="el" href="StateMachine_8h_source.html#l00332">332</a> of file <a class="el" href="StateMachine_8h_source.html">StateMachine.h</a>.</p>
@@ -1314,12 +1314,12 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa47c94fbe0c206ce321636ff0fb9357b"></a><!-- doxytag: member="LogCabin::Server::StateMachine::lastIndex" ref="aa47c94fbe0c206ce321636ff0fb9357b" args="" -->
+<a class="anchor" id="a42a90aaadd3e811622e89c6a58e22893"></a><!-- doxytag: member="LogCabin::Server::StateMachine::lastApplied" ref="a42a90aaadd3e811622e89c6a58e22893" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#aa47c94fbe0c206ce321636ff0fb9357b">LogCabin::Server::StateMachine::lastIndex</a><code> [private]</code></td>
+          <td class="memname">uint64_t <a class="el" href="classLogCabin_1_1Server_1_1StateMachine.html#a42a90aaadd3e811622e89c6a58e22893">LogCabin::Server::StateMachine::lastApplied</a><code> [private]</code></td>
         </tr>
       </table>
 </div>

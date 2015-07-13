@@ -490,7 +490,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00408"></a>00408 <span class="comment">     * if it has no new data to send, to stop the follower from starting a new</span>
 <a name="l00409"></a>00409 <span class="comment">     * election.</span>
 <a name="l00410"></a>00410 <span class="comment">     * \invariant</span>
-<a name="l00411"></a>00411 <span class="comment">     *      This is never more than HEARTBEAT_PERIOD_MS in the future, since</span>
+<a name="l00411"></a>00411 <span class="comment">     *      This is never more than HEARTBEAT_PERIOD in the future, since</span>
 <a name="l00412"></a>00412 <span class="comment">     *      new leaders don&#39;t reset it.</span>
 <a name="l00413"></a>00413 <span class="comment">     */</span>
 <a name="l00414"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#af3115d040af27bfe093f1881fd243716">00414</a>     <a class="code" href="namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html#a9b2ddcfb6434331d10e3ed84c66e14e3" title="Some point in time relative to the Clock&#39;s epoch.">TimePoint</a> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#af3115d040af27bfe093f1881fd243716" title="When the next heartbeat should be sent to the follower.">nextHeartbeatTime</a>;
@@ -1442,7 +1442,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01360"></a>01360 <span class="comment"></span>
 <a name="l01361"></a>01361 <span class="comment">    /**</span>
 <a name="l01362"></a>01362 <span class="comment">     * Set the timer to start a new election and notify #stateChanged.</span>
-<a name="l01363"></a>01363 <span class="comment">     * The timer is set for ELECTION_TIMEOUT_MS plus some random jitter from</span>
+<a name="l01363"></a>01363 <span class="comment">     * The timer is set for ELECTION_TIMEOUT plus some random jitter from</span>
 <a name="l01364"></a>01364 <span class="comment">     * now.</span>
 <a name="l01365"></a>01365 <span class="comment">     */</span>
 <a name="l01366"></a>01366     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#ac307cba21a66a55c0edc29d6e094ec7a" title="Set the timer to start a new election and notify stateChanged.">setElectionTimer</a>();
@@ -1477,7 +1477,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01395"></a>01395 <span class="comment">     * on any leader is marked committed on this leader by the time this call</span>
 <a name="l01396"></a>01396 <span class="comment">     * returns.</span>
 <a name="l01397"></a>01397 <span class="comment">     * This is used to provide non-stale read operations to</span>
-<a name="l01398"></a>01398 <span class="comment">     * clients. It gives up after ELECTION_TIMEOUT_MS, since stepDownThread</span>
+<a name="l01398"></a>01398 <span class="comment">     * clients. It gives up after ELECTION_TIMEOUT, since stepDownThread</span>
 <a name="l01399"></a>01399 <span class="comment">     * will return to the follower state after that time.</span>
 <a name="l01400"></a>01400 <span class="comment">     */</span>
 <a name="l01401"></a>01401     <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a083099431c4dd8bdb9985027a7385861" title="Return true if every entry that might have already been marked committed on any leader is marked comm...">upToDateLeader</a>(std::unique_lock&lt;Mutex&gt;&amp; lockGuard) <span class="keyword">const</span>;
@@ -1497,13 +1497,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01415"></a>01415 <span class="comment">     * A follower waits for about this much inactivity before becoming a</span>
 <a name="l01416"></a>01416 <span class="comment">     * candidate and starting a new election.</span>
 <a name="l01417"></a>01417 <span class="comment">     */</span>
-<a name="l01418"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a5a76d9fce7cc8e8bd69bcf059b89ad93">01418</a>     <span class="keyword">const</span> uint64_t <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a5a76d9fce7cc8e8bd69bcf059b89ad93" title="A follower waits for about this much inactivity before becoming a candidate and starting a new electi...">ELECTION_TIMEOUT_MS</a>;
+<a name="l01418"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#ae2cf24d15e6dade30dfb73d4acd89b13">01418</a>     <span class="keyword">const</span> std::chrono::nanoseconds <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#ae2cf24d15e6dade30dfb73d4acd89b13" title="A follower waits for about this much inactivity before becoming a candidate and starting a new electi...">ELECTION_TIMEOUT</a>;
 <a name="l01419"></a>01419 <span class="comment"></span>
 <a name="l01420"></a>01420 <span class="comment">    /**</span>
 <a name="l01421"></a>01421 <span class="comment">     * A leader sends RPCs at least this often, even if there is no data to</span>
 <a name="l01422"></a>01422 <span class="comment">     * send.</span>
 <a name="l01423"></a>01423 <span class="comment">     */</span>
-<a name="l01424"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a4b4eba8076afd37eb50b234346d491dc">01424</a>     <span class="keyword">const</span> uint64_t <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a4b4eba8076afd37eb50b234346d491dc" title="A leader sends RPCs at least this often, even if there is no data to send.">HEARTBEAT_PERIOD_MS</a>;
+<a name="l01424"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a20b599b7e6403dc817eab52339c23294">01424</a>     <span class="keyword">const</span> std::chrono::nanoseconds <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a20b599b7e6403dc817eab52339c23294" title="A leader sends RPCs at least this often, even if there is no data to send.">HEARTBEAT_PERIOD</a>;
 <a name="l01425"></a>01425 <span class="comment"></span>
 <a name="l01426"></a>01426 <span class="comment">    /**</span>
 <a name="l01427"></a>01427 <span class="comment">     * A leader will pack at most this many entries into an AppendEntries</span>
@@ -1517,7 +1517,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01435"></a>01435 <span class="comment">     * A candidate or leader waits this long after an RPC fails before sending</span>
 <a name="l01436"></a>01436 <span class="comment">     * another one, so as to not overwhelm the network with retries.</span>
 <a name="l01437"></a>01437 <span class="comment">     */</span>
-<a name="l01438"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a8c3ec432979e19052a70bd756ebd5689">01438</a>     <span class="keyword">const</span> uint64_t <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a8c3ec432979e19052a70bd756ebd5689" title="A candidate or leader waits this long after an RPC fails before sending another one, so as to not overwhelm the network with retries.">RPC_FAILURE_BACKOFF_MS</a>;
+<a name="l01438"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a90a5e89ea88ad66f4e2c20480ce249c5">01438</a>     <span class="keyword">const</span> std::chrono::nanoseconds <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a90a5e89ea88ad66f4e2c20480ce249c5" title="A candidate or leader waits this long after an RPC fails before sending another one, so as to not overwhelm the network with retries.">RPC_FAILURE_BACKOFF</a>;
 <a name="l01439"></a>01439 <span class="comment"></span>
 <a name="l01440"></a>01440 <span class="comment">    /**</span>
 <a name="l01441"></a>01441 <span class="comment">     * How long the state machine updater thread should sleep if:</span>
@@ -1527,7 +1527,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01445"></a>01445 <span class="comment">     * - An advance state machine entry failed to commit (probably due to lost</span>
 <a name="l01446"></a>01446 <span class="comment">     *   leadership).</span>
 <a name="l01447"></a>01447 <span class="comment">     */</span>
-<a name="l01448"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a4b14bc75339c857054abc16882aae2d8">01448</a>     <span class="keyword">const</span> std::chrono::milliseconds <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a4b14bc75339c857054abc16882aae2d8" title="How long the state machine updater thread should sleep if:">STATE_MACHINE_UPDATER_BACKOFF</a>;
+<a name="l01448"></a><a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a4be1af08c8918e72ae01dc37726828c6">01448</a>     <span class="keyword">const</span> std::chrono::nanoseconds <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a4be1af08c8918e72ae01dc37726828c6" title="How long the state machine updater thread should sleep if:">STATE_MACHINE_UPDATER_BACKOFF</a>;
 <a name="l01449"></a>01449 <span class="comment"></span>
 <a name="l01450"></a>01450 <span class="comment">    /**</span>
 <a name="l01451"></a>01451 <span class="comment">     * Prefer to keep RPC requests under this size.</span>

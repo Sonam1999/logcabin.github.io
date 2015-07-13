@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['election_5ftimeout_5fms',['ELECTION_TIMEOUT_MS',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a5a76d9fce7cc8e8bd69bcf059b89ad93',1,'LogCabin::Server::RaftConsensus']]],
+  ['election_5ftimeout',['ELECTION_TIMEOUT',['../classLogCabin_1_1Server_1_1RaftConsensus.html#ae2cf24d15e6dade30dfb73d4acd89b13',1,'LogCabin::Server::RaftConsensus']]],
   ['empty',['empty',['../classLogCabin_1_1Client_1_1SessionManager_1_1LockedAssignment.html#a1837c52f0867de11ec9daa53c248998d',1,'LogCabin::Client::SessionManager::LockedAssignment']]],
   ['enable',['enable',['../classLogCabin_1_1Server_1_1ServerStats.html#a4fe7e36f3b166e01dbc0937ed92d898f',1,'LogCabin::Server::ServerStats']]],
   ['encoding',['Encoding',['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a5503ea75df765ff0302604d2c0f9cfdf',1,'LogCabin::Storage::SegmentedLog::Encoding()'],['../classLogCabin_1_1Storage_1_1SegmentedLog.html#a20c878fca260c1fea2dbae7905ce827e',1,'LogCabin::Storage::SegmentedLog::encoding()']]],

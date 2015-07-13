@@ -21,7 +21,7 @@ var searchData=
   ['havevote_5f',['haveVote_',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Peer.html#a57b21af23dcbefa804c9c962591e5025',1,'LogCabin::Server::RaftConsensusInternal::Peer']]],
   ['header',['header',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1Inbound.html#aeea9608fe3f4031cef120e2540dc8790',1,'LogCabin::RPC::MessageSocket::Inbound::header()'],['../structLogCabin_1_1RPC_1_1MessageSocket_1_1Outbound.html#a9b75ac1d85309dd924690c1fdbacfaeb',1,'LogCabin::RPC::MessageSocket::Outbound::header()']]],
   ['header',['Header',['../structLogCabin_1_1RPC_1_1MessageSocket_1_1Header.html',1,'LogCabin::RPC::MessageSocket']]],
-  ['heartbeat_5fperiod_5fms',['HEARTBEAT_PERIOD_MS',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a4b4eba8076afd37eb50b234346d491dc',1,'LogCabin::Server::RaftConsensus']]],
+  ['heartbeat_5fperiod',['HEARTBEAT_PERIOD',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a20b599b7e6403dc817eab52339c23294',1,'LogCabin::Server::RaftConsensus']]],
   ['helloworld_2ecc',['HelloWorld.cc',['../HelloWorld_8cc.html',1,'']]],
   ['holdingmutex',['HoldingMutex',['../classLogCabin_1_1Core_1_1HoldingMutex.html#ad082e08a0bed320e6060bffeb0364216',1,'LogCabin::Core::HoldingMutex::HoldingMutex(const std::lock_guard&lt; Mutex &gt; &amp;lockGuard)'],['../classLogCabin_1_1Core_1_1HoldingMutex.html#a50c35cd65e8d5fff73ac213669a42b8e',1,'LogCabin::Core::HoldingMutex::HoldingMutex(const std::unique_lock&lt; Mutex &gt; &amp;lockGuard)']]],
   ['holdingmutex',['HoldingMutex',['../classLogCabin_1_1Core_1_1HoldingMutex.html',1,'LogCabin::Core']]],
