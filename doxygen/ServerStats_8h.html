@@ -84,8 +84,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;memory&gt;</code><br/>
+<code>#include &lt;thread&gt;</code><br/>
 <code>#include &quot;build/Protocol/ServerStats.pb.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Mutex_8h_source.html">Core/Mutex.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="Time_8h_source.html">Core/Time.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Signal_8h_source.html">Event/Signal.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Timer_8h_source.html">Event/Timer.h</a>&quot;</code><br/>
 </div>
@@ -98,9 +100,7 @@ Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html">LogCabin::Server::ServerStats::Lock</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides read/write access to <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a1bba9f0d46774de2eeceb8e06d792367" title="Partially filled-in structure that is copied as the basis of all calls to getCurrent().">stats</a>, protected against concurrent access.  <a href="classLogCabin_1_1Server_1_1ServerStats_1_1Lock.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html">LogCabin::Server::ServerStats::SignalHandler</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Dumps stats to the debug log (NOTICE level) on SIGUSR1 signal.  <a href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html">LogCabin::Server::ServerStats::TimerHandler</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Dumps stats to the debug log (NOTICE level) periodically.  <a href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html#details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Asks statsDumper thread to dumps stats to the debug log (NOTICE level) on SIGUSR1 signal.  <a href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html">LogCabin::Server::ServerStats::Deferred</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Members that are constructed later, during <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a4fe7e36f3b166e01dbc0937ed92d898f" title="Called after Globals are initialized to finish setting up this class.">enable()</a>.  <a href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>

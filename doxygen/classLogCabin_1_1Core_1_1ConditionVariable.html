@@ -132,8 +132,8 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::atomic&lt; uint64_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#af207028ba7fd73430cb97c2082149591">notificationCount</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of times this condition variable has been notified.  <a href="#af207028ba7fd73430cb97c2082149591"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a17f0e22cbcda874e6e8db66d3b09c9f7">lastWaitUntilTimeSinceEpoch</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">In the last call to wait_until, the timeout that the caller provided.  <a href="#a17f0e22cbcda874e6e8db66d3b09c9f7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Core::Time::SteadyClock::time_point</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a94225f68952b36d19fa2df18d8b81c6b">lastWaitUntil</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">In the last call to wait_until, the timeout that the caller provided (in terms of SteadyClock).  <a href="#a94225f68952b36d19fa2df18d8b81c6b"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">pthread_cond_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a663128ec2dfa8ec1206b511a93d1ee01">cv</a></td></tr>
@@ -409,21 +409,21 @@ template&lt;typename Clock , typename Duration &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a17f0e22cbcda874e6e8db66d3b09c9f7"></a><!-- doxytag: member="LogCabin::Core::ConditionVariable::lastWaitUntilTimeSinceEpoch" ref="a17f0e22cbcda874e6e8db66d3b09c9f7" args="" -->
+<a class="anchor" id="a94225f68952b36d19fa2df18d8b81c6b"></a><!-- doxytag: member="LogCabin::Core::ConditionVariable::lastWaitUntil" ref="a94225f68952b36d19fa2df18d8b81c6b" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::chrono::milliseconds <a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a17f0e22cbcda874e6e8db66d3b09c9f7">LogCabin::Core::ConditionVariable::lastWaitUntilTimeSinceEpoch</a></td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Core::Time::SteadyClock::time_point</a> <a class="el" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a94225f68952b36d19fa2df18d8b81c6b">LogCabin::Core::ConditionVariable::lastWaitUntil</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>In the last call to wait_until, the timeout that the caller provided. </p>
-<p>This is used in some unit tests to check that timeouts are set correctly. It is stored as the number of milliseconds after the clock's epoch. (Since we don't know the Clock in advance, we can't store a time_point here.) </p>
+<p>In the last call to wait_until, the timeout that the caller provided (in terms of SteadyClock). </p>
+<p>This is used in some unit tests to check that timeouts are set correctly. </p>
 
-<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00134">134</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
+<p>Definition at line <a class="el" href="ConditionVariable_8h_source.html#l00133">133</a> of file <a class="el" href="ConditionVariable_8h_source.html">ConditionVariable.h</a>.</p>
 
 </div>
 </div>

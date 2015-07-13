@@ -133,6 +133,8 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a human-readable description of a time duration into a number of nanoseconds.  <a href="#a579165e8eb2719fea72e660bda02550e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75">sleep</a> (<a class="el" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">SteadyClock::time_point</a> wake)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Block the calling thread until the given time.  <a href="#a8f257504e3a87c3f6fcafce6729c1f75"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ae908eeb1414dbd3fdfc20f475aeec2c4">sleep</a> (std::chrono::nanoseconds duration)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Block the calling thread for the given duration.  <a href="#ae908eeb1414dbd3fdfc20f475aeec2c4"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename Clock , typename Duration &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">struct timespec&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#ab1f0bfec14cc5ca8578cf2ce2f2092d6">makeTimeSpec</a> (const std::chrono::time_point&lt; Clock, Duration &gt; &amp;when)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a C++11 time point into a POSIX timespec.  <a href="#ab1f0bfec14cc5ca8578cf2ce2f2092d6"></a><br/></td></tr>
@@ -265,6 +267,27 @@ Variables</h2></td></tr>
 <p>Block the calling thread until the given time. </p>
 
 <p>Definition at line <a class="el" href="Time_8cc_source.html#l00190">190</a> of file <a class="el" href="Time_8cc_source.html">Time.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae908eeb1414dbd3fdfc20f475aeec2c4"></a><!-- doxytag: member="LogCabin::Core::Time::sleep" ref="ae908eeb1414dbd3fdfc20f475aeec2c4" args="(std::chrono::nanoseconds duration)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="namespaceLogCabin_1_1Core_1_1Time.html#a8f257504e3a87c3f6fcafce6729c1f75">LogCabin::Core::Time::sleep</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::chrono::nanoseconds&#160;</td>
+          <td class="paramname"><em>duration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Block the calling thread for the given duration. </p>
+
+<p>Definition at line <a class="el" href="Time_8cc_source.html#l00208">208</a> of file <a class="el" href="Time_8cc_source.html">Time.cc</a>.</p>
 
 </div>
 </div>

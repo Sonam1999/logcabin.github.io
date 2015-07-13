@@ -116,23 +116,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#afc8952c46778acefaea54245e0520c02">Deferred</a> (<a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html">ServerStats</a> &amp;serverStats)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Called during <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a4fe7e36f3b166e01dbc0937ed92d898f" title="Called after Globals are initialized to finish setting up this class.">enable()</a>.  <a href="#afc8952c46778acefaea54245e0520c02"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#afc8952c46778acefaea54245e0520c02"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html">SignalHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#a9ab71eb5acb8ee56606a14e8feefbc98">signalHandler</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html" title="Dumps stats to the debug log (NOTICE level) on SIGUSR1 signal.">SignalHandler</a>.  <a href="#a9ab71eb5acb8ee56606a14e8feefbc98"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html" title="Asks statsDumper thread to dumps stats to the debug log (NOTICE level) on SIGUSR1 signal...">SignalHandler</a>.  <a href="#a9ab71eb5acb8ee56606a14e8feefbc98"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html">Event::Signal::Monitor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#a7e40d5fcf63acc4bbc82ba4babe0e287">signalMonitor</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers signalHandler with event loop.  <a href="#a7e40d5fcf63acc4bbc82ba4babe0e287"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html">TimerHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#afc458ddfeef940135292b600918bab71">timerHandler</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html" title="Dumps stats to the debug log (NOTICE level) periodically.">TimerHandler</a>.  <a href="#afc458ddfeef940135292b600918bab71"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLogCabin_1_1Event_1_1Timer_1_1Monitor.html">Event::Timer::Monitor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#a2679b011a7d8b4f5aba2a92f66270846">timerMonitor</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers timerHandler with event loop.  <a href="#a2679b011a7d8b4f5aba2a92f66270846"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::chrono::nanoseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#a408b6a344dee09288fea84d4d7578a35">dumpInterval</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If nonzero, the <a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#a86fa9e23b6d5627ac4962f8f61cd12f5" title="This thread dumps the stats periodically and when signalled.">statsDumper</a> thread will write the current stats to the debug log if this duration has elapsed since the last dump.  <a href="#a408b6a344dee09288fea84d4d7578a35"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#a86fa9e23b6d5627ac4962f8f61cd12f5">statsDumper</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This thread dumps the stats periodically and when signalled.  <a href="#a86fa9e23b6d5627ac4962f8f61cd12f5"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Members that are constructed later, during <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a4fe7e36f3b166e01dbc0937ed92d898f" title="Called after Globals are initialized to finish setting up this class.">enable()</a>. </p>
 <p>Whereas the <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html" title="Manages creation of server statistics, which are used for diagnostics.">ServerStats</a> is constructed early in the server startup process, these members get to access globals and globals.config in their constructors. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00119">119</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00134">134</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="afc8952c46778acefaea54245e0520c02"></a><!-- doxytag: member="LogCabin::Server::ServerStats::Deferred::Deferred" ref="afc8952c46778acefaea54245e0520c02" args="(ServerStats &amp;serverStats)" -->
 <div class="memitem">
@@ -149,9 +149,10 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Constructor. Called during <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a4fe7e36f3b166e01dbc0937ed92d898f" title="Called after Globals are initialized to finish setting up this class.">enable()</a>. </p>
+<p>Constructor. </p>
+<p>Called during <a class="el" href="classLogCabin_1_1Server_1_1ServerStats.html#a4fe7e36f3b166e01dbc0937ed92d898f" title="Called after Globals are initialized to finish setting up this class.">enable()</a>. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00092">92</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8cc_source.html#l00073">73</a> of file <a class="el" href="ServerStats_8cc_source.html">ServerStats.cc</a>.</p>
 
 </div>
 </div>
@@ -167,9 +168,9 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>See <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html" title="Dumps stats to the debug log (NOTICE level) on SIGUSR1 signal.">SignalHandler</a>. </p>
+<p>See <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1SignalHandler.html" title="Asks statsDumper thread to dumps stats to the debug log (NOTICE level) on SIGUSR1 signal...">SignalHandler</a>. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00123">123</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00143">143</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
 
 </div>
 </div>
@@ -186,41 +187,42 @@ Public Attributes</h2></td></tr>
 
 <p>Registers signalHandler with event loop. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00125">125</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00148">148</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="afc458ddfeef940135292b600918bab71"></a><!-- doxytag: member="LogCabin::Server::ServerStats::Deferred::timerHandler" ref="afc458ddfeef940135292b600918bab71" args="" -->
+<a class="anchor" id="a408b6a344dee09288fea84d4d7578a35"></a><!-- doxytag: member="LogCabin::Server::ServerStats::Deferred::dumpInterval" ref="a408b6a344dee09288fea84d4d7578a35" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html">TimerHandler</a> <a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#afc458ddfeef940135292b600918bab71">LogCabin::Server::ServerStats::Deferred::timerHandler</a></td>
+          <td class="memname">std::chrono::nanoseconds <a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#a408b6a344dee09288fea84d4d7578a35">LogCabin::Server::ServerStats::Deferred::dumpInterval</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>See <a class="el" href="classLogCabin_1_1Server_1_1ServerStats_1_1TimerHandler.html" title="Dumps stats to the debug log (NOTICE level) periodically.">TimerHandler</a>. </p>
+<p>If nonzero, the <a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#a86fa9e23b6d5627ac4962f8f61cd12f5" title="This thread dumps the stats periodically and when signalled.">statsDumper</a> thread will write the current stats to the debug log if this duration has elapsed since the last dump. </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00127">127</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00154">154</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a2679b011a7d8b4f5aba2a92f66270846"></a><!-- doxytag: member="LogCabin::Server::ServerStats::Deferred::timerMonitor" ref="a2679b011a7d8b4f5aba2a92f66270846" args="" -->
+<a class="anchor" id="a86fa9e23b6d5627ac4962f8f61cd12f5"></a><!-- doxytag: member="LogCabin::Server::ServerStats::Deferred::statsDumper" ref="a86fa9e23b6d5627ac4962f8f61cd12f5" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classLogCabin_1_1Event_1_1Timer_1_1Monitor.html">Event::Timer::Monitor</a> <a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#a2679b011a7d8b4f5aba2a92f66270846">LogCabin::Server::ServerStats::Deferred::timerMonitor</a></td>
+          <td class="memname">std::thread <a class="el" href="structLogCabin_1_1Server_1_1ServerStats_1_1Deferred.html#a86fa9e23b6d5627ac4962f8f61cd12f5">LogCabin::Server::ServerStats::Deferred::statsDumper</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Registers timerHandler with event loop. </p>
+<p>This thread dumps the stats periodically and when signalled. </p>
+<p>Dumping the stats is done from a separate thread so that the event loop thread does not acquire locks in higher-level modules (which could result in deadlocks or delays). Introduced for <a href="https://github.com/logcabin/logcabin/issues/159">https://github.com/logcabin/logcabin/issues/159</a> . </p>
 
-<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00129">129</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
+<p>Definition at line <a class="el" href="ServerStats_8h_source.html#l00163">163</a> of file <a class="el" href="ServerStats_8h_source.html">ServerStats.h</a>.</p>
 
 </div>
 </div>

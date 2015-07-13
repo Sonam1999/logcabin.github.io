@@ -201,71 +201,71 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00119"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a0716780cdbc776d14d8e63f9b6cdce41">00119</a>     <a class="code" href="classLogCabin_1_1Core_1_1Config.html" title="Reads and writes configuration files.">Core::Config</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a0716780cdbc776d14d8e63f9b6cdce41" title="Global configuration options.">config</a>;
 <a name="l00120"></a>00120 <span class="comment"></span>
 <a name="l00121"></a>00121 <span class="comment">    /**</span>
-<a name="l00122"></a>00122 <span class="comment">     * The event loop that runs the RPC system.</span>
-<a name="l00123"></a>00123 <span class="comment">     */</span>
-<a name="l00124"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa79e668d84e1c96ce5d39d1ae3b35200">00124</a>     <a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa79e668d84e1c96ce5d39d1ae3b35200" title="The event loop that runs the RPC system.">eventLoop</a>;
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126   <span class="keyword">private</span>:<span class="comment"></span>
+<a name="l00122"></a>00122 <span class="comment">     * Statistics and information about the server&#39;s current state. Useful for</span>
+<a name="l00123"></a>00123 <span class="comment">     * diagnostics.</span>
+<a name="l00124"></a>00124 <span class="comment">     */</span>
+<a name="l00125"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7dc92bf35a9d8d455210e5c497f8a714">00125</a>     <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html" title="Manages creation of server statistics, which are used for diagnostics.">Server::ServerStats</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7dc92bf35a9d8d455210e5c497f8a714" title="Statistics and information about the server&#39;s current state.">serverStats</a>;
+<a name="l00126"></a>00126 <span class="comment"></span>
 <a name="l00127"></a>00127 <span class="comment">    /**</span>
-<a name="l00128"></a>00128 <span class="comment">     * Block SIGINT, which is handled by sigIntHandler.</span>
-<a name="l00129"></a>00129 <span class="comment">     * Signals are blocked early on in the startup process so that newly</span>
-<a name="l00130"></a>00130 <span class="comment">     * spawned threads also have them blocked.</span>
-<a name="l00131"></a>00131 <span class="comment">     */</span>
-<a name="l00132"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a87b058fad5c58beaeea9391519776780">00132</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html" title="Blocks asynchronous signal delivery on the current thread for the given signal.">Event::Signal::Blocker</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a87b058fad5c58beaeea9391519776780" title="Block SIGINT, which is handled by sigIntHandler.">sigIntBlocker</a>;
-<a name="l00133"></a>00133 <span class="comment"></span>
-<a name="l00134"></a>00134 <span class="comment">    /**</span>
-<a name="l00135"></a>00135 <span class="comment">     * Block SIGTERM, which is handled by sigTermHandler.</span>
-<a name="l00136"></a>00136 <span class="comment">     */</span>
-<a name="l00137"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#ae7a70ebdddd326efbd7915738db5ede9">00137</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html" title="Blocks asynchronous signal delivery on the current thread for the given signal.">Event::Signal::Blocker</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#ae7a70ebdddd326efbd7915738db5ede9" title="Block SIGTERM, which is handled by sigTermHandler.">sigTermBlocker</a>;
-<a name="l00138"></a>00138 <span class="comment"></span>
-<a name="l00139"></a>00139 <span class="comment">    /**</span>
-<a name="l00140"></a>00140 <span class="comment">     * Block SIGUSR1, which is handled by serverStats.</span>
-<a name="l00141"></a>00141 <span class="comment">     */</span>
-<a name="l00142"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a0bc2eae1030d9a14f914a2e83811f77a">00142</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html" title="Blocks asynchronous signal delivery on the current thread for the given signal.">Event::Signal::Blocker</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a0bc2eae1030d9a14f914a2e83811f77a" title="Block SIGUSR1, which is handled by serverStats.">sigUsr1Blocker</a>;
-<a name="l00143"></a>00143 <span class="comment"></span>
-<a name="l00144"></a>00144 <span class="comment">    /**</span>
-<a name="l00145"></a>00145 <span class="comment">     * Block SIGUSR2, which is handled by sigUsr2Handler.</span>
-<a name="l00146"></a>00146 <span class="comment">     */</span>
-<a name="l00147"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a6d4c119b257e2d1870340eb3c0618134">00147</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html" title="Blocks asynchronous signal delivery on the current thread for the given signal.">Event::Signal::Blocker</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a6d4c119b257e2d1870340eb3c0618134" title="Block SIGUSR2, which is handled by sigUsr2Handler.">sigUsr2Blocker</a>;
-<a name="l00148"></a>00148 <span class="comment"></span>
-<a name="l00149"></a>00149 <span class="comment">    /**</span>
-<a name="l00150"></a>00150 <span class="comment">     * Exits the event loop upon receiving SIGINT (keyboard interrupt).</span>
-<a name="l00151"></a>00151 <span class="comment">     */</span>
-<a name="l00152"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7a9794764dcd97aa5460710a93444f59">00152</a>     <a class="code" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html" title="Exits from the event loop upon receiving a UNIX signal.">ExitHandler</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7a9794764dcd97aa5460710a93444f59" title="Exits the event loop upon receiving SIGINT (keyboard interrupt).">sigIntHandler</a>;
-<a name="l00153"></a>00153 <span class="comment"></span>
-<a name="l00154"></a>00154 <span class="comment">    /**</span>
-<a name="l00155"></a>00155 <span class="comment">     * Registers sigIntHandler with the event loop.</span>
-<a name="l00156"></a>00156 <span class="comment">     */</span>
-<a name="l00157"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#ab112dd6b44bc3de70e8919a156df8abc">00157</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html" title="Registers a Signal handler to be monitored by the Event::Loop.">Event::Signal::Monitor</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#ab112dd6b44bc3de70e8919a156df8abc" title="Registers sigIntHandler with the event loop.">sigIntMonitor</a>;
-<a name="l00158"></a>00158 <span class="comment"></span>
-<a name="l00159"></a>00159 <span class="comment">    /**</span>
-<a name="l00160"></a>00160 <span class="comment">     * Exits the event loop upon receiving SIGTERM (kill).</span>
-<a name="l00161"></a>00161 <span class="comment">     */</span>
-<a name="l00162"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a9e4e7f21e1dd61917beffad1e233201b">00162</a>     <a class="code" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html" title="Exits from the event loop upon receiving a UNIX signal.">ExitHandler</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a9e4e7f21e1dd61917beffad1e233201b" title="Exits the event loop upon receiving SIGTERM (kill).">sigTermHandler</a>;
-<a name="l00163"></a>00163 <span class="comment"></span>
-<a name="l00164"></a>00164 <span class="comment">    /**</span>
-<a name="l00165"></a>00165 <span class="comment">     * Registers sigTermHandler with the event loop.</span>
-<a name="l00166"></a>00166 <span class="comment">     */</span>
-<a name="l00167"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#ad747059091f1f21c73929169c9013e4a">00167</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html" title="Registers a Signal handler to be monitored by the Event::Loop.">Event::Signal::Monitor</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#ad747059091f1f21c73929169c9013e4a" title="Registers sigTermHandler with the event loop.">sigTermMonitor</a>;
-<a name="l00168"></a>00168 <span class="comment"></span>
-<a name="l00169"></a>00169 <span class="comment">    /**</span>
-<a name="l00170"></a>00170 <span class="comment">     * Re-opens log files upon receiving SIGUSR2 (user-defined signal). This</span>
-<a name="l00171"></a>00171 <span class="comment">     * should normally be invoked by tools like logrotate.</span>
+<a name="l00128"></a>00128 <span class="comment">     * The event loop that runs the RPC system.</span>
+<a name="l00129"></a>00129 <span class="comment">     */</span>
+<a name="l00130"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa79e668d84e1c96ce5d39d1ae3b35200">00130</a>     <a class="code" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa79e668d84e1c96ce5d39d1ae3b35200" title="The event loop that runs the RPC system.">eventLoop</a>;
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132   <span class="keyword">private</span>:<span class="comment"></span>
+<a name="l00133"></a>00133 <span class="comment">    /**</span>
+<a name="l00134"></a>00134 <span class="comment">     * Block SIGINT, which is handled by sigIntHandler.</span>
+<a name="l00135"></a>00135 <span class="comment">     * Signals are blocked early on in the startup process so that newly</span>
+<a name="l00136"></a>00136 <span class="comment">     * spawned threads also have them blocked.</span>
+<a name="l00137"></a>00137 <span class="comment">     */</span>
+<a name="l00138"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a87b058fad5c58beaeea9391519776780">00138</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html" title="Blocks asynchronous signal delivery on the current thread for the given signal.">Event::Signal::Blocker</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a87b058fad5c58beaeea9391519776780" title="Block SIGINT, which is handled by sigIntHandler.">sigIntBlocker</a>;
+<a name="l00139"></a>00139 <span class="comment"></span>
+<a name="l00140"></a>00140 <span class="comment">    /**</span>
+<a name="l00141"></a>00141 <span class="comment">     * Block SIGTERM, which is handled by sigTermHandler.</span>
+<a name="l00142"></a>00142 <span class="comment">     */</span>
+<a name="l00143"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#ae7a70ebdddd326efbd7915738db5ede9">00143</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html" title="Blocks asynchronous signal delivery on the current thread for the given signal.">Event::Signal::Blocker</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#ae7a70ebdddd326efbd7915738db5ede9" title="Block SIGTERM, which is handled by sigTermHandler.">sigTermBlocker</a>;
+<a name="l00144"></a>00144 <span class="comment"></span>
+<a name="l00145"></a>00145 <span class="comment">    /**</span>
+<a name="l00146"></a>00146 <span class="comment">     * Block SIGUSR1, which is handled by serverStats.</span>
+<a name="l00147"></a>00147 <span class="comment">     */</span>
+<a name="l00148"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a0bc2eae1030d9a14f914a2e83811f77a">00148</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html" title="Blocks asynchronous signal delivery on the current thread for the given signal.">Event::Signal::Blocker</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a0bc2eae1030d9a14f914a2e83811f77a" title="Block SIGUSR1, which is handled by serverStats.">sigUsr1Blocker</a>;
+<a name="l00149"></a>00149 <span class="comment"></span>
+<a name="l00150"></a>00150 <span class="comment">    /**</span>
+<a name="l00151"></a>00151 <span class="comment">     * Block SIGUSR2, which is handled by sigUsr2Handler.</span>
+<a name="l00152"></a>00152 <span class="comment">     */</span>
+<a name="l00153"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a6d4c119b257e2d1870340eb3c0618134">00153</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Blocker.html" title="Blocks asynchronous signal delivery on the current thread for the given signal.">Event::Signal::Blocker</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a6d4c119b257e2d1870340eb3c0618134" title="Block SIGUSR2, which is handled by sigUsr2Handler.">sigUsr2Blocker</a>;
+<a name="l00154"></a>00154 <span class="comment"></span>
+<a name="l00155"></a>00155 <span class="comment">    /**</span>
+<a name="l00156"></a>00156 <span class="comment">     * Exits the event loop upon receiving SIGINT (keyboard interrupt).</span>
+<a name="l00157"></a>00157 <span class="comment">     */</span>
+<a name="l00158"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7a9794764dcd97aa5460710a93444f59">00158</a>     <a class="code" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html" title="Exits from the event loop upon receiving a UNIX signal.">ExitHandler</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7a9794764dcd97aa5460710a93444f59" title="Exits the event loop upon receiving SIGINT (keyboard interrupt).">sigIntHandler</a>;
+<a name="l00159"></a>00159 <span class="comment"></span>
+<a name="l00160"></a>00160 <span class="comment">    /**</span>
+<a name="l00161"></a>00161 <span class="comment">     * Registers sigIntHandler with the event loop.</span>
+<a name="l00162"></a>00162 <span class="comment">     */</span>
+<a name="l00163"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#ab112dd6b44bc3de70e8919a156df8abc">00163</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html" title="Registers a Signal handler to be monitored by the Event::Loop.">Event::Signal::Monitor</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#ab112dd6b44bc3de70e8919a156df8abc" title="Registers sigIntHandler with the event loop.">sigIntMonitor</a>;
+<a name="l00164"></a>00164 <span class="comment"></span>
+<a name="l00165"></a>00165 <span class="comment">    /**</span>
+<a name="l00166"></a>00166 <span class="comment">     * Exits the event loop upon receiving SIGTERM (kill).</span>
+<a name="l00167"></a>00167 <span class="comment">     */</span>
+<a name="l00168"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a9e4e7f21e1dd61917beffad1e233201b">00168</a>     <a class="code" href="classLogCabin_1_1Server_1_1Globals_1_1ExitHandler.html" title="Exits from the event loop upon receiving a UNIX signal.">ExitHandler</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a9e4e7f21e1dd61917beffad1e233201b" title="Exits the event loop upon receiving SIGTERM (kill).">sigTermHandler</a>;
+<a name="l00169"></a>00169 <span class="comment"></span>
+<a name="l00170"></a>00170 <span class="comment">    /**</span>
+<a name="l00171"></a>00171 <span class="comment">     * Registers sigTermHandler with the event loop.</span>
 <a name="l00172"></a>00172 <span class="comment">     */</span>
-<a name="l00173"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a3d3a9d309d26e3f69048b56c371677cc">00173</a>     <a class="code" href="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler.html" title="Re-opens the log file upon receiving a UNIX signal.">LogRotateHandler</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a3d3a9d309d26e3f69048b56c371677cc" title="Re-opens log files upon receiving SIGUSR2 (user-defined signal).">sigUsr2Handler</a>;
+<a name="l00173"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#ad747059091f1f21c73929169c9013e4a">00173</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html" title="Registers a Signal handler to be monitored by the Event::Loop.">Event::Signal::Monitor</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#ad747059091f1f21c73929169c9013e4a" title="Registers sigTermHandler with the event loop.">sigTermMonitor</a>;
 <a name="l00174"></a>00174 <span class="comment"></span>
 <a name="l00175"></a>00175 <span class="comment">    /**</span>
-<a name="l00176"></a>00176 <span class="comment">     * Registers sigUsr2Handler with the event loop.</span>
-<a name="l00177"></a>00177 <span class="comment">     */</span>
-<a name="l00178"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a245d4bfcb62accad94c10d4114f2d94c">00178</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html" title="Registers a Signal handler to be monitored by the Event::Loop.">Event::Signal::Monitor</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a245d4bfcb62accad94c10d4114f2d94c" title="Registers sigUsr2Handler with the event loop.">sigUsr2Monitor</a>;
-<a name="l00179"></a>00179 
-<a name="l00180"></a>00180   <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00176"></a>00176 <span class="comment">     * Re-opens log files upon receiving SIGUSR2 (user-defined signal). This</span>
+<a name="l00177"></a>00177 <span class="comment">     * should normally be invoked by tools like logrotate.</span>
+<a name="l00178"></a>00178 <span class="comment">     */</span>
+<a name="l00179"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a3d3a9d309d26e3f69048b56c371677cc">00179</a>     <a class="code" href="classLogCabin_1_1Server_1_1Globals_1_1LogRotateHandler.html" title="Re-opens the log file upon receiving a UNIX signal.">LogRotateHandler</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a3d3a9d309d26e3f69048b56c371677cc" title="Re-opens log files upon receiving SIGUSR2 (user-defined signal).">sigUsr2Handler</a>;
+<a name="l00180"></a>00180 <span class="comment"></span>
 <a name="l00181"></a>00181 <span class="comment">    /**</span>
-<a name="l00182"></a>00182 <span class="comment">     * Statistics and information about the server&#39;s current state. Useful for</span>
-<a name="l00183"></a>00183 <span class="comment">     * diagnostics.</span>
-<a name="l00184"></a>00184 <span class="comment">     */</span>
-<a name="l00185"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7dc92bf35a9d8d455210e5c497f8a714">00185</a>     <a class="code" href="classLogCabin_1_1Server_1_1ServerStats.html" title="Manages creation of server statistics, which are used for diagnostics.">Server::ServerStats</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a7dc92bf35a9d8d455210e5c497f8a714" title="Statistics and information about the server&#39;s current state.">serverStats</a>;
-<a name="l00186"></a>00186 <span class="comment"></span>
+<a name="l00182"></a>00182 <span class="comment">     * Registers sigUsr2Handler with the event loop.</span>
+<a name="l00183"></a>00183 <span class="comment">     */</span>
+<a name="l00184"></a><a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a245d4bfcb62accad94c10d4114f2d94c">00184</a>     <a class="code" href="classLogCabin_1_1Event_1_1Signal_1_1Monitor.html" title="Registers a Signal handler to be monitored by the Event::Loop.">Event::Signal::Monitor</a> <a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a245d4bfcb62accad94c10d4114f2d94c" title="Registers sigUsr2Handler with the event loop.">sigUsr2Monitor</a>;
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186   <span class="keyword">public</span>:<span class="comment"></span>
 <a name="l00187"></a>00187 <span class="comment">    /**</span>
 <a name="l00188"></a>00188 <span class="comment">     * A unique ID for the cluster that this server may connect to. This is</span>
 <a name="l00189"></a>00189 <span class="comment">     * initialized to a value from the config file. If it&#39;s not set then, it</span>

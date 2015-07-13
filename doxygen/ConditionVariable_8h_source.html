@@ -159,7 +159,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00077"></a>00077                <span class="keyword">const</span> std::chrono::time_point&lt;Clock, Duration&gt;&amp; abs_time) {
 <a name="l00078"></a>00078         std::chrono::time_point&lt;Clock, Duration&gt; now = Clock::now();
 <a name="l00079"></a>00079         std::chrono::time_point&lt;Clock, Duration&gt; wake = abs_time;
-<a name="l00080"></a>00080         <span class="comment">// Clamp to wake to [now, now + hour] to avoid overflow.</span>
+<a name="l00080"></a>00080         <span class="comment">// Clamp to wake to [now - hour, now + hour] to avoid overflow.</span>
 <a name="l00081"></a>00081         <span class="comment">// See related http://gcc.gnu.org/bugzilla/show_bug.cgi?id=58931</span>
 <a name="l00082"></a>00082         <span class="keywordflow">if</span> (abs_time &lt; now)
 <a name="l00083"></a>00083             wake = now - std::chrono::hours(1);
@@ -207,19 +207,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00125"></a>00125 <span class="comment">     */</span>
 <a name="l00126"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#af207028ba7fd73430cb97c2082149591">00126</a>     std::atomic&lt;uint64_t&gt; <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#af207028ba7fd73430cb97c2082149591" title="The number of times this condition variable has been notified.">notificationCount</a>;<span class="comment"></span>
 <a name="l00127"></a>00127 <span class="comment">    /**</span>
-<a name="l00128"></a>00128 <span class="comment">     * In the last call to wait_until, the timeout that the caller provided.</span>
-<a name="l00129"></a>00129 <span class="comment">     * This is used in some unit tests to check that timeouts are set</span>
-<a name="l00130"></a>00130 <span class="comment">     * correctly. It is stored as the number of milliseconds after the</span>
-<a name="l00131"></a>00131 <span class="comment">     * clock&#39;s epoch. (Since we don&#39;t know the Clock in advance, we can&#39;t store</span>
-<a name="l00132"></a>00132 <span class="comment">     * a time_point here.)</span>
-<a name="l00133"></a>00133 <span class="comment">     */</span>
-<a name="l00134"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a17f0e22cbcda874e6e8db66d3b09c9f7">00134</a>     std::chrono::milliseconds <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a17f0e22cbcda874e6e8db66d3b09c9f7" title="In the last call to wait_until, the timeout that the caller provided.">lastWaitUntilTimeSinceEpoch</a>;
-<a name="l00135"></a>00135 };
-<a name="l00136"></a>00136 
-<a name="l00137"></a>00137 } <span class="comment">// namespace LogCabin::Core</span>
-<a name="l00138"></a>00138 } <span class="comment">// namespace LogCabin</span>
-<a name="l00139"></a>00139 
-<a name="l00140"></a>00140 <span class="preprocessor">#endif // LOGCABIN_CORE_CONDITIONVARIABLE_H</span>
+<a name="l00128"></a>00128 <span class="comment">     * In the last call to wait_until, the timeout that the caller provided (in</span>
+<a name="l00129"></a>00129 <span class="comment">     * terms of SteadyClock).</span>
+<a name="l00130"></a>00130 <span class="comment">     * This is used in some unit tests to check that timeouts are set</span>
+<a name="l00131"></a>00131 <span class="comment">     * correctly.</span>
+<a name="l00132"></a>00132 <span class="comment">     */</span>
+<a name="l00133"></a><a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a94225f68952b36d19fa2df18d8b81c6b">00133</a>     <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8">Core::Time::SteadyClock::time_point</a> <a class="code" href="classLogCabin_1_1Core_1_1ConditionVariable.html#a94225f68952b36d19fa2df18d8b81c6b" title="In the last call to wait_until, the timeout that the caller provided (in terms of SteadyClock)...">lastWaitUntil</a>;
+<a name="l00134"></a>00134 };
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136 } <span class="comment">// namespace LogCabin::Core</span>
+<a name="l00137"></a>00137 } <span class="comment">// namespace LogCabin</span>
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 <span class="preprocessor">#endif // LOGCABIN_CORE_CONDITIONVARIABLE_H</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
