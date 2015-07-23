@@ -255,7 +255,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00173"></a>00173     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(ServerInfoGet);
 <a name="l00174"></a>00174     response.set_server_id(<a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;serverId);
 <a name="l00175"></a>00175     response.set_addresses(<a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#aa8c8b22b5152dbbb894d34ac040f17b2" title="Consensus module.">raft</a>-&gt;serverAddresses);
-<a name="l00176"></a>00176     response.set_process_id(getpid());
+<a name="l00176"></a>00176     response.set_process_id(uint64_t(getpid()));
 <a name="l00177"></a>00177     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
 <a name="l00178"></a>00178 }
 <a name="l00179"></a>00179 
@@ -305,7 +305,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00223"></a>00223     <a class="code" href="ControlService_8cc.html#a44b61fea858b2f0344929e3e85e51fe5" title="Place this at the top of each RPC handler.">PRELUDE</a>(SnapshotInhibitGet);
 <a name="l00224"></a>00224     std::chrono::nanoseconds duration = <a class="code" href="classLogCabin_1_1Server_1_1ControlService.html#aec2b86584339e303114b7f5ee8faa163" title="The LogCabin daemon&#39;s top-level objects.">globals</a>.<a class="code" href="classLogCabin_1_1Server_1_1Globals.html#a66960263fe3c257aa81737c6786d9cb3" title="State machine used to process client requests.">stateMachine</a>-&gt;getInhibit();
 <a name="l00225"></a>00225     assert(duration &gt;= std::chrono::nanoseconds::zero());
-<a name="l00226"></a>00226     response.set_nanoseconds(duration.count());
+<a name="l00226"></a>00226     response.set_nanoseconds(uint64_t(duration.count()));
 <a name="l00227"></a>00227     rpc.<a class="code" href="classLogCabin_1_1RPC_1_1ServerRPC.html#a35a2565819bb6b2d7e90f4f2471c68ea" title="Send a normal response back to the client.">reply</a>(response);
 <a name="l00228"></a>00228 }
 <a name="l00229"></a>00229 

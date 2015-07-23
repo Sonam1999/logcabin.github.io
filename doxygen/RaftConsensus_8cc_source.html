@@ -2670,7 +2670,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02588"></a>02588         <span class="comment">// and a length. We conservatively assume the tag and length will</span>
 <a name="l02589"></a>02589         <span class="comment">// be up to 10 bytes each (2^64), though in practice the tag is</span>
 <a name="l02590"></a>02590         <span class="comment">// probably one byte and the length is probably two.</span>
-<a name="l02591"></a>02591         currentSize += entry.ByteSize() + 20;
+<a name="l02591"></a>02591         currentSize += uint64_t(entry.ByteSize()) + 20;
 <a name="l02592"></a>02592 
 <a name="l02593"></a>02593         <span class="keywordflow">if</span> (currentSize &gt;= <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a8b367b81c3af4957007d02ec2e136275" title="Prefer to keep RPC requests under this size.">SOFT_RPC_SIZE_LIMIT</a>) {
 <a name="l02594"></a>02594             <span class="comment">// The message might be too big: calculate more exact but more</span>
@@ -2885,8 +2885,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l02803"></a>02803 {
 <a name="l02804"></a>02804     std::chrono::nanoseconds duration(
 <a name="l02805"></a>02805         <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#af8e82c49f7a898ab54ed0b18a89a5419" title="Return a random integer between start and end, inclusive.">Core::Random::randomRange</a>(
-<a name="l02806"></a>02806             std::chrono::nanoseconds(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#ae2cf24d15e6dade30dfb73d4acd89b13" title="A follower waits for about this much inactivity before becoming a candidate and starting a new electi...">ELECTION_TIMEOUT</a>).count(),
-<a name="l02807"></a>02807             std::chrono::nanoseconds(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#ae2cf24d15e6dade30dfb73d4acd89b13" title="A follower waits for about this much inactivity before becoming a candidate and starting a new electi...">ELECTION_TIMEOUT</a>).count() * 2));
+<a name="l02806"></a>02806             uint64_t(std::chrono::nanoseconds(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#ae2cf24d15e6dade30dfb73d4acd89b13" title="A follower waits for about this much inactivity before becoming a candidate and starting a new electi...">ELECTION_TIMEOUT</a>).count()),
+<a name="l02807"></a>02807             uint64_t(std::chrono::nanoseconds(<a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#ae2cf24d15e6dade30dfb73d4acd89b13" title="A follower waits for about this much inactivity before becoming a candidate and starting a new electi...">ELECTION_TIMEOUT</a>).count()) * 2));
 <a name="l02808"></a>02808     <a class="code" href="Core_2Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Will become candidate in %s&quot;</span>,
 <a name="l02809"></a>02809             <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0" title="Return a string returned from the given object&#39;s stream operator.">Core::StringUtil::toString</a>(duration).c_str());
 <a name="l02810"></a>02810     <a class="code" href="classLogCabin_1_1Server_1_1RaftConsensus.html#a3528d66b8409ca51a4392d7c3f395d39" title="The earliest time at which timerThread should begin a new election with startNewElection().">startElectionAt</a> = <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Clock::now</a>() + duration;

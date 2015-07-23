@@ -387,9 +387,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00305"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#afe940b3be199a39ec78a34ee88e07378">00305</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1Sync.html#afe940b3be199a39ec78a34ee88e07378" title="Add how long the filesystem ops took to &#39;nanos&#39;.">SegmentedLog::Sync::updateStats</a>(<a class="code" href="classLogCabin_1_1Core_1_1RollingStat.html" title="This class gathers statistics about a given metric over time, like its average, standard deviation...">Core::RollingStat</a>&amp; nanos)<span class="keyword"> const</span>
 <a name="l00306"></a>00306 <span class="keyword"></span>{
 <a name="l00307"></a>00307     std::chrono::nanoseconds elapsed = waitEnd - waitStart;
-<a name="l00308"></a>00308     nanos.<a class="code" href="classLogCabin_1_1Core_1_1RollingStat.html#a73989b5b1da5c3bdca03238f330c8a43" title="Report a value.">push</a>(elapsed.count());
+<a name="l00308"></a>00308     nanos.<a class="code" href="classLogCabin_1_1Core_1_1RollingStat.html#a73989b5b1da5c3bdca03238f330c8a43" title="Report a value.">push</a>(uint64_t(elapsed.count()));
 <a name="l00309"></a>00309     <span class="keywordflow">if</span> (elapsed &gt; <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a517d127cdb1fa64bbbb6042ad30a4cee" title="If a disk operation exceeds this much time, log a warning.">diskWriteDurationThreshold</a>)
-<a name="l00310"></a>00310         nanos.<a class="code" href="classLogCabin_1_1Core_1_1RollingStat.html#a52f7a7086be7de9ccab1e2eadc91c5b3" title="Report an exceptional value.">noteExceptional</a>(waitStart, elapsed.count());
+<a name="l00310"></a>00310         nanos.<a class="code" href="classLogCabin_1_1Core_1_1RollingStat.html#a52f7a7086be7de9ccab1e2eadc91c5b3" title="Report an exceptional value.">noteExceptional</a>(waitStart, uint64_t(elapsed.count()));
 <a name="l00311"></a>00311 }
 <a name="l00312"></a>00312 
 <a name="l00313"></a>00313 <span class="comment"></span>
@@ -871,13 +871,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00789"></a>00789 
 <a name="l00790"></a>00790     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a33b9e1951fe268841a6b75d180435add" title="Time point for measuring disk performance.">TimePoint</a> end = <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Clock::now</a>();
 <a name="l00791"></a>00791     std::chrono::nanoseconds elapsed = end - start;
-<a name="l00792"></a>00792     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ab11c0f815da06fd00ef3f1812657f3b1" title="Tracks the time it takes to write a metadata file.">metadataWriteNanos</a>.<a class="code" href="classLogCabin_1_1Core_1_1RollingStat.html#a73989b5b1da5c3bdca03238f330c8a43" title="Report a value.">push</a>(elapsed.count());
+<a name="l00792"></a>00792     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ab11c0f815da06fd00ef3f1812657f3b1" title="Tracks the time it takes to write a metadata file.">metadataWriteNanos</a>.<a class="code" href="classLogCabin_1_1Core_1_1RollingStat.html#a73989b5b1da5c3bdca03238f330c8a43" title="Report a value.">push</a>(uint64_t(elapsed.count()));
 <a name="l00793"></a>00793     <span class="keywordflow">if</span> (elapsed &gt; <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a517d127cdb1fa64bbbb6042ad30a4cee" title="If a disk operation exceeds this much time, log a warning.">diskWriteDurationThreshold</a>) {
 <a name="l00794"></a>00794         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Writing metadata file took longer than expected &quot;</span>
 <a name="l00795"></a>00795                 <span class="stringliteral">&quot;(%s for %lu bytes)&quot;</span>,
 <a name="l00796"></a>00796                 <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0" title="Return a string returned from the given object&#39;s stream operator.">Core::StringUtil::toString</a>(elapsed).c_str(),
 <a name="l00797"></a>00797                 record.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>());
-<a name="l00798"></a>00798         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ab11c0f815da06fd00ef3f1812657f3b1" title="Tracks the time it takes to write a metadata file.">metadataWriteNanos</a>.<a class="code" href="classLogCabin_1_1Core_1_1RollingStat.html#a52f7a7086be7de9ccab1e2eadc91c5b3" title="Report an exceptional value.">noteExceptional</a>(start, elapsed.count());
+<a name="l00798"></a>00798         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ab11c0f815da06fd00ef3f1812657f3b1" title="Tracks the time it takes to write a metadata file.">metadataWriteNanos</a>.<a class="code" href="classLogCabin_1_1Core_1_1RollingStat.html#a52f7a7086be7de9ccab1e2eadc91c5b3" title="Report an exceptional value.">noteExceptional</a>(start, uint64_t(elapsed.count()));
 <a name="l00799"></a>00799     }
 <a name="l00800"></a>00800 }
 <a name="l00801"></a>00801 
