@@ -1,0 +1,6 @@
+Copyright 2015 Diego Ongaro.
+
+This work is licensed under the <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img style="margin: 2px; border: 0; box-shadow: none" alt="Creative Commons License" style="border-width:0" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAIAAAD8q9/YAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAISSURBVHjaYmAYYYARiP///z9SfMvIyAJhrdm0Glliz669M6fO7OjoKC8vx9Tm6up66tSptu5WcQlxIFdeVsHVyfXjh4+D3LeQeGXClHj54uXyxctx+RYIdu/ebWZmNrl/CoT74eOHwoLCoRLJWDy8fMkKYWFhXL6FAGBw3Lxxc8PajUD2x08fPHw8vH28h6qHL128lJ6eDmScPXtWWVkZmO6Bafj9+/dAEsgGigDFjY2NXVxcrl29BjWFiQnIRUs/EICcnDDZA+/hSxcvf/70GegfIDssLAzIALoPSHZ2dgL9+e7dO2DM37t3DygLFLxz+w48VQMTOWYJAQQQ78EZQBLIHkQe/vrlC5AUFBQERinQYxCfAxMwkK2kpAQUT0tLCw0NhRXxUKf//PmDkYURs5BA9h7EzwPrWywe5ubhAZJA3wL9BvQhMFYhxTKQC/QzULyiomLWrFloiZOdneP/n/94Ynjw5mE9fV1eXl6IP4ERu2fPHqCjgT4HsoGxLSQkBBSBZNczZ84oKitCdAnwCwArKvwxPLgaHsj1cF9X//Onz+/fv49HGzBETExMouOiA4L9gVxZabnmhuatW7YO8noYGPpYSunouKi3b98AoxSP5rKyMhVVZYhv+fkEdmzZMch9i69aArafUjNTKysr29vbsepxcna6fv16QUkBPD33T+gfbUsP0rb0SOssMQAEGAB0zfzj5yHE/QAAAABJRU5ErkJggg==" /></a>
+

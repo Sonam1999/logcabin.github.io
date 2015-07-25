@@ -1,0 +1,1421 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>LogCabin - usage, operation, and internals</title>
+
+    <meta name="description" content="Usage, operations, and internals of LogCabin, a Raft-based storage system">
+    <meta name="author" content="Diego Ongaro">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+
+    <style>
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal h1 {
+  font-size: 2.0em;
+}
+
+.reveal h2 {
+  font-size: 1.8em;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  text-transform: none; /* was uppercase */
+  margin: 0 0 15px 0;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.reveal .fill, .fill {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.reveal img.center, img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+ul.small, span.small {
+  font-size: .8em;
+}
+pre.small{
+  font-size: .4em;
+}
+
+    </style>
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <div class="slides">
+
+
+<section>
+  <h1>LogCabin</h1>
+  <h3>usage, operation, and internals</h3>
+
+  <img src="logo.svg" style="float: right; height: 400px; width: auto; margin-right: 10%; border: 0; box-shadow: none" />
+
+  <p style="font-size: .6em; max-width: 40%; padding-top: 100px">
+  <em>Preface:</em>
+  Diego Ongaro hastily prepared and presented this talk at Scale
+  Computing's Engineering Week in July 2015. Though its organization is
+  poor, it contains some good content, some of which cannot be found
+  elsewhere.
+  <br />
+  There's sort of two axes to this talk: (1) usage, operations,
+  internals, and (2) aspect of LogCabin such as writes, reads, membership
+  changes, compaction.
+  Right now it's all mushed together. On the next revision,
+  it'd be better to do a conceptual overview, then organize by (2),
+  interspersing the (1)s.
+  </p>
+
+
+
+  <p style="font-size: .4em; clear: both;">
+  Copyright 2015 Diego Ongaro.
+<br />
+This work is licensed under the <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+  <br />
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img style="margin: 2px; border: 0; box-shadow: none" alt="Creative Commons License" style="border-width:0" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAIAAAD8q9/YAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAISSURBVHjaYmAYYYARiP///z9SfMvIyAJhrdm0Glliz669M6fO7OjoKC8vx9Tm6up66tSptu5WcQlxIFdeVsHVyfXjh4+D3LeQeGXClHj54uXyxctx+RYIdu/ebWZmNrl/CoT74eOHwoLCoRLJWDy8fMkKYWFhXL6FAGBw3Lxxc8PajUD2x08fPHw8vH28h6qHL128lJ6eDmScPXtWWVkZmO6Bafj9+/dAEsgGigDFjY2NXVxcrl29BjWFiQnIRUs/EICcnDDZA+/hSxcvf/70GegfIDssLAzIALoPSHZ2dgL9+e7dO2DM37t3DygLFLxz+w48VQMTOWYJAQQQ78EZQBLIHkQe/vrlC5AUFBQERinQYxCfAxMwkK2kpAQUT0tLCw0NhRXxUKf//PmDkYURs5BA9h7EzwPrWywe5ubhAZJA3wL9BvQhMFYhxTKQC/QzULyiomLWrFloiZOdneP/n/94Ynjw5mE9fV1eXl6IP4ERu2fPHqCjgT4HsoGxLSQkBBSBZNczZ84oKitCdAnwCwArKvwxPLgaHsj1cF9X//Onz+/fv49HGzBETExMouOiA4L9gVxZabnmhuatW7YO8noYGPpYSunouKi3b98AoxSP5rKyMhVVZYhv+fkEdmzZMch9i69aArafUjNTKysr29vbsepxcna6fv16QUkBPD33T+gfbUsP0rb0SOssMQAEGAB0zfzj5yHE/QAAAABJRU5ErkJggg==" /></a>
+</p>
+    </small>
+</section>
+
+<section>
+  <section data-markdown>
+    <script type="text/template">
+    # Usage overview
+
+    - hierarchical key-value store (tree)
+      - <em>files</em> and <em>directories</em>, read/written in whole
+    - consistent: all operations are [linearizable](#/linearizability)
+    - [conditions](#/conditions)
+    - timeouts
+    - working directory
+    - testing callbacks
+
+    </script>
+  </section>
+
+  <section>
+    <h1>Command-line client</h1>
+    <pre>
+<b>$ logcabin -h</b>
+Run various operations on a LogCabin replicated state machine.
+
+Usage: logcabin [options] &lt;command&gt; [&lt;args&gt;]
+
+Commands:
+  mkdir &lt;path&gt;    If no directory exists at &lt;path&gt;, create it.
+  list &lt;path&gt;     List keys within directory at &lt;path&gt;.
+  dump [&lt;path&gt;]   Recursively print keys and values within directory at &lt;path&gt;.
+                  Defaults to printing all keys and values from root of tree.
+  rmdir &lt;path&gt;    Recursively remove directory at &lt;path&gt;, if any.
+  write &lt;path&gt;    Set/create value of file at &lt;path&gt; to stdin.
+  read &lt;path&gt;     Print value of file at &lt;path&gt;.
+  remove &lt;path&gt;   Remove file at &lt;path&gt;, if any.
+
+Options:
+  -c &lt;addresses&gt;, --cluster=&lt;addresses&gt;  Network addresses of the LogCabin
+                                         servers, comma-separated
+                                         [default: logcabin:5254]
+  -d &lt;path&gt;, --dir=&lt;path&gt;        Set working directory [default: /]
+  -p &lt;pred&gt;, --condition=&lt;pred&gt;  Set predicate on the operation of the
+                                 form &lt;path&gt;:&lt;value&gt;, indicating that the key
+                                 at &lt;path&gt; must have the given value.
+  -t &lt;time&gt;, --timeout=&lt;time&gt;    Set timeout for the operation
+                                 (0 means wait forever) [default: 0s]
+    </pre>
+  </section>
+
+
+  <section id="conditions" data-markdown>
+    <script type="text/template">
+# Conditions
+- Check value of one key
+- Write/remove/whatever a possibly different key
+- Example: "If I own this lease, ..."
+- Files currently don't have version numbers: comparison based on full value
+    </script>
+  </section>
+</section>
+
+<section>
+  <section id="linearizability">
+    <h1>Linearizability (schedule A)</h1>
+
+<p>
+An operation is <em>linearizable</em> if it appears to occur instantaneously and
+exactly once at some point in time between its invocation and its response.
+</p>
+
+<img src="auto/linearizability-1.svg" class="center stretch" />
+
+  </section>
+
+  <section>
+    <h1>Linearizability (schedule B)</h1>
+
+<p>
+An operation is <em>linearizable</em> if it appears to occur instantaneously and
+exactly once at some point in time between its invocation and its response.
+</p>
+
+<img src="auto/linearizability-2.svg" class="center stretch" />
+
+<p>
+<span class="small">
+For more detail, see
+<a href="https://scholar.google.com/scholar?cluster=7860241540823320465&hl=en&as_sdt=1,29">Linearizability: A correctness condition for concurrent objects</a>,
+Maurice P. Herlihy and Jeannette M. Wing, 1990; and
+<a href="http://www.bailis.org/blog/linearizability-versus-serializability/">Linearizability versus Serializability</a>,
+a blog post by Peter Bailis, 2014.
+</span>
+</p>
+  </section>
+
+  <section data-markdown>
+    <script type="text/template">
+# Linearizability challenges
+
+All reads/writes go through the leader and the log has the linearized
+order, so this is easy, right? Wrong.
+
+Client retries and read-only operations.
+
+*Warning:*
+The next couple of slides won't make sense unless you're already familiar with
+Raft and LogCabin. Consider revisiting these later.
+    </script>
+  </section>
+
+  <section data-markdown>
+    <script type="text/template">
+# Client retries
+
+Problem:
+ - Client doesn't receive ack, re-submits command.
+ - Linearizability requires that each command is executed exactly once.
+
+Solution: client sessions
+ - Client library opens a session (replicated) before issuing
+   any read-write requests
+   - <span class="small">Table of (sequence number, response) pairs.</span>
+ - If state machine sees command its already applied, replies with earlier
+   response.
+ - Client library heartbeats every minute. Servers expire sessions
+   after an hour. Client library aborts upon use of expired session.
+
+More details in Client Interaction chapter of Raft dissertation.
+     </script>
+   </section>
+
+   <section data-markdown>
+    <script type="text/template">
+# Read-only queries
+
+In principle, could write these into the log.
+
+Instead, LogCabin treats them separately (for performance):
+
+- Need a round of heartbeats to confirm leader is current.
+
+- New leader in Raft doesn't know which of its entries
+have already been committed by prior leaders
+  - Wait until the leader has committed a new entry to be certain it has the
+latest commit index
+
+More details in Client Interaction chapter of Raft dissertation.
+     </script>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h1>Replicated state machines</h1>
+
+<p>LogCabin is one of these.</p>
+
+<img src="rsm.svg" class="center" />
+
+<ul>
+<li><em>Replicated log</em> &rArr; replicated state machine</ul>
+  <ul>
+    <li>All servers execute same commands in same order</li>
+  </ul>
+<li>Consensus module ensures proper log replication</li>
+<li>System makes progress as long as any majority of servers up</li>
+<li>Failure model: fail-stop (not Byzantine), delayed/lost msgs</li>
+</ul>
+
+  </section>
+
+  <section data-markdown>
+    <script type="text/template">
+    # Internals: Raft
+
+- Leader election (<a href="https://raftconsensus.github.io/raftscope/">RaftScope</a>)
+- Log replication
+
+<img src="pipeline.svg" class="center stretch" />
+
+More details in Raft dissertation. Performance chapter discusses write optimization.
+    </script>
+  </section>
+
+  <section data-markdown>
+    <script type="text/template">
+# Internals: Client interaction
+
+How do clients find the cluster?
+- DNS or comma-separated list of hosts
+- With [membership changes](#/jointconsensus), list should include any server that might be in the cluster
+
+How do clients find the leader?
+- No proxying in LogCabin
+- Clients connect to a random server
+- If that server isn't leader, it says so
+  - May provide address of current leader
+- Clients then try again with another server
+- Any time connection is lost, try random server
+
+More details in Client Interaction chapter of Raft dissertation.
+    </script>
+  </section>
+</section>
+
+<section data-markdown>
+  <script type="text/template">
+    # Operation overview
+
+    - [Bootstrapping](#/bootstrapping)
+    - [Changing membership](#/changingmembership)
+    - [logcabinctl](#/logcabinctl)
+
+  </script>
+</section>
+
+<section>
+  <section id="bootstrapping">
+    <h1>Bootstrapping first server</h1>
+    <p>Very first server needs to be bootstrapped</p>
+    <p>Initializes the very first server's log with a configuration entry made up of just itself.</p>
+    <pre>
+<b>Server1$ cat logcabin.conf</b>
+serverId = 1
+listenAddresses = 192.168.5.12
+storagePath = storage
+    </pre>
+    <pre>
+<b>Server1$ logcabind --config=logcabin.conf --bootstrap</b>
+...
+Server/RaftConsensus.cc:572 in setConfiguration(): Activating configuration 1:
+prev_configuration {
+  servers {
+    server_id: 1
+    addresses: "192.168.5.12"
+  }
+}
+
+Server/Main.cc:346 in main(): Done bootstrapping configuration. Exiting.
+...
+    </pre>
+  </section>
+
+  <section>
+    <h1>Bootstrapping effects</h1>
+    <p>The directory structure shows a single <a href="#/segmentedstorage">log
+    segment</a> with a single entry, and no <a href="#/snapshotting">snapshot</a>.</p>
+    <pre>
+<b>Server1$ tree -sh --du -F storage</b>
+storage
+└── [ 16K]  server1/
+    ├── [   0]  lock
+    ├── [8.1K]  log/
+    │   └── [4.1K]  Segmented-Binary/
+    │       ├── [  51]  00000000000000000001-00000000000000000001
+    │       ├── [  35]  metadata1
+    │       └── [  35]  metadata2
+    └── [4.0K]  snapshot/
+    </pre>
+  </section>
+
+  <section>
+    <h1>Bootstrapped log contents</h1>
+    <p><code>logcabin-storage</code> dumps out the log.</p>
+    <pre class="small">
+<b>Server1$ logcabin-storage --config=logcabin.conf</b>
+...
+Storage/Tool.cc:255 in main(): Log contents start
+Log:
+metadata start: 
+current_term: 1
+voted_for: 0
+end of metadata
+startIndex: 1
+
+Entry 1 start:
+term: 1
+type: CONFIGURATION
+configuration {
+  prev_configuration {
+    servers {
+      server_id: 1
+      addresses: "192.168.5.12"
+    }
+  }
+}
+index: 1
+cluster_time: 0
+end of entry 1
+Storage/Tool.cc:257 in main(): Log contents end
+...
+Storage/Tool.cc:260 in main(): Reading snapshot at storage/server1
+Storage/Tool.cc:153 in readSnapshot(): Snapshot file not found in storage/server1/snapshot
+    </pre>
+  </section>
+</section>
+
+<section>
+  <section id="changingmembership">
+    <h1>Adding servers: starting them</h1>
+    <p>First, let's start up the servers.</p>
+     <pre>
+<b>Server2$ cat logcabin.conf</b>
+serverId = 2
+listenAddresses = 192.168.5.13
+storagePath = storage
+    </pre>
+     <pre>
+<b>Server3$ cat logcabin.conf</b>
+serverId = 3
+listenAddresses = 192.168.5.14
+storagePath = storage
+    </pre>
+    <pre>
+<b>Server1$ logcabind --config=logcabin.conf --daemon --log=server1.log</b>
+<b>Server2$ logcabind --config=logcabin.conf --daemon --log=server2.log</b>
+<b>Server3$ logcabind --config=logcabin.conf --daemon --log=server3.log</b>
+    </pre>
+  </section>
+
+  <section>
+    <h1>Adding servers: first becomes leader</h1>
+    <p>The first server (<a href="#/bootstrapping">bootstrapped</a>) gets to become leader of itself.</p>
+    <pre class="small">
+<b>$ logcabinctl --server=$SERVER1IP stats get</b>
+...
+server_id: 1
+addresses: "192.168.5.12"
+...
+raft {
+  current_term: 2
+  <b>state: LEADER</b>
+  commit_index: 6
+  last_log_index: 6
+  leader_id: 1
+  voted_for: 1
+  ...
+  last_snapshot_index: 0
+  last_snapshot_bytes: 0
+  log_start_index: 1
+  log_bytes: 679
+  ...
+  peer {
+    server_id: 1
+    addresses: "192.168.5.12"
+    old_member: true
+    new_member: false
+    staging_member: false
+    last_synced_index: 6
+  }
+}
+...
+    </pre>
+  </section>
+
+  <section>
+    <h1>Adding servers: others idle</h1>
+     <p>Other servers just sit idle, since they don't have a configuration.</p>
+    <pre class="small">
+<b>$ logcabinctl --server=$SERVER2IP stats get</b>
+...
+server_id: 2
+addresses: "192.168.5.13"
+...
+raft {
+  current_term: 0
+  <b>state: FOLLOWER</b>
+  commit_index: 0
+  last_log_index: 0
+  <b>leader_id: 0</b>
+  voted_for: 0
+  ...
+  last_snapshot_index: 0
+  last_snapshot_bytes: 0
+  log_start_index: 1
+  log_bytes: 1
+  ...
+  peer {
+    server_id: 2
+    addresses: ""
+    old_member: false
+    new_member: false
+    staging_member: false
+  }
+}
+...
+    </pre>
+  </section>
+
+  <section>
+    <h1>Adding servers: reconfigure</h1>
+     <p>We can ask the leader to add the other two.</p>
+    <pre>
+<b>$ export CLUSTER=$SERVER1IP,$SERVER2IP,$SERVER3IP</b>
+<b>$ logcabin-reconfigure --cluster=$CLUSTER set $SERVER1IP $SERVER2IP $SERVER3IP</b>
+Current configuration:
+Configuration 1:
+- 1: 192.168.5.12
+
+Attempting to change cluster membership to the following:
+1: 192.168.5.12 (given as 192.168.5.12)
+2: 192.168.5.13 (given as 192.168.5.13)
+3: 192.168.5.14 (given as 192.168.5.14)
+
+Membership change result: OK
+
+Current configuration:
+Configuration 11:
+- 1: 192.168.5.12
+- 2: 192.168.5.13
+- 3: 192.168.5.14
+    </pre>
+  </section>
+
+  <section>
+    <h1>Adding servers: done</h1>
+     <p>Now servers 2 and 3 are part of the cluster, have the latest configuration, and are proper followers.</p>
+    <pre class="small">
+<b>$ logcabinctl --server=$SERVER2IP stats get</b>
+...
+raft {
+  current_term: 17
+  state: FOLLOWER
+  commit_index: 1045
+  last_log_index: 1045
+  leader_id: 1
+  voted_for: 0
+  ...
+  peer {
+    server_id: 1
+    addresses: "192.168.5.12"
+    old_member: true
+    new_member: false
+    staging_member: false
+  }
+  peer {
+    server_id: 2
+    addresses: "192.168.5.13"
+    old_member: true
+    new_member: false
+    staging_member: false
+  }
+  peer {
+    server_id: 3
+    addresses: "192.168.5.14"
+    old_member: true
+    new_member: false
+    staging_member: false
+  }
+}
+    </pre>
+  </section>
+</section>
+
+<section>
+  <section id="jointconsensus">
+    <h1>Joint consensus: intro</h1>
+    <p>LogCabin uses the <em>joint consensus</em> approach to Raft membership changes.</p>
+    <ul>
+      <li>Older form of membership changes, prior to single-server approach.</li>
+        <ul>
+          <li>Just for historical reasons</li>
+          <li>Somewhat more complex</li>
+          <li>More flexible</li>
+        </ul>
+      <li>Allows transitioning from one cluster to another arbitrarily.</li>
+        <ul>
+          <li>Can add/remove multiple servers at once</li>
+          <li>No need for any overlap</li>
+        </ul>
+      <li>Cluster remains available throughout the change</li>
+        <ul>
+          <li>Except if leader is not in new cluster, leader election gap</li>
+        </ul>
+    </ul>
+    <p>More details in Membership Changes chapter of Raft dissertation.</p>
+  </section>
+
+  <section>
+    <h1>Joint consensus: procedure</h1>
+    <ol>
+      <li>Leader catches up new servers with the latest snapshot and (most) log entries.</li>
+      <li>Leader appends a transitional configuration entry to its log. Under this configuration, becoming leader and committing entries requires both:</li>
+        <ul>
+          <li>a majority of the old configuration, and</li>
+          <li>a majority of the new configuration.</li>
+        </ul>
+      </li>
+      <li>Leader commits transitional configuration entry.</li>
+      <li>Leader appends new configuration entry to its log.</li>
+      <li>Leader commits new configuration entry.</li>
+    </ol>
+    <p>More details in Membership Changes chapter of Raft dissertation.</p>
+  </section>
+
+  <section>
+    <h1>Joint consensus: debug log</h1>
+    <p>Log from adding servers after bootstrapping</p>
+    <pre class="small">
+<b>Server1$ cat server1.log</b>
+...
+Server/RaftConsensus.cc:1595 in setConfiguration(): Attempting to change the configuration from 1
+Server/RaftConsensus.cc:1603 in setConfiguration(): Adding server 1 at 192.168.5.12 to staging servers
+Server/RaftConsensus.cc:1603 in setConfiguration(): Adding server 2 at 192.168.5.13 to staging servers
+Server/RaftConsensus.cc:1603 in setConfiguration(): Adding server 3 at 192.168.5.14 to staging servers
+...
+Server/RaftConsensus.cc:1625 in setConfiguration(): Done catching up servers
+Server/RaftConsensus.cc:1650 in setConfiguration(): Writing transitional configuration entry
+...
+Server/RaftConsensus.cc:572 in setConfiguration(): Activating configuration 10:
+prev_configuration {
+  servers { server_id: 1, addresses: "192.168.5.12" }
+}
+next_configuration {
+  servers { server_id: 1, addresses: "192.168.5.12" },
+  servers { server_id: 2, addresses: "192.168.5.13" },
+  servers { server_id: 3, addresses: "192.168.5.14" }
+}
+Server/RaftConsensus.cc:572 in setConfiguration(): Activating configuration 11:
+prev_configuration {
+  servers { server_id: 1, addresses: "192.168.5.12" },
+  servers { server_id: 2, addresses: "192.168.5.13" },
+  servers { server_id: 3, addresses: "192.168.5.14" }
+}
+...
+    </pre>
+  </section>
+
+  <section>
+    <h1>Joint consensus: arbitrary cluster changes</h1>
+    <pre class="small">
+<b>$ logcabin-reconfigure --cluster=$CLUSTER set $SERVER1IP</b>
+Current configuration:
+Configuration 11:
+- 1: 192.168.5.12
+- 2: 192.168.5.13
+- 3: 192.168.5.14
+
+Attempting to change cluster membership to the following:
+1: 192.168.5.12 (given as 192.168.5.12)
+
+Membership change result: OK
+
+Current configuration:
+Configuration 2357:
+- 1: 192.168.5.12
+
+<b>$ logcabin-reconfigure --cluster=$CLUSTER set $SERVER2IP $SERVER3IP</b>
+Current configuration:
+Configuration 2357:
+- 1: 192.168.5.12
+
+Attempting to change cluster membership to the following:
+2: 192.168.5.13 (given as 192.168.5.13)
+3: 192.168.5.14 (given as 192.168.5.14)
+
+<b>[...wait for leader election...]</b>
+Membership change result: OK
+
+Current configuration:
+Configuration 2378:
+- 2: 192.168.5.13
+- 3: 192.168.5.14
+    </pre>
+  </section>
+
+</section>
+
+<section>
+  <h1>Intro snapshotting</h1>
+
+  <p>Snapshotting is discussed <a href="#/snapshotting">later</a>,
+  but you'll probably need some concept of it to understand half of
+  logcabinctl.</p>
+
+  <p>Goal: reclaim log space</p>
+
+  <img src="snapshot.svg" class="stretch center" />
+</section>
+
+<section>
+  <section id="logcabinctl">
+    <h1>logcabinctl</h1>
+    <pre>
+<b>$ logcabinctl --help</b>
+Inspect or modify the state of a single LogCabin server.
+...
+Commands:
+  info get                     Print server ID and addresses.
+  debug filename get           Print the server's debug log filename.
+  debug filename set &lt;path&gt;    Change the server's debug log filename.
+  debug policy get             Print the server's debug log policy.
+  debug policy set &lt;value&gt;     Change the server's debug log policy.
+  debug rotate                 Rotate the server's debug log file.
+  snapshot inhibit get         Print the remaining time for which the server
+                               was prevented from taking snapshots.
+  snapshot inhibit set [&lt;time&gt;]  Abort the server's current snapshot if one is
+                                 in progress, and disallow the server from
+                                 starting automated snapshots for the given
+                                 duration [default: 1week].
+  snapshot inhibit clear       Allow the server to take snapshots normally.
+  snapshot start               Begin taking a snapshot if none is in progress.
+  snapshot stop                Abort the current snapshot if one is in
+                               progress.
+  snapshot restart             Abort the current snapshot if one is in
+                               progress, then begin taking a new snapshot.
+  stats get                    Print detailed server metrics.
+  stats dump                   Write detailed server metrics to server's debug
+                               log.
+    </pre>
+  </section>
+
+  <section>
+    <h1>Forcing a <a href="#/snapshotting">snapshot</a></h1>
+    <pre>
+<b>$ logcabinctl --server=$SERVER1IP stats get | grep bytes</b>
+  last_snapshot_bytes: 0
+  log_bytes: 744921
+  open_segment_bytes: 744867
+    </pre>
+    <pre>
+<b>$ logcabinctl --server=$SERVER1IP snapshot start</b>
+    </pre>
+...wait a second...
+    <pre>
+<b>$ logcabinctl --server=$SERVER1IP stats get | grep bytes</b>
+  last_snapshot_bytes: 2785
+  log_bytes: 1863
+  open_segment_bytes: 1863
+    </pre>
+  </section>
+
+  <section>
+    <h1>Inhibiting <a href="#/snapshotting">snapshots</a></h1>
+    <p><code>scqad</code> (runs Scale's distributed tests) prevents automatic snapshots for one week after a test failure.</p>
+    <pre>
+<b>$ logcabinctl --server=$SERVER1IP snapshot inhibit set 1week</b>
+<b>$ logcabinctl --server=$SERVER1IP snapshot inhibit get</b>
+604795.121117807 s
+    </pre>
+    <p>Allows you to see more Raft log history with <code>logcabin-storage</code>.</p>
+
+    <p>Undo:</p>
+    <pre>
+<b>$ logcabinctl --server=$SERVER1IP snapshot inhibit clear</b>
+<b>$ logcabinctl --server=$SERVER1IP snapshot inhibit get</b>
+0 ns
+    </pre>
+  </section>
+
+  <section>
+    <h1>Changing debug log verbosity</h1>
+    <p>Change the server's verbosity at runtime</p>
+    <pre>
+<b>$ logcabinctl --server=$SERVER1IP debug policy get</b>
+NOTICE
+<b>$ logcabinctl --server=$SERVER1IP debug policy set \</b>
+<b>  Server/RaftConsensus.cc@VERBOSE,Storage@WARNING,NOTICE</b>
+</pre>
+    <pre>
+<b>Server1$ tail server1.log</b>
+Server/RaftConsensus.cc:1393 in handleAppendEntries() VERBOSE: New commitIndex: 4997
+Server/RaftConsensus.cc:2804 in setElectionTimer() VERBOSE: Will become candidate in 581 ms
+...
+</pre>
+
+    <p>Clients have similar control with:</p>
+    <pre><code class="cpp" data-trim>
+LogCabin::Client::Debug::setLogPolicy(
+  LogCabin::Client::Debug::logPolicyFromString(
+    "Client@VERBOSE,NOTICE"));
+    </code></pre>
+
+    <p>Set server's default verbosity in config file</p>
+  </section>
+</section>
+
+<section data-markdown>
+  <script type="text/template">
+    # Development overview
+
+    - [Code walkthrough](#/codewalkthrough)
+    - [Testing strategy/tools](#/testing)
+    - [Monitor-style classes](#/monitors)
+    - [Upgrades and compatibility](#/upgrades)
+
+  </script>
+</section>
+
+<section>
+  <section id="codewalkthrough">
+    <h1>Code walkthrough</h1>
+    <img src="auto/directories.svg" class="center stretch" />
+  </section>
+
+  <section data-transition="none">
+    <h1>Core/</h1>
+    <div class="flex">
+      <div><img src="auto/directories-Core.svg" /></div>
+      <div style="min-width: 50%; min-height: 100000px">
+        <!-- giant min-height forces title to top of screen -->
+        <ul>
+          <li>Random</li>
+          <li>Time (C++11) </li>
+          <li>Mutex, condition variable</li>
+          <li>STL and string utilities</li>
+          <li>Checksumming (Crypto++)</li>
+          <li>Debug logging</li>
+          <li>Config file</li>
+          <li>Buffer (ptr, len)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section data-transition="none">
+    <h1>Event/</h1>
+    <div class="flex">
+      <div><img src="auto/directories-Event.svg" /></div>
+      <div style="min-width: 50%; min-height: 100000px">
+        <!-- giant min-height forces title to top of screen -->
+        <ul>
+          <li>Event loop (epoll)</li>
+          <li>Singals</li>
+          <li>Timers</li>
+          <li>File descriptors</li>
+          <li><code>Event::Loop::Lock</code>:
+            <ul>
+              <li>block event loop thread in user-space outside of any handler</li>
+              <li>used when removing monitored files</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section data-transition="none">
+    <h1>RPC/</h1>
+    <div class="flex">
+      <div><img src="auto/directories-RPC.svg" /></div>
+      <div style="min-width: 50%; min-height: 100000px">
+        <!-- giant min-height forces title to top of screen -->
+        <ul>
+          <li>Low-level framing protocol</li>
+          <li>Application-level connection initiation timeout and heartbeats</li>
+          <li>Higher-level RPC protocol</li>
+          <li><code>Address</code>: DNS resolution</li>
+          <li><em>Service</em>: RPC endpoint</li>
+          <li>Thread dispatch for most services</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section data-transition="none">
+    <h1>Protocol/</h1>
+    <div class="flex">
+      <div><img src="auto/directories-Protocol.svg" /></div>
+      <div style="min-width: 50%; min-height: 100000px">
+        <!-- giant min-height forces title to top of screen -->
+        <ul>
+          <li>Mostly Protocol Buffer definitions for individual RPC types</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section data-transition="none">
+    <h1>Server/</h1>
+    <div class="flex">
+      <div><img src="auto/directories-Server.svg" /></div>
+      <div style="min-width: 50%; min-height: 100000px">
+        <!-- giant min-height forces title to top of screen -->
+        <ul>
+          <li>Raft implementation</li>
+          <li>State machine</li>
+            <ul>
+              <li>Client sessions</li>
+              <li>Forking</li>
+            </ul>
+          <li>Daemon startup (<code>Globals</code>)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section data-transition="none">
+    <h1>Storage/</h1>
+    <div class="flex">
+      <div><img src="auto/directories-Storage.svg" /></div>
+      <div style="min-width: 50%; min-height: 100000px">
+        <!-- giant min-height forces title to top of screen -->
+        <ul>
+          <li>In-memory and on-disk log</li>
+          <li>Opens/closes snapshot files</li>
+          <li>Filesystem layout</li>
+          <li>Filesystem utilities</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section data-transition="none">
+    <h1>Tree/</h1>
+    <div class="flex">
+      <div><img src="auto/directories-Tree.svg" /></div>
+      <div style="min-width: 50%; min-height: 100000px">
+        <!-- giant min-height forces title to top of screen -->
+        <ul>
+          <li>Core data structure for clients</li>
+          <li>ProtoBuf-to-method call layer</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section data-transition="none">
+    <h1>Client/</h1>
+    <div class="flex">
+      <div><img src="auto/directories-Client.svg" /></div>
+      <div style="min-width: 50%; min-height: 100000px">
+        <!-- giant min-height forces title to top of screen -->
+        <ul>
+          <li>Implementation of client library API</li>
+          <li><code>LeaderRPC</code>: connect to leader</li>
+          <li><code>MockClientImpl</code>: in-memory Tree used for testing applications</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section data-transition="none">
+    <h1>Examples/</h1>
+    <div class="flex">
+      <div><img src="auto/directories-Examples.svg" /></div>
+      <div style="min-width: 50%; min-height: 100000px">
+        <!-- giant min-height forces title to top of screen -->
+        <ul>
+          <li><code>logcabin-reconfigure</code></li>
+          <li><code>logcabin</code> CLI tool</li>
+          <li>Hello world</li>
+          <li>Benchmark</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</section>
+
+
+<section>
+
+  <section id="testing" data-markdown>
+    <script type="text/template">
+# Testing strategy: static
+- Pre-commit hooks:
+  - Build with anal compiler settings
+  - `cpplint.py` style checks
+  - Doxygen warnings
+  - No coverage checks
+- `hookmatrix.sh` to compile/test on many compilers
+  - g++ (v4.4 to v4.9, v5.1)
+  - clang (v3.4 to v3.7 with libstdc++ 4.9 or libc++)
+- Have run Coverity, Clang Static Analyzer in the past
+  - Manual
+    </script>
+  </section>
+
+  <section data-markdown>
+    <script type="text/template">
+# Testing strategy: dynamic
+
+- Lean heavily on unit tests (gtest)
+  - White-box, isomorphic to code (<a href="https://ramcloud.atlassian.net/wiki/display/RAM/Writing+Unit+Tests">RAMCloud style</a>)
+
+<pre><code class="nohighlight" data-trim>
+~/logcabin:master$ build/test/test
+[==========] Running 597 tests from 67 test cases.
+[==========] 597 tests from 67 test cases ran. (689 ms total)
+[  PASSED  ] 597 tests.
+</code></pre>
+
+- Pre-commit hooks run unit tests and basic smoke tests
+- Some system tests
+ - `smoketest.py`: bring up cluster, run client
+ - `failovertest.py`: similar but randomly kill servers
+ - Should probably do more and also run these more
+- Run some things through Valgrind before each release
+- Scale's regression tests
+    </script>
+  </section>
+
+  <section data-markdown>
+    <script type="text/template">
+# Automated testing cluster
+
+- No such thing right now
+- <a href="https://travis-ci.org/logcabin/logcabin">Travis CI</a> runs some of
+  the pre-commit hooks
+  - Also keeps <a href="https://logcabin.github.io/doxygen/annotated.html">docs
+    on website</a> updated
+  - Pretty unreliable and slow
+  - Can't run distributed system
+  - Limited compiler options
+- Would like to be able to:
+  - Run full hookmatrix (32 configurations) in CI style
+  - Run benchmarks, `smoketest.py` and `failovertest.py` tests continuously
+    </script>
+  </section>
+</section>
+
+
+<section>
+  <section id="monitors" data-markdown>
+    <script type="text/template">
+# Monitor intro
+*Monitor*: object that manages its own locking in a stylized way:
+- One mutex per instance
+- Any number of condition variables
+- Every public method holds the mutex the entire time (except when waiting for a CV)
+- Dates back to
+  [Experience with Processes and Monitors in Mesa](http://research.microsoft.com/en-us/um/people/blampson/23-processesinmesa/abstract.html),
+  Butler W. Lampson and David D. Redell, 1980.
+    </script>
+  </section>
+
+  <section data-markdown>
+    <script type="text/template">
+# Monitors in LogCabin
+- Almost all locking in LogCabin based on this idea
+  - No language support in C++
+  - Slips a bit ([`Core::MutexUnlock`](https://github.com/logcabin/logcabin/blob/v1.0.0/Core/Mutex.h#L89))
+- Condition variable has support for unit testing
+    </script>
+  </section>
+
+  <section>
+<h1>Monitor testing example</h1>
+
+<div class="flex stretch">
+
+  <div style="min-width: 45%; min-height: 100%; margin-right: 10px">
+    Code
+    <pre class="" style="margin: 0; padding: 0px; width: 100%"><code class="cpp fill" style="" data-trim>
+/// Return once the state machine has
+/// applied at least the given entry.
+void
+StateMachine::wait(uint64_t index) const
+{
+    std::unique_lock&lt;Mutex&gt; lockGuard(mutex);
+    while (lastApplied < index)
+        entriesApplied.wait(lockGuard);
+}
+    </code></pre>
+  </div>
+
+  <div style="min-width: 45%; min-height: 100%; margin-left: 10px">
+    Unit test
+    <pre class="" style="margin: 0; padding: 0px; width: 100%"><code class="cpp fill" style="" data-trim>
+struct WaitHelper {
+    explicit WaitHelper(StateMachine&amp; stateMachine)
+        : stateMachine(stateMachine)
+        , iter(0) {
+    }
+    void operator()() {
+        ++iter;
+        if (iter == 1) {
+            EXPECT_EQ(0U, stateMachine.lastApplied);
+            stateMachine.lastApplied = 2;
+        } else if (iter == 2) {
+            EXPECT_EQ(2U, stateMachine.lastApplied);
+            stateMachine.lastApplied = 3;
+        }
+    }
+    StateMachine&amp; stateMachine;
+    uint64_t iter;
+};
+TEST_F(ServerStateMachineTest, wait)
+{
+    WaitHelper helper(*stateMachine);
+    stateMachine-&gt;entriesApplied.callback =
+        std::ref(helper);
+    stateMachine-&gt;wait(3);
+    EXPECT_EQ(2U, helper.iter);
+}
+    </code></pre>
+  </div>
+</div>
+
+    </script>
+  </section>
+</section>
+
+<section id="upgrades" data-markdown>
+  <script type="text/template">
+# Upgrades and compatibility
+
+- [Semantic versioning](http://semver.org/), guarantees specified in
+  [RELEASES.md](https://github.com/logcabin/logcabin/blob/master/RELEASES.md)
+- Rolling upgrades supported
+- May run clients and servers with mixed versions
+- All disk formats and network protocols versioned internally
+ - Ask for permission (e.g., request-response framing protocol)
+ - Ask for forgiveness (e.g., new RPC opcode)
+ - Optional features (e.g., in ProtoBuf requests)
+- State machines must all change at same log position (to be deterministic)
+ 1. Leader writes log entry when *all* servers running new code
+ 2. State machine updates behavior upon seeing log entry
+  </script>
+</section>
+
+<section data-markdown>
+  <script type="text/template">
+# More internals
+
+- [Segmented storage](#/segmentedstorage)
+- [Snapshotting](#/snapshotting)
+- [RPC system](#/rpc)
+  </script>
+</section>
+
+<section>
+  <section id="segmentedstorage" data-markdown>
+    <script type="text/template">
+# SegmentedStorage
+
+Goals:
+  - Easy to deploy: run on top of filesystem
+  - Safe: fsync/fdatasync
+  - Efficient:
+    - About 1 disk write for each batch of entries
+    - Allow leader to queue disk writes to a background thread
+
+Operations:
+  - Read log entry (common for newer entries)
+  - Append batch of log entries (common)
+  - Truncate suffix of log (rare, must be exact)
+  - Truncate prefix of log (rare, only needs to reclaim most space)
+    </script>
+  </section>
+
+  <section>
+    <h1>SegmentedStorage internals</h1>
+    <div class="flex">
+      <div style="min-width: 50%; margin-right: 1em">
+        <img src="segmentedstorage.svg" class="fill" />
+      </div>
+      <div>
+        <ul>
+          <li><em>Segment</em>: about 8MB file where consecutive log entries are written</li>
+          <li>About 3 <em>open segments</em> pre-allocated by background thread
+          <li>New log entries appended to <em>head segment</em></li>
+          <li><em>closed segments</em> are immutable</li>
+        </ul>
+
+        <p>Operations:</p>
+        <ul>
+          <li>Read log entry</li>
+          <li>Append batch of log entries</li>
+          <li>Truncate suffix of log</li>
+          <li>Truncate prefix of log</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section data-markdown>
+    <script type="text/template">
+# SegmentedStorage recovery (boot)
+
+- Read metadata files (there are exactly two)
+  - Use latest one with valid checksum
+- For a closed segment:
+  - Read all entries specified in filename
+  - PANIC if checksum failure or entries missing
+- For an open segment:
+  - Read one entry at a time until checksum failure or EOF
+  - If rest of file isn't all 0s, issue warning and continue
+    - Probably crashed while writing an un-ack-ed entry
+    - Or maybe an ack-ed entry was corrupted (Byzantine)
+  - Close the segment: truncate the end of the file, rename it
+- PANIC if gap or duplicate in log indexes
+- Does not detect missing entries at end of log (Byzantine)
+    </script>
+  </section>
+
+  <section data-markdown>
+    <script type="text/template">
+# SegmentedStorage wishlist
+
+- Should not store all log entries in memory ([#106](https://github.com/logcabin/logcabin/issues/106))
+  - Probably pretty easy with mmap
+- Truncate suffix could just append a special marker and not use <code>ftruncate</code>
+  - Not a localized change
+  - No evidence of a problem with <code>ftruncate</code> at this point
+    </script>
+  </section>
+
+</section>
+
+<section id="snapshotting">
+<h1>Snapshotting</h1>
+
+<div class="flex">
+  <div style="min-width: 50%">
+    <img src="snapshot.svg" />
+  </div>
+  <div>
+    <p><b>Challenge:</b> writing consistent snapshot while taking requests</p>
+    <ul>
+      <li>Writes out Raft header</li>
+      <li>
+        Forks child
+        <ul>
+          <li>Child writes Tree data</li>
+          <li>Child exits 0</li>
+        </ul>
+      </li>
+      <li>Parent closes/fsyncs file</li>
+      <li>Watchdog thread in parent in case child stalls</li>
+    </ul>
+  </div>
+</div>
+<p>More details in Log Compaction chapter of Raft dissertation.</p>
+</section>
+
+
+<section>
+  <section id="rpc" data-markdown>
+    <script type="text/template">
+# RPC system
+
+- Used for all communication (client-server and server-server)
+- For every request, servers either send a reply or close the connection
+- No ordering guarantees between RPCs
+- Protocol stack:
+  1. TCP/IP (non-blocking sockets)
+  2. Request-response framing protocol
+  3. RPC protocol
+  4. RPC-defined Protocol Buffers
+    </script>
+  </section>
+
+
+  <section data-markdown>
+    <script type="text/template">
+# Request-response framing protocol
+
+- Adapts from TCP's byte stream to message-oriented
+- message ID to pair responses with requests
+- Messages transmitted in full
+  - Fixed size limit to each message (about 1MB) to limit head-of-line blocking
+- Special `PING` and `VERSION` messages
+- <span class="small">`RPC::MessageSocket::Header`</span>:
+  <ul class="small">
+    <li>magic: 0xdaf4 (2 bytes)</li>
+    <li>version: 1 (2 bytes)</li>
+    <li>payload length (4 bytes)</li>
+    <li>message ID (8 bytes)</li>
+  </ul>
+- TCP still somewhat useful (over UDP):
+   - Flow control, congestion control
+   - Retransmission and ordering within a connection
+</div>
+    </script>
+  </section>
+
+  <section data-markdown>
+    <script type="text/template">
+# RPC protocol
+
+- Figure out where to route requests
+- Each service has a different thread pool
+- Service specific error intended things like `NOT_LEADER`
+- <span class="small">`RPC::Protocol::RequestHeaderVersion1`</span>:
+  <ul class="small">
+    <li>version: 1 (1 byte)</li>
+    <li>service: `CLIENT|RAFT|CONTROL` (2 bytes)</li>
+    <li>serviceSpecificErrorVersion (1 byte)</li>
+    <li>opCode (2 bytes)</li>
+  </ul>
+- <span class="small">`RPC::Protocol::ResponseHeaderVersion1`</span>:
+  <ul class="small">
+    <li>
+      status: `OK|SERVICE_SPECIFIC_ERROR|INVALID_VERSION|`
+              `INVALID_SERVICE|INVALID_REQUEST` (1 byte)
+    </li>
+  </ul>
+    </script>
+  </section>
+
+  <section data-markdown>
+    <script type="text/template">
+# RPC-defined Protocol Buffers
+
+- Serialization format: Google Protocol Buffers version 2 (stable)
+- Example from `Protocol/ServerControl.proto`
+  - `logcabinctl debug filename set <path>`
+
+<pre><code class="protobuf">
+/**
+ * DebugFilenameSet RPC: Change the server's debug log filename.
+ */
+message DebugFilenameSet {
+    message Request {
+        optional string filename = 1;
+    }
+    message Response {
+        /**
+         * This field will be present if any error occurred and not present
+         * otherwise.
+         */
+        optional string error = 1;
+    }
+}
+</code></pre>
+    </script>
+  </section>
+
+  <section data-markdown>
+    <script type="text/template">
+# RPC wishlist: [gRPC](http://www.grpc.io)
+
+protobuf3 and HTTP/2
+
+Pros:
+  - Easier to invoke from other languages
+  - Less code to maintain, less LogCabin-specific knowledge
+  - No need for message size limit (HTTP/2 can fragment individual messages)
+
+Cons:
+  - Still in alpha
+  - Hard to roll out while maintaining compatibility
+    </script>
+  </section>
+
+</section>
+
+<section data-markdown>
+  <script type="text/template">
+# Other resources
+
+- [LogCabin code and README](https://github.com/logcabin/logcabin)
+- [LogCabin Doxygen docs](https://logcabin.github.io)
+- [Raft talks, publications](https://raftconsensus.github.io) (including paper, Diego's PhD dissertation)
+- [raft-dev](https://groups.google.com/forum/#!forum/raft-dev)
+  (prefix subject with "[LogCabin]")
+  </script>
+</section>
+
+
+      </div> <!-- slides -->
+
+    </div> <!-- reveal -->
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1270,
+        height: 768,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.05,
+
+        dependencies: [
+          // Interpret Markdown in <section> elements
+          { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          // Syntax highlighting for <code> elements
+          { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          // Speaker notes (press 's')
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ],
+      });
+
+    </script>
+
+  </body>
+</html>

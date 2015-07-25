@@ -1,0 +1,51 @@
+digraph dependencies {
+
+ratio=.5;
+fontname="Mono";
+
+// Directories
+// LOC are "total" and "SLOC for non-test files" according to
+// logcabin/scripts/loc.sh, last updated 2015-07-17
+node [shape="ellipse", style="filled", fillcolor="#fdae61", fontsize=24];
+Client [label="Client/\n3-6K LOC"];
+Core [label="Core/\n3-7K LOC"];
+Event [label="Event/\n1-2K LOC"];
+Examples [label="Examples/\n1-2K LOC"];
+Protocol [label="Protocol/\n0-1K LOC"];
+RPC [label="RPC/\n2-7K LOC"];
+Server [label="Server/\n5-13K LOC"];
+Storage [label="Storage/\n3-7K LOC"];
+Tree [label="Tree/\n1-2K LOC"];
+
+// Binaries
+node [shape="box", style="filled", fillcolor="#abdda4"];
+ClientLib [label="liblogcabin.a"];
+Main [label="logcabind\n(LogCabin)"];
+Reconfigure [label="logcabin-reconfigure\n(Reconfigure)"];
+ServerControl [label="logcabinctl\n(ServerControl)"];
+StorageTool [label="logcabin-storage\n(Storage/Tool)"];
+TreeOps [label="logcabin\n(TreeOps)"];
+
+// Dependencies
+Client -> RPC;
+Client -> Tree [style="dashed", weight=.5];
+Event -> Core;
+Examples -> ClientLib;
+RPC -> Event;
+RPC -> Protocol;
+Server -> RPC;
+Server -> Storage;
+Server -> Tree;
+Storage -> Core;
+Tree -> Core;
+Tree -> Protocol;
+
+// Binary locations
+ClientLib -> Client;
+Main -> Server;
+Reconfigure -> Examples;
+ServerControl -> Client;
+StorageTool -> Storage;
+TreeOps -> Examples;
+
+} // must be last line in file for Makefile
