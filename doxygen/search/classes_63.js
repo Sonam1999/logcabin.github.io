@@ -1,9 +1,9 @@
 var searchData=
 [
   ['call',['Call',['../classLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1TreeLeaderRPC_1_1Call.html',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::TreeLeaderRPC']]],
-  ['call',['Call',['../classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html',1,'LogCabin::Client::LeaderRPCMock']]],
   ['call',['Call',['../classLogCabin_1_1Client_1_1LeaderRPC_1_1Call.html',1,'LogCabin::Client::LeaderRPC']]],
   ['call',['Call',['../classLogCabin_1_1Client_1_1LeaderRPCBase_1_1Call.html',1,'LogCabin::Client::LeaderRPCBase']]],
+  ['call',['Call',['../classLogCabin_1_1Client_1_1LeaderRPCMock_1_1Call.html',1,'LogCabin::Client::LeaderRPCMock']]],
   ['clientimpl',['ClientImpl',['../classLogCabin_1_1Client_1_1ClientImpl.html',1,'LogCabin::Client']]],
   ['clientrpc',['ClientRPC',['../classLogCabin_1_1RPC_1_1ClientRPC.html',1,'LogCabin::RPC']]],
   ['clientservice',['ClientService',['../classLogCabin_1_1Server_1_1ClientService.html',1,'LogCabin::Server']]],
@@ -15,6 +15,8 @@ var searchData=
   ['conditionvariable',['ConditionVariable',['../classLogCabin_1_1Core_1_1ConditionVariable.html',1,'LogCabin::Core']]],
   ['config',['Config',['../classLogCabin_1_1Core_1_1Config.html',1,'LogCabin::Core']]],
   ['configuration',['Configuration',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Configuration.html',1,'LogCabin::Server::RaftConsensusInternal']]],
+  ['configurationexceptionbad',['ConfigurationExceptionBad',['../classLogCabin_1_1Client_1_1ConfigurationExceptionBad.html',1,'LogCabin::Client']]],
+  ['configurationexceptionchanged',['ConfigurationExceptionChanged',['../classLogCabin_1_1Client_1_1ConfigurationExceptionChanged.html',1,'LogCabin::Client']]],
   ['configurationmanager',['ConfigurationManager',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html',1,'LogCabin::Server::RaftConsensusInternal']]],
   ['configurationresult',['ConfigurationResult',['../structLogCabin_1_1Client_1_1ConfigurationResult.html',1,'LogCabin::Client']]],
   ['consensussnapshot',['ConsensusSnapshot',['../structLogCabin_1_1Server_1_1RaftConsensusInternal_1_1Invariants_1_1ConsensusSnapshot.html',1,'LogCabin::Server::RaftConsensusInternal::Invariants']]],

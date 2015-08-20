@@ -147,9 +147,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize this object.  <a href="#aa047c09c71407f4694c0c3896e3813e5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#aa1ca0b4f621d3d879b86c2d87fc687b4">initDerived</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#aa047c09c71407f4694c0c3896e3813e5" title="Initialize this object.">init()</a> to do any necessary initialization of the derived class.  <a href="#aa1ca0b4f621d3d879b86c2d87fc687b4"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::pair&lt; uint64_t, <br class="typebreak"/>
-<a class="el" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2">Configuration</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a9781b94ccb0302fdc4f500888c872a8f">getConfiguration</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html">ConfigurationResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a9d4819988fefe68440964646903f3e8f">setConfiguration</a> (uint64_t oldId, const <a class="el" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2">Configuration</a> &amp;newConfiguration)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1GetConfigurationResult.html">GetConfigurationResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a6927228e9645613cc9d9a4ea6afcdb88">getConfiguration</a> (<a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html">ConfigurationResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#ac7c161582df2cf7586a51258be6ea86f">setConfiguration</a> (uint64_t oldId, const <a class="el" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2">Configuration</a> &amp;newConfiguration, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a4ebe62041d69b74ab40a50069fc26e41">getServerInfo</a> (const std::string &amp;host, <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a> timeout, <a class="el" href="structLogCabin_1_1Client_1_1Server.html">Server</a> &amp;info)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">See <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a7ebf0a13c59ddbc790875c53baf89517" title="Retrieve basic information from the given server, like its ID and the addresses on which it is listen...">Cluster::getServerInfo</a>.  <a href="#a4ebe62041d69b74ab40a50069fc26e41"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLogCabin_1_1Client_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#af9b729f3b6b133214030af7288fbe11d">canonicalize</a> (const std::string &amp;path, const std::string &amp;workingDirectory, std::string &amp;canonical)</td></tr>
@@ -374,32 +373,31 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a9781b94ccb0302fdc4f500888c872a8f"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::getConfiguration" ref="a9781b94ccb0302fdc4f500888c872a8f" args="()" -->
+<a class="anchor" id="a6927228e9645613cc9d9a4ea6afcdb88"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::getConfiguration" ref="a6927228e9645613cc9d9a4ea6afcdb88" args="(TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::pair&lt; uint64_t, <a class="el" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2">Configuration</a> &gt; <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a9781b94ccb0302fdc4f500888c872a8f">LogCabin::Client::ClientImpl::getConfiguration</a> </td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1GetConfigurationResult.html">GetConfigurationResult</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a6927228e9645613cc9d9a4ea6afcdb88">LogCabin::Client::ClientImpl::getConfiguration</a> </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#a2ed44b7867fe705730755dbd1cbe0623">LogCabin::Client::MockClientImpl</a>.</p>
-
 <p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00489">489</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a9d4819988fefe68440964646903f3e8f"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::setConfiguration" ref="a9d4819988fefe68440964646903f3e8f" args="(uint64_t oldId, const Configuration &amp;newConfiguration)" -->
+<a class="anchor" id="ac7c161582df2cf7586a51258be6ea86f"></a><!-- doxytag: member="LogCabin::Client::ClientImpl::setConfiguration" ref="ac7c161582df2cf7586a51258be6ea86f" args="(uint64_t oldId, const Configuration &amp;newConfiguration, TimePoint timeout)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html">ConfigurationResult</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a9d4819988fefe68440964646903f3e8f">LogCabin::Client::ClientImpl::setConfiguration</a> </td>
+          <td class="memname"><a class="el" href="structLogCabin_1_1Client_1_1ConfigurationResult.html">ConfigurationResult</a> <a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#ac7c161582df2cf7586a51258be6ea86f">LogCabin::Client::ClientImpl::setConfiguration</a> </td>
           <td>(</td>
           <td class="paramtype">uint64_t&#160;</td>
           <td class="paramname"><em>oldId</em>, </td>
@@ -408,7 +406,13 @@ Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="namespaceLogCabin_1_1Client.html#a99e2b7ff4ee9b74bcf9dec83b6565fa2">Configuration</a> &amp;&#160;</td>
-          <td class="paramname"><em>newConfiguration</em>&#160;</td>
+          <td class="paramname"><em>newConfiguration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLogCabin_1_1Client_1_1ClientImpl.html#a07e5418da33e7c54493e5ad0a535501c">TimePoint</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -419,9 +423,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classLogCabin_1_1Client_1_1MockClientImpl.html#aca24605490be047d90c2822d5c9aa973">LogCabin::Client::MockClientImpl</a>.</p>
-
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00506">506</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00517">517</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -458,7 +460,7 @@ Protected Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html#a7ebf0a13c59ddbc790875c53baf89517" title="Retrieve basic information from the given server, like its ID and the addresses on which it is listen...">Cluster::getServerInfo</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00548">548</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00565">565</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -500,7 +502,7 @@ Protected Attributes</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00612">612</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00629">629</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -543,7 +545,7 @@ Protected Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a2bd59073257f11c2f458bd05d7aa9cc3" title="Make sure a directory exists at the given path.">Tree::makeDirectory</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00668">668</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00685">685</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -592,7 +594,7 @@ Protected Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a05bf4e0eef288dd3ccf33f76f9b6c6d3" title="List the contents of a directory.">Tree::listDirectory</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00692">692</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00709">709</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -635,7 +637,7 @@ Protected Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#adab277ed481a6c60219ba14816235566" title="Make sure a directory does not exist.">Tree::removeDirectory</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00718">718</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00735">735</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -684,7 +686,7 @@ Protected Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a200592adcfe3460c336d4ae31078d456" title="Set the value of a file.">Tree::write</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00742">742</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00759">759</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -733,7 +735,7 @@ Protected Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a74c016d6333e5548edd2873baff605c4" title="Get the value of a file.">Tree::read</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00768">768</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00785">785</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -776,7 +778,7 @@ Protected Attributes</h2></td></tr>
 
 <p>See <a class="el" href="classLogCabin_1_1Client_1_1Tree.html#a7dd317fe97e655550b9029453f028d4b" title="Make sure a file does not exist.">Tree::removeFile</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00792">792</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00809">809</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -825,7 +827,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Low-level interface to ServerControl service used by <a class="el" href="ServerControl_8cc.html">Client/ServerControl.cc</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00816">816</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8cc_source.html#l00833">833</a> of file <a class="el" href="ClientImpl_8cc_source.html">ClientImpl.cc</a>.</p>
 
 </div>
 </div>
@@ -860,7 +862,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Options/settings. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00167">167</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00168">168</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -877,7 +879,7 @@ Protected Attributes</h2></td></tr>
 
 <p>The <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a> used to drive the underlying <a class="el" href="namespaceLogCabin_1_1RPC.html">RPC</a> mechanism. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00172">172</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00173">173</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -895,7 +897,7 @@ Protected Attributes</h2></td></tr>
 <p>A unique ID for the cluster that this client may connect to. </p>
 <p>This is initialized to a value from the options map passed to the <a class="el" href="classLogCabin_1_1Client_1_1Cluster.html" title="A handle to the LogCabin cluster.">Client::Cluster</a> constructor. If it's not set then, it may be set later as a result of learning a UUID from some server. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00180">180</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00181">181</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -912,7 +914,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Used to create new sessions. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00185">185</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00186">186</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -929,7 +931,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Used to rate-limit the creation of ClientSession objects (TCP connections). </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00191">191</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00192">192</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -946,7 +948,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Describes the hosts in the cluster. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00196">196</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00197">197</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -963,7 +965,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Used to send RPCs to the leader of the <a class="el" href="namespaceLogCabin.html">LogCabin</a> cluster. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00201">201</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00202">202</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>
@@ -993,7 +995,7 @@ Protected Attributes</h2></td></tr>
 
 <p>A thread that runs the <a class="el" href="classLogCabin_1_1Event_1_1Loop.html" title="This class contains an event loop based on Linux&#39;s epoll interface.">Event::Loop</a>. </p>
 
-<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00333">333</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
+<p>Definition at line <a class="el" href="ClientImpl_8h_source.html#l00334">334</a> of file <a class="el" href="ClientImpl_8h_source.html">ClientImpl.h</a>.</p>
 
 </div>
 </div>

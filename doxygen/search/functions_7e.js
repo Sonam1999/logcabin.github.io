@@ -23,6 +23,7 @@ var searchData=
   ['_7efilecontents',['~FileContents',['../classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#ad8686f214beefff43813b9e1675a4ae0',1,'LogCabin::Storage::FilesystemUtil::FileContents']]],
   ['_7efilenotfound',['~FileNotFound',['../structLogCabin_1_1Core_1_1Config_1_1FileNotFound.html#afb890a01bf1630caba6e657a716af784',1,'LogCabin::Core::Config::FileNotFound']]],
   ['_7efinally',['~Finally',['../classLogCabin_1_1Core_1_1Util_1_1Finally.html#ad4d63888e7e4e6a84aaf656ed40b2e73',1,'LogCabin::Core::Util::Finally']]],
+  ['_7egetconfigurationresult',['~GetConfigurationResult',['../structLogCabin_1_1Client_1_1GetConfigurationResult.html#ac697103ded9ef3cc1d094094be509ca5',1,'LogCabin::Client::GetConfigurationResult']]],
   ['_7eglobals',['~Globals',['../classLogCabin_1_1Server_1_1Globals.html#a6773759dfba55309b0d96d50268dcdc3',1,'LogCabin::Server::Globals']]],
   ['_7ehandler',['~Handler',['../classLogCabin_1_1RPC_1_1MessageSocket_1_1Handler.html#aa1fab1f5b971e48bed1af1d4bb3f123a',1,'LogCabin::RPC::MessageSocket::Handler::~Handler()'],['../classLogCabin_1_1RPC_1_1OpaqueServer_1_1Handler.html#a49207003396612555ee10982b918e0d4',1,'LogCabin::RPC::OpaqueServer::Handler::~Handler()'],['../classLogCabin_1_1RPC_1_1ServiceMock_1_1Handler.html#a552517280d2108b2e0a107b2dc5ed2d6',1,'LogCabin::RPC::ServiceMock::Handler::~Handler()']]],
   ['_7einputstream',['~InputStream',['../structLogCabin_1_1Core_1_1ProtoBuf_1_1InputStream.html#ae9da92a5988aa9b6a3eddf6813820702',1,'LogCabin::Core::ProtoBuf::InputStream']]],
