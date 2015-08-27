@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['acquiremutex',['acquireMutex',['../classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#aad89fb4e560a8bf9aad9e97806edf33f',1,'LogCabin::Core::Random::anonymous_namespace{Random.cc}::RandomState']]],
   ['anonymous_5fnamespace_7bchecksum_2ecc_7d',['anonymous_namespace{Checksum.cc}',['../namespaceLogCabin_1_1Core_1_1Checksum_1_1anonymous__namespace_02Checksum_8cc_03.html',1,'LogCabin::Core::Checksum']]],
   ['anonymous_5fnamespace_7bclient_2ecc_7d',['anonymous_namespace{Client.cc}',['../namespaceLogCabin_1_1Client_1_1anonymous__namespace_02Client_8cc_03.html',1,'LogCabin::Client']]],
   ['anonymous_5fnamespace_7bclientimpl_2ecc_7d',['anonymous_namespace{ClientImpl.cc}',['../namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ClientImpl_8cc_03.html',1,'LogCabin::Client']]],
@@ -122,8 +123,8 @@ var searchData=
   ['lookupexception',['LookupException',['../classLogCabin_1_1Client_1_1LookupException.html#ac7d2c0fb7589fa057297e17c9dd29b88',1,'LogCabin::Client::LookupException']]],
   ['lookupexception',['LookupException',['../classLogCabin_1_1Client_1_1LookupException.html',1,'LogCabin::Client']]],
   ['lookupfile',['lookupFile',['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a403536f1ae25b723ad87d45f50fb45af',1,'LogCabin::Tree::Internal::Directory::lookupFile(const std::string &amp;name)'],['../classLogCabin_1_1Tree_1_1Internal_1_1Directory.html#a49424a45fd84011b2046bea33371404e',1,'LogCabin::Tree::Internal::Directory::lookupFile(const std::string &amp;name) const ']]],
-  ['loop',['Loop',['../classLogCabin_1_1Event_1_1Loop.html',1,'LogCabin::Event']]],
   ['loop',['Loop',['../classLogCabin_1_1Event_1_1Loop.html#a25f72e803340a2c0ff0097a989d618f2',1,'LogCabin::Event::Loop::Loop()'],['../classLogCabin_1_1Event_1_1Loop.html#abc9241380fb8d695d0ef59ad66fbba52',1,'LogCabin::Event::Loop::Loop(const Loop &amp;)']]],
+  ['loop',['Loop',['../classLogCabin_1_1Event_1_1Loop.html',1,'LogCabin::Event']]],
   ['loop_2ecc',['Loop.cc',['../Loop_8cc.html',1,'']]],
   ['loop_2eh',['Loop.h',['../Loop_8h.html',1,'']]],
   ['lostandfound',['lostAndFound',['../classLogCabin_1_1Storage_1_1SimpleFileLog.html#aa8f420a998b34012fc032eac8ab912c8',1,'LogCabin::Storage::SimpleFileLog']]],
@@ -136,6 +137,7 @@ var searchData=
   ['protocol',['Protocol',['../namespaceLogCabin_1_1RPC_1_1Protocol.html',1,'LogCabin::RPC']]],
   ['raftconsensusinternal',['RaftConsensusInternal',['../namespaceLogCabin_1_1Server_1_1RaftConsensusInternal.html',1,'LogCabin::Server']]],
   ['random',['Random',['../namespaceLogCabin_1_1Core_1_1Random.html',1,'LogCabin::Core']]],
+  ['releasemutex',['releaseMutex',['../classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a406859506938c80ff6afed467b34c6ce',1,'LogCabin::Core::Random::anonymous_namespace{Random.cc}::RandomState']]],
   ['rpc',['RPC',['../namespaceLogCabin_1_1RPC.html',1,'LogCabin']]],
   ['server',['Server',['../namespaceLogCabin_1_1Server.html',1,'LogCabin']]],
   ['servercontrol',['ServerControl',['../namespaceLogCabin_1_1Protocol_1_1ServerControl.html',1,'LogCabin::Protocol']]],

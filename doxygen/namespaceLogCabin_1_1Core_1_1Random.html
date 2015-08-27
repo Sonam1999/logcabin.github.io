@@ -113,6 +113,10 @@ Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html">anonymous_namespace{Random.cc}</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dcbb82b9cdfe91a3716dff6f7970258">acquireMutex</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called before fork() to grab the mutex used in pthread_atfork.  <a href="#a2dcbb82b9cdfe91a3716dff6f7970258"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random.html#a674fe3c81345629b24bec9ea5cc7b4cc">releaseMutex</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in the parent post fork().  <a href="#a674fe3c81345629b24bec9ea5cc7b4cc"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random.html#a6342c7d0ac0063191c344c086a16907e">random8</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return one random byte.  <a href="#a6342c7d0ac0063191c344c086a16907e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Random.html#ab036f83a66d16a35290d5849c700e5b3">random16</a> ()</td></tr>
@@ -130,6 +134,48 @@ Functions</h2></td></tr>
 <div class="textblock"><p>Thread-safe pseudo-random number generator. </p>
 <dl class="warning"><dt><b>Warning:</b></dt><dd>Don't call these functions from static initializers or you might run into the static initialization order fiasco. </dd></dl>
 </div><hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a2dcbb82b9cdfe91a3716dff6f7970258"></a><!-- doxytag: member="LogCabin::Core::Random::acquireMutex" ref="a2dcbb82b9cdfe91a3716dff6f7970258" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dcbb82b9cdfe91a3716dff6f7970258">LogCabin::Core::Random::acquireMutex</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Called before fork() to grab the mutex used in pthread_atfork. </p>
+<p>This function is outside of the anonymous namespace so it can be called from RandomTest. </p>
+
+<p>Definition at line <a class="el" href="Random_8cc_source.html#l00196">196</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a674fe3c81345629b24bec9ea5cc7b4cc"></a><!-- doxytag: member="LogCabin::Core::Random::releaseMutex" ref="a674fe3c81345629b24bec9ea5cc7b4cc" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="namespaceLogCabin_1_1Core_1_1Random.html#a674fe3c81345629b24bec9ea5cc7b4cc">LogCabin::Core::Random::releaseMutex</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Called in the parent post fork(). </p>
+<p>This function is outside of the anonymous namespace so it can be called from RandomTest. </p>
+
+<p>Definition at line <a class="el" href="Random_8cc_source.html#l00206">206</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a6342c7d0ac0063191c344c086a16907e"></a><!-- doxytag: member="LogCabin::Core::Random::random8" ref="a6342c7d0ac0063191c344c086a16907e" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -146,7 +192,7 @@ Functions</h2></td></tr>
 
 <p>Return one random byte. </p>
 
-<p>Definition at line <a class="el" href="Random_8cc_source.html#l00178">178</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
+<p>Definition at line <a class="el" href="Random_8cc_source.html#l00212">212</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
 
 </div>
 </div>
@@ -166,7 +212,7 @@ Functions</h2></td></tr>
 
 <p>Return two random bytes. </p>
 
-<p>Definition at line <a class="el" href="Random_8cc_source.html#l00184">184</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
+<p>Definition at line <a class="el" href="Random_8cc_source.html#l00218">218</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
 
 </div>
 </div>
@@ -186,7 +232,7 @@ Functions</h2></td></tr>
 
 <p>Return four random bytes. </p>
 
-<p>Definition at line <a class="el" href="Random_8cc_source.html#l00190">190</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
+<p>Definition at line <a class="el" href="Random_8cc_source.html#l00224">224</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
 
 </div>
 </div>
@@ -206,7 +252,7 @@ Functions</h2></td></tr>
 
 <p>Return eight random bytes. </p>
 
-<p>Definition at line <a class="el" href="Random_8cc_source.html#l00196">196</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
+<p>Definition at line <a class="el" href="Random_8cc_source.html#l00230">230</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
 
 </div>
 </div>
@@ -237,7 +283,7 @@ Functions</h2></td></tr>
 
 <p>Return a random floating point number between start and end, inclusive. </p>
 
-<p>Definition at line <a class="el" href="Random_8cc_source.html#l00202">202</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
+<p>Definition at line <a class="el" href="Random_8cc_source.html#l00236">236</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
 
 </div>
 </div>
@@ -268,7 +314,7 @@ Functions</h2></td></tr>
 
 <p>Return a random integer between start and end, inclusive. </p>
 
-<p>Definition at line <a class="el" href="Random_8cc_source.html#l00208">208</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
+<p>Definition at line <a class="el" href="Random_8cc_source.html#l00242">242</a> of file <a class="el" href="Random_8cc_source.html">Random.cc</a>.</p>
 
 </div>
 </div>

@@ -2,6 +2,7 @@ var searchData=
 [
   ['a',['a',['../structLogCabin_1_1Client_1_1anonymous__namespace_02MockClientImpl_8cc_03_1_1RAIISwap.html#ab6ff5570335838f1861cfd634049360f',1,'LogCabin::Client::anonymous_namespace{MockClientImpl.cc}::RAIISwap']]],
   ['abstimeout',['absTimeout',['../classLogCabin_1_1Client_1_1ClientImpl.html#ab98e07d5743d0fd31a07735da34d5b63',1,'LogCabin::Client::ClientImpl']]],
+  ['acquiremutex',['acquireMutex',['../namespaceLogCabin_1_1Core_1_1Random.html#a2dcbb82b9cdfe91a3716dff6f7970258',1,'LogCabin::Core::Random']]],
   ['active',['active',['../classLogCabin_1_1RPC_1_1ServerRPC.html#aa48a0d1184880fc85380e936a3f0bc21',1,'LogCabin::RPC::ServerRPC']]],
   ['activeping',['activePing',['../classLogCabin_1_1RPC_1_1ClientSession.html#a4b6c929e8c03c2aadb4e45f50f3c7ccd',1,'LogCabin::RPC::ClientSession']]],
   ['add',['add',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#aff783eca177f6fbbc4d3bd6d799859c0',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],

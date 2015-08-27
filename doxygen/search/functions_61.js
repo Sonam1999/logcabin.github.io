@@ -1,6 +1,7 @@
 var searchData=
 [
   ['abstimeout',['absTimeout',['../classLogCabin_1_1Client_1_1ClientImpl.html#ab98e07d5743d0fd31a07735da34d5b63',1,'LogCabin::Client::ClientImpl']]],
+  ['acquiremutex',['acquireMutex',['../namespaceLogCabin_1_1Core_1_1Random.html#a2dcbb82b9cdfe91a3716dff6f7970258',1,'LogCabin::Core::Random']]],
   ['add',['add',['../classLogCabin_1_1Server_1_1RaftConsensusInternal_1_1ConfigurationManager.html#aff783eca177f6fbbc4d3bd6d799859c0',1,'LogCabin::Server::RaftConsensusInternal::ConfigurationManager']]],
   ['address',['Address',['../classLogCabin_1_1RPC_1_1Address.html#a6fca7808cfdd71a8a7c7166e2381bc9b',1,'LogCabin::RPC::Address::Address(const std::string &amp;str, uint16_t defaultPort)'],['../classLogCabin_1_1RPC_1_1Address.html#a1a41b490a3d6dec175879f28b992a0e3',1,'LogCabin::RPC::Address::Address()'],['../classLogCabin_1_1RPC_1_1Address.html#a9656e1338de102adb64f6af40f1db0b5',1,'LogCabin::RPC::Address::Address(const Address &amp;other)']]],
   ['advancecommitindex',['advanceCommitIndex',['../classLogCabin_1_1Server_1_1RaftConsensus.html#a6313bbd5c18d255db90131471985d80e',1,'LogCabin::Server::RaftConsensus']]],

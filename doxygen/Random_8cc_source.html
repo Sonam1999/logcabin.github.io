@@ -82,219 +82,253 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <a href="Random_8cc.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/* Copyright (c) 2009-2014 Stanford University</span>
 <a name="l00002"></a>00002 <span class="comment"> * Copyright (c) 2015 Diego Ongaro</span>
-<a name="l00003"></a>00003 <span class="comment"> *</span>
-<a name="l00004"></a>00004 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
-<a name="l00005"></a>00005 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
-<a name="l00006"></a>00006 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
-<a name="l00007"></a>00007 <span class="comment"> *</span>
-<a name="l00008"></a>00008 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
-<a name="l00009"></a>00009 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
-<a name="l00010"></a>00010 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
-<a name="l00011"></a>00011 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
-<a name="l00012"></a>00012 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
-<a name="l00013"></a>00013 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
-<a name="l00014"></a>00014 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
-<a name="l00015"></a>00015 <span class="comment"> *</span>
+<a name="l00003"></a>00003 <span class="comment"> * Copyright (c) 2015 Scale Computing</span>
+<a name="l00004"></a>00004 <span class="comment"> *</span>
+<a name="l00005"></a>00005 <span class="comment"> * Permission to use, copy, modify, and distribute this software for any</span>
+<a name="l00006"></a>00006 <span class="comment"> * purpose with or without fee is hereby granted, provided that the above</span>
+<a name="l00007"></a>00007 <span class="comment"> * copyright notice and this permission notice appear in all copies.</span>
+<a name="l00008"></a>00008 <span class="comment"> *</span>
+<a name="l00009"></a>00009 <span class="comment"> * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR(S) DISCLAIM ALL WARRANTIES</span>
+<a name="l00010"></a>00010 <span class="comment"> * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF</span>
+<a name="l00011"></a>00011 <span class="comment"> * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL AUTHORS BE LIABLE FOR</span>
+<a name="l00012"></a>00012 <span class="comment"> * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES</span>
+<a name="l00013"></a>00013 <span class="comment"> * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN</span>
+<a name="l00014"></a>00014 <span class="comment"> * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF</span>
+<a name="l00015"></a>00015 <span class="comment"> * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</span>
 <a name="l00016"></a>00016 <span class="comment"> *</span>
-<a name="l00017"></a>00017 <span class="comment"> * Some of this code is copied from RAMCloud src/Common.cc _generateRandom(),</span>
-<a name="l00018"></a>00018 <span class="comment"> * Copyright (c) 2009-2014 Stanford University also under the same ISC license.</span>
-<a name="l00019"></a>00019 <span class="comment"> */</span>
-<a name="l00020"></a>00020 
-<a name="l00021"></a>00021 <span class="preprocessor">#include &lt;cassert&gt;</span>
-<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;cmath&gt;</span>
-<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;cstring&gt;</span>
-<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;fcntl.h&gt;</span>
-<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;limits&gt;</span>
-<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;mutex&gt;</span>
-<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;pthread.h&gt;</span>
-<a name="l00028"></a>00028 <span class="preprocessor">#include &lt;sys/stat.h&gt;</span>
-<a name="l00029"></a>00029 <span class="preprocessor">#include &lt;unistd.h&gt;</span>
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031 <span class="preprocessor">#include &quot;<a class="code" href="Core_2Debug_8h.html">Core/Debug.h</a>&quot;</span>
-<a name="l00032"></a>00032 <span class="preprocessor">#include &quot;<a class="code" href="Random_8h.html">Core/Random.h</a>&quot;</span>
-<a name="l00033"></a>00033 
-<a name="l00034"></a>00034 <span class="keyword">namespace </span>LogCabin {
-<a name="l00035"></a>00035 <span class="keyword">namespace </span>Core {
-<a name="l00036"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html">00036</a> <span class="keyword">namespace </span>Random {
-<a name="l00037"></a>00037 
-<a name="l00038"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html">00038</a> <span class="keyword">namespace </span>{
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040 <span class="comment">// forward declaration</span>
-<a name="l00041"></a>00041 <span class="keywordtype">void</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ab540c42d0bfc29d09967ae15a7ff76f2" title="Called in child after fork() to reset random seed.">resetRandomState</a>();
-<a name="l00042"></a>00042 <span class="comment"></span>
-<a name="l00043"></a>00043 <span class="comment">/**</span>
-<a name="l00044"></a>00044 <span class="comment"> * Keeps state needed by the random number generator, protected by a mutex.</span>
-<a name="l00045"></a>00045 <span class="comment"> */</span>
-<a name="l00046"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html">00046</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html" title="Keeps state needed by the random number generator, protected by a mutex.">RandomState</a> {
-<a name="l00047"></a>00047   <span class="keyword">public</span>:
-<a name="l00048"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a71d72022f71b022157b107d63436343c">00048</a>     <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html" title="Keeps state needed by the random number generator, protected by a mutex.">RandomState</a>()
-<a name="l00049"></a>00049         : <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>()
-<a name="l00050"></a>00050         , init(false)
-<a name="l00051"></a>00051         , statebuf()
-<a name="l00052"></a>00052         , randbuf()
-<a name="l00053"></a>00053     {
-<a name="l00054"></a>00054         reset();
-<a name="l00055"></a>00055         <span class="keywordtype">int</span> err = pthread_atfork(NULL, NULL, resetRandomState);
-<a name="l00056"></a>00056         <span class="keywordflow">if</span> (err != 0) {
-<a name="l00057"></a>00057             <span class="comment">// too early to call ERROR in here</span>
-<a name="l00058"></a>00058             fprintf(stderr, <span class="stringliteral">&quot;Failed to set up pthread_atfork() handler to &quot;</span>
-<a name="l00059"></a>00059                     <span class="stringliteral">&quot;reset random number generator seed in child processes. &quot;</span>
-<a name="l00060"></a>00060                     <span class="stringliteral">&quot;As a result, child processes will generate the same &quot;</span>
-<a name="l00061"></a>00061                     <span class="stringliteral">&quot;sequence of random values as the parent they were forked &quot;</span>
-<a name="l00062"></a>00062                     <span class="stringliteral">&quot;from. Error: %s\n&quot;</span>,
-<a name="l00063"></a>00063                     strerror(err));
-<a name="l00064"></a>00064         }
-<a name="l00065"></a>00065     }
-<a name="l00066"></a>00066 
-<a name="l00067"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a54082699b2a9deae0aa3ea27bdeedbd0">00067</a>     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a54082699b2a9deae0aa3ea27bdeedbd0">reset</a>() {
-<a name="l00068"></a>00068         std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
-<a name="l00069"></a>00069         <span class="keywordtype">int</span> fd = open(<span class="stringliteral">&quot;/dev/urandom&quot;</span>, O_RDONLY);
-<a name="l00070"></a>00070         <span class="keywordflow">if</span> (fd &lt; 0) {
-<a name="l00071"></a>00071             <span class="comment">// too early to call PANIC in here</span>
-<a name="l00072"></a>00072             fprintf(stderr, <span class="stringliteral">&quot;Couldn&#39;t open /dev/urandom: %s\n&quot;</span>,
-<a name="l00073"></a>00073                     strerror(errno));
-<a name="l00074"></a>00074             abort();
-<a name="l00075"></a>00075         }
-<a name="l00076"></a>00076         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seed;
-<a name="l00077"></a>00077         ssize_t bytesRead = read(fd, &amp;seed, <span class="keyword">sizeof</span>(seed));
-<a name="l00078"></a>00078         close(fd);
-<a name="l00079"></a>00079         <span class="keywordflow">if</span> (bytesRead != <span class="keyword">sizeof</span>(seed)) {
-<a name="l00080"></a>00080             <span class="comment">// too early to call PANIC in here</span>
-<a name="l00081"></a>00081             fprintf(stderr, <span class="stringliteral">&quot;Couldn&#39;t read full seed from /dev/urandom\n&quot;</span>);
-<a name="l00082"></a>00082             abort();
-<a name="l00083"></a>00083         }
-<a name="l00084"></a>00084         initstate_r(seed, statebuf, STATE_BYTES, &amp;randbuf);
-<a name="l00085"></a>00085         static_assert(RAND_MAX &gt;= (1L &lt;&lt; 30), <span class="stringliteral">&quot;RAND_MAX too small&quot;</span>);
-<a name="l00086"></a>00086         init = <span class="keyword">true</span>;
-<a name="l00087"></a>00087     }
-<a name="l00088"></a>00088 
-<a name="l00089"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a0732b5071370617f8cee66b0bd6c184d">00089</a>     uint64_t <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a0732b5071370617f8cee66b0bd6c184d">random64</a>() {
-<a name="l00090"></a>00090         std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
-<a name="l00091"></a>00091         <span class="keywordflow">if</span> (!init) {
-<a name="l00092"></a>00092             <span class="comment">// probably too early to call PANIC in here</span>
-<a name="l00093"></a>00093             fprintf(stderr, <span class="stringliteral">&quot;Looks like you hit the so-called static &quot;</span>
-<a name="l00094"></a>00094                     <span class="stringliteral">&quot;initialization order fiasco in Core::Random\n&quot;</span>);
-<a name="l00095"></a>00095             abort();
-<a name="l00096"></a>00096         }
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098         <span class="comment">// Each call to random returns 31 bits of randomness,</span>
-<a name="l00099"></a>00099         <span class="comment">// so we need three to get 64 bits of randomness.</span>
-<a name="l00100"></a>00100         int32_t lo, mid, hi;
-<a name="l00101"></a>00101         random_r(&amp;randbuf, &amp;lo);
-<a name="l00102"></a>00102         random_r(&amp;randbuf, &amp;mid);
-<a name="l00103"></a>00103         random_r(&amp;randbuf, &amp;hi);
-<a name="l00104"></a>00104         uint64_t r = (((uint64_t(hi) &amp; 0x7FFFFFFF) &lt;&lt; 33) | <span class="comment">// NOLINT</span>
-<a name="l00105"></a>00105                       ((uint64_t(mid) &amp; 0x7FFFFFFF) &lt;&lt; 2)  | <span class="comment">// NOLINT</span>
-<a name="l00106"></a>00106                       (uint64_t(lo) &amp; 0x00000003)); <span class="comment">// NOLINT</span>
-<a name="l00107"></a>00107         <span class="keywordflow">return</span> r;
-<a name="l00108"></a>00108     }
-<a name="l00109"></a>00109 
-<a name="l00110"></a>00110   <span class="keyword">private</span>:
-<a name="l00111"></a>00111 <span class="comment"></span>
-<a name="l00112"></a>00112 <span class="comment">    /**</span>
-<a name="l00113"></a>00113 <span class="comment">     * Protect following members from concurrent access.</span>
-<a name="l00114"></a>00114 <span class="comment">     */</span>
-<a name="l00115"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#aebbff28cafbbe5b348414139dcf28091">00115</a>     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">std::mutex</a> <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#aebbff28cafbbe5b348414139dcf28091" title="Protect following members from concurrent access.">mutex</a>;
-<a name="l00116"></a>00116 <span class="comment"></span>
-<a name="l00117"></a>00117 <span class="comment">    /**</span>
-<a name="l00118"></a>00118 <span class="comment">     * Set to true when the constructor completes.</span>
-<a name="l00119"></a>00119 <span class="comment">     */</span>
-<a name="l00120"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#ad43583c675ec84527140d6569f98b19f">00120</a>     <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#ad43583c675ec84527140d6569f98b19f" title="Set to true when the constructor completes.">init</a>;
+<a name="l00017"></a>00017 <span class="comment"> *</span>
+<a name="l00018"></a>00018 <span class="comment"> * Some of this code is copied from RAMCloud src/Common.cc _generateRandom(),</span>
+<a name="l00019"></a>00019 <span class="comment"> * Copyright (c) 2009-2014 Stanford University also under the same ISC license.</span>
+<a name="l00020"></a>00020 <span class="comment"> */</span>
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 <span class="preprocessor">#include &lt;cassert&gt;</span>
+<a name="l00023"></a>00023 <span class="preprocessor">#include &lt;cmath&gt;</span>
+<a name="l00024"></a>00024 <span class="preprocessor">#include &lt;cstring&gt;</span>
+<a name="l00025"></a>00025 <span class="preprocessor">#include &lt;fcntl.h&gt;</span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;limits&gt;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;mutex&gt;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#include &lt;pthread.h&gt;</span>
+<a name="l00029"></a>00029 <span class="preprocessor">#include &lt;sys/stat.h&gt;</span>
+<a name="l00030"></a>00030 <span class="preprocessor">#include &lt;unistd.h&gt;</span>
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 <span class="preprocessor">#include &quot;<a class="code" href="Core_2Debug_8h.html">Core/Debug.h</a>&quot;</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include &quot;<a class="code" href="Random_8h.html">Core/Random.h</a>&quot;</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 <span class="keyword">namespace </span>LogCabin {
+<a name="l00036"></a>00036 <span class="keyword">namespace </span>Core {
+<a name="l00037"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html">00037</a> <span class="keyword">namespace </span>Random {
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 <span class="comment">// forward declaration</span>
+<a name="l00040"></a>00040 <span class="keywordtype">void</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dcbb82b9cdfe91a3716dff6f7970258" title="Called before fork() to grab the mutex used in pthread_atfork.">acquireMutex</a>();
+<a name="l00041"></a>00041 <span class="keywordtype">void</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a674fe3c81345629b24bec9ea5cc7b4cc" title="Called in the parent post fork().">releaseMutex</a>();
+<a name="l00042"></a>00042 
+<a name="l00043"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html">00043</a> <span class="keyword">namespace </span>{
+<a name="l00044"></a>00044 
+<a name="l00045"></a>00045 <span class="comment">// forward declaration</span>
+<a name="l00046"></a>00046 <span class="keywordtype">void</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ab540c42d0bfc29d09967ae15a7ff76f2" title="Called in child after fork() to reset random seed.">resetRandomState</a>();
+<a name="l00047"></a>00047 <span class="comment"></span>
+<a name="l00048"></a>00048 <span class="comment">/**</span>
+<a name="l00049"></a>00049 <span class="comment"> * Keeps state needed by the random number generator, protected by a mutex.</span>
+<a name="l00050"></a>00050 <span class="comment"> */</span>
+<a name="l00051"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html">00051</a> <span class="keyword">class </span><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html" title="Keeps state needed by the random number generator, protected by a mutex.">RandomState</a> {
+<a name="l00052"></a>00052   <span class="keyword">public</span>:
+<a name="l00053"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a71d72022f71b022157b107d63436343c">00053</a>     <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html" title="Keeps state needed by the random number generator, protected by a mutex.">RandomState</a>()
+<a name="l00054"></a>00054         : <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>()
+<a name="l00055"></a>00055         , init(false)
+<a name="l00056"></a>00056         , statebuf()
+<a name="l00057"></a>00057         , randbuf()
+<a name="l00058"></a>00058     {
+<a name="l00059"></a>00059         reset();
+<a name="l00060"></a>00060         <span class="keywordtype">int</span> err = pthread_atfork(<a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dcbb82b9cdfe91a3716dff6f7970258" title="Called before fork() to grab the mutex used in pthread_atfork.">LogCabin::Core::Random::acquireMutex</a>,
+<a name="l00061"></a>00061                                  <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a674fe3c81345629b24bec9ea5cc7b4cc" title="Called in the parent post fork().">LogCabin::Core::Random::releaseMutex</a>,
+<a name="l00062"></a>00062                                  resetRandomState);
+<a name="l00063"></a>00063         <span class="keywordflow">if</span> (err != 0) {
+<a name="l00064"></a>00064             <span class="comment">// too early to call ERROR in here</span>
+<a name="l00065"></a>00065             fprintf(stderr, <span class="stringliteral">&quot;Failed to set up pthread_atfork() handler to &quot;</span>
+<a name="l00066"></a>00066                     <span class="stringliteral">&quot;reset random number generator seed in child processes. &quot;</span>
+<a name="l00067"></a>00067                     <span class="stringliteral">&quot;As a result, child processes will generate the same &quot;</span>
+<a name="l00068"></a>00068                     <span class="stringliteral">&quot;sequence of random values as the parent they were forked &quot;</span>
+<a name="l00069"></a>00069                     <span class="stringliteral">&quot;from. Error: %s\n&quot;</span>,
+<a name="l00070"></a>00070                     strerror(err));
+<a name="l00071"></a>00071         }
+<a name="l00072"></a>00072     }
+<a name="l00073"></a>00073 
+<a name="l00074"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a54082699b2a9deae0aa3ea27bdeedbd0">00074</a>     <span class="keywordtype">void</span> <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a54082699b2a9deae0aa3ea27bdeedbd0">reset</a>() {
+<a name="l00075"></a>00075         std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
+<a name="l00076"></a>00076         <span class="keywordtype">int</span> fd = open(<span class="stringliteral">&quot;/dev/urandom&quot;</span>, O_RDONLY);
+<a name="l00077"></a>00077         <span class="keywordflow">if</span> (fd &lt; 0) {
+<a name="l00078"></a>00078             <span class="comment">// too early to call PANIC in here</span>
+<a name="l00079"></a>00079             fprintf(stderr, <span class="stringliteral">&quot;Couldn&#39;t open /dev/urandom: %s\n&quot;</span>,
+<a name="l00080"></a>00080                     strerror(errno));
+<a name="l00081"></a>00081             abort();
+<a name="l00082"></a>00082         }
+<a name="l00083"></a>00083         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seed;
+<a name="l00084"></a>00084         ssize_t bytesRead = read(fd, &amp;seed, <span class="keyword">sizeof</span>(seed));
+<a name="l00085"></a>00085         close(fd);
+<a name="l00086"></a>00086         <span class="keywordflow">if</span> (bytesRead != <span class="keyword">sizeof</span>(seed)) {
+<a name="l00087"></a>00087             <span class="comment">// too early to call PANIC in here</span>
+<a name="l00088"></a>00088             fprintf(stderr, <span class="stringliteral">&quot;Couldn&#39;t read full seed from /dev/urandom\n&quot;</span>);
+<a name="l00089"></a>00089             abort();
+<a name="l00090"></a>00090         }
+<a name="l00091"></a>00091         initstate_r(seed, statebuf, STATE_BYTES, &amp;randbuf);
+<a name="l00092"></a>00092         static_assert(RAND_MAX &gt;= (1L &lt;&lt; 30), <span class="stringliteral">&quot;RAND_MAX too small&quot;</span>);
+<a name="l00093"></a>00093         init = <span class="keyword">true</span>;
+<a name="l00094"></a>00094     }
+<a name="l00095"></a>00095 
+<a name="l00096"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a0732b5071370617f8cee66b0bd6c184d">00096</a>     uint64_t <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a0732b5071370617f8cee66b0bd6c184d">random64</a>() {
+<a name="l00097"></a>00097         std::lock_guard&lt;std::mutex&gt; lockGuard(<a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">mutex</a>);
+<a name="l00098"></a>00098         <span class="keywordflow">if</span> (!init) {
+<a name="l00099"></a>00099             <span class="comment">// probably too early to call PANIC in here</span>
+<a name="l00100"></a>00100             fprintf(stderr, <span class="stringliteral">&quot;Looks like you hit the so-called static &quot;</span>
+<a name="l00101"></a>00101                     <span class="stringliteral">&quot;initialization order fiasco in Core::Random\n&quot;</span>);
+<a name="l00102"></a>00102             abort();
+<a name="l00103"></a>00103         }
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105         <span class="comment">// Each call to random returns 31 bits of randomness,</span>
+<a name="l00106"></a>00106         <span class="comment">// so we need three to get 64 bits of randomness.</span>
+<a name="l00107"></a>00107         int32_t lo, mid, hi;
+<a name="l00108"></a>00108         random_r(&amp;randbuf, &amp;lo);
+<a name="l00109"></a>00109         random_r(&amp;randbuf, &amp;mid);
+<a name="l00110"></a>00110         random_r(&amp;randbuf, &amp;hi);
+<a name="l00111"></a>00111         uint64_t r = (((uint64_t(hi) &amp; 0x7FFFFFFF) &lt;&lt; 33) | <span class="comment">// NOLINT</span>
+<a name="l00112"></a>00112                       ((uint64_t(mid) &amp; 0x7FFFFFFF) &lt;&lt; 2)  | <span class="comment">// NOLINT</span>
+<a name="l00113"></a>00113                       (uint64_t(lo) &amp; 0x00000003)); <span class="comment">// NOLINT</span>
+<a name="l00114"></a>00114         <span class="keywordflow">return</span> r;
+<a name="l00115"></a>00115     }
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117     <span class="keyword">friend</span> <span class="keywordtype">void</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dcbb82b9cdfe91a3716dff6f7970258" title="Called before fork() to grab the mutex used in pthread_atfork.">LogCabin::Core::Random::acquireMutex</a>();
+<a name="l00118"></a>00118     <span class="keyword">friend</span> <span class="keywordtype">void</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a674fe3c81345629b24bec9ea5cc7b4cc" title="Called in the parent post fork().">LogCabin::Core::Random::releaseMutex</a>();
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120   <span class="keyword">private</span>:
 <a name="l00121"></a>00121 <span class="comment"></span>
 <a name="l00122"></a>00122 <span class="comment">    /**</span>
-<a name="l00123"></a>00123 <span class="comment">     * Size of &#39;statebuf&#39;. 128 is the same size as initstate() uses for regular</span>
-<a name="l00124"></a>00124 <span class="comment">     * random(), see manpages for details.</span>
-<a name="l00125"></a>00125 <span class="comment">     */</span>
-<a name="l00126"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#ac076967fde05c8910402a246a13b8af9a63e11f52ceafe087b9c684d9a76e3e95">00126</a>     <span class="keyword">enum</span> { STATE_BYTES = 128 };
-<a name="l00127"></a>00127 <span class="comment"></span>
-<a name="l00128"></a>00128 <span class="comment">    /**</span>
-<a name="l00129"></a>00129 <span class="comment">     * Internal scratch state used by random_r.</span>
-<a name="l00130"></a>00130 <span class="comment">     */</span>
-<a name="l00131"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#aaf6849886edb8317196d7559b0da0192">00131</a>     <span class="keywordtype">char</span> statebuf[STATE_BYTES];
-<a name="l00132"></a>00132 <span class="comment"></span>
-<a name="l00133"></a>00133 <span class="comment">    /**</span>
-<a name="l00134"></a>00134 <span class="comment">     * random_r&#39;s state. Must be handed to each call, and seems to refer to</span>
-<a name="l00135"></a>00135 <span class="comment">     * statebuf in some undocumented way.</span>
-<a name="l00136"></a>00136 <span class="comment">     */</span>
-<a name="l00137"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#ad5aa31228f38d4879ff2bf8ccdddae22">00137</a>     random_data <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#ad5aa31228f38d4879ff2bf8ccdddae22" title="random_r&#39;s state.">randbuf</a>;
-<a name="l00138"></a>00138 } <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246">randomState</a>;
-<a name="l00139"></a>00139 <span class="comment"></span>
-<a name="l00140"></a>00140 <span class="comment">/**</span>
-<a name="l00141"></a>00141 <span class="comment"> * Called in child after fork() to reset random seed.</span>
-<a name="l00142"></a>00142 <span class="comment"> */</span>
-<a name="l00143"></a>00143 <span class="keywordtype">void</span>
-<a name="l00144"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ab540c42d0bfc29d09967ae15a7ff76f2">00144</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ab540c42d0bfc29d09967ae15a7ff76f2" title="Called in child after fork() to reset random seed.">resetRandomState</a>()
-<a name="l00145"></a>00145 {
-<a name="l00146"></a>00146     <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246">randomState</a>.<a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a54082699b2a9deae0aa3ea27bdeedbd0">reset</a>();
-<a name="l00147"></a>00147 }
-<a name="l00148"></a>00148 <span class="comment"></span>
-<a name="l00149"></a>00149 <span class="comment">/**</span>
-<a name="l00150"></a>00150 <span class="comment"> * Fill a variable of type T with some random bytes.</span>
-<a name="l00151"></a>00151 <span class="comment"> */</span>
-<a name="l00152"></a>00152 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00153"></a>00153 T
-<a name="l00154"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ac8535276bfdb0565dbb16455a03a8aea">00154</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ac8535276bfdb0565dbb16455a03a8aea" title="Fill a variable of type T with some random bytes.">getRandomBytes</a>()
+<a name="l00123"></a>00123 <span class="comment">     * Protect following members from concurrent access.</span>
+<a name="l00124"></a>00124 <span class="comment">     */</span>
+<a name="l00125"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#aebbff28cafbbe5b348414139dcf28091">00125</a>     <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug_1_1Internal.html#aa55966a108a48de3c0ecc7fac2c1c82d" title="Protects logPolicy, isLoggingCache, and logFilename.">std::mutex</a> <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#aebbff28cafbbe5b348414139dcf28091" title="Protect following members from concurrent access.">mutex</a>;
+<a name="l00126"></a>00126 <span class="comment"></span>
+<a name="l00127"></a>00127 <span class="comment">    /**</span>
+<a name="l00128"></a>00128 <span class="comment">     * Set to true when the constructor completes.</span>
+<a name="l00129"></a>00129 <span class="comment">     */</span>
+<a name="l00130"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#ad43583c675ec84527140d6569f98b19f">00130</a>     <span class="keywordtype">bool</span> <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#ad43583c675ec84527140d6569f98b19f" title="Set to true when the constructor completes.">init</a>;
+<a name="l00131"></a>00131 <span class="comment"></span>
+<a name="l00132"></a>00132 <span class="comment">    /**</span>
+<a name="l00133"></a>00133 <span class="comment">     * Size of &#39;statebuf&#39;. 128 is the same size as initstate() uses for regular</span>
+<a name="l00134"></a>00134 <span class="comment">     * random(), see manpages for details.</span>
+<a name="l00135"></a>00135 <span class="comment">     */</span>
+<a name="l00136"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#ac076967fde05c8910402a246a13b8af9a63e11f52ceafe087b9c684d9a76e3e95">00136</a>     <span class="keyword">enum</span> { STATE_BYTES = 128 };
+<a name="l00137"></a>00137 <span class="comment"></span>
+<a name="l00138"></a>00138 <span class="comment">    /**</span>
+<a name="l00139"></a>00139 <span class="comment">     * Internal scratch state used by random_r.</span>
+<a name="l00140"></a>00140 <span class="comment">     */</span>
+<a name="l00141"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#aaf6849886edb8317196d7559b0da0192">00141</a>     <span class="keywordtype">char</span> statebuf[STATE_BYTES];
+<a name="l00142"></a>00142 <span class="comment"></span>
+<a name="l00143"></a>00143 <span class="comment">    /**</span>
+<a name="l00144"></a>00144 <span class="comment">     * random_r&#39;s state. Must be handed to each call, and seems to refer to</span>
+<a name="l00145"></a>00145 <span class="comment">     * statebuf in some undocumented way.</span>
+<a name="l00146"></a>00146 <span class="comment">     */</span>
+<a name="l00147"></a><a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#ad5aa31228f38d4879ff2bf8ccdddae22">00147</a>     random_data <a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#ad5aa31228f38d4879ff2bf8ccdddae22" title="random_r&#39;s state.">randbuf</a>;
+<a name="l00148"></a>00148 } <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246">randomState</a>;
+<a name="l00149"></a>00149 <span class="comment"></span>
+<a name="l00150"></a>00150 <span class="comment">/**</span>
+<a name="l00151"></a>00151 <span class="comment"> * Called in child after fork() to reset random seed.</span>
+<a name="l00152"></a>00152 <span class="comment"> */</span>
+<a name="l00153"></a>00153 <span class="keywordtype">void</span>
+<a name="l00154"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ab540c42d0bfc29d09967ae15a7ff76f2">00154</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ab540c42d0bfc29d09967ae15a7ff76f2" title="Called in child after fork() to reset random seed.">resetRandomState</a>()
 <a name="l00155"></a>00155 {
-<a name="l00156"></a>00156     T buf {};
-<a name="l00157"></a>00157     <span class="keywordtype">size_t</span> offset = 0;
-<a name="l00158"></a>00158     <span class="keywordflow">while</span> (offset &lt; <span class="keyword">sizeof</span>(buf)) {
-<a name="l00159"></a>00159         uint64_t r = <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246">randomState</a>.<a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a0732b5071370617f8cee66b0bd6c184d">random64</a>();
-<a name="l00160"></a>00160         <span class="keywordtype">size_t</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6" title="Copy the contents of a protocol buffer into a new one.">copy</a> = std::min(<span class="keyword">sizeof</span>(r), <span class="keyword">sizeof</span>(buf) - offset);
-<a name="l00161"></a>00161         <a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65" title="Copy some noncontiguous chunks of data into a contiguous chunk.">memcpy</a>(reinterpret_cast&lt;char*&gt;(&amp;buf) + offset, &amp;r, copy);
-<a name="l00162"></a>00162         offset += <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6" title="Copy the contents of a protocol buffer into a new one.">copy</a>;
-<a name="l00163"></a>00163     }
-<a name="l00164"></a>00164     <span class="keywordflow">return</span> buf;
-<a name="l00165"></a>00165 }
-<a name="l00166"></a>00166 <span class="comment"></span>
-<a name="l00167"></a>00167 <span class="comment">/// Return a random number between 0 and 1.</span>
-<a name="l00168"></a>00168 <span class="comment"></span><span class="keywordtype">double</span>
-<a name="l00169"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a6aad3527fdc334cb83031ab602537516">00169</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a6aad3527fdc334cb83031ab602537516" title="Return a random number between 0 and 1.">randomUnit</a>()
-<a name="l00170"></a>00170 {
-<a name="l00171"></a>00171     <span class="keywordflow">return</span> (<span class="keywordtype">double</span>(<a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dd10e7d36be4614a07b7bc1dfaaa893" title="Return eight random bytes.">random64</a>()) /
-<a name="l00172"></a>00172             <span class="keywordtype">double</span>(std::numeric_limits&lt;uint64_t&gt;::max()));
-<a name="l00173"></a>00173 }
-<a name="l00174"></a>00174 
-<a name="l00175"></a>00175 } <span class="comment">// anonymous namespace</span>
-<a name="l00176"></a>00176 
-<a name="l00177"></a>00177 uint8_t
-<a name="l00178"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a6342c7d0ac0063191c344c086a16907e">00178</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a6342c7d0ac0063191c344c086a16907e" title="Return one random byte.">random8</a>()
-<a name="l00179"></a>00179 {
-<a name="l00180"></a>00180     <span class="keywordflow">return</span> getRandomBytes&lt;uint8_t&gt;();
-<a name="l00181"></a>00181 }
-<a name="l00182"></a>00182 
-<a name="l00183"></a>00183 uint16_t
-<a name="l00184"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#ab036f83a66d16a35290d5849c700e5b3">00184</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#ab036f83a66d16a35290d5849c700e5b3" title="Return two random bytes.">random16</a>()
-<a name="l00185"></a>00185 {
-<a name="l00186"></a>00186     <span class="keywordflow">return</span> getRandomBytes&lt;uint16_t&gt;();
-<a name="l00187"></a>00187 }
-<a name="l00188"></a>00188 
-<a name="l00189"></a>00189 uint32_t
-<a name="l00190"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a715ddd5b9aea1a5b8376e1ccfd45bddb">00190</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a715ddd5b9aea1a5b8376e1ccfd45bddb" title="Return four random bytes.">random32</a>()
-<a name="l00191"></a>00191 {
-<a name="l00192"></a>00192     <span class="keywordflow">return</span> getRandomBytes&lt;uint32_t&gt;();
-<a name="l00193"></a>00193 }
-<a name="l00194"></a>00194 
-<a name="l00195"></a>00195 uint64_t
-<a name="l00196"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dd10e7d36be4614a07b7bc1dfaaa893">00196</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dd10e7d36be4614a07b7bc1dfaaa893" title="Return eight random bytes.">random64</a>()
+<a name="l00156"></a>00156     <span class="comment">// we will have grabbed the mutex in pthread_atfork prepare, need</span>
+<a name="l00157"></a>00157     <span class="comment">// to release here</span>
+<a name="l00158"></a>00158     <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a674fe3c81345629b24bec9ea5cc7b4cc" title="Called in the parent post fork().">releaseMutex</a>();
+<a name="l00159"></a>00159     <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246">randomState</a>.<a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a54082699b2a9deae0aa3ea27bdeedbd0">reset</a>();
+<a name="l00160"></a>00160 }
+<a name="l00161"></a>00161 <span class="comment"></span>
+<a name="l00162"></a>00162 <span class="comment">/**</span>
+<a name="l00163"></a>00163 <span class="comment"> * Fill a variable of type T with some random bytes.</span>
+<a name="l00164"></a>00164 <span class="comment"> */</span>
+<a name="l00165"></a>00165 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00166"></a>00166 T
+<a name="l00167"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ac8535276bfdb0565dbb16455a03a8aea">00167</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#ac8535276bfdb0565dbb16455a03a8aea" title="Fill a variable of type T with some random bytes.">getRandomBytes</a>()
+<a name="l00168"></a>00168 {
+<a name="l00169"></a>00169     T buf {};
+<a name="l00170"></a>00170     <span class="keywordtype">size_t</span> offset = 0;
+<a name="l00171"></a>00171     <span class="keywordflow">while</span> (offset &lt; <span class="keyword">sizeof</span>(buf)) {
+<a name="l00172"></a>00172         uint64_t r = <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246">randomState</a>.<a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a0732b5071370617f8cee66b0bd6c184d">random64</a>();
+<a name="l00173"></a>00173         <span class="keywordtype">size_t</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6" title="Copy the contents of a protocol buffer into a new one.">copy</a> = std::min(<span class="keyword">sizeof</span>(r), <span class="keyword">sizeof</span>(buf) - offset);
+<a name="l00174"></a>00174         <a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65" title="Copy some noncontiguous chunks of data into a contiguous chunk.">memcpy</a>(reinterpret_cast&lt;char*&gt;(&amp;buf) + offset, &amp;r, copy);
+<a name="l00175"></a>00175         offset += <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a7004402716c3cf9ceefe79d1f9557dc6" title="Copy the contents of a protocol buffer into a new one.">copy</a>;
+<a name="l00176"></a>00176     }
+<a name="l00177"></a>00177     <span class="keywordflow">return</span> buf;
+<a name="l00178"></a>00178 }
+<a name="l00179"></a>00179 <span class="comment"></span>
+<a name="l00180"></a>00180 <span class="comment">/// Return a random number between 0 and 1.</span>
+<a name="l00181"></a>00181 <span class="comment"></span><span class="keywordtype">double</span>
+<a name="l00182"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a6aad3527fdc334cb83031ab602537516">00182</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a6aad3527fdc334cb83031ab602537516" title="Return a random number between 0 and 1.">randomUnit</a>()
+<a name="l00183"></a>00183 {
+<a name="l00184"></a>00184     <span class="keywordflow">return</span> (<span class="keywordtype">double</span>(<a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dd10e7d36be4614a07b7bc1dfaaa893" title="Return eight random bytes.">random64</a>()) /
+<a name="l00185"></a>00185             <span class="keywordtype">double</span>(std::numeric_limits&lt;uint64_t&gt;::max()));
+<a name="l00186"></a>00186 }
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188 } <span class="comment">// anonymous namespace</span>
+<a name="l00189"></a>00189 <span class="comment"></span>
+<a name="l00190"></a>00190 <span class="comment">/**</span>
+<a name="l00191"></a>00191 <span class="comment"> * Called before fork() to grab the mutex used in pthread_atfork. This</span>
+<a name="l00192"></a>00192 <span class="comment"> * function is outside of the anonymous namespace so it can be called</span>
+<a name="l00193"></a>00193 <span class="comment"> * from RandomTest.</span>
+<a name="l00194"></a>00194 <span class="comment"> */</span>
+<a name="l00195"></a>00195 <span class="keywordtype">void</span>
+<a name="l00196"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dcbb82b9cdfe91a3716dff6f7970258">00196</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dcbb82b9cdfe91a3716dff6f7970258" title="Called before fork() to grab the mutex used in pthread_atfork.">acquireMutex</a>()
 <a name="l00197"></a>00197 {
-<a name="l00198"></a>00198     <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246">randomState</a>.<a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a0732b5071370617f8cee66b0bd6c184d">random64</a>();
+<a name="l00198"></a>00198     <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246">randomState</a>.<a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#aebbff28cafbbe5b348414139dcf28091" title="Protect following members from concurrent access.">mutex</a>.lock();
 <a name="l00199"></a>00199 }
-<a name="l00200"></a>00200 
-<a name="l00201"></a>00201 <span class="keywordtype">double</span>
-<a name="l00202"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a36044fbc1d2cda9ecd7a591773026cc3">00202</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a36044fbc1d2cda9ecd7a591773026cc3" title="Return a random floating point number between start and end, inclusive.">randomRangeDouble</a>(<span class="keywordtype">double</span> start, <span class="keywordtype">double</span> end)
-<a name="l00203"></a>00203 {
-<a name="l00204"></a>00204     <span class="keywordflow">return</span> start + <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a6aad3527fdc334cb83031ab602537516" title="Return a random number between 0 and 1.">randomUnit</a>()  * (end - start);
-<a name="l00205"></a>00205 }
-<a name="l00206"></a>00206 
-<a name="l00207"></a>00207 uint64_t
-<a name="l00208"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#af8e82c49f7a898ab54ed0b18a89a5419">00208</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#af8e82c49f7a898ab54ed0b18a89a5419" title="Return a random integer between start and end, inclusive.">randomRange</a>(uint64_t start, uint64_t end)
-<a name="l00209"></a>00209 {
-<a name="l00210"></a>00210     <span class="keywordflow">return</span> uint64_t(lround(<a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a36044fbc1d2cda9ecd7a591773026cc3" title="Return a random floating point number between start and end, inclusive.">randomRangeDouble</a>(<span class="keywordtype">double</span>(start), <span class="keywordtype">double</span>(end))));
-<a name="l00211"></a>00211 }
-<a name="l00212"></a>00212 
-<a name="l00213"></a>00213 } <span class="comment">// namespace LogCabin::Core::Random</span>
-<a name="l00214"></a>00214 } <span class="comment">// namespace LogCabin::Core</span>
-<a name="l00215"></a>00215 } <span class="comment">// namespace LogCabin</span>
+<a name="l00200"></a>00200 <span class="comment"></span>
+<a name="l00201"></a>00201 <span class="comment">/**</span>
+<a name="l00202"></a>00202 <span class="comment"> * Called in the parent post fork(). This function is outside of the</span>
+<a name="l00203"></a>00203 <span class="comment"> * anonymous namespace so it can be called from RandomTest.</span>
+<a name="l00204"></a>00204 <span class="comment"> */</span>
+<a name="l00205"></a>00205 <span class="keywordtype">void</span>
+<a name="l00206"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a674fe3c81345629b24bec9ea5cc7b4cc">00206</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a674fe3c81345629b24bec9ea5cc7b4cc" title="Called in the parent post fork().">releaseMutex</a>()
+<a name="l00207"></a>00207 {
+<a name="l00208"></a>00208     <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246">randomState</a>.<a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#aebbff28cafbbe5b348414139dcf28091" title="Protect following members from concurrent access.">mutex</a>.unlock();
+<a name="l00209"></a>00209 }
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211 uint8_t
+<a name="l00212"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a6342c7d0ac0063191c344c086a16907e">00212</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a6342c7d0ac0063191c344c086a16907e" title="Return one random byte.">random8</a>()
+<a name="l00213"></a>00213 {
+<a name="l00214"></a>00214     <span class="keywordflow">return</span> getRandomBytes&lt;uint8_t&gt;();
+<a name="l00215"></a>00215 }
+<a name="l00216"></a>00216 
+<a name="l00217"></a>00217 uint16_t
+<a name="l00218"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#ab036f83a66d16a35290d5849c700e5b3">00218</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#ab036f83a66d16a35290d5849c700e5b3" title="Return two random bytes.">random16</a>()
+<a name="l00219"></a>00219 {
+<a name="l00220"></a>00220     <span class="keywordflow">return</span> getRandomBytes&lt;uint16_t&gt;();
+<a name="l00221"></a>00221 }
+<a name="l00222"></a>00222 
+<a name="l00223"></a>00223 uint32_t
+<a name="l00224"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a715ddd5b9aea1a5b8376e1ccfd45bddb">00224</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a715ddd5b9aea1a5b8376e1ccfd45bddb" title="Return four random bytes.">random32</a>()
+<a name="l00225"></a>00225 {
+<a name="l00226"></a>00226     <span class="keywordflow">return</span> getRandomBytes&lt;uint32_t&gt;();
+<a name="l00227"></a>00227 }
+<a name="l00228"></a>00228 
+<a name="l00229"></a>00229 uint64_t
+<a name="l00230"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dd10e7d36be4614a07b7bc1dfaaa893">00230</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a2dd10e7d36be4614a07b7bc1dfaaa893" title="Return eight random bytes.">random64</a>()
+<a name="l00231"></a>00231 {
+<a name="l00232"></a>00232     <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a11f5a1afa6a70ab7abebf7870a539246">randomState</a>.<a class="code" href="classLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03_1_1RandomState.html#a0732b5071370617f8cee66b0bd6c184d">random64</a>();
+<a name="l00233"></a>00233 }
+<a name="l00234"></a>00234 
+<a name="l00235"></a>00235 <span class="keywordtype">double</span>
+<a name="l00236"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a36044fbc1d2cda9ecd7a591773026cc3">00236</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a36044fbc1d2cda9ecd7a591773026cc3" title="Return a random floating point number between start and end, inclusive.">randomRangeDouble</a>(<span class="keywordtype">double</span> start, <span class="keywordtype">double</span> end)
+<a name="l00237"></a>00237 {
+<a name="l00238"></a>00238     <span class="keywordflow">return</span> start + <a class="code" href="namespaceLogCabin_1_1Core_1_1Random_1_1anonymous__namespace_02Random_8cc_03.html#a6aad3527fdc334cb83031ab602537516" title="Return a random number between 0 and 1.">randomUnit</a>()  * (end - start);
+<a name="l00239"></a>00239 }
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241 uint64_t
+<a name="l00242"></a><a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#af8e82c49f7a898ab54ed0b18a89a5419">00242</a> <a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#af8e82c49f7a898ab54ed0b18a89a5419" title="Return a random integer between start and end, inclusive.">randomRange</a>(uint64_t start, uint64_t end)
+<a name="l00243"></a>00243 {
+<a name="l00244"></a>00244     <span class="keywordflow">return</span> uint64_t(lround(<a class="code" href="namespaceLogCabin_1_1Core_1_1Random.html#a36044fbc1d2cda9ecd7a591773026cc3" title="Return a random floating point number between start and end, inclusive.">randomRangeDouble</a>(<span class="keywordtype">double</span>(start), <span class="keywordtype">double</span>(end))));
+<a name="l00245"></a>00245 }
+<a name="l00246"></a>00246 
+<a name="l00247"></a>00247 } <span class="comment">// namespace LogCabin::Core::Random</span>
+<a name="l00248"></a>00248 } <span class="comment">// namespace LogCabin::Core</span>
+<a name="l00249"></a>00249 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
