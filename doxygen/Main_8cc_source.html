@@ -282,7 +282,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00200"></a>00200             <span class="keywordflow">return</span>;
 <a name="l00201"></a>00201         FILE* file = fopen(filename.c_str(), <span class="stringliteral">&quot;w&quot;</span>);
 <a name="l00202"></a>00202         <span class="keywordflow">if</span> (file == NULL) {
-<a name="l00203"></a>00203             <a class="code" href="Core_2Debug_8h.html#a78e40dfd87f516e322340d249027aea1" title="Log an ERROR message.">ERROR</a>(<span class="stringliteral">&quot;Could not open %s for writing process ID: %s&quot;</span>,
+<a name="l00203"></a>00203             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Could not open %s for writing process ID: %s&quot;</span>,
 <a name="l00204"></a>00204                   filename.c_str(),
 <a name="l00205"></a>00205                   strerror(errno));
 <a name="l00206"></a>00206         }
