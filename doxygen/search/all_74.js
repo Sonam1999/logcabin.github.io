@@ -21,7 +21,7 @@ var searchData=
   ['threadnames',['threadNames',['../namespaceLogCabin_1_1Core_1_1ThreadId_1_1Internal.html#ad5d361c1433d5b81c92aaeaf81120c8d',1,'LogCabin::Core::ThreadId::Internal']]],
   ['threads',['threads',['../classLogCabin_1_1RPC_1_1ThreadDispatchService.html#afeba39e878c67a514cb81f814a195cd7',1,'LogCabin::RPC::ThreadDispatchService']]],
   ['threadsafeservice',['threadSafeService',['../classLogCabin_1_1RPC_1_1ThreadDispatchService.html#aafe834b79e8b75c1247ba0c705689f91',1,'LogCabin::RPC::ThreadDispatchService']]],
-  ['throwexception',['throwException',['../namespaceLogCabin_1_1Client_1_1anonymous__namespace_02Client_8cc_03.html#ad5dbaddf4e3146a1ea13111e3a28e527',1,'LogCabin::Client::anonymous_namespace{Client.cc}']]],
+  ['throwexception',['throwException',['../namespaceLogCabin_1_1Client_1_1anonymous__namespace_02Client_8cc_03.html#a99eeb10fefe6c76cb68e24d106c99e23',1,'LogCabin::Client::anonymous_namespace{Client.cc}']]],
   ['time_2ecc',['Time.cc',['../Time_8cc.html',1,'']]],
   ['time_2eh',['Time.h',['../Time_8h.html',1,'']]],
   ['time_5fpoint',['time_point',['../structLogCabin_1_1Core_1_1Time_1_1CSystemClock.html#a14d846b58dcb262d15ff5ea75e85ed65',1,'LogCabin::Core::Time::CSystemClock::time_point()'],['../structLogCabin_1_1Core_1_1Time_1_1CSteadyClock.html#a7f77a5a279915e6fe8ef8cd42f75d3d3',1,'LogCabin::Core::Time::CSteadyClock::time_point()'],['../structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a25005848397dad2ae0d03826a755d7c8',1,'LogCabin::Core::Time::MockableClock::time_point()']]],
