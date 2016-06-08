@@ -95,11 +95,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin.html">LogCabin</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core.html">LogCabin::Core</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1StringUtil.html">LogCabin::Core::StringUtil</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html">LogCabin::Core::Debug</a></td></tr>
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_2Debug_8h.html#a2d871a9bb0ec3ed46f6450ab2c20a18e">LOG</a>(level, format,...)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Unconditionally log the given message to stderr.  <a href="#a2d871a9bb0ec3ed46f6450ab2c20a18e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_2Debug_8h.html#a2ebc89ef0e543fcc389d4b43f81a024b">LOG</a>(level, _format,...)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Unconditionally log the given message to stderr.  <a href="#a2ebc89ef0e543fcc389d4b43f81a024b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3">PANIC</a>(format,...)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Log an ERROR message and abort the process.  <a href="#ad84b0f521394f4d9214c9d185711a8c3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Core_2Debug_8h.html#ae62d555ee2a777ff1ff54e6c6175891c">EXIT</a>(format,...)</td></tr>
@@ -114,20 +115,22 @@ Defines</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a VERBOSE message.  <a href="#a77e5c931f41ca7e1792ddfa762d38473"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7">LogCabin::Core::StringUtil::format</a> (const char *format,...)))</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A safe version of sprintf.  <a href="#a4b3972f4e603a7ba710374772b03c5c7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a2a8a29aaac86e7894abfb09d095b1b36">LogCabin::Core::Debug::operator&lt;&lt;</a> (std::ostream &amp;ostream, LogLevel level)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Output a LogLevel to a stream.  <a href="#a2a8a29aaac86e7894abfb09d095b1b36"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#a6fb17a6ff9a81e892702560656d691a2">LogCabin::Core::Debug::isLogging</a> (LogLevel level, const char *fileName)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether the current logging configuration includes messages of the given level for the given filename.  <a href="#a6fb17a6ff9a81e892702560656d691a2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ac6edb3bfbfca4fc5ae5a98a0c36ffdda">LogCabin::Core::Debug::log</a> (LogLevel level, const char *fileName, uint32_t lineNum, const char *functionName, const char *format,...)))</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Unconditionally log the given message to stderr.  <a href="#ac6edb3bfbfca4fc5ae5a98a0c36ffdda"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae05c721b6279e717c54c9f4a37423371">LogCabin::Core::Debug::log</a> (LogLevel level, const char *fileName, uint32_t lineNum, const char *functionName, const char *message)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Unconditionally log the given message to stderr.  <a href="#ae05c721b6279e717c54c9f4a37423371"></a><br/></td></tr>
 </table>
 <hr/><h2>Define Documentation</h2>
-<a class="anchor" id="a2d871a9bb0ec3ed46f6450ab2c20a18e"></a><!-- doxytag: member="Debug.h::LOG" ref="a2d871a9bb0ec3ed46f6450ab2c20a18e" args="(level, format,...)" -->
+<a class="anchor" id="a2ebc89ef0e543fcc389d4b43f81a024b"></a><!-- doxytag: member="Debug.h::LOG" ref="a2ebc89ef0e543fcc389d4b43f81a024b" args="(level, _format,...)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define <a class="el" href="Core_2Debug_8h.html#a2d871a9bb0ec3ed46f6450ab2c20a18e">LOG</a></td>
+          <td class="memname">#define <a class="el" href="Core_2Debug_8h.html#a2ebc89ef0e543fcc389d4b43f81a024b">LOG</a></td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">level, </td>
@@ -136,7 +139,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">format, </td>
+          <td class="paramname">_format, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -158,13 +161,13 @@ Functions</h2></td></tr>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">level</td><td>The level of importance of the message. </td></tr>
-    <tr><td class="paramname">format</td><td>A printf-style format string for the message. It should not include a line break at the end, as LOG will add one. </td></tr>
+    <tr><td class="paramname">_format</td><td>A printf-style format string for the message. It should not include a line break at the end, as LOG will add one. </td></tr>
     <tr><td class="paramname">...</td><td>The arguments to the format string, as in printf. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00098">98</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00101">101</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>
@@ -202,7 +205,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
  
-<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00110">110</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00114">114</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>
@@ -240,7 +243,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
  
-<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00119">119</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00123">123</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +281,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00132">132</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00136">136</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>
@@ -316,7 +319,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
  
-<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00139">139</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00143">143</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>
@@ -354,7 +357,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
  
-<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00146">146</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00150">150</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>
@@ -392,7 +395,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
  
-<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00153">153</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
+<p>Definition at line <a class="el" href="Core_2Debug_8h_source.html#l00157">157</a> of file <a class="el" href="Core_2Debug_8h_source.html">Debug.h</a>.</p>
 
 </div>
 </div>

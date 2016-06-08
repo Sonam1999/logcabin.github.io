@@ -115,7 +115,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00033"></a>00033     <span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FilesystemUtil::File</a>&amp; parentDir = storageLayout.<a class="code" href="classLogCabin_1_1Storage_1_1Layout.html#af9a506ff61ab69d00d228b6a949189aa" title="Contains all log files for this particular server.">logDir</a>;
 <a name="l00034"></a>00034     std::string module =
 <a name="l00035"></a>00035         config.<a class="code" href="classLogCabin_1_1Core_1_1Config.html#a9463413099189cc32b0f372621d92fba" title="Read the value corresponding to a key.">read</a>&lt;std::string&gt;(<span class="stringliteral">&quot;storageModule&quot;</span>, <span class="stringliteral">&quot;Segmented&quot;</span>);
-<a name="l00036"></a>00036     std::unique_ptr&lt;Log&gt; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ac6edb3bfbfca4fc5ae5a98a0c36ffdda" title="Unconditionally log the given message to stderr.">log</a>;
+<a name="l00036"></a>00036     std::unique_ptr&lt;Log&gt; <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae05c721b6279e717c54c9f4a37423371" title="Unconditionally log the given message to stderr.">log</a>;
 <a name="l00037"></a>00037     <span class="keywordflow">if</span> (module == <span class="stringliteral">&quot;Memory&quot;</span>) {
 <a name="l00038"></a>00038         log.reset(<span class="keyword">new</span> <a class="code" href="classLogCabin_1_1Storage_1_1MemoryLog.html">MemoryLog</a>());
 <a name="l00039"></a>00039     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (module == <span class="stringliteral">&quot;SimpleFile&quot;</span>) {
@@ -132,7 +132,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00050"></a>00050     } <span class="keywordflow">else</span> {
 <a name="l00051"></a>00051         <a class="code" href="Core_2Debug_8h.html#ae62d555ee2a777ff1ff54e6c6175891c" title="Log an ERROR message and exit the process with status 1.">EXIT</a>(<span class="stringliteral">&quot;Unknown storage module from config file: %s&quot;</span>, module.c_str());
 <a name="l00052"></a>00052     }
-<a name="l00053"></a>00053     <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ac6edb3bfbfca4fc5ae5a98a0c36ffdda" title="Unconditionally log the given message to stderr.">log</a>;
+<a name="l00053"></a>00053     <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1Debug.html#ae05c721b6279e717c54c9f4a37423371" title="Unconditionally log the given message to stderr.">log</a>;
 <a name="l00054"></a>00054 }
 <a name="l00055"></a>00055 
 <a name="l00056"></a>00056 } <span class="comment">// namespace LogCabin::Storage::LogFactory</span>
