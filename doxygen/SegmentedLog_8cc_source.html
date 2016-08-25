@@ -1074,373 +1074,382 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00992"></a>00992         uint8_t version = *reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a9d72e8e623b3b64feac1c58079bad1c5" title="Get a pointer to a region of the file.">get</a>&lt;uint8_t&gt;(0, 1);
 <a name="l00993"></a>00993         offset += 1;
 <a name="l00994"></a>00994         <span class="keywordflow">if</span> (version != 1) {
-<a name="l00995"></a>00995             <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Segment version read from %s was %u, but this code can &quot;</span>
-<a name="l00996"></a>00996                   <span class="stringliteral">&quot;only read version 1&quot;</span>,
-<a name="l00997"></a>00997                   segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
-<a name="l00998"></a>00998                   version);
-<a name="l00999"></a>00999         }
-<a name="l01000"></a>01000     }
-<a name="l01001"></a>01001 
-<a name="l01002"></a>01002     uint64_t lastIndex = 0;
-<a name="l01003"></a>01003     <span class="keywordflow">while</span> (offset &lt; reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>()) {
-<a name="l01004"></a>01004         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.emplace_back(offset);
-<a name="l01005"></a>01005         std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a> = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa7c541cbed809b7dbfe7541b2c789d15" title="Read the next ProtoBuf record out of &#39;file&#39;.">readProtoFromFile</a>(
-<a name="l01006"></a>01006                 file,
-<a name="l01007"></a>01007                 reader,
-<a name="l01008"></a>01008                 &amp;offset,
-<a name="l01009"></a>01009                 &amp;segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry);
-<a name="l01010"></a>01010         <span class="keywordflow">if</span> (!error.empty()) {
-<a name="l01011"></a>01011             segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.pop_back();
-<a name="l01012"></a>01012             uint64_t remainingBytes = reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>() - offset;
-<a name="l01013"></a>01013             <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SegmentedLog_8cc_03.html#ae57e24c4edde24702aadd043fdd37f22" title="Return true if all the bytes in range [start, start + length) are zero.">isAllZeros</a>(reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a9d72e8e623b3b64feac1c58079bad1c5" title="Get a pointer to a region of the file.">get</a>(offset, remainingBytes),
-<a name="l01014"></a>01014                            remainingBytes)) {
-<a name="l01015"></a>01015                 <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Truncating %lu zero bytes at the end of log &quot;</span>
-<a name="l01016"></a>01016                         <span class="stringliteral">&quot;segment %s (%lu bytes into the segment, &quot;</span>
-<a name="l01017"></a>01017                         <span class="stringliteral">&quot;following  entry %lu). This is most likely &quot;</span>
-<a name="l01018"></a>01018                         <span class="stringliteral">&quot;because the server shutdown uncleanly.&quot;</span>,
-<a name="l01019"></a>01019                         remainingBytes,
-<a name="l01020"></a>01020                         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
-<a name="l01021"></a>01021                         offset,
-<a name="l01022"></a>01022                         lastIndex);
-<a name="l01023"></a>01023             } <span class="keywordflow">else</span> {
-<a name="l01024"></a>01024                 <span class="comment">// TODO(ongaro): do we want to save these bytes somewhere?</span>
-<a name="l01025"></a>01025                 <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Could not read entry in log segment %s &quot;</span>
-<a name="l01026"></a>01026                         <span class="stringliteral">&quot;(%lu bytes into the segment, following &quot;</span>
-<a name="l01027"></a>01027                         <span class="stringliteral">&quot;entry %lu), probably because it was being &quot;</span>
-<a name="l01028"></a>01028                         <span class="stringliteral">&quot;written when the server crashed. Discarding the &quot;</span>
-<a name="l01029"></a>01029                         <span class="stringliteral">&quot;remainder of the file (%lu bytes). Error was: %s&quot;</span>,
-<a name="l01030"></a>01030                         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
-<a name="l01031"></a>01031                         offset,
-<a name="l01032"></a>01032                         lastIndex,
-<a name="l01033"></a>01033                         remainingBytes,
-<a name="l01034"></a>01034                         error.c_str());
-<a name="l01035"></a>01035             }
-<a name="l01036"></a>01036             <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1cba6adaf9d078fb2c04c3b229f6b483" title="Shrink or grow a file to the specified length, padding with zeros if necessary.">FS::truncate</a>(file, offset);
-<a name="l01037"></a>01037             <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(file);
-<a name="l01038"></a>01038             <span class="keywordflow">break</span>;
-<a name="l01039"></a>01039         }
-<a name="l01040"></a>01040         lastIndex = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry.index();
-<a name="l01041"></a>01041     }
-<a name="l01042"></a>01042 
-<a name="l01043"></a>01043     <span class="keywordtype">bool</span> <span class="keyword">remove</span> = <span class="keyword">false</span>;
-<a name="l01044"></a>01044     <span class="keywordflow">if</span> (segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.empty()) {
-<a name="l01045"></a>01045         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing empty segment: %s&quot;</span>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str());
-<a name="l01046"></a>01046         <span class="keyword">remove</span> = <span class="keyword">true</span>;
-<a name="l01047"></a>01047     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry.index() &lt; <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a>) {
-<a name="l01048"></a>01048         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing open segment whose entries are no longer &quot;</span>
-<a name="l01049"></a>01049                <span class="stringliteral">&quot;needed (last index is %lu but log start index is %lu): %s&quot;</span>,
-<a name="l01050"></a>01050                segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry.index(),
-<a name="l01051"></a>01051                <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a>,
-<a name="l01052"></a>01052                segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str());
-<a name="l01053"></a>01053         <span class="keyword">remove</span> = <span class="keyword">true</span>;
-<a name="l01054"></a>01054     }
-<a name="l01055"></a>01055     <span class="keywordflow">if</span> (<span class="keyword">remove</span>) {
-<a name="l01056"></a>01056         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a8cac431f693d92baf63191b2b86e0357" title="Remove the file relative to an open directory.">FS::removeFile</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>);
-<a name="l01057"></a>01057         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>);
-<a name="l01058"></a>01058         <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l01059"></a>01059     } <span class="keywordflow">else</span> {
-<a name="l01060"></a>01060         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a> = offset;
-<a name="l01061"></a>01061         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ae1ab06082b556d977f44610e9fb50693" title="The total number of bytes occupied by the closed segments on disk.">totalClosedSegmentBytes</a> += segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a>;
-<a name="l01062"></a>01062         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb" title="True for the open segment, false for closed segments.">isOpen</a> = <span class="keyword">false</span>;
-<a name="l01063"></a>01063         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.front().entry.index();
-<a name="l01064"></a>01064         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry.index();
-<a name="l01065"></a>01065         std::string newFilename = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#afda58081b67d779178aef03e48d05503" title="Return a filename of the right form for a closed segment.">makeClosedFilename</a>();
-<a name="l01066"></a>01066         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Closing open segment %s, renaming to %s&quot;</span>,
-<a name="l01067"></a>01067                 segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
-<a name="l01068"></a>01068                 newFilename.c_str());
-<a name="l01069"></a>01069         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#ab11e8bf05a2bedd53c76d56c812d3148" title="Rename a file.">FS::rename</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>,
-<a name="l01070"></a>01070                    <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, newFilename);
-<a name="l01071"></a>01071         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>);
-<a name="l01072"></a>01072         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a> = newFilename;
-<a name="l01073"></a>01073         <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l01074"></a>01074     }
-<a name="l01075"></a>01075 }
-<a name="l01076"></a>01076 
-<a name="l01077"></a>01077 <span class="comment"></span>
-<a name="l01078"></a>01078 <span class="comment">////////// SegmentedLog normal operation helper functions //////////</span>
-<a name="l01079"></a>01079 <span class="comment"></span>
-<a name="l01080"></a>01080 
-<a name="l01081"></a>01081 <span class="keywordtype">void</span>
-<a name="l01082"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a9412657050c3b5ee0f15d13a687e031e">01082</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a9412657050c3b5ee0f15d13a687e031e" title="Run through a bunch of assertions of class invariants (for debugging).">SegmentedLog::checkInvariants</a>()
-<a name="l01083"></a>01083 {
-<a name="l01084"></a>01084     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad54138be8052e2963053757e8734f0d2" title="Set to true if checkInvariants() should do its job, or set to false for performance.">shouldCheckInvariants</a>)
-<a name="l01085"></a>01085         <span class="keywordflow">return</span>;
-<a name="l01086"></a>01086 <span class="preprocessor">#if DEBUG</span>
-<a name="l01087"></a>01087 <span class="preprocessor"></span>    assert(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092" title="The open file descriptor, or -1 otherwise.">fd</a> &gt;= 0);
-<a name="l01088"></a>01088     assert(!<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.empty());
-<a name="l01089"></a>01089     assert(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a> &gt;= <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.begin()-&gt;second.startIndex);
-<a name="l01090"></a>01090     assert(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a> &lt;= <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.begin()-&gt;second.endIndex + 1);
-<a name="l01091"></a>01091     assert(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a18dac48574a56e1edc5f6702bdd08f64" title="Accumulates deferred filesystem operations for append() and truncatePrefix().">currentSync</a>.get() != NULL);
-<a name="l01092"></a>01092     uint64_t closedBytes = 0;
-<a name="l01093"></a>01093     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.begin();
-<a name="l01094"></a>01094          it != <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.end();
-<a name="l01095"></a>01095          ++it) {
-<a name="l01096"></a>01096         <span class="keyword">auto</span> next = it;
-<a name="l01097"></a>01097         ++next;
-<a name="l01098"></a>01098         <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">Segment</a>&amp; segment = it-&gt;second;
-<a name="l01099"></a>01099         assert(it-&gt;first == segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>);
-<a name="l01100"></a>01100         assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> &gt; 0);
-<a name="l01101"></a>01101         assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.size() ==
-<a name="l01102"></a>01102                segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> + 1 - segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>);
-<a name="l01103"></a>01103         uint64_t lastOffset = 0;
-<a name="l01104"></a>01104         <span class="keywordflow">for</span> (uint64_t i = 0; i &lt; segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.size(); ++i) {
-<a name="l01105"></a>01105             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.at(i).entry.index() ==
-<a name="l01106"></a>01106                    segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> + i);
-<a name="l01107"></a>01107             <span class="keywordflow">if</span> (i == 0)
-<a name="l01108"></a>01108                 assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.at(0).offset == <span class="keyword">sizeof</span>(<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html" title="This goes at the start of every segment.">SegmentHeader</a>));
-<a name="l01109"></a>01109             <span class="keywordflow">else</span>
-<a name="l01110"></a>01110                 assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.at(i).offset &gt; lastOffset);
-<a name="l01111"></a>01111             lastOffset = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.at(i).offset;
-<a name="l01112"></a>01112         }
-<a name="l01113"></a>01113         <span class="keywordflow">if</span> (next == <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.end()) {
-<a name="l01114"></a>01114             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb" title="True for the open segment, false for closed segments.">isOpen</a>);
-<a name="l01115"></a>01115             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> &gt;= segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> - 1);
-<a name="l01116"></a>01116             assert(<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#abd5665712d4706d4b2189d3a182f4316" title="Return true if haystack begins with needle.">Core::StringUtil::startsWith</a>(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>, <span class="stringliteral">&quot;open-&quot;</span>));
-<a name="l01117"></a>01117             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a> &gt;= <span class="keyword">sizeof</span>(<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html" title="This goes at the start of every segment.">SegmentHeader</a>));
-<a name="l01118"></a>01118         } <span class="keywordflow">else</span> {
-<a name="l01119"></a>01119             assert(!segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb" title="True for the open segment, false for closed segments.">isOpen</a>);
-<a name="l01120"></a>01120             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> &gt;= segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>);
-<a name="l01121"></a>01121             assert(next-&gt;second.startIndex == segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> + 1);
-<a name="l01122"></a>01122             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a> &gt; <span class="keyword">sizeof</span>(<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html" title="This goes at the start of every segment.">SegmentHeader</a>));
-<a name="l01123"></a>01123             closedBytes += segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a>;
-<a name="l01124"></a>01124             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a> == segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#afda58081b67d779178aef03e48d05503" title="Return a filename of the right form for a closed segment.">makeClosedFilename</a>());
-<a name="l01125"></a>01125         }
-<a name="l01126"></a>01126     }
-<a name="l01127"></a>01127     assert(closedBytes == <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ae1ab06082b556d977f44610e9fb50693" title="The total number of bytes occupied by the closed segments on disk.">totalClosedSegmentBytes</a>);
-<a name="l01128"></a>01128 <span class="preprocessor">#endif </span><span class="comment">/* DEBUG */</span>
-<a name="l01129"></a>01129 }
-<a name="l01130"></a>01130 
-<a name="l01131"></a>01131 <span class="keywordtype">void</span>
-<a name="l01132"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a09027cf6c7aa1869f1a24837b4494eb7">01132</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a09027cf6c7aa1869f1a24837b4494eb7" title="Close the open segment if one is open.">SegmentedLog::closeSegment</a>()
-<a name="l01133"></a>01133 {
-<a name="l01134"></a>01134     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092" title="The open file descriptor, or -1 otherwise.">fd</a> &lt; 0)
-<a name="l01135"></a>01135         <span class="keywordflow">return</span>;
-<a name="l01136"></a>01136     <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">Segment</a>&amp; openSegment = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a2ff5aade1f854285b605fcefbe8d2a13" title="Return a reference to the current open segment (the one that new writes should go into)...">getOpenSegment</a>();
-<a name="l01137"></a>01137     <span class="keywordflow">if</span> (openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> &gt; openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a>) {
-<a name="l01138"></a>01138         <span class="comment">// Segment is empty; just remove it.</span>
-<a name="l01139"></a>01139         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing empty open segment (start index %lu): %s&quot;</span>,
-<a name="l01140"></a>01140                openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>,
-<a name="l01141"></a>01141                openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str());
-<a name="l01142"></a>01142         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#abcc14d47d566079ecc536ca5c064d99a" title="Close the file.">close</a>();
-<a name="l01143"></a>01143         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a8cac431f693d92baf63191b2b86e0357" title="Remove the file relative to an open directory.">FS::removeFile</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>);
-<a name="l01144"></a>01144         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>);
-<a name="l01145"></a>01145         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.erase(openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>);
-<a name="l01146"></a>01146         <span class="keywordflow">return</span>;
-<a name="l01147"></a>01147     }
-<a name="l01148"></a>01148 
-<a name="l01149"></a>01149     <span class="comment">// Truncate away any extra 0 bytes at the end from when</span>
-<a name="l01150"></a>01150     <span class="comment">// MAX_SEGMENT_SIZE was allocated, or in the case of truncateSuffix,</span>
-<a name="l01151"></a>01151     <span class="comment">// truncate away actual entries that are no longer desired.</span>
-<a name="l01152"></a>01152     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1cba6adaf9d078fb2c04c3b229f6b483" title="Shrink or grow a file to the specified length, padding with zeros if necessary.">FS::truncate</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>, openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a>);
-<a name="l01153"></a>01153     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>);
-<a name="l01154"></a>01154     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#abcc14d47d566079ecc536ca5c064d99a" title="Close the file.">close</a>();
-<a name="l01155"></a>01155 
-<a name="l01156"></a>01156     <span class="comment">// Rename the file.</span>
-<a name="l01157"></a>01157     std::string newFilename = openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#afda58081b67d779178aef03e48d05503" title="Return a filename of the right form for a closed segment.">makeClosedFilename</a>();
-<a name="l01158"></a>01158     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Closing segment (was %s, renaming to %s)&quot;</span>,
-<a name="l01159"></a>01159            openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
-<a name="l01160"></a>01160            newFilename.c_str());
-<a name="l01161"></a>01161     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#ab11e8bf05a2bedd53c76d56c812d3148" title="Rename a file.">FS::rename</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>,
-<a name="l01162"></a>01162                <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, newFilename);
-<a name="l01163"></a>01163     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>);
-<a name="l01164"></a>01164     openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a> = newFilename;
-<a name="l01165"></a>01165 
-<a name="l01166"></a>01166     openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb" title="True for the open segment, false for closed segments.">isOpen</a> = <span class="keyword">false</span>;
-<a name="l01167"></a>01167     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ae1ab06082b556d977f44610e9fb50693" title="The total number of bytes occupied by the closed segments on disk.">totalClosedSegmentBytes</a> += openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a>;
-<a name="l01168"></a>01168 }
-<a name="l01169"></a>01169 
-<a name="l01170"></a>01170 <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">SegmentedLog::Segment</a>&amp;
-<a name="l01171"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a2ff5aade1f854285b605fcefbe8d2a13">01171</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a2ff5aade1f854285b605fcefbe8d2a13" title="Return a reference to the current open segment (the one that new writes should go into)...">SegmentedLog::getOpenSegment</a>()
-<a name="l01172"></a>01172 {
-<a name="l01173"></a>01173     assert(!<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.empty());
-<a name="l01174"></a>01174     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.rbegin()-&gt;second;
-<a name="l01175"></a>01175 }
-<a name="l01176"></a>01176 
-<a name="l01177"></a>01177 <span class="keyword">const</span> <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">SegmentedLog::Segment</a>&amp;
-<a name="l01178"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a4ebf746ec25f37c00b636d707115beb5">01178</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a2ff5aade1f854285b605fcefbe8d2a13" title="Return a reference to the current open segment (the one that new writes should go into)...">SegmentedLog::getOpenSegment</a>()<span class="keyword"> const</span>
-<a name="l01179"></a>01179 <span class="keyword"></span>{
-<a name="l01180"></a>01180     assert(!<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.empty());
-<a name="l01181"></a>01181     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.rbegin()-&gt;second;
-<a name="l01182"></a>01182 }
-<a name="l01183"></a>01183 
-<a name="l01184"></a>01184 <span class="keywordtype">void</span>
-<a name="l01185"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3ce2b038faf15bf6da4f7992bd7ed482">01185</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3ce2b038faf15bf6da4f7992bd7ed482" title="Set up a new open segment for the log head.">SegmentedLog::openNewSegment</a>()
-<a name="l01186"></a>01186 {
-<a name="l01187"></a>01187     assert(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092" title="The open file descriptor, or -1 otherwise.">fd</a> &lt; 0);
-<a name="l01188"></a>01188     assert(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.empty() ||
-<a name="l01189"></a>01189            !<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.rbegin()-&gt;second.isOpen);
-<a name="l01190"></a>01190 
-<a name="l01191"></a>01191     <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">Segment</a> newSegment;
-<a name="l01192"></a>01192     newSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb" title="True for the open segment, false for closed segments.">isOpen</a> = <span class="keyword">true</span>;
-<a name="l01193"></a>01193     newSegment.startIndex = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a45c575000cfd56c3d77d6efa7a6286de" title="Get the index of the most recent entry in the log.">getLastLogIndex</a>() + 1;
-<a name="l01194"></a>01194     newSegment.endIndex = newSegment.startIndex - 1;
-<a name="l01195"></a>01195     newSegment.bytes = <span class="keyword">sizeof</span>(<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html" title="This goes at the start of every segment.">SegmentHeader</a>);
-<a name="l01196"></a>01196     <span class="comment">// This can throw ThreadInterruptedException, but it shouldn&#39;t ever, since</span>
-<a name="l01197"></a>01197     <span class="comment">// this class shouldn&#39;t have been destroyed yet.</span>
-<a name="l01198"></a>01198     <span class="keyword">auto</span> s = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a82ace8371782747c371bdadb29d41741" title="See PreparedSegments.">preparedSegments</a>.<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#ac1ad3bdbede3bc25c6a755bbadae9b4e" title="Consumers call this when they need a prepared segment file.">waitForOpenSegment</a>();
-<a name="l01199"></a>01199     newSegment.filename = s.first;
-<a name="l01200"></a>01200     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a> = std::move(s.second);
-<a name="l01201"></a>01201     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.insert({newSegment.startIndex, newSegment});
-<a name="l01202"></a>01202 }
-<a name="l01203"></a>01203 
-<a name="l01204"></a>01204 std::string
-<a name="l01205"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa7c541cbed809b7dbfe7541b2c789d15">01205</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa7c541cbed809b7dbfe7541b2c789d15" title="Read the next ProtoBuf record out of &#39;file&#39;.">SegmentedLog::readProtoFromFile</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FS::File</a>&amp; file,
-<a name="l01206"></a>01206                                 <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html" title="Provides random access to a file.">FS::FileContents</a>&amp; reader,
-<a name="l01207"></a>01207                                 uint64_t* offset,
-<a name="l01208"></a>01208                                 google::protobuf::Message* out)<span class="keyword"> const</span>
-<a name="l01209"></a>01209 <span class="keyword"></span>{
-<a name="l01210"></a>01210     uint64_t loffset = *offset;
-<a name="l01211"></a>01211     <span class="keywordtype">char</span> checksum[<a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a1982d4ee28f2bcb1c81861691fda7c31abb2b22ec01561b5d03e4f8c85a8d9d4a">Core::Checksum::MAX_LENGTH</a>];
-<a name="l01212"></a>01212     uint64_t bytesRead = reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a82c1143e0efa76307e2b90713a7cf118" title="Copy up to some number of bytes of the file into a user-supplied buffer.">copyPartial</a>(loffset, checksum,
-<a name="l01213"></a>01213                                             <span class="keyword">sizeof</span>(checksum));
-<a name="l01214"></a>01214     uint32_t checksumBytes = <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca" title="Check to see if the checksum format looks plausible.">Core::Checksum::length</a>(checksum,
-<a name="l01215"></a>01215                                                     uint32_t(bytesRead));
-<a name="l01216"></a>01216     <span class="keywordflow">if</span> (checksumBytes == 0)
-<a name="l01217"></a>01217         <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;Missing checksum in file %s&quot;</span>, file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str());
-<a name="l01218"></a>01218     loffset += checksumBytes;
-<a name="l01219"></a>01219 
-<a name="l01220"></a>01220     uint64_t dataLen;
-<a name="l01221"></a>01221     <span class="keywordflow">if</span> (reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a82c1143e0efa76307e2b90713a7cf118" title="Copy up to some number of bytes of the file into a user-supplied buffer.">copyPartial</a>(loffset, &amp;dataLen, <span class="keyword">sizeof</span>(dataLen)) &lt;
-<a name="l01222"></a>01222         <span class="keyword">sizeof</span>(dataLen)) {
-<a name="l01223"></a>01223         <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;Record length truncated in file %s&quot;</span>, file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str());
-<a name="l01224"></a>01224     }
-<a name="l01225"></a>01225     dataLen = be64toh(dataLen);
-<a name="l01226"></a>01226     <span class="keywordflow">if</span> (reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>() &lt; loffset + <span class="keyword">sizeof</span>(dataLen) + dataLen) {
-<a name="l01227"></a>01227         <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;ProtoBuf truncated in file %s&quot;</span>, file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str());
-<a name="l01228"></a>01228     }
-<a name="l01229"></a>01229 
-<a name="l01230"></a>01230     <span class="keyword">const</span> <span class="keywordtype">void</span>* checksumCoverage = reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a9d72e8e623b3b64feac1c58079bad1c5" title="Get a pointer to a region of the file.">get</a>(loffset,
-<a name="l01231"></a>01231                                               <span class="keyword">sizeof</span>(dataLen) + dataLen);
-<a name="l01232"></a>01232     std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#ad6fd1ade236f1b3bb9a26a54acda71c7" title="Verify data against an existing checksum.">Core::Checksum::verify</a>(checksum, checksumCoverage,
-<a name="l01233"></a>01233                                                <span class="keyword">sizeof</span>(dataLen) + dataLen);
-<a name="l01234"></a>01234     <span class="keywordflow">if</span> (!error.empty()) {
-<a name="l01235"></a>01235         <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;Checksum verification failure on %s: %s&quot;</span>,
-<a name="l01236"></a>01236                       file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str(), error.c_str());
+<a name="l00995"></a>00995             uint64_t remainingBytes = reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>() - offset;
+<a name="l00996"></a>00996             <span class="keywordflow">if</span> (version == 0 &amp;&amp;
+<a name="l00997"></a>00997                 <a class="code" href="namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SegmentedLog_8cc_03.html#ae57e24c4edde24702aadd043fdd37f22" title="Return true if all the bytes in range [start, start + length) are zero.">isAllZeros</a>(reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a9d72e8e623b3b64feac1c58079bad1c5" title="Get a pointer to a region of the file.">get</a>(
+<a name="l00998"></a>00998                                offset, remainingBytes), remainingBytes)) {
+<a name="l00999"></a>00999                 <span class="comment">// move the offset to the end of the file. allow the</span>
+<a name="l01000"></a>01000                 <span class="comment">// existing cleanup mechanism to remove this file.</span>
+<a name="l01001"></a>01001                 offset = reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>();
+<a name="l01002"></a>01002             } <span class="keywordflow">else</span> {
+<a name="l01003"></a>01003                 <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Segment version read from %s was %u, &quot;</span>
+<a name="l01004"></a>01004                       <span class="stringliteral">&quot;but this code can only read version 1&quot;</span>,
+<a name="l01005"></a>01005                       segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
+<a name="l01006"></a>01006                       version);
+<a name="l01007"></a>01007             }
+<a name="l01008"></a>01008         }
+<a name="l01009"></a>01009     }
+<a name="l01010"></a>01010 
+<a name="l01011"></a>01011     uint64_t lastIndex = 0;
+<a name="l01012"></a>01012     <span class="keywordflow">while</span> (offset &lt; reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>()) {
+<a name="l01013"></a>01013         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.emplace_back(offset);
+<a name="l01014"></a>01014         std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a> = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa7c541cbed809b7dbfe7541b2c789d15" title="Read the next ProtoBuf record out of &#39;file&#39;.">readProtoFromFile</a>(
+<a name="l01015"></a>01015                 file,
+<a name="l01016"></a>01016                 reader,
+<a name="l01017"></a>01017                 &amp;offset,
+<a name="l01018"></a>01018                 &amp;segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry);
+<a name="l01019"></a>01019         <span class="keywordflow">if</span> (!error.empty()) {
+<a name="l01020"></a>01020             segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.pop_back();
+<a name="l01021"></a>01021             uint64_t remainingBytes = reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>() - offset;
+<a name="l01022"></a>01022             <span class="keywordflow">if</span> (<a class="code" href="namespaceLogCabin_1_1Storage_1_1anonymous__namespace_02SegmentedLog_8cc_03.html#ae57e24c4edde24702aadd043fdd37f22" title="Return true if all the bytes in range [start, start + length) are zero.">isAllZeros</a>(reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a9d72e8e623b3b64feac1c58079bad1c5" title="Get a pointer to a region of the file.">get</a>(offset, remainingBytes),
+<a name="l01023"></a>01023                            remainingBytes)) {
+<a name="l01024"></a>01024                 <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Truncating %lu zero bytes at the end of log &quot;</span>
+<a name="l01025"></a>01025                         <span class="stringliteral">&quot;segment %s (%lu bytes into the segment, &quot;</span>
+<a name="l01026"></a>01026                         <span class="stringliteral">&quot;following  entry %lu). This is most likely &quot;</span>
+<a name="l01027"></a>01027                         <span class="stringliteral">&quot;because the server shutdown uncleanly.&quot;</span>,
+<a name="l01028"></a>01028                         remainingBytes,
+<a name="l01029"></a>01029                         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
+<a name="l01030"></a>01030                         offset,
+<a name="l01031"></a>01031                         lastIndex);
+<a name="l01032"></a>01032             } <span class="keywordflow">else</span> {
+<a name="l01033"></a>01033                 <span class="comment">// TODO(ongaro): do we want to save these bytes somewhere?</span>
+<a name="l01034"></a>01034                 <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Could not read entry in log segment %s &quot;</span>
+<a name="l01035"></a>01035                         <span class="stringliteral">&quot;(%lu bytes into the segment, following &quot;</span>
+<a name="l01036"></a>01036                         <span class="stringliteral">&quot;entry %lu), probably because it was being &quot;</span>
+<a name="l01037"></a>01037                         <span class="stringliteral">&quot;written when the server crashed. Discarding the &quot;</span>
+<a name="l01038"></a>01038                         <span class="stringliteral">&quot;remainder of the file (%lu bytes). Error was: %s&quot;</span>,
+<a name="l01039"></a>01039                         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
+<a name="l01040"></a>01040                         offset,
+<a name="l01041"></a>01041                         lastIndex,
+<a name="l01042"></a>01042                         remainingBytes,
+<a name="l01043"></a>01043                         error.c_str());
+<a name="l01044"></a>01044             }
+<a name="l01045"></a>01045             <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1cba6adaf9d078fb2c04c3b229f6b483" title="Shrink or grow a file to the specified length, padding with zeros if necessary.">FS::truncate</a>(file, offset);
+<a name="l01046"></a>01046             <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(file);
+<a name="l01047"></a>01047             <span class="keywordflow">break</span>;
+<a name="l01048"></a>01048         }
+<a name="l01049"></a>01049         lastIndex = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry.index();
+<a name="l01050"></a>01050     }
+<a name="l01051"></a>01051 
+<a name="l01052"></a>01052     <span class="keywordtype">bool</span> <span class="keyword">remove</span> = <span class="keyword">false</span>;
+<a name="l01053"></a>01053     <span class="keywordflow">if</span> (segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.empty()) {
+<a name="l01054"></a>01054         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing empty segment: %s&quot;</span>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str());
+<a name="l01055"></a>01055         <span class="keyword">remove</span> = <span class="keyword">true</span>;
+<a name="l01056"></a>01056     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry.index() &lt; <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a>) {
+<a name="l01057"></a>01057         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing open segment whose entries are no longer &quot;</span>
+<a name="l01058"></a>01058                <span class="stringliteral">&quot;needed (last index is %lu but log start index is %lu): %s&quot;</span>,
+<a name="l01059"></a>01059                segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry.index(),
+<a name="l01060"></a>01060                <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a>,
+<a name="l01061"></a>01061                segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str());
+<a name="l01062"></a>01062         <span class="keyword">remove</span> = <span class="keyword">true</span>;
+<a name="l01063"></a>01063     }
+<a name="l01064"></a>01064     <span class="keywordflow">if</span> (<span class="keyword">remove</span>) {
+<a name="l01065"></a>01065         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a8cac431f693d92baf63191b2b86e0357" title="Remove the file relative to an open directory.">FS::removeFile</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>);
+<a name="l01066"></a>01066         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>);
+<a name="l01067"></a>01067         <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l01068"></a>01068     } <span class="keywordflow">else</span> {
+<a name="l01069"></a>01069         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a> = offset;
+<a name="l01070"></a>01070         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ae1ab06082b556d977f44610e9fb50693" title="The total number of bytes occupied by the closed segments on disk.">totalClosedSegmentBytes</a> += segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a>;
+<a name="l01071"></a>01071         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb" title="True for the open segment, false for closed segments.">isOpen</a> = <span class="keyword">false</span>;
+<a name="l01072"></a>01072         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.front().entry.index();
+<a name="l01073"></a>01073         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.back().entry.index();
+<a name="l01074"></a>01074         std::string newFilename = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#afda58081b67d779178aef03e48d05503" title="Return a filename of the right form for a closed segment.">makeClosedFilename</a>();
+<a name="l01075"></a>01075         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Closing open segment %s, renaming to %s&quot;</span>,
+<a name="l01076"></a>01076                 segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
+<a name="l01077"></a>01077                 newFilename.c_str());
+<a name="l01078"></a>01078         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#ab11e8bf05a2bedd53c76d56c812d3148" title="Rename a file.">FS::rename</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>,
+<a name="l01079"></a>01079                    <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, newFilename);
+<a name="l01080"></a>01080         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>);
+<a name="l01081"></a>01081         segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a> = newFilename;
+<a name="l01082"></a>01082         <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l01083"></a>01083     }
+<a name="l01084"></a>01084 }
+<a name="l01085"></a>01085 
+<a name="l01086"></a>01086 <span class="comment"></span>
+<a name="l01087"></a>01087 <span class="comment">////////// SegmentedLog normal operation helper functions //////////</span>
+<a name="l01088"></a>01088 <span class="comment"></span>
+<a name="l01089"></a>01089 
+<a name="l01090"></a>01090 <span class="keywordtype">void</span>
+<a name="l01091"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a9412657050c3b5ee0f15d13a687e031e">01091</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a9412657050c3b5ee0f15d13a687e031e" title="Run through a bunch of assertions of class invariants (for debugging).">SegmentedLog::checkInvariants</a>()
+<a name="l01092"></a>01092 {
+<a name="l01093"></a>01093     <span class="keywordflow">if</span> (!<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad54138be8052e2963053757e8734f0d2" title="Set to true if checkInvariants() should do its job, or set to false for performance.">shouldCheckInvariants</a>)
+<a name="l01094"></a>01094         <span class="keywordflow">return</span>;
+<a name="l01095"></a>01095 <span class="preprocessor">#if DEBUG</span>
+<a name="l01096"></a>01096 <span class="preprocessor"></span>    assert(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092" title="The open file descriptor, or -1 otherwise.">fd</a> &gt;= 0);
+<a name="l01097"></a>01097     assert(!<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.empty());
+<a name="l01098"></a>01098     assert(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a> &gt;= <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.begin()-&gt;second.startIndex);
+<a name="l01099"></a>01099     assert(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aaf005740e234acbfd657046eaea19865" title="The index of the first entry in the log, see getLogStartIndex().">logStartIndex</a> &lt;= <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.begin()-&gt;second.endIndex + 1);
+<a name="l01100"></a>01100     assert(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a18dac48574a56e1edc5f6702bdd08f64" title="Accumulates deferred filesystem operations for append() and truncatePrefix().">currentSync</a>.get() != NULL);
+<a name="l01101"></a>01101     uint64_t closedBytes = 0;
+<a name="l01102"></a>01102     <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.begin();
+<a name="l01103"></a>01103          it != <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.end();
+<a name="l01104"></a>01104          ++it) {
+<a name="l01105"></a>01105         <span class="keyword">auto</span> next = it;
+<a name="l01106"></a>01106         ++next;
+<a name="l01107"></a>01107         <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">Segment</a>&amp; segment = it-&gt;second;
+<a name="l01108"></a>01108         assert(it-&gt;first == segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>);
+<a name="l01109"></a>01109         assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> &gt; 0);
+<a name="l01110"></a>01110         assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.size() ==
+<a name="l01111"></a>01111                segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> + 1 - segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>);
+<a name="l01112"></a>01112         uint64_t lastOffset = 0;
+<a name="l01113"></a>01113         <span class="keywordflow">for</span> (uint64_t i = 0; i &lt; segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.size(); ++i) {
+<a name="l01114"></a>01114             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.at(i).entry.index() ==
+<a name="l01115"></a>01115                    segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> + i);
+<a name="l01116"></a>01116             <span class="keywordflow">if</span> (i == 0)
+<a name="l01117"></a>01117                 assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.at(0).offset == <span class="keyword">sizeof</span>(<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html" title="This goes at the start of every segment.">SegmentHeader</a>));
+<a name="l01118"></a>01118             <span class="keywordflow">else</span>
+<a name="l01119"></a>01119                 assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.at(i).offset &gt; lastOffset);
+<a name="l01120"></a>01120             lastOffset = segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#adf85653580267e265dd6a1451a7d8db3" title="The entries in this segment, from startIndex to endIndex, inclusive.">entries</a>.at(i).offset;
+<a name="l01121"></a>01121         }
+<a name="l01122"></a>01122         <span class="keywordflow">if</span> (next == <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.end()) {
+<a name="l01123"></a>01123             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb" title="True for the open segment, false for closed segments.">isOpen</a>);
+<a name="l01124"></a>01124             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> &gt;= segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> - 1);
+<a name="l01125"></a>01125             assert(<a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#abd5665712d4706d4b2189d3a182f4316" title="Return true if haystack begins with needle.">Core::StringUtil::startsWith</a>(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>, <span class="stringliteral">&quot;open-&quot;</span>));
+<a name="l01126"></a>01126             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a> &gt;= <span class="keyword">sizeof</span>(<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html" title="This goes at the start of every segment.">SegmentHeader</a>));
+<a name="l01127"></a>01127         } <span class="keywordflow">else</span> {
+<a name="l01128"></a>01128             assert(!segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb" title="True for the open segment, false for closed segments.">isOpen</a>);
+<a name="l01129"></a>01129             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> &gt;= segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>);
+<a name="l01130"></a>01130             assert(next-&gt;second.startIndex == segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a> + 1);
+<a name="l01131"></a>01131             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a> &gt; <span class="keyword">sizeof</span>(<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html" title="This goes at the start of every segment.">SegmentHeader</a>));
+<a name="l01132"></a>01132             closedBytes += segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a>;
+<a name="l01133"></a>01133             assert(segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a> == segment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#afda58081b67d779178aef03e48d05503" title="Return a filename of the right form for a closed segment.">makeClosedFilename</a>());
+<a name="l01134"></a>01134         }
+<a name="l01135"></a>01135     }
+<a name="l01136"></a>01136     assert(closedBytes == <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ae1ab06082b556d977f44610e9fb50693" title="The total number of bytes occupied by the closed segments on disk.">totalClosedSegmentBytes</a>);
+<a name="l01137"></a>01137 <span class="preprocessor">#endif </span><span class="comment">/* DEBUG */</span>
+<a name="l01138"></a>01138 }
+<a name="l01139"></a>01139 
+<a name="l01140"></a>01140 <span class="keywordtype">void</span>
+<a name="l01141"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a09027cf6c7aa1869f1a24837b4494eb7">01141</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a09027cf6c7aa1869f1a24837b4494eb7" title="Close the open segment if one is open.">SegmentedLog::closeSegment</a>()
+<a name="l01142"></a>01142 {
+<a name="l01143"></a>01143     <span class="keywordflow">if</span> (<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092" title="The open file descriptor, or -1 otherwise.">fd</a> &lt; 0)
+<a name="l01144"></a>01144         <span class="keywordflow">return</span>;
+<a name="l01145"></a>01145     <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">Segment</a>&amp; openSegment = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a2ff5aade1f854285b605fcefbe8d2a13" title="Return a reference to the current open segment (the one that new writes should go into)...">getOpenSegment</a>();
+<a name="l01146"></a>01146     <span class="keywordflow">if</span> (openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a> &gt; openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a4e441d5d824a7b5727e82bcf84f1fdc5" title="The index of the last entry in the segment, or startIndex - 1 if the segment is open and empty...">endIndex</a>) {
+<a name="l01147"></a>01147         <span class="comment">// Segment is empty; just remove it.</span>
+<a name="l01148"></a>01148         <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Removing empty open segment (start index %lu): %s&quot;</span>,
+<a name="l01149"></a>01149                openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>,
+<a name="l01150"></a>01150                openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str());
+<a name="l01151"></a>01151         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#abcc14d47d566079ecc536ca5c064d99a" title="Close the file.">close</a>();
+<a name="l01152"></a>01152         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a8cac431f693d92baf63191b2b86e0357" title="Remove the file relative to an open directory.">FS::removeFile</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>);
+<a name="l01153"></a>01153         <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>);
+<a name="l01154"></a>01154         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.erase(openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a8e261fb859ae3de5764de293340cd3bd" title="The index of the first entry in the segment.">startIndex</a>);
+<a name="l01155"></a>01155         <span class="keywordflow">return</span>;
+<a name="l01156"></a>01156     }
+<a name="l01157"></a>01157 
+<a name="l01158"></a>01158     <span class="comment">// Truncate away any extra 0 bytes at the end from when</span>
+<a name="l01159"></a>01159     <span class="comment">// MAX_SEGMENT_SIZE was allocated, or in the case of truncateSuffix,</span>
+<a name="l01160"></a>01160     <span class="comment">// truncate away actual entries that are no longer desired.</span>
+<a name="l01161"></a>01161     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1cba6adaf9d078fb2c04c3b229f6b483" title="Shrink or grow a file to the specified length, padding with zeros if necessary.">FS::truncate</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>, openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a>);
+<a name="l01162"></a>01162     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>);
+<a name="l01163"></a>01163     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#abcc14d47d566079ecc536ca5c064d99a" title="Close the file.">close</a>();
+<a name="l01164"></a>01164 
+<a name="l01165"></a>01165     <span class="comment">// Rename the file.</span>
+<a name="l01166"></a>01166     std::string newFilename = openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#afda58081b67d779178aef03e48d05503" title="Return a filename of the right form for a closed segment.">makeClosedFilename</a>();
+<a name="l01167"></a>01167     <a class="code" href="Core_2Debug_8h.html#a383cf896bc43bafb5ad7ef2853696de7" title="Log a NOTICE message.">NOTICE</a>(<span class="stringliteral">&quot;Closing segment (was %s, renaming to %s)&quot;</span>,
+<a name="l01168"></a>01168            openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>.c_str(),
+<a name="l01169"></a>01169            newFilename.c_str());
+<a name="l01170"></a>01170     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#ab11e8bf05a2bedd53c76d56c812d3148" title="Rename a file.">FS::rename</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a>,
+<a name="l01171"></a>01171                <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, newFilename);
+<a name="l01172"></a>01172     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>);
+<a name="l01173"></a>01173     openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a46b3a926e117af917b0a6cfb62eb87c6" title="The name of the file within dir containing this segment.">filename</a> = newFilename;
+<a name="l01174"></a>01174 
+<a name="l01175"></a>01175     openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb" title="True for the open segment, false for closed segments.">isOpen</a> = <span class="keyword">false</span>;
+<a name="l01176"></a>01176     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ae1ab06082b556d977f44610e9fb50693" title="The total number of bytes occupied by the closed segments on disk.">totalClosedSegmentBytes</a> += openSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#a57fa9278f9bb70d63a8dc426bd4ac330" title="Size in bytes of the valid entries stored in the file plus the version number at the start of the fil...">bytes</a>;
+<a name="l01177"></a>01177 }
+<a name="l01178"></a>01178 
+<a name="l01179"></a>01179 <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">SegmentedLog::Segment</a>&amp;
+<a name="l01180"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a2ff5aade1f854285b605fcefbe8d2a13">01180</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a2ff5aade1f854285b605fcefbe8d2a13" title="Return a reference to the current open segment (the one that new writes should go into)...">SegmentedLog::getOpenSegment</a>()
+<a name="l01181"></a>01181 {
+<a name="l01182"></a>01182     assert(!<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.empty());
+<a name="l01183"></a>01183     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.rbegin()-&gt;second;
+<a name="l01184"></a>01184 }
+<a name="l01185"></a>01185 
+<a name="l01186"></a>01186 <span class="keyword">const</span> <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">SegmentedLog::Segment</a>&amp;
+<a name="l01187"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a4ebf746ec25f37c00b636d707115beb5">01187</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a2ff5aade1f854285b605fcefbe8d2a13" title="Return a reference to the current open segment (the one that new writes should go into)...">SegmentedLog::getOpenSegment</a>()<span class="keyword"> const</span>
+<a name="l01188"></a>01188 <span class="keyword"></span>{
+<a name="l01189"></a>01189     assert(!<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.empty());
+<a name="l01190"></a>01190     <span class="keywordflow">return</span> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.rbegin()-&gt;second;
+<a name="l01191"></a>01191 }
+<a name="l01192"></a>01192 
+<a name="l01193"></a>01193 <span class="keywordtype">void</span>
+<a name="l01194"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3ce2b038faf15bf6da4f7992bd7ed482">01194</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3ce2b038faf15bf6da4f7992bd7ed482" title="Set up a new open segment for the log head.">SegmentedLog::openNewSegment</a>()
+<a name="l01195"></a>01195 {
+<a name="l01196"></a>01196     assert(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a>.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092" title="The open file descriptor, or -1 otherwise.">fd</a> &lt; 0);
+<a name="l01197"></a>01197     assert(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.empty() ||
+<a name="l01198"></a>01198            !<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.rbegin()-&gt;second.isOpen);
+<a name="l01199"></a>01199 
+<a name="l01200"></a>01200     <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html" title="An open or closed segment.">Segment</a> newSegment;
+<a name="l01201"></a>01201     newSegment.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1Segment.html#af3705bc3ed181a60ee2b7b91bc5bc9cb" title="True for the open segment, false for closed segments.">isOpen</a> = <span class="keyword">true</span>;
+<a name="l01202"></a>01202     newSegment.startIndex = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a45c575000cfd56c3d77d6efa7a6286de" title="Get the index of the most recent entry in the log.">getLastLogIndex</a>() + 1;
+<a name="l01203"></a>01203     newSegment.endIndex = newSegment.startIndex - 1;
+<a name="l01204"></a>01204     newSegment.bytes = <span class="keyword">sizeof</span>(<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html" title="This goes at the start of every segment.">SegmentHeader</a>);
+<a name="l01205"></a>01205     <span class="comment">// This can throw ThreadInterruptedException, but it shouldn&#39;t ever, since</span>
+<a name="l01206"></a>01206     <span class="comment">// this class shouldn&#39;t have been destroyed yet.</span>
+<a name="l01207"></a>01207     <span class="keyword">auto</span> s = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a82ace8371782747c371bdadb29d41741" title="See PreparedSegments.">preparedSegments</a>.<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#ac1ad3bdbede3bc25c6a755bbadae9b4e" title="Consumers call this when they need a prepared segment file.">waitForOpenSegment</a>();
+<a name="l01208"></a>01208     newSegment.filename = s.first;
+<a name="l01209"></a>01209     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad2e8dbc33ff4ceae1b4f349cacd0b149" title="A writable OS-level file that contains the entries for the current open segment.">openSegmentFile</a> = std::move(s.second);
+<a name="l01210"></a>01210     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34832b93004e1e5163d41bfb0a86dac6" title="Ordered map of all closed segments and the open segment, indexed by the startIndex of each segment...">segmentsByStartIndex</a>.insert({newSegment.startIndex, newSegment});
+<a name="l01211"></a>01211 }
+<a name="l01212"></a>01212 
+<a name="l01213"></a>01213 std::string
+<a name="l01214"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa7c541cbed809b7dbfe7541b2c789d15">01214</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa7c541cbed809b7dbfe7541b2c789d15" title="Read the next ProtoBuf record out of &#39;file&#39;.">SegmentedLog::readProtoFromFile</a>(<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FS::File</a>&amp; file,
+<a name="l01215"></a>01215                                 <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html" title="Provides random access to a file.">FS::FileContents</a>&amp; reader,
+<a name="l01216"></a>01216                                 uint64_t* offset,
+<a name="l01217"></a>01217                                 google::protobuf::Message* out)<span class="keyword"> const</span>
+<a name="l01218"></a>01218 <span class="keyword"></span>{
+<a name="l01219"></a>01219     uint64_t loffset = *offset;
+<a name="l01220"></a>01220     <span class="keywordtype">char</span> checksum[<a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a1982d4ee28f2bcb1c81861691fda7c31abb2b22ec01561b5d03e4f8c85a8d9d4a">Core::Checksum::MAX_LENGTH</a>];
+<a name="l01221"></a>01221     uint64_t bytesRead = reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a82c1143e0efa76307e2b90713a7cf118" title="Copy up to some number of bytes of the file into a user-supplied buffer.">copyPartial</a>(loffset, checksum,
+<a name="l01222"></a>01222                                             <span class="keyword">sizeof</span>(checksum));
+<a name="l01223"></a>01223     uint32_t checksumBytes = <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a5b9de9710a6195690c760a8a22685cca" title="Check to see if the checksum format looks plausible.">Core::Checksum::length</a>(checksum,
+<a name="l01224"></a>01224                                                     uint32_t(bytesRead));
+<a name="l01225"></a>01225     <span class="keywordflow">if</span> (checksumBytes == 0)
+<a name="l01226"></a>01226         <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;Missing checksum in file %s&quot;</span>, file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str());
+<a name="l01227"></a>01227     loffset += checksumBytes;
+<a name="l01228"></a>01228 
+<a name="l01229"></a>01229     uint64_t dataLen;
+<a name="l01230"></a>01230     <span class="keywordflow">if</span> (reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a82c1143e0efa76307e2b90713a7cf118" title="Copy up to some number of bytes of the file into a user-supplied buffer.">copyPartial</a>(loffset, &amp;dataLen, <span class="keyword">sizeof</span>(dataLen)) &lt;
+<a name="l01231"></a>01231         <span class="keyword">sizeof</span>(dataLen)) {
+<a name="l01232"></a>01232         <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;Record length truncated in file %s&quot;</span>, file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str());
+<a name="l01233"></a>01233     }
+<a name="l01234"></a>01234     dataLen = be64toh(dataLen);
+<a name="l01235"></a>01235     <span class="keywordflow">if</span> (reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a2c5b0987292ce98c092ad831d24c6bb8" title="Return the length of the file.">getFileLength</a>() &lt; loffset + <span class="keyword">sizeof</span>(dataLen) + dataLen) {
+<a name="l01236"></a>01236         <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;ProtoBuf truncated in file %s&quot;</span>, file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str());
 <a name="l01237"></a>01237     }
-<a name="l01238"></a>01238     loffset += <span class="keyword">sizeof</span>(dataLen);
-<a name="l01239"></a>01239     <span class="keyword">const</span> <span class="keywordtype">void</span>* data = reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a9d72e8e623b3b64feac1c58079bad1c5" title="Get a pointer to a region of the file.">get</a>(loffset, dataLen);
-<a name="l01240"></a>01240     loffset += dataLen;
-<a name="l01241"></a>01241 
-<a name="l01242"></a>01242     <span class="keywordflow">switch</span> (<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a20c878fca260c1fea2dbae7905ce827e" title="Specifies how individual records are stored.">encoding</a>) {
-<a name="l01243"></a>01243         <span class="keywordflow">case</span> SegmentedLog::Encoding::BINARY: {
-<a name="l01244"></a>01244             <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> contents(const_cast&lt;void*&gt;(data),
-<a name="l01245"></a>01245                                   dataLen,
-<a name="l01246"></a>01246                                   NULL);
-<a name="l01247"></a>01247             <span class="keywordflow">if</span> (!<a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c" title="Parse a protocol buffer message out of a Core::Buffer.">Core::ProtoBuf::parse</a>(contents, *out)) {
-<a name="l01248"></a>01248                 <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;Failed to parse protobuf in %s&quot;</span>,
-<a name="l01249"></a>01249                               file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str());
-<a name="l01250"></a>01250             }
-<a name="l01251"></a>01251             <span class="keywordflow">break</span>;
-<a name="l01252"></a>01252         }
-<a name="l01253"></a>01253         <span class="keywordflow">case</span> SegmentedLog::Encoding::TEXT: {
-<a name="l01254"></a>01254             std::string contents(static_cast&lt;const char*&gt;(data), dataLen);
-<a name="l01255"></a>01255             <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1Internal.html#a67f3b802a148d2f315e888b7de7b8748" title="Helper for fromString template.">Core::ProtoBuf::Internal::fromString</a>(contents, *out);
-<a name="l01256"></a>01256             <span class="keywordflow">break</span>;
-<a name="l01257"></a>01257         }
-<a name="l01258"></a>01258     }
-<a name="l01259"></a>01259     *offset = loffset;
-<a name="l01260"></a>01260     <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;
-<a name="l01261"></a>01261 }
-<a name="l01262"></a>01262 
-<a name="l01263"></a>01263 <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>
-<a name="l01264"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa855cdc3f98b40e3b1ad09118cbd8db3">01264</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa855cdc3f98b40e3b1ad09118cbd8db3" title="Prepare a ProtoBuf record to be written to disk.">SegmentedLog::serializeProto</a>(<span class="keyword">const</span> google::protobuf::Message&amp; in)<span class="keyword"> const</span>
-<a name="l01265"></a>01265 <span class="keyword"></span>{
-<a name="l01266"></a>01266     <span class="comment">// TODO(ongaro): can the intermediate buffer be avoided?</span>
-<a name="l01267"></a>01267     <span class="keyword">const</span> <span class="keywordtype">void</span>* data = NULL;
-<a name="l01268"></a>01268     uint64_t len = 0;
-<a name="l01269"></a>01269     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> binaryContents;
-<a name="l01270"></a>01270     std::string asciiContents;
-<a name="l01271"></a>01271     <span class="keywordflow">switch</span> (<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a20c878fca260c1fea2dbae7905ce827e" title="Specifies how individual records are stored.">encoding</a>) {
-<a name="l01272"></a>01272         <span class="keywordflow">case</span> SegmentedLog::Encoding::BINARY: {
-<a name="l01273"></a>01273             <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956" title="Serialize a protocol buffer message into a Core::Buffer.">Core::ProtoBuf::serialize</a>(in, binaryContents);
-<a name="l01274"></a>01274             data = binaryContents.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>();
-<a name="l01275"></a>01275             len = binaryContents.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>();
-<a name="l01276"></a>01276             <span class="keywordflow">break</span>;
-<a name="l01277"></a>01277         }
-<a name="l01278"></a>01278         <span class="keywordflow">case</span> SegmentedLog::Encoding::TEXT: {
-<a name="l01279"></a>01279             asciiContents = <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(in);
-<a name="l01280"></a>01280             data = asciiContents.data();
-<a name="l01281"></a>01281             len = asciiContents.length();
-<a name="l01282"></a>01282             <span class="keywordflow">break</span>;
-<a name="l01283"></a>01283         }
-<a name="l01284"></a>01284     }
-<a name="l01285"></a>01285     uint64_t netLen = htobe64(len);
-<a name="l01286"></a>01286     <span class="keywordtype">char</span> checksum[<a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a1982d4ee28f2bcb1c81861691fda7c31abb2b22ec01561b5d03e4f8c85a8d9d4a">Core::Checksum::MAX_LENGTH</a>];
-<a name="l01287"></a>01287     uint32_t checksumLen = <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#ab579101967aa3fce247041744f6bd422" title="Calculate the checksum for a chunk of data.">Core::Checksum::calculate</a>(
-<a name="l01288"></a>01288         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34485601251390adc6b38fb2848e9a43" title="The algorithm to use when writing new records.">checksumAlgorithm</a>.c_str(), {
-<a name="l01289"></a>01289             {&amp;netLen, <span class="keyword">sizeof</span>(netLen)},
-<a name="l01290"></a>01290             {data, len},
-<a name="l01291"></a>01291         },
-<a name="l01292"></a>01292         checksum);
-<a name="l01293"></a>01293 
-<a name="l01294"></a>01294     uint64_t totalLen = checksumLen + <span class="keyword">sizeof</span>(netLen) + len;
-<a name="l01295"></a>01295     <span class="keywordtype">char</span>* buf = <span class="keyword">new</span> <span class="keywordtype">char</span>[totalLen];
-<a name="l01296"></a>01296     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> record(
-<a name="l01297"></a>01297         buf,
-<a name="l01298"></a>01298         totalLen,
-<a name="l01299"></a>01299         Core::Buffer::deleteArrayFn&lt;char&gt;);
-<a name="l01300"></a>01300     <a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65" title="Copy some noncontiguous chunks of data into a contiguous chunk.">Core::Util::memcpy</a>(buf, {
-<a name="l01301"></a>01301         {checksum, checksumLen},
-<a name="l01302"></a>01302         {&amp;netLen, <span class="keyword">sizeof</span>(netLen)},
-<a name="l01303"></a>01303         {data, len},
-<a name="l01304"></a>01304     });
-<a name="l01305"></a>01305     <span class="keywordflow">return</span> record;
-<a name="l01306"></a>01306 }
-<a name="l01307"></a>01307 
-<a name="l01308"></a>01308 <span class="comment"></span>
-<a name="l01309"></a>01309 <span class="comment">////////// SegmentedLog segment preparer thread functions //////////</span>
-<a name="l01310"></a>01310 <span class="comment"></span>
-<a name="l01311"></a>01311 std::pair&lt;std::string, FS::File&gt;
-<a name="l01312"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a428a4dd73370ddbff7dfe151c03f60fe">01312</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a428a4dd73370ddbff7dfe151c03f60fe" title="Opens a file for a new segment and allocates its space on disk.">SegmentedLog::prepareNewSegment</a>(uint64_t <span class="keywordtype">id</span>)
-<a name="l01313"></a>01313 {
-<a name="l01314"></a>01314     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a33b9e1951fe268841a6b75d180435add" title="Time point for measuring disk performance.">TimePoint</a> start = <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Clock::now</a>();
-<a name="l01315"></a>01315 
-<a name="l01316"></a>01316     std::string filename = <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<a class="code" href="SegmentedLog_8cc.html#a3535223ed7942c8742c78c4348476621" title="Format string for open segment filenames.">OPEN_SEGMENT_FORMAT</a>, <span class="keywordtype">id</span>);
-<a name="l01317"></a>01317     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FS::File</a> file = <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1efbe54769377f1a078a38ae9513a260" title="Open a file.">FS::openFile</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, filename,
-<a name="l01318"></a>01318                                  O_CREAT|O_EXCL|O_RDWR);
-<a name="l01319"></a>01319     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#affd3ec5456e7c264c3c7c4029c2435c3" title="Allocate a contiguous range of a file, padding with zeros if necessary.">FS::allocate</a>(file, 0, <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad45c8da67feb145bf972bbc7c1f15136" title="The maximum size in bytes for newly written segments.">MAX_SEGMENT_SIZE</a>);
-<a name="l01320"></a>01320     <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html" title="This goes at the start of every segment.">SegmentHeader</a> header;
-<a name="l01321"></a>01321     header.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html#acd62a1703082e40d95b6321de7733eb5" title="Always set to 1 for now.">version</a> = 1;
-<a name="l01322"></a>01322     ssize_t written = <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#af5574e380c93e72d0c6def88c390adf1" title="A wrapper around write that retries interrupted calls.">FS::write</a>(file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092" title="The open file descriptor, or -1 otherwise.">fd</a>,
-<a name="l01323"></a>01323                                 &amp;header,
-<a name="l01324"></a>01324                                 <span class="keyword">sizeof</span>(header));
-<a name="l01325"></a>01325     <span class="keywordflow">if</span> (written == -1) {
-<a name="l01326"></a>01326         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Failed to write header to %s: %s&quot;</span>,
-<a name="l01327"></a>01327               file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str(), strerror(errno));
-<a name="l01328"></a>01328     }
-<a name="l01329"></a>01329     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(file);
-<a name="l01330"></a>01330     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>);
-<a name="l01331"></a>01331 
-<a name="l01332"></a>01332     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a33b9e1951fe268841a6b75d180435add" title="Time point for measuring disk performance.">TimePoint</a> end = <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Clock::now</a>();
-<a name="l01333"></a>01333     std::chrono::nanoseconds elapsed = end - start;
-<a name="l01334"></a>01334     <span class="comment">// TODO(ongaro): record elapsed times into RollingStat in a thread-safe way</span>
-<a name="l01335"></a>01335     <span class="keywordflow">if</span> (elapsed &gt; <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a517d127cdb1fa64bbbb6042ad30a4cee" title="If a disk operation exceeds this much time, log a warning.">diskWriteDurationThreshold</a>) {
-<a name="l01336"></a>01336         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Preparing open segment file took longer than expected (%s)&quot;</span>,
-<a name="l01337"></a>01337                 <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0" title="Return a string returned from the given object&#39;s stream operator.">Core::StringUtil::toString</a>(elapsed).c_str());
-<a name="l01338"></a>01338     }
-<a name="l01339"></a>01339     <span class="keywordflow">return</span> {std::move(filename), std::move(file)};
-<a name="l01340"></a>01340 }
-<a name="l01341"></a>01341 
-<a name="l01342"></a>01342 
-<a name="l01343"></a>01343 <span class="keywordtype">void</span>
-<a name="l01344"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a7f579c84b2363ff95de91ced5bd041e2">01344</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a7f579c84b2363ff95de91ced5bd041e2" title="The main function for the segmentPreparer thread.">SegmentedLog::segmentPreparerMain</a>()
-<a name="l01345"></a>01345 {
-<a name="l01346"></a>01346     <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#a4dbe9da59e37b2a282c41984be0ebdcb" title="Set the friendly name for the current thread.">Core::ThreadId::setName</a>(<span class="stringliteral">&quot;SegmentPreparer&quot;</span>);
-<a name="l01347"></a>01347     <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
-<a name="l01348"></a>01348         uint64_t fileId = 0;
-<a name="l01349"></a>01349         <span class="keywordflow">try</span> {
-<a name="l01350"></a>01350             fileId = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a82ace8371782747c371bdadb29d41741" title="See PreparedSegments.">preparedSegments</a>.<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a403047fd918948feff565db7a0e6c9d3" title="Producers call this first to block until work becomes needed.">waitForDemand</a>();
-<a name="l01351"></a>01351         } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html" title="The thread could not complete its task because it was asked to exit.">Core::Util::ThreadInterruptedException</a>&amp;) {
-<a name="l01352"></a>01352             <a class="code" href="Core_2Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Exiting&quot;</span>);
-<a name="l01353"></a>01353             <span class="keywordflow">break</span>;
-<a name="l01354"></a>01354         }
-<a name="l01355"></a>01355         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a82ace8371782747c371bdadb29d41741" title="See PreparedSegments.">preparedSegments</a>.<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#afd8a7596509da88d86ca924bf8a8988f" title="Producers call this when they&#39;re done creating a new file.">submitOpenSegment</a>(
-<a name="l01356"></a>01356             <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a428a4dd73370ddbff7dfe151c03f60fe" title="Opens a file for a new segment and allocates its space on disk.">prepareNewSegment</a>(fileId));
-<a name="l01357"></a>01357     }
-<a name="l01358"></a>01358 }
-<a name="l01359"></a>01359 
-<a name="l01360"></a>01360 } <span class="comment">// namespace LogCabin::Storage</span>
-<a name="l01361"></a>01361 } <span class="comment">// namespace LogCabin</span>
+<a name="l01238"></a>01238 
+<a name="l01239"></a>01239     <span class="keyword">const</span> <span class="keywordtype">void</span>* checksumCoverage = reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a9d72e8e623b3b64feac1c58079bad1c5" title="Get a pointer to a region of the file.">get</a>(loffset,
+<a name="l01240"></a>01240                                               <span class="keyword">sizeof</span>(dataLen) + dataLen);
+<a name="l01241"></a>01241     std::string <a class="code" href="namespaceLogCabin_1_1Client_1_1anonymous__namespace_02ServerControl_8cc_03.html#ae7558900575c6621004671104bb8d758" title="Print an error message and exit nonzero.">error</a> = <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#ad6fd1ade236f1b3bb9a26a54acda71c7" title="Verify data against an existing checksum.">Core::Checksum::verify</a>(checksum, checksumCoverage,
+<a name="l01242"></a>01242                                                <span class="keyword">sizeof</span>(dataLen) + dataLen);
+<a name="l01243"></a>01243     <span class="keywordflow">if</span> (!error.empty()) {
+<a name="l01244"></a>01244         <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;Checksum verification failure on %s: %s&quot;</span>,
+<a name="l01245"></a>01245                       file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str(), error.c_str());
+<a name="l01246"></a>01246     }
+<a name="l01247"></a>01247     loffset += <span class="keyword">sizeof</span>(dataLen);
+<a name="l01248"></a>01248     <span class="keyword">const</span> <span class="keywordtype">void</span>* data = reader.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1FileContents.html#a9d72e8e623b3b64feac1c58079bad1c5" title="Get a pointer to a region of the file.">get</a>(loffset, dataLen);
+<a name="l01249"></a>01249     loffset += dataLen;
+<a name="l01250"></a>01250 
+<a name="l01251"></a>01251     <span class="keywordflow">switch</span> (<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a20c878fca260c1fea2dbae7905ce827e" title="Specifies how individual records are stored.">encoding</a>) {
+<a name="l01252"></a>01252         <span class="keywordflow">case</span> SegmentedLog::Encoding::BINARY: {
+<a name="l01253"></a>01253             <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> contents(const_cast&lt;void*&gt;(data),
+<a name="l01254"></a>01254                                   dataLen,
+<a name="l01255"></a>01255                                   NULL);
+<a name="l01256"></a>01256             <span class="keywordflow">if</span> (!<a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a23badda5bcd2986d9d4e67b3725a170c" title="Parse a protocol buffer message out of a Core::Buffer.">Core::ProtoBuf::parse</a>(contents, *out)) {
+<a name="l01257"></a>01257                 <span class="keywordflow">return</span> <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<span class="stringliteral">&quot;Failed to parse protobuf in %s&quot;</span>,
+<a name="l01258"></a>01258                               file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str());
+<a name="l01259"></a>01259             }
+<a name="l01260"></a>01260             <span class="keywordflow">break</span>;
+<a name="l01261"></a>01261         }
+<a name="l01262"></a>01262         <span class="keywordflow">case</span> SegmentedLog::Encoding::TEXT: {
+<a name="l01263"></a>01263             std::string contents(static_cast&lt;const char*&gt;(data), dataLen);
+<a name="l01264"></a>01264             <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf_1_1Internal.html#a67f3b802a148d2f315e888b7de7b8748" title="Helper for fromString template.">Core::ProtoBuf::Internal::fromString</a>(contents, *out);
+<a name="l01265"></a>01265             <span class="keywordflow">break</span>;
+<a name="l01266"></a>01266         }
+<a name="l01267"></a>01267     }
+<a name="l01268"></a>01268     *offset = loffset;
+<a name="l01269"></a>01269     <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;
+<a name="l01270"></a>01270 }
+<a name="l01271"></a>01271 
+<a name="l01272"></a>01272 <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a>
+<a name="l01273"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa855cdc3f98b40e3b1ad09118cbd8db3">01273</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#aa855cdc3f98b40e3b1ad09118cbd8db3" title="Prepare a ProtoBuf record to be written to disk.">SegmentedLog::serializeProto</a>(<span class="keyword">const</span> google::protobuf::Message&amp; in)<span class="keyword"> const</span>
+<a name="l01274"></a>01274 <span class="keyword"></span>{
+<a name="l01275"></a>01275     <span class="comment">// TODO(ongaro): can the intermediate buffer be avoided?</span>
+<a name="l01276"></a>01276     <span class="keyword">const</span> <span class="keywordtype">void</span>* data = NULL;
+<a name="l01277"></a>01277     uint64_t len = 0;
+<a name="l01278"></a>01278     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> binaryContents;
+<a name="l01279"></a>01279     std::string asciiContents;
+<a name="l01280"></a>01280     <span class="keywordflow">switch</span> (<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a20c878fca260c1fea2dbae7905ce827e" title="Specifies how individual records are stored.">encoding</a>) {
+<a name="l01281"></a>01281         <span class="keywordflow">case</span> SegmentedLog::Encoding::BINARY: {
+<a name="l01282"></a>01282             <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a59b769e00332b67dbfddb348c3707956" title="Serialize a protocol buffer message into a Core::Buffer.">Core::ProtoBuf::serialize</a>(in, binaryContents);
+<a name="l01283"></a>01283             data = binaryContents.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a3b84e70fc6c1269fdd8f701ef2d9ab4e" title="Return a pointer to the first byte of data.">getData</a>();
+<a name="l01284"></a>01284             len = binaryContents.<a class="code" href="classLogCabin_1_1Core_1_1Buffer.html#a08d97c0adafb53992122d2c38a072148" title="Return the number of bytes that make up the data.">getLength</a>();
+<a name="l01285"></a>01285             <span class="keywordflow">break</span>;
+<a name="l01286"></a>01286         }
+<a name="l01287"></a>01287         <span class="keywordflow">case</span> SegmentedLog::Encoding::TEXT: {
+<a name="l01288"></a>01288             asciiContents = <a class="code" href="namespaceLogCabin_1_1Core_1_1ProtoBuf.html#a755e28f38764f420f33d7008aedced34" title="Dumps a protocol buffer message.">Core::ProtoBuf::dumpString</a>(in);
+<a name="l01289"></a>01289             data = asciiContents.data();
+<a name="l01290"></a>01290             len = asciiContents.length();
+<a name="l01291"></a>01291             <span class="keywordflow">break</span>;
+<a name="l01292"></a>01292         }
+<a name="l01293"></a>01293     }
+<a name="l01294"></a>01294     uint64_t netLen = htobe64(len);
+<a name="l01295"></a>01295     <span class="keywordtype">char</span> checksum[<a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#a1982d4ee28f2bcb1c81861691fda7c31abb2b22ec01561b5d03e4f8c85a8d9d4a">Core::Checksum::MAX_LENGTH</a>];
+<a name="l01296"></a>01296     uint32_t checksumLen = <a class="code" href="namespaceLogCabin_1_1Core_1_1Checksum.html#ab579101967aa3fce247041744f6bd422" title="Calculate the checksum for a chunk of data.">Core::Checksum::calculate</a>(
+<a name="l01297"></a>01297         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a34485601251390adc6b38fb2848e9a43" title="The algorithm to use when writing new records.">checksumAlgorithm</a>.c_str(), {
+<a name="l01298"></a>01298             {&amp;netLen, <span class="keyword">sizeof</span>(netLen)},
+<a name="l01299"></a>01299             {data, len},
+<a name="l01300"></a>01300         },
+<a name="l01301"></a>01301         checksum);
+<a name="l01302"></a>01302 
+<a name="l01303"></a>01303     uint64_t totalLen = checksumLen + <span class="keyword">sizeof</span>(netLen) + len;
+<a name="l01304"></a>01304     <span class="keywordtype">char</span>* buf = <span class="keyword">new</span> <span class="keywordtype">char</span>[totalLen];
+<a name="l01305"></a>01305     <a class="code" href="classLogCabin_1_1Core_1_1Buffer.html" title="A container for opaque data.">Core::Buffer</a> record(
+<a name="l01306"></a>01306         buf,
+<a name="l01307"></a>01307         totalLen,
+<a name="l01308"></a>01308         Core::Buffer::deleteArrayFn&lt;char&gt;);
+<a name="l01309"></a>01309     <a class="code" href="namespaceLogCabin_1_1Core_1_1Util.html#a6577de108423cf4d2ebfed2d7a60ad65" title="Copy some noncontiguous chunks of data into a contiguous chunk.">Core::Util::memcpy</a>(buf, {
+<a name="l01310"></a>01310         {checksum, checksumLen},
+<a name="l01311"></a>01311         {&amp;netLen, <span class="keyword">sizeof</span>(netLen)},
+<a name="l01312"></a>01312         {data, len},
+<a name="l01313"></a>01313     });
+<a name="l01314"></a>01314     <span class="keywordflow">return</span> record;
+<a name="l01315"></a>01315 }
+<a name="l01316"></a>01316 
+<a name="l01317"></a>01317 <span class="comment"></span>
+<a name="l01318"></a>01318 <span class="comment">////////// SegmentedLog segment preparer thread functions //////////</span>
+<a name="l01319"></a>01319 <span class="comment"></span>
+<a name="l01320"></a>01320 std::pair&lt;std::string, FS::File&gt;
+<a name="l01321"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a428a4dd73370ddbff7dfe151c03f60fe">01321</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a428a4dd73370ddbff7dfe151c03f60fe" title="Opens a file for a new segment and allocates its space on disk.">SegmentedLog::prepareNewSegment</a>(uint64_t <span class="keywordtype">id</span>)
+<a name="l01322"></a>01322 {
+<a name="l01323"></a>01323     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a33b9e1951fe268841a6b75d180435add" title="Time point for measuring disk performance.">TimePoint</a> start = <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Clock::now</a>();
+<a name="l01324"></a>01324 
+<a name="l01325"></a>01325     std::string filename = <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#a4b3972f4e603a7ba710374772b03c5c7" title="A safe version of sprintf.">format</a>(<a class="code" href="SegmentedLog_8cc.html#a3535223ed7942c8742c78c4348476621" title="Format string for open segment filenames.">OPEN_SEGMENT_FORMAT</a>, <span class="keywordtype">id</span>);
+<a name="l01326"></a>01326     <a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html" title="A File object is just a wrapper around a file descriptor; it represents either an open file...">FS::File</a> file = <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1efbe54769377f1a078a38ae9513a260" title="Open a file.">FS::openFile</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>, filename,
+<a name="l01327"></a>01327                                  O_CREAT|O_EXCL|O_RDWR);
+<a name="l01328"></a>01328     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#affd3ec5456e7c264c3c7c4029c2435c3" title="Allocate a contiguous range of a file, padding with zeros if necessary.">FS::allocate</a>(file, 0, <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#ad45c8da67feb145bf972bbc7c1f15136" title="The maximum size in bytes for newly written segments.">MAX_SEGMENT_SIZE</a>);
+<a name="l01329"></a>01329     <a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html" title="This goes at the start of every segment.">SegmentHeader</a> header;
+<a name="l01330"></a>01330     header.<a class="code" href="structLogCabin_1_1Storage_1_1SegmentedLog_1_1SegmentHeader.html#acd62a1703082e40d95b6321de7733eb5" title="Always set to 1 for now.">version</a> = 1;
+<a name="l01331"></a>01331     ssize_t written = <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#af5574e380c93e72d0c6def88c390adf1" title="A wrapper around write that retries interrupted calls.">FS::write</a>(file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#ad90bd1b9eeb500e3edccfa8eef8fb092" title="The open file descriptor, or -1 otherwise.">fd</a>,
+<a name="l01332"></a>01332                                 &amp;header,
+<a name="l01333"></a>01333                                 <span class="keyword">sizeof</span>(header));
+<a name="l01334"></a>01334     <span class="keywordflow">if</span> (written == -1) {
+<a name="l01335"></a>01335         <a class="code" href="Core_2Debug_8h.html#ad84b0f521394f4d9214c9d185711a8c3" title="Log an ERROR message and abort the process.">PANIC</a>(<span class="stringliteral">&quot;Failed to write header to %s: %s&quot;</span>,
+<a name="l01336"></a>01336               file.<a class="code" href="classLogCabin_1_1Storage_1_1FilesystemUtil_1_1File.html#a08f4496237c6a87636eed77232de2293" title="The path used to open fd, or empty.">path</a>.c_str(), strerror(errno));
+<a name="l01337"></a>01337     }
+<a name="l01338"></a>01338     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(file);
+<a name="l01339"></a>01339     <a class="code" href="namespaceLogCabin_1_1Storage_1_1FilesystemUtil.html#a1c5dae92b2df6bc9f1f53f1c093bd739" title="Flush changes to a File to its underlying storage device.">FS::fsync</a>(<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a3653051d472d1f62ab474b4101076446" title="The directory containing every file this log creates.">dir</a>);
+<a name="l01340"></a>01340 
+<a name="l01341"></a>01341     <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a33b9e1951fe268841a6b75d180435add" title="Time point for measuring disk performance.">TimePoint</a> end = <a class="code" href="structLogCabin_1_1Core_1_1Time_1_1MockableClock.html#a13f545c6020dd190e13d21e2577cc59b">Clock::now</a>();
+<a name="l01342"></a>01342     std::chrono::nanoseconds elapsed = end - start;
+<a name="l01343"></a>01343     <span class="comment">// TODO(ongaro): record elapsed times into RollingStat in a thread-safe way</span>
+<a name="l01344"></a>01344     <span class="keywordflow">if</span> (elapsed &gt; <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a517d127cdb1fa64bbbb6042ad30a4cee" title="If a disk operation exceeds this much time, log a warning.">diskWriteDurationThreshold</a>) {
+<a name="l01345"></a>01345         <a class="code" href="Core_2Debug_8h.html#ad51176fec84ca79bd96163c9cb5a7c32" title="Log a WARNING message.">WARNING</a>(<span class="stringliteral">&quot;Preparing open segment file took longer than expected (%s)&quot;</span>,
+<a name="l01346"></a>01346                 <a class="code" href="namespaceLogCabin_1_1Core_1_1StringUtil.html#ac524b54525b06c9cf044d38746e3d0f0" title="Return a string returned from the given object&#39;s stream operator.">Core::StringUtil::toString</a>(elapsed).c_str());
+<a name="l01347"></a>01347     }
+<a name="l01348"></a>01348     <span class="keywordflow">return</span> {std::move(filename), std::move(file)};
+<a name="l01349"></a>01349 }
+<a name="l01350"></a>01350 
+<a name="l01351"></a>01351 
+<a name="l01352"></a>01352 <span class="keywordtype">void</span>
+<a name="l01353"></a><a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a7f579c84b2363ff95de91ced5bd041e2">01353</a> <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a7f579c84b2363ff95de91ced5bd041e2" title="The main function for the segmentPreparer thread.">SegmentedLog::segmentPreparerMain</a>()
+<a name="l01354"></a>01354 {
+<a name="l01355"></a>01355     <a class="code" href="namespaceLogCabin_1_1Core_1_1ThreadId.html#a4dbe9da59e37b2a282c41984be0ebdcb" title="Set the friendly name for the current thread.">Core::ThreadId::setName</a>(<span class="stringliteral">&quot;SegmentPreparer&quot;</span>);
+<a name="l01356"></a>01356     <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
+<a name="l01357"></a>01357         uint64_t fileId = 0;
+<a name="l01358"></a>01358         <span class="keywordflow">try</span> {
+<a name="l01359"></a>01359             fileId = <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a82ace8371782747c371bdadb29d41741" title="See PreparedSegments.">preparedSegments</a>.<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#a403047fd918948feff565db7a0e6c9d3" title="Producers call this first to block until work becomes needed.">waitForDemand</a>();
+<a name="l01360"></a>01360         } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classLogCabin_1_1Core_1_1Util_1_1ThreadInterruptedException.html" title="The thread could not complete its task because it was asked to exit.">Core::Util::ThreadInterruptedException</a>&amp;) {
+<a name="l01361"></a>01361             <a class="code" href="Core_2Debug_8h.html#a77e5c931f41ca7e1792ddfa762d38473" title="Log a VERBOSE message.">VERBOSE</a>(<span class="stringliteral">&quot;Exiting&quot;</span>);
+<a name="l01362"></a>01362             <span class="keywordflow">break</span>;
+<a name="l01363"></a>01363         }
+<a name="l01364"></a>01364         <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a82ace8371782747c371bdadb29d41741" title="See PreparedSegments.">preparedSegments</a>.<a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog_1_1PreparedSegments.html#afd8a7596509da88d86ca924bf8a8988f" title="Producers call this when they&#39;re done creating a new file.">submitOpenSegment</a>(
+<a name="l01365"></a>01365             <a class="code" href="classLogCabin_1_1Storage_1_1SegmentedLog.html#a428a4dd73370ddbff7dfe151c03f60fe" title="Opens a file for a new segment and allocates its space on disk.">prepareNewSegment</a>(fileId));
+<a name="l01366"></a>01366     }
+<a name="l01367"></a>01367 }
+<a name="l01368"></a>01368 
+<a name="l01369"></a>01369 } <span class="comment">// namespace LogCabin::Storage</span>
+<a name="l01370"></a>01370 } <span class="comment">// namespace LogCabin</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
